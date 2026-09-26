@@ -1,0 +1,9 @@
+node_modules/
+.env*
+.dev.vars*
+.wrangler/
+outputs/
+*.tsbuildinfo
+backend/wrangler.local.jsonc
+
+.npm-cache/
