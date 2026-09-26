@@ -1,0 +1,4 @@
+import Header from './Header';
+import lessons from './calendar.json';
+const links=['1.1.1','1.1.1','1.1.5','1.2.4','2.2','3.1.1','3.1.5','3.2.1','3.4.1','3.4.6','3.6.1','3.6.4','3.6.8','3.7.1','3.9.1','3.10.3','4.2.1','4.4.3','6.1','4.1','1.2.4','8.1','5.1','3.2.1'];
+export default function Calendar(){return <><Header/><main><div className="eyebrow">2026.09—2027.01 / 48 学时</div><h1>跟随课堂，逐步建立声学图景。</h1><p className="lead">24 次课 · 对应教学日历初稿 v3；实际安排以教师通知为准。</p><div className="calendar-grid">{lessons.map((l,i)=><article className="calendar-item" key={l.date}><div><span className="eyebrow">第 {l.week} 周 · 第 {i+1} 次课</span><time>{l.date}</time></div><h3>{l.title.split('；')[0]}</h3><p>{l.title.split('；').slice(1).join('；')}</p><a className="secondary" href={'#/lab?topic='+links[i]}>打开对应实验 ↗</a></article>)}</div><p className="source-note">1 月 11 日复习内容在教案与日历中的表述略有差异，此处保留日历 v3 的“第4–7章典型题精讲”安排。</p></main></>}
