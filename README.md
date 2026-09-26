@@ -4,8 +4,8 @@
 
 **网站：[进入声学实验室](https://shengyu-tang.github.io/acoustics-lab/)**
 
-- 82个知识点入口，核心公式、物理动画和可调参数。
-- 工程任务书：项目背景、模型对应、对比实验及工程判断。
+- 82个知识点入口，LaTeX 核心公式、物理动画和可调参数。
+- 工程任务书：项目背景、模型对应、三维工程场景、定量曲线及工程判断。
 - 全展开球形知识网络：三维旋转、缩放、平移、学习递进与跨章联系说明。
 - 学期月历总览和逐周、逐次课程安排。
 - 无需注册登录，无在线评论或后端服务。建议反馈：tangshengyu@ouc.edu.cn。
@@ -16,6 +16,7 @@
 npm ci
 npm run dev
 npm test
+node scripts/check-animations.mjs
 npm run build
 ```
 

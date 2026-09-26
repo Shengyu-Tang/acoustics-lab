@@ -10,14 +10,18 @@
     "test": "node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs"
   },
   "dependencies": {
+    "katex": "^0.18.9",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "three": "^0.186.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "4.20260515.1",
+    "@types/katex": "^0.16.8",
+    "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@types/node": "22.19.19",
-    "@cloudflare/workers-types": "4.20260515.1",
+    "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "6.0.2",
     "typescript": "5.9.3",
     "vite": "8.0.13",

@@ -35,3 +35,21 @@ npm test 校验物理计算、知识点和案例覆盖、关联端点及日历�
 部署目标：https://shengyu-tang.github.io/acoustics-lab/
 
 每次修改检查桌面和窄屏布局、长列表末项可达性、地图关系解释、日历末次课程、案例参数载入，以及浏览器错误。视口模拟不能替代真实 iOS/Android 手势体验，应根据师生实际反馈继续改善。
+
+
+## 三维场景与公式更新
+
+工程应用使用本地打包的 Three.js / WebGL 场景，按需加载，不访问三维地图 API，不需要服务端。覆盖振动台、弦棒、介质波场、界面、波导、传播、辐射散射、镜像路径、接收链路和声呐。模型参数通过引用同步到渲染帧，暂停时仍更新参数；离屏或后台暂停绘制，切换模型释放几何、材质及 WebGL 上下文。不支持 WebGL 时保留下方 SVG 定量曲线和计算读数。
+
+三维模型是教学示意，不是实际设备 CAD、流固耦合或全波数值求解。微小位移、弱散射的尺寸/颜色采用非线性视觉增强，不能据场景像素估计物理幅度。实际量值由原有物理公式计算。归一化图形在某些参数下保持形状是物理性质，不能为“显得有变化”伪造形状：瑞利散射增加绝对截面条，接收频响增加实际电压条，传播增加观察位置。
+
+KaTeX 把 equations.json 的 LaTeX 排成带编号的展示公式，字体、脚本和样式均随 Pages 静态资产发布，无 CDN 依赖。Vite 产物保持分块，三维代码只在工程应用打开时加载。旧 inline-build.mjs 文件名为历史兼容，现仅生成 .nojekyll，不能再将 CSS 原样内联，否则相对字体路径错误。
+
+地图默认左键/单指平移，滚轮锚定指针缩放，双击放大，Shift 双击缩小；Shift/Ctrl/Meta＋左键拖动或右键拖动旋转倾斜，保留按钮切换。旋转以当前视窗中心的地面投影点为轴，避免平移后仍绕全图原点打转。交互参考 Google Maps 的平移、缩放、Shift 拖动倾斜/转向惯例，不调用 Google Maps 服务。
+
+参考实现文档：
+- https://katex.org/docs/api.html
+- https://threejs.org/docs/pages/OrbitControls.html
+- https://developers.google.com/maps/documentation/javascript/vector-map
+
+检查脚本 check-animations.mjs 验证 37 组 LaTeX、99 个参数最小/最大值的 SVG 反馈、有限三维计算状态，并将无阻尼共振积分与解析增长解比较。检查不声称已在所有实体手机上完成触摸测试。
