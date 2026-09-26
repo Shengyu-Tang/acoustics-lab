@@ -1,15 +1,13 @@
 {
   "name": "acoustics-lab",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5174",
-    "build": "tsc --noEmit && tsc --project backend/tsconfig.json && vite build && node scripts/inline-build.mjs",
+    "build": "tsc --noEmit && vite build && node scripts/inline-build.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4174",
-    "api:dev": "wrangler dev --config backend/wrangler.jsonc --port 8787",
-    "api:deploy": "wrangler deploy --config backend/wrangler.jsonc",
-    "test": "node --experimental-strip-types scripts/check-physics.mjs"
+    "test": "node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs"
   },
   "dependencies": {
     "react": "19.2.6",
