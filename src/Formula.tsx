@@ -1,0 +1,3 @@
+import {useMemo} from 'react';
+import katex from 'katex';import 'katex/dist/katex.min.css';import equations from './equations.json';
+export default function Formula({kind}:{kind:string}){const rows=useMemo(()=>(equations[kind as keyof typeof equations]||[]).map(tex=>katex.renderToString(tex,{displayMode:true,throwOnError:true,trust:false,output:'htmlAndMathml'})),[kind]);return <div className="equation-block" aria-label="核心公式">{rows.map((html,i)=><div className="equation-row" key={i}><div className="equation-math" dangerouslySetInnerHTML={{__html:html}}/><span className="equation-number">({i+1})</span></div>)}</div>}

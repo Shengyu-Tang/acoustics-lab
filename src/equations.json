@@ -1,0 +1,143 @@
+{
+  "free": [
+    "m\\ddot{x}+Kx=0",
+    "\\omega_0=\\sqrt{K/m},\\quad x(t)=A\\cos(\\omega_0t)"
+  ],
+  "energy": [
+    "E=\\frac12m\\dot{x}^{2}+\\frac12Kx^{2}=\\frac12KA^{2}"
+  ],
+  "damp": [
+    "m\\ddot{x}+R_m\\dot{x}+Kx=0",
+    "\\zeta=\\frac{R_m}{2\\sqrt{Km}},\\quad\\delta=\\zeta\\omega_0"
+  ],
+  "quality": [
+    "Q=\\frac{1}{2\\zeta},\\quad\\tau_a=\\frac{1}{\\zeta\\omega_0}",
+    "\\Delta\\omega=2\\zeta\\omega_0"
+  ],
+  "forced": [
+    "m\\ddot{x}+R_m\\dot{x}+Kx=F_0\\cos(\\omega t)",
+    "x=x_{\\mathrm{tr}}+x_{\\mathrm{ss}}"
+  ],
+  "resonance": [
+    "Z_m=R_m+\\mathrm{j}\\!\\left(\\omega m-\\frac{K}{\\omega}\\right)",
+    "X=\\frac{F_0}{\\sqrt{(K-m\\omega^2)^2+(R_m\\omega)^2}}"
+  ],
+  "beats": [
+    "\\cos(2\\pi f_1t)+\\cos(2\\pi f_2t)",
+    "=2\\cos\\!\\left[\\pi(f_1-f_2)t\\right]\\cos\\!\\left[\\pi(f_1+f_2)t\\right]"
+  ],
+  "string": [
+    "\\frac{\\partial^2 y}{\\partial t^2}=\\frac{T}{\\mu}\\frac{\\partial^2y}{\\partial x^2}",
+    "c=\\sqrt{T/\\mu},\\quad f_n=\\frac{nc}{2L}"
+  ],
+  "rod": [
+    "c=\\sqrt{E/\\rho},\\quad f_n=\\frac{(2n-1)c}{4L}"
+  ],
+  "wave": [
+    "p=P\\cos(\\omega t-kx),\\quad u=\\frac{p}{\\rho_0c}",
+    "\\lambda=\\frac{c}{f},\\quad k=\\frac{2\\pi}{\\lambda}"
+  ],
+  "continuity": [
+    "\\frac{\\partial\\rho'}{\\partial t}+\\rho_0\\nabla\\!\\cdot\\!\\mathbf{u}=0",
+    "p=c^2\\rho',\\quad\\rho_0\\frac{\\partial\\mathbf{u}}{\\partial t}=-\\nabla p"
+  ],
+  "speed": [
+    "c=\\sqrt{\\frac{B}{\\rho_0}},\\quad\\lambda=\\frac{c}{f}"
+  ],
+  "intensity": [
+    "e=\\frac{p^2}{2\\rho_0c^2}+\\frac{\\rho_0u^2}{2}",
+    "I=\\langle pu\\rangle=\\frac{P^2}{2\\rho_0c}"
+  ],
+  "levels": [
+    "L_p=20\\log_{10}\\!\\left(\\frac{p_{\\mathrm{rms}}}{p_{\\mathrm{ref}}}\\right)",
+    "L_\\Sigma=10\\log_{10}\\!\\left(10^{L_1/10}+10^{L_2/10}\\right)"
+  ],
+  "interference": [
+    "P_\\Sigma=\\sqrt{P_1^2+P_2^2+2P_1P_2\\cos\\phi}"
+  ],
+  "doppler": [
+    "f_{\\mathrm{rec}}=\\frac{f_{\\mathrm{src}}c}{c-v_s}"
+  ],
+  "reflection": [
+    "p_i+p_r=p_t,\\quad u_i+u_r=u_t",
+    "r=\\frac{Z_2-Z_1}{Z_2+Z_1},\\quad t=1+r"
+  ],
+  "oblique": [
+    "\\frac{\\sin\\theta_i}{c_1}=\\frac{\\sin\\theta_t}{c_2}",
+    "r=\\frac{Z_2\\cos\\theta_i-Z_1\\cos\\theta_t}{Z_2\\cos\\theta_i+Z_1\\cos\\theta_t}"
+  ],
+  "standing": [
+    "r=\\frac{z_s-1}{z_s+1},\\quad\\alpha=1-\\lvert r\\rvert^2",
+    "\\mathrm{SWR}=\\frac{1+\\lvert r\\rvert}{1-\\lvert r\\rvert}"
+  ],
+  "spherical": [
+    "p(r)\\propto\\frac{e^{-\\mathrm{j}kr}}{r},\\quad I(r)\\propto\\frac{1}{r^2}",
+    "\\mathrm{TL}=20\\log_{10}\\!\\left(\\frac{r}{r_0}\\right)"
+  ],
+  "image": [
+    "p\\propto\\frac{e^{-\\mathrm{j}kr_1}}{r_1}\\pm\\frac{e^{-\\mathrm{j}kr_2}}{r_2}"
+  ],
+  "cylindrical": [
+    "p\\propto H_0^{(2)}(kr),\\quad\\lvert p\\rvert_{\\mathrm{far}}\\propto r^{-1/2}",
+    "\\mathrm{TL}_{\\mathrm{far}}=10\\log_{10}\\!\\left(\\frac{r}{r_0}\\right)"
+  ],
+  "guide": [
+    "k_x^2=\\left(\\frac{2\\pi f}{c}\\right)^2-\\left(\\frac{n\\pi}{H}\\right)^2",
+    "f_c=\\frac{nc}{2H},\\quad c_p=f\\lambda_x,\\quad c_g=\\frac{c^2}{c_p}"
+  ],
+  "monopole": [
+    "z_r=\\frac{(ka)^2}{1+(ka)^2}+\\mathrm{j}\\frac{ka}{1+(ka)^2}",
+    "W=\\frac12\\,4\\pi a^2\\rho c\\,\\operatorname{Re}(z_r)\\,U^2"
+  ],
+  "dipole": [
+    "D(\\theta)=\\cos\\theta",
+    "p_{\\mathrm{far}}\\propto\\mathrm{j}kd\\cos\\theta\\,\\frac{e^{-\\mathrm{j}kr}}{r}"
+  ],
+  "piston": [
+    "D(\\theta)=\\frac{2J_1(ka\\sin\\theta)}{ka\\sin\\theta}",
+    "p\\propto\\int_S U\\frac{e^{-\\mathrm{j}kr}}{r}\\,\\mathrm{d}S"
+  ],
+  "nearfield": [
+    "\\frac{\\lvert p(z)\\rvert}{\\rho cU}=2\\left\\lvert\\sin\\!\\left\\{\\frac{k}{2}\\left[\\sqrt{z^2+a^2}-z\\right]\\right\\}\\right\\rvert",
+    "N\\approx\\frac{a^2}{\\lambda}"
+  ],
+  "scatter": [
+    "\\sigma_s\\approx\\frac{7\\pi}{9}a^2(ka)^4",
+    "p_{s,\\mathrm{far}}\\propto\\frac{(ka)^3}{kr}\\left(\\frac12\\cos\\theta-\\frac13\\right)"
+  ],
+  "cylinder": [
+    "p_i+p_s=0\\quad(r=a)",
+    "A_n=-\\frac{\\mathrm{i}^{n}J_n(ka)}{H_n^{(2)}(ka)}"
+  ],
+  "receiver": [
+    "U_e=M(f)p,\\quad r=\\frac{f}{f_0}",
+    "\\lvert H\\rvert=\\frac{1}{\\sqrt{(1-r^2)^2+(2\\zeta r)^2}}"
+  ],
+  "reciprocity": [
+    "\\frac{p_B}{Q_A}=\\frac{p_A}{Q_B},\\quad G(A,B)=G(B,A)"
+  ],
+  "absorption": [
+    "p(x)=p_0e^{-\\alpha x},\\quad I(x)=I_0e^{-2\\alpha x}",
+    "\\mathrm{TL}_{\\mathrm{abs}}=8.686\\alpha x"
+  ],
+  "mechanism": [
+    "\\alpha_{\\mathrm{cl}}=Cf^2,\\quad\\alpha_{\\mathrm{rel}}=\\frac{Af^2}{f_r^2+f^2}"
+  ],
+  "sonar": [
+    "\\mathrm{SE}=\\mathrm{SL}-2\\mathrm{TL}+\\mathrm{TS}-\\mathrm{NL}+\\mathrm{DI}-\\mathrm{DT}",
+    "\\mathrm{TL}=20\\log_{10}\\!\\left(\\frac{r}{1\\,\\mathrm{m}}\\right)+\\alpha_{\\mathrm{dB}}\\frac{r}{1000\\,\\mathrm{m}}"
+  ],
+  "undamped": [
+    "m\\ddot{x}+Kx=F_0\\cos(\\omega t)",
+    "x=\\frac{F_0[\\cos(\\omega t)-\\cos(\\omega_0t)]}{m(\\omega_0^2-\\omega^2)},\\quad\\omega\\ne\\omega_0",
+    "x=\\frac{F_0t}{2m\\omega_0}\\sin(\\omega_0t),\\quad\\omega=\\omega_0"
+  ],
+  "echo": [
+    "\\ell_{\\mathrm{arc}}=R\\theta,\\quad\\ell_{\\mathrm{chord}}=2R\\sin\\!\\left(\\frac{\\theta}{2}\\right)",
+    "\\Delta t=\\frac{\\ell_{\\mathrm{arc}}-\\ell_{\\mathrm{chord}}}{c}"
+  ],
+  "helmholtz": [
+    "\\nabla^2\\widetilde{p}+k^2\\widetilde{p}=0",
+    "\\widetilde{p}=Pe^{-\\mathrm{j}\\mathbf{k}\\cdot\\mathbf{r}},\\quad k_x^2+k_y^2=k^2"
+  ]
+}
