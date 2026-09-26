@@ -7,3 +7,5 @@ outputs/
 backend/wrangler.local.jsonc
 
 .npm-cache/
+
+docs/

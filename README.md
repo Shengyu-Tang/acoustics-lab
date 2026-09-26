@@ -2,6 +2,10 @@
 
 唐胜雨 · 中国海洋大学。公开网页和全部项目源码由 GitHub 托管，不依赖 ChatGPT 登录或托管。
 
+公开网站：[声学基础交互学习实验室](https://shengyu-tang.github.io/acoustics-lab/) · [知识导图](https://shengyu-tang.github.io/acoustics-lab/#/map)
+
+当前状态：课程实验、导图和教学页面由 GitHub Pages 发布。账号、评论、GitHub 所有者登录的后端代码已通过本地验证；正式启用需完成 Cloudflare 与 GitHub OAuth 接入。
+
 ## 功能
 
 - 82 个知识点入口、核心公式、参数动画与工程案例；相邻知识点共用对应物理模型。
@@ -12,11 +16,11 @@
 
 ## 项目结构
 
-`src/` 前端与教学模型；`backend/` Cloudflare Worker 和 D1 数据结构；`docs/` 已编译的 GitHub Pages 网页；`scripts/` 构建与验证脚本。
+`src/` 前端与教学模型；`backend/` Cloudflare Worker 和 D1 数据结构；`docs/` 本地构建生成的 GitHub Pages 网页；`scripts/` 构建与验证脚本。
 
 ## 本地运行
 
-Node.js 22.13+。执行 `npm ci`、`npm run dev`。`npm run build` 生成 `docs/`。GitHub Pages 使用 main 分支的 `/docs` 目录。所有路由采用 hash，手机直接打开深层链接或刷新不会返回 404。
+Node.js 22.13+。执行 `npm ci`、`npm run dev`。`npm run build` 生成 `docs/`。GitHub Pages 的 Source 设置为 GitHub Actions；`.github/workflows/pages.yml` 自动验证、构建并发布 `docs/` 构建产物。所有路由采用 hash，手机直接打开深层链接或刷新不会返回 404。
 
 ## 后端部署（网站所有者名下）
 
@@ -31,7 +35,7 @@ Node.js 22.13+。执行 `npm ci`、`npm run dev`。`npm run build` 生成 `docs/
 ## 安全与维护
 
 - 密码采用独立随机盐及 WebCrypto PBKDF2-SHA256（100,000 次，适配 Workers WebCrypto 上限），最少 12 字符；不保存明文密码。若扩大到大规模或敏感场景，迁至支持 Argon2id 的专用认证后端。
-- 随机会话 token 仅在当前标签页的 sessionStorage 保存；服务端仅存 SHA-256 摘要，学生 8 小时、所有者 2 小时过期。退出与恢复密码会撤销会话。站点禁用第三方脚本，评论只渲染纯文本。
+- 随机会话 token 仅在当前标签页的 sessionStorage 保存；服务端仅存 SHA-256 摘要，学生 8 小时、所有者 2 小时过期。退出与恢复密码会撤销会话。站点不加载第三方脚本，评论只渲染纯文本。
 - 采用 Bearer 会话而非跨站第三方 Cookie，兼容移动 Safari 的第三方 Cookie 限制。GitHub OAuth 使用 state cookie、PKCE，以及绑定前端 verifier 的一次性 60 秒交换票据。GitHub token 不持久存储。
 - CORS 限定网站域名；写请求校验 Origin、JSON 内容类型和大小；认证及评论限流；SQL 参数化；角色每次请求从服务端读取。撤销管理员权限立即生效。
 - 恢复码只有一次显示，服务端保存摘要；恢复后更换恢复码。无邮箱/手机号账号不能通过邮件找回。
