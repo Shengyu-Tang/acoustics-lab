@@ -20,6 +20,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: node scripts/check-animations.mjs
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
