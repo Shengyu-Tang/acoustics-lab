@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useMemo,useState} from 'react';
-import {Values,freeX,pistonD,reflection,oblique,result,fmt} from './physics';import {forcedTrace} from './animationPhysics';
+import {Values,freeX,pistonD,reflection,oblique,result,fmt} from './physics';import PressureSlice from './PressureSlice';import {forcedTrace} from './animationPhysics';
 const pi=Math.PI;
 const curve=(fn:(x:number)=>number,min=0,max=1,yScale=90,y0=170)=>Array.from({length:301},(_,i)=>{const x=min+(max-min)*i/300,y=fn(x);return `${i?'L':'M'}${40+i*1.8},${y0-Math.max(-200,Math.min(200,y*yScale))}`;}).join(' ');
 export default function Simulation({kind,v,application=false}:{kind:string,v:Values,application?:boolean}){
@@ -17,7 +17,7 @@ export default function Simulation({kind,v,application=false}:{kind:string,v:Val
  if(kind==='echo'){
   const a=v.angle*pi/180,end=[310+120*Math.cos(a),170-120*Math.sin(a)],ph=(time%4)/4*a;content=<><circle cx="310" cy="170" r="120" fill="none" stroke="#426275" strokeWidth="7"/><path d={`M430 170A120 120 0 0 0 ${end[0]} ${end[1]}`} fill="none" stroke="#71e5dc" strokeWidth="4"/>{line(`M430 170L${end[0]} ${end[1]}`,'#ffc979',2)}<circle cx={310+120*Math.cos(ph)} cy={170-120*Math.sin(ph)} r="6" fill="white"/>{text(40,30,'青：沿壁圆弧近似 · 金：直达声路径')}{text(40,320,`厅堂半径 ${v.R} m · 两路径使用相同声速`)}</>;caption='几何路径示意，圆弧代表沿壁多次反射的近似路径；不计算声场聚焦或衍射。';
  }else if(kind==='helmholtz'){
-  const k=2*pi*v.f/1500,a=v.angle*pi/180;content=<>{Array.from({length:45},(_,i)=>Array.from({length:18},(_,j)=>{const y=Math.cos(k*(i/44*6*Math.cos(a)+j/17*3*Math.sin(a))-time*2);return <rect key={`${i}-${j}`} x={40+i*12} y={55+j*13} width="12" height="13" fill={y>0?'#71e5dc':'#fdab83'} opacity={Math.abs(y)*.9+.05}/>}))}{text(40,32,'二维平面波 · 等相位面垂直于波矢')}{text(40,315,'横向 6 m / 纵向 3 m')}</>;caption='颜色表示归一化声压正负；改变频率和波矢方向，观察等相位线。';
+  content=<><PressureSlice kind={kind} v={v} time={time}/>{text(40,32,'二维平面波 · 等相位面垂直于波矢')}{text(40,315,'横向 6 m / 纵向 3 m')}</>;caption='颜色表示归一化声压正负；改变频率和波矢方向，观察等相位线。';
  }else if(['free','energy','damp','quality','forced'].includes(kind)){
   const y=(t:number)=>kind==='forced'?forced[Math.min(4000,Math.round(t/.002))]||0:freeX(v,t,kind==='damp'||kind==='quality');const sec=time%8;const scale=kind==='forced'?Math.max(.01,...forced.map(Math.abs)):.01;
   content=<>{axes}{line(curve(t=>y(t)/scale,0,8,65,205))}<path d="M40 42H100" stroke="#9dbcc7"/>{line(Array.from({length:15},(_,i)=>`${i?'L':'M'}${100+i*(110+70*y(sec)/scale)/14},${42+(i===0||i===14?0:i%2?12:-12)}`).join(' '))}<rect x={210+70*y(sec)/scale} y="24" width="40" height="36" rx="5" fill="#71e5dc"/>{text(350,45,application?'工程系统的等效质量—弹簧模型':'位移已放大 · x(0)=1 cm')}<circle cx={40+540*sec/8} cy={205-65*y(sec)/scale} r="5" fill="#ffc979"/>{text(40,295,'0 s')}{text(540,295,'8 s')}{text(45,120,`位移 / ${fmt(scale*1000)} mm`)}{kind==='energy'&&text(300,110,`势能占比 ${fmt((y(sec)/.01)**2*100)}%`)}</>;
@@ -44,7 +44,7 @@ export default function Simulation({kind,v,application=false}:{kind:string,v:Val
   const o=oblique(v),a=v.angle*pi/180,b=o.angle*pi/180,dx=Math.sin(a)*170,dy=Math.cos(a)*140;
   content=<><rect x="40" y="170" width="540" height="130" fill="#163b51"/><path d="M40 170H580M310 35V300" stroke="#7394a2" strokeDasharray="5 5"/>{line(`M${310-dx} ${170-dy}L310 170L${310+dx} ${170-dy}`)}{Number.isFinite(b)?line(`M310 170L${310+Math.sin(b)*170} ${170+Math.cos(b)*120}`,'#ffc979'):Array.from({length:7},(_,i)=><path key={i} d={`M310 ${182+i*16}H565`} stroke="#ffc979" strokeOpacity={Math.exp(-i*.65)} strokeDasharray={`${15+Math.sin(time*2)*5} 8`}/>)}<circle cx={310-dx+(time%2)/2*dx} cy={170-dy+(time%2)/2*dy} r="5" fill="white"/>{text(45,45,`入射角 ${v.angle}°（相对法线）`)}{text(45,285,Number.isFinite(b)?'传播透射波':'全内反射 · 下侧为倏逝场')}</>;caption='射线表示传播方向；全内反射时下侧的金色条纹随深度衰减。';
  }else if(kind==='guide'){
-  const k=2*pi*v.f/1500,kz=v.n*pi/v.H,kx=Math.sqrt(Math.abs(k*k-kz*kz)),prop=k>kz;content=<>{Array.from({length:45},(_,i)=>Array.from({length:14},(_,j)=>{const x=i/44*100,z=j/13;const a=Math.cos(v.n*pi*z)*(prop?Math.cos(kx*x-time*2):Math.exp(-kx*x)*Math.cos(time*2));return <rect key={`${i}-${j}`} x={40+i*12} y={70+j*13} width="12" height="13" fill={a>0?'#71e5dc':'#fdab83'} opacity={Math.abs(a)*.9+.05}/>}))}<path d="M40 67H580M40 255H580" stroke="#9dbcc7" strokeWidth="4"/>{text(45,40,prop?'传播模态':'截止以下：沿轴指数衰减')}{text(45,290,'0 m')}{text(515,290,'100 m')}</>;caption='青 / 橙分别表示正 / 负声压；横轴 100 m，纵轴 0–H；幅值归一化。';
+  const prop=2*pi*v.f/1500>=v.n*pi/v.H;content=<><PressureSlice kind={kind} v={v} time={time}/><path d="M40 67H580M40 257H580" stroke="#9dbcc7" strokeWidth="4"/>{text(45,40,prop?'传播模态':'截止以下：沿轴指数衰减')}{text(45,290,'0 m')}{text(515,290,'100 m')}</>;caption='青 / 橙分别表示正 / 负声压；横轴 100 m，纵轴 0–H；幅值归一化。';
  }else if(['piston','dipole','scatter','monopole','cylinder'].includes(kind)){
   const ka=2*pi*v.f*(v.a??v.d)/1500;let fn=(a:number)=>kind==='piston'?Math.abs(pistonD(ka*Math.sin(a))):kind==='dipole'?Math.abs(Math.cos(a)):kind==='scatter'?Math.abs(.5*Math.cos(a)-1/3)/(5/6):1;
   if(kind==='cylinder'){
