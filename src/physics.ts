@@ -84,4 +84,5 @@ case 'mechanism':{const a=.001*(v.ratio**2+v.beta*v.ratio**2/(1+v.ratio**2));ret
 case 'sonar':{const tl=20*Math.log10(v.r)+v.alpha*v.r/1000;return [['单程传播损失',tl,'dB'],['信号余量 SE',v.SL-2*tl+10-60+10-10,'dB']];}
 default:return [];
 }}
-export const fmt=(n:number)=>Number.isNaN(n)?'不适用':!Number.isFinite(n)?'∞':n!==0&&Math.abs(n)<.001?n.toExponential(2):Number(n.toFixed(3)).toLocaleString('zh-CN');
+// Display precision only: calculations and shared parameter values remain unrounded.
+export const fmt=(n:number)=>Number.isNaN(n)?'不适用':!Number.isFinite(n)?(n<0?'−∞':'∞'):n===0?'0.0':Math.abs(n)<.01||Math.abs(n)>=1000?n.toExponential(1):new Intl.NumberFormat('zh-CN',{minimumSignificantDigits:2,maximumSignificantDigits:2,useGrouping:false}).format(n);
