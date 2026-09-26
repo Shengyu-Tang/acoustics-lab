@@ -6,5 +6,5 @@ export function TabsTrigger({value,children}:{value:string,children:ReactNode}){
 export function TabsContent({value,children}:{value:string,children:ReactNode}){const ctx=useContext(TabsContext);return ctx.value===value?<section role="tabpanel">{children}</section>:null}
 export function Slider({value,onValueChange,...props}:{value:number[],onValueChange:(n:number[])=>void,min:number,max:number,step:number,'aria-label':string}){return <input className="native-range" type="range" value={value[0]} {...props} onChange={e=>onValueChange([Number(e.target.value)])}/>}
 export function SidebarProvider({children,className=''}:{children:ReactNode,className?:string}){return <div className={className}>{children}</div>}
-export function Sidebar({children,className=''}:{children:ReactNode,className?:string,collapsible?:string}){return <aside className={className}>{children}</aside>}
+export function Sidebar({children,className=''}:{children:ReactNode,className?:string,collapsible?:string}){return <aside className={className} aria-label="课程目录" tabIndex={0}>{children}</aside>}
 export function SidebarContent({children}:{children:ReactNode}){return <div>{children}</div>}
