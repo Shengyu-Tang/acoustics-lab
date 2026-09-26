@@ -1,0 +1,12 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,username TEXT NOT NULL,username_key TEXT NOT NULL UNIQUE,password_hash TEXT,recovery_hash TEXT,provider TEXT NOT NULL CHECK(provider IN ('local','github')),github_id TEXT UNIQUE,role TEXT NOT NULL DEFAULT 'student' CHECK(role IN ('student','moderator')),created_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS sessions(token_hash TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),expires_at INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id);
+CREATE TABLE IF NOT EXISTS oauth_states(state_hash TEXT PRIMARY KEY,challenge TEXT NOT NULL,verifier TEXT NOT NULL,expires_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS login_tickets(ticket_hash TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),challenge TEXT NOT NULL,expires_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS rate_limits(key TEXT PRIMARY KEY,n INTEGER NOT NULL,expires_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS comments(id TEXT PRIMARY KEY,topic TEXT NOT NULL,user_id TEXT NOT NULL REFERENCES users(id),nickname TEXT NOT NULL,body TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending','approved','rejected')),created_at INTEGER NOT NULL,reviewed_at INTEGER,reviewer TEXT);
+CREATE INDEX IF NOT EXISTS idx_comments_topic ON comments(topic,status,created_at);
+CREATE INDEX IF NOT EXISTS idx_comments_user ON comments(user_id,created_at);
+CREATE INDEX IF NOT EXISTS idx_comments_status ON comments(status,created_at);
+CREATE TABLE IF NOT EXISTS audit(id TEXT PRIMARY KEY,actor TEXT NOT NULL,action TEXT NOT NULL,target TEXT NOT NULL,created_at INTEGER NOT NULL);

@@ -1,0 +1,13 @@
+{
+  "name": "acoustics-lab-api",
+  "main": "worker.ts",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "vars": {
+    "SITE_URL": "https://shengyu-tang.github.io/acoustics-lab/",
+    "GITHUB_OWNER_ID": "155556685",
+    "GITHUB_CLIENT_ID": ""
+  },
+  "d1_databases": [{"binding":"DB","database_name":"acoustics-lab","database_id":"00000000-0000-4000-8000-000000000000"}]
+}
