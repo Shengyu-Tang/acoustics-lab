@@ -29,3 +29,4 @@ console.log('PASS: shared project links and experiment entry points match across
 await import('./check-lens.mjs');
 
 await import('./check-comparisons.mjs');
+await import('./check-audit.mjs');
