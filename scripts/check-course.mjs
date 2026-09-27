@@ -16,12 +16,14 @@ const main=fs.readFileSync('src/main.tsx','utf8'),lab=fs.readFileSync('src/Lab.t
 console.log(`PASS: ${topics.length} topics, ${Object.keys(cases).length} cases, ${relations.length} explained relations, 24 valid dates; static-only entry.`);
 
 const projects=JSON.parse(fs.readFileSync('src/projects.json','utf8'));
-assert.equal(new Set(projects.map(p=>p.id)).size,8);
-assert.equal(new Set(projects.map(p=>p.field)).size,8);
+assert.equal(new Set(projects.map(p=>p.id)).size,projects.length);
+assert.equal(new Set(projects.map(p=>p.field)).size,projects.length);
 for(const p of projects){assert.equal(p.models.length,3);for(const m of p.models){assert.ok(models[m],p.id+' unknown model');assert.ok(topics.some(t=>t.model===m),p.id+' missing experiment');}for(const k of ['background','mapping','challenge'])assert.ok(p[k].length>40,p.id+' insufficient project context');}
 for(const [n,expected] of [[1.592,'1.6'],[.005,'5.0e-3'],[1,'1.0'],[0,'0.0'],[-.005,'-5.0e-3'],[1234,'1.2e+3'],[.0999,'0.10']])assert.equal(fmt(n),expected);
-console.log('PASS: 8 cross-domain projects, 24 valid experiment links, two-significant-digit edge cases.');
+console.log(`PASS: ${projects.length} cross-domain projects, ${projects.reduce((n,p)=>n+p.models.length,0)} valid experiment links, two-significant-digit edge cases.`);
 
 for(const p of projects){const node=atlasEntries.find(n=>n.id==='project-'+p.id);assert.equal(node.href,'#/cases?project='+p.id);for(const m of p.models)assert.ok(relations.some(r=>r.to===node.id&&r.from===experimentForModel(m).id));}
 assert.equal(new Set(atlasEntries.map(n=>n.href)).size,atlasEntries.length);
 console.log('PASS: shared project links and experiment entry points match across atlas and case pages.');
+
+await import('./check-lens.mjs');
