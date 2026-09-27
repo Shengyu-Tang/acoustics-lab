@@ -139,5 +139,11 @@
   "helmholtz": [
     "\\nabla^2\\widetilde{p}+k^2\\widetilde{p}=0",
     "\\widetilde{p}=Pe^{-\\mathrm{j}\\mathbf{k}\\cdot\\mathbf{r}},\\quad k_x^2+k_y^2=k^2"
+  ],
+  "grin-lens": [
+    "n(r)=\\frac{c_w}{c(r)},\\qquad \\Delta\\phi_L(r)=k_w d\\,\\Delta n(r)",
+    "\\phi_{\\mathrm{res}}(q)=A\\frac{f}{f_0}\\left[q^2-\\eta q_j^2\\right],\\qquad q=\\frac{r}{a}",
+    "D(\\theta)=2\\int_0^1 e^{\\mathrm{i}\\phi_{\\mathrm{res}}(q)}J_0(kaq\\sin\\theta)q\\,\\mathrm{d}q",
+    "\\Delta L_{\\mathrm{axis}}=20\\log_{10}\\frac{|D_{\\mathrm{lens}}(0)|}{|D_{\\mathrm{no\\ lens}}(0)|},\\qquad W=2R\\tan\\frac{\\Theta_{-3\\mathrm{dB}}}{2}"
   ]
 }
