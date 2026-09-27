@@ -27,3 +27,5 @@ assert.equal(new Set(atlasEntries.map(n=>n.href)).size,atlasEntries.length);
 console.log('PASS: shared project links and experiment entry points match across atlas and case pages.');
 
 await import('./check-lens.mjs');
+
+await import('./check-comparisons.mjs');
