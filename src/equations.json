@@ -107,7 +107,7 @@
   ],
   "cylinder": [
     "p_i+p_s=0\\quad(r=a)",
-    "A_n=-\\frac{\\mathrm{i}^{n}J_n(ka)}{H_n^{(2)}(ka)}"
+    "A_n=-\\frac{(-\\mathrm{i})^{n}J_n(ka)}{H_n^{(2)}(ka)},\\quad n\\in\\mathbb Z"
   ],
   "receiver": [
     "U_e=M(f)p,\\quad r=\\frac{f}{f_0}",
