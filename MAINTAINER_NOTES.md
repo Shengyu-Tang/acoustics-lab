@@ -4,7 +4,7 @@
 
 教师要求使用 GitHub Pages 纯静态网站。学生无需注册或登录。注册、登录、评论审核、管理员及 OAuth 回调均已从应用入口和导航移除；主入口不再加载 api.ts，也不请求 config.json。反馈渠道为 tangshengyu@ouc.edu.cn，邮件由访客自行发送。
 
-仓库中的 backend/、Account.tsx、Admin.tsx、Comments.tsx、Queue.tsx、api.ts 及 check-auth.mjs 是早期方案的历史代码，不被当前网站入口引用，也不参与 Pages 的认证测试或发布；从未在本项目中启用 Cloudflare 后端。保留历史源码便于追溯，不需要开通服务、账户或付费。恢复该方案须另行明确决策，不能擅自启动。
+P0 已删除未使用的 backend/、Account.tsx、Admin.tsx、Comments.tsx、Queue.tsx、api.ts 和 check-auth.mjs，并移除 Cloudflare 开发依赖。历史实现仅保留在 Git 历史中。当前站点没有账户、后端或在线评论，无需开通服务。
 
 ## 教学依据与来源
 

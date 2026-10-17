@@ -22,4 +22,4 @@ npm run build
 
 GitHub Actions 自动构建并发布 main 分支到 GitHub Pages。源码见 src/，静态构建产物为 docs/。
 
-教学依据、版本差异、案例假设及历史架构记录统一存放于 [维护文档](MAINTAINER_NOTES.md)，不在教学网页中展示维护备注。旧认证源码仅作历史保留，不进入当前网站应用。
+教学依据、版本差异、案例假设及历史架构记录统一存放于 [维护文档](MAINTAINER_NOTES.md)，不在教学网页中展示维护备注。历史认证与后端源码已移除，可从 Git 历史追溯。
