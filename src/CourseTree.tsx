@@ -79,7 +79,7 @@ export default function CourseTree() {
             .filter((t) => (t.id + t.title).includes(query))
             .map((t) => (
               <a key={t.id} href={t.href}>
-                {t.isProject ? "项目" : t.id} {t.title} ↗
+                {t.isProject ? "项目" : t.id} {t.title}
               </a>
             ))}
         </div>
@@ -122,13 +122,13 @@ export default function CourseTree() {
           viewBox={`0 0 ${W} ${H}`}
           aria-label="声学基础完整课程体系"
         >
-          <rect width={W} height={H} fill="#f4f9fa" />
+          <rect width={W} height={H} fill="#ffffff" />
           <g>
-            <rect x="825" y={H / 2 - 50} width="260" height="100" rx="30" fill="#123c4c" />
-            <text x="955" y={H / 2 - 6} textAnchor="middle" fill="white" fontSize="30">
+            <rect x="825" y={H / 2 - 50} width="260" height="100" rx="4" fill="#f7f7f7" />
+            <text x="955" y={H / 2 - 6} textAnchor="middle" fill="#1a1a1a" fontSize="30">
               声学基础
             </text>
-            <text x="955" y={H / 2 + 25} textAnchor="middle" fill="#94d8d5" fontSize="17">
+            <text x="955" y={H / 2 + 25} textAnchor="middle" fill="#555555" fontSize="17">
               振动 · 传播 · 声源 · 接收
             </text>
           </g>
@@ -161,7 +161,7 @@ export default function CourseTree() {
                           width="520"
                           height="38"
                           rx="10"
-                          fill="white"
+                          fill="#1a1a1a"
                           stroke={color}
                         />
                         <text x={tx + 13} y={y + 25} fill="#214655" fontSize="17">
@@ -183,7 +183,7 @@ export default function CourseTree() {
                     stroke={color}
                     strokeWidth="3"
                   />
-                  <text x={cx} y={g.y + 7} textAnchor="middle" fill="white" fontSize="22">
+                  <text x={cx} y={g.y + 7} textAnchor="middle" fill="#1a1a1a" fontSize="22">
                     {g.name}
                   </text>
                 </g>
@@ -205,7 +205,7 @@ export default function CourseTree() {
         </aside>
       )}
       <a className="primary" href="#/cases">
-        把知识串起来：跨领域综合案例 ↗
+        把知识串起来：跨领域综合案例
       </a>
     </section>
   );

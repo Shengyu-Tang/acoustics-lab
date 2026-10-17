@@ -23,11 +23,8 @@ export default function Projects() {
     <>
       <Header />
       <main className="projects-page">
-        <div className="eyebrow">ENGINEERING STUDIO / 跨领域综合实践</div>
-        <h1>把一组知识，变成解决问题的路径。</h1>
-        <p className="lead">
-          {projects.length} 个工程领域，从项目需求出发，串联模型、实验与设计判断。
-        </p>
+        <h1>综合工程案例</h1>
+        <p className="lead">从项目需求出发，串联模型、实验与设计判断。</p>
         <div className="project-cards">
           {projects.map((p, i) => (
             <button
@@ -50,7 +47,6 @@ export default function Projects() {
           ))}
         </div>
         <article ref={detail} className="project-brief" aria-live="polite">
-          <span className="eyebrow">{current.field} / 项目任务书</span>
           <h2>{current.title}</h2>
           <h3>项目背景与任务</h3>
           <p>{current.background}</p>
@@ -68,10 +64,10 @@ export default function Projects() {
               const topic = experimentForModel(m);
               return (
                 <a key={m} href={"#/lab?topic=" + topic.id}>
-                  <span>STEP {i + 1}</span>
+                  <span>第 {i + 1} 步</span>
                   <h3>{models[m].title}</h3>
                   <p>{models[m].question}</p>
-                  <b>进入交互实验 ↗</b>
+                  <b>进入交互实验</b>
                 </a>
               );
             })}

@@ -8,8 +8,7 @@ export default function MindMap() {
     <>
       <Header />
       <main className="map-page">
-        <div className="eyebrow">COURSE ATLAS / 课程知识导航</div>
-        <h1>先看见体系，再发现联系。</h1>
+        <h1>课程知识导图</h1>
         <div className="atlas-switch" role="group" aria-label="导图展示方式">
           <button aria-pressed={view === "tree"} onClick={() => setView("tree")}>
             <b>课程思维导图</b>

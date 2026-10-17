@@ -1,5 +1,6 @@
 import { lazy, Suspense, useMemo, useState } from "react";
 import Formula from "./Formula";
+import Figure, { sample } from "./plot/Figure";
 import { fmt } from "./physics";
 import { NumericInput } from "./ui";
 import { lensDefaults, lensPattern, residualPhase, type LensSettings } from "./lensPhysics";
@@ -25,33 +26,17 @@ export default function LensLab() {
     before = useMemo(() => lensPattern({ ...v, correction: 0 }), [v]),
     ideal = useMemo(() => lensPattern({ ...v, correction: 1 }, true), [v]);
   const gain = 10 * Math.log10(Math.max(1e-12, current.power) / Math.max(1e-12, before.power));
-  const line = (values: number[]) =>
-    values
-      .map(
-        (a, i) =>
-          `${i ? "L" : "M"}${40 + (i * 520) / (values.length - 1)},${230 - Math.min(1, a) * 180}`,
-      )
-      .join(" ");
   const lim = Math.max(1, ((v.aberration * v.frequency) / 30) * 1.55);
-  const phaseLine = (mode: number) =>
-    Array.from({ length: 241 }, (_, i) => {
-      const r = i / 240,
-        raw = ((v.aberration * v.frequency) / 30) * r * r,
-        remaining = residualPhase(r, v),
-        value = mode === 0 ? raw : mode === 1 ? remaining - raw : remaining;
-      return `${i ? "L" : "M"}${40 + r * 520},${150 - (value / lim) * 95}`;
-    }).join(" ");
   return (
     <section className="lens-lab" aria-label="梯度声学透镜交互案例">
       <div className="lens-research">
-        <span className="eyebrow">RESEARCH → CLASSROOM / 从研究到课堂</span>
         <h3>“65° → 16°”背后，是波前重新同相叠加。</h3>
         <p>
           报道中的导流罩使波束超过 65°；加入透镜后，在不同条件下约为
           16°–30°。研究采用钨粉—硅胶同心环带，改变局部传播速度以补偿相位。下方参数为教学设定，独立模型展示这一机理，输出由参数计算，不复刻该装置的实测曲线。
         </p>
         <a href="https://doi.org/10.1088/2631-7990/ae6b25" target="_blank" rel="noreferrer">
-          研究来源：Zhang 等，IJEM（2026）· 论文与 DOI ↗
+          研究来源：Zhang 等，IJEM（2026）· 论文与 DOI
         </a>
       </div>
       <div className="lens-presets">
@@ -119,71 +104,69 @@ export default function LensLab() {
         </div>
       </div>
       <div className="lens-plots">
-        <figure>
-          <figcaption>同一孔径、同一输入幅度下的远场声压</figcaption>
-          <svg viewBox="0 0 600 290" role="img" aria-label="未补偿、当前透镜与理想补偿的方向图">
-            <path d="M40 40V230H560M300 40V230" stroke="#a7c3cc" fill="none" />
-            <path d={line(before.values)} stroke="#cf9255" />
-            <path d={line(ideal.values)} stroke="#9aacc0" strokeDasharray="5 5" />
-            <path d={line(current.values)} stroke="#068e94" strokeWidth="3" />
-            <text x="8" y="54">
-              1
-            </text>
-            <text x="15" y="233">
-              0
-            </text>
-            <text x="40" y="255">
-              −90°
-            </text>
-            <text x="294" y="255">
-              0°
-            </text>
-            <text x="524" y="255">
-              90°
-            </text>
-          </svg>
-          <p>
-            <i className="legend-before" />
-            未补偿 <i className="legend-current" />
-            当前环带透镜 <i className="legend-ideal" />
-            连续理想补偿
-          </p>
-          <small>
-            幅度以理想同相孔径的轴上声压为参考；主瓣宽度以各自轴上幅度的 1/√2
-            判断。离轴峰值超过轴上值时不强报单一主瓣宽度。
-          </small>
-        </figure>
-        <figure>
-          <figcaption>孔径上的相位：误差与补偿怎样抵消？</figcaption>
-          <svg viewBox="0 0 600 290" role="img" aria-label="罩体相位、透镜补偿相位与剩余误差">
-            <path d="M40 40V250M40 150H560" stroke="#a7c3cc" fill="none" />
-            <path d={phaseLine(0)} stroke="#cf9255" />
-            <path d={phaseLine(1)} stroke="#879aaf" />
-            <path d={phaseLine(2)} stroke="#068e94" strokeWidth="3" />
-            <text x="40" y="275">
-              中心 r/a = 0
-            </text>
-            <text x="447" y="275">
-              边缘 r/a = 1
-            </text>
-            <text x="6" y="153">
-              0
-            </text>
-            <text x="2" y="50">
-              {fmt(lim)}
-            </text>
-            <text x="2" y="248">
-              −{fmt(lim)}
-            </text>
-          </svg>
-          <p>
-            <i className="legend-before" />
-            罩体相位 <i className="legend-current" />
-            残余相位 <i className="legend-ideal" />
-            透镜补偿
-          </p>
-          <small>相位单位 rad。环带越少，阶梯近似越粗；补偿过量也会重新引入误差。</small>
-        </figure>
+        <Figure
+          panels={[
+            {
+              title: "同一孔径与输入幅度下的远场声压",
+              xlabel: "角度 θ (°)",
+              ylabel: "归一化声压 (1)",
+              xlim: [-90, 90],
+              ylim: [0, 1.1],
+              series: [
+                {
+                  name: "未补偿",
+                  points: before.values.map((y, i) => [
+                    -90 + (180 * i) / (before.values.length - 1),
+                    y,
+                  ]),
+                },
+                {
+                  name: "理想补偿",
+                  style: "--",
+                  points: ideal.values.map((y, i) => [
+                    -90 + (180 * i) / (ideal.values.length - 1),
+                    y,
+                  ]),
+                },
+                {
+                  name: "当前透镜",
+                  points: current.values.map((y, i) => [
+                    -90 + (180 * i) / (current.values.length - 1),
+                    y,
+                  ]),
+                },
+              ],
+            },
+          ]}
+          caption="同一孔径的远场声压；幅度以理想同相孔径的轴上声压为参考"
+          name="lens-pattern"
+        />
+        <Figure
+          panels={[
+            {
+              title: "孔径上的相位与补偿",
+              xlabel: "径向位置 r/a (1)",
+              ylabel: "相位 (rad)",
+              xlim: [0, 1],
+              ylim: [-lim, lim],
+              series: [0, 1, 2].map((mode) => ({
+                name: ["罩体相位", "透镜补偿", "残余相位"][mode],
+                points: sample(
+                  (r) => {
+                    const raw = ((v.aberration * v.frequency) / 30) * r * r,
+                      remaining = residualPhase(r, v);
+                    return mode === 0 ? raw : mode === 1 ? remaining - raw : remaining;
+                  },
+                  0,
+                  1,
+                  241,
+                ),
+              })),
+            },
+          ]}
+          caption="环带近似的相位误差与补偿"
+          name="lens-phase"
+        />
       </div>
       <h3>从声速分布到波束指向性</h3>
       <Formula kind="grin-lens" />

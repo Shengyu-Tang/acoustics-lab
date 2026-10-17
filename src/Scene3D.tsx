@@ -46,14 +46,14 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       return;
     }
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.6));
-    renderer.setClearColor(0x081c2e);
+    renderer.setClearColor(0xffffff);
     renderer.outputColorSpace = T.SRGBColorSpace;
     el.appendChild(renderer.domElement);
     renderer.domElement.setAttribute("aria-label", "可旋转的工程三维场景");
     renderer.domElement.setAttribute("role", "img");
     let fitScale = 1;
     const scene = new T.Scene();
-    scene.fog = new T.FogExp2(0x081c2e, 0.025);
+    scene.fog = new T.FogExp2(0xffffff, 0.025);
     const camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.set(5.5, 3.5, 8.0);
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -69,14 +69,14 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       controls.target.set(0, 0.3, 0);
       controls.update();
     };
-    scene.add(new T.HemisphereLight(0xbfeeff, 0x17304a, 2.3));
+    scene.add(new T.HemisphereLight(0xffffff, 0xaaaaaa, 2.3));
     const key = new T.DirectionalLight(0xffffff, 3);
     key.position.set(-3, 8, 5);
     scene.add(key);
-    const rim = new T.PointLight(0x43dfd7, 30);
+    const rim = new T.PointLight(0x0072bd, 30);
     rim.position.set(0, 3, -4);
     scene.add(rim);
-    const floor = new T.GridHelper(18, 30, 0x28516b, 0x143448);
+    const floor = new T.GridHelper(18, 30, 0xbbbbbb, 0xe5e5e5);
     floor.position.y = -1.55;
     floor.material.transparent = true;
     floor.material.opacity = 0.32;
@@ -96,7 +96,7 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       });
     const mesh = (
       g: T.BufferGeometry,
-      color = 0x61d7d1,
+      color = 0xaaaaaa,
       opacity = 1,
       parent: T.Object3D = group,
     ) => {
@@ -104,11 +104,11 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       parent.add(o);
       return o;
     };
-    const box = (x: number, y: number, z: number, color = 0x355c77) =>
+    const box = (x: number, y: number, z: number, color = 0xaaaaaa) =>
       mesh(new T.BoxGeometry(x, y, z), color);
-    const sphere = (r: number, color = 0xffc278, opacity = 1) =>
+    const sphere = (r: number, color = 0xd95319, opacity = 1) =>
       mesh(new T.SphereGeometry(r, 24, 16), color, opacity);
-    const segment = (points: T.Vector3[], color = 0x6bdddb) => {
+    const segment = (points: T.Vector3[], color = 0x0072bd) => {
       const line = new T.Line(
         new T.BufferGeometry().setFromPoints(points),
         new T.LineBasicMaterial({ color }),
@@ -128,11 +128,11 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       base.position.y = -1.05;
       const anchor = box(0.3, 1.8, 1.5);
       anchor.position.set(-3.3, 0, 0);
-      const block = box(1.2, 1.1, 1.1, 0x61d7d1);
-      const display = box(0.7, 0.35, 0.03, 0x102c40);
+      const block = box(1.2, 1.1, 1.1, 0xaaaaaa);
+      const display = box(0.7, 0.35, 0.03, 0xaaaaaa);
       block.add(display);
       display.position.set(0, 0.1, 0.57);
-      const damper = mesh(new T.CylinderGeometry(0.15, 0.15, 1.5, 20), 0xe7b477);
+      const damper = mesh(new T.CylinderGeometry(0.15, 0.15, 1.5, 20), 0xd95319);
       damper.rotation.z = pi / 2;
       damper.position.set(-1.8, -0.7, 0.6);
       const spring = segment(Array.from({ length: 121 }, () => new T.Vector3()));
@@ -182,9 +182,9 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       right.visible = kind === "string";
       const wire = segment(
         Array.from({ length: 101 }, () => new T.Vector3()),
-        0x83efe0,
+        0x0072bd,
       );
-      const sections = Array.from({ length: 40 }, () => box(0.07, 0.7, 0.7, 0x5bb8cd));
+      const sections = Array.from({ length: 40 }, () => box(0.07, 0.7, 0.7, 0xaaaaaa));
       sections.forEach((o) => (o.visible = kind === "rod"));
       updates.push((time, v) => {
         const s = sceneState(kind, v),
@@ -248,11 +248,11 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
         }),
       );
     } else if (kind === "nearfield") {
-      const disk = mesh(new T.CylinderGeometry(0.6, 0.6, 0.12, 48), 0x74d9d1);
+      const disk = mesh(new T.CylinderGeometry(0.6, 0.6, 0.12, 48), 0xaaaaaa);
       disk.rotation.z = pi / 2;
       disk.position.x = -3;
       const axial = segment(Array.from({ length: 401 }, () => new T.Vector3())),
-        marker = sphere(0.09, 0xffc278);
+        marker = sphere(0.09, 0xd95319);
       segment([new T.Vector3(-3, 0, 0), new T.Vector3(3, 0, 0)], 0x56768a);
       updates.push((time, v) => {
         const k = (2 * pi * v.f) / 1500,
@@ -270,13 +270,13 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
         marker.position.set(-3 + (6 * (v.r - 0.01)) / 2.99, 0.65 * pressure(v.r), 0);
       });
     } else if (family === "radiation") {
-      const target = sphere(0.35, 0xe5b16f);
+      const target = sphere(0.35, 0xd95319);
       const ring = mesh(new T.TorusGeometry(0.55, 0.09, 12, 48), 0x649cac);
       ring.rotation.y = pi / 2;
       ring.visible = ["piston", "nearfield"].includes(kind);
-      const second = sphere(0.25, 0xa79cf2);
+      const second = sphere(0.25, 0xaaaaaa);
       second.visible = kind === "dipole";
-      const indicator = sphere(0.075, 0xffe9ae);
+      const indicator = sphere(0.075, 0xd95319);
       const geom = new T.SphereGeometry(1, 64, 32),
         surface = mesh(geom, 0x39ccc5, 0.3);
       const base = (geom.getAttribute("position") as T.BufferAttribute).array.slice();
@@ -356,7 +356,7 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
         });
       });
     } else if (family === "receiver") {
-      const sensor = mesh(new T.CylinderGeometry(0.35, 0.35, 1.5, 32), 0x70bdcf);
+      const sensor = mesh(new T.CylinderGeometry(0.35, 0.35, 1.5, 32), 0xaaaaaa);
       sensor.position.set(-3, 0, 0);
       const cable = segment(
         [
@@ -365,15 +365,15 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
           new T.Vector3(2, 1.8, 0),
           new T.Vector3(2, 0, 0),
         ],
-        0x657f97,
+        0xaaaaaa,
       );
-      const monitor = box(3.2, 2, 0.3, 0x30506d);
+      const monitor = box(3.2, 2, 0.3, 0xaaaaaa);
       monitor.position.x = 2;
-      const screen = box(2.8, 1.6, 0.03, 0x071421);
+      const screen = box(2.8, 1.6, 0.03, 0xaaaaaa);
       screen.position.set(2, 0, 0.17);
       const trace = segment(
         Array.from({ length: 121 }, () => new T.Vector3()),
-        0x6bf3c6,
+        0x0072bd,
       );
       updates.push((time, v) => {
         const s = sceneState(kind, v),
@@ -398,9 +398,9 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       });
     } else if (family === "paths") {
       const source = sphere(0.18),
-        receiver = sphere(0.18, 0x72e2df),
+        receiver = sphere(0.18, 0x0072bd),
         pulse = sphere(0.07, 0xffffff),
-        direct = segment([new T.Vector3(), new T.Vector3()], 0xeab777),
+        direct = segment([new T.Vector3(), new T.Vector3()], 0xd95319),
         reflected = segment(Array.from({ length: 61 }, () => new T.Vector3()));
       const wall = mesh(
         new T.CylinderGeometry(3.5, 3.5, 0.7, 64, 1, true, 0, pi * 1.85),
@@ -438,17 +438,17 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
           );
           setLine(reflected, pts);
           pulse.position.copy(pts[Math.floor(((time * v.f) / 500) * 15) % 61]);
-          reflected.material.color.set(v.sign < 0 ? 0x6de9df : 0xedb86e);
+          reflected.material.color.set(v.sign < 0 ? 0x0072bd : 0xd95319);
         }
         setLine(direct, [source.position.clone(), receiver.position.clone()]);
       });
     } else if (family === "sonar") {
-      const sub = mesh(new T.CapsuleGeometry(0.35, 1.7, 8, 24), 0x59c8c4);
+      const sub = mesh(new T.CapsuleGeometry(0.35, 1.7, 8, 24), 0xaaaaaa);
       sub.rotation.z = pi / 2;
       sub.position.x = -3.5;
-      const fin = box(0.6, 0.8, 0.08, 0x355e79);
+      const fin = box(0.6, 0.8, 0.08, 0xaaaaaa);
       fin.position.set(-3.5, 0.4, 0);
-      const target = mesh(new T.IcosahedronGeometry(0.5, 1), 0xe0ad70);
+      const target = mesh(new T.IcosahedronGeometry(0.5, 1), 0xd95319);
       const pulse = mesh(new T.SphereGeometry(0.6, 48, 24), 0x9ffff1, 0.35);
       pulse.scale.set(0.12, 1, 1);
       const beam = mesh(new T.ConeGeometry(1.6, 7, 48, 1, true), 0x4ec3d0, 0.1);
@@ -471,16 +471,16 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
         target.material.emissive.setRGB(s.power > 1 ? 0.12 : 0, s.power > 1 ? 0.1 : 0, 0);
       });
     } else {
-      const source = mesh(new T.CylinderGeometry(0.42, 0.42, 0.3, 32), 0x69c7d3);
+      const source = mesh(new T.CylinderGeometry(0.42, 0.42, 0.3, 32), 0xaaaaaa);
       source.rotation.z = pi / 2;
       source.position.x = -4;
-      const receiver = mesh(new T.CylinderGeometry(0.13, 0.13, 0.85, 24), 0xf0bd77);
+      const receiver = mesh(new T.CylinderGeometry(0.13, 0.13, 0.85, 24), 0xd95319);
       receiver.position.x = 4;
       const barrier = mesh(new T.PlaneGeometry(4, 3.6), 0x5e8b9a, 0.27);
       barrier.rotation.y = pi / 2;
       barrier.visible = family === "boundary";
-      const ceiling = box(9, 0.1, 3.4, 0x42637b),
-        bottom = box(9, 0.1, 3.4, 0x42637b);
+      const ceiling = box(9, 0.1, 3.4, 0xaaaaaa),
+        bottom = box(9, 0.1, 3.4, 0xaaaaaa);
       ceiling.visible = bottom.visible = family === "guide";
       ceiling.material.transparent = true;
       ceiling.material.opacity = 0.09;
@@ -490,7 +490,7 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
       bottom.material.depthWrite = false;
       const edges = new T.LineSegments(
         new T.EdgesGeometry(new T.BoxGeometry(9, 2, 3.4)),
-        new T.LineBasicMaterial({ color: 0x6bb5c6, transparent: true, opacity: 0.3 }),
+        new T.LineBasicMaterial({ color: 0x0072bd, transparent: true, opacity: 0.3 }),
       );
       edges.visible = family === "guide";
       group.add(edges);
@@ -567,7 +567,7 @@ export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
     <section className="scene3d">
       <div className="scene3d-top">
         <div>
-          <span>ENGINEERING / 三维工程场景</span>
+          <span>三维工程场景</span>
           <h3>
             {kind === "cylinder"
               ? "圆柱表面：入射＋散射＝零"

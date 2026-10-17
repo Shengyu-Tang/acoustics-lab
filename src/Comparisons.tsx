@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import katex from "katex";
 import Header from "./Header";
+import Figure, { sample } from "./plot/Figure";
 import { NumericInput } from "./ui";
 import { fmt } from "./physics";
 import {
@@ -91,7 +92,7 @@ export function ComparisonLinks({ models }: { models: string[] }) {
       <strong>进一步比较</strong>
       {entries.map((x) => (
         <a key={x.id} href={"#/compare?experiment=" + x.id}>
-          {x.title} ↗
+          {x.title}
         </a>
       ))}
     </aside>
@@ -130,11 +131,6 @@ function curve(kind: ComparisonKind, v: Settings) {
       return Math.hypot(...arrayFactor(Math.sin(((-90 + 180 * q) * Math.PI) / 180), v));
     return Math.exp(-duct(v).decay * q * 2);
   });
-}
-function path(a: number[]) {
-  return a
-    .map((y, i) => `${i ? "L" : "M"}${50 + (i * 520) / (a.length - 1)},${220 - y * 175}`)
-    .join(" ");
 }
 export default function Comparisons() {
   const [kind, setKind] = useState<ComparisonKind>(readKind),
@@ -180,8 +176,7 @@ export default function Comparisons() {
     <>
       <Header />
       <main className="comparison-page">
-        <div className="eyebrow">COMPARE / 用对照发现规律</div>
-        <h1>让两组方案，同台比较。</h1>
+        <h1>对照实验</h1>
         <p className="lead">先预测，再保存一组参数；改变条件，用曲线和声场检验你的判断。</p>
         <nav className="comparison-switch" aria-label="选择对照实验">
           {comparisonCatalog.map((x) => (
@@ -308,56 +303,63 @@ export default function Comparisons() {
             </table>
           </div>
           <div className="comparison-plots">
-            <figure>
-              <figcaption>
-                {kind === "layer"
-                  ? "厚度扫描 · 功率透射率"
-                  : kind === "array"
-                    ? "角度扫描 · 归一化声压幅度"
-                    : "轴向包络 · 相对入口振幅"}
-              </figcaption>
-              <svg viewBox="0 0 620 285" role="img" aria-label="方案 A 与方案 B 的对照曲线">
-                <path d="M50 35V220H570" className="comparison-axis" />
-                {saved && <path d={path(curve(kind, saved))} className="comparison-saved" />}
-                <path d={path(curve(kind, v))} className="comparison-current" />
-                {kind === "layer" && saved && (
-                  <circle
-                    cx={50 + 520 * saved.h}
-                    cy={220 - layer(saved).T * 175}
-                    r="7"
-                    fill="none"
-                    stroke="#cd9048"
-                    strokeWidth="2"
-                  />
-                )}
-                {kind === "layer" && (
-                  <circle cx={50 + 520 * v.h} cy={220 - layer(v).T * 175} r="5" fill="#d29743" />
-                )}
-                <text x="18" y="49">
-                  1
-                </text>
-                <text x="18" y="224">
-                  0
-                </text>
-                <text x="50" y="250">
-                  {kind === "array" ? "−90°" : "0"}
-                </text>
-                <text x="512" y="250">
-                  {kind === "array" ? "90°" : kind === "layer" ? "1.0 d/λ₂" : "2.0 m"}
-                </text>
-              </svg>
-              <p>
-                <span className="comparison-key-a">— 方案 A</span>　
-                <span className="comparison-key-b">— 方案 B</span>
-              </p>
-              <small>
-                {kind === "layer"
-                  ? "实心点为当前厚度，空心圈为方案 A 厚度。厚度扫描曲线相同并不代表工作点相同，请同时比较透射率。"
-                  : kind === "duct"
-                    ? "传播时无损包络为常数；截止以下随 z 指数衰减。曲线只表示包络，不表示瞬时声压。"
-                    : "正侧向为 0°。主瓣之外的普通旁瓣仍可能存在，栅瓣特指与主瓣同高的相干峰。"}
-              </small>
-            </figure>
+            <Figure
+              panels={[
+                {
+                  title:
+                    kind === "layer"
+                      ? "厚度扫描：功率透射率"
+                      : kind === "array"
+                        ? "角度扫描：声压幅值"
+                        : "轴向包络",
+                  xlabel:
+                    kind === "array"
+                      ? "角度 θ (°)"
+                      : kind === "layer"
+                        ? "相对厚度 d/λ₂ (1)"
+                        : "轴向距离 z (m)",
+                  ylabel: "归一化响应 (1)",
+                  xlim: kind === "array" ? [-90, 90] : [0, kind === "layer" ? 1 : 2],
+                  ylim: [0, 1.1],
+                  series: [
+                    ...(saved
+                      ? [
+                          {
+                            name: "方案 A",
+                            style: "--" as const,
+                            points: curve(kind, saved).map(
+                              (y, i) =>
+                                [
+                                  kind === "array"
+                                    ? -90 + (180 * i) / 400
+                                    : (i / 400) * (kind === "layer" ? 1 : 2),
+                                  y,
+                                ] as [number, number],
+                            ),
+                          },
+                        ]
+                      : []),
+                    {
+                      name: "方案 B",
+                      points: curve(kind, v).map(
+                        (y, i) =>
+                          [
+                            kind === "array"
+                              ? -90 + (180 * i) / 400
+                              : (i / 400) * (kind === "layer" ? 1 : 2),
+                            y,
+                          ] as [number, number],
+                      ),
+                    },
+                  ],
+                  annotations:
+                    kind === "layer" ? [{ axis: "x", value: v.h, label: "当前厚度" }] : [],
+                },
+              ]}
+              caption="方案 A 与方案 B 的对照曲线"
+              name={"comparison-" + kind}
+            />
+
             <div className="comparison-question">
               <h3>{text.question}</h3>
               <button className="secondary" onClick={() => setShow(!show)}>
@@ -378,23 +380,22 @@ export default function Comparisons() {
               {kind === "duct" && (
                 <div className="duct-mini">
                   <strong>当前截面径向剖面（φ=0）</strong>
-                  <svg viewBox="0 0 300 150" role="img" aria-label="圆管径向模态函数">
-                    <path d="M20 70H280M20 10V130" className="comparison-axis" />
-                    <path
-                      d={Array.from(
-                        { length: 101 },
-                        (_, i) =>
-                          `${i ? "L" : "M"}${20 + 2.6 * i},${70 - 55 * ductShape(i / 100, 0, v)}`,
-                      ).join(" ")}
-                      className="comparison-current"
-                    />
-                    <text x="20" y="146">
-                      中心
-                    </text>
-                    <text x="250" y="146">
-                      管壁
-                    </text>
-                  </svg>
+                  <Figure
+                    panels={[
+                      {
+                        title: "当前截面径向剖面（φ=0）",
+                        xlabel: "径向位置 r/a (1)",
+                        ylabel: "模态函数 (1)",
+                        xlim: [0, 1],
+                        ylim: [-1.1, 1.1],
+                        series: [
+                          { name: "径向模态", points: sample((r) => ductShape(r, 0, v), 0, 1) },
+                        ],
+                      },
+                    ]}
+                    caption="圆管径向模态函数"
+                    name="duct-radial"
+                  />
                 </div>
               )}
             </div>
@@ -419,7 +420,7 @@ export default function Comparisons() {
           </div>
           <p>{text.limit}</p>
           <a className="secondary" href={"#/lab?topic=" + entry.topic}>
-            回到对应课程知识点 ↗
+            回到对应课程知识点
           </a>
         </section>
         <footer>

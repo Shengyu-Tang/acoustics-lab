@@ -16,26 +16,23 @@ export default function About() {
             />
           </div>
           <div>
-            <div className="eyebrow">TEACHING / 个人教学主页</div>
             <h1>唐胜雨</h1>
             <p className="lead">中国海洋大学 · 信息学部电子工程学院</p>
             <p>
               《声学基础》任课教师。以振动、传播、辐射、散射、接收与吸收为主线，将数学模型与声学工程应用联系起来。
             </p>
             <a className="primary" href="#/lab">
-              进入声学交互实验室 ↗
+              进入声学交互实验室
             </a>
           </div>
         </div>
         <section className="contact-card">
-          <span className="eyebrow">KEEP IN TOUCH</span>
-          <h2>一起把声学问题聊明白</h2>
+          <h2>课程联系与反馈</h2>
           <p>课程建议、实验反馈或学习中的疑问，欢迎邮件交流。</p>
-          <a href="mailto:tangshengyu@ouc.edu.cn">tangshengyu@ouc.edu.cn ↗</a>
+          <a href="mailto:tangshengyu@ouc.edu.cn">tangshengyu@ouc.edu.cn</a>
         </section>
         <div className="about-grid">
           <section className="paper">
-            <span className="eyebrow">THE COURSE</span>
             <h2>声学基础</h2>
             <p>Fundamentals of Acoustics</p>
             <div className="facts">
@@ -55,7 +52,6 @@ export default function About() {
             <p>课程考核：平时成绩 30%，期末闭卷考试 70%。</p>
           </section>
           <section className="paper" aria-labelledby="learning-benefits">
-            <span className="eyebrow">WHAT YOU GAIN / 这门课能带给你什么</span>
             <h2 id="learning-benefits">
               从听见声音，
               <br />
@@ -94,7 +90,7 @@ export default function About() {
               <strong>现在就能开始：</strong>调整两路声音的相位，看看它们怎样相互抵消。
             </p>
             <a className="primary" href="#/lab?topic=3.S1">
-              亲手试一次主动降噪 ↗
+              亲手试一次主动降噪
             </a>
           </section>
         </div>

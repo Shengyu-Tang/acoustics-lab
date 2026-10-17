@@ -24,7 +24,7 @@ export default function LensScene({ v }: { v: LensSettings }) {
       return;
     }
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-    renderer.setClearColor(0x081e2c);
+    renderer.setClearColor(0xffffff);
     el.appendChild(renderer.domElement);
     renderer.domElement.setAttribute("role", "img");
     renderer.domElement.setAttribute("aria-label", "梯度透镜与连续远场波束三维示意");
@@ -41,7 +41,7 @@ export default function LensScene({ v }: { v: LensSettings }) {
       camera.position.set(10, 5, 12).multiplyScalar(fitScale);
       controls.target.set(2.5, 0, 0);
     };
-    scene.add(new T.HemisphereLight(0xc6fbff, 0x214250, 3));
+    scene.add(new T.HemisphereLight(0xffffff, 0xaaaaaa, 3));
     const light = new T.DirectionalLight(0xffffff, 3);
     light.position.set(-2, 5, 5);
     scene.add(light);
@@ -55,7 +55,7 @@ export default function LensScene({ v }: { v: LensSettings }) {
         depthWrite: opacity === 1,
         side: T.DoubleSide,
       });
-    const source = new T.Mesh(new T.CylinderGeometry(0.4, 0.4, 0.6, 32), material(0x7bdccf));
+    const source = new T.Mesh(new T.CylinderGeometry(0.4, 0.4, 0.6, 32), material(0xaaaaaa));
     source.rotation.z = Math.PI / 2;
     source.position.x = -1.3;
     scene.add(source);
@@ -69,7 +69,7 @@ export default function LensScene({ v }: { v: LensSettings }) {
     const rings = Array.from({ length: 24 }, (_, i) => {
       const ring = new T.Mesh(
         new T.RingGeometry((i / 24) * 1.3, ((i + 1) / 24) * 1.3, 64),
-        material(0x69cbbf, 0.8),
+        material(0xaaaaaa, 0.8),
       );
       ring.rotation.y = Math.PI / 2;
       ring.position.x = 0.4;
@@ -95,7 +95,7 @@ export default function LensScene({ v }: { v: LensSettings }) {
       geom.translate(4.15, 0, (i / 10 - 0.5) * 3.8);
       scene.add(new T.Mesh(geom, fieldMat));
     }
-    const grid = new T.GridHelper(16, 32, 0x315164, 0x234251);
+    const grid = new T.GridHelper(16, 32, 0xbbbbbb, 0xe5e5e5);
     grid.position.set(2, -2.6, 0);
     grid.material.transparent = true;
     grid.material.opacity = 0.25;

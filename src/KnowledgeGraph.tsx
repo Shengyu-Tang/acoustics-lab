@@ -120,23 +120,9 @@ export default function KnowledgeGraph() {
         dpr = Math.min(devicePixelRatio || 1, 2);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = "#0c2535";
-      ctx.fillRect(0, 0, w, h);
-      const gradient = ctx.createRadialGradient(w * 0.5, h * 0.45, 0, w * 0.5, h * 0.45, w * 0.65);
-      gradient.addColorStop(0, "#164554");
-      gradient.addColorStop(1, "#0c2535");
-      ctx.fillStyle = gradient;
+      ctx.fillStyle = "#fff";
       ctx.fillRect(0, 0, w, h);
       const p = (n: { x: number; y: number; z: number }) => project(n, c, w, h);
-      // Stable stars and translucent chapter sectors give depth without animation noise.
-      for (let i = 0; i < 100; i++) {
-        const x = ((i * 127.13) % 1) * w,
-          y = ((i * 71.37) % 1) * h;
-        ctx.fillStyle = i % 7 === 0 ? "#a8d9f055" : "#7ba6c12b";
-        ctx.beginPath();
-        ctx.arc(x, y, i % 7 === 0 ? 1.2 : 0.6, 0, Math.PI * 2);
-        ctx.fill();
-      }
       for (const region of regions) {
         const pts = [p({ x: 0, y: -165, z: 0 })];
         for (let j = 0; j <= 32; j++) {
@@ -173,10 +159,10 @@ export default function KnowledgeGraph() {
         ctx.quadraticCurveTo(mid.x, mid.y, pb.x, pb.y);
         ctx.strokeStyle = active
           ? e.type === "concept"
-            ? "#f6d68d"
-            : "#a3f8ed"
+            ? "#1f5fa8"
+            : "#1f5fa8"
           : e.type === "concept"
-            ? "#d9c59428"
+            ? "#99999950"
             : colors[a.chapter - 1] + "40";
         ctx.lineWidth = active ? 1.9 : 0.8;
         ctx.setLineDash(e.type === "concept" ? [3, 5] : []);
@@ -189,7 +175,7 @@ export default function KnowledgeGraph() {
           ctx.lineTo(pb.x - 20 * Math.cos(angle - 0.3), pb.y - 20 * Math.sin(angle - 0.3));
           ctx.lineTo(pb.x - 20 * Math.cos(angle + 0.3), pb.y - 20 * Math.sin(angle + 0.3));
           ctx.closePath();
-          ctx.fillStyle = "#f6e1aa";
+          ctx.fillStyle = "#1f5fa8";
           ctx.fill();
         }
       }
@@ -207,26 +193,7 @@ export default function KnowledgeGraph() {
           dim = selectedRef.current && !active && !linked.has(n.id) && n.kind === "topic";
         if (q.x + r < 0 || q.x - r > w || q.y + r < 0 || q.y - r > h) continue;
         ctx.globalAlpha = dim ? 0.4 : 1;
-        const glow = ctx.createRadialGradient(q.x, q.y, r * 0.3, q.x, q.y, r * (active ? 3 : 2));
-        glow.addColorStop(0, color + "65");
-        glow.addColorStop(1, color + "00");
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(q.x, q.y, r * (active ? 3 : 2), 0, Math.PI * 2);
-        ctx.fill();
-        const sphere = ctx.createRadialGradient(
-          q.x - r * 0.35,
-          q.y - r * 0.4,
-          r * 0.04,
-          q.x + r * 0.15,
-          q.y + r * 0.2,
-          r * 1.1,
-        );
-        sphere.addColorStop(0, "#f0fcff");
-        sphere.addColorStop(0.2, color);
-        sphere.addColorStop(0.65, color + "c0");
-        sphere.addColorStop(1, "#061523");
-        ctx.fillStyle = sphere;
+        ctx.fillStyle = active ? "#1f5fa8" : "#888";
         ctx.beginPath();
         ctx.arc(q.x, q.y, r, 0, Math.PI * 2);
         ctx.fill();
@@ -234,7 +201,7 @@ export default function KnowledgeGraph() {
         ctx.lineWidth = 0.7;
         ctx.stroke();
         if (active || match) {
-          ctx.strokeStyle = "#fff0b6";
+          ctx.strokeStyle = "#1f5fa8";
           ctx.lineWidth = 1.6;
           ctx.beginPath();
           ctx.ellipse(q.x, q.y, r * 1.65, r * 0.65, -0.35, 0, Math.PI * 2);
@@ -279,24 +246,24 @@ export default function KnowledgeGraph() {
         )
           continue;
         occupied.push(box);
-        ctx.fillStyle = "#081c2de0";
+        ctx.fillStyle = "#ffffffed";
         ctx.beginPath();
         ctx.roundRect(box.x, box.y, box.w, box.h, 5);
         ctx.fill();
         ctx.fillStyle = active
-          ? "#fff0b6"
+          ? "#1f5fa8"
           : n.kind === "topic"
-            ? "#cce2ed"
+            ? "#555555"
             : colors[(n.chapter || 1) - 1];
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(label, q.x, box.y + 11);
         hits.current.push({ id: n.id, x: q.x, y: box.y + 11, w: width, h: 22 });
       }
-      ctx.fillStyle = "#a5c8d5";
+      ctx.fillStyle = "#555555";
       ctx.font = "12px sans-serif";
       ctx.textAlign = "left";
-      ctx.fillText(atlasSummary + " · 实线：学习递进 · 虚线：物理联系", 16, h - 19, w - 30);
+      ctx.fillText("实线：学习递进 · 虚线：物理联系", 16, h - 19, w - 30);
       // A small orientation indicator rotates with the actual ground-plane axes.
       const ox = w - 45,
         oy = h - 60,
@@ -310,8 +277,8 @@ export default function KnowledgeGraph() {
           ctx.fillStyle = color;
           ctx.fillText(label, ox + q.x, oy + q.y);
         };
-      axis(130, 0, "#f2b5a5", "X");
-      axis(0, 130, "#8bdfd0", "Z");
+      axis(130, 0, "#777777", "X");
+      axis(0, 130, "#777777", "Z");
     };
     const ro = new ResizeObserver(() => {
       view.current = { w: el.clientWidth, h: el.clientHeight };
@@ -506,7 +473,6 @@ export default function KnowledgeGraph() {
       <div className="graph-content">
         <div className="map-title">
           <div>
-            <div className="eyebrow">3D KNOWLEDGE ATLAS / 全景知识网络</div>
             <h1>在知识宇宙中，发现联系。</h1>
           </div>
           <button className="secondary" onClick={() => setList(!list)} aria-expanded={list}>
@@ -632,9 +598,7 @@ export default function KnowledgeGraph() {
               >
                 ×
               </button>
-              <span className="eyebrow">
-                {chosen ? (chosen.isProject ? "综合项目" : chosen.id) : "章节脉络"}
-              </span>
+
               <h3>{nodes.find((n) => n.id === selected)?.title}</h3>
               <p>
                 {chosen
@@ -644,7 +608,7 @@ export default function KnowledgeGraph() {
               {chosen ? (
                 <>
                   <a className="space-experiment" href={chosen.href}>
-                    {chosen.isProject ? "打开综合项目 ↗" : "打开交互实验 ↗"}
+                    {chosen.isProject ? "打开综合项目" : "打开交互实验"}
                   </a>
                   <h4>它与哪些知识相连？</h4>
                   {relations
@@ -657,7 +621,7 @@ export default function KnowledgeGraph() {
                         </summary>
                         <p>{r.detail}</p>
                         <button onClick={() => focus(r.from === selected ? r.to : r.from)}>
-                          定位关联知识点 ↗
+                          定位关联知识点
                         </button>
                       </details>
                     ))}
@@ -672,7 +636,7 @@ export default function KnowledgeGraph() {
                     )
                   }
                 >
-                  从本章起点开始 ↗
+                  从本章起点开始
                 </button>
               )}
             </aside>
@@ -700,9 +664,6 @@ export default function KnowledgeGraph() {
         {chosen && (
           <section className="paper map-detail">
             <div>
-              <span className="eyebrow">
-                {chosen.isProject ? "项目" : chosen.id} / {names[chosen.chapter]}
-              </span>
               <h2>{chosen.title}</h2>
               <p>{chosen.focus}</p>
               {!chosen.isProject && (
@@ -720,14 +681,14 @@ export default function KnowledgeGraph() {
                       className="secondary"
                       onClick={() => focus(r.from === chosen.id ? r.to : r.from)}
                     >
-                      {r.label} ↗
+                      {r.label}
                     </button>
                     <span className="relation-explanation">{r.detail}</span>
                   </p>
                 ))}
             </div>
             <a className="primary" href={chosen.href}>
-              {chosen.isProject ? "进入综合项目 ↗" : "进入交互实验 ↗"}
+              {chosen.isProject ? "进入综合项目" : "进入交互实验"}
             </a>
           </section>
         )}

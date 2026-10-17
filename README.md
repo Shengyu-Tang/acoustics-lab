@@ -10,6 +10,8 @@
 - 学期月历总览和逐周、逐次课程安排。
 - 无需注册登录，无在线评论或后端服务。建议反馈：tangshengyu@ouc.edu.cn。
 
+P0 改版：课程主页为章节目录；知识点页使用可折叠章节树、讲义正文和本页目录。1.2.4、1.2.5 已实现专属图、编号公式、慕课思考题和可判分的船载仪器支架例题。其余讲次保留原有模型与内容，曲线统一通过 `src/plot/` 绘制，可导出 PNG、CSV 和 MATLAB 脚本。绘图组件演示：`#/plot-demo`。
+
 ## 本地开发
 
 ```sh
@@ -19,6 +21,8 @@ npm test
 node scripts/check-animations.mjs
 npm run build
 ```
+
+`npm run format:check` 检查代码格式。`node scripts/check-browser.mjs` 在本机已安装的 Microsoft Edge 中检查构建产物、交互与两种视口，并更新 `screenshots/p0/`；浏览器配置和下载文件仅写入仓库内的 `outputs/`。`node scripts/generate-thumbnails.mjs` 从共享绘图组件生成课程目录缩略图。
 
 GitHub Actions 自动构建并发布 main 分支到 GitHub Pages。源码见 src/，静态构建产物为 docs/。
 

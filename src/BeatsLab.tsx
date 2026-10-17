@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import katex from "katex";
 import { forcedBeat } from "./beatsPhysics";
+import Figure from "./plot/Figure";
 export default function BeatsLab() {
   const [f, setF] = useState(1.1),
     [time, setTime] = useState(0),
@@ -13,16 +14,7 @@ export default function BeatsLab() {
     [f],
   );
   const scale = Math.max(1, ...samples.map((s) => s.envelope));
-  const value = forcedBeat(time, f),
-    x = (t: number) => 50 + (t / duration) * 660,
-    y = (v: number) => 235 - (v / scale) * 95;
-  const path = (sign: number) =>
-    samples
-      .map(
-        (s, i) =>
-          `${i ? "L" : "M"}${x((i * duration) / 1800)},${y(sign === 0 ? s.x : sign * s.envelope)}`,
-      )
-      .join(" ");
+  const value = forcedBeat(time, f);
   useEffect(() => {
     if (!running) return;
     let frame = 0,
@@ -56,7 +48,6 @@ export default function BeatsLab() {
   );
   return (
     <section className="paper" aria-label="拍现象交互演示">
-      <span className="eyebrow">BEATS / 从拍振动走近共振</span>
       <h2>外力一直在推，振动为什么时强时弱？</h2>
       <p>
         让一个原本静止的无阻尼弹簧振子受到简谐力。激励频率接近固有频率时，完整响应中的两个频率分量交替增强、抵消，形成拍振动。
@@ -101,71 +92,42 @@ export default function BeatsLab() {
         <strong>拍周期：{delta < 1e-9 ? "无周期性拍振动" : (1 / delta).toFixed(2) + " s"}</strong>
         <span>当前位移：{value.x.toFixed(2)} mm</span>
       </div>
-      <svg
-        viewBox="0 0 760 380"
-        role="img"
-        aria-label="无阻尼受迫振子的运动、位移时间曲线与拍包络"
-        style={{ width: "100%", display: "block", background: "#0d2939", borderRadius: 18 }}
+      <Figure
+        panels={[
+          {
+            title: "无阻尼受迫振动与拍包络",
+            xlabel: "时间 t (s)",
+            ylabel: "位移 x (mm)",
+            xlim: [0, duration],
+            ylim: [-scale * 1.1, scale * 1.1],
+            series: [
+              { name: "完整响应", points: samples.map((s, i) => [(i * duration) / 1800, s.x]) },
+              {
+                name: "正包络",
+                style: "--",
+                points: samples.map((s, i) => [(i * duration) / 1800, s.envelope]),
+              },
+              {
+                name: "负包络",
+                style: "--",
+                points: samples.map((s, i) => [(i * duration) / 1800, -s.envelope]),
+              },
+            ],
+            annotations: [{ axis: "x", value: time, label: "当前时刻" }],
+          },
+        ]}
+        caption="无阻尼受迫振子的位移与拍包络（初位移和初速度为零）"
+        name="forced-beats"
+      />
+      <button
+        onClick={() => {
+          setRunning(false);
+          setTime((t) => Math.min(duration, t + 0.05));
+        }}
       >
-        <defs>
-          <radialGradient id="beat-glow">
-            <stop stopColor="#6de8dc" stopOpacity=".7" />
-            <stop offset="1" stopColor="#6de8dc" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <circle
-          cx="380"
-          cy="66"
-          r="60"
-          fill="url(#beat-glow)"
-          opacity={0.15 + (0.85 * value.envelope) / scale}
-        />
-        <path d="M160 28V102M160 100H600" stroke="#62818d" fill="none" />
-        <path
-          d={Array.from(
-            { length: 25 },
-            (_, i) =>
-              `${i ? "L" : "M"}${160 + (i * (200 + (value.x / scale) * 130)) / 24},${65 + (i === 0 || i === 24 ? 0 : i % 2 ? 12 : -12)}`,
-          ).join(" ")}
-          stroke="#71e5dc"
-          strokeWidth="3"
-          fill="none"
-        />
-        <rect
-          x={360 + (value.x / scale) * 130}
-          y="42"
-          width="42"
-          height="46"
-          rx="8"
-          fill="#71e5dc"
-        />
-        <text x="30" y="25" fill="#bfd8e0" fontSize="14">
-          弹簧振子 · 位移放大
-        </text>
-        <text x="485" y="25" fill="#bfd8e0" fontSize="14">
-          青：完整响应　金：振幅包络
-        </text>
-        {[0, 5, 10, 15, 20, 25, 30].map((t) => (
-          <g key={t}>
-            <path d={`M${x(t)} 135V335`} stroke="#244657" />
-            <text x={x(t)} y="355" fill="#bfd8e0" fontSize="14" textAnchor="middle">
-              {t}
-            </text>
-          </g>
-        ))}
-        <path d="M50 135V335M50 235H710" stroke="#7593a1" fill="none" />
-        <path d={path(1)} stroke="#ffc979" strokeDasharray="6 4" fill="none" />
-        <path d={path(-1)} stroke="#ffc979" strokeDasharray="6 4" fill="none" />
-        <path d={path(0)} stroke="#71e5dc" strokeWidth="1.7" fill="none" />
-        <path d={`M${x(time)} 135V335`} stroke="#ffffff" opacity=".6" />
-        <circle cx={x(time)} cy={y(value.x)} r="5" fill="#fff" />
-        <text x="50" y="125" fill="#bfd8e0" fontSize="14">
-          纵轴：±{scale.toFixed(2)} mm（随参数自动缩放）
-        </text>
-        <text x="615" y="375" fill="#bfd8e0" fontSize="14">
-          时间 / s
-        </text>
-      </svg>
+        单步
+      </button>
+
       <label htmlFor="beat-time">拖动时间，逐帧观察：{time.toFixed(2)} s</label>
       <input
         id="beat-time"

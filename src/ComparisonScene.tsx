@@ -32,7 +32,7 @@ export default function ComparisonScene({ kind, v }: { kind: ComparisonKind; v: 
       return;
     }
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-    renderer.setClearColor("#091f2c");
+    renderer.setClearColor("#ffffff");
     el.appendChild(renderer.domElement);
     renderer.domElement.setAttribute("role", "img");
     renderer.domElement.setAttribute(
@@ -89,7 +89,7 @@ export default function ComparisonScene({ kind, v }: { kind: ComparisonKind; v: 
     const mesh = new THREE.Mesh(geometry, material);
     mesh.frustumCulled = false;
     scene.add(mesh);
-    const grid = new THREE.GridHelper(8, 20, 0x285164, 0x173a49);
+    const grid = new THREE.GridHelper(8, 20, 0xbbbbbb, 0xe5e5e5);
     grid.position.y = -1.1;
     scene.add(grid);
     const borderGeometry = new THREE.BufferGeometry().setFromPoints(
@@ -99,7 +99,7 @@ export default function ComparisonScene({ kind, v }: { kind: ComparisonKind; v: 
           new THREE.Vector3(2 * Math.cos((i * Math.PI) / 64), 0, 2 * Math.sin((i * Math.PI) / 64)),
       ),
     );
-    const borderMaterial = new THREE.LineBasicMaterial({ color: 0xb3dce4 });
+    const borderMaterial = new THREE.LineBasicMaterial({ color: 0xaaaaaa });
     const border = new THREE.LineLoop(borderGeometry, borderMaterial);
     border.visible = kind === "duct";
     scene.add(border);
@@ -109,7 +109,7 @@ export default function ComparisonScene({ kind, v }: { kind: ComparisonKind; v: 
       new THREE.Vector3(0, 1.3, 1.4),
       new THREE.Vector3(0, -1, 1.4),
     ]);
-    const interfaceMaterial = new THREE.LineBasicMaterial({ color: 0xffc477 });
+    const interfaceMaterial = new THREE.LineBasicMaterial({ color: 0xd95319 });
     const interfaces = [
       new THREE.LineLoop(interfaceGeometry, interfaceMaterial),
       new THREE.LineLoop(interfaceGeometry, interfaceMaterial),

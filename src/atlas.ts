@@ -10,16 +10,7 @@ export const names = [
   "介质的声吸收",
   "跨领域综合案例",
 ];
-export const colors = [
-  "#6de0d2",
-  "#f3c480",
-  "#85b8ff",
-  "#dca9f3",
-  "#f3aba7",
-  "#9cdbb1",
-  "#9ecbdf",
-  "#f6d482",
-];
+export const colors = Array(8).fill("#1F5FA8") as string[];
 export type Node3 = {
   id: string;
   title: string;

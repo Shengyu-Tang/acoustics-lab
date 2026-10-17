@@ -1,40 +1,52 @@
-import VisitCounter from "./VisitCounter";
 import { createRoot } from "react-dom/client";
-import { useEffect, useState } from "react";
-import Comparisons from "./Comparisons";
-import Projects from "./Projects";
-import Lab from "./Lab";
-import About from "./About";
-import Calendar from "./Calendar";
-import MindMap from "./MindMap";
+import { lazy, Suspense, useEffect, useState } from "react";
+import Home from "./Home";
 import "./style.css";
+import "./redesign.css";
+const Lab = lazy(() => import("./Lab")),
+  Comparisons = lazy(() => import("./Comparisons")),
+  Projects = lazy(() => import("./Projects")),
+  About = lazy(() => import("./About")),
+  Calendar = lazy(() => import("./Calendar")),
+  MindMap = lazy(() => import("./MindMap")),
+  PlotDemo = lazy(() => import("./plot/PlotDemo"));
 function App() {
-  const [route, setRoute] = useState(location.hash.split("?")[0] || "#/lab");
+  const [hash, setHash] = useState(location.hash);
   useEffect(() => {
     const update = () => {
-      setRoute(location.hash.split("?")[0] || "#/lab");
+      setHash(location.hash);
       window.scrollTo(0, 0);
     };
     window.addEventListener("hashchange", update);
     return () => window.removeEventListener("hashchange", update);
   }, []);
-  return route === "#/compare" ? (
-    <Comparisons />
-  ) : route === "#/cases" ? (
-    <Projects />
-  ) : route === "#/map" ? (
-    <MindMap />
-  ) : route === "#/about" ? (
-    <About />
-  ) : route === "#/calendar" ? (
-    <Calendar />
-  ) : (
-    <Lab />
+  const route = hash.split("?")[0];
+  return (
+    <Suspense
+      fallback={
+        <main>
+          <p role="status">正在载入课程内容…</p>
+        </main>
+      }
+    >
+      {route === "#/plot-demo" ? (
+        <PlotDemo />
+      ) : route === "#/compare" ? (
+        <Comparisons />
+      ) : route === "#/cases" ? (
+        <Projects />
+      ) : route === "#/about" ? (
+        <About />
+      ) : route === "#/calendar" ? (
+        <Calendar />
+      ) : route === "#/map" ? (
+        <MindMap />
+      ) : route === "#/lab" ? (
+        <Lab key={hash} />
+      ) : (
+        <Home />
+      )}
+    </Suspense>
   );
 }
-createRoot(document.getElementById("root")!).render(
-  <>
-    <App />
-    <VisitCounter />
-  </>,
-);
+createRoot(document.getElementById("root")!).render(<App />);

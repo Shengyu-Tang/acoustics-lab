@@ -26,8 +26,7 @@ export default function Calendar() {
     <>
       <Header />
       <main className="calendar-page">
-        <div className="eyebrow">AUTUMN SEMESTER / 2026—2027</div>
-        <h1>把整个学期，放在眼前。</h1>
+        <h1>教学日历</h1>
         <p className="lead">
           {lessons.length} 次课 · {lessons.reduce((sum, l) => sum + l.hours, 0)} 学时 ·
           从振动规律走向海洋声学应用
@@ -90,7 +89,6 @@ export default function Calendar() {
         {weeks.map((week) => (
           <section className="week-block" key={week}>
             <div className="week-marker">
-              <span>WEEK</span>
               <strong>{String(week).padStart(2, "0")}</strong>
               <small>第 {week} 周</small>
             </div>
@@ -106,9 +104,6 @@ export default function Calendar() {
                     key={l.date}
                   >
                     <div>
-                      <span className="eyebrow">
-                        第 {i + 1} 次课 · {l.hours} 学时
-                      </span>
                       <time>{l.date}</time>
                     </div>
                     <h3>{l.title.split("；")[0]}</h3>
@@ -150,7 +145,7 @@ export default function Calendar() {
                     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                       {l.experiments.map((id) => (
                         <a key={id} className="secondary" href={"#/lab?topic=" + id}>
-                          {topics.find((t) => t.id === id)?.title} ↗
+                          {topics.find((t) => t.id === id)?.title}
                         </a>
                       ))}
                     </div>

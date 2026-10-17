@@ -1,0 +1,780 @@
+:root {
+  --background: #fff;
+  --foreground: #1a1a1a;
+  --primary: #1f5fa8;
+  --muted: #555;
+  --ring: #1f5fa8;
+  --border: #d9d9d9;
+  --radius: 4px;
+}
+body {
+  background: #fff;
+  color: #1a1a1a;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  color: #1a1a1a;
+  letter-spacing: normal;
+  line-height: 1.45;
+}
+h1 {
+  font-size: 26px;
+  margin: 0 0 12px;
+}
+h2 {
+  font-size: 22px;
+  margin: 30px 0 12px;
+}
+h3 {
+  font-size: 19px;
+}
+h4 {
+  font-size: 17px;
+}
+p {
+  margin: 12px 0;
+}
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+button,
+.primary,
+.secondary {
+  border: 1px solid #1f5fa8;
+  border-radius: 4px;
+  background: white;
+  color: #1f5fa8;
+  padding: 5px 10px;
+  box-shadow: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+button:hover,
+.primary:hover,
+.secondary:hover {
+  background: #f3f6fa;
+  color: #1f5fa8;
+}
+button:disabled {
+  color: #555;
+  border-color: #d9d9d9;
+  cursor: default;
+}
+input,
+textarea,
+select {
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: white;
+  color: #1a1a1a;
+  padding: 4px 6px;
+  min-width: 0;
+  max-width: 100%;
+}
+input[type="range"],
+input[type="checkbox"] {
+  accent-color: var(--primary);
+}
+:focus-visible {
+  outline: 2px solid #1f5fa8;
+  outline-offset: 3px;
+}
+.site-header {
+  height: 56px;
+  padding: 0 24px;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  background: white;
+  border-bottom: 1px solid #d9d9d9;
+}
+.site-header .brand {
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #1a1a1a;
+  display: block;
+}
+.site-header nav {
+  display: flex;
+  gap: 24px;
+  font-size: 15px;
+}
+.site-header .nav-toggle {
+  display: none;
+}
+main {
+  padding: 30px 24px;
+}
+.course-home {
+  max-width: 1100px;
+}
+.course-introduction {
+  max-width: 860px;
+}
+.course-home section {
+  border-top: 1px solid #d9d9d9;
+  margin-top: 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 16px 0;
+  line-height: 1.6;
+}
+th,
+td {
+  border-bottom: 1px solid #d9d9d9;
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  border-top: 1px solid #d9d9d9;
+  background: #f7f7f7;
+  font-weight: 600;
+}
+.course-catalog > tbody > tr > th {
+  width: 190px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.course-catalog ul,
+.chapter-tree ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.course-catalog li a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 5px 0;
+}
+.lecture-thumbnail {
+  width: 68px;
+  height: 34px;
+  flex-shrink: 0;
+}
+.lecture-layout {
+  display: grid;
+  grid-template-columns: 245px minmax(0, 860px) 145px;
+  gap: 28px;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  justify-content: center;
+  align-items: start;
+}
+.lecture-body {
+  min-width: 0;
+  width: 100%;
+  max-width: 860px;
+  margin: 0;
+  padding: 0;
+}
+.lecture-body > section {
+  border-top: 1px solid #d9d9d9;
+  margin-top: 26px;
+  scroll-margin-top: 16px;
+}
+.lecture-body h1 {
+  font-size: 25px;
+}
+.mooc-source {
+  font-size: 13px;
+  color: #555;
+  overflow-wrap: anywhere;
+}
+.chapter-tree {
+  position: sticky;
+  top: 18px;
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+  font-size: 14px;
+  padding-right: 14px;
+  border-right: 1px solid #d9d9d9;
+}
+.chapter-tree summary {
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.chapter-tree ol li a {
+  display: block;
+  padding: 6px 8px;
+  line-height: 1.6;
+  color: #555;
+}
+.chapter-tree a[aria-current] {
+  border-left: 3px solid #1f5fa8;
+  background: #f3f6fa;
+  color: #1f5fa8;
+  font-weight: 600;
+}
+.chapter-tree a span {
+  white-space: nowrap;
+}
+.catalog-search input {
+  width: 100%;
+  margin: 6px 0 12px;
+}
+.page-toc {
+  position: sticky;
+  top: 24px;
+  border-left: 1px solid #d9d9d9;
+  padding-left: 16px;
+  font-size: 13px;
+}
+.page-toc a {
+  display: block;
+  margin-top: 10px;
+  color: #555;
+}
+.catalog-toggle {
+  display: none;
+}
+.matlab-figure {
+  margin: 20px 0;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 8px 0;
+  background: white;
+  min-width: 0;
+}
+.figure-tools {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.figure-tools button {
+  font-size: 12px;
+  padding: 3px 7px;
+}
+figcaption {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+.parameter-panel {
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid #d9d9d9;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+.parameter-panel legend {
+  font-size: 14px;
+}
+.compact-parameter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 100px auto;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+}
+.compact-parameter input[type="range"] {
+  grid-column: 1/-1;
+  width: 100%;
+  height: 18px;
+  padding: 0;
+}
+.compact-parameter input[type="number"] {
+  width: 100%;
+}
+.parameter-panel > label:not(.compact-parameter),
+.preset-buttons {
+  grid-column: 1/-1;
+}
+.preset-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.readouts caption {
+  text-align: left;
+  color: #555;
+}
+.math-text {
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.math-text .katex {
+  font-size: 1.05em;
+}
+.formula-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+.formula-line > span {
+  white-space: nowrap;
+  font-size: 14px;
+}
+.numbered-formula {
+  margin: 20px 0;
+}
+.numbered-formula p {
+  color: #555;
+  font-size: 14px;
+}
+details {
+  border-bottom: 1px solid #d9d9d9;
+  padding: 10px 0;
+}
+summary {
+  cursor: pointer;
+  color: #1f5fa8;
+}
+.calculation-example input[type="number"] {
+  width: 115px;
+}
+.student-answer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px 50px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 14px;
+}
+.student-answer output {
+  grid-column: 2/-1;
+  color: #1f5fa8;
+}
+.calculation-example form button {
+  margin-top: 12px;
+}
+.example-hints,
+.reference-solution {
+  margin: 20px 0;
+}
+.solution-content section {
+  margin-top: 20px;
+}
+.solution-content p {
+  overflow-wrap: anywhere;
+}
+.example-export {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lesson-pagination {
+  border-top: 1px solid #d9d9d9;
+  margin-top: 32px;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 14px;
+}
+.lesson-pagination a {
+  max-width: 48%;
+}
+.site-footer {
+  border-top: 1px solid #d9d9d9;
+  padding: 20px 24px;
+  color: #555;
+  text-align: center;
+  font-size: 13px;
+}
+.plot-demo {
+  max-width: 1000px;
+}
+.plot-demo > div:last-child {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+/* Existing lecture and application content adopts the same restrained foundation. */
+.eyebrow,
+.case-kicker,
+.course-mark {
+  display: none !important;
+}
+.intro {
+  display: block;
+  background: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.lead {
+  font-size: 16px;
+  color: #555;
+  max-width: 860px;
+}
+.paper,
+.contact-card,
+.theory,
+.controls,
+.engineering-case,
+.project-brief,
+.project-challenge,
+.comparison-links,
+.project-steps a,
+.project-cards button,
+.month-card,
+.calendar-lesson,
+.simulation,
+.learning-prompt,
+.profile {
+  background: white;
+  color: #1a1a1a;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  background-image: none;
+}
+.project-cards {
+  display: block;
+}
+.project-cards button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 14px 0;
+  min-height: 0;
+}
+.project-cards button[aria-pressed="true"] {
+  border-left: 3px solid #1f5fa8;
+  padding-left: 12px;
+}
+.project-cards button span,
+.project-cards button small,
+.project-steps a p,
+.theory p,
+.contact-card p {
+  color: #555;
+}
+.project-steps {
+  display: block;
+}
+.project-steps a {
+  display: block;
+  border: 0;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 12px 0;
+}
+.project-brief,
+.paper,
+.contact-card,
+.project-challenge,
+.learning-prompt {
+  padding: 18px 0;
+}
+.simulation {
+  border: 1px solid #d9d9d9;
+  overflow: hidden;
+}
+.simulation-readouts {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px;
+}
+.simulation-readouts > div {
+  background: white;
+  color: #1a1a1a;
+  border-radius: 0;
+  padding: 4px 8px;
+}
+.simulation-readouts span,
+.sim-caption,
+.sim-toolbar {
+  color: #555;
+}
+.sim-toolbar {
+  background: white;
+  border-bottom: 1px solid #d9d9d9;
+}
+.profile {
+  gap: 28px;
+}
+.profile-portrait {
+  max-width: 220px;
+  border-radius: 0;
+}
+.profile-portrait img {
+  border-radius: 0;
+  max-width: 100%;
+  height: auto;
+}
+.comparison-page h1,
+.projects-page h1,
+.calendar-page h1,
+.about h1 {
+  font-size: 26px;
+  max-width: none;
+}
+.tag {
+  border-radius: 0;
+  background: none;
+  color: #555;
+}
+.month-days button {
+  border: 1px solid #1f5fa8;
+  color: #1f5fa8;
+  background: #fff;
+  border-radius: 4px;
+}
+.month-days button:hover,
+.month-days button.picked {
+  background: #1f5fa8;
+  color: #fff;
+}
+.week-marker strong {
+  font-size: 22px;
+  color: #555;
+}
+.semester-overview {
+  border: 0;
+  padding: 0;
+}
+.scene3d,
+.comparison-scene,
+.lens-scene {
+  background: #fff;
+  color: #1a1a1a;
+}
+.scene3d-top h3,
+.scene3d-readout b {
+  color: #1a1a1a;
+}
+.scene3d button {
+  background: #fff;
+  color: #1f5fa8;
+  border-color: #1f5fa8;
+  border-radius: 4px;
+}
+.comparison-switch a[aria-current],
+.atlas-switch button[aria-pressed="true"] {
+  color: #1f5fa8;
+  border-color: #1f5fa8;
+}
+@media (min-width: 1500px) {
+  .lecture-layout {
+    grid-template-columns: 245px minmax(0, 1fr) 145px;
+  }
+  .lecture-body {
+    max-width: 1100px;
+  }
+  .lecture-body > section > p,
+  .lecture-body > section > ul,
+  .numbered-formula {
+    max-width: 860px;
+  }
+}
+@media (max-width: 1199px) {
+  .lecture-layout {
+    grid-template-columns: 220px minmax(0, 860px);
+    gap: 24px;
+  }
+  .page-toc {
+    display: none;
+  }
+  .site-header nav {
+    gap: 15px;
+  }
+}
+@media (max-width: 760px) {
+  .site-header {
+    padding: 0 14px;
+    gap: 10px;
+  }
+  .site-header .brand {
+    font-size: 14px;
+  }
+  .site-header .nav-toggle {
+    display: block;
+    padding: 4px 8px;
+  }
+  .site-header nav {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    border-bottom: 1px solid #d9d9d9;
+    background: white;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .site-header nav.nav-open {
+    display: flex;
+  }
+  main {
+    padding: 24px 16px;
+  }
+  .lecture-layout {
+    display: block;
+    padding: 16px;
+  }
+  .lecture-body h1 {
+    font-size: 23px;
+  }
+  .catalog-toggle {
+    display: block;
+    margin-bottom: 18px;
+  }
+  .chapter-tree {
+    display: none;
+  }
+  .chapter-tree.drawer-open {
+    display: block;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    width: min(320px, calc(100vw - 45px));
+    max-height: none;
+    z-index: 9;
+    background: white;
+    border-right: 1px solid #999;
+    padding: 18px;
+    box-shadow: none;
+  }
+  .catalog-toggle[aria-expanded="true"] {
+    position: fixed;
+    top: 64px;
+    right: 10px;
+    z-index: 11;
+    font-size: 12px;
+    max-width: 60px;
+  }
+  .course-catalog > tbody > tr > th {
+    width: 95px;
+    font-size: 14px;
+  }
+  .course-catalog th,
+  .course-catalog td {
+    padding: 8px 5px;
+  }
+  .lecture-thumbnail {
+    width: 40px;
+    height: 24px;
+  }
+  .course-catalog li a {
+    gap: 7px;
+    font-size: 14px;
+    align-items: start;
+  }
+  .parameter-panel {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  .compact-parameter {
+    grid-template-columns: minmax(0, 1fr) 100px 45px;
+  }
+  .student-answer {
+    grid-template-columns: minmax(0, 1fr) 110px 35px;
+  }
+  .student-answer > span:first-child {
+    grid-column: 1/-1;
+  }
+  .student-answer input {
+    grid-column: 1;
+  }
+  .student-answer output {
+    grid-column: 3;
+    font-size: 12px;
+  }
+  .calculation-example th,
+  .calculation-example td {
+    padding: 6px 3px;
+    font-size: 12px;
+  }
+  .calculation-example input[type="number"] {
+    width: 100%;
+    min-width: 65px;
+  }
+  .calculation-example td:nth-child(3) {
+    width: 95px;
+  }
+  .formula-line {
+    gap: 5px;
+  }
+  .formula-line > span {
+    font-size: 12px;
+  }
+  .matlab-figure {
+    margin: 16px 0;
+  }
+  .figure-tools {
+    justify-content: flex-start;
+    gap: 4px;
+  }
+  .figure-tools button {
+    font-size: 11px;
+    padding: 4px;
+  }
+  .lesson-pagination {
+    flex-direction: column;
+  }
+  .lesson-pagination a {
+    max-width: 100%;
+  }
+  .sim-toolbar {
+    flex-wrap: wrap;
+  }
+}
+@media print {
+  .site-header,
+  .chapter-tree,
+  .page-toc,
+  .catalog-toggle,
+  .site-footer,
+  .figure-tools,
+  .example-export {
+    display: none !important;
+  }
+  .lecture-layout {
+    display: block;
+    padding: 0;
+  }
+  .lecture-body {
+    max-width: none;
+  }
+  body.printing-example .lecture-body > h1,
+  body.printing-example .lecture-body > .mooc-source,
+  body.printing-example .lecture-body > section:not(#examples),
+  body.printing-example .lesson-pagination {
+    display: none;
+  }
+  body.printing-example .reference-solution:not([open]) > .solution-content {
+    display: block !important;
+    content-visibility: visible;
+  }
+  .calculation-example {
+    break-inside: auto;
+  }
+  .student-answer input {
+    border: 0;
+  }
+  .solution-content section {
+    break-inside: avoid;
+  }
+}
