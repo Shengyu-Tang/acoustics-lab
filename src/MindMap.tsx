@@ -1,3 +1,27 @@
-import {useState} from 'react';
-import Header from './Header';import KnowledgeGraph from './KnowledgeGraph';import CourseTree from './CourseTree';
-export default function MindMap(){const [view,setView]=useState('tree');return <><Header/><main className="map-page"><div className="eyebrow">COURSE ATLAS / 课程知识导航</div><h1>先看见体系，再发现联系。</h1><div className="atlas-switch" role="group" aria-label="导图展示方式"><button aria-pressed={view==='tree'} onClick={()=>setView('tree')}><b>课程思维导图</b><span>课程 → 章节 → 知识点 · 全部展开</span></button><button aria-pressed={view==='graph'} onClick={()=>setView('graph')}><b>知识图谱</b><span>学习递进 × 物理联系 · 三维探索</span></button></div>{view==='tree'?<CourseTree/>:<KnowledgeGraph/>}</main></>}
+import { useState } from "react";
+import Header from "./Header";
+import KnowledgeGraph from "./KnowledgeGraph";
+import CourseTree from "./CourseTree";
+export default function MindMap() {
+  const [view, setView] = useState("tree");
+  return (
+    <>
+      <Header />
+      <main className="map-page">
+        <div className="eyebrow">COURSE ATLAS / 课程知识导航</div>
+        <h1>先看见体系，再发现联系。</h1>
+        <div className="atlas-switch" role="group" aria-label="导图展示方式">
+          <button aria-pressed={view === "tree"} onClick={() => setView("tree")}>
+            <b>课程思维导图</b>
+            <span>课程 → 章节 → 知识点 · 全部展开</span>
+          </button>
+          <button aria-pressed={view === "graph"} onClick={() => setView("graph")}>
+            <b>知识图谱</b>
+            <span>学习递进 × 物理联系 · 三维探索</span>
+          </button>
+        </div>
+        {view === "tree" ? <CourseTree /> : <KnowledgeGraph />}
+      </main>
+    </>
+  );
+}

@@ -1,68 +1,628 @@
-import {useEffect,useRef,useState} from 'react';
-import * as T from 'three';import {createWaveVolume} from './WaveVolume';import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {pistonD,fmt,type Values} from './physics';import {sceneState,forcedTrace,displacement} from './animationPhysics';
-const pi=Math.PI,clamp=(x:number,a:number,b:number)=>Math.max(a,Math.min(b,x));
-const titles:Record<string,string>={mechanical:'仪器支承与振动台',elastic:'连续结构的空间振型',field:'声源、介质与三维波场',boundary:'界面能流与反射',guide:'受限通道与横向模态',propagation:'传播通道与接收位置',radiation:'辐射体与空间响应',paths:'传播路径与几何边界',receiver:'传感器与测量链路',sonar:'水下探测的发射—回波链路'};
-export default function Scene3D({kind,v}:{kind:string;v:Values}){
- const host=useRef<HTMLDivElement>(null),current=useRef(v),motion=useRef(true),reset=useRef(()=>{}),replay=useRef(()=>{}),[running,setRunning]=useState(true),[failed,setFailed]=useState(false),[rotate,setRotate]=useState(false),auto=useRef(false);current.current=v;auto.current=rotate;motion.current=running;const state=sceneState(kind,v);
- useEffect(()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)setRunning(false)},[]);
- useEffect(()=>{const el=host.current!;setFailed(false);let renderer:T.WebGLRenderer;try{renderer=new T.WebGLRenderer({antialias:true,alpha:false});}catch{setFailed(true);return}
- renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.setClearColor(0x081c2e);renderer.outputColorSpace=T.SRGBColorSpace;el.appendChild(renderer.domElement);renderer.domElement.setAttribute('aria-label','可旋转的工程三维场景');renderer.domElement.setAttribute('role','img');
- let fitScale=1;const scene=new T.Scene();scene.fog=new T.FogExp2(0x081c2e,.025);const camera=new T.PerspectiveCamera(42,1,.1,100);camera.position.set(5.5,3.5,8.0);const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.09;controls.minDistance=6;controls.maxDistance=27;controls.maxPolarAngle=pi*.88;controls.target.set(0,.3,0);controls.autoRotateSpeed=.5;reset.current=()=>{camera.position.set(5.5,3.5,8.0).multiplyScalar(fitScale);controls.target.set(0,.3,0);controls.update()};
- scene.add(new T.HemisphereLight(0xbfeeff,0x17304a,2.3));const key=new T.DirectionalLight(0xffffff,3);key.position.set(-3,8,5);scene.add(key);const rim=new T.PointLight(0x43dfd7,30);rim.position.set(0,3,-4);scene.add(rim);
- const floor=new T.GridHelper(18,30,0x28516b,0x143448);floor.position.y=-1.55;floor.material.transparent=true;floor.material.opacity=.32;scene.add(floor);
- const group=new T.Group();scene.add(group);const updates:((time:number,v:Values)=>void)[]=[];
- const mat=(color:number,opacity=1)=>new T.MeshStandardMaterial({color,metalness:.25,roughness:.35,transparent:opacity<1,opacity,side:T.DoubleSide,depthWrite:opacity>=1});
- const mesh=(g:T.BufferGeometry,color=0x61d7d1,opacity=1,parent:T.Object3D=group)=>{const o=new T.Mesh(g,mat(color,opacity));parent.add(o);return o};
- const box=(x:number,y:number,z:number,color=0x355c77)=>mesh(new T.BoxGeometry(x,y,z),color);
- const sphere=(r:number,color=0xffc278,opacity=1)=>mesh(new T.SphereGeometry(r,24,16),color,opacity);
- const segment=(points:T.Vector3[],color=0x6bdddb)=>{const line=new T.Line(new T.BufferGeometry().setFromPoints(points),new T.LineBasicMaterial({color}));group.add(line);return line};
- const setLine=(line:T.Line,points:T.Vector3[])=>{const attr=line.geometry.getAttribute('position') as T.BufferAttribute;points.forEach((p,i)=>attr.setXYZ(i,p.x,p.y,p.z));attr.needsUpdate=true;line.geometry.computeBoundingSphere()};
- const family=state.family;
- if(family==='mechanical'){
-  const base=box(8,.25,2.6);base.position.y=-1.05;const anchor=box(.3,1.8,1.5);anchor.position.set(-3.3,0,0);const block=box(1.2,1.1,1.1,0x61d7d1);const display=box(.7,.35,.03,0x102c40);block.add(display);display.position.set(0,.1,.57);const damper=mesh(new T.CylinderGeometry(.15,.15,1.5,20),0xe7b477);damper.rotation.z=pi/2;damper.position.set(-1.8,-.7,.6);
-  const spring=segment(Array.from({length:121},()=>new T.Vector3()));let trace:number[]=[],stamp='';
-  updates.push((time,v)=>{const s=sceneState(kind,v),tag=JSON.stringify(v);if(tag!==stamp){trace=['forced','undamped'].includes(kind)?forcedTrace(v):[];stamp=tag}const x=kind==='resonance'?s.amp*Math.cos(2*pi*s.f*v.ratio*time):displacement(kind,v,time,trace);const peak=kind==='resonance'?s.amp:['forced','undamped'].includes(kind)?Math.max(.01,...trace.map(Math.abs)):.01;const shift=x/peak*1.35,mass=Math.cbrt(v.m)/1.3;block.scale.setScalar(clamp(mass,.6,1.4));block.position.set(.9+shift,0,0);const end=block.position.x-.6*block.scale.x;setLine(spring,Array.from({length:121},(_,i)=>new T.Vector3(-3.15+(end+3.15)*i/120,.22*Math.sin(i/120*2*pi*(5+v.k/100)),.22*Math.cos(i/120*2*pi*(5+v.k/100)))));damper.scale.y=.65+(v.z??0)*.5;});
- }else if(family==='elastic'){
-  const left=box(.3,2,1);left.position.x=-3.7;const right=box(.3,2,1);right.position.x=3.7;right.visible=kind==='string';const wire=segment(Array.from({length:101},()=>new T.Vector3()),0x83efe0);const sections=Array.from({length:40},()=>box(.07,.7,.7,0x5bb8cd));sections.forEach(o=>o.visible=kind==='rod');updates.push((time,v)=>{const s=sceneState(kind,v),phase=time*2*pi*s.f/(kind==='string'?160:5000),length=clamp(v.L/(kind==='string'?1:.1),.4,2)*3;left.position.x=-length-.2;right.position.x=length+.2;wire.visible=kind==='string';setLine(wire,Array.from({length:101},(_,i)=>new T.Vector3(-length+2*length*i/100,.8*Math.sin(v.n*pi*i/100)*Math.cos(phase),0)));sections.forEach((o,i)=>{o.position.x=-length+2*length*i/39+.18*Math.sin((v.n-.5)*pi*i/39)*Math.cos(phase)})});
- }else if(kind==='cylinder'){
-  const surfaces=[-2.5,0,2.5].map(x=>{const geo=new T.CylinderGeometry(.8,.8,2.8,64,1,true);geo.setAttribute('color',new T.Float32BufferAttribute(new Float32Array(geo.getAttribute('position').count*3),3));const o=new T.Mesh(geo,new T.MeshBasicMaterial({vertexColors:true,side:T.DoubleSide}));o.position.x=x;group.add(o);return o});const color=new T.Color();
-  updates.push((time,v)=>surfaces.forEach((o,j)=>{const pos=o.geometry.getAttribute('position'),col=o.geometry.getAttribute('color');for(let i=0;i<pos.count;i++){const theta=Math.atan2(pos.getZ(i),pos.getX(i)),incident=Math.cos(time*2-v.ka*Math.cos(theta)),pressure=j===0?incident:j===1?-incident:0,g=Math.abs(pressure);color.setRGB(.04+g*(pressure>=0?.2:.9),.14+g*(pressure>=0?.7:.3),.2+g*(pressure>=0?.65:.12));col.setXYZ(i,color.r,color.g,color.b);}col.needsUpdate=true;}));
- }else if(kind==='nearfield'){
-  const disk=mesh(new T.CylinderGeometry(.6,.6,.12,48),0x74d9d1);disk.rotation.z=pi/2;disk.position.x=-3;
-  const axial=segment(Array.from({length:401},()=>new T.Vector3())),marker=sphere(.09,0xffc278);segment([new T.Vector3(-3,0,0),new T.Vector3(3,0,0)],0x56768a);
-  updates.push((time,v)=>{const k=2*pi*v.f/1500,phase=time*2*pi*v.f/5000,pressure=(z:number)=>Math.cos(phase-k*z)-Math.cos(phase-k*Math.hypot(z,v.a));disk.scale.set(v.a/.1,1,v.a/.1);setLine(axial,Array.from({length:401},(_,i)=>{const z=.01+2.99*i/400;return new T.Vector3(-3+6*i/400,.65*pressure(z),0)}));marker.position.set(-3+6*(v.r-.01)/2.99,.65*pressure(v.r),0);});
- }else if(family==='radiation'){
-  const target=sphere(.35,0xe5b16f);const ring=mesh(new T.TorusGeometry(.55,.09,12,48),0x649cac);ring.rotation.y=pi/2;ring.visible=['piston','nearfield'].includes(kind);const second=sphere(.25,0xa79cf2);second.visible=kind==='dipole';const indicator=sphere(.075,0xffe9ae);const geom=new T.SphereGeometry(1,64,32),surface=mesh(geom,0x39ccc5,.3);const base=(geom.getAttribute('position') as T.BufferAttribute).array.slice();const pos=geom.getAttribute('position') as T.BufferAttribute;let stamp='';
-  const waveLobes=Array.from({length:3},()=>mesh(geom,0x66f0e1,.1));
-  const shells=Array.from({length:5},()=>{const o=mesh(new T.SphereGeometry(1,32,16),0x6fd6e7,.12);return o});
-  updates.push((time,v)=>{const s=sceneState(kind,v),ka=2*pi*(v.f??500)*(v.a??v.d??.1)/1500,tag=JSON.stringify(v);target.scale.setScalar(kind==='scatter'?.4+v.a/.01:kind==='cylinder'?.3+v.ka/4:clamp((v.a??v.d??.1)/.1,.4,2));if(kind==='dipole'){target.position.x=-v.d*14;second.position.x=v.d*14;second.scale.copy(target.scale)}ring.scale.setScalar((v.a??.1)*7+.3);const gain=kind==='scatter'?clamp(Math.pow(s.power/7.522e-10,.16),.12,3):kind==='monopole'?clamp(Math.log10(1+s.power)*.7,.12,3):kind==='dipole'?clamp(ka*15,.1,3):1;
-   if(tag!==stamp){for(let i=0;i<pos.count;i++){const x=Number(base[i*3]),y=Number(base[i*3+1]),z=Number(base[i*3+2]),theta=Math.acos(clamp(x,-1,1));let d=kind==='piston'||kind==='nearfield'?(x>=0?Math.abs(pistonD(ka*Math.sin(theta))):0):kind==='dipole'?Math.abs(x):kind==='scatter'?Math.abs(.5*x-1/3)/(5/6):1;const r=.04+2.4*d*gain;pos.setXYZ(i,x*r,y*r,z*r)}pos.needsUpdate=true;geom.computeVertexNormals();geom.computeBoundingSphere();stamp=tag}
-   surface.rotation.x=0;surface.material.opacity=.22+.08*Math.cos(time*2*pi*(s.f/(kind==='cylinder'?2:1000)));indicator.position.set(Math.cos(s.angle)*2.6,Math.sin(s.angle)*2.6,0);indicator.visible=['piston','dipole','nearfield'].includes(kind);if(kind==='nearfield')indicator.position.set(.5+v.r,0,0);
-   waveLobes.forEach((o,i)=>{o.visible=['piston','nearfield','dipole'].includes(kind);const q=(time*.3*(v.f??500)/5000+i/3)%1;o.scale.setScalar(.45+q*1.2);o.material.opacity=(1-q)*.12;});
-   shells.forEach((o,i)=>{const q=(time*.3*(v.f??500)/500+i/5)%1;o.scale.setScalar(.3+q*4);o.material.opacity=(1-q)*.13*clamp(gain,.2,1.5);o.visible=['monopole','scatter','cylinder'].includes(kind)});
-  });
- }else if(family==='receiver'){
-  const sensor=mesh(new T.CylinderGeometry(.35,.35,1.5,32),0x70bdcf);sensor.position.set(-3,0,0);const cable=segment([new T.Vector3(-3,.75,0),new T.Vector3(-3,1.8,0),new T.Vector3(2,1.8,0),new T.Vector3(2,0,0)],0x657f97);const monitor=box(3.2,2,.3,0x30506d);monitor.position.x=2;const screen=box(2.8,1.6,.03,0x071421);screen.position.set(2,0,.17);const trace=segment(Array.from({length:121},()=>new T.Vector3()),0x6bf3c6);updates.push((time,v)=>{const s=sceneState(kind,v),am=kind==='receiver'?Math.log10(1+s.amp)/Math.log10(501):Math.log10(1+s.amp*1000)/7;setLine(trace,Array.from({length:121},(_,i)=>new T.Vector3(.65+2.7*i/120,.65*am*Math.sin(i/120*4*pi*s.f-time*3),.22)));sensor.material.emissive.setRGB(.02,.08+am*.2,.08+am*.2);cable.visible=true});
- }else if(family==='paths'){
-  const source=sphere(.18),receiver=sphere(.18,0x72e2df),pulse=sphere(.07,0xffffff),direct=segment([new T.Vector3(),new T.Vector3()],0xeab777),reflected=segment(Array.from({length:61},()=>new T.Vector3()));const wall=mesh(new T.CylinderGeometry(3.5,3.5,.7,64,1,true,0,pi*1.85),0x4e879a,.5);const water=mesh(new T.PlaneGeometry(10,8),0x4796bd,.16);water.rotation.x=-pi/2;water.position.y=1.3;wall.visible=kind==='echo';water.visible=kind==='image';updates.push((time,v)=>{if(kind==='echo'){const r=1.5+v.R/20,a=v.angle*pi/180;wall.scale.set(r/3.5,1,r/3.5);source.position.set(r,0,0);receiver.position.set(r*Math.cos(a),0,r*Math.sin(a));const pts=Array.from({length:61},(_,i)=>new T.Vector3(r*Math.cos(a*i/60),0,r*Math.sin(a*i/60)));setLine(reflected,pts);const q=(time*340/50/(v.R*a))%1;pulse.position.set(r*Math.cos(a*q),0,r*Math.sin(a*q));}else{source.position.set(-3,1.3-v.depth*.075,0);receiver.position.set(3,.55,0);const q=(3*(v.depth-10)/(v.depth+10));const corner=new T.Vector3(q,1.3,0);const pts=Array.from({length:61},(_,i)=>i<31?source.position.clone().lerp(corner,i/30):corner.clone().lerp(receiver.position,(i-30)/30));setLine(reflected,pts);pulse.position.copy(pts[Math.floor(time*v.f/500*15)%61]);reflected.material.color.set(v.sign<0?0x6de9df:0xedb86e);}setLine(direct,[source.position.clone(),receiver.position.clone()])});
- }else if(family==='sonar'){
-  const sub=mesh(new T.CapsuleGeometry(.35,1.7,8,24),0x59c8c4);sub.rotation.z=pi/2;sub.position.x=-3.5;const fin=box(.6,.8,.08,0x355e79);fin.position.set(-3.5,.4,0);const target=mesh(new T.IcosahedronGeometry(.5,1),0xe0ad70);const pulse=mesh(new T.SphereGeometry(.6,48,24),0x9ffff1,.35);pulse.scale.set(.12,1,1);const beam=mesh(new T.ConeGeometry(1.6,7,48,1,true),0x4ec3d0,.1);beam.rotation.z=pi/2;beam.position.x=0;updates.push((time,v)=>{const s=sceneState(kind,v),end=-1+v.r/20000*6;target.position.set(end,0,0);const q=time*1500/(2*v.r)%1;pulse.position.x=q<.5?-3+(end+3)*q*2:end-(end+3)*(q-.5)*2;pulse.material.opacity=q<.5?clamp((v.SL-175)/55,.1,1):clamp(.12+Math.log10(1+s.power)*.25,.05,1);pulse.scale.set(.14,.5+Math.sin(q*pi)*1.5,.5+Math.sin(q*pi)*1.5);pulse.material.depthWrite=false;beam.material.opacity=clamp((v.SL-175)/550,.01,.13)*Math.exp(-v.alpha*v.r/100000);target.material.emissive.setRGB(s.power>1?.12:0,s.power>1?.1:0,0)});
- }else{
-  const source=mesh(new T.CylinderGeometry(.42,.42,.3,32),0x69c7d3);source.rotation.z=pi/2;source.position.x=-4;const receiver=mesh(new T.CylinderGeometry(.13,.13,.85,24),0xf0bd77);receiver.position.x=4;const barrier=mesh(new T.PlaneGeometry(4,3.6),0x5e8b9a,.27);barrier.rotation.y=pi/2;barrier.visible=family==='boundary';
-  const ceiling=box(9,.1,3.4,0x42637b),bottom=box(9,.1,3.4,0x42637b);ceiling.visible=bottom.visible=family==='guide';
-  ceiling.material.transparent=true;ceiling.material.opacity=.09;ceiling.material.depthWrite=false;bottom.material.transparent=true;bottom.material.opacity=.16;bottom.material.depthWrite=false;
-  const edges=new T.LineSegments(new T.EdgesGeometry(new T.BoxGeometry(9,2,3.4)),new T.LineBasicMaterial({color:0x6bb5c6,transparent:true,opacity:.3}));edges.visible=family==='guide';group.add(edges);
-  const volume=createWaveVolume(group);
-  updates.push((time,v)=>{const s=sceneState(kind,v),{height}=volume.update(kind,v,time);ceiling.position.y=height;bottom.position.y=-height;edges.scale.y=height;
-   receiver.position.x=4;
-   if(kind==='doppler')source.position.x=v.v*((time/500)%0.03-.015)/1.5;
-  });
- }
- let time=.15,last=0,raf=0,visible=true;replay.current=()=>{time=0};const io=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting});io.observe(el);const resize=new ResizeObserver(()=>{const w=el.clientWidth,h=el.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;const nextFit=Math.max(1,Math.min(1.7,1.55/camera.aspect));camera.position.multiplyScalar(nextFit/fitScale);fitScale=nextFit;camera.updateProjectionMatrix()});resize.observe(el);
- const frame=(now:number)=>{const dt=last?Math.min(.04,(now-last)/1000):0;last=now;if(visible&&!document.hidden){if(motion.current)time=(time+dt)%10000;controls.autoRotate=auto.current&&motion.current;controls.update();updates.forEach(fn=>fn(time,current.current));renderer.render(scene,camera)}raf=requestAnimationFrame(frame)};raf=requestAnimationFrame(frame);
- const lost=(e:Event)=>{e.preventDefault();setFailed(true)};renderer.domElement.addEventListener('webglcontextlost',lost);
- return()=>{cancelAnimationFrame(raf);io.disconnect();resize.disconnect();controls.dispose();scene.traverse(o=>{const m=o as T.Mesh;if(m.geometry)m.geometry.dispose();if(m.material){(Array.isArray(m.material)?m.material:[m.material]).forEach(mat=>mat.dispose())}});renderer.domElement.removeEventListener('webglcontextlost',lost);renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove()};
- },[kind]);
- return <section className="scene3d"><div className="scene3d-top"><div><span>ENGINEERING / 三维工程场景</span><h3>{kind==='cylinder'?'圆柱表面：入射＋散射＝零':kind==='nearfield'?'活塞轴向声压与观察位置':titles[state.family]}</h3></div><div><button aria-label={running?'暂停三维动画':'播放三维动画'} onClick={()=>setRunning(!running)}>{running?'Ⅱ':'▶'}</button><button onClick={()=>replay.current()}>重播</button><button onClick={()=>reset.current()}>复位视角</button></div></div><div className="scene3d-viewport" ref={host}/>{failed&&<p className="scene3d-fallback">当前浏览器未能启用三维显示，可继续使用下方参数曲线与计算结果。</p>}<div className="scene3d-readout">{state.metrics.slice(0,2).map(([n,value,u])=><span key={n}>{n}<b>{fmt(value)} <small>{u}</small></b></span>)}</div><div className="scene3d-foot"><span>拖动旋转 · 滚轮缩放 · 右键平移<br/>{kind==='cylinder'?'从左到右：入射、散射、总声压的圆柱表面。青色正压，暖色负压；总声压恒为零。不计算圆柱外部场。':kind==='nearfield'?'青线是轴上瞬时声压，金点为当前接收位置。横向 0.01–3 m；垂直高度表示声压，不是声束宽度。':state.family==='mechanical'?'位移按当前全程最大值缩放，避免截断；不同设置的真实幅值请比较读数。':['field','boundary','guide','propagation'].includes(state.family)?'青色为正声压，暖色为负声压；明暗与透明度表示声场强弱。':'曲面与波前展示空间响应，结构振动显示形变。'}场景慢放，弱场增强；精确量值见曲线和读数。</span><label><input type="checkbox" checked={rotate} onChange={e=>setRotate(e.target.checked)}/> 环视</label></div></section>
+import { useEffect, useRef, useState } from "react";
+import * as T from "three";
+import { createWaveVolume } from "./WaveVolume";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { pistonD, fmt, type Values } from "./physics";
+import { sceneState, forcedTrace, displacement } from "./animationPhysics";
+const pi = Math.PI,
+  clamp = (x: number, a: number, b: number) => Math.max(a, Math.min(b, x));
+const titles: Record<string, string> = {
+  mechanical: "仪器支承与振动台",
+  elastic: "连续结构的空间振型",
+  field: "声源、介质与三维波场",
+  boundary: "界面能流与反射",
+  guide: "受限通道与横向模态",
+  propagation: "传播通道与接收位置",
+  radiation: "辐射体与空间响应",
+  paths: "传播路径与几何边界",
+  receiver: "传感器与测量链路",
+  sonar: "水下探测的发射—回波链路",
+};
+export default function Scene3D({ kind, v }: { kind: string; v: Values }) {
+  const host = useRef<HTMLDivElement>(null),
+    current = useRef(v),
+    motion = useRef(true),
+    reset = useRef(() => {}),
+    replay = useRef(() => {}),
+    [running, setRunning] = useState(true),
+    [failed, setFailed] = useState(false),
+    [rotate, setRotate] = useState(false),
+    auto = useRef(false);
+  current.current = v;
+  auto.current = rotate;
+  motion.current = running;
+  const state = sceneState(kind, v);
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion:reduce)").matches) setRunning(false);
+  }, []);
+  useEffect(() => {
+    const el = host.current!;
+    setFailed(false);
+    let renderer: T.WebGLRenderer;
+    try {
+      renderer = new T.WebGLRenderer({ antialias: true, alpha: false });
+    } catch {
+      setFailed(true);
+      return;
+    }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.6));
+    renderer.setClearColor(0x081c2e);
+    renderer.outputColorSpace = T.SRGBColorSpace;
+    el.appendChild(renderer.domElement);
+    renderer.domElement.setAttribute("aria-label", "可旋转的工程三维场景");
+    renderer.domElement.setAttribute("role", "img");
+    let fitScale = 1;
+    const scene = new T.Scene();
+    scene.fog = new T.FogExp2(0x081c2e, 0.025);
+    const camera = new T.PerspectiveCamera(42, 1, 0.1, 100);
+    camera.position.set(5.5, 3.5, 8.0);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.09;
+    controls.minDistance = 6;
+    controls.maxDistance = 27;
+    controls.maxPolarAngle = pi * 0.88;
+    controls.target.set(0, 0.3, 0);
+    controls.autoRotateSpeed = 0.5;
+    reset.current = () => {
+      camera.position.set(5.5, 3.5, 8.0).multiplyScalar(fitScale);
+      controls.target.set(0, 0.3, 0);
+      controls.update();
+    };
+    scene.add(new T.HemisphereLight(0xbfeeff, 0x17304a, 2.3));
+    const key = new T.DirectionalLight(0xffffff, 3);
+    key.position.set(-3, 8, 5);
+    scene.add(key);
+    const rim = new T.PointLight(0x43dfd7, 30);
+    rim.position.set(0, 3, -4);
+    scene.add(rim);
+    const floor = new T.GridHelper(18, 30, 0x28516b, 0x143448);
+    floor.position.y = -1.55;
+    floor.material.transparent = true;
+    floor.material.opacity = 0.32;
+    scene.add(floor);
+    const group = new T.Group();
+    scene.add(group);
+    const updates: ((time: number, v: Values) => void)[] = [];
+    const mat = (color: number, opacity = 1) =>
+      new T.MeshStandardMaterial({
+        color,
+        metalness: 0.25,
+        roughness: 0.35,
+        transparent: opacity < 1,
+        opacity,
+        side: T.DoubleSide,
+        depthWrite: opacity >= 1,
+      });
+    const mesh = (
+      g: T.BufferGeometry,
+      color = 0x61d7d1,
+      opacity = 1,
+      parent: T.Object3D = group,
+    ) => {
+      const o = new T.Mesh(g, mat(color, opacity));
+      parent.add(o);
+      return o;
+    };
+    const box = (x: number, y: number, z: number, color = 0x355c77) =>
+      mesh(new T.BoxGeometry(x, y, z), color);
+    const sphere = (r: number, color = 0xffc278, opacity = 1) =>
+      mesh(new T.SphereGeometry(r, 24, 16), color, opacity);
+    const segment = (points: T.Vector3[], color = 0x6bdddb) => {
+      const line = new T.Line(
+        new T.BufferGeometry().setFromPoints(points),
+        new T.LineBasicMaterial({ color }),
+      );
+      group.add(line);
+      return line;
+    };
+    const setLine = (line: T.Line, points: T.Vector3[]) => {
+      const attr = line.geometry.getAttribute("position") as T.BufferAttribute;
+      points.forEach((p, i) => attr.setXYZ(i, p.x, p.y, p.z));
+      attr.needsUpdate = true;
+      line.geometry.computeBoundingSphere();
+    };
+    const family = state.family;
+    if (family === "mechanical") {
+      const base = box(8, 0.25, 2.6);
+      base.position.y = -1.05;
+      const anchor = box(0.3, 1.8, 1.5);
+      anchor.position.set(-3.3, 0, 0);
+      const block = box(1.2, 1.1, 1.1, 0x61d7d1);
+      const display = box(0.7, 0.35, 0.03, 0x102c40);
+      block.add(display);
+      display.position.set(0, 0.1, 0.57);
+      const damper = mesh(new T.CylinderGeometry(0.15, 0.15, 1.5, 20), 0xe7b477);
+      damper.rotation.z = pi / 2;
+      damper.position.set(-1.8, -0.7, 0.6);
+      const spring = segment(Array.from({ length: 121 }, () => new T.Vector3()));
+      let trace: number[] = [],
+        stamp = "";
+      updates.push((time, v) => {
+        const s = sceneState(kind, v),
+          tag = JSON.stringify(v);
+        if (tag !== stamp) {
+          trace = ["forced", "undamped"].includes(kind) ? forcedTrace(v) : [];
+          stamp = tag;
+        }
+        const x =
+          kind === "resonance"
+            ? s.amp * Math.cos(2 * pi * s.f * v.ratio * time)
+            : displacement(kind, v, time, trace);
+        const peak =
+          kind === "resonance"
+            ? s.amp
+            : ["forced", "undamped"].includes(kind)
+              ? Math.max(0.01, ...trace.map(Math.abs))
+              : 0.01;
+        const shift = (x / peak) * 1.35,
+          mass = Math.cbrt(v.m) / 1.3;
+        block.scale.setScalar(clamp(mass, 0.6, 1.4));
+        block.position.set(0.9 + shift, 0, 0);
+        const end = block.position.x - 0.6 * block.scale.x;
+        setLine(
+          spring,
+          Array.from(
+            { length: 121 },
+            (_, i) =>
+              new T.Vector3(
+                -3.15 + ((end + 3.15) * i) / 120,
+                0.22 * Math.sin((i / 120) * 2 * pi * (5 + v.k / 100)),
+                0.22 * Math.cos((i / 120) * 2 * pi * (5 + v.k / 100)),
+              ),
+          ),
+        );
+        damper.scale.y = 0.65 + (v.z ?? 0) * 0.5;
+      });
+    } else if (family === "elastic") {
+      const left = box(0.3, 2, 1);
+      left.position.x = -3.7;
+      const right = box(0.3, 2, 1);
+      right.position.x = 3.7;
+      right.visible = kind === "string";
+      const wire = segment(
+        Array.from({ length: 101 }, () => new T.Vector3()),
+        0x83efe0,
+      );
+      const sections = Array.from({ length: 40 }, () => box(0.07, 0.7, 0.7, 0x5bb8cd));
+      sections.forEach((o) => (o.visible = kind === "rod"));
+      updates.push((time, v) => {
+        const s = sceneState(kind, v),
+          phase = (time * 2 * pi * s.f) / (kind === "string" ? 160 : 5000),
+          length = clamp(v.L / (kind === "string" ? 1 : 0.1), 0.4, 2) * 3;
+        left.position.x = -length - 0.2;
+        right.position.x = length + 0.2;
+        wire.visible = kind === "string";
+        setLine(
+          wire,
+          Array.from(
+            { length: 101 },
+            (_, i) =>
+              new T.Vector3(
+                -length + (2 * length * i) / 100,
+                0.8 * Math.sin((v.n * pi * i) / 100) * Math.cos(phase),
+                0,
+              ),
+          ),
+        );
+        sections.forEach((o, i) => {
+          o.position.x =
+            -length +
+            (2 * length * i) / 39 +
+            0.18 * Math.sin(((v.n - 0.5) * pi * i) / 39) * Math.cos(phase);
+        });
+      });
+    } else if (kind === "cylinder") {
+      const surfaces = [-2.5, 0, 2.5].map((x) => {
+        const geo = new T.CylinderGeometry(0.8, 0.8, 2.8, 64, 1, true);
+        geo.setAttribute(
+          "color",
+          new T.Float32BufferAttribute(new Float32Array(geo.getAttribute("position").count * 3), 3),
+        );
+        const o = new T.Mesh(
+          geo,
+          new T.MeshBasicMaterial({ vertexColors: true, side: T.DoubleSide }),
+        );
+        o.position.x = x;
+        group.add(o);
+        return o;
+      });
+      const color = new T.Color();
+      updates.push((time, v) =>
+        surfaces.forEach((o, j) => {
+          const pos = o.geometry.getAttribute("position"),
+            col = o.geometry.getAttribute("color");
+          for (let i = 0; i < pos.count; i++) {
+            const theta = Math.atan2(pos.getZ(i), pos.getX(i)),
+              incident = Math.cos(time * 2 - v.ka * Math.cos(theta)),
+              pressure = j === 0 ? incident : j === 1 ? -incident : 0,
+              g = Math.abs(pressure);
+            color.setRGB(
+              0.04 + g * (pressure >= 0 ? 0.2 : 0.9),
+              0.14 + g * (pressure >= 0 ? 0.7 : 0.3),
+              0.2 + g * (pressure >= 0 ? 0.65 : 0.12),
+            );
+            col.setXYZ(i, color.r, color.g, color.b);
+          }
+          col.needsUpdate = true;
+        }),
+      );
+    } else if (kind === "nearfield") {
+      const disk = mesh(new T.CylinderGeometry(0.6, 0.6, 0.12, 48), 0x74d9d1);
+      disk.rotation.z = pi / 2;
+      disk.position.x = -3;
+      const axial = segment(Array.from({ length: 401 }, () => new T.Vector3())),
+        marker = sphere(0.09, 0xffc278);
+      segment([new T.Vector3(-3, 0, 0), new T.Vector3(3, 0, 0)], 0x56768a);
+      updates.push((time, v) => {
+        const k = (2 * pi * v.f) / 1500,
+          phase = (time * 2 * pi * v.f) / 5000,
+          pressure = (z: number) =>
+            Math.cos(phase - k * z) - Math.cos(phase - k * Math.hypot(z, v.a));
+        disk.scale.set(v.a / 0.1, 1, v.a / 0.1);
+        setLine(
+          axial,
+          Array.from({ length: 401 }, (_, i) => {
+            const z = 0.01 + (2.99 * i) / 400;
+            return new T.Vector3(-3 + (6 * i) / 400, 0.65 * pressure(z), 0);
+          }),
+        );
+        marker.position.set(-3 + (6 * (v.r - 0.01)) / 2.99, 0.65 * pressure(v.r), 0);
+      });
+    } else if (family === "radiation") {
+      const target = sphere(0.35, 0xe5b16f);
+      const ring = mesh(new T.TorusGeometry(0.55, 0.09, 12, 48), 0x649cac);
+      ring.rotation.y = pi / 2;
+      ring.visible = ["piston", "nearfield"].includes(kind);
+      const second = sphere(0.25, 0xa79cf2);
+      second.visible = kind === "dipole";
+      const indicator = sphere(0.075, 0xffe9ae);
+      const geom = new T.SphereGeometry(1, 64, 32),
+        surface = mesh(geom, 0x39ccc5, 0.3);
+      const base = (geom.getAttribute("position") as T.BufferAttribute).array.slice();
+      const pos = geom.getAttribute("position") as T.BufferAttribute;
+      let stamp = "";
+      const waveLobes = Array.from({ length: 3 }, () => mesh(geom, 0x66f0e1, 0.1));
+      const shells = Array.from({ length: 5 }, () => {
+        const o = mesh(new T.SphereGeometry(1, 32, 16), 0x6fd6e7, 0.12);
+        return o;
+      });
+      updates.push((time, v) => {
+        const s = sceneState(kind, v),
+          ka = (2 * pi * (v.f ?? 500) * (v.a ?? v.d ?? 0.1)) / 1500,
+          tag = JSON.stringify(v);
+        target.scale.setScalar(
+          kind === "scatter"
+            ? 0.4 + v.a / 0.01
+            : kind === "cylinder"
+              ? 0.3 + v.ka / 4
+              : clamp((v.a ?? v.d ?? 0.1) / 0.1, 0.4, 2),
+        );
+        if (kind === "dipole") {
+          target.position.x = -v.d * 14;
+          second.position.x = v.d * 14;
+          second.scale.copy(target.scale);
+        }
+        ring.scale.setScalar((v.a ?? 0.1) * 7 + 0.3);
+        const gain =
+          kind === "scatter"
+            ? clamp(Math.pow(s.power / 7.522e-10, 0.16), 0.12, 3)
+            : kind === "monopole"
+              ? clamp(Math.log10(1 + s.power) * 0.7, 0.12, 3)
+              : kind === "dipole"
+                ? clamp(ka * 15, 0.1, 3)
+                : 1;
+        if (tag !== stamp) {
+          for (let i = 0; i < pos.count; i++) {
+            const x = Number(base[i * 3]),
+              y = Number(base[i * 3 + 1]),
+              z = Number(base[i * 3 + 2]),
+              theta = Math.acos(clamp(x, -1, 1));
+            let d =
+              kind === "piston" || kind === "nearfield"
+                ? x >= 0
+                  ? Math.abs(pistonD(ka * Math.sin(theta)))
+                  : 0
+                : kind === "dipole"
+                  ? Math.abs(x)
+                  : kind === "scatter"
+                    ? Math.abs(0.5 * x - 1 / 3) / (5 / 6)
+                    : 1;
+            const r = 0.04 + 2.4 * d * gain;
+            pos.setXYZ(i, x * r, y * r, z * r);
+          }
+          pos.needsUpdate = true;
+          geom.computeVertexNormals();
+          geom.computeBoundingSphere();
+          stamp = tag;
+        }
+        surface.rotation.x = 0;
+        surface.material.opacity =
+          0.22 + 0.08 * Math.cos(time * 2 * pi * (s.f / (kind === "cylinder" ? 2 : 1000)));
+        indicator.position.set(Math.cos(s.angle) * 2.6, Math.sin(s.angle) * 2.6, 0);
+        indicator.visible = ["piston", "dipole", "nearfield"].includes(kind);
+        if (kind === "nearfield") indicator.position.set(0.5 + v.r, 0, 0);
+        waveLobes.forEach((o, i) => {
+          o.visible = ["piston", "nearfield", "dipole"].includes(kind);
+          const q = ((time * 0.3 * (v.f ?? 500)) / 5000 + i / 3) % 1;
+          o.scale.setScalar(0.45 + q * 1.2);
+          o.material.opacity = (1 - q) * 0.12;
+        });
+        shells.forEach((o, i) => {
+          const q = ((time * 0.3 * (v.f ?? 500)) / 500 + i / 5) % 1;
+          o.scale.setScalar(0.3 + q * 4);
+          o.material.opacity = (1 - q) * 0.13 * clamp(gain, 0.2, 1.5);
+          o.visible = ["monopole", "scatter", "cylinder"].includes(kind);
+        });
+      });
+    } else if (family === "receiver") {
+      const sensor = mesh(new T.CylinderGeometry(0.35, 0.35, 1.5, 32), 0x70bdcf);
+      sensor.position.set(-3, 0, 0);
+      const cable = segment(
+        [
+          new T.Vector3(-3, 0.75, 0),
+          new T.Vector3(-3, 1.8, 0),
+          new T.Vector3(2, 1.8, 0),
+          new T.Vector3(2, 0, 0),
+        ],
+        0x657f97,
+      );
+      const monitor = box(3.2, 2, 0.3, 0x30506d);
+      monitor.position.x = 2;
+      const screen = box(2.8, 1.6, 0.03, 0x071421);
+      screen.position.set(2, 0, 0.17);
+      const trace = segment(
+        Array.from({ length: 121 }, () => new T.Vector3()),
+        0x6bf3c6,
+      );
+      updates.push((time, v) => {
+        const s = sceneState(kind, v),
+          am =
+            kind === "receiver"
+              ? Math.log10(1 + s.amp) / Math.log10(501)
+              : Math.log10(1 + s.amp * 1000) / 7;
+        setLine(
+          trace,
+          Array.from(
+            { length: 121 },
+            (_, i) =>
+              new T.Vector3(
+                0.65 + (2.7 * i) / 120,
+                0.65 * am * Math.sin((i / 120) * 4 * pi * s.f - time * 3),
+                0.22,
+              ),
+          ),
+        );
+        sensor.material.emissive.setRGB(0.02, 0.08 + am * 0.2, 0.08 + am * 0.2);
+        cable.visible = true;
+      });
+    } else if (family === "paths") {
+      const source = sphere(0.18),
+        receiver = sphere(0.18, 0x72e2df),
+        pulse = sphere(0.07, 0xffffff),
+        direct = segment([new T.Vector3(), new T.Vector3()], 0xeab777),
+        reflected = segment(Array.from({ length: 61 }, () => new T.Vector3()));
+      const wall = mesh(
+        new T.CylinderGeometry(3.5, 3.5, 0.7, 64, 1, true, 0, pi * 1.85),
+        0x4e879a,
+        0.5,
+      );
+      const water = mesh(new T.PlaneGeometry(10, 8), 0x4796bd, 0.16);
+      water.rotation.x = -pi / 2;
+      water.position.y = 1.3;
+      wall.visible = kind === "echo";
+      water.visible = kind === "image";
+      updates.push((time, v) => {
+        if (kind === "echo") {
+          const r = 1.5 + v.R / 20,
+            a = (v.angle * pi) / 180;
+          wall.scale.set(r / 3.5, 1, r / 3.5);
+          source.position.set(r, 0, 0);
+          receiver.position.set(r * Math.cos(a), 0, r * Math.sin(a));
+          const pts = Array.from(
+            { length: 61 },
+            (_, i) => new T.Vector3(r * Math.cos((a * i) / 60), 0, r * Math.sin((a * i) / 60)),
+          );
+          setLine(reflected, pts);
+          const q = ((time * 340) / 50 / (v.R * a)) % 1;
+          pulse.position.set(r * Math.cos(a * q), 0, r * Math.sin(a * q));
+        } else {
+          source.position.set(-3, 1.3 - v.depth * 0.075, 0);
+          receiver.position.set(3, 0.55, 0);
+          const q = (3 * (v.depth - 10)) / (v.depth + 10);
+          const corner = new T.Vector3(q, 1.3, 0);
+          const pts = Array.from({ length: 61 }, (_, i) =>
+            i < 31
+              ? source.position.clone().lerp(corner, i / 30)
+              : corner.clone().lerp(receiver.position, (i - 30) / 30),
+          );
+          setLine(reflected, pts);
+          pulse.position.copy(pts[Math.floor(((time * v.f) / 500) * 15) % 61]);
+          reflected.material.color.set(v.sign < 0 ? 0x6de9df : 0xedb86e);
+        }
+        setLine(direct, [source.position.clone(), receiver.position.clone()]);
+      });
+    } else if (family === "sonar") {
+      const sub = mesh(new T.CapsuleGeometry(0.35, 1.7, 8, 24), 0x59c8c4);
+      sub.rotation.z = pi / 2;
+      sub.position.x = -3.5;
+      const fin = box(0.6, 0.8, 0.08, 0x355e79);
+      fin.position.set(-3.5, 0.4, 0);
+      const target = mesh(new T.IcosahedronGeometry(0.5, 1), 0xe0ad70);
+      const pulse = mesh(new T.SphereGeometry(0.6, 48, 24), 0x9ffff1, 0.35);
+      pulse.scale.set(0.12, 1, 1);
+      const beam = mesh(new T.ConeGeometry(1.6, 7, 48, 1, true), 0x4ec3d0, 0.1);
+      beam.rotation.z = pi / 2;
+      beam.position.x = 0;
+      updates.push((time, v) => {
+        const s = sceneState(kind, v),
+          end = -1 + (v.r / 20000) * 6;
+        target.position.set(end, 0, 0);
+        const q = ((time * 1500) / (2 * v.r)) % 1;
+        pulse.position.x = q < 0.5 ? -3 + (end + 3) * q * 2 : end - (end + 3) * (q - 0.5) * 2;
+        pulse.material.opacity =
+          q < 0.5
+            ? clamp((v.SL - 175) / 55, 0.1, 1)
+            : clamp(0.12 + Math.log10(1 + s.power) * 0.25, 0.05, 1);
+        pulse.scale.set(0.14, 0.5 + Math.sin(q * pi) * 1.5, 0.5 + Math.sin(q * pi) * 1.5);
+        pulse.material.depthWrite = false;
+        beam.material.opacity =
+          clamp((v.SL - 175) / 550, 0.01, 0.13) * Math.exp((-v.alpha * v.r) / 100000);
+        target.material.emissive.setRGB(s.power > 1 ? 0.12 : 0, s.power > 1 ? 0.1 : 0, 0);
+      });
+    } else {
+      const source = mesh(new T.CylinderGeometry(0.42, 0.42, 0.3, 32), 0x69c7d3);
+      source.rotation.z = pi / 2;
+      source.position.x = -4;
+      const receiver = mesh(new T.CylinderGeometry(0.13, 0.13, 0.85, 24), 0xf0bd77);
+      receiver.position.x = 4;
+      const barrier = mesh(new T.PlaneGeometry(4, 3.6), 0x5e8b9a, 0.27);
+      barrier.rotation.y = pi / 2;
+      barrier.visible = family === "boundary";
+      const ceiling = box(9, 0.1, 3.4, 0x42637b),
+        bottom = box(9, 0.1, 3.4, 0x42637b);
+      ceiling.visible = bottom.visible = family === "guide";
+      ceiling.material.transparent = true;
+      ceiling.material.opacity = 0.09;
+      ceiling.material.depthWrite = false;
+      bottom.material.transparent = true;
+      bottom.material.opacity = 0.16;
+      bottom.material.depthWrite = false;
+      const edges = new T.LineSegments(
+        new T.EdgesGeometry(new T.BoxGeometry(9, 2, 3.4)),
+        new T.LineBasicMaterial({ color: 0x6bb5c6, transparent: true, opacity: 0.3 }),
+      );
+      edges.visible = family === "guide";
+      group.add(edges);
+      const volume = createWaveVolume(group);
+      updates.push((time, v) => {
+        const s = sceneState(kind, v),
+          { height } = volume.update(kind, v, time);
+        ceiling.position.y = height;
+        bottom.position.y = -height;
+        edges.scale.y = height;
+        receiver.position.x = 4;
+        if (kind === "doppler") source.position.x = (v.v * (((time / 500) % 0.03) - 0.015)) / 1.5;
+      });
+    }
+    let time = 0.15,
+      last = 0,
+      raf = 0,
+      visible = true;
+    replay.current = () => {
+      time = 0;
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+    });
+    io.observe(el);
+    const resize = new ResizeObserver(() => {
+      const w = el.clientWidth,
+        h = el.clientHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
+      const nextFit = Math.max(1, Math.min(1.7, 1.55 / camera.aspect));
+      camera.position.multiplyScalar(nextFit / fitScale);
+      fitScale = nextFit;
+      camera.updateProjectionMatrix();
+    });
+    resize.observe(el);
+    const frame = (now: number) => {
+      const dt = last ? Math.min(0.04, (now - last) / 1000) : 0;
+      last = now;
+      if (visible && !document.hidden) {
+        if (motion.current) time = (time + dt) % 10000;
+        controls.autoRotate = auto.current && motion.current;
+        controls.update();
+        updates.forEach((fn) => fn(time, current.current));
+        renderer.render(scene, camera);
+      }
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+    const lost = (e: Event) => {
+      e.preventDefault();
+      setFailed(true);
+    };
+    renderer.domElement.addEventListener("webglcontextlost", lost);
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+      resize.disconnect();
+      controls.dispose();
+      scene.traverse((o) => {
+        const m = o as T.Mesh;
+        if (m.geometry) m.geometry.dispose();
+        if (m.material) {
+          (Array.isArray(m.material) ? m.material : [m.material]).forEach((mat) => mat.dispose());
+        }
+      });
+      renderer.domElement.removeEventListener("webglcontextlost", lost);
+      renderer.dispose();
+      renderer.forceContextLoss();
+      renderer.domElement.remove();
+    };
+  }, [kind]);
+  return (
+    <section className="scene3d">
+      <div className="scene3d-top">
+        <div>
+          <span>ENGINEERING / 三维工程场景</span>
+          <h3>
+            {kind === "cylinder"
+              ? "圆柱表面：入射＋散射＝零"
+              : kind === "nearfield"
+                ? "活塞轴向声压与观察位置"
+                : titles[state.family]}
+          </h3>
+        </div>
+        <div>
+          <button
+            aria-label={running ? "暂停三维动画" : "播放三维动画"}
+            onClick={() => setRunning(!running)}
+          >
+            {running ? "Ⅱ" : "▶"}
+          </button>
+          <button onClick={() => replay.current()}>重播</button>
+          <button onClick={() => reset.current()}>复位视角</button>
+        </div>
+      </div>
+      <div className="scene3d-viewport" ref={host} />
+      {failed && (
+        <p className="scene3d-fallback">
+          当前浏览器未能启用三维显示，可继续使用下方参数曲线与计算结果。
+        </p>
+      )}
+      <div className="scene3d-readout">
+        {state.metrics.slice(0, 2).map(([n, value, u]) => (
+          <span key={n}>
+            {n}
+            <b>
+              {fmt(value)} <small>{u}</small>
+            </b>
+          </span>
+        ))}
+      </div>
+      <div className="scene3d-foot">
+        <span>
+          拖动旋转 · 滚轮缩放 · 右键平移
+          <br />
+          {kind === "cylinder"
+            ? "从左到右：入射、散射、总声压的圆柱表面。青色正压，暖色负压；总声压恒为零。不计算圆柱外部场。"
+            : kind === "nearfield"
+              ? "青线是轴上瞬时声压，金点为当前接收位置。横向 0.01–3 m；垂直高度表示声压，不是声束宽度。"
+              : state.family === "mechanical"
+                ? "位移按当前全程最大值缩放，避免截断；不同设置的真实幅值请比较读数。"
+                : ["field", "boundary", "guide", "propagation"].includes(state.family)
+                  ? "青色为正声压，暖色为负声压；明暗与透明度表示声场强弱。"
+                  : "曲面与波前展示空间响应，结构振动显示形变。"}
+          场景慢放，弱场增强；精确量值见曲线和读数。
+        </span>
+        <label>
+          <input type="checkbox" checked={rotate} onChange={(e) => setRotate(e.target.checked)} />{" "}
+          环视
+        </label>
+      </div>
+    </section>
+  );
 }
