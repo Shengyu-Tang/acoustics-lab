@@ -129,6 +129,7 @@ assert.ok(exported.includes("subplot("));
 assert.ok(exported.includes("xline("));
 assert.ok(exported.includes("yline("));
 assert.ok(!exported.includes("undefined"));
+assert.ok(exported.includes("'MarkerIndices',[1]"));
 const records = csv([powerPanel(instrument)]).split("\r\n");
 assert.ok(records.some((r) => r.includes(String(s.f1))));
 assert.ok(records.some((r) => r.includes(String(s.f2))));
