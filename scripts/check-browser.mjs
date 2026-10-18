@@ -23,6 +23,64 @@ const server = spawn(
 );
 let context;
 const errors = [];
+const solutionReview = [];
+const routeReview = [];
+async function auditExpandedSolutions(page, id, width, capture = false) {
+  await page.locator(".reference-solution").evaluateAll((nodes) => {
+    nodes.forEach((el) => {
+      el.open = true;
+    });
+  });
+  await page.evaluate(() => document.fonts.ready);
+  const check = async () => {
+    await checkSolutionNotation(page);
+    assert.equal(await page.locator(".katex-error").count(), 0, `${id}: solution equations`);
+    assert.equal(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+      width,
+      `${id}: expanded solution overflow`,
+    );
+  };
+  await check();
+  if (capture) {
+    const size = width === 1440 ? "desktop" : "mobile";
+    await page
+      .locator(".reference-solution")
+      .first()
+      .screenshot({
+        path: `outputs/browser-screenshots/p5-review/${id}-solution-${size}.png`,
+      });
+    await page
+      .locator(".solution-content")
+      .first()
+      .evaluate((el) => window.scrollTo(0, scrollY + el.getBoundingClientRect().top - 70));
+    await page.screenshot({
+      path: `outputs/browser-screenshots/p5-review/${id}-viewport-${size}.png`,
+    });
+  }
+  // Exercise each worksheet's real input handlers as well as its initial state.
+  for (const worksheet of await page.locator(".calculation-example").all()) {
+    const field = worksheet.locator("tbody input[type=number]").first();
+    const original = await field.inputValue();
+    const before = await worksheet.locator(".solution-content").textContent();
+    const alternate =
+      original === (await field.getAttribute("max"))
+        ? await field.getAttribute("min")
+        : await field.getAttribute("max");
+    await field.fill(alternate);
+    await field.blur();
+    assert.notEqual(
+      await worksheet.locator(".solution-content").textContent(),
+      before,
+      `${id}: solution reacts to edited conditions`,
+    );
+    await check();
+    await field.fill(original);
+    await field.blur();
+  }
+  await check();
+  solutionReview.push({ id, width, defaultAndEdited: true, passed: true });
+}
 // Include decoded thumbnails in full-page captures, including images below the fold.
 async function readyForScreenshot(page) {
   await page.evaluate(async () => {
@@ -507,7 +565,20 @@ try {
     for (const [i, t] of topics.entries()) {
       await page.goto("http://127.0.0.1:4174/#/lab?topic=" + t.id);
       await page.getByRole("heading", { name: t.id + " " + t.title, exact: true }).waitFor();
-      if (fs.existsSync(`src/content/lectures/${t.id}.ts`)) await checkSolutionNotation(page);
+      routeReview.push({ hash: `#/lab?topic=${t.id}`, width });
+      if (fs.existsSync(`src/content/lectures/${t.id}.ts`)) {
+        await auditExpandedSolutions(
+          page,
+          t.id,
+          width,
+          ["1.2.3", "1.2.4", "3.5.1", "3.7.1"].includes(t.id),
+        );
+        await page.locator(".reference-solution").evaluateAll((nodes) => {
+          nodes.forEach((el) => {
+            el.open = false;
+          });
+        });
+      }
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, t.id);
       assert.equal(await page.title(), `${t.id} ${t.title} · 声学基础 · 中国海洋大学`);
       await checkParameterLayout(page);
@@ -684,6 +755,9 @@ try {
       "#/about",
       "#/map",
       "#/compare",
+      "#/compare?experiment=layer",
+      "#/compare?experiment=array",
+      "#/compare?experiment=duct",
       ...JSON.parse(fs.readFileSync("src/projects.json", "utf8")).map(
         (p) => `#/cases?project=${p.id}`,
       ),
@@ -692,16 +766,17 @@ try {
       await page.goto("http://127.0.0.1:4174/" + hash);
       await page.locator("header").waitFor();
       await page.waitForTimeout(200);
+      await readyForScreenshot(page);
+      routeReview.push({ hash, width });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, hash);
       if (hash.startsWith("#/cases")) {
         await checkCaseIndex(page);
-        await page.locator(".reference-solution summary").click();
-        await checkSolutionNotation(page);
-        assert.equal(await page.locator(".katex-error").count(), 0, `${hash}: solution equations`);
-        assert.equal(
-          await page.evaluate(() => document.documentElement.scrollWidth),
+        const id = new URLSearchParams(hash.split("?")[1]).get("project");
+        await auditExpandedSolutions(
+          page,
+          `case-${id ?? "index"}`,
           width,
-          `${hash}: expanded solution overflow`,
+          ["duct", "industry", "music", "ultrasound"].includes(id),
         );
       }
       if (hash === "#/calendar") {
@@ -926,6 +1001,21 @@ try {
     }
   }
   assert.deepEqual(errors, [], "Browser console errors");
+  assert.equal(solutionReview.filter((r) => !r.id.startsWith("case-")).length, 79 * 2);
+  assert.equal(solutionReview.filter((r) => /^case-(?!index)/.test(r.id)).length, 9 * 2);
+  fs.writeFileSync(
+    "outputs/p5-review-report.json",
+    JSON.stringify(
+      {
+        solutionReview,
+        routeReview,
+        errors,
+        indexWidths: [1440, 1024, 769, 768, 640, 390, 320],
+      },
+      null,
+      2,
+    ),
+  );
   fs.writeFileSync(
     "outputs/browser-report.json",
     JSON.stringify(
