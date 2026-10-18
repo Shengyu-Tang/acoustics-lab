@@ -59,13 +59,13 @@ export default problem({
   asks: [
     question(
       "approaching",
-      "(1) 接近位置的接收频率",
+      "(1) 接近位置的多普勒频移",
       "Hz",
-      String.raw`f_a=\frac{f_sc}{c-v_sx_o/\sqrt{x_o^2+d^2}}`,
-      "fq(-xobs,d)",
-      (p) => frequency(p, -p.xobs),
+      String.raw`\Delta f_a=\frac{f_sc}{c-v_sx_o/\sqrt{x_o^2+d^2}}-f_s`,
+      "fq(-xobs,d)-f",
+      (p) => frequency(p, -p.xobs) - p.f,
       (p) =>
-        `${p.f} Hz × ${p.c} m/s / [${p.c} m/s − ${p.v} m/s × ${p.xobs} m / ${fmt(distance(p, p.xobs))} m]。`,
+        `${p.f} Hz × ${p.c} m/s / [${p.c} m/s − ${p.v} m/s × ${p.xobs} m / ${fmt(distance(p, p.xobs))} m] − ${p.f} Hz。`,
     ),
     question(
       "receding",
@@ -129,11 +129,11 @@ export default problem({
       p,
       "车辆通过时的音调与总声级变化",
       "沿道路的发声位置 x (m)",
-      "接收频率 (Hz)",
+      "多普勒频移 (Hz)",
       [-200, 200],
       "[-200 200]",
       [
-        line("现有退距的接收频率", (x) => frequency(p, x), [-200, 200], "fq(x,d)"),
+        line("现有退距的多普勒频移", (x) => frequency(p, x) - p.f, [-200, 200], "fq(x,d)-f"),
         { ...line("现有退距的总声级", (x) => total(p, x), [-200, 200], "tot(x,d)"), axis: "right" },
         {
           ...line(
@@ -148,8 +148,8 @@ export default problem({
           ...line("总声压级限值", () => p.limit, [-200, 200], "limit+zeros(size(x))", "--"),
           axis: "right",
         },
-        dot("接近时记录音调", -p.xobs, frequency(p, -p.xobs), "-xobs", "fq(-xobs,d)"),
-        dot("离开时记录音调", p.xobs, frequency(p, p.xobs), "xobs", "fq(xobs,d)"),
+        dot("接近时记录频移", -p.xobs, frequency(p, -p.xobs) - p.f, "-xobs", "fq(-xobs,d)-f"),
+        dot("离开时记录频移", p.xobs, frequency(p, p.xobs) - p.f, "xobs", "fq(xobs,d)-f"),
       ],
       setup,
       {

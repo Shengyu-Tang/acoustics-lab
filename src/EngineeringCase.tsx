@@ -1,17 +1,19 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import ExampleWorksheet from "./ExampleWorksheet";
 import type { EngineeringProblem } from "./content/cases/shared";
 import { fmt } from "./content/p1";
 import { download, matlab } from "./plot/export";
 import caseLinks from "./cases.json";
+import projects from "./projects.json";
 export function EngineeringWorksheet({ problem: e }: { problem: EngineeringProblem }) {
   const [p, setP] = useState({ ...e.defaults });
   const solution = Object.fromEntries(e.asks.map((a) => [a.key, a.calc(p)]));
   const panel = e.plot(p);
   const additionalPanels = e.additionalPlots?.(p) ?? [];
+  const figureId = `综合案例${projects.findIndex((p) => p.id === e.id) + 1}`;
   return (
     <ExampleWorksheet
-      example={e}
+      example={{ ...e, id: figureId }}
       p={p}
       setParameter={(key, value) => setP({ ...p, [key]: value })}
       solution={solution}
@@ -24,7 +26,7 @@ export function EngineeringWorksheet({ problem: e }: { problem: EngineeringProbl
       note={e.assumptions}
       panel={panel}
       additionalPanels={additionalPanels}
-      caption={`图 ${e.id}-1　${panel.title}`}
+      caption={`图 ${figureId}-1　${panel.title}`}
       exportScript={() =>
         download(
           matlab([panel, ...additionalPanels], 1 + additionalPanels.length, 1, e.title),

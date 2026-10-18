@@ -122,19 +122,19 @@ export default problem({
       "当前弦与调音后候选阻尼的衰减包络",
       "时间 t (s)",
       "相对初始振幅级 (dB)",
-      [0, 15],
-      "[0 15]",
+      [0, 5],
+      "[0 5]",
       [
         line(
           "当前张力与损耗",
           (t) => ((-20 / Math.LN10) * Math.PI * f0(p) * t) / p.Q,
-          [0, 15],
+          [0, 5],
           "level(x,fInitial,Q)",
         ),
         line(
           "目标音高与候选损耗",
           (t) => ((-20 / Math.LN10) * Math.PI * p.target * t) / p.designQ,
-          [0, 15],
+          [0, 5],
           "level(x,target,designQ)",
         ),
         dot("候选衰减六十分贝", tail(p.target, p.designQ), -60, "tail(target,designQ)", "-60"),
@@ -146,4 +146,21 @@ export default problem({
       },
       { annotations: ["-60", "tailLimit"] },
     ),
+  additionalPlots: (p) => [
+    physical(
+      p,
+      "目标基频与允许张力的联合校核",
+      "基频 f (Hz)",
+      "所需张力 (N)",
+      [200, 500],
+      "[200 500]",
+      [
+        line("调音张力", (f) => p.mu * (2 * p.L * f) ** 2, [200, 500], "mu*(2*L*x).^2"),
+        dot("目标张力", p.target, tension(p), "target", "tunedT"),
+      ],
+      setup,
+      { annotations: [ymark(p.tensionLimit, "允许张力上限")] },
+      { annotations: ["tensionLimit"] },
+    ),
+  ],
 });

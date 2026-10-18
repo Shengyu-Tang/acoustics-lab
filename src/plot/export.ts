@@ -108,7 +108,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       : ["% Exported current data; SI units unless an axis specifies otherwise."]),
     "set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');",
     "set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');",
-    `figure('Color','w','Position',[80 80 ${640 * cols} ${520 * rows}]);`,
+    `figure('Color','w','Position',[80 80 ${640 * cols} ${Math.max(520, ...panels.map((p) => p.matlabModel?.figureHeight ?? 520)) * rows}]);`,
   ];
   panels.forEach((original, k) => {
     const m = original.matlabModel ? { ...original.matlabModel } : undefined;
@@ -268,9 +268,9 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           out.push(`xline(${value},'--','HandleVisibility','off');`);
           return;
         }
-        const lane = p.staggeredAnnotations
-          ? ai + 1
-          : (labels.find((l) => l.text === a.label)?.lane ?? 0);
+        const lane =
+          m?.annotationLanes?.[ai] ??
+          (p.staggeredAnnotations ? ai + 1 : (labels.find((l) => l.text === a.label)?.lane ?? 0));
         const dynamicLabel = a.label
           ? (m?.annotationLabels?.[ai] ??
             (m?.annotations?.[ai] && !a.label.startsWith("Qₘ=")
@@ -284,7 +284,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           : dynamicLabel;
         out.push(
           a.axis === "x"
-            ? `xline(${value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','${xs(a.value) < 0.2 ? "right" : "left"}','HandleVisibility','off');`
+            ? `xline(${value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','${m?.annotationLabelAlignments?.[ai] ?? (xs(a.value) < 0.2 ? "right" : "left")}','HandleVisibility','off');`
             : `yline(${value},'--',${dynamicLabel},'Interpreter','tex','LabelVerticalAlignment','${a.labelPosition === "below-left" || a.value < (p.ylim[0] + p.ylim[1]) / 2 ? "bottom" : "top"}','LabelHorizontalAlignment','${a.labelPosition === "below-left" ? "left" : "right"}','HandleVisibility','off');`,
         );
       });

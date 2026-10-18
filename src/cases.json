@@ -1,4 +1,4 @@
-﻿{
+{
   "free": "industry",
   "energy": "music",
   "damp": "industry",
@@ -30,5 +30,10 @@
   "reciprocity": "measurement",
   "absorption": "ocean",
   "doppler": "transport",
-  "sonar": "ocean"
+  "sonar": "ocean",
+  "echo": "building",
+  "image": "ocean",
+  "scatter": "measurement",
+  "cylinder": "ultrasound",
+  "mechanism": "ocean"
 }

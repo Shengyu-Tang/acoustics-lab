@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import Home from "./Home";
 import Footer from "./Footer";
 import catalog from "./content/homeCatalog.json";
+import projects from "./projects.json";
 import "./style.css";
 import "./redesign.css";
 const Lab = lazy(() => import("./Lab")),
@@ -38,7 +39,14 @@ function App() {
             (t) => t.id === new URLSearchParams(hash.split("?")[1]).get("topic"),
           ) ?? catalog.topics[0])
         : null;
-    const title = topic ? `${topic.id} ${topic.title}` : names[route];
+    const title = topic
+      ? `${topic.id} ${topic.title}`
+      : route === "#/cases"
+        ? (
+            projects.find((p) => p.id === new URLSearchParams(hash.split("?")[1]).get("project")) ??
+            projects[0]
+          ).title
+        : names[route];
     document.title = `${title ? title + " · " : ""}声学基础 · 中国海洋大学`;
   }, [hash, route]);
   return (

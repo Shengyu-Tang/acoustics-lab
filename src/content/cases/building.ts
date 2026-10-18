@@ -15,7 +15,7 @@ export default problem({
   criterion:
     "在 20 mm 至施工厚度上限内，以 1 mm 为步长，要求 500:10:2000 Hz 每个校核频率的正入射吸声系数严格大于给定限值，选择最薄方案；无可行厚度填 0。",
   assumptions:
-    "空气、刚性背衬、高孔隙率纤维材料，采用德拉尼—巴兹利经验式与时间因子 e^{jωt}。当前流阻率范围使整个频带的 ρf/σ 保持在 0.01–1 内。离散频带设计应在实物阻抗管试验中复核，不能直接保证整厅语音清晰度。",
+    "空气、刚性背衬、高孔隙率纤维材料，采用德拉尼—巴兹利经验式与时间因子 $e^{j\\omega t}$。当前流阻率范围使整个频带的 $\\rho f/\\sigma$ 保持在 0.01–1 内。离散频带设计应在实物阻抗管试验中复核，不能直接保证整厅语音清晰度。",
   sources: [
     {
       title: "德拉尼—巴兹利模型、系数及有效范围",
@@ -24,6 +24,8 @@ export default problem({
   ],
   defaults: p,
   given: [
+    parameter("rho", "空气静态密度", "ρ_0", "kg/m³", 1.15, 1.3, 0.01),
+    parameter("c", "空气声速", "c", "m/s", 330, 350, 1),
     parameter("d", "初始铺设厚度", "d", "m", 0.02, 0.15, 0.001),
     parameter("sigma", "空气纤维流阻率", "σ", "Pa·s/m²", 5000, 20000, 100),
     parameter("minimum", "频带吸声系数下限", "α_{lim}", "—", 0.4, 0.9, 0.01),
@@ -92,13 +94,15 @@ export default problem({
       "[500 2000]",
       [
         line(
-          "初始铺设厚度",
+          `初始厚度 ${fmt(p.d * 1000)} mm`,
           (f) => porous(f, p.d, p.sigma, p.rho, p.c).alpha,
           [500, 2000],
           "p4Porous(x,d,sigma,rho,c)",
         ),
         line(
-          "设计层（无解时显示厚度上限）",
+          design(p)
+            ? `合格厚度 ${fmt(design(p) * 1000)} mm`
+            : `无解，厚度上限 ${fmt(p.maximum * 1000)} mm`,
           (f) => porous(f, design(p) || p.maximum, p.sigma, p.rho, p.c).alpha,
           [500, 2000],
           "p4Porous(x,plotD,sigma,rho,c)",
@@ -107,6 +111,13 @@ export default problem({
       ],
       setup,
       { answerKey: "thickness", annotations: [ymark(p.minimum, "频带吸声系数下限")] },
-      { annotations: ["minimum"] },
+      {
+        annotations: ["minimum"],
+        legendNames: [
+          "sprintf('初始厚度 %.4g mm',d*1000)",
+          "sprintf('设计层厚度 %.4g mm（无解时为上限）',plotD*1000)",
+          "'初始层低频校核'",
+        ],
+      },
     ),
 });

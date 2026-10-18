@@ -1,6 +1,8 @@
 import type { P1Example, Values, Ask } from "../p1";
 import { example, parameter, ask, fmt } from "../p2";
 import { physical, line, dot, xmark, ymark, value } from "../../plot/physicalExample";
+import type { Panel } from "../../plot/types";
+import { axisTicks } from "../../plot/ticks";
 export { parameter, ask, fmt, physical, line, dot, xmark, ymark, value };
 export type { Values, Ask };
 export type EngineeringProblem = P1Example & {
@@ -25,12 +27,27 @@ export function problem(data: EngineeringProblem): EngineeringProblem {
     ...data,
     ...e,
     hints: data.hints,
-    plot: (p) => {
-      const panel = e.plot(p);
-      panel.matlabModel!.parameters = panel.matlabModel!.parameters.filter(
-        (d) => d.key !== "tView",
-      );
-      return panel;
+    plot: (p) => casePanel(e.plot(p)),
+    additionalPlots: data.additionalPlots
+      ? (p) => data.additionalPlots!(p).map(casePanel)
+      : undefined,
+  };
+}
+function casePanel(q: Panel): Panel {
+  let lane = 0;
+  const ylim = q.coordinateY ? axisTicks(q.ylim).limits : q.ylim;
+  return {
+    ...q,
+    ylim,
+    staggeredAnnotations: true,
+    matlabModel: {
+      ...q.matlabModel!,
+      ...(q.coordinateY ? { ylim: `[${ylim.join(" ")}]` } : {}),
+      figureHeight: 640,
+      annotationLanes: q.annotations?.map((a) => (a.axis === "x" ? lane++ / 2 : 0)),
+      annotationLabelAlignments: q.annotations?.map((a) =>
+        (a.value - q.xlim[0]) / (q.xlim[1] - q.xlim[0]) < 0.5 ? "right" : "left",
+      ),
     },
   };
 }

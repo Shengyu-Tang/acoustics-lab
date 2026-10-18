@@ -6,6 +6,7 @@ import {
   line,
   dot,
   xmark,
+  ymark,
   fmt,
   type Values,
 } from "./shared";
@@ -135,8 +136,13 @@ export default problem({
       setup + "RP=(res+1i*react-1)/(res+1i*react+1);",
       {
         answerKey: "reflection",
+        annotations: [
+          ymark(1 + reflection(p), "波腹幅值 1+|R_p|"),
+          ymark(1 - reflection(p), "波节幅值 1−|R_p|"),
+        ],
         responseNote: `截止频率 ${fmt(cutoff(p))} Hz；所选高度 ${fmt(height(p))} m；诊断群速度 ${fmt(cg(p, p.testF, 1))} m/s。`,
       },
+      { annotations: ["1+rp", "1-rp"] },
     );
   },
   additionalPlots: (p) => [

@@ -1,9 +1,11 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import { engineeringCases } from "./content/cases";
 import { EngineeringWorksheet } from "./EngineeringCase";
 import topics from "./topics.json";
 import { MathProse } from "./Math";
+import { ComparisonLinks } from "./Comparisons";
+import projects from "./projects.json";
 export default function Projects() {
   const selection = () =>
     new URLSearchParams(location.hash.split("?")[1]).get("project") ?? "ocean";
@@ -53,6 +55,7 @@ export default function Projects() {
             ))}
           </p>
           <EngineeringWorksheet key={current.id} problem={current} />
+          <ComparisonLinks models={projects.find((p) => p.id === current.id)!.models} />
           <h2>模型条件与来源</h2>
           <p>
             <MathProse text={current.assumptions} />

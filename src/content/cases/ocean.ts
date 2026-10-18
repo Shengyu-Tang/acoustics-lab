@@ -1,4 +1,4 @@
-﻿import { problem, parameter, question, physical, line, dot, ymark, fmt } from "./shared";
+import { problem, parameter, question, physical, line, dot, ymark, fmt } from "./shared";
 import { beamWidth, thorpDbKm, spreadingLoss } from "../../physics/engineering";
 const p = {
   rho: 1025,
