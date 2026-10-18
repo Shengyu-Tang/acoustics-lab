@@ -1,7 +1,7 @@
-import ScriptText from "../ScriptText";
+﻿import ScriptText from "../ScriptText";
 import { MathProse } from "../MathProse";
 import { useLayoutEffect, useId, useMemo, useRef, useState } from "react";
-import { COLORS, fieldColor, fieldLimits, type Panel, type Series } from "./types";
+import { COLORS, fieldFill, fieldColor, fieldLimits, type Panel, type Series } from "./types";
 import { csv, download, matlab, png } from "./export";
 export * from "./types";
 export { csv, matlab } from "./export";
@@ -29,7 +29,7 @@ export function ThumbnailAxes({ panel }: { panel: Panel }) {
               y={2 + (46 * (p.field!.y.length - 1 - j)) / p.field!.y.length}
               width={96 / p.field!.x.length + 0.1}
               height={46 / p.field!.y.length + 0.1}
-              fill={fieldColor(z, fieldLimits(p.field!), p.field!.map)}
+              fill={fieldFill(p.field!, z)}
             />
           )),
         )}
@@ -193,7 +193,7 @@ export function Axes({
   let L = 62,
     AW = W - L - (p.kind === "polar" ? 130 : p.field || p.rightLabel ? 88 : 24);
   const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
-  const legendSeries = (p.series ?? [])
+  const legendSeries = ([...(p.series ?? []), ...(p.field?.categories ?? []).map(c => ({name:c.label, legend:true, points:[], color:c.color, marker:"s" as const, style:"none" as const}))])
     .map((s, i) => ({ ...s, color: s.color ?? COLORS[i % COLORS.length] }))
     .filter((s) => s.legend !== false);
   const legendW = Math.min(
@@ -274,7 +274,7 @@ export function Axes({
       const limits = fieldLimits(field);
       field.z.forEach((row, j) =>
         row.forEach((z, i) => {
-          ctx.fillStyle = fieldColor(z, limits, field.map);
+          ctx.fillStyle = fieldFill(field, z);
           ctx.fillRect(i, field.y.length - 1 - j, 1, 1);
         }),
       );
@@ -380,7 +380,7 @@ export function Axes({
                   AH
                 }
                 preserveAspectRatio="none"
-                style={{ imageRendering: "auto" }}
+                style={{ imageRendering: field.categories ? "pixelated" : "auto" }}
               />
             )}
             {p.series?.map((s, i) => (
@@ -486,7 +486,7 @@ export function Axes({
           ))}
         </>
       )}
-      {field && (
+      {field && !field.categories && (
         <>
           {Array.from({ length: 64 }, (_, i) => (
             <rect
@@ -576,7 +576,7 @@ export function Axes({
                 <g
                   transform="translate(8 -3)"
                   stroke={s.color ?? COLORS[i % COLORS.length]}
-                  fill="white"
+                  fill={p.field?.categories?.some(c => c.label === s.name) ? s.color : "white"}
                 >
                   {s.marker === "o" ? (
                     <circle r="3" />
@@ -744,3 +744,4 @@ export default function Figure({
     </figure>
   );
 }
+

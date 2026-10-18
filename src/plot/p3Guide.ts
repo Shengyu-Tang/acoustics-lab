@@ -199,7 +199,7 @@ export function guideFigure(id: string, p: Values, t = 0): Panel[] {
         guideSetup +
           "[XX,YY]=meshgrid(linspace(0,3000,161),linspace(0,5,81));Pfield=double(XX>round(YY)*c/(2*h));",
         {
-          field: { x: xs, y: ys, z, limits: [0, 1], map: "parula", label: "可传播为一，截止为零" },
+          field: { x: xs, y: ys, z, limits: [0, 1], categories: [{value: 0, label: "截止", color: "#eeeeee"}, {value: 1, label: "可传播", color: "#b6d5f0"}], label: "传播类别" },
         },
         { field: { x: "linspace(0,3000,161)", y: "linspace(0,5,81)", z: "Pfield" } },
       ),

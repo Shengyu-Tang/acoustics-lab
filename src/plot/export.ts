@@ -129,17 +129,19 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         `field_x=${m?.field?.x ?? vector(f.x)}; field_y=${m?.field?.y ?? vector(f.y)}; field_z=${m?.field?.z ?? `[${f.z.map((r) => r.join(" ")).join(";\n")}]`};`,
         `im=imagesc(field_x,field_y,field_z);`,
         ...(m ? [`model_fields{${k + 1}}=struct('x',field_x,'y',field_y,'z',field_z);`] : []),
-        "if isprop(im,'Interpolation'), im.Interpolation='bilinear'; end",
+        `if isprop(im,'Interpolation'), im.Interpolation='${f.categories ? "nearest" : "bilinear"}'; end`,
+        "set(im,'HandleVisibility','off');",
         "set(gca,'YDir','normal');",
         `caxis(${vector(fieldLimits(f))});`,
       );
       out.push(
         `% ${f.map ?? "parula"}, identical 64 colors to browser`,
-        `colormap(gca,[${colorTable(f.map)
+        `colormap(gca,[${(f.categories ? f.categories.map(c => c.color.match(/[a-f0-9]{2}/gi)!.map(h => parseInt(h,16))) : colorTable(f.map))
           .map((rgb) => rgb.join(" "))
           .join(";")}]/255);`,
       );
-      out.push(`cb=colorbar; ylabel(cb,${tex(f.label)},'Interpreter','tex');`);
+      if (f.categories) f.categories.forEach(c => out.push(`patch(NaN,NaN,${quote(c.color)},'DisplayName',${tex(c.label)});`));
+      else out.push(`cb=colorbar; ylabel(cb,${tex(f.label)},'Interpreter','tex');`);
     }
     p.bands?.forEach((b) => {
       if (m?.ylim) out.push(`band_limits=${m.ylim};`);
@@ -272,7 +274,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         ? "grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');",
     );
-    if (p.legend !== false && plotSeries.some((s) => s.legend !== false)) {
+    if (p.legend !== false && (p.field?.categories?.length || plotSeries.some((s) => s.legend !== false))) {
       out.push(
         `lgd=legend('show','Location','${p.kind === "polar" ? "northeastoutside" : "best"}','Color','w','Box','on','Interpreter','tex');`,
       );

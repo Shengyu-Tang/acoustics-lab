@@ -31,6 +31,7 @@ export type Series = {
   legend?: boolean;
 };
 export type Field = {
+  categories?: { value: number; label: string; color: string }[];
   x: number[];
   y: number[];
   z: number[][];
@@ -86,4 +87,8 @@ export function fieldColor(value: number, limits: [number, number], map = "parul
 }
 export function fieldLimits(f: Field): [number, number] {
   return f.limits ?? [Math.min(...f.z.flat()), Math.max(...f.z.flat())];
+}
+
+export function fieldFill(f: Field, value: number) {
+ return f.categories?.find(c => c.value === value)?.color ?? fieldColor(value,fieldLimits(f),f.map);
 }
