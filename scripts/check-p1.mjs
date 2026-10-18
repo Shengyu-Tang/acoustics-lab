@@ -150,6 +150,7 @@ const references = {
   2.1: [418.3300133, 0.00155379719],
   2.2: [321.7923179, 130.8736],
   2.3: [5047.544651, 0.860333589, 691.128],
+  2.4: [5000, 196.25],
 };
 near(all.stringSpeed(70, 0.0004), 418.330013267, 1e-10);
 for (const alpha of [0.1, 0.3, 0.5, 0.9])
@@ -238,6 +239,21 @@ for (const l of lectures) {
   near(light, Math.PI / 2, 1e-6);
   const heavy = all.loadedRodRoots(7850, 0.0001, 1, 1e6)[0];
   near(heavy, Math.sqrt(0.785 / 1e6), 1e-6);
+  for (const L of [0.2, 1, 2])
+    for (let n = 1; n <= 6; n++) {
+      near(all.rodFrequency(n, 5000, L, "free-free"), (n * 2500) / L);
+      near(all.rodFrequency(n, 5000, L, "fixed-free"), ((2 * n - 1) * 1250) / L);
+    }
+  near(all.rodFrequency(0, 5000, 1, "free-free"), 0);
+  const steel = all.rodSpeed(200e9, 7850);
+  near(all.rodFrequency(1, steel, 1, "free-free"), 2523.772325625, 1e-10);
+  near(all.youngFromFrequency(2500, 1, 7850).c, 5000);
+  near(all.youngFromFrequency(2500, 1, 7850).E, 196.25e9);
+  for (const f of [500, 2500, 10000])
+    for (const L of [0.2, 1, 2]) {
+      const e = all.youngFromFrequency(f, L, 7850);
+      near(all.rodFrequency(1, Math.sqrt(e.E / 7850), L, "free-free"), f);
+    }
   const e = l.examples[0];
   assert.equal(e.hints.length, 2);
   assert.ok(references[l.id], `Independent reference values missing: ${l.id}`);

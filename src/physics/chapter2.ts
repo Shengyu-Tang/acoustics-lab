@@ -2,6 +2,16 @@
 export const stringSpeed = (tension: number, linearDensity: number) =>
   Math.sqrt(tension / linearDensity);
 export const rodSpeed = (E: number, rho: number) => Math.sqrt(E / rho);
+export const rodFrequency = (
+  n: number,
+  c: number,
+  L: number,
+  boundary: "free-free" | "fixed-free",
+) => (boundary === "free-free" ? (n * c) / (2 * L) : ((2 * n - 1) * c) / (4 * L));
+export function youngFromFrequency(f: number, L: number, rho: number) {
+  const c = 2 * L * f;
+  return { c, E: rho * c * c };
+}
 export function loadedRodRoots(rho: number, S: number, L: number, tipMass: number, count = 3) {
   const alpha = (rho * S * L) / tipMass;
   return Array.from({ length: count }, (_, n) => {
