@@ -377,6 +377,29 @@ try {
         await page.waitForTimeout(150);
         await page.getByRole("button", { name: "暂停", exact: true }).click();
       }
+      if (l.boundaryEquations) {
+        const select = page.getByRole("combobox", { name: "右端边界条件", exact: true });
+        for (let boundary = 0; boundary < 4; boundary++)
+          await select.selectOption(String(boundary));
+        await select.selectOption("0");
+      }
+      if (l.id === "2.1") {
+        const graph = page.locator(".matlab-figure").first(),
+          box = await graph.boundingBox();
+        const height = page.getByRole("spinbutton", { name: "初始挠度数值", exact: true }),
+          before = await height.inputValue();
+        await graph.scrollIntoViewIfNeeded();
+        const visible = await graph.boundingBox();
+        await page.mouse.move(visible.x + visible.width / 2, visible.y + visible.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(visible.x + visible.width / 2, visible.y + visible.height / 3);
+        await page.mouse.up();
+        assert.notEqual(
+          await height.inputValue(),
+          before,
+          "Dragging string changes the deflection",
+        );
+      }
       fs.mkdirSync("screenshots/p1", { recursive: true });
       await page.screenshot({ path: `screenshots/p1/${l.id}-${width}.png`, fullPage: true });
     }

@@ -11,7 +11,7 @@ await build({
       files
         .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
         .join("") +
-      "export * from './src/physics/p1';export {axisTicks} from './src/plot/ticks';export {matlab} from './src/plot/export';",
+      "export * from './src/physics/p1';export * from './src/physics/chapter2';export {axisTicks} from './src/plot/ticks';export {matlab} from './src/plot/export';",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -147,7 +147,20 @@ const references = {
   "1.2.1": [3.926990817, 0.01],
   "1.2.2": [0.002538365414, 7.917858446],
   "1.2.3": [0.3014561, 0.9189974078],
+  2.1: [418.3300133, 0.00155379719],
 };
+near(all.stringSpeed(70, 0.0004), 418.330013267, 1e-10);
+for (const T of [20, 70, 180, 300])
+  for (const mu of [0.0001, 0.0004, 0.005])
+    for (const L of [0.3, 0.65, 1.5]) {
+      const c = all.stringSpeed(T, mu);
+      near(c * c, T / mu);
+      for (let n = 1; n <= 6; n++)
+        near(all.stringFrequency(n, c, L), (n * Math.sqrt(T / mu)) / (2 * L));
+      const e = all.stringElement(T, L, 0.01);
+      near(e.leftY, e.rightY);
+      assert.ok(e.netY < 0);
+    }
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);
 for (const l of lectures) {
@@ -181,6 +194,7 @@ for (const l of lectures) {
   e.asks.forEach((a, i) => near(a.calc(e.defaults), references[l.id][i], 0.0049));
   for (const config of [
     l.defaults,
+    ...(l.boundaryEquations ?? []).map((_, boundary) => ({ ...l.defaults, boundary })),
     ...l.parameters.flatMap((d) => [
       { ...l.defaults, [d.key]: d.min },
       { ...l.defaults, [d.key]: d.max },

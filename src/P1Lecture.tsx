@@ -107,15 +107,66 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
             <output>时间 t = {fmt(t)} s（慢放，坐标固定）</output>
           </div>
         )}
-        {l.figures.map((f) => (
-          <Figure
+        {l.boundaryEquations && (
+          <p>
+            <MathText tex={l.boundaryEquations[p.boundary]} />
+          </p>
+        )}
+        {l.id === "2.1" && (
+          <p>
+            拖动第一张图的弦形可改变初始挠度；也可使用数值框或滑块。箭头为张力方向示意，分力数值见读数表。
+          </p>
+        )}
+        {l.figures.map((f, index) => (
+          <div
             key={f.number}
-            name={f.number}
-            caption={`图 ${f.number}　${f.title}`}
-            rows={f.rows}
-            cols={f.cols}
-            panels={f.plot(p, t)}
-          />
+            style={{ touchAction: l.id === "2.1" && index === 0 ? "none" : undefined }}
+            onPointerDown={
+              l.id === "2.1" && index === 0
+                ? (event) => {
+                    if ((event.target as HTMLElement).closest("button")) return;
+                    setPlaying(false);
+                    event.currentTarget.setPointerCapture(event.pointerId);
+                    const box = event.currentTarget.getBoundingClientRect();
+                    setParameter(
+                      "height",
+                      Math.max(
+                        -0.02,
+                        Math.min(0.02, (0.5 - (event.clientY - box.top) / box.height) * 0.08),
+                      ),
+                    );
+                  }
+                : undefined
+            }
+            onPointerMove={
+              l.id === "2.1" && index === 0
+                ? (event) => {
+                    if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+                    const box = event.currentTarget.getBoundingClientRect();
+                    setParameter(
+                      "height",
+                      Math.max(
+                        -0.02,
+                        Math.min(0.02, (0.5 - (event.clientY - box.top) / box.height) * 0.08),
+                      ),
+                    );
+                  }
+                : undefined
+            }
+            onPointerUp={(event) => {
+              if (event.currentTarget.hasPointerCapture(event.pointerId))
+                event.currentTarget.releasePointerCapture(event.pointerId);
+            }}
+          >
+            <Figure
+              key={f.number}
+              name={f.number}
+              caption={`图 ${f.number}　${f.title}`}
+              rows={f.rows}
+              cols={f.cols}
+              panels={f.plot(p, t)}
+            />
+          </div>
         ))}
         <fieldset className="parameter-panel">
           <legend>图形参数（SI 单位，作用于本讲全部图）</legend>
@@ -170,7 +221,7 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
               </select>
             </label>
           )}
-          {l.controls === "pluck" && (
+          {(l.controls === "pluck" || l.controls === "string-boundary") && (
             <div className="preset-buttons">
               <button onClick={() => setP({ ...p, T: 70, mu: 0.0004, L: 0.65 })}>吉他弦</button>
               <button onClick={() => setP({ ...p, T: 180, mu: 0.002, L: 1.2 })}>古筝弦</button>

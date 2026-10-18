@@ -32,3 +32,15 @@ export const segment = (name: string, points: Point[], style: Series["style"] = 
   points,
   style,
 });
+export function arrow(name: string, from: Point, to: Point, yPerX = 1): Series {
+  const dx = to[0] - from[0],
+    dy = (to[1] - from[1]) / yPerX,
+    h = 0.15;
+  return segment(name, [
+    from,
+    to,
+    [to[0] - h * dx + (h * dy) / 2, to[1] - (h * dy + (h * dx) / 2) * yPerX],
+    to,
+    [to[0] - h * dx - (h * dy) / 2, to[1] - (h * dy - (h * dx) / 2) * yPerX],
+  ]);
+}
