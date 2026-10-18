@@ -1,7 +1,5 @@
 import catalog from "./content/homeCatalog.json";
-import calendar from "./calendar.json";
 import Header from "./Header";
-import ScriptText from "./ScriptText";
 import { chapters } from "./catalog";
 const { topics, completed } = catalog;
 function Thumbnail({ id }: { id: string }) {
@@ -18,17 +16,6 @@ function Thumbnail({ id }: { id: string }) {
   );
 }
 export default function Home() {
-  const now = new Date(),
-    day = new Date(now.getFullYear(), now.getMonth(), now.getDate()),
-    monday = new Date(day);
-  monday.setDate(day.getDate() - ((day.getDay() + 6) % 7));
-  const end = new Date(monday);
-  end.setDate(end.getDate() + 7);
-  const week = calendar.filter((l) => {
-    const [y, m, d] = l.date.split(".").map(Number),
-      date = new Date(y, m - 1, d);
-    return date >= monday && date < end;
-  });
   return (
     <>
       <Header />
@@ -84,33 +71,6 @@ export default function Home() {
               ))}
             </tbody>
           </table>
-        </section>
-        <section>
-          <h2>本周课程</h2>
-          {week.length ? (
-            week.map((l) => (
-              <article key={l.date}>
-                <h3>
-                  {l.date} · 第 {l.week} 周
-                </h3>
-                <p>{l.title}</p>
-                <p>
-                  <ScriptText text={l.goals.join("；")} />
-                </p>
-                <p>
-                  {l.experiments.map((id) => (
-                    <a key={id} href={`#/lab?topic=${id}`}>
-                      第 {id} 讲　
-                    </a>
-                  ))}
-                </p>
-              </article>
-            ))
-          ) : (
-            <p>
-              本周教学日历未安排课程。<a href="#/calendar">查看全学期安排</a>。
-            </p>
-          )}
         </section>
         <section>
           <h2>任课教师</h2>

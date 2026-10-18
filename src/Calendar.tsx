@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import lessons from "./calendar.json";
-import topics from "./topics.json";
 
 const months = [
   { y: 2026, m: 9 },
@@ -106,14 +105,17 @@ export default function Calendar() {
                     <div>
                       <time>{l.date}</time>
                     </div>
-                    <h3>{l.title.split("；")[0]}</h3>
+                    <h3>
+                      第 {l.number} 次　{l.title}
+                    </h3>
                     <ul>
-                      {l.title
-                        .split("；")
-                        .slice(1)
-                        .map((s) => (
-                          <li key={s}>{s}</li>
-                        ))}
+                      {l.sections.map((section) => (
+                        <li key={section.id}>
+                          <a href={`#/lab?topic=${section.id}`}>
+                            {section.id} {section.title}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                     <p>
                       <strong>课堂讨论：</strong>
@@ -121,18 +123,18 @@ export default function Calendar() {
                     </p>
                     <details>
                       <summary>学习目标与课后任务</summary>
-                      <h4>学习目标</h4>
+
                       <ul>
                         {l.goals.map((g) => (
                           <li key={g}>{g}</li>
                         ))}
                       </ul>
                       <p>
-                        <strong>基础任务：</strong>
+                        <strong>课后任务：</strong>
                         {l.homework}
                       </p>
                       <p>
-                        <strong>提高任务：</strong>
+                        <strong>教学安排备注：</strong>
                         {l.extension}
                       </p>
                       {l.preview && (
@@ -142,13 +144,6 @@ export default function Calendar() {
                         </p>
                       )}
                     </details>
-                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                      {l.experiments.map((id) => (
-                        <a key={id} className="secondary" href={"#/lab?topic=" + id}>
-                          {topics.find((t) => t.id === id)?.title}
-                        </a>
-                      ))}
-                    </div>
                   </article>
                 ),
               )}
