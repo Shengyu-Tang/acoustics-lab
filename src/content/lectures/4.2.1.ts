@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { fieldBoundary } from "../../plot/p4Fields";
 import {
   makeLecture,
@@ -81,7 +82,7 @@ function field(p: Record<string, number>, t: number) {
     },
   );
 }
-export default makeLecture("4.2.1", {
+const completedLecture = makeLecture("4.2.1", {
   defaults: p,
   parameters: [f, a, v],
   animation: true,
@@ -194,3 +195,5 @@ export default makeLecture("4.2.1", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

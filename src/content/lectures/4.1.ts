@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import {
   makeLecture,
   parameter,
@@ -43,7 +44,7 @@ const asks = [
   ),
 ];
 const setup = "[Rs,Xs,Prad,Ms]=p4Sphere(a,f,rho,c,v);";
-export default makeLecture("4.1", {
+const completedLecture = makeLecture("4.1", {
   defaults: p,
   parameters: [f, a, Rm],
   keyPoints: [
@@ -223,3 +224,5 @@ export default makeLecture("4.1", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

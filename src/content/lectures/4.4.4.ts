@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import {
   makeLecture,
   parameter,
@@ -60,7 +61,7 @@ const asks = [
     substitution,
   ),
 ];
-export default makeLecture("4.4.4", {
+const completedLecture = makeLecture("4.4.4", {
   defaults: p,
   parameters: [f, a, v],
   keyPoints: [
@@ -223,3 +224,5 @@ export default makeLecture("4.4.4", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);
