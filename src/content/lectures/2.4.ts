@@ -57,20 +57,20 @@ export default lecture(
             return {
               ...panel(
                 `自由—自由第 ${n} 阶：${fmt(rodFrequency(n, c, p.L, "free-free"))} Hz`,
-                "轴向位置 z/L (—)",
+                "轴向位置 z (m)",
                 "归一化纵向位移 (—)",
-                [0, 1],
+                [0, 2],
                 [-1.5, 1.5],
                 [
                   {
                     name: "位移振型",
-                    points: sample((r) => Math.cos(n * Math.PI * r) * phase, 0, 1),
+                    points: sample((r) => Math.cos((n * Math.PI * r) / p.L) * phase, 0, p.L),
                   },
                   {
                     name: "自由端",
                     points: [
                       [0, phase],
-                      [1, Math.cos(n * Math.PI) * phase],
+                      [p.L, Math.cos(n * Math.PI) * phase],
                     ],
                     style: "none",
                     marker: "o",
@@ -79,7 +79,7 @@ export default lecture(
                     name: "位移波节",
                     points: Array.from(
                       { length: n },
-                      (_, j) => [(2 * j + 1) / (2 * n), 0] as [number, number],
+                      (_, j) => [(p.L * (2 * j + 1)) / (2 * n), 0] as [number, number],
                     ),
                     style: "none",
                     marker: "x",
@@ -98,7 +98,7 @@ export default lecture(
         cols: 1,
         plot: (p) => {
           const c = rodSpeed(p.E * 1e9, p.rho),
-            end = extent(6 * rodFrequency(1, c, p.L, "fixed-free")),
+            end = 120000,
             A = (p.F0 * p.L) / (p.E * 1e9 * p.S);
           return [
             {
@@ -107,7 +107,7 @@ export default lecture(
                 "频率 f (Hz)",
                 "端点位移幅值 (m)",
                 [0, end],
-                [0, 8 * A],
+                [0, 0.16],
                 [endSeries(p.F0, p.L, p.E * 1e9 * p.S, c, end)],
               ),
               legend: false,

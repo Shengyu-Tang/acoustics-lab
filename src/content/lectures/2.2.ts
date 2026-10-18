@@ -71,22 +71,28 @@ export default lecture(
           return [1, 2, 3, 4, 5, 6].map((n) => ({
             ...panel(
               `第 ${n} 阶：${fmt(stringFrequency(n, c, p.L))} Hz`,
-              "位置 x/L (—)",
-              "归一化位移 y/h (—)",
-              [0, 1],
-              [-1.5, 1.5],
+              "位置 x (m)",
+              "归一化位移 y (m)",
+              [0, 1.5],
+              [-0.015, 0.015],
               [
                 {
                   name: "瞬时振型",
                   points: sample(
-                    (r) => Math.sin(n * Math.PI * r) * Math.cos(((n * Math.PI * c) / p.L) * t),
+                    (x) =>
+                      p.height *
+                      Math.sin((n * Math.PI * x) / p.L) *
+                      Math.cos(((n * Math.PI * c) / p.L) * t),
                     0,
-                    1,
+                    p.L,
                   ),
                 },
                 {
                   name: "波节",
-                  points: Array.from({ length: n + 1 }, (_, j) => [j / n, 0] as [number, number]),
+                  points: Array.from(
+                    { length: n + 1 },
+                    (_, j) => [(p.L * j) / n, 0] as [number, number],
+                  ),
                   style: "none",
                   marker: "o",
                 },
@@ -110,13 +116,13 @@ export default lecture(
             {
               ...panel(
                 "初始拨弦形状（三角形）",
-                "位置 x/L (—)",
+                "位置 x (m)",
                 "初始位移 y (m)",
-                [0, 1],
-                [-0.3 * h, 1.8 * h],
+                [0, 1.5],
+                [-0.003, 0.018],
                 [
-                  { name: "初始形状", points: sample(initial, 0, 1) },
-                  { name: "拨点", points: [[p.pluck, h]], style: "none", marker: "o" },
+                  { name: "初始形状", points: sample((x) => initial(x / p.L), 0, p.L) },
+                  { name: "拨点", points: [[p.pluck * p.L, h]], style: "none", marker: "o" },
                 ],
               ),
               legend: false,
@@ -127,16 +133,7 @@ export default lecture(
                 "阶数 n (—)",
                 "系数 bₙ (m)",
                 [0, 14],
-                [
-                  Math.min(
-                    0,
-                    ...Array.from({ length: 12 }, (_, i) => pluckCoefficient(i + 1, h, p.pluck)),
-                  ) * 1.15,
-                  Math.max(
-                    1e-8,
-                    ...Array.from({ length: 12 }, (_, i) => pluckCoefficient(i + 1, h, p.pluck)),
-                  ) * 1.15,
-                ],
+                [-0.012, 0.012],
                 [
                   {
                     name: "模态系数",
@@ -153,23 +150,23 @@ export default lecture(
             },
             panel(
               "反向行波叠加为驻波（慢放）",
-              "位置 x/L (—)",
+              "位置 x (m)",
               "横向位移 y (m)",
-              [0, 1],
-              [-2 * h, 2 * h],
+              [0, 1.5],
+              [-0.02, 0.02],
               [
                 {
                   name: "向右行波",
-                  points: sample((r) => pluckWave(r * p.L, t, c, p.L, h, p.pluck, 12, -1), 0, 1),
+                  points: sample((x) => pluckWave(x, t, c, p.L, h, p.pluck, 12, -1), 0, p.L),
                 },
                 {
                   name: "向左行波",
-                  points: sample((r) => pluckWave(r * p.L, t, c, p.L, h, p.pluck, 12, 1), 0, 1),
+                  points: sample((x) => pluckWave(x, t, c, p.L, h, p.pluck, 12, 1), 0, p.L),
                   style: "--",
                 },
                 {
                   name: "合成位移",
-                  points: sample((r) => pluckWave(r * p.L, t, c, p.L, h, p.pluck), 0, 1),
+                  points: sample((x) => pluckWave(x, t, c, p.L, h, p.pluck), 0, p.L),
                 },
               ],
             ),
@@ -183,7 +180,7 @@ export default lecture(
         cols: 1,
         plot: (p) => {
           const c = stringSpeed(p.T, p.mu),
-            end = extent(6 * quarterFrequency(1, c, p.L)),
+            end = 9000,
             A = (p.F0 * p.L) / p.T;
           return [
             {
@@ -192,7 +189,7 @@ export default lecture(
                 "频率 f (Hz)",
                 "端点位移幅值 (m)",
                 [0, end],
-                [0, 8 * A],
+                [0, 0.12],
                 [endSeries(p.F0, p.L, p.T, c, end)],
               ),
               legend: false,

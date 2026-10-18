@@ -40,7 +40,7 @@ const graph = (p: Values): Panel => {
       "无量纲波数 q = kL (—)",
       "频率方程两侧 (—)",
       [0, 8],
-      [-6, Math.max(12, (alpha / roots(p)[0]) * 1.5)],
+      [-6, 450],
       [
         {
           name: "tan(q)",
@@ -119,25 +119,36 @@ export default lecture(
           const C = Math.cos(((Math.PI * rodSpeed(p.E * 1e9, p.rho)) / p.L) * t),
             a = p.sigma * C,
             b = (p.sigma + p.gradient * 0.2 * p.L) * C,
-            scale = Math.max(Math.abs(p.sigma), Math.abs(p.sigma + p.gradient * 0.2 * p.L), 0.1);
+            scale = 6;
           return [
             panel(
               `纵向微元受力；右端边界：${["固定", "自由", "质量负载", "激励力"][p.boundary]}`,
-              "轴向示意位置 (—)",
-              "横向示意坐标 (—)",
-              [0, 1],
-              [-0.75, 0.75],
+              "Axial position z (m)",
+              "Cross-section coordinate (m)",
+              [0, 2],
+              [-0.04, 0.04],
               [
-                segment("微元 S dz", [
-                  [0.4, -0.1],
-                  [0.6, -0.1],
-                  [0.6, 0.1],
-                  [0.4, 0.1],
-                  [0.4, -0.1],
+                segment("Rod extent", [
+                  [0, -Math.sqrt(p.S) / 2],
+                  [p.L, -Math.sqrt(p.S) / 2],
+                  [p.L, Math.sqrt(p.S) / 2],
+                  [0, Math.sqrt(p.S) / 2],
+                  [0, -Math.sqrt(p.S) / 2],
                 ]),
-                arrow("左截面力 −Sσ₁", [0.4, 0], [0.4 - (0.22 * a) / scale, 0]),
-                arrow("右截面力 Sσ₂", [0.6, 0], [0.6 + (0.22 * b) / scale, 0]),
-                arrow("轴向合力（放大）", [0.5, 0.25], [0.5 + (0.6 * (b - a)) / scale, 0.25]),
+                segment("微元 S dz", [
+                  [0.4 * p.L, -Math.sqrt(p.S) / 2],
+                  [0.6 * p.L, -Math.sqrt(p.S) / 2],
+                  [0.6 * p.L, Math.sqrt(p.S) / 2],
+                  [0.4 * p.L, Math.sqrt(p.S) / 2],
+                  [0.4 * p.L, -Math.sqrt(p.S) / 2],
+                ]),
+                arrow("左截面力 −Sσ₁", [0.4 * p.L, 0], [0.4 * p.L - (0.22 * a) / scale, 0]),
+                arrow("右截面力 Sσ₂", [0.6 * p.L, 0], [0.6 * p.L + (0.22 * b) / scale, 0]),
+                arrow(
+                  "轴向合力（放大）",
+                  [0.5 * p.L, 0.025],
+                  [0.5 * p.L + (0.6 * (b - a)) / scale, 0.025],
+                ),
               ],
             ),
           ];

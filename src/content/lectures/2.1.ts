@@ -61,20 +61,35 @@ export default lecture(
         plot: (p, t) => {
           const h = p.height * Math.cos(((Math.PI * stringSpeed(p.T, p.mu)) / p.L) * t),
             e = stringElement(p.T, p.L, h),
-            y = (x: number) => h * Math.sin(Math.PI * x);
+            y = (x: number) => h * Math.sin((Math.PI * x) / p.L);
           return [
             panel(
               "微元张力与横向合力（箭头示意）",
-              "位置 x/L (—)",
+              "位置 x (m)",
               "横向位移 y (m)",
-              [0, 1],
-              [-0.05, 0.05],
+              [0, 1.5],
+              [-0.1, 0.1],
               [
-                { name: "弦形", points: sample(y, 0, 1) },
-                segment("微元 dx", sample(y, 0.4, 0.6, 21)),
-                arrow("左端张力 T₁", [0.4, y(0.4)], [0.15, y(0.4) - e.slopes[0] * 0.25 * p.L], 0.1),
-                arrow("右端张力 T₂", [0.6, y(0.6)], [0.85, y(0.6) + e.slopes[1] * 0.25 * p.L], 0.1),
-                arrow("横向合力（放大）", [0.5, h], [0.5, h + (e.netY / p.T) * 0.2], 0.1),
+                { name: "弦形", points: sample(y, 0, p.L) },
+                segment("微元 dx", sample(y, 0.4 * p.L, 0.6 * p.L, 21)),
+                arrow(
+                  "左端张力 T₁",
+                  [0.4 * p.L, y(0.4 * p.L)],
+                  [0.15 * p.L, y(0.4 * p.L) - e.slopes[0] * 0.25 * p.L],
+                  0.1,
+                ),
+                arrow(
+                  "右端张力 T₂",
+                  [0.6 * p.L, y(0.6 * p.L)],
+                  [0.85 * p.L, y(0.6 * p.L) + e.slopes[1] * 0.25 * p.L],
+                  0.1,
+                ),
+                arrow(
+                  "横向合力（放大）",
+                  [0.5 * p.L, h],
+                  [0.5 * p.L, h + (e.netY / p.T) * 0.2],
+                  0.1,
+                ),
               ],
             ),
           ];
@@ -89,15 +104,16 @@ export default lecture(
           const c = stringSpeed(p.T, p.mu),
             k = (p.boundary === 0 ? Math.PI : Math.PI / 3) / p.L,
             w = c * k;
-          const y = (r: number) =>
-            p.boundary === 0
+          const y = (x: number) => {
+            const r = x / p.L;
+            return p.boundary === 0
               ? p.height * Math.sin(Math.PI * r) * Math.cos(w * t)
               : p.boundary === 1
                 ? (p.F0 / (p.T * k * Math.cos(k * p.L))) * Math.sin(k * p.L * r) * Math.cos(w * t)
                 : p.boundary === 2
                   ? ((p.height * Math.sin(k * p.L * r)) / Math.sin(k * p.L)) * Math.cos(w * t)
                   : (((0.1 / w) * Math.sin(k * p.L * r)) / Math.sin(k * p.L)) * Math.sin(w * t);
-          const A = Math.max(0.02, Math.abs(p.height) * 1.5, (p.F0 / (p.T * k)) * 4, (0.1 / w) * 2);
+          };
           return [
             {
               ...panel(
@@ -107,17 +123,32 @@ export default lecture(
                   "左端固定，右端位移激励",
                   "左端固定，右端振速激励",
                 ][p.boundary],
-                "位置 x/L (—)",
+                "位置 x (m)",
                 "横向位移 y (m)",
-                [0, 1],
-                [-2 * A, 2 * A],
+                [0, 1.5],
+                [-0.04, 0.04],
                 [
-                  { name: "弦形", points: sample(y, 0, 1) },
+                  { name: "弦形", points: sample(y, 0, p.L) },
+                  {
+                    name: "Force boundary comparison",
+                    style: "--",
+                    points: sample(
+                      (x) => {
+                        const k = Math.PI / (3 * p.L);
+                        return (
+                          ((p.F0 * Math.sin(k * x)) / (p.T * k * Math.cos(k * p.L))) *
+                          Math.cos(c * k * t)
+                        );
+                      },
+                      0,
+                      p.L,
+                    ),
+                  },
                   {
                     name: "端点",
                     points: [
                       [0, 0],
-                      [1, y(1)],
+                      [p.L, y(p.L)],
                     ],
                     marker: "o",
                     style: "none",

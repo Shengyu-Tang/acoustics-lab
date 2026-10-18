@@ -165,11 +165,11 @@ export function modelsFor(
       break;
     case "2.1-1":
       setup =
-        "c=sqrt(T/mu); h=height*cos(pi*c/L*tView); slopes=h*pi/L*cos(pi*[.4 .6]); net=-slopes(1)/hypot(1,slopes(1))+slopes(2)/hypot(1,slopes(2)); left=arrowPoints([.4 h*sin(.4*pi)],[.15 h*sin(.4*pi)-slopes(1)*.25*L],.1); right=arrowPoints([.6 h*sin(.6*pi)],[.85 h*sin(.6*pi)+slopes(2)*.25*L],.1); force=arrowPoints([.5 h],[.5 h+net*.2],.1);";
+        "c=sqrt(T/mu); h=height*cos(pi*c/L*tView); slopes=h*pi/L*cos(pi*[.4 .6]); net=-slopes(1)/hypot(1,slopes(1))+slopes(2)/hypot(1,slopes(2)); left=arrowPoints([.4*L h*sin(.4*pi)],[.15*L h*sin(.4*pi)-slopes(1)*.25*L],.1); right=arrowPoints([.6*L h*sin(.6*pi)],[.85*L h*sin(.6*pi)+slopes(2)*.25*L],.1); force=arrowPoints([.5*L h],[.5*L h+net*.2],.1);";
       curves = [
         [
-          curve(grid("1", 401), "h*sin(pi*x)"),
-          curve(grid(".6", 21, ".4"), "h*sin(pi*x)"),
+          curve(grid("L", 401), "h*sin(pi*x/L)"),
+          curve(grid(".6*L", 21, ".4*L"), "h*sin(pi*x/L)"),
           ...["left", "right", "force"].map((s) => xyz(`${s}(:,1)'`, `${s}(:,2)'`)),
         ],
       ];
@@ -178,40 +178,47 @@ export function modelsFor(
       setup = "c=sqrt(T/mu); if boundary==0,k=pi/L;else,k=pi/(3*L);end; w=c*k;";
       curves = [
         [
-          curve(grid("1", 401), "stringBoundary(x,height,F0,T,k,L,w,tView,boundary)"),
-          xyz("[0 1]", "stringBoundary(x,height,F0,T,k,L,w,tView,boundary)"),
+          curve(grid("L", 401), "stringBoundary(x/L,height,F0,T,k,L,w,tView,boundary)"),
+          curve(grid("L", 401), "F0*sin(pi*x/(3*L))/(T*pi/(3*L)*cos(pi/3))*cos(c*pi/(3*L)*tView)"),
+          xyz("[0 L]", "stringBoundary(x/L,height,F0,T,k,L,w,tView,boundary)"),
         ],
       ];
       break;
     case "2.2-1":
       setup = "c=sqrt(T/mu);";
       curves = [1, 2, 3, 4, 5, 6].map((n) => [
-        curve(grid("1", 401), `sin(${n}*pi*x)*cos(${n}*pi*c/L*tView)`),
-        xyz(`(0:${n})/${n}`, "zeros(size(x))"),
+        curve(grid("L", 401), `height*sin(${n}*pi*x/L)*cos(${n}*pi*c/L*tView)`),
+        xyz(`L*(0:${n})/${n}`, "zeros(size(x))"),
       ]);
       break;
     case "2.2-2":
       setup = "c=sqrt(T/mu);";
       curves = [
-        [curve(grid("1", 401), "height*min(x/pluck,(1-x)/(1-pluck))"), xyz("pluck", "height")],
+        [
+          curve(grid("L", 401), "height*min(x/L/pluck,(1-x/L)/(1-pluck))"),
+          xyz("pluck*L", "height"),
+        ],
         [xyz("1:12", "pluckB(x,height,pluck)")],
-        [-1, 1, 0].map((dir) => curve(grid("1", 401), `pluckSum(x,tView,c,L,height,pluck,${dir})`)),
+        [-1, 1, 0].map((dir) =>
+          curve(grid("L", 401), `pluckSum(x/L,tView,c,L,height,pluck,${dir})`),
+        ),
       ];
       break;
     case "2.2-3":
     case "2.4-2": {
       const str = id === "2.2-3";
-      setup = `c=sqrt(${str ? "T/mu" : "E*1e9/rho"}); rigidity=${str ? "T" : "E*1e9*S"}; finish=niceEnd(6*c/(4*L)); fs=linspace(0,finish,6001); poles=c/(4*L):c/(2*L):finish; fs=sort([fs poles*(1-1e-6) poles poles*(1+1e-6)]);`;
+      setup = `c=sqrt(${str ? "T/mu" : "E*1e9/rho"}); rigidity=${str ? "T" : "E*1e9*S"}; finish=${str ? "9000" : "120000"}; fs=linspace(0,finish,6001); poles=c/(4*L):c/(2*L):finish; fs=sort([fs poles*(1-1e-6) poles poles*(1+1e-6)]);`;
       curves = [[xyz("fs", "endResponse(x,c,L,rigidity,F0)")]];
       annotations = [panels[0].annotations?.map((_, i) => `${2 * i + 1}*c/(4*L)`) ?? []];
       break;
     }
     case "2.3-1":
       setup =
-        "c=sqrt(E*1e9/rho); phase=cos(pi*c/L*tView); a=sigma*phase; b=(sigma+gradient*.2*L)*phase; stressScale=max([abs(sigma) abs(sigma+gradient*.2*L) .1]); left=arrowPoints([.4 0],[.4-.22*a/stressScale 0],1); right=arrowPoints([.6 0],[.6+.22*b/stressScale 0],1); force=arrowPoints([.5 .25],[.5+.6*(b-a)/stressScale .25],1);";
+        "c=sqrt(E*1e9/rho); phase=cos(pi*c/L*tView); a=sigma*phase; b=(sigma+gradient*.2*L)*phase; stressScale=6; left=arrowPoints([.4*L 0],[.4*L-.22*a/stressScale 0],1); right=arrowPoints([.6*L 0],[.6*L+.22*b/stressScale 0],1); force=arrowPoints([.5*L .025],[.5*L+.6*(b-a)/stressScale .025],1);";
       curves = [
         [
-          xyz("[.4 .6 .6 .4 .4]", "[-.1 -.1 .1 .1 -.1]"),
+          xyz("[0 L L 0 0]", "sqrt(S)/2*[-1 -1 1 1 -1]"),
+          xyz("L*[.4 .6 .6 .4 .4]", "sqrt(S)/2*[-1 -1 1 1 -1]"),
           ...["left", "right", "force"].map((s) => xyz(`${s}(:,1)'`, `${s}(:,2)'`)),
         ],
       ];
@@ -230,9 +237,9 @@ export function modelsFor(
     case "2.4-1":
       setup = "c=sqrt(E*1e9/rho);";
       curves = [1, 2, 3].map((n) => [
-        curve(grid("1", 401), `cos(${n}*pi*x)*cos(${n}*pi*c/L*tView)`),
-        xyz("[0 1]", `cos(${n}*pi*x)*cos(${n}*pi*c/L*tView)`),
-        xyz(`(2*(0:${n - 1})+1)/(2*${n})`, "zeros(size(x))"),
+        curve(grid("L", 401), `cos(${n}*pi*x/L)*cos(${n}*pi*c/L*tView)`),
+        xyz("[0 L]", `cos(${n}*pi*x/L)*cos(${n}*pi*c/L*tView)`),
+        xyz(`L*(2*(0:${n - 1})+1)/(2*${n})`, "zeros(size(x))"),
       ]);
       break;
     default:
@@ -247,12 +254,16 @@ export function modelsFor(
       "sprintf('首次过零 = %.4g s',z)",
       "sprintf('相邻过零间隔 = %.4g s',pi/wd)",
     ];
-  if (id === "2.2-3" || id === "2.4-2") result[0].matlabModel!.ylim = "[0 8*F0*L/rigidity]";
-  if (id === "2.3-3") result[0].matlabModel!.ylim = "[-6 max(12,alpha/roots(1)*1.5)]";
+
   if (id === "2.2-1" || id === "2.4-1")
     result.forEach(
       (p, i) => (p.matlabModel!.title = `sprintf('第 ${i + 1} 阶：%.4g Hz',${i + 1}*c/(2*L))`),
     );
+  if (id.startsWith("2."))
+    result.forEach((panel) => {
+      panel.matlabModel!.xlim = `[${panel.xlim.join(" ")}]`;
+      panel.matlabModel!.ylim = `[${panel.ylim.join(" ")}]`;
+    });
   return result;
 }
 
