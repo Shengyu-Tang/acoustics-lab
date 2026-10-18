@@ -1,199 +1,199 @@
-
-> acoustics-lab@3.0.0 test
-> node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs && node scripts/check-p0.mjs && node --experimental-strip-types scripts/check-ticks.mjs && node scripts/check-p1.mjs && node scripts/check-p2.mjs && node scripts/check-p3.mjs && node scripts/check-notation.mjs && node scripts/check-terminology.mjs && node scripts/check-parameter-sensitivity.mjs && node scripts/check-fixed-axes.mjs && node scripts/check-calendar.mjs && node scripts/check-categorical-fields.mjs && node scripts/check-p3-review.mjs && node scripts/check-matlab-backlog-contracts.mjs && node scripts/check-p4.mjs && node scripts/check-p4-review.mjs && node scripts/check-p5.mjs && node scripts/check-p5-figures.mjs && node scripts/check-p6.mjs
-
-PASS: 82 topics mapped; model limits, oscillator decay, energy conservation, levels, cutoff, Bessel root, scattering scaling and absorption.
-PASS: 82 topics, 37 cases, 131 explained relations, 24 valid dates; static-only entry.
-PASS: 9 cross-domain projects, 27 valid experiment links, two-significant-digit edge cases.
-PASS: shared project links and experiment entry points match across atlas and case pages.
-PASS: GRIN model matches ideal aperture; phase compensation, ring convergence, wavelength scaling and footprint verified. Default widths: 82.57348776212777 -> 24.80858022181115 deg.
-PASS: matching-layer conservation, interface pressure continuity, array singularities and grating lobes, circular rigid-wall modes and cutoff, four-module comparison links.
-PASS: 282 parameter corners; boundary pressure/velocity continuity and PDE, evanescent decay, Doppler spacing, high-ka Bessel values, damping regimes and cutoff.
-PASS: P0 peak search, numerical half-power bandwidth, cycle-averaged energy balance, Sample A (<0.5%), bandwidth/power exercise, resonance roundoff, shared 3×1 axes, grading, finite plot data, exports and original MOOC questions.
-PASS: nice tick steps, review examples, enclosing limits, scientific labels, log major/minor ticks and degenerate ranges.
-PASS: P1 initial-value solutions, RK4, decay, 12 lecture schemas, MOOC questions, independent exercise references and plot bounds.
-PASS P2: plane relations, air/water speed, impedance, levels, energy conservation, potential derivatives, Helmholtz solutions; 21 original-question/summary schemas, 34 modeled figures, 42 independent answers <0.5%.
-PASS P3: normal/oblique boundary continuity, energy, Snell, critical/total reflection, spherical/cylindrical energy, waveguide cutoff and modes; 27 lectures, 41 figures, 56 independent example answers <0.5%.
-PASS: 79 lectures, 9 cases, 806 solution parameter sets without programming notation, 1439 prose strings, HTML/SVG scripts and MATLAB toTex compatibility
-PASS: consistent immersion-probe terminology in 302 site source/assets
-Declared dimensionless comparisons (79):
-1.1.2 1.1.2-2 — A
-1.1.3 1.1.3-2 — M
-1.1.3 1.1.3-2 — D
-1.1.3 1.1.3-2 — x0
-1.1.3 1.1.3-2 — v0
-1.2.3 1.2.3-3 — Qm
-1.2.3 1.2.3-3 — F0
-1.2.3 1.2.3-3 — ratio
-2.3 2.3-3 — E
-2.3 2.3-3 — sigma
-2.3 2.3-3 — gradient
-2.4 2.4-1 — S
-2.4 2.4-1 — F0
-3.1.3 3.1.3-1 — pa
-3.1.3 3.1.3-1 — rho
-3.1.3 3.1.3-1 — c
-3.10.5 3.10.5-1 — f
-3.5.2 3.5.2-1 — f
-3.5.2 3.5.2-1 — c
-3.5.2 3.5.2-1 — wavecount
-3.5.2 3.5.2-1 — a1
-3.5.2 3.5.2-1 — a2
-3.5.2 3.5.2-1 — a3
-3.5.2 3.5.2-1 — a4
-3.6.10 3.6.10-2 — theta
-3.6.10 3.6.10-2 — Z1
-3.6.10 3.6.10-2 — Z2
-3.6.10 3.6.10-2 — pa
-3.6.11 3.6.11-2 — radius
-3.6.11 3.6.11-2 — source
-3.6.11 3.6.11-2 — launch
-3.6.12 3.6.12-2 — theta
-3.6.12 3.6.12-1 — Z1
-3.6.12 3.6.12-1 — Z2
-3.6.8 3.6.8-2 — f
-3.6.8 3.6.8-1 — c2
-3.6.8 3.6.8-2 — theta
-3.6.8 3.6.8-1 — Z1
-3.6.8 3.6.8-1 — Z2
-3.7.2 3.7.2-1 — probe
-3.8.1 3.8.1-1 — f
-3.8.1 3.8.1-1 — rho
-3.8.4 3.8.4-2 — f
-3.8.4 3.8.4-2 — c
-3.8.4 3.8.4-2 — rho
-3.8.5 3.8.5-1 — distance
-3.9.2 3.9.2-2 — rho
-3.9.3 3.9.3-2 — f
-3.9.3 3.9.3-2 — c
-3.9.3 3.9.3-2 — rho
-3.9.3 3.9.3-1 — level
-3.9.3 3.9.3-1 — reference
-4.2.2 4.2.2-1 — v
-4.3 4.3-2 — f
-4.3 4.3-2 — d
-4.3 4.3-2 — Q
-4.3 4.3-3 — Q
-4.4.3 4.4.3-2 — f
-4.4.3 4.4.3-2 — a
-5.2 5.2-1 — a
-5.2 5.2-1 — f
-5.3 5.3-1 — pa
-6.2 6.2-2 — xB
-6.2 6.2-2 — yB
-6.2 6.2-2 — Q
-7.1 7.1-2 — f
-7.1 7.1-2 — pa
-7.2 7.2-2 — relaxTime
-7.2 7.2-2 — A
-7.2 7.2-2 — B
-7.3 7.3-2 — res
-7.3 7.3-3 — res
-7.3 7.3-2 — react
-7.3 7.3-3 — react
-7.3 7.3-1 — d
-7.3 7.3-1 — sigma
-7.3 7.3-3 — sigma
-7.3 7.3-1 — f
-7.3 7.3-3 — f
-PASS: parameter sensitivity and geometry across 79 P1/P2 lectures
-Declared dimensionless comparisons (79):
-1.1.2 1.1.2-2 — A
-1.1.3 1.1.3-2 — M
-1.1.3 1.1.3-2 — D
-1.1.3 1.1.3-2 — x0
-1.1.3 1.1.3-2 — v0
-1.2.3 1.2.3-3 — Qm
-1.2.3 1.2.3-3 — F0
-1.2.3 1.2.3-3 — ratio
-2.3 2.3-3 — E
-2.3 2.3-3 — sigma
-2.3 2.3-3 — gradient
-2.4 2.4-1 — S
-2.4 2.4-1 — F0
-3.1.3 3.1.3-1 — pa
-3.1.3 3.1.3-1 — rho
-3.1.3 3.1.3-1 — c
-3.10.5 3.10.5-1 — f
-3.5.2 3.5.2-1 — f
-3.5.2 3.5.2-1 — c
-3.5.2 3.5.2-1 — wavecount
-3.5.2 3.5.2-1 — a1
-3.5.2 3.5.2-1 — a2
-3.5.2 3.5.2-1 — a3
-3.5.2 3.5.2-1 — a4
-3.6.10 3.6.10-2 — theta
-3.6.10 3.6.10-2 — Z1
-3.6.10 3.6.10-2 — Z2
-3.6.10 3.6.10-2 — pa
-3.6.11 3.6.11-2 — radius
-3.6.11 3.6.11-2 — source
-3.6.11 3.6.11-2 — launch
-3.6.12 3.6.12-2 — theta
-3.6.12 3.6.12-1 — Z1
-3.6.12 3.6.12-1 — Z2
-3.6.8 3.6.8-2 — f
-3.6.8 3.6.8-1 — c2
-3.6.8 3.6.8-2 — theta
-3.6.8 3.6.8-1 — Z1
-3.6.8 3.6.8-1 — Z2
-3.7.2 3.7.2-1 — probe
-3.8.1 3.8.1-1 — f
-3.8.1 3.8.1-1 — rho
-3.8.4 3.8.4-2 — f
-3.8.4 3.8.4-2 — c
-3.8.4 3.8.4-2 — rho
-3.8.5 3.8.5-1 — distance
-3.9.2 3.9.2-2 — rho
-3.9.3 3.9.3-2 — f
-3.9.3 3.9.3-2 — c
-3.9.3 3.9.3-2 — rho
-3.9.3 3.9.3-1 — level
-3.9.3 3.9.3-1 — reference
-4.2.2 4.2.2-1 — v
-4.3 4.3-2 — f
-4.3 4.3-2 — d
-4.3 4.3-2 — Q
-4.3 4.3-3 — Q
-4.4.3 4.4.3-2 — f
-4.4.3 4.4.3-2 — a
-5.2 5.2-1 — a
-5.2 5.2-1 — f
-5.3 5.3-1 — pa
-6.2 6.2-2 — xB
-6.2 6.2-2 — yB
-6.2 6.2-2 — Q
-7.1 7.1-2 — f
-7.1 7.1-2 — pa
-7.2 7.2-2 — relaxTime
-7.2 7.2-2 — A
-7.2 7.2-2 — B
-7.3 7.3-2 — res
-7.3 7.3-3 — res
-7.3 7.3-2 — react
-7.3 7.3-3 — react
-7.3 7.3-1 — d
-7.3 7.3-1 — sigma
-7.3 7.3-3 — sigma
-7.3 7.3-1 — f
-7.3 7.3-3 — f
-PASS: parameter sensitivity and geometry across 79 P1/P2 lectures
-PASS: fixed position/time axes, current-parameter cycle envelopes, readable lines and unclipped bars
-PASS: 24 calendar lessons with goals, 141 existing content/task lecture links; no source labels or assessment notes.
-PASS categorical fields: 28 fields, 1 discrete maps use category legends without continuous colorbars.
-PASS A1 individually designed physical example plots
-PASS A3 complementary time-averaged standing-wave energies
-PASS A2 worksheet wrapper preserves physical axis definitions
-PASS A4 binary fields are categorical throughout P2/P3
-PASS B1/B2 dimensionless and scientific answer titles/readouts
-PASS B3 Lloyd mirror displays finite levels without artificial zero-depth floor
-PASS P3-2 titles identify a plotted answer and distinct lines have distinct labels
-{
-  "checked": 96,
-  "annotationReview": []
-}
-PASS P4 physics: sphere impedance/power, point source, dipole power, Helmholtz representation, piston axis and beam, Rayleigh distance, sphere/cylinder limits, reciprocity and absorption; 17 lectures.
-PASS P4-1 A1–A3/B1–B5, including default response audit
-PASS: 79 graded lecture examples; 9 design cases, two independently calculated parameter sets, answer error <0.5%.
-PASS: case sensitivity at both endpoints, fixed geometric axes, default amplitude occupancy, meaningful curves and unique labels.
-PASS P6: 79 thumbnails, feedback route, lazy lectures, attached resultant, readable volume, four-period reciprocity and conclusion titles.
+
+> acoustics-lab@3.0.0 test
+> node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs && node scripts/check-p0.mjs && node --experimental-strip-types scripts/check-ticks.mjs && node scripts/check-p1.mjs && node scripts/check-p2.mjs && node scripts/check-p3.mjs && node scripts/check-notation.mjs && node scripts/check-terminology.mjs && node scripts/check-parameter-sensitivity.mjs && node scripts/check-fixed-axes.mjs && node scripts/check-calendar.mjs && node scripts/check-categorical-fields.mjs && node scripts/check-p3-review.mjs && node scripts/check-matlab-backlog-contracts.mjs && node scripts/check-p4.mjs && node scripts/check-p4-review.mjs && node scripts/check-p5.mjs && node scripts/check-p5-figures.mjs && node scripts/check-p6.mjs
+
+PASS: 82 topics mapped; model limits, oscillator decay, energy conservation, levels, cutoff, Bessel root, scattering scaling and absorption.
+PASS: 82 topics, 37 cases, 131 explained relations, 24 valid dates; static-only entry.
+PASS: 9 cross-domain projects, 27 valid experiment links, two-significant-digit edge cases.
+PASS: shared project links and experiment entry points match across atlas and case pages.
+PASS: GRIN model matches ideal aperture; phase compensation, ring convergence, wavelength scaling and footprint verified. Default widths: 82.57348776212777 -> 24.80858022181115 deg.
+PASS: matching-layer conservation, interface pressure continuity, array singularities and grating lobes, circular rigid-wall modes and cutoff, four-module comparison links.
+PASS: 282 parameter corners; boundary pressure/velocity continuity and PDE, evanescent decay, Doppler spacing, high-ka Bessel values, damping regimes and cutoff.
+PASS: P0 peak search, numerical half-power bandwidth, cycle-averaged energy balance, Sample A (<0.5%), bandwidth/power exercise, resonance roundoff, shared 3×1 axes, grading, finite plot data, exports and original MOOC questions.
+PASS: nice tick steps, review examples, enclosing limits, scientific labels, log major/minor ticks and degenerate ranges.
+PASS: P1 initial-value solutions, RK4, decay, 12 lecture schemas, MOOC questions, independent exercise references and plot bounds.
+PASS P2: plane relations, air/water speed, impedance, levels, energy conservation, potential derivatives, Helmholtz solutions; 21 original-question/summary schemas, 34 modeled figures, 42 independent answers <0.5%.
+PASS P3: normal/oblique boundary continuity, energy, Snell, critical/total reflection, spherical/cylindrical energy, waveguide cutoff and modes; 27 lectures, 41 figures, 56 independent example answers <0.5%.
+PASS: 79 lectures, 9 cases, 806 solution parameter sets without programming notation, 1439 prose strings, HTML/SVG scripts and MATLAB toTex compatibility
+PASS: consistent immersion-probe terminology in 302 site source/assets
+Declared dimensionless comparisons (79):
+1.1.2 1.1.2-2 — A
+1.1.3 1.1.3-2 — M
+1.1.3 1.1.3-2 — D
+1.1.3 1.1.3-2 — x0
+1.1.3 1.1.3-2 — v0
+1.2.3 1.2.3-3 — Qm
+1.2.3 1.2.3-3 — F0
+1.2.3 1.2.3-3 — ratio
+2.3 2.3-3 — E
+2.3 2.3-3 — sigma
+2.3 2.3-3 — gradient
+2.4 2.4-1 — S
+2.4 2.4-1 — F0
+3.1.3 3.1.3-1 — pa
+3.1.3 3.1.3-1 — rho
+3.1.3 3.1.3-1 — c
+3.10.5 3.10.5-1 — f
+3.5.2 3.5.2-1 — f
+3.5.2 3.5.2-1 — c
+3.5.2 3.5.2-1 — wavecount
+3.5.2 3.5.2-1 — a1
+3.5.2 3.5.2-1 — a2
+3.5.2 3.5.2-1 — a3
+3.5.2 3.5.2-1 — a4
+3.6.10 3.6.10-2 — theta
+3.6.10 3.6.10-2 — Z1
+3.6.10 3.6.10-2 — Z2
+3.6.10 3.6.10-2 — pa
+3.6.11 3.6.11-2 — radius
+3.6.11 3.6.11-2 — source
+3.6.11 3.6.11-2 — launch
+3.6.12 3.6.12-2 — theta
+3.6.12 3.6.12-1 — Z1
+3.6.12 3.6.12-1 — Z2
+3.6.8 3.6.8-2 — f
+3.6.8 3.6.8-1 — c2
+3.6.8 3.6.8-2 — theta
+3.6.8 3.6.8-1 — Z1
+3.6.8 3.6.8-1 — Z2
+3.7.2 3.7.2-1 — probe
+3.8.1 3.8.1-1 — f
+3.8.1 3.8.1-1 — rho
+3.8.4 3.8.4-2 — f
+3.8.4 3.8.4-2 — c
+3.8.4 3.8.4-2 — rho
+3.8.5 3.8.5-1 — distance
+3.9.2 3.9.2-2 — rho
+3.9.3 3.9.3-2 — f
+3.9.3 3.9.3-2 — c
+3.9.3 3.9.3-2 — rho
+3.9.3 3.9.3-1 — level
+3.9.3 3.9.3-1 — reference
+4.2.2 4.2.2-1 — v
+4.3 4.3-2 — f
+4.3 4.3-2 — d
+4.3 4.3-2 — Q
+4.3 4.3-3 — Q
+4.4.3 4.4.3-2 — f
+4.4.3 4.4.3-2 — a
+5.2 5.2-1 — a
+5.2 5.2-1 — f
+5.3 5.3-1 — pa
+6.2 6.2-2 — xB
+6.2 6.2-2 — yB
+6.2 6.2-2 — Q
+7.1 7.1-2 — f
+7.1 7.1-2 — pa
+7.2 7.2-2 — relaxTime
+7.2 7.2-2 — A
+7.2 7.2-2 — B
+7.3 7.3-2 — res
+7.3 7.3-3 — res
+7.3 7.3-2 — react
+7.3 7.3-3 — react
+7.3 7.3-1 — d
+7.3 7.3-1 — sigma
+7.3 7.3-3 — sigma
+7.3 7.3-1 — f
+7.3 7.3-3 — f
+PASS: parameter sensitivity and geometry across 79 P1/P2 lectures
+Declared dimensionless comparisons (79):
+1.1.2 1.1.2-2 — A
+1.1.3 1.1.3-2 — M
+1.1.3 1.1.3-2 — D
+1.1.3 1.1.3-2 — x0
+1.1.3 1.1.3-2 — v0
+1.2.3 1.2.3-3 — Qm
+1.2.3 1.2.3-3 — F0
+1.2.3 1.2.3-3 — ratio
+2.3 2.3-3 — E
+2.3 2.3-3 — sigma
+2.3 2.3-3 — gradient
+2.4 2.4-1 — S
+2.4 2.4-1 — F0
+3.1.3 3.1.3-1 — pa
+3.1.3 3.1.3-1 — rho
+3.1.3 3.1.3-1 — c
+3.10.5 3.10.5-1 — f
+3.5.2 3.5.2-1 — f
+3.5.2 3.5.2-1 — c
+3.5.2 3.5.2-1 — wavecount
+3.5.2 3.5.2-1 — a1
+3.5.2 3.5.2-1 — a2
+3.5.2 3.5.2-1 — a3
+3.5.2 3.5.2-1 — a4
+3.6.10 3.6.10-2 — theta
+3.6.10 3.6.10-2 — Z1
+3.6.10 3.6.10-2 — Z2
+3.6.10 3.6.10-2 — pa
+3.6.11 3.6.11-2 — radius
+3.6.11 3.6.11-2 — source
+3.6.11 3.6.11-2 — launch
+3.6.12 3.6.12-2 — theta
+3.6.12 3.6.12-1 — Z1
+3.6.12 3.6.12-1 — Z2
+3.6.8 3.6.8-2 — f
+3.6.8 3.6.8-1 — c2
+3.6.8 3.6.8-2 — theta
+3.6.8 3.6.8-1 — Z1
+3.6.8 3.6.8-1 — Z2
+3.7.2 3.7.2-1 — probe
+3.8.1 3.8.1-1 — f
+3.8.1 3.8.1-1 — rho
+3.8.4 3.8.4-2 — f
+3.8.4 3.8.4-2 — c
+3.8.4 3.8.4-2 — rho
+3.8.5 3.8.5-1 — distance
+3.9.2 3.9.2-2 — rho
+3.9.3 3.9.3-2 — f
+3.9.3 3.9.3-2 — c
+3.9.3 3.9.3-2 — rho
+3.9.3 3.9.3-1 — level
+3.9.3 3.9.3-1 — reference
+4.2.2 4.2.2-1 — v
+4.3 4.3-2 — f
+4.3 4.3-2 — d
+4.3 4.3-2 — Q
+4.3 4.3-3 — Q
+4.4.3 4.4.3-2 — f
+4.4.3 4.4.3-2 — a
+5.2 5.2-1 — a
+5.2 5.2-1 — f
+5.3 5.3-1 — pa
+6.2 6.2-2 — xB
+6.2 6.2-2 — yB
+6.2 6.2-2 — Q
+7.1 7.1-2 — f
+7.1 7.1-2 — pa
+7.2 7.2-2 — relaxTime
+7.2 7.2-2 — A
+7.2 7.2-2 — B
+7.3 7.3-2 — res
+7.3 7.3-3 — res
+7.3 7.3-2 — react
+7.3 7.3-3 — react
+7.3 7.3-1 — d
+7.3 7.3-1 — sigma
+7.3 7.3-3 — sigma
+7.3 7.3-1 — f
+7.3 7.3-3 — f
+PASS: parameter sensitivity and geometry across 79 P1/P2 lectures
+PASS: fixed position/time axes, current-parameter cycle envelopes, readable lines and unclipped bars
+PASS: 24 calendar lessons with goals, 141 existing content/task lecture links; no source labels or assessment notes.
+PASS categorical fields: 28 fields, 1 discrete maps use category legends without continuous colorbars.
+PASS A1 individually designed physical example plots
+PASS A3 complementary time-averaged standing-wave energies
+PASS A2 worksheet wrapper preserves physical axis definitions
+PASS A4 binary fields are categorical throughout P2/P3
+PASS B1/B2 dimensionless and scientific answer titles/readouts
+PASS B3 Lloyd mirror displays finite levels without artificial zero-depth floor
+PASS P3-2 titles identify a plotted answer and distinct lines have distinct labels
+{
+  "checked": 96,
+  "annotationReview": []
+}
+PASS P4 physics: sphere impedance/power, point source, dipole power, Helmholtz representation, piston axis and beam, Rayleigh distance, sphere/cylinder limits, reciprocity and absorption; 17 lectures.
+PASS P4-1 A1–A3/B1–B5, including default response audit
+PASS: 79 graded lecture examples; 9 design cases, two independently calculated parameter sets, answer error <0.5%.
+PASS: case sensitivity at both endpoints, fixed geometric axes, default amplitude occupancy, meaningful curves and unique labels.
+PASS P6: 79 thumbnails, feedback route, lazy lectures, attached resultant, readable volume, four-period reciprocity and conclusion titles.

@@ -1,2 +1,2 @@
-PASS: 37 model equation sets; 99 parameter min/max SVG and finite scene-state checks; resonant transient matches analytic solution.
-PASS: continuous-field uniforms finite at parameter limits; guide cutoff and matched boundary behavior.
+PASS: 37 model equation sets; 99 parameter min/max SVG and finite scene-state checks; resonant transient matches analytic solution.
+PASS: continuous-field uniforms finite at parameter limits; guide cutoff and matched boundary behavior.
