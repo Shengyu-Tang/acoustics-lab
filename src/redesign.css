@@ -996,3 +996,66 @@ sup {
   font-size: 12px;
   margin: 4px 0 20px;
 }
+:root .engineering-problems {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 24px;
+}
+:root .case-index {
+  border-bottom: 1px solid #d9d9d9;
+  margin-bottom: 24px;
+}
+:root .case-index ol {
+  columns: 2;
+  padding-left: 24px;
+}
+:root .case-index li {
+  padding: 3px 0;
+  break-inside: avoid;
+}
+:root .case-index [aria-current="page"] {
+  font-weight: bold;
+}
+:root .case-problem {
+  min-width: 0;
+}
+:root .engineering-problems .calculation-example {
+  border-top: 1px solid #d9d9d9;
+  padding-top: 16px;
+}
+@media (max-width: 600px) {
+  :root .engineering-problems {
+    padding: 16px;
+  }
+  :root .case-index ol {
+    columns: 1;
+  }
+  :root .engineering-problems table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  :root .engineering-problems th:nth-child(1) {
+    width: 16%;
+  }
+  :root .engineering-problems th:nth-child(2) {
+    width: 32%;
+  }
+  :root .engineering-problems th:nth-child(3) {
+    width: 29%;
+  }
+  :root .engineering-problems th:nth-child(4) {
+    width: 23%;
+  }
+  :root .engineering-problems td {
+    overflow-wrap: anywhere;
+  }
+  :root .engineering-problems td input {
+    width: 100%;
+    min-width: 0;
+  }
+}
+@media print {
+  .engineering-problems .case-index {
+    display: none;
+  }
+}
