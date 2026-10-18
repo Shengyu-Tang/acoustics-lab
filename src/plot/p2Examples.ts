@@ -94,6 +94,7 @@ export function e313(p: Values) {
     "",
     {
       rightLabel: "局部声学马赫数 u/c",
+      answerKey: "density",
       annotations: [ymark(dr, value("密度逾量峰值", dr, "kg/m³"))],
     },
     { annotations: ["pa/c^2"] },
