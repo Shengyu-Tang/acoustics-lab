@@ -1,0 +1,482 @@
+{
+  "branch": "redesign/p5-cases",
+  "items": {
+    "A1": "passed",
+    "A2": "passed",
+    "A3": "passed",
+    "B1": "passed",
+    "B2": "passed",
+    "B3": "passed",
+    "B4": "passed",
+    "B5": "passed"
+  },
+  "defaultResponseAudit": [
+    {
+      "figure": "4.1-1",
+      "panel": 2,
+      "variations": [
+        0,
+        1.0153341801037803,
+        0.9994615870898372,
+        0.9581304551569102
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.1-2",
+      "panel": 1,
+      "variations": [
+        1
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.2.1-2",
+      "panel": 1,
+      "variations": [
+        0.9869550044002138,
+        0.9767962737871105,
+        0.9569727066897805
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.2.1-E1",
+      "panel": 1,
+      "variations": [
+        0.9800000000000001
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.2.2-1",
+      "panel": 1,
+      "variations": [
+        0.999998999901,
+        0.998000001999998
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.2.2-2",
+      "panel": 1,
+      "variations": [
+        0.9999956035284401,
+        0.9999956035284401
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.2.2-E1",
+      "panel": 1,
+      "variations": [
+        0.9980000019999979
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.2.3-E1",
+      "panel": 1,
+      "variations": [
+        0.973209093295752
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.3-2",
+      "panel": 1,
+      "variations": [
+        0.9999999999999999
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.3-3",
+      "panel": 1,
+      "variations": [
+        0.999999
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.3-E1",
+      "panel": 1,
+      "variations": [
+        1
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.4.2-1",
+      "panel": 2,
+      "variations": [
+        0.9999999999999061,
+        0.5479234575737666,
+        0.5492338080568828
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.4.2-E1",
+      "panel": 1,
+      "variations": [
+        0.9999999999999061,
+        0.5479234575737666,
+        0.5492338080568828
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.4.3-1",
+      "panel": 1,
+      "variations": [
+        1
+      ],
+      "decibels": true
+    },
+    {
+      "figure": "4.4.3-2",
+      "panel": 1,
+      "variations": [
+        1.1322658534852468
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.4.3-E1",
+      "panel": 1,
+      "variations": [
+        1
+      ],
+      "decibels": true
+    },
+    {
+      "figure": "4.4.4-1",
+      "panel": 1,
+      "variations": [
+        0.9933029134055277,
+        0.9666666666666667
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "4.4.4-E1",
+      "panel": 1,
+      "variations": [
+        0.9984401840965749
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.1-E1",
+      "panel": 1,
+      "variations": [
+        0.4742358460267194
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.2-1",
+      "panel": 1,
+      "variations": [
+        0.9780150544520233
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.2-1",
+      "panel": 2,
+      "variations": [
+        0.8570298378095422
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.2-1",
+      "panel": 3,
+      "variations": [
+        0.6754810774225617
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.2-1",
+      "panel": 4,
+      "variations": [
+        0.9643128649981351
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.2-2",
+      "panel": 1,
+      "variations": [
+        0.9999999950437608,
+        0.9999999900000001
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.2-E1",
+      "panel": 1,
+      "variations": [
+        1
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.3-1",
+      "panel": 1,
+      "variations": [
+        0.45466968455484147
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "5.3-E1",
+      "panel": 1,
+      "variations": [
+        0.95
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "6.1-1",
+      "panel": 1,
+      "variations": [
+        0.9004962809790011,
+        0.5361821247128112
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "6.1-2",
+      "panel": 1,
+      "variations": [
+        1.5215888655552305,
+        1.5263191448745772
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "6.1-E1",
+      "panel": 1,
+      "variations": [
+        0.5691282808736818,
+        0.18556418501028923
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "6.2-1",
+      "panel": 2,
+      "variations": [
+        1.9999999999999993,
+        1.9999999999999993
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "6.2-2",
+      "panel": 1,
+      "variations": [
+        0.45677015452064296,
+        0.45677015452064296
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "7.1-1",
+      "panel": 1,
+      "variations": [
+        1.9820192410374744,
+        0.6321205588285577,
+        0.6321205588285577
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "7.1-2",
+      "panel": 1,
+      "variations": [
+        1,
+        0.99,
+        0.9947944701622321
+      ],
+      "decibels": true
+    },
+    {
+      "figure": "7.2-1",
+      "panel": 1,
+      "variations": [
+        0.9999999900000001,
+        0.9998421012639516,
+        0.9999856373048093
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "7.2-2",
+      "panel": 1,
+      "variations": [
+        0.9999374997290128
+      ],
+      "decibels": true
+    },
+    {
+      "figure": "7.2-E1",
+      "panel": 1,
+      "variations": [
+        0.28349350734272105
+      ],
+      "decibels": true
+    },
+    {
+      "figure": "7.3-2",
+      "panel": 1,
+      "variations": [
+        0.6270589059164674
+      ],
+      "decibels": false
+    },
+    {
+      "figure": "7.3-3",
+      "panel": 2,
+      "variations": [
+        0.9
+      ],
+      "decibels": false
+    }
+  ],
+  "browser": {
+    "routes": {
+      "lectures": 82,
+      "viewports": [
+        [
+          1440,
+          900
+        ],
+        [
+          390,
+          844
+        ]
+      ],
+      "errors": []
+    },
+    "checks": [
+      "parameters",
+      "bounds",
+      "Q overlay",
+      "grading",
+      "two hints",
+      "reactive solution",
+      "PNG/CSV/MATLAB downloads",
+      "print",
+      "all lecture routes",
+      "fixed screen font sizes and nonoverlapping horizontal annotations",
+      "mobile formula scrolling and separate equation numbers",
+      "distinct power/bandwidth exercise grading, hints and reactive solution",
+      "160×80 smoothly interpolated legacy field",
+      "completed-lecture thumbnails only",
+      "all lecture document titles",
+      "polish control dimensions, inline actions, breadcrumbs, export links and shared footer",
+      "eight default-state viewport screenshots"
+    ],
+    "errors": []
+  },
+  "visualReview": {
+    "defaultLectures": 17,
+    "defaultFigurePNGs": 96,
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "allDefaultPNGsInspected": true,
+    "requestedScreenshots": [
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.1-desktop.png",
+        "sha256": "1a0bda7dbb0ee4dabe33bbbb270444d1af7fb0cbafd832575934546bae91d780"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.1-mobile.png",
+        "sha256": "e40e95a84e0057072e30730f944b922bc7c8b0101ca8b8d4a27769898b60f5e0"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.2.2-desktop.png",
+        "sha256": "3787535def82a68ba2affb8afbe4df33eb9f8540cc0fd9d0507430cc9de7b2dd"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.2.2-mobile.png",
+        "sha256": "553badbf35aeff9ffe0cbd1ee59f74d1fec50b7464ece6d7bb45c1b3dde592f7"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.4.3-desktop.png",
+        "sha256": "f224f3777ccac09e44adaa35abf2722a80faf7d52e83b47a9da7765a106c5324"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.4.3-mobile.png",
+        "sha256": "61327591b53e19effdc00f5227ec699335bcfc95b8b2531ae2907c1780647294"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.4.4-desktop.png",
+        "sha256": "41391d02a924c10071f76ba27e30f5616a587db6f3dbaffba5a1031cfae914f3"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/4.4.4-mobile.png",
+        "sha256": "506b86c72a5808cb3b75adc7fcc824636edcb74644c00cbe28427659ae37a07f"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/5.2-desktop.png",
+        "sha256": "8834d528f2838e9a34c8a59f46fe9a2972eba1e5f41c1ad98fc9d49aca8e7b82"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/5.2-mobile.png",
+        "sha256": "799ae7c5875e5a01ee0fcc6216b62f1a6a5e0c0eafd97b3779c5b7f60df2c2f5"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/6.1-desktop.png",
+        "sha256": "0f2f2cc90239aa6b7ec5b4b55420c0567079b35ae45788a94677dad8f9260449"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/6.1-mobile.png",
+        "sha256": "1eaf2d9d7c36a9c50bdf2b61b118dad6f42b610f3a41c6fd47dd90798fa1abcd"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/6.2-desktop.png",
+        "sha256": "0b57c6c7a7aedbef247d1262ec5e428441dfa422ea430a091e4b0df969b6440d"
+      },
+      {
+        "file": "specs/redesign/screenshots/P4-1/6.2-mobile.png",
+        "sha256": "5fc4f6892610fa7acd4e24f54424502589b6070ac2e327b41f5e40d7733348cb"
+      }
+    ]
+  },
+  "matlab": {
+    "scripts": 34,
+    "parameterSetsPerFigure": 2,
+    "oneProcessPerScript": true,
+    "timeoutSeconds": 300,
+    "executable": "C:/Program Files/MATLAB/R2024b/bin/matlab.exe",
+    "argument": "-batch",
+    "allPassed": true,
+    "allPNGsInspected": true,
+    "worstRelativeDiscrepancy": 1.9377959517997166e-10,
+    "manifest": "specs/redesign/matlab-check/P4-1/manifest.json"
+  },
+  "checks": {
+    "npm ci": "passed",
+    "npm test": "passed",
+    "node scripts/check-animations.mjs": "passed",
+    "npm run build": "passed",
+    "node scripts/check-browser.mjs": "passed",
+    "node scripts/capture-p4-review.mjs": "passed"
+  },
+  "formatCheck": "passed (all changed TypeScript and JavaScript files)",
+  "implementationCommit": "320f0e4"
+}

@@ -1,0 +1,697 @@
+{
+  "lectures": 17,
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "requested": [
+    "4.1",
+    "4.2.2",
+    "4.4.3",
+    "4.4.4",
+    "5.2",
+    "6.1",
+    "6.2"
+  ],
+  "captures": [
+    {
+      "lecture": "4.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.1-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.1-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.1-figure3-desktop.png"
+    },
+    {
+      "lecture": "4.2.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.2.1-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.2.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.2.1-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.2.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.2.1-figure3-desktop.png"
+    },
+    {
+      "lecture": "4.2.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.2.2-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.2.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.2.2-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.2.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.2.2-figure3-desktop.png"
+    },
+    {
+      "lecture": "4.2.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.2.3-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.2.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.2.3-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.3-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.3-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.3-figure3-desktop.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 4,
+      "file": "outputs/P4-1/browser/4.3-figure4-desktop.png"
+    },
+    {
+      "lecture": "4.4.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.1-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.4.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.1-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.4.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.2-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.4.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.2-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.4.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.3-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.4.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.3-figure2-desktop.png"
+    },
+    {
+      "lecture": "4.4.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.4.3-figure3-desktop.png"
+    },
+    {
+      "lecture": "4.4.4",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.4-figure1-desktop.png"
+    },
+    {
+      "lecture": "4.4.4",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.4-figure2-desktop.png"
+    },
+    {
+      "lecture": "5.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/5.1-figure1-desktop.png"
+    },
+    {
+      "lecture": "5.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/5.1-figure2-desktop.png"
+    },
+    {
+      "lecture": "5.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/5.2-figure1-desktop.png"
+    },
+    {
+      "lecture": "5.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/5.2-figure2-desktop.png"
+    },
+    {
+      "lecture": "5.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/5.2-figure3-desktop.png"
+    },
+    {
+      "lecture": "5.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/5.3-figure1-desktop.png"
+    },
+    {
+      "lecture": "5.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/5.3-figure2-desktop.png"
+    },
+    {
+      "lecture": "5.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/5.3-figure3-desktop.png"
+    },
+    {
+      "lecture": "6.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/6.1-figure1-desktop.png"
+    },
+    {
+      "lecture": "6.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/6.1-figure2-desktop.png"
+    },
+    {
+      "lecture": "6.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/6.1-figure3-desktop.png"
+    },
+    {
+      "lecture": "6.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/6.2-figure1-desktop.png"
+    },
+    {
+      "lecture": "6.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/6.2-figure2-desktop.png"
+    },
+    {
+      "lecture": "6.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/6.2-figure3-desktop.png"
+    },
+    {
+      "lecture": "7.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/7.1-figure1-desktop.png"
+    },
+    {
+      "lecture": "7.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/7.1-figure2-desktop.png"
+    },
+    {
+      "lecture": "7.1",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/7.1-figure3-desktop.png"
+    },
+    {
+      "lecture": "7.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/7.2-figure1-desktop.png"
+    },
+    {
+      "lecture": "7.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/7.2-figure2-desktop.png"
+    },
+    {
+      "lecture": "7.2",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/7.2-figure3-desktop.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/7.3-figure1-desktop.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/7.3-figure2-desktop.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/7.3-figure3-desktop.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "desktop",
+      "width": 1440,
+      "figure": 4,
+      "file": "outputs/P4-1/browser/7.3-figure4-desktop.png"
+    },
+    {
+      "lecture": "4.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.1-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.1-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.1-figure3-mobile.png"
+    },
+    {
+      "lecture": "4.2.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.2.1-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.2.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.2.1-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.2.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.2.1-figure3-mobile.png"
+    },
+    {
+      "lecture": "4.2.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.2.2-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.2.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.2.2-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.2.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.2.2-figure3-mobile.png"
+    },
+    {
+      "lecture": "4.2.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.2.3-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.2.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.2.3-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.3-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.3-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.3-figure3-mobile.png"
+    },
+    {
+      "lecture": "4.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 4,
+      "file": "outputs/P4-1/browser/4.3-figure4-mobile.png"
+    },
+    {
+      "lecture": "4.4.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.1-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.4.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.1-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.4.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.2-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.4.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.2-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.4.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.3-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.4.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.3-figure2-mobile.png"
+    },
+    {
+      "lecture": "4.4.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/4.4.3-figure3-mobile.png"
+    },
+    {
+      "lecture": "4.4.4",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/4.4.4-figure1-mobile.png"
+    },
+    {
+      "lecture": "4.4.4",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/4.4.4-figure2-mobile.png"
+    },
+    {
+      "lecture": "5.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/5.1-figure1-mobile.png"
+    },
+    {
+      "lecture": "5.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/5.1-figure2-mobile.png"
+    },
+    {
+      "lecture": "5.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/5.2-figure1-mobile.png"
+    },
+    {
+      "lecture": "5.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/5.2-figure2-mobile.png"
+    },
+    {
+      "lecture": "5.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/5.2-figure3-mobile.png"
+    },
+    {
+      "lecture": "5.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/5.3-figure1-mobile.png"
+    },
+    {
+      "lecture": "5.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/5.3-figure2-mobile.png"
+    },
+    {
+      "lecture": "5.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/5.3-figure3-mobile.png"
+    },
+    {
+      "lecture": "6.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/6.1-figure1-mobile.png"
+    },
+    {
+      "lecture": "6.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/6.1-figure2-mobile.png"
+    },
+    {
+      "lecture": "6.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/6.1-figure3-mobile.png"
+    },
+    {
+      "lecture": "6.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/6.2-figure1-mobile.png"
+    },
+    {
+      "lecture": "6.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/6.2-figure2-mobile.png"
+    },
+    {
+      "lecture": "6.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/6.2-figure3-mobile.png"
+    },
+    {
+      "lecture": "7.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/7.1-figure1-mobile.png"
+    },
+    {
+      "lecture": "7.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/7.1-figure2-mobile.png"
+    },
+    {
+      "lecture": "7.1",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/7.1-figure3-mobile.png"
+    },
+    {
+      "lecture": "7.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/7.2-figure1-mobile.png"
+    },
+    {
+      "lecture": "7.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/7.2-figure2-mobile.png"
+    },
+    {
+      "lecture": "7.2",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/7.2-figure3-mobile.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 1,
+      "file": "outputs/P4-1/browser/7.3-figure1-mobile.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 2,
+      "file": "outputs/P4-1/browser/7.3-figure2-mobile.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 3,
+      "file": "outputs/P4-1/browser/7.3-figure3-mobile.png"
+    },
+    {
+      "lecture": "7.3",
+      "size": "mobile",
+      "width": 390,
+      "figure": 4,
+      "file": "outputs/P4-1/browser/7.3-figure4-mobile.png"
+    }
+  ],
+  "errors": []
+}
