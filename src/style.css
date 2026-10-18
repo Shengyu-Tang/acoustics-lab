@@ -877,6 +877,7 @@ time {
   font-size: 14px;
   line-height: 1.9;
   color: #555;
+  white-space: pre-line;
 }
 .calendar-item h3 {
   font-size: 18px;
@@ -1969,6 +1970,11 @@ a.secondary {
   grid-template-columns: 110px minmax(0, 1fr);
   column-gap: 16px;
   align-items: start;
+}
+.calendar-note {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.7;
 }
 .calendar-item > div {
   grid-column: 1;

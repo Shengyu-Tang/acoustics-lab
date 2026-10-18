@@ -1,87 +1,130 @@
-// The two authoritative files are opened read-only; output stays in this clone.
+// Read-only sources; all generated output stays in this clone.
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { format } from "prettier";
-const source = path.resolve("../02-教学安排");
-const md = fs.readFileSync(path.join(source, "剩余学期逐次课进度规划_20261018.md"), "utf8");
+
+const root = fileURLToPath(new URL("../", import.meta.url));
+const source = path.resolve(root, "../02-教学安排");
 const docx = path.join(source, "课程教学日历（理论课程）-2026秋-稳定版_20261018.docx");
 const result = spawnSync(
   "python",
-  [
-    "-X",
-    "utf8",
-    "-c",
-    `import sys,zipfile,json,xml.etree.ElementTree as E
-ns={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
-with zipfile.ZipFile(sys.argv[1]) as z: root=E.fromstring(z.read('word/document.xml'))
-def text(p): return ''.join((n.text or '') if n.tag.endswith('}t') else '\\n' if n.tag.endswith('}br') else '' for n in p.iter())
-rows=[['\\n'.join(text(p) for p in c.findall('w:p',ns)) for c in r.findall('w:tc',ns)] for r in root.findall('.//w:tr',ns)]
-print(json.dumps(rows,ensure_ascii=False))`,
-    docx,
-  ],
+  ["-B", "-X", "utf8", path.join(root, "scripts/read-calendar-docx.py"), docx],
   { encoding: "utf8", windowsHide: true },
 );
+if (result.error) throw result.error;
 if (result.status !== 0) throw new Error(result.stderr);
-const rows = JSON.parse(result.stdout).slice(1);
-const plan = new Map(
+const { rows, paragraphs } = JSON.parse(result.stdout);
+const topics = new Map(
+  JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8")).map((t) => [t.id, t]),
+);
+
+// Markdown is only a date cross-check, never a source of displayed text.
+const md = fs.readFileSync(path.join(source, "剩余学期逐次课进度规划_20261018.md"), "utf8");
+const planDates = new Map(
   md
     .split(/\r?\n/)
-    .filter((s) => /^\| \d+ \|/.test(s))
-    .map((s) => {
-      const c = s
-        .split("|")
-        .slice(1, -1)
-        .map((v) => v.trim());
-      return [Number(c[0]), c];
+    .filter((line) => /^\|\s*\d+\s*\|/.test(line))
+    .map((line) => {
+      const cells = line.split("|").map((cell) => cell.trim());
+      return [Number(cells[1]), readDate(cells[3])];
     }),
 );
-const lessons = rows.map((r, index) => {
-  const number = index + 1,
-    p = plan.get(number);
-  const date = (p?.[2] ?? r[1]).match(/(\d+)\.(\d+)/);
-  const month = Number(date[1]),
-    day = Number(date[2]);
-  const body = r[3].replace(/^第\d+次\s*/, "");
-  const split = body.search(/\d+\.\d+/);
-  const title = (p?.[3] ?? (split < 0 ? body.split("\n")[0] : body.slice(0, split))).trim();
-  const moocText = split < 0 ? "" : body.slice(split).replaceAll("\n", "");
-  const sections = [
-    ...moocText.matchAll(/(\d+\.\d+(?:\.\d+)?)(?:—(\d+\.\d+(?:\.\d+)?))?\s+([^；]+)/g),
-  ].flatMap((m) => {
-    const ids = [m[1]];
-    if (m[2]) {
-      const first = m[1].split("."),
-        last = m[2].split(".");
-      if (first.slice(0, -1).join(".") !== last.slice(0, -1).join("."))
-        throw new Error("Unsupported range");
-      for (let n = Number(first.at(-1)) + 1; n <= Number(last.at(-1)); n++)
-        ids.push([...first.slice(0, -1), n].join("."));
+function readDate(text) {
+  const match = text.match(/^(\d{1,2})\.(\d{1,2})(?:\s|$)/);
+  if (!match) throw new Error(`Invalid calendar date: ${text}`);
+  const month = Number(match[1]),
+    day = Number(match[2]);
+  const year = month === 1 ? 2027 : 2026;
+  const date = new Date(year, month - 1, day);
+  if (date.getMonth() !== month - 1 || date.getDate() !== day)
+    throw new Error(`Invalid calendar date: ${text}`);
+  return `${year}.${month}.${day}`;
+}
+function parseContent(content) {
+  const sections = [],
+    activities = [];
+  // Preserve complete prose for the introduction, presentations and revision.
+  if (!/^\d+\.\d+/.test(content)) return { sections, activities: [content] };
+  for (const entry of content
+    .split("；")
+    .map((s) => s.trim())
+    .filter(Boolean)) {
+    const match = entry.match(/^(\d+\.\d+(?:\.\d+)?)(?:—(\d+\.\d+(?:\.\d+)?))?\s+(.+)$/);
+    if (!match) {
+      if (/^\d+\./.test(entry)) throw new Error(`Malformed MOOC entry: ${entry}`);
+      activities.push(entry);
+      continue;
     }
-    return ids.map((id) => ({ id, title: m[3] }));
-  });
-  if (p && Number(p[1]) !== Number(r[0])) throw new Error(`Week mismatch: ${number}`);
-  if (p && date[0] !== r[1].match(/\d+\.\d+/)[0]) throw new Error(`Date mismatch: ${number}`);
-  if (p && p[4] !== "—" && p[4].split("、").join(",") !== sections.map((s) => s.id).join(","))
-    throw new Error(`MOOC mismatch: ${number}`);
+    const [, first, last, title] = match;
+    const ids = [first];
+    if (last) {
+      const start = first.split("."),
+        end = last.split(".");
+      if (
+        start.slice(0, -1).join(".") !== end.slice(0, -1).join(".") ||
+        Number(end.at(-1)) < Number(start.at(-1))
+      )
+        throw new Error(`Unsupported MOOC range: ${entry}`);
+      for (let n = Number(start.at(-1)) + 1; n <= Number(end.at(-1)); n++)
+        ids.push([...start.slice(0, -1), n].join("."));
+    }
+    for (const id of ids) {
+      const topic = topics.get(id);
+      if (!topic) throw new Error(`Missing lecture for MOOC section ${id}`);
+      // The review requests these two distinct website lecture titles.
+      sections.push({ id, title: ["1.1.1", "1.1.2"].includes(id) ? topic.title : title });
+    }
+  }
+  return { sections, activities };
+}
+
+if (rows[0]?.[3] !== "教学内容") throw new Error("Unexpected DOCX calendar table");
+const lessons = rows.slice(1).map((r, index) => {
+  const number = index + 1;
+  if (r.length !== 7) throw new Error(`Unexpected columns: lesson ${number}`);
+  const heading = r[3].match(/^第(\d+)次\s+([^\n]+)\n([\s\S]+)$/);
+  if (!heading || Number(heading[1]) !== number)
+    throw new Error(`Unexpected lesson heading: ${r[3]}`);
+  const date = readDate(r[1]);
+  if (planDates.has(number) && date !== planDates.get(number))
+    throw new Error(`Date mismatch: lesson ${number}`);
+  const { sections, activities } = parseContent(heading[3].trim());
   return {
     number,
     week: Number(r[0]),
-    date: `${month === 1 ? 2027 : 2026}.${month}.${day}`,
+    date,
     hours: Number(r[2]),
-    title,
+    title: heading[2].trim(),
     sections,
-    discussion: p?.[6] ?? r[5],
+    activities,
+    discussion: r[5],
     homework: r[6],
-    extension: p?.[7] ?? "",
     preview: "",
     goals: [],
     experiments: sections.map((s) => s.id),
   };
 });
 if (lessons.length !== 24) throw new Error("Expected 24 lessons");
-fs.writeFileSync(
-  "src/calendar.json",
-  await format(JSON.stringify(lessons), { parser: "json", printWidth: 100 }),
+for (const number of planDates.keys())
+  if (!lessons.some((l) => l.number === number))
+    throw new Error(`Unknown planned lesson ${number}`);
+
+// End the requested excerpt before the DOCX's progress-policy details.
+const explanation = paragraphs.find((p) => p.startsWith("第1—4次"));
+const sentences = explanation?.split("。");
+if (!sentences || sentences.length < 2) throw new Error("Missing DOCX calendar explanation");
+const note = `${sentences[0]}。${sentences[1].split("，")[0]}。`;
+for (const [file, data] of [
+  ["calendar.json", lessons],
+  ["calendar-info.json", { note }],
+]) {
+  fs.writeFileSync(
+    path.join(root, "src", file),
+    await format(JSON.stringify(data), { parser: "json", printWidth: 100 }),
+  );
+}
+console.log(
+  "Synced 24 lessons and explanation from read-only stable DOCX; Markdown dates checked.",
 );
-console.log("Synced 24 lessons from read-only DOCX + Markdown.");
