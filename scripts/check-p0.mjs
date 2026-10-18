@@ -5,7 +5,7 @@ fs.mkdirSync("outputs", { recursive: true });
 await build({
   stdin: {
     contents:
-      "export * from './src/physics/chapter1';export * from './src/plot/chapter1Figures';export {csv,matlab} from './src/plot/export';export {default as lecture124} from './src/content/lectures/1.2.4';export {default as lecture125} from './src/content/lectures/1.2.5';",
+      "export * from './src/plot/ticks';export * from './src/physics/chapter1';export * from './src/plot/chapter1Figures';export {csv,matlab,toTex} from './src/plot/export';export {default as lecture124} from './src/content/lectures/1.2.4';export {default as lecture125} from './src/content/lectures/1.2.5';",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -29,6 +29,8 @@ const {
   instrumentPanel,
   csv,
   matlab,
+  toTex,
+  axisTicks,
   lecture124,
   lecture125,
 } = await import("../outputs/p0-check.mjs");
@@ -151,11 +153,33 @@ const panels = [
   ...instantaneousPanels(instrument),
   powerPanel(instrument),
   instrumentPanel(instrument),
+  powerPanel({
+    M: bandwidthExperiment.M,
+    D: bandwidthExperiment.D,
+    Rm: bandwidthSolution(bandwidthExperiment).Rm,
+    F0: bandwidthSolution(bandwidthExperiment).force,
+  }),
 ];
+for (const [input, expected] of [
+  ["Qₘ xₘ f₀ f₁ f₂ Rₘ Xₘ |Zₘ|", "Q_{m} x_{m} f_{0} f_{1} f_{2} R_{m} X_{m} |Z_{m}|"],
+  ["Δf W̄ (m/s²)", "\\Delta f \\bar{W} (m/s^{2})"],
+  ["中文：当前工作点", "中文：当前工作点"],
+  ["ω θ π ×10⁻³", "\\omega  \\theta  \\pi  \\times 10^{-3}"],
+])
+  assert.equal(toTex(input), expected);
 for (const p of panels) {
   assert.ok(p.xlim[1] > p.xlim[0] && p.ylim[1] > p.ylim[0]);
   for (const s of p.series ?? [])
     for (const point of s.points) assert.ok(point.every(Number.isFinite));
+  // Markers denote individual measurements; every continuous curve must cover the displayed axis.
+  const xlim = axisTicks(p.xlim, p.xscale === "log").limits;
+  for (const s of p.series ?? []) {
+    if (s.points.length < 2 || s.style === "none") continue;
+    const xs = s.points.map(([x]) => x),
+      lo = Math.max(xlim[0], Math.min(...xs)),
+      hi = Math.min(xlim[1], Math.max(...xs));
+    assert.ok((hi - lo) / (xlim[1] - xlim[0]) >= 0.99, `${p.title}: ${s.name} must cover xlim`);
+  }
 }
 const exported = matlab(panels, Math.ceil(panels.length / 3), 3, "P0 current parameters");
 assert.ok(exported.includes("subplot("));
@@ -163,6 +187,12 @@ assert.ok(exported.includes("xline("));
 assert.ok(exported.includes("yline("));
 assert.ok(!exported.includes("undefined"));
 assert.ok(exported.includes("'MarkerIndices',[1]"));
+assert.ok(exported.includes("defaultAxesFontName','Microsoft YaHei'"));
+assert.ok(exported.includes("'LabelOrientation','horizontal','LabelVerticalAlignment','top'"));
+assert.ok(exported.includes("'LineStyle','none','Marker','o'"));
+assert.ok(!/[₀-₉ₘ\u0304]/u.test(exported));
+assert.ok(!exported.includes("'Interpreter','none'"));
+assert.ok(exported.includes("ylabel('$\\bar{W}$ (W)','Interpreter','latex')"));
 const records = csv([powerPanel(instrument)]).split("\r\n");
 assert.ok(records.some((r) => r.includes(String(s.f1))));
 assert.ok(records.some((r) => r.includes(String(s.f2))));

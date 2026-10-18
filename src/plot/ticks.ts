@@ -43,11 +43,7 @@ export function axisTicks(input: [number, number], log = false): AxisTicks {
   ).step;
   const start = Math.floor(lo / step + 1e-10),
     end = Math.ceil(hi / step - 1e-10);
-  let values = Array.from({ length: end - start + 1 }, (_, i) => clean((start + i) * step));
-  // A near-tick negative endpoint (e.g. -2.063) still gets an enclosing
-  // whole-tick limit (-4), but its first label is -2, matching the review.
-  if (lo < 0 && values.length > 4 && values[1] - lo > 0 && values[1] - lo < step * 0.05)
-    values = values.slice(1);
+  const values = Array.from({ length: end - start + 1 }, (_, i) => clean((start + i) * step));
   const largest = Math.max(Math.abs(lo), Math.abs(hi));
   let exponent = largest >= 1e4 || largest < 0.01 ? Math.floor(Math.log10(step)) : 0;
   // Ensure scaled tick labels are integers, including a 2.5 step.

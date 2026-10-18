@@ -49,8 +49,8 @@ export default function PlotDemo() {
   const polar: Panel = {
     ...base,
     title: "polarplot：偶极子指向性",
-    xlabel: "方位角 θ (°)",
-    ylabel: "归一化幅值 (1)",
+    xlabel: "",
+    ylabel: "",
     kind: "polar",
     ylim: [0, 1],
     series: [

@@ -3,7 +3,7 @@ import { COLORS, fieldColor, fieldLimits, type Panel, type Series } from "./type
 import { csv, download, matlab, png } from "./export";
 export * from "./types";
 export { csv, matlab } from "./export";
-const DASH = { "-": "", "--": "6 4", ":": "1 3", "-.": "6 3 1 3" };
+const DASH = { "-": "", "--": "6 4", ":": "1 3", "-.": "6 3 1 3", none: "" };
 import { axisTicks, tickLabel, superscript } from "./ticks";
 import { labelLanes, bestLegend, textWidth } from "./layout";
 type Layout = { W: number; H: number; L: number; T: number; AW: number; AH: number };
@@ -58,7 +58,7 @@ export function Line({
   const color = series.color ?? COLORS[index % COLORS.length];
   return (
     <g fill="none" stroke={color} strokeWidth="1.5">
-      <path d={d} strokeDasharray={DASH[series.style ?? "-"]} />
+      {series.style !== "none" && <path d={d} strokeDasharray={DASH[series.style ?? "-"]} />}
       {series.marker &&
         series.points
           .filter((_, i) => i % Math.max(1, Math.floor(series.points.length / 18)) === 0)
@@ -102,10 +102,10 @@ export function Axes({
   const W = width,
     H = height,
     L = 62,
-    AW = W - L - (p.field || p.rightLabel ? 88 : 24);
+    AW = W - L - (p.kind === "polar" ? 130 : p.field || p.rightLabel ? 88 : 24);
   const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
-  const T = 36 + (labels.length ? 16 * (1 + Math.max(...labels.map((a) => a.lane))) : 0);
-  const AH = H - T - 66;
+  const T = p.kind === "polar" ? 52 : 36;
+  const AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
   const layout = { W, H, L, T, AW, AH };
   const id = useId().replaceAll(":", ""),
     xs = scale(p.xlim, p.xscale === "log"),
@@ -177,10 +177,13 @@ export function Axes({
     Math.max(100, ...(p.series?.map((s) => textWidth(s.name) + 34) ?? [])),
   );
   const legendH = (p.series?.length ?? 0) * 16 + 8;
-  const legend = bestLegend(p, L, T, AW, AH, legendW, legendH, (x, y, right) => [
-    L + xs(x) * AW,
-    T + (1 - scale(right ? (p.rightLim ?? p.ylim) : p.ylim, p.yscale === "log")(y)) * AH,
-  ]);
+  const legend =
+    p.kind === "polar"
+      ? [L + AW / 2 + AH / 2 + 22, T]
+      : bestLegend(p, L, T, AW, AH, legendW, legendH, (x, y, right) => [
+          L + xs(x) * AW,
+          T + (1 - scale(right ? (p.rightLim ?? p.ylim) : p.ylim, p.yscale === "log")(y)) * AH,
+        ]);
   return (
     <g fontFamily="Arial, Helvetica, Microsoft YaHei, sans-serif" fontSize="11" fill="#1a1a1a">
       <defs>
@@ -232,11 +235,6 @@ export function Axes({
               ×10{superscript(yt.exponent)}
             </text>
           )}
-          {labels.map((a, i) => (
-            <text key={i} x={a.x} y={30 + a.lane * 16} data-annotation-label="true">
-              {a.text}
-            </text>
-          ))}
           <g clipPath={`url(#${id})`}>
             {p.bands?.map((b, i) => (
               <g key={i}>
@@ -290,6 +288,36 @@ export function Axes({
               </g>
             );
           })}
+          {labels.map((a, i) => (
+            <text
+              key={i}
+              x={a.x}
+              y={T + 15 + a.lane * 17}
+              data-annotation-label="true"
+              stroke="white"
+              strokeWidth="3"
+              paintOrder="stroke"
+              strokeLinejoin="round"
+            >
+              {a.text}
+            </text>
+          ))}
+          {p.annotations
+            ?.filter((a) => a.axis === "y")
+            .map((a, i) => (
+              <text
+                key={`y${i}`}
+                x={L + AW - 5}
+                y={Math.max(T + 13, T + (1 - ys(a.value)) * AH - 5)}
+                textAnchor="end"
+                data-annotation-label="true"
+                stroke="white"
+                strokeWidth="3"
+                paintOrder="stroke"
+              >
+                {a.label}
+              </text>
+            ))}
         </>
       ) : (
         <>
@@ -366,18 +394,22 @@ export function Axes({
             {tickLabel(y, rt, p.yscale === "log")}
           </text>
         ))}
-      <text x={L + AW / 2} y={H - 22} fontSize="12" textAnchor="middle">
-        {p.xlabel}
-      </text>
-      <text
-        x="15"
-        y={T + AH / 2}
-        fontSize="12"
-        textAnchor="middle"
-        transform={`rotate(-90 15 ${T + AH / 2})`}
-      >
-        {p.ylabel}
-      </text>
+      {!polar && (
+        <>
+          <text x={L + AW / 2} y={H - 22} fontSize="12" textAnchor="middle">
+            {p.xlabel}
+          </text>
+          <text
+            x="15"
+            y={T + AH / 2}
+            fontSize="12"
+            textAnchor="middle"
+            transform={`rotate(-90 15 ${T + AH / 2})`}
+          >
+            {p.ylabel}
+          </text>
+        </>
+      )}
       {p.rightLabel && (
         <text
           x={W - 3}
@@ -400,12 +432,29 @@ export function Axes({
           />
           {p.series.map((s, i) => (
             <g key={i} transform={`translate(5 ${14 + i * 16})`}>
-              <path
-                d="M0 -3h16"
-                stroke={s.color ?? COLORS[i % COLORS.length]}
-                strokeWidth="1.5"
-                strokeDasharray={DASH[s.style ?? "-"]}
-              />
+              {s.style !== "none" && (
+                <path
+                  d="M0 -3h16"
+                  stroke={s.color ?? COLORS[i % COLORS.length]}
+                  strokeWidth="1.5"
+                  strokeDasharray={DASH[s.style ?? "-"]}
+                />
+              )}
+              {s.marker && (
+                <g
+                  transform="translate(8 -3)"
+                  stroke={s.color ?? COLORS[i % COLORS.length]}
+                  fill="white"
+                >
+                  {s.marker === "o" ? (
+                    <circle r="3" />
+                  ) : s.marker === "s" ? (
+                    <rect x="-3" y="-3" width="6" height="6" />
+                  ) : (
+                    <path d={s.marker === "^" ? "M0 -4l4 7h-8Z" : "M-3 -3l6 6m-6 0l6-6"} />
+                  )}
+                </g>
+              )}
               <text x="21">{s.name}</text>
             </g>
           ))}

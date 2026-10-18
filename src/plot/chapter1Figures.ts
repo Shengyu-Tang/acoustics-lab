@@ -7,9 +7,10 @@ import {
   instrument,
 } from "../physics/chapter1";
 import { sample, type Panel, type Series } from "./types";
+import { axisTicks } from "./ticks";
 export function frequencyPanels(p: Oscillator, compare: boolean): Panel[] {
   const c = characteristics(p),
-    xmax = c.f0 * 2.5;
+    xmax = axisTicks([0, c.f0 * 2.5]).limits[1];
   const variants = compare
     ? [1.7, 5, 10].map((Q) => ({ name: `Qₘ = ${Q}`, p: { ...p, Rm: (c.omega0 * p.M) / Q } }))
     : [{ name: `Qₘ = ${c.Qm.toPrecision(3)}`, p }];
@@ -82,8 +83,8 @@ export function frequencyPanels(p: Oscillator, compare: boolean): Panel[] {
 }
 export function impedancePanel(p: Oscillator): Panel {
   const c = characteristics(p),
-    min = 0.15 * c.f0,
-    max = 2.5 * c.f0;
+    min = 0.001 * c.f0,
+    max = axisTicks([0, 2.5 * c.f0]).limits[1];
   return {
     title: "机械阻抗",
     xlabel: "频率 f (Hz)",
@@ -103,7 +104,7 @@ export function impedancePanel(p: Oscillator): Panel {
 }
 export function instantaneousPanels(p: Oscillator): Panel[] {
   const c = characteristics(p),
-    duration = 3 / c.f0,
+    duration = axisTicks([0, 3 / c.f0]).limits[1],
     bound = ((p.F0 * p.F0) / p.Rm) * 1.1;
   return [0.8, 1, 1.2].map((r) => {
     const f = c.f0 * r,
@@ -120,7 +121,7 @@ export function instantaneousPanels(p: Oscillator): Panel[] {
           points: sample((t) => instantaneous(p, f, t).input, 0, duration, 601),
         },
         {
-          name: "平均输入功率",
+          name: `平均输入功率 ${w.toPrecision(3)} W`,
           points: [
             [0, w],
             [duration, w],
@@ -128,14 +129,13 @@ export function instantaneousPanels(p: Oscillator): Panel[] {
           style: "--",
         },
       ],
-      annotations: [{ axis: "y", value: w, label: `平均 ${w.toPrecision(3)} W` }],
     };
   });
 }
 export function powerPanel(p: Oscillator): Panel {
   const c = characteristics(p),
     peak = p.F0 ** 2 / (2 * p.Rm),
-    xmax = Math.max(c.f0 * 2, c.f2 * 1.15);
+    xmax = axisTicks([0, Math.max(c.f0 * 2, c.f2 * 1.15)]).limits[1];
   // Include the exact peak and half-power points among samples.
   const fs = [...sample((x) => x, 0, xmax, 1401).map((p) => p[0]), c.f0, c.f1, c.f2].sort(
     (a, b) => a - b,
@@ -143,7 +143,7 @@ export function powerPanel(p: Oscillator): Panel {
   return {
     title: "平均功率与半功率带宽",
     xlabel: "频率 f (Hz)",
-    ylabel: "平均功率 W̄ (W)",
+    ylabel: "W̄ (W)",
     xlim: [0, xmax],
     ylim: [0, peak * 1.15],
     series: [{ name: "平均机械功率", points: fs.map((f) => [f, response(p, f).power]) }],
@@ -158,7 +158,7 @@ export function powerPanel(p: Oscillator): Panel {
 }
 export function instrumentPanel(p: typeof instrument): Panel {
   const s = instrumentSolution(p),
-    xmax = Math.max(60, s.f0 * 1.8),
+    xmax = axisTicks([0, Math.max(60, s.f0 * 1.8)]).limits[1],
     ymax =
       Math.max(
         response(p, s.fx ?? 0).x * 1000,
@@ -181,7 +181,7 @@ export function instrumentPanel(p: typeof instrument): Panel {
     series: [
       curve(p.Rm, `原设计 Qₘ=${s.Qm.toPrecision(3)}`),
       curve(400, `Rₘ=400 kg/s`),
-      { name: "当前工作点", points: [[s.f, s.xMm]], marker: "o" },
+      { name: "当前工作点", points: [[s.f, s.xMm]], marker: "o", style: "none" },
     ],
     bands: [{ from: 25, to: 40, label: "泵转频 25–40 Hz" }],
     annotations: [

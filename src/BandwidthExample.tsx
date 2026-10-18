@@ -8,7 +8,12 @@ export default function BandwidthExample() {
   const [p, setP] = useState(example.defaults),
     s = example.solve(p);
   const panel = powerPanel({ M: p.M, D: p.D, Rm: s.Rm, F0: s.force });
-  panel.series!.push({ name: "目标振速工作点", points: [[s.f0, s.power]], marker: "o" });
+  panel.series!.push({
+    name: "目标振速工作点",
+    points: [[s.f0, s.power]],
+    marker: "o",
+    style: "none",
+  });
   const steps = [
     {
       tex: String.raw`f_0=\frac{1}{2\pi}\sqrt{D/M},\quad\Delta f=f_2-f_1,\quad Q_m=\frac{f_0}{\Delta f}`,

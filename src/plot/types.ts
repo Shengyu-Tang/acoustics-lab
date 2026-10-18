@@ -5,7 +5,7 @@ export type Series = {
   name: string;
   points: Point[];
   color?: string;
-  style?: "-" | "--" | ":" | "-.";
+  style?: "-" | "--" | ":" | "-." | "none";
   marker?: "o" | "s" | "^" | "x";
   axis?: "left" | "right";
 };

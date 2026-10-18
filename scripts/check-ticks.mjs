@@ -9,7 +9,7 @@ for (const [limits, expected] of [
   ],
   [
     [-2.063, 6.875],
-    [-2, 0, 2, 4, 6, 8],
+    [-4, -2, 0, 2, 4, 6, 8],
   ],
   [
     [0, 0.09484],
@@ -29,6 +29,7 @@ for (const limits of [
   [100, 100.01],
 ]) {
   const a = axisTicks(limits);
+  assert.deepEqual(a.limits, [a.values[0], a.values.at(-1)]);
   assert.ok(a.limits[0] <= limits[0] && a.limits[1] >= limits[1]);
   assert.ok(a.values.length >= 4 && a.values.length <= 8);
   assert.ok(a.values.every((v, i) => !i || v > a.values[i - 1]));
@@ -42,6 +43,7 @@ assert.deepEqual(log.values, [0.001, 0.01, 0.1, 1, 10, 100]);
 assert.equal(tickLabel(0.001, log, true), "10⁻³");
 assert.equal(tickLabel(100, log, true), "10²");
 assert.equal(log.minor.length, 40);
+assert.deepEqual(log.limits, [log.values[0], log.values.at(-1)]);
 assert.ok(log.minor.includes(0.002) && log.minor.includes(90));
 assert.throws(() => axisTicks([0, 1], true), RangeError);
 assert.throws(() => axisTicks([2, 1]), RangeError);
@@ -65,6 +67,8 @@ for (const a of labels)
 assert.deepEqual(
   bestLegend(
     {
+      xlim: [0, 100],
+      ylim: [0, 100],
       series: [
         {
           points: [
