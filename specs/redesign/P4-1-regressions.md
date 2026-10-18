@@ -28,3 +28,5 @@ scaling tested directly.
 ## MATLAB PNG follow-up
 
 Visual inspection found a B2 export-only collision: minimum and Rayleigh-distance labels shared a height. Added a MATLAB lane test **before** its fix; it failed with `duplicate MATLAB label lanes: 2,4,0,4` (exit 1). Each exported vertical-line label now has its own lane below the region captions. The circuit also initializes its sphere readouts before the common worksheet setup. The wedge field uses a shared floating-point boundary tolerance in JavaScript and MATLAB.
+
+The browser capture regression was then strengthened to enforce the referenced xline rule: labels must be inside the axes. It failed before the renderer change with 'B2 xline labels must stay inside the axes' (exit 1). The final captures pass this check at both viewports, with no label collisions.

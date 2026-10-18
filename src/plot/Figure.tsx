@@ -266,7 +266,10 @@ export function Axes({
   // limits must not force labels to cover the data on narrow screens.
   const labelTop = 20 + (titleLines.length + noteLines.length) * 16;
   const legendTop =
-    labelTop + (labels.length ? (Math.max(...labels.map((a) => a.lane)) + 1) * 17 + 4 : 0);
+    labelTop +
+    (!p.staggeredAnnotations && labels.length
+      ? (Math.max(...labels.map((a) => a.lane)) + 1) * 17 + 4
+      : 0);
   const T =
     p.kind === "polar"
       ? legendTop + (p.legend !== false && legendSeries.length ? legendH + 26 : 18)
@@ -500,7 +503,7 @@ export function Axes({
               <text
                 key={i}
                 x={a.x}
-                y={labelTop + 13 + a.lane * 17}
+                y={(p.staggeredAnnotations ? T : labelTop) + 13 + a.lane * 17}
                 data-annotation-label="true"
                 stroke="white"
                 strokeWidth="3"
