@@ -311,7 +311,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       if (p.rightLabel)
         m.rightLim = `currentAmplitudeLimits(qa_right,0,${p.yscale === "log" ? 1 : 0})`;
     }
-    if (m)
+    if (m && p.kind !== "polar")
       out.push(
         "% 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。",
         ...(p.rightLabel
@@ -343,9 +343,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       );
     if (p.ytickLabels)
       out.push(
-        `yticks(${vector(p.ytickLabels.map((t) => t.value))});yticklabels({${p.ytickLabels.map((t) => tex(t.label)).join(",")}});`,
+        `${p.kind === "polar" ? "rticks" : "yticks"}(${vector(p.ytickLabels.map((t) => t.value))});${p.kind === "polar" ? "rticklabels" : "yticklabels"}({${p.ytickLabels.map((t) => tex(t.label)).join(",")}});`,
       );
-    if (m) out.push(`model_limits{${k + 1}}=struct('x',xlim,'y',ylim);`);
+    if (m)
+      out.push(
+        `model_limits{${k + 1}}=struct('x',${p.kind === "polar" ? "thetalim" : "xlim"},'y',${p.kind === "polar" ? "rlim" : "ylim"});`,
+      );
   });
   if (model) out.push(MATLAB_FUNCTIONS);
   if (

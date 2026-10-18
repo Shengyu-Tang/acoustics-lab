@@ -498,7 +498,9 @@ export function Axes({
                 stroke={r === 1 ? "black" : "#e5e5e5"}
               />
               <text x={L + AW / 2 + 4} y={T + AH / 2 - (r * AH) / 2 + 12}>
-                {number(p.ylim[0] + r * (p.ylim[1] - p.ylim[0]))}
+                {p.ytickLabels?.find(
+                  (t) => Math.abs(t.value - (p.ylim[0] + r * (p.ylim[1] - p.ylim[0]))) < 1e-9,
+                )?.label ?? number(p.ylim[0] + r * (p.ylim[1] - p.ylim[0]))}
               </text>
             </g>
           ))}
