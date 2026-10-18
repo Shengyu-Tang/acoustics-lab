@@ -2,6 +2,16 @@ import type { Panel } from "./types";
 export const textWidth = (text: string) =>
   Array.from(text).reduce((w, c) => w + (/[^\u0000-\u00ff]/.test(c) ? 11 : 6.5), 0);
 
+/** Wrap prose at screen-pixel widths, retaining readable font sizes. */
+export function textLines(text: string, width: number): string[] {
+  const lines: string[] = [""];
+  for (const c of text) {
+    if (lines.at(-1) && textWidth(lines.at(-1)! + c) > width) lines.push("");
+    lines[lines.length - 1] += c;
+  }
+  return lines;
+}
+
 /** Place vertical-line labels to their right, and band labels at their center, inside the axes. */
 export function labelLanes(panel: Panel, left: number, width: number, xs: (n: number) => number) {
   if (panel.annotationHeader) {

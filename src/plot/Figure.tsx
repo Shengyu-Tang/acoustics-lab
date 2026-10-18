@@ -7,7 +7,7 @@ export * from "./types";
 export { csv, matlab } from "./export";
 const DASH = { "-": "", "--": "6 4", ":": "1 3", "-.": "6 3 1 3", none: "" };
 import { axisTicks, tickLabel, superscript } from "./ticks";
-import { labelLanes, textWidth } from "./layout";
+import { labelLanes, textWidth, textLines } from "./layout";
 type Layout = { W: number; H: number; L: number; T: number; AW: number; AH: number };
 const defaultLayout: Layout = { W: 640, H: 400, L: 64, T: 35, AW: 536, AH: 300 };
 /** A small, real data preview: axis text would be unreadable at catalog size. */
@@ -191,25 +191,46 @@ export function Axes({
   const W = width,
     H = height;
   let L = 62,
-    AW = W - L - (p.kind === "polar" ? 130 : p.field || p.rightLabel ? 88 : 24);
+    AW =
+      W -
+      L -
+      (p.kind === "polar" ? 130 : (p.field && !p.field.categories) || p.rightLabel ? 100 : 24);
   const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
-  const legendSeries = ([...(p.series ?? []), ...(p.field?.categories ?? []).map(c => ({name:c.label, legend:true, points:[], color:c.color, marker:"s" as const, style:"none" as const}))])
+  const legendSeries = [
+    ...(p.series ?? []),
+    ...(p.field?.categories ?? []).map((c) => ({
+      name: c.label,
+      legend: true,
+      points: [],
+      color: c.color,
+      marker: "s" as const,
+      style: "none" as const,
+    })),
+  ]
     .map((s, i) => ({ ...s, color: s.color ?? COLORS[i % COLORS.length] }))
     .filter((s) => s.legend !== false);
   const legendW = Math.min(
     AW - 14,
     Math.max(100, ...legendSeries.map((s) => textWidth(s.name) + 34)),
   );
-  const legendH = legendSeries.length * 16 + 8;
+  const legendEntries = legendSeries.map((s) => ({
+    ...s,
+    lines: textLines(s.name, Math.max(55, legendW - 28)),
+  }));
+  const legendH = legendEntries.reduce((sum, s) => sum + s.lines.length * 16, 8);
+  const titleLines = textLines(p.title, W - 30),
+    noteLines = p.responseNote ? textLines(p.responseNote, W - 30) : [];
   // Frequency readouts live above the plotting rectangle. Tight amplitude
   // limits must not force labels to cover the data on narrow screens.
-  const labelTop = p.responseNote ? 52 : 36;
+  const labelTop = 20 + (titleLines.length + noteLines.length) * 16;
   const legendTop =
     labelTop + (labels.length ? (Math.max(...labels.map((a) => a.lane)) + 1) * 17 + 4 : 0);
   const T =
     p.kind === "polar"
       ? 52
-      : legendTop + (p.legend !== false && legendSeries.length ? legendH + 6 : 0);
+      : legendTop +
+        (p.legend !== false && legendSeries.length ? legendH + 6 : 0) +
+        (yt.exponent || (p.rightLabel && rt.exponent) ? 18 : 0);
   const AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
   if (p.equalAspect) {
     AW = Math.min(AW, (AH * (p.xlim[1] - p.xlim[0])) / (p.ylim[1] - p.ylim[0]));
@@ -290,14 +311,29 @@ export function Axes({
         </clipPath>
       </defs>
       <rect width={W} height={H} fill="white" />
-      <text x={L + AW / 2} y="17" fontSize="12" fontWeight="bold" textAnchor="middle">
-        <ScriptText text={p.title} svg />
-      </text>
-      {p.responseNote && (
-        <text x={L + AW / 2} y="34" textAnchor="middle" fontSize="12">
-          <ScriptText text={p.responseNote} svg />
+      {titleLines.map((text, i) => (
+        <text
+          key={`title-${i}`}
+          x={W / 2}
+          y={17 + i * 16}
+          fontSize="12"
+          fontWeight="bold"
+          textAnchor="middle"
+        >
+          <ScriptText text={text} svg />
         </text>
-      )}
+      ))}
+      {noteLines.map((text, i) => (
+        <text
+          key={`note-${i}`}
+          x={W / 2}
+          y={17 + (titleLines.length + i) * 16}
+          textAnchor="middle"
+          fontSize="12"
+        >
+          <ScriptText text={text} svg />
+        </text>
+      ))}
       {!polar ? (
         <>
           {xt.values.map((x) => (
@@ -505,10 +541,12 @@ export function Axes({
             {number(limits[0])}
           </text>
           <text
-            x={W - 2}
+            key="colorbar-label"
+            data-axis-label="colorbar"
+            x={W - 15}
             y={T + AH / 2}
             textAnchor="middle"
-            transform={`rotate(-90 ${W - 2} ${T + AH / 2})`}
+            transform={`rotate(-90 ${W - 15} ${T + AH / 2})`}
           >
             <ScriptText text={field.label} svg />
           </text>
@@ -532,6 +570,8 @@ export function Axes({
             <ScriptText text={p.xlabel} svg />
           </text>
           <text
+            key="left-axis-label"
+            data-axis-label="left"
             x="15"
             y={T + AH / 2}
             fontSize="12"
@@ -544,26 +584,25 @@ export function Axes({
       )}
       {p.rightLabel && (
         <text
-          x={W - 3}
+          key="right-axis-label"
+          data-axis-label="right"
+          x={W - 15}
           y={T + AH / 2}
           fontSize="12"
           textAnchor="middle"
-          transform={`rotate(-90 ${W - 3} ${T + AH / 2})`}
+          transform={`rotate(-90 ${W - 15} ${T + AH / 2})`}
         >
           <ScriptText text={p.rightLabel} svg />
         </text>
       )}
       {p.legend !== false && !!legendSeries.length && (
         <g data-plot-legend="true" transform={`translate(${legend[0]} ${legend[1]})`}>
-          <rect
-            width={legendW}
-            height={legendSeries.length * 16 + 8}
-            fill="white"
-            stroke="black"
-            strokeWidth=".5"
-          />
-          {legendSeries.map((s, i) => (
-            <g key={i} transform={`translate(5 ${14 + i * 16})`}>
+          <rect width={legendW} height={legendH} fill="white" stroke="black" strokeWidth=".5" />
+          {legendEntries.map((s, i) => (
+            <g
+              key={i}
+              transform={`translate(5 ${14 + legendEntries.slice(0, i).reduce((n, s) => n + s.lines.length * 16, 0)})`}
+            >
               {s.style !== "none" && (
                 <path
                   d="M0 -3h16"
@@ -576,7 +615,7 @@ export function Axes({
                 <g
                   transform="translate(8 -3)"
                   stroke={s.color ?? COLORS[i % COLORS.length]}
-                  fill={p.field?.categories?.some(c => c.label === s.name) ? s.color : "white"}
+                  fill={p.field?.categories?.some((c) => c.label === s.name) ? s.color : "white"}
                 >
                   {s.marker === "o" ? (
                     <circle r="3" />
@@ -587,9 +626,11 @@ export function Axes({
                   )}
                 </g>
               )}
-              <text x="21">
-                <ScriptText text={s.name} svg />
-              </text>
+              {s.lines.map((text, j) => (
+                <text key={j} x="21" y={j * 16}>
+                  <ScriptText text={text} svg />
+                </text>
+              ))}
             </g>
           ))}
         </g>
@@ -678,7 +719,11 @@ export default function Figure({
         ...panels.map((p) =>
           p.legend === false
             ? 0
-            : (p.series ?? []).filter((s) => s.legend !== false).length * 16 + 14,
+            : (p.series ?? [])
+                .filter((s) => s.legend !== false)
+                .reduce((n, s) => n + textLines(s.name, Math.max(55, W - 222)).length * 16, 14) +
+              Math.max(0, textLines(p.title, W - 30).length - 1) * 16 +
+              (p.responseNote ? textLines(p.responseNote, W - 30).length * 16 : 0),
         ),
       );
   return (
@@ -728,7 +773,14 @@ export default function Figure({
       >
         {panels.map((p, i) => (
           <g key={i} transform={`translate(${(i % columns) * W} ${Math.floor(i / columns) * H})`}>
-            <Axes panel={p} width={W} height={H} />
+            {/* A new axis schema gets a new SVG subtree. A former colorbar or
+                yyaxis label must never be reused as a different axis label. */}
+            <Axes
+              key={`${name}:${i}:${p.kind}:${p.xlabel}:${p.ylabel}:${p.rightLabel ?? ""}:${p.field?.categories ? "categories" : (p.field?.label ?? "")}`}
+              panel={p}
+              width={W}
+              height={H}
+            />
           </g>
         ))}
       </svg>
@@ -744,4 +796,3 @@ export default function Figure({
     </figure>
   );
 }
-
