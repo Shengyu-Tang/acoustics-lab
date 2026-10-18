@@ -65,7 +65,7 @@ export default lecture(
     figures: [
       {
         number: "1.2.2-1",
-        title: "暂态、稳态与合成位移（共用坐标范围）",
+        title: "暂态、稳态与合成位移（共用时间窗）",
         rows: 3,
         cols: 1,
         plot: (p) => plots(p),

@@ -24,7 +24,7 @@ const curves = (p: Values) => {
       [-1.2, 2.2],
       [
         line(
-          "Current damping",
+          "当前阻尼",
           (t) => freeMotion({ M: p.M, D: p.D, Rm: settings(p).Rm, x0: 1, v0: 0 }, t),
           end,
           "-.",

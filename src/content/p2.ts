@@ -1,4 +1,4 @@
-import { fixedFigureAxes } from "../plot/fixedAxes";
+import { withFigureAxes } from "../plot/fixedAxes";
 import topics from "../topics.json";
 import calendar from "../calendar.json";
 import type { P1Lecture, Values, P1Example, Ask } from "./p1";
@@ -108,9 +108,9 @@ export function p2Lecture(
     ...data,
     figures: data.figures.map((f) => ({
       ...f,
-      plot: (p, t) =>
-        fixedFigureAxes(
-          f.number,
+      plot: withFigureAxes(
+        f.number,
+        (p: Values, t) =>
           f.plot(p, t).map((panel) => {
             panel.matlabModel!.setup += `\nlecture_readouts=${data.readoutModel};`;
             panel.matlabModel!.parameters.forEach((q) => {
@@ -119,7 +119,8 @@ export function p2Lecture(
             });
             return panel;
           }),
-        ),
+        data.animation ? data.animationPeriod : undefined,
+      ),
     })),
     questions: topic.questions!.map((text, i) => ({ text, answer: data.answers[i] })),
   };

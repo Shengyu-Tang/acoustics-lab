@@ -1,4 +1,4 @@
-import { fixedFigureAxes } from "../plot/fixedAxes";
+import { withFigureAxes } from "../plot/fixedAxes";
 import topics from "../topics.json";
 import type { ParameterDefinition } from "../Parameter";
 import type { Panel } from "../plot/types";
@@ -86,16 +86,20 @@ export function lecture(
     figures: data.figures.map((f) => ({
       ...f,
       matlabModel: modelsFor,
-      plot: (p, t) => {
-        const panels = modelsFor(f.number, p, f.plot(p, t), data.parameters, t);
-        const readouts = matlabReadouts[id];
-        // Each figure can reproduce the shared lecture's table without another download.
-        panels.forEach(
-          (panel) =>
-            (panel.matlabModel!.setup += `${id === "1.2.3" ? "\nd=w0/(2*Qm);" : ""}\nlecture_readouts=${readouts};`),
-        );
-        return fixedFigureAxes(f.number, panels);
-      },
+      plot: withFigureAxes(
+        f.number,
+        (p: Values, t) => {
+          const panels = modelsFor(f.number, p, f.plot(p, t), data.parameters, t);
+          const readouts = matlabReadouts[id];
+          // Each figure can reproduce the shared lecture's table without another download.
+          panels.forEach(
+            (panel) =>
+              (panel.matlabModel!.setup += `${id === "1.2.3" ? "\nd=w0/(2*Qm);" : ""}\nlecture_readouts=${readouts};`),
+          );
+          return panels;
+        },
+        data.animation ? data.animationPeriod : undefined,
+      ),
     })),
     examples: data.examples.map((e) => ({ ...e, plot: (p) => examplePanel(id, p, e.plot(p), e) })),
   };

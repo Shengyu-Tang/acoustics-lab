@@ -51,7 +51,7 @@ export default p2Lecture("3.1.7", {
         [200, 450],
         [
           points(
-            "Current temperature",
+            "当前温度",
             [[p.T, gasSpeed(p.T, p.gamma, p.P0).adiabatic]],
             "T",
             "sqrt(gamma*287.05*(T+273.15))",
@@ -59,7 +59,7 @@ export default p2Lecture("3.1.7", {
           ),
           {
             ...curve(
-              "Static density",
+              "静态密度",
               (T) => p.P0 / (287.05 * (T + 273.15)),
               [-40, 60],
               "linspace(-40,60,401)",
@@ -94,7 +94,7 @@ export default p2Lecture("3.1.7", {
         ],
         "",
         {
-          rightLabel: "Static density (kg/m^3)",
+          rightLabel: "静态密度 (kg/m³)",
           rightLim: [0, 3],
           annotations: [
             {

@@ -44,12 +44,12 @@ export default p2Lecture("3.4.3", {
             t,
             `t${i + 1} = 当前时间 + ${dt}T`,
             "位置 x (m)",
-            "Pressure p (Pa)",
+            "声压 p (Pa)",
             [0, 2],
             [-320, 320],
             [
               curve(
-                "Pressure p",
+                "声压 p",
                 (x) => p.pa * Math.cos(2 * Math.PI * (p.f * t + dt - (p.f * x) / p.c)),
                 [0, 2],
                 "linspace(0,2,401)",
@@ -57,7 +57,7 @@ export default p2Lecture("3.4.3", {
               ),
               {
                 ...curve(
-                  "Velocity u",
+                  "振速 u",
                   (x) =>
                     (p.pa / (p.rho * p.c)) *
                     Math.cos(2 * Math.PI * (p.f * t + dt - (p.f * x) / p.c)),
@@ -70,7 +70,7 @@ export default p2Lecture("3.4.3", {
               },
             ],
             "",
-            { rightLabel: "Velocity u (m/s)", rightLim: [-2, 2] },
+            { rightLabel: "振速 u (m/s)", rightLim: [-2, 2] },
             { rightLim: "[-2 2]" },
           ),
         ),
@@ -86,12 +86,12 @@ export default p2Lecture("3.4.3", {
             0,
             `位置 x${i + 1} = ${loc} m`,
             "时间 t (s)",
-            "Pressure p (Pa)",
+            "声压 p (Pa)",
             [0, 0.002],
             [-320, 320],
             [
               curve(
-                "Pressure p",
+                "声压 p",
                 (x) => p.pa * Math.cos(2 * Math.PI * (p.f * x - (p.f * loc) / p.c)),
                 [0, 0.002],
                 "linspace(0,.002,401)",
@@ -99,7 +99,7 @@ export default p2Lecture("3.4.3", {
               ),
               {
                 ...curve(
-                  "Velocity u",
+                  "振速 u",
                   (x) =>
                     (p.pa / (p.rho * p.c)) * Math.cos(2 * Math.PI * (p.f * x - (p.f * loc) / p.c)),
                   [0, 0.002],
@@ -111,7 +111,7 @@ export default p2Lecture("3.4.3", {
               },
             ],
             "",
-            { rightLabel: "Velocity u (m/s)", rightLim: [-2, 2] },
+            { rightLabel: "振速 u (m/s)", rightLim: [-2, 2] },
             { rightLim: "[-2 2]" },
           ),
         ),

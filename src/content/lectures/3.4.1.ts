@@ -77,18 +77,18 @@ export default p2Lecture("3.4.1", {
         { ylim: "[-1.7 1.7]*(pa+B)", legendLocation: "northeastoutside" },
       ),
     ]),
-    figure("3.4.1-2", "Particle velocity", (p, t) => [
+    figure("3.4.1-2", "质点振速", (p, t) => [
       graph(
         p,
         t,
-        "Velocity uses the difference of pressure components",
-        "Position x (m)",
-        "Velocity (m/s)",
+        "振速由正反向声压分量之差决定",
+        "位置 x (m)",
+        "振速 (m/s)",
         [0, 2],
         [-2.2, 2.2],
         [
           curve(
-            "Particle velocity",
+            "质点振速",
             (x) =>
               (p.pa * Math.cos(2 * Math.PI * p.f * (t - x / p.c)) -
                 p.B * Math.cos(2 * Math.PI * p.f * (t + x / p.c))) /

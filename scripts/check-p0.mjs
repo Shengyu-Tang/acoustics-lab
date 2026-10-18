@@ -136,8 +136,7 @@ const powerPlots = instantaneousPanels(instrument);
 assert.ok(
   powerPlots.every(
     (p) =>
-      JSON.stringify(p.xlim) === JSON.stringify(powerPlots[0].xlim) &&
-      JSON.stringify(p.ylim) === JSON.stringify(powerPlots[0].ylim),
+      JSON.stringify(p.xlim) === JSON.stringify(powerPlots[0].xlim),
   ),
 );
 assert.ok(matlab(powerPlots, 3, 1, "Power").includes("subplot(3,1,3)"));

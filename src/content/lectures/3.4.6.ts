@@ -52,7 +52,7 @@ export default p2Lecture("3.4.6", {
         p,
         0,
         "示意量级随距离、环境和工况变化",
-        "空气声压级 (dB re 20 μPa)",
+        "空气声压级 (dB，参考声压 20 μPa)",
         "",
         [0, 140],
         [0, 6],
@@ -111,18 +111,18 @@ export default p2Lecture("3.4.6", {
         { ylim: "[sourceLevel sourceLevel+20]" },
       ),
     ]),
-    figure("3.4.6-3", "Plane-wave pressure and intensity levels", (p) => [
+    figure("3.4.6-3", "平面波声压级与声强级", (p) => [
       graph(
         p,
         0,
-        "Reference pressure and medium impedance determine the offset",
-        "SPL (dB)",
-        "SIL (dB)",
+        "参考声压与介质阻抗决定两种声级的差值",
+        "声压级 (dB)",
+        "声强级 (dB)",
         [0, 140],
         [-100, 160],
         [
           curve(
-            "SIL",
+            "声强级",
             (x) => x + 10 * Math.log10((p.medium ? 1e-6 : 20e-6) ** 2 / (p.rho * p.c * 1e-12)),
             [0, 140],
             "linspace(0,140,401)",

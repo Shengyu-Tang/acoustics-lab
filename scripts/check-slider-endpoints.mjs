@@ -62,6 +62,16 @@ try {
     await page.goto("http://127.0.0.1:4178/#/lab?topic=" + id);
     await page.locator("#simulation .matlab-figure").first().waitFor();
     await page.evaluate(() => document.fonts.ready);
+    const defaultFile = `${id}-default.png`;
+    await page.locator("#simulation").screenshot({ path: path.join(out, defaultFile) });
+    if (process.argv.includes("--defaults-only")) continue;
+    if (["3.4.1", "1.1.3", "1.2.2", "2.2", "3.3.2"].includes(id)) {
+      fs.mkdirSync("specs/redesign/screenshots/P2-3", { recursive: true });
+      fs.copyFileSync(
+        path.join(out, defaultFile),
+        `specs/redesign/screenshots/P2-3/${defaultFile}`,
+      );
+    }
     const sliders = page.locator("#simulation input[type=range]");
     const count = await sliders.count();
     assert.ok(count > 0, id);
@@ -134,7 +144,12 @@ try {
       await area.scrollIntoViewIfNeeded();
       const b = await area.boundingBox(),
         x = (0.75 * 343) / 1000;
-      await page.mouse.click(b.x + (b.width * x) / 2, b.y + (b.height * (1.5 - 0.4)) / 3);
+      const yMin = Number(await area.getAttribute("data-y-min")),
+        yMax = Number(await area.getAttribute("data-y-max"));
+      await page.mouse.click(
+        b.x + (b.width * x) / 2,
+        b.y + (b.height * (yMax - 0.4)) / (yMax - yMin),
+      );
       const event = page.waitForEvent("download");
       await page
         .locator("#simulation .matlab-figure")

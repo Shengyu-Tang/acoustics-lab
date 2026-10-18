@@ -118,7 +118,7 @@ export default lecture(
         number: "1.2.3-3",
         independentOf: ["F0", "Qm", "ratio"],
         dimensionlessComparison:
-          "Dimensionless pulse comparison at Q = 1.7, 5, 10, driven at resonance; each response is divided by its own steady amplitude.",
+          "共振激励下比较品质因数为 1.7、5、10 的脉冲响应；各响应均除以自身的稳态幅值。",
         title: "正弦填充矩形脉冲的波形畸变",
         rows: 3,
         cols: 1,

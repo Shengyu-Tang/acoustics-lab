@@ -57,7 +57,7 @@ export default p2Lecture("3.4.4", {
         ],
         "",
         {
-          yscale: "log",
+          yscale: "linear",
           integerX: true,
           legend: false,
           xtickLabels: ["空气", "水", "海水", "钢", "橡胶"].map((label, i) => ({

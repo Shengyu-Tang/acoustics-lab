@@ -1,7 +1,7 @@
 import { graph, points, vector } from "../content/p2";
 import { arrow } from "./p1Helpers";
 import type { Values } from "../content/p1";
-export function controlVolume(p: Values, t: number, energy = false) {
+export function controlVolume(p: Values, t: number, energy = false, local = false) {
   const vertices: [[number, number], string][] = [
     [[0.4, 0], "A"],
     [[0.4, 1], "B"],
@@ -43,10 +43,10 @@ export function controlVolume(p: Values, t: number, energy = false) {
   const panel = graph(
     p,
     t,
-    energy ? "声能控制体：正流入使内部能量增加" : "六面体 ABCDEFGH：质量守恒",
-    "x + depth projection (m)",
-    "z + depth projection (m)",
-    [-0.7, 2],
+    energy ? "声能控制体：固定物理坐标" : "质量控制体：固定物理坐标",
+    "水平位置与深度投影 (m)",
+    "竖直位置与深度投影 (m)",
+    [energy ? -1.05 : -0.7, 2],
     [-0.15, 1.5],
     [
       ...paths.map((path, i) =>
@@ -93,5 +93,33 @@ export function controlVolume(p: Values, t: number, energy = false) {
       field: { x: "[.35 .9]*L", y: "[.3 .95]*sqrt(S)", z: "tanh(rate*tView*100)*ones(2)" },
     },
   );
+  if (!local) {
+    // Vertex and flow labels belong to the enlarged view; avoid tiny,
+    // overlapping lettering in the physical overview at small dimensions.
+    panel.textLabels = [];
+    panel.matlabModel!.textLabels = [];
+  }
   return panel;
+}
+
+/** Local schematic alongside the fixed physical overview: readable even when
+ * L/S are far below their slider maxima. Flow arrows keep a common scale. */
+export function controlVolumeDetail(p: Values, t: number, energy = false) {
+  const detail = controlVolume({ ...p, L: 1, S: 1 }, t, energy, true);
+  detail.title = energy ? "声能收支：体元局部放大示意" : "质量收支：体元局部放大示意";
+  detail.xlabel = "局部水平坐标 x/L（—）";
+  detail.ylabel = "局部竖直坐标 z/√S（—）";
+  detail.series = detail.series?.map(({ geometry: _geometry, ...s }) => s);
+  const m = detail.matlabModel!;
+  m.parameters.forEach((q) => {
+    if (q.key in p) q.value = p[q.key];
+  });
+  const local = (s: string) => s.replace(/\b(?:L|S)\b/g, "1");
+  m.setup = local(m.setup);
+  m.setup += `rate=${energy ? "" : "rho*"}(${energy ? "wLeft-wRight" : "left-right"})/L;`;
+  detail.field!.z = controlVolume(p, t, energy).field!.z;
+  m.series = m.series.map((s) => ({ x: local(s.x), y: local(s.y) }));
+  m.textLabels = m.textLabels?.map((s) => ({ x: local(s.x), y: local(s.y) }));
+  m.field = { x: local(m.field!.x), y: local(m.field!.y), z: local(m.field!.z) };
+  return detail;
 }

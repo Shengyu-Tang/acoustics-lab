@@ -11,7 +11,7 @@ import {
   answerCurve,
   engineering,
 } from "../p2";
-import { controlVolume } from "../../plot/p2Diagrams";
+import { controlVolume, controlVolumeDetail } from "../../plot/p2Diagrams";
 const wLeft = parameter("wLeft", "左面瞬时能流密度", "W入", "W/m²", -0.02, 0.02, 0.001),
   wRight = parameter("wRight", "右面瞬时能流密度", "W出", "W/m²", -0.02, 0.02, 0.001),
   L = parameter("L", "体元长度", "dx", "m", 0.01, 1, 0.01),
@@ -43,8 +43,13 @@ export default p2Lecture("3.3.2", {
     figure(
       "3.3.2-1",
       "质量与声能控制体的收支对照",
-      (p, t) => [controlVolume(p, t), controlVolume(p, t, true)],
-      1,
+      (p, t) => [
+        controlVolume(p, t),
+        controlVolumeDetail(p, t),
+        controlVolume(p, t, true),
+        controlVolumeDetail(p, t, true),
+      ],
+      2,
       2,
     ),
     figure("3.3.2-2", "净声功率与内部能量积累", (p) => [

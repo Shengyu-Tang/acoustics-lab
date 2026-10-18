@@ -69,6 +69,7 @@ for (const l of lectures) {
   for (const f of l.figures) {
     checkText(f.title, `${l.id} caption`);
     checkFigureText(f.title, `${f.number} caption`);
+    if (f.dimensionlessComparison) checkFigureText(f.dimensionlessComparison, `${f.number} note`);
     for (const panel of f.plot(p, l.defaults ? 0 : false)) {
       [
         panel.title,
@@ -76,6 +77,7 @@ for (const l of lectures) {
         panel.ylabel,
         panel.rightLabel,
         panel.field?.label,
+        panel.responseNote,
         ...(panel.series ?? []).map((s) => s.name),
         ...(panel.textLabels ?? []).map((s) => s.text),
         ...(panel.xtickLabels ?? []).map((s) => s.label),

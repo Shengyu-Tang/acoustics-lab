@@ -49,7 +49,7 @@ export default lecture(
         number: "2.4-1",
         independentOf: ["S", "F0"],
         dimensionlessComparison:
-          "Mode-shape comparison with unit amplitude; free modes are independent of section area and driving force.",
+          "单位幅值的振型比较：自由模态与截面积、激励力无关。",
         title: "两端自由细棒前三阶位移振型",
         rows: 3,
         cols: 1,
@@ -111,10 +111,12 @@ export default lecture(
                 "频率 f (Hz)",
                 "端点位移幅值 (m)",
                 [0, end],
-                [0, 0.16],
+                [0, 4 * A],
                 [endSeries(p.F0, p.L, p.E * 1e9 * p.S, c, end)],
               ),
               legend: false,
+              unboundedY: true,
+              responseNote: "共振发散；显示四倍静位移，超出部分省略。",
               annotations: [1, 2, 3].map((n) => ({
                 axis: "x" as const,
                 value: rodFrequency(n, c, p.L, "fixed-free"),

@@ -13,7 +13,7 @@ import {
   engineering,
 } from "../p2";
 import { densityRate } from "../../physics/chapter3";
-import { controlVolume } from "../../plot/p2Diagrams";
+import { controlVolume, controlVolumeDetail } from "../../plot/p2Diagrams";
 const left = parameter("left", "左面流速（向右为正）", "u入", "m/s", -0.03, 0.03, 0.001),
   right = parameter("right", "右面流速（向右为正）", "u出", "m/s", -0.03, 0.03, 0.001),
   L = parameter("L", "体元长度", "dx", "m", 0.01, 0.5, 0.01),
@@ -43,7 +43,13 @@ export default p2Lecture("3.1.4", {
     },
   ],
   figures: [
-    figure("3.1.4-1", "六面体质量流入、流出与密度变化", (p, t) => [controlVolume(p, t)]),
+    figure(
+      "3.1.4-1",
+      "六面体质量流入、流出与密度变化",
+      (p, t) => [controlVolume(p, t), controlVolumeDetail(p, t)],
+      1,
+      2,
+    ),
     figure("3.1.4-2", "净流入与体元内质量积累", (p) => {
       const r = densityRate(p.rho, p.left, p.right, p.L);
       return [

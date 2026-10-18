@@ -2,6 +2,8 @@
 export const COLORS = ["#0072BD", "#D95319", "#EDB120", "#7E2F8E", "#77AC30", "#4DBEEE", "#A2142F"];
 export type Point = [number, number];
 export type MatlabModel = {
+  amplitudeAxes?: boolean;
+  envelopePeriod?: string;
   textLabels?: { x: string; y: string }[];
   parameters: { key: string; value: number; comment: string }[];
   setup: string;
@@ -37,6 +39,9 @@ export type Field = {
   limits?: [number, number];
 };
 export type Panel = {
+  // Analytic poles have no finite envelope. The explicitly labelled display
+  // window follows a current physical scale; finite curves are clipped by SVG.
+  unboundedY?: boolean;
   responseNote?: string;
   observationWindow?: boolean;
   textLabels?: { x: number; y: number; text: string }[];

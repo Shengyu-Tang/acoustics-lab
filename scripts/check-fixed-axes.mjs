@@ -6,7 +6,7 @@ const { axisTicks } = await import("../outputs/sensitivity-bundle.mjs");
 const failures = [],
   measurements = [];
 const geometryY = (p) =>
-  /截面坐标|Cross-section|投影|projection/.test(p.ylabel) ||
+  /截面坐标|Cross-section|投影|projection|示意坐标/.test(p.ylabel) ||
   p.series?.some((s) => s.geometry?.axis === "y");
 for (const l of lectures) {
   const states = [
@@ -24,7 +24,10 @@ for (const l of lectures) {
       );
       frames[0].forEach((panel, i) => {
         const label = `${f.number}[${i + 1}] ${name}`;
-        if (JSON.stringify(panel.xlim) !== JSON.stringify(base[i].xlim))
+        if (
+          /位置|坐标|时间|距离|深度/.test(panel.xlabel) &&
+          JSON.stringify(panel.xlim) !== JSON.stringify(base[i].xlim)
+        )
           failures.push(`${label}: position/time x axis changed`);
         if (geometryY(panel) && JSON.stringify(panel.ylim) !== JSON.stringify(base[i].ylim))
           failures.push(`${label}: geometry y axis changed`);
@@ -82,8 +85,11 @@ for (const l of lectures) {
   }
 }
 for (const l of lectures.filter((l) => ["3.1.4", "3.3.2"].includes(l.id))) {
-  const panel = l.figures[0].plot(l.defaults, 0)[0];
-  const ys = panel.series.filter((s) => s.geometry).flatMap((s) => s.points.map((pt) => pt[1]));
+  const panels = l.figures[0].plot(l.defaults, 0);
+  const panel = panels.find((p) => p.title.includes("局部放大")) ?? panels[0];
+  const ys = panel.series
+    .filter((s) => s.geometry || s.name === "控制体" || s.name === "棱边")
+    .flatMap((s) => s.points.map((pt) => pt[1]));
   if ((Math.max(...ys) - Math.min(...ys)) / (panel.ylim[1] - panel.ylim[0]) < 0.4)
     failures.push(`${l.figures[0].number}: default control volume occupies <40% vertically`);
 }

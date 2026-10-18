@@ -101,7 +101,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     `figure('Color','w','Position',[80 80 ${640 * cols} ${340 * rows}]);`,
   ];
   panels.forEach((original, k) => {
-    const m = original.matlabModel;
+    const m = original.matlabModel ? { ...original.matlabModel } : undefined;
     if (m) out.push(m.setup);
     const xt = axisTicks(original.xlim, original.xscale === "log"),
       yt = axisTicks(original.ylim, original.yscale === "log"),
@@ -260,12 +260,14 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       ),
     );
     out.push(
-      p.responseNote && m
-        ? `title({${m.title ?? tex(p.title)},sprintf('max |y| = %.4g',max(abs([${plotSeries
-            .map((s, i) => (s.axis === "right" ? "" : `model_y{${k + 1},${i + 1}}`))
-            .filter(Boolean)
-            .join(" ")}]),[],'omitnan'))},'Interpreter','tex','FontSize',12);`
-        : `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
+      p.unboundedY
+        ? `title({${m?.title ?? tex(p.title)},${tex(p.responseNote ?? "解析极点处发散，超出纵轴部分省略")}},'Interpreter','tex','FontSize',12);`
+        : p.responseNote && m
+          ? `title({${m.title ?? tex(p.title)},sprintf('max |y| = %.4g',max(abs([${plotSeries
+              .map((s, i) => (s.axis === "right" ? "" : `model_y{${k + 1},${i + 1}}`))
+              .filter(Boolean)
+              .join(" ")}]),[],'omitnan'))},'Interpreter','tex','FontSize',12);`
+          : `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
       p.kind === "polar"
         ? "grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');",
@@ -278,6 +280,25 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         out.push(
           "drawnow; lgd.Units='normalized'; axpos=get(gca,'Position'); lp=lgd.Position; lp(2)=min(lp(2),axpos(2)+0.83*axpos(4)-lp(4)); lgd.Position=lp;",
         );
+    }
+    if (m?.amplitudeAxes || (m && p.rightLabel)) {
+      // Recompute the browser's current-parameter cycle envelope after edits
+      // to the downloaded parameter block. Never bake current y limits in.
+      out.push("qa_left=[]; qa_right=[]; qa_time=tView;");
+      if (m.envelopePeriod)
+        out.push(`for qa_phase=0:127, tView=qa_phase/128*(${m.envelopePeriod});`, m.setup);
+      plotSeries.forEach((s, i) => {
+        if (s.style === "none") return;
+        out.push(
+          `x=${m.series[i]?.x ?? vector(s.points.map((pt) => pt[0]))}; y=${m.series[i]?.y ?? vector(s.points.map((pt) => pt[1]))};`,
+          `qa_xl=${m.xlim ?? vector(p.xlim)}; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_${s.axis === "right" ? "right" : "left"}=[qa_${s.axis === "right" ? "right" : "left"} qa_y];`,
+        );
+      });
+      if (m.envelopePeriod) out.push("end; tView=qa_time;", m.setup);
+      if (m.amplitudeAxes)
+        m.ylim = `currentAmplitudeLimits(qa_left,${p.series?.some((s) => s.kind === "bar") ? 1 : 0},${p.yscale === "log" ? 1 : 0})`;
+      if (p.rightLabel)
+        m.rightLim = `currentAmplitudeLimits(qa_right,0,${p.yscale === "log" ? 1 : 0})`;
     }
     if (m)
       out.push(
@@ -312,6 +333,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       out.push(
         `yticks(${vector(p.ytickLabels.map((t) => t.value))});yticklabels({${p.ytickLabels.map((t) => tex(t.label)).join(",")}});`,
       );
+    if (m) out.push(`model_limits{${k + 1}}=struct('x',xlim,'y',ylim);`);
   });
   if (model) out.push(MATLAB_FUNCTIONS);
   return out.join("\n").trimEnd() + "\n";

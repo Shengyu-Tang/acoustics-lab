@@ -55,24 +55,24 @@ export default p2Lecture("3.1.3", {
     },
   ],
   figures: [
-    figure("3.1.3-3", "Small-amplitude validity", (p) => [
+    figure("3.1.3-3", "小振幅近似的适用范围", (p) => [
       graph(
         p,
         0,
-        "Acoustic Mach number and compression",
-        "Pressure amplitude (Pa)",
-        "p / (rho c^2)",
+        "声学马赫数与压缩量",
+        "声压幅值 (Pa)",
+        "相对压缩量 p/(ρc²)",
         [0, 200],
         [0, 0.011],
         [
           curve(
-            "Compression = acoustic Mach number",
+            "压缩量等于声学马赫数",
             (x) => x / (p.rho * p.c ** 2),
             [0, 200],
             "linspace(0,200,401)",
             "x/(rho*c^2)",
           ),
-          points("Current pressure", [[p.pa, p.pa / (p.rho * p.c ** 2)]], "pa", "pa/(rho*c^2)", {
+          points("当前声压", [[p.pa, p.pa / (p.rho * p.c ** 2)]], "pa", "pa/(rho*c^2)", {
             style: "none",
             marker: "o",
           }),
@@ -205,7 +205,7 @@ export default p2Lecture("3.1.3", {
       ),
       independentOf: ["pa", "rho", "c"],
       dimensionlessComparison:
-        "Dimensionless comparison of model assumptions; physical small-amplitude validity is plotted separately.",
+        "模型假设的无量纲比较；小振幅近似的物理适用范围另图展示。",
     },
     figure("3.1.3-2", "三定律到波动方程的推导路线", (p) => [
       graph(

@@ -134,9 +134,9 @@ export default lecture(
             },
             {
               ...panel(
-                "前十二阶模态系数",
+                "前十二阶模态系数幅值",
                 "阶数 n (—)",
-                "系数 bₙ (m)",
+                "系数幅值 |bₙ| (m)",
                 [0, 14],
                 [-0.012, 0.012],
                 [
@@ -145,7 +145,8 @@ export default lecture(
                     kind: "bar",
                     points: Array.from(
                       { length: 12 },
-                      (_, i) => [i + 1, pluckCoefficient(i + 1, h, p.pluck)] as [number, number],
+                      (_, i) =>
+                        [i + 1, Math.abs(pluckCoefficient(i + 1, h, p.pluck))] as [number, number],
                     ),
                   },
                 ],
@@ -195,10 +196,12 @@ export default lecture(
                 "频率 f (Hz)",
                 "端点位移幅值 (m)",
                 [0, end],
-                [0, 0.12],
+                [0, 4 * A],
                 [endSeries(p.F0, p.L, p.T, c, end)],
               ),
               legend: false,
+              unboundedY: true,
+              responseNote: "共振发散；显示四倍静位移，超出部分省略。",
               annotations: [1, 2, 3].map((n) => ({
                 axis: "x" as const,
                 value: quarterFrequency(n, c, p.L),

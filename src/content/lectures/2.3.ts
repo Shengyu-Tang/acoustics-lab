@@ -40,7 +40,7 @@ const graph = (p: Values): Panel => {
       "无量纲波数 q = kL (—)",
       "频率方程两侧 (—)",
       [0, 8],
-      [-6, 450],
+      [-3, Math.max(6, ...roots(p).map((q) => 1.2 * Math.tan(q)))],
       [
         {
           name: "tan(q)",
@@ -56,6 +56,8 @@ const graph = (p: Values): Panel => {
       ],
     ),
     legend: false,
+    unboundedY: true,
+    responseNote: "方程含极点；显示交点附近，超出部分省略。",
   };
 };
 export default lecture(
@@ -123,13 +125,13 @@ export default lecture(
           return [
             panel(
               `纵向微元受力；右端边界：${["固定", "自由", "质量负载", "激励力"][p.boundary]}`,
-              "Axial position z (m)",
-              "Cross-section coordinate (m)",
+              "轴向位置 z (m)",
+              "截面坐标 (m)",
               [0, 2],
               [-0.04, 0.04],
               [
                 {
-                  ...segment("Rod extent", [
+                  ...segment("棒的轮廓", [
                     [0, -Math.sqrt(p.S) / 2],
                     [p.L, -Math.sqrt(p.S) / 2],
                     [p.L, Math.sqrt(p.S) / 2],
@@ -150,7 +152,8 @@ export default lecture(
                 arrow(
                   "轴向合力（放大）",
                   [0.5 * p.L, 0.025],
-                  [0.5 * p.L + (0.6 * (b - a)) / scale, 0.025],
+                  [0.5 * p.L + 1.2 * (b - a), 0.025],
+                  0.04,
                 ),
               ],
             ),
@@ -186,7 +189,7 @@ export default lecture(
             legend: false,
             xtickLabels: Array.from({ length: 8 }, (_, i) => ({
               value: i,
-              label: i === 0 || i === 7 ? "" : i === 6 ? "Current" : materials[i - 1].name,
+              label: i === 0 || i === 7 ? "" : i === 6 ? "当前材料" : materials[i - 1].name,
             })),
           },
         ],
@@ -195,7 +198,7 @@ export default lecture(
         number: "2.3-3",
         independentOf: ["E", "sigma", "gradient"],
         dimensionlessComparison:
-          "Dimensionless frequency-equation comparison q=kL; elastic modulus converts roots to Hz in the readouts.",
+          "无量纲频率方程比较：采用 $q=kL$；弹性模量通过波速将特征根换算为读数表中的频率。",
         title: "固定—质量负载边界的固有频率图解",
         rows: 1,
         cols: 1,

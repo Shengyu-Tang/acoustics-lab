@@ -7,7 +7,7 @@ export * from "./types";
 export { csv, matlab } from "./export";
 const DASH = { "-": "", "--": "6 4", ":": "1 3", "-.": "6 3 1 3", none: "" };
 import { axisTicks, tickLabel, superscript } from "./ticks";
-import { labelLanes, bestLegend, textWidth } from "./layout";
+import { labelLanes, textWidth } from "./layout";
 type Layout = { W: number; H: number; L: number; T: number; AW: number; AH: number };
 const defaultLayout: Layout = { W: 640, H: 400, L: 64, T: 35, AW: 536, AH: 300 };
 /** A small, real data preview: axis text would be unreadable at catalog size. */
@@ -193,7 +193,23 @@ export function Axes({
     L = 62,
     AW = W - L - (p.kind === "polar" ? 130 : p.field || p.rightLabel ? 88 : 24);
   const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
-  const T = p.kind === "polar" ? 52 : p.responseNote ? 52 : 36;
+  const legendSeries = (p.series ?? [])
+    .map((s, i) => ({ ...s, color: s.color ?? COLORS[i % COLORS.length] }))
+    .filter((s) => s.legend !== false);
+  const legendW = Math.min(
+    AW - 14,
+    Math.max(100, ...legendSeries.map((s) => textWidth(s.name) + 34)),
+  );
+  const legendH = legendSeries.length * 16 + 8;
+  // Frequency readouts live above the plotting rectangle. Tight amplitude
+  // limits must not force labels to cover the data on narrow screens.
+  const labelTop = p.responseNote ? 52 : 36;
+  const legendTop =
+    labelTop + (labels.length ? (Math.max(...labels.map((a) => a.lane)) + 1) * 17 + 4 : 0);
+  const T =
+    p.kind === "polar"
+      ? 52
+      : legendTop + (p.legend !== false && legendSeries.length ? legendH + 6 : 0);
   const AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
   const layout = { W, H, L, T, AW, AH };
   const id = useId().replaceAll(":", ""),
@@ -261,21 +277,7 @@ export function Axes({
       return canvas.toDataURL();
     }, [field]),
     limits = field ? fieldLimits(field) : ([0, 1] as [number, number]);
-  const legendSeries = (p.series ?? [])
-    .map((s, i) => ({ ...s, color: s.color ?? COLORS[i % COLORS.length] }))
-    .filter((s) => s.legend !== false);
-  const legendW = Math.min(
-    AW - 14,
-    Math.max(100, ...legendSeries.map((s) => textWidth(s.name) + 34)),
-  );
-  const legendH = legendSeries.length * 16 + 8;
-  const legend =
-    p.kind === "polar"
-      ? [L + AW / 2 + AH / 2 + 22, T]
-      : bestLegend(p, L, T, AW, AH, legendW, legendH, (x, y, right) => [
-          L + xs(x) * AW,
-          T + (1 - scale(right ? (p.rightLim ?? p.ylim) : p.ylim, p.yscale === "log")(y)) * AH,
-        ]);
+  const legend = p.kind === "polar" ? [L + AW / 2 + AH / 2 + 22, T] : [L + AW - legendW, legendTop];
   return (
     <g fontFamily="Arial, Helvetica, Microsoft YaHei, sans-serif" fontSize="11" fill="#1a1a1a">
       <defs>
@@ -404,7 +406,7 @@ export function Axes({
               {p.annotationHeader && (
                 <rect
                   x={a.x - 3}
-                  y={T + 3 + a.lane * 17}
+                  y={labelTop + 3 + a.lane * 17}
                   width={textWidth(a.text) + 6}
                   height={16}
                   fill="white"
@@ -413,7 +415,7 @@ export function Axes({
               <text
                 key={i}
                 x={a.x}
-                y={T + 15 + a.lane * 17}
+                y={labelTop + 13 + a.lane * 17}
                 data-annotation-label="true"
                 stroke="white"
                 strokeWidth="3"
@@ -665,7 +667,16 @@ export default function Figure({
   const columns = width < 600 ? 1 : cols,
     nrows = Math.max(Math.ceil(panels.length / columns), columns === cols ? rows : 1),
     W = width / columns,
-    H = panels.length === 1 ? 400 : 310;
+    H =
+      (panels.length === 1 ? 400 : 310) +
+      Math.max(
+        0,
+        ...panels.map((p) =>
+          p.legend === false
+            ? 0
+            : (p.series ?? []).filter((s) => s.legend !== false).length * 16 + 14,
+        ),
+      );
   return (
     <figure ref={host} className="matlab-figure" style={{ maxWidth: cols === 1 ? 640 : undefined }}>
       <div className="figure-tools" aria-label="图形导出">
@@ -722,7 +733,7 @@ export default function Figure({
       </figcaption>
       {panels.some((p) => p.observationWindow) && (
         <p className="figure-independence">
-          固定观察窗，窗外事件不显示；纵轴覆盖滑块范围，峰值见图内标注。
+          固定观察窗，窗外事件不显示；纵轴按当前参数的数据范围显示，播放时保持不变。
         </p>
       )}
       {error && <p role="alert">{error}</p>}

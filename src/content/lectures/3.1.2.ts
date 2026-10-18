@@ -76,8 +76,8 @@ export default p2Lecture("3.1.2", {
             ],
             "ref=20e-6; if medium==1,ref=1e-6;end;amp=sqrt(2)*ref*10^(level/20);",
             {
-              xscale: "log",
-              yscale: "log",
+              xscale: "linear",
+              yscale: "linear",
               xtickLabels: [
                 { value: 1, label: "空气" },
                 { value: 2, label: "水" },
@@ -111,8 +111,8 @@ export default p2Lecture("3.1.2", {
             ],
             "ref=20e-6; if medium==1,ref=1e-6;end;amp=sqrt(2)*ref*10^(level/20);",
             {
-              xscale: "log",
-              yscale: "log",
+              xscale: "linear",
+              yscale: "linear",
               xtickLabels: [
                 { value: 1, label: "空气" },
                 { value: 2, label: "水" },

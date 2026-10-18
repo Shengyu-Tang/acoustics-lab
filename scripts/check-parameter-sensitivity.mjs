@@ -33,10 +33,15 @@ export const lectures = files
 // Compare actual ordinates/abscissae, fields and numeric annotations. Axis bounds,
 // Amplitude sliders may preserve curve pixels after rescaling: visible tick
 // values and readouts are part of the sensitivity contract too.
-function numbers(p) {
+function numbers(p, amplitude = false) {
   return [
-    ...p.ylim,
-    ...(p.rightLim ?? []),
+    ...(amplitude
+      ? [
+          ...mod.axisTicks(p.ylim, p.yscale === "log").values,
+          mod.axisTicks(p.ylim, p.yscale === "log").exponent,
+          ...(p.rightLim ? mod.axisTicks(p.rightLim, p.yscale === "log").values : []),
+        ]
+      : []),
     ...(p.series ?? []).flatMap((s) => s.points.flat()),
     ...(p.field ? [...p.field.x, ...p.field.y, ...p.field.z.flat()] : []),
     ...(p.annotations ?? []).map((a) => a.value),
@@ -57,6 +62,9 @@ const failures = [],
 for (const l of lectures) {
   const times = [0, (l.animationPeriod?.(l.defaults) ?? 1) / 7];
   for (const d of l.parameters) {
+    const amplitude = /^(A|pa|B|F0|x0|v0|height|xi|velocity|pRms|power|intensity|a\d+)$/.test(
+      d.key,
+    );
     const values = [d.min, d.max];
     let lectureSensitive = false;
     for (const f of l.figures) {
@@ -83,10 +91,13 @@ for (const l of lectures) {
       ];
       for (const context of contexts)
         for (const t of times) {
-          const baseline = f.plot(context, t).flatMap(numbers);
+          const plotted = (p) => [
+            ...f.plot(p, t).flatMap((panel) => numbers(panel, amplitude)),
+            ...(amplitude ? (l.readouts?.(p) ?? []).map((r) => r[1]) : []),
+          ];
+          const baseline = plotted(context);
           for (const v of values)
-            if (changed(baseline, f.plot({ ...context, [d.key]: v }, t).flatMap(numbers)))
-              sensitive = true;
+            if (changed(baseline, plotted({ ...context, [d.key]: v }))) sensitive = true;
         }
       lectureSensitive ||= sensitive;
     }

@@ -7,13 +7,25 @@ import { build, stop } from "esbuild";
 import { pathToFileURL } from "node:url";
 const review = process.argv.includes("--review-sliders");
 const p2 = process.argv.includes("--batch=P2");
+const figuresOnly = process.argv.includes("--figures-only");
+const selected = process.argv.find((a) => a.startsWith("--filter="))?.slice(9);
+const customOut = process.argv.find((a) => a.startsWith("--out="))?.slice(6);
+const timeoutMs = Number(
+  process.argv.find((a) => a.startsWith("--timeout-ms="))?.slice(13) ?? 300000,
+);
+assert.ok(Number.isFinite(timeoutMs) && timeoutMs > 0, "positive MATLAB timeout");
 const root = process.cwd(),
   out = path.resolve(
-    review
-      ? `outputs/slider-matlab/${p2 ? "P2" : "P1"}`
-      : `specs/redesign/matlab-check/${p2 ? "P2" : "P1-fix"}`,
+    customOut ??
+      (review
+        ? `outputs/slider-matlab/${p2 ? "P2" : "P1"}`
+        : `specs/redesign/matlab-check/${p2 ? "P2" : "P1-fix"}`),
   ),
   work = path.resolve(`outputs/matlab-models${p2 ? "-P2" : ""}`);
+assert.ok(
+  !path.relative(root, out).startsWith("..") && !path.isAbsolute(path.relative(root, out)),
+  "MATLAB output stays inside clone",
+);
 for (const dir of [out, work, path.join(work, "tmp"), path.join(work, "prefs")])
   fs.mkdirSync(dir, { recursive: true });
 process.env.TEMP = process.env.TMP = path.join(work, "tmp");
@@ -29,7 +41,7 @@ await build({
         )
         .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
         .join("\n") +
-      "\nexport * from './src/plot/chapter1Figures';export {matlab} from './src/plot/export';export {modelsFor} from './src/plot/matlabModels';export * from './src/physics/chapter1';export {example} from './src/content/examples/instrument';export {bandwidthExample} from './src/content/examples/bandwidth';",
+      "\nexport * from './src/plot/chapter1Figures';export {axisTicks} from './src/plot/ticks';export {matlab} from './src/plot/export';export {modelsFor} from './src/plot/matlabModels';export * from './src/physics/chapter1';export {example} from './src/content/examples/instrument';export {bandwidthExample} from './src/content/examples/bandwidth';",
     resolveDir: root,
   },
   bundle: true,
@@ -142,6 +154,8 @@ const variant = (p) =>
         ]),
       );
 function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
+  if (figuresOnly && (name.includes("-E") || ["A-1", "B-1"].includes(name))) return;
+  if (selected && !selected.split(",").some((id) => name.includes(id))) return;
   const base = plot(defaults),
     parameters = base[0].matlabModel.parameters;
   const code = all.matlab(base, rows, cols, name);
@@ -161,7 +175,7 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
       expected.every((p) => p.matlabModel),
       name,
     );
-    let script = p2 || review ? "set(groot,'defaultFigureVisible','off');\n" + code : code;
+    let script = "set(groot,'defaultFigureVisible','off');\n" + code;
     if (set)
       for (const { key } of parameters)
         if (key in p)
@@ -170,7 +184,7 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
     const filename = `fig_${name.replace(/[^\w]/g, "_")}_set${set}`;
     const resultPath = path.join(out, filename + ".json"),
       pngPath = path.join(out, filename + ".png");
-    const write = `\nqa=struct('x',{model_x(:)'},'y',{model_y(:)'}); if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('${mq(resultPath)}','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'${mq(pngPath)}','Resolution',120); close all;\n`;
+    const write = `\nqa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('${mq(resultPath)}','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'${mq(pngPath)}','Resolution',120); close all;\n`;
     const point = script.indexOf("\nfunction ");
     script = script.slice(0, point) + write + script.slice(point);
     const scriptPath = path.join(out, filename + ".m");
@@ -183,6 +197,14 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
       parameters: p,
       expected: expected.map((p) => (p.series ?? []).map((s) => s.points)),
       expectedFields: expected.map((p) => p.field ?? null),
+      expectedLimits: expected.map((p) =>
+        p.matlabModel.amplitudeAxes || p.unboundedY
+          ? {
+              x: all.axisTicks(p.xlim, p.xscale === "log").limits,
+              y: all.axisTicks(p.ylim, p.yscale === "log").limits,
+            }
+          : null,
+      ),
       changed,
       answers: answers?.(p),
       readouts: readouts?.(p),
@@ -247,11 +269,12 @@ if (process.argv.includes("--prepare-only")) {
   console.log(`Prepared ${jobs.length} scripts.`);
   process.exit(0);
 }
-const selected = process.argv.find((a) => a.startsWith("--filter="))?.slice(9);
 const resultFile = path.join(out, "results.json");
 const resume = process.argv.includes("--resume");
 const results =
-  resume && fs.existsSync(resultFile) ? JSON.parse(fs.readFileSync(resultFile, "utf8")) : [];
+  (resume || figuresOnly) && fs.existsSync(resultFile)
+    ? JSON.parse(fs.readFileSync(resultFile, "utf8"))
+    : [];
 function mq(s) {
   return s.replaceAll("\\", "/").replaceAll("'", "''");
 }
@@ -268,11 +291,13 @@ function near(actual, expected, label) {
 const changedOnly = process.argv.includes("--changed-only");
 const pending = jobs.filter(
   (j) =>
+    (!figuresOnly || (!j.name.includes("-E") && !["A-1", "B-1"].includes(j.name))) &&
     (changedOnly
       ? j.changed
       : !selected || selected.split(",").some((name) => j.name.includes(name))) &&
     (!resume || !results.some((r) => r.filename === j.filename) || j.changed),
 );
+const processCount = pending.length;
 async function runJob(job, slot) {
   const script = path.join(out, job.filename + ".m"),
     json = path.join(out, job.filename + ".json");
@@ -289,7 +314,7 @@ async function runJob(job, slot) {
   const result = await new Promise((resolve, reject) => {
     const child = spawn(
       "C:\\Program Files\\MATLAB\\R2024b\\bin\\matlab.exe",
-      ["-sd", work, "-batch", `run('${mq(script)}')`],
+      ["-singleCompThread", "-sd", work, "-batch", `run('${mq(script)}')`],
       {
         cwd: work,
         windowsHide: true,
@@ -297,10 +322,29 @@ async function runJob(job, slot) {
       },
     );
     const chunks = [];
+    let timedOut = false;
+    const timer = setTimeout(() => {
+      timedOut = true;
+      // Stop only this script's launcher and descendants, including MATLAB's
+      // Windows core process. A stalled startup must not leave orphan jobs.
+      const cleanup = fs.readFileSync("scripts/stop-process-tree.ps1", "utf8");
+      spawn(
+        "powershell.exe",
+        ["-NoProfile", "-Command", `& { ${cleanup} } -RootPid ${child.pid}`],
+        {
+          windowsHide: true,
+          stdio: "ignore",
+        },
+      );
+    }, timeoutMs);
     child.stdout.on("data", (b) => chunks.push(b));
     child.stderr.on("data", (b) => chunks.push(b));
-    child.on("error", reject);
+    child.on("error", (e) => {
+      clearTimeout(timer);
+      reject(e);
+    });
     child.on("close", (code) => {
+      clearTimeout(timer);
       const bytes = Buffer.concat(chunks);
       let log;
       try {
@@ -308,7 +352,13 @@ async function runJob(job, slot) {
       } catch {
         log = new TextDecoder("gb18030").decode(bytes);
       }
-      resolve({ code, log });
+      resolve({
+        code,
+        log: timedOut
+          ? `MATLAB startup/script timed out after ${timeoutMs / 1000} seconds.\n` + log
+          : log,
+        timedOut,
+      });
     });
   });
   fs.writeFileSync(path.join(out, job.filename + ".log"), result.log);
@@ -354,6 +404,13 @@ async function runJob(job, slot) {
       );
     });
   }
+  job.expectedLimits.forEach((lim, i) => {
+    if (!lim) return;
+    for (const axis of ["x", "y"])
+      lim[axis].forEach((v, j) =>
+        near(cells(data.limits)[i][axis][j], v, `${job.filename} panel ${i} ${axis} limit ${j}`),
+      );
+  });
   if (job.answers)
     cells(data.answers).forEach((v, i) => near(v, job.answers[i], job.filename + " answer " + i));
   if (job.readouts) {
@@ -384,7 +441,7 @@ async function runJob(job, slot) {
 }
 const failures = [];
 await Promise.all(
-  Array.from({ length: 4 }, async (_, slot) => {
+  Array.from({ length: 2 }, async (_, slot) => {
     while (pending.length) {
       const job = pending.shift();
       try {
@@ -392,17 +449,20 @@ await Promise.all(
       } catch (e) {
         failures.push({ name: job.filename, error: String(e) });
         console.error("FAIL " + job.filename + ": " + e);
+        if (!fs.existsSync(path.join(out, job.filename + ".json"))) pending.length = 0;
       }
     }
   }),
 );
 fs.writeFileSync(path.join(out, "failures.json"), JSON.stringify(failures, null, 2));
 console.log(
-  `PASS ${results.length} independent MATLAB processes / parameter-set comparisons; ${failures.length} failures.`,
+  `${failures.length ? "FAIL" : "PASS"} ${processCount} independent MATLAB processes / parameter-set comparisons in this run; ${failures.length} failures.`,
 );
 if (failures.length) process.exitCode = 1;
 else if (selected || changedOnly) {
-  const previous = JSON.parse(fs.readFileSync(path.join(out, "results.json"), "utf8"));
+  const previous = fs.existsSync(path.join(out, "results.json"))
+    ? JSON.parse(fs.readFileSync(path.join(out, "results.json"), "utf8"))
+    : [];
   const merged = new Map(previous.map((r) => [r.filename, r]));
   results.forEach((r) => merged.set(r.filename, r));
   fs.writeFileSync(

@@ -127,7 +127,7 @@ export default p2Lecture("3.5.2", {
       }),
       independentOf: ["f", "c", "wavecount", "a1", "a2", "a3", "a4"],
       dimensionlessComparison:
-        "Unit-direction comparison k/|k|; the physical field is shown below.",
+        "单位方向比较：采用 $\\mathbf{k}/|\\mathbf{k}|$；下图展示实际声场。",
     },
     figure("3.5.2-2", "二至四列不同方向的平面波叠加", (p, t) => {
       const nx = Math.max(161, Math.ceil((8 * p.f) / p.c) + 1),

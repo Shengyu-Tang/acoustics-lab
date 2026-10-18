@@ -143,4 +143,15 @@ end
 function L=p2SourceLevel(n,L1)
 L=L1+10*log10(max(n,eps));L(n<=0)=NaN;
 end
+function lim=currentAmplitudeLimits(values,bars,logarithmic)
+values=values(isfinite(values));
+if logarithmic,values=values(values>0);end
+if isempty(values),if logarithmic,lim=[1e-6 1];else,lim=[0 1];end;return;end
+lo=min(values);hi=max(values);
+if logarithmic,lim=[10^floor(log10(lo*.9)) 10^ceil(log10(hi*1.1))];return;end
+if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
+if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
+else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
+lim=p2NiceLimits(lo,hi);
+end
 `;

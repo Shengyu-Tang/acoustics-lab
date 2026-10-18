@@ -50,7 +50,7 @@ export default p2Lecture("3.1.6", {
             p,
             0,
             "平衡点附近：绝热曲线与切线",
-            "Density excess (kg/m^3)",
+            "密度余量 (kg/m³)",
             "声压 p (Pa)",
             [-r, r],
             [-1.8 * p.P0 * p.gamma * a, 1.8 * p.P0 * p.gamma * a],

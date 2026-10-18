@@ -197,7 +197,7 @@ export function modelsFor(
           curve(grid("L", 401), "height*min(x/L/pluck,(1-x/L)/(1-pluck))"),
           xyz("pluck*L", "height"),
         ],
-        [xyz("1:12", "pluckB(x,height,pluck)")],
+        [xyz("1:12", "abs(pluckB(x,height,pluck))")],
         [-1, 1, 0].map((dir) =>
           curve(grid("L", 401), `pluckSum(x/L,tView,c,L,height,pluck,${dir})`),
         ),
@@ -213,7 +213,7 @@ export function modelsFor(
     }
     case "2.3-1":
       setup =
-        "c=sqrt(E*1e9/rho); phase=cos(pi*c/L*tView); a=sigma*phase; b=(sigma+gradient*.2*L)*phase; stressScale=6; left=arrowPoints([.4*L 0],[.4*L-.22*a/stressScale 0],1); right=arrowPoints([.6*L 0],[.6*L+.22*b/stressScale 0],1); force=arrowPoints([.5*L .025],[.5*L+.6*(b-a)/stressScale .025],1);";
+        "c=sqrt(E*1e9/rho); phase=cos(pi*c/L*tView); a=sigma*phase; b=(sigma+gradient*.2*L)*phase; stressScale=6; left=arrowPoints([.4*L 0],[.4*L-.22*a/stressScale 0],1); right=arrowPoints([.6*L 0],[.6*L+.22*b/stressScale 0],1); force=arrowPoints([.5*L .025],[.5*L+1.2*(b-a) .025],.04);";
       curves = [
         [
           xyz("[0 L L 0 0]", "sqrt(S)/2*[-1 -1 1 1 -1]"),
@@ -258,13 +258,15 @@ export function modelsFor(
     result.forEach(
       (p, i) => (p.matlabModel!.title = `sprintf('第 ${i + 1} 阶：%.4g Hz',${i + 1}*c/(2*L))`),
     );
-  if (id === "2.1-1")
-    result[0].matlabModel!.title = "sprintf('String element forces; c = %.4g m/s',c)";
+  if (id === "2.1-1") result[0].matlabModel!.title = "sprintf('弦微元受力；波速 c = %.4g m/s',c)";
   if (id.startsWith("2."))
     result.forEach((panel) => {
       panel.matlabModel!.xlim = `[${panel.xlim.join(" ")}]`;
       panel.matlabModel!.ylim = `[${panel.ylim.join(" ")}]`;
     });
+  if (id === "2.2-3") result[0].matlabModel!.ylim = "p2NiceLimits(0,4*F0*L/T)";
+  if (id === "2.4-2") result[0].matlabModel!.ylim = "p2NiceLimits(0,4*F0*L/(E*1e9*S))";
+  if (id === "2.3-3") result[0].matlabModel!.ylim = "p2NiceLimits(-3,max(6,1.2*max(tan(roots))))";
   return result;
 }
 
