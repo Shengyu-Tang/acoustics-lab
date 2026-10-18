@@ -446,6 +446,8 @@ summary {
 }
 .solution-content p {
   overflow-wrap: anywhere;
+  max-width: 100%;
+  overflow-x: auto;
 }
 .example-export {
   display: flex;

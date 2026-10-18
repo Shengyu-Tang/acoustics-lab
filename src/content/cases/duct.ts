@@ -111,9 +111,9 @@ export default problem({
     const pressure = (x: number) =>
       Math.hypot(
         Math.cos((2 * Math.PI * p.f * x) / p.c) +
-          rr * Math.cos((2 * Math.PI * p.f * x) / p.c) -
+          rr * Math.cos((2 * Math.PI * p.f * x) / p.c) +
           ri * Math.sin((2 * Math.PI * p.f * x) / p.c),
-        -Math.sin((2 * Math.PI * p.f * x) / p.c) +
+        Math.sin((2 * Math.PI * p.f * x) / p.c) -
           rr * Math.sin((2 * Math.PI * p.f * x) / p.c) +
           ri * Math.cos((2 * Math.PI * p.f * x) / p.c),
       );
@@ -129,7 +129,7 @@ export default problem({
           "工作频率的入射与反射合成场",
           pressure,
           [0, 2],
-          "abs(exp(-1i*2*pi*f*x/c)+RP*exp(1i*2*pi*f*x/c))",
+          "abs(exp(1i*2*pi*f*x/c)+RP*exp(-1i*2*pi*f*x/c))",
         ),
         dot("终端声压", 0, pressure(0), "0", "abs(1+RP)"),
       ],
@@ -137,8 +137,8 @@ export default problem({
       {
         answerKey: "reflection",
         annotations: [
-          ymark(1 + reflection(p), "波腹幅值 1+|R_p|"),
-          ymark(1 - reflection(p), "波节幅值 1−|R_p|"),
+          ymark(1 + reflection(p), `波腹声压 ${fmt(1 + reflection(p))} Pa`),
+          ymark(1 - reflection(p), `波节声压 ${fmt(1 - reflection(p))} Pa`),
         ],
         responseNote: `截止频率 ${fmt(cutoff(p))} Hz；所选高度 ${fmt(height(p))} m；诊断群速度 ${fmt(cg(p, p.testF, 1))} m/s。`,
       },
