@@ -244,17 +244,20 @@ export function radialFigure(id: string, p: Values, t = 0): Panel[] {
         [
           curve(
             "镜像叠加声压级",
-            (y) =>
-              20 *
-              Math.log10(Math.max(1e-10, magnitude(calc(p.distance, y))) / (Math.sqrt(2) * 1e-6)),
+              (y) => {
+                const amplitude = magnitude(calc(p.distance, y));
+                // The pressure-release surface is an exact null (−∞ dB),
+                // not a finite floor to include in the data-driven limits.
+                return amplitude > 0 ? 20 * Math.log10(amplitude / (Math.sqrt(2) * 1e-6)) : NaN;
+              },
             [0, 4],
             "linspace(0,4,801)",
-            "20*log10(max(1e-10,abs(pa*(exp(-1i*k*sqrt(distance^2+(x-depth).^2))./sqrt(distance^2+(x-depth).^2)+sgn*exp(-1i*k*sqrt(distance^2+(x+depth).^2))./sqrt(distance^2+(x+depth).^2))))/(sqrt(2)*1e-6))",
+              "p3FiniteSPL(abs(pa*(exp(-1i*k*sqrt(distance^2+(x-depth).^2))./sqrt(distance^2+(x-depth).^2)+sgn*exp(-1i*k*sqrt(distance^2+(x+depth).^2))./sqrt(distance^2+(x+depth).^2))))",
             "-",
             801,
           ),
         ],
-        setup,
+          setup,
       ),
     ];
   }

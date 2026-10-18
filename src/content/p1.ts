@@ -123,7 +123,16 @@ export const parameter = (
   step,
   ...(unit === "m" && ["L", "a", "d", "radius", "length"].includes(key) ? { geometry: true } : {}),
 });
-export const fmt = (n: number) => Number(n.toPrecision(4)).toString();
+/** One precision/notation policy for worksheet answers, titles and readouts. */
+export const fmt = (n: number) => {
+  if (!Number.isFinite(n)) return String(n);
+  const rounded = Number(n.toPrecision(4));
+  if (rounded === 0 || (Math.abs(rounded) >= 0.001 && Math.abs(rounded) < 10000))
+    return String(rounded);
+  const [mantissa, exponent] = rounded.toExponential().split("e");
+  const digits = "⁰¹²³⁴⁵⁶⁷⁸⁹";
+  return `${mantissa}×10${String(Number(exponent)).replace(/[-\d]/g, c => c === "-" ? "⁻" : digits[Number(c)])}`;
+};
 export const mechanics = [
   parameter("M", "质量", "M", "kg", 0.1, 50, 0.1),
   parameter("D", "弹性系数", "D", "N/m", 100, 1000000, 100),
