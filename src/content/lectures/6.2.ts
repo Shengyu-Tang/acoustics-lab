@@ -34,7 +34,7 @@ const asks = [
     "pressure",
     "(2) 交换前后声压峰值",
     "Pa",
-    "P_B/Q_A=P_A/Q_B=G_{AB},\\quad Q_A=Q_B",
+    "|P_B|=|P_A|=\\frac{\\rho_0 f Q}{2r_{AB}},\\quad Q_A=Q_B=Q",
     "abs(Pab)",
     (p) => phy.magnitude(phy.monopole(p.Q, p.f, p.rho, p.c, Math.hypot(p.xB, p.yB))),
     substitution,
