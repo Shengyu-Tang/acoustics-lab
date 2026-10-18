@@ -224,7 +224,8 @@ export function Axes({
               <path d={`M${L + xs(x) * AW} ${T}v${AH}`} stroke="#e5e5e5" />
               <path d={`M${L + xs(x) * AW} ${T}v5m0 ${AH - 5}v-5`} stroke="black" />
               <text x={L + xs(x) * AW} y={T + AH + 17} textAnchor="middle">
-                {tickLabel(x, xt, p.xscale === "log")}
+                {p.xtickLabels?.find((t) => Math.abs(t.value - x) < 1e-10)?.label ??
+                  tickLabel(x, xt, p.xscale === "log")}
               </text>
             </g>
           ))}

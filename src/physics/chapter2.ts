@@ -1,6 +1,20 @@
 /** Flexible string and slender rod approximations, all inputs in SI units. */
 export const stringSpeed = (tension: number, linearDensity: number) =>
   Math.sqrt(tension / linearDensity);
+export const rodSpeed = (E: number, rho: number) => Math.sqrt(E / rho);
+export function loadedRodRoots(rho: number, S: number, L: number, tipMass: number, count = 3) {
+  const alpha = (rho * S * L) / tipMass;
+  return Array.from({ length: count }, (_, n) => {
+    let lo = n * Math.PI + 1e-12,
+      hi = n * Math.PI + Math.PI / 2 - 1e-12;
+    for (let i = 0; i < 70; i++) {
+      const mid = (lo + hi) / 2;
+      if (Math.tan(mid) * mid < alpha) lo = mid;
+      else hi = mid;
+    }
+    return (lo + hi) / 2;
+  });
+}
 export const stringFrequency = (n: number, c: number, L: number) => (n * c) / (2 * L);
 export const pluckCoefficient = (n: number, height: number, fraction: number) =>
   (2 * height * Math.sin(n * Math.PI * fraction)) /

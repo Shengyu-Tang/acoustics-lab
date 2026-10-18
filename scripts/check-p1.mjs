@@ -149,6 +149,7 @@ const references = {
   "1.2.3": [0.3014561, 0.9189974078],
   2.1: [418.3300133, 0.00155379719],
   2.2: [321.7923179, 130.8736],
+  2.3: [5047.544651, 0.860333589, 691.128],
 };
 near(all.stringSpeed(70, 0.0004), 418.330013267, 1e-10);
 for (const alpha of [0.1, 0.3, 0.5, 0.9])
@@ -221,6 +222,22 @@ for (const l of lectures) {
     assert.ok(!formulaNumbers.has(f.number), `Duplicate ${f.number}`);
     formulaNumbers.add(f.number);
   }
+  for (const E of [3e9, 70e9, 200e9])
+    for (const rho of [1180, 2700, 7850]) {
+      near(all.rodSpeed(E, rho) ** 2, E / rho);
+      for (const mass of [0.05, 0.785, 5]) {
+        const qs = all.loadedRodRoots(rho, 0.0001, 1, mass, 3),
+          alpha = (rho * 0.0001) / mass;
+        qs.forEach((q, n) => {
+          assert.ok(q > n * Math.PI && q < (n + 0.5) * Math.PI);
+          near(q * Math.tan(q), alpha, 1e-9);
+        });
+      }
+    }
+  const light = all.loadedRodRoots(7850, 0.0001, 1, 1e-7)[0];
+  near(light, Math.PI / 2, 1e-6);
+  const heavy = all.loadedRodRoots(7850, 0.0001, 1, 1e6)[0];
+  near(heavy, Math.sqrt(0.785 / 1e6), 1e-6);
   const e = l.examples[0];
   assert.equal(e.hints.length, 2);
   assert.ok(references[l.id], `Independent reference values missing: ${l.id}`);
@@ -243,6 +260,16 @@ for (const l of lectures) {
         near(yt.limits[0], yt.values[0]);
         near(yt.limits[1], yt.values.at(-1));
         for (const s of panel.series ?? []) {
+          if (s.style === "none" && s.marker)
+            for (const [x, y] of s.points) {
+              assert.ok(
+                x >= xt.limits[0] - 1e-12 &&
+                  x <= xt.limits[1] + 1e-12 &&
+                  y >= yt.limits[0] - 1e-12 &&
+                  y <= yt.limits[1] + 1e-12,
+                `${f.number}: marker inside axes`,
+              );
+            }
           // NaN breaks intentionally split analytic poles. Infinities are never plotted.
           assert.ok(
             s.points.every(([x, y]) =>

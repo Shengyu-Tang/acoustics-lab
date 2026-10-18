@@ -127,6 +127,11 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         `set(gca,'XScale',${quote(p.xscale ?? "linear")},'YScale',${quote(p.yscale ?? "linear")});`,
         `xlim(${vector(p.xlim)}); ylim(${vector(p.ylim)});`,
         `xticks(${vector(xt.values)}); yticks(${vector(yt.values)});`,
+        ...(p.xtickLabels
+          ? [
+              `xticks(${vector(p.xtickLabels.map((t) => t.value))}); xticklabels({${p.xtickLabels.map((t) => tex(t.label)).join(",")}});`,
+            ]
+          : []),
         `set(gca,'XMinorTick',${quote(p.xscale === "log" ? "on" : "off")},'YMinorTick',${quote(p.yscale === "log" ? "on" : "off")});`,
         `xlabel(${axisLabel(p.xlabel)}); ylabel(${axisLabel(p.ylabel)});`,
       );

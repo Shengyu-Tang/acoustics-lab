@@ -170,6 +170,27 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
         ))}
         <fieldset className="parameter-panel">
           <legend>图形参数（SI 单位，作用于本讲全部图）</legend>
+          {l.materials && (
+            <label>
+              材料预设
+              <select
+                aria-label="材料预设"
+                value={p.material}
+                onChange={(e) => {
+                  const i = Number(e.target.value),
+                    m = l.materials![i];
+                  setP({ ...p, material: i, E: m.E, rho: m.rho });
+                  setT(0);
+                }}
+              >
+                {l.materials.map((m, i) => (
+                  <option key={m.name} value={i}>
+                    {m.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
           {l.parameters.map((original) => {
             const d =
               l.controls === "damping" && original.key === "value"

@@ -28,6 +28,7 @@ export type Panel = {
   ylim: [number, number];
   rightLim?: [number, number];
   xscale?: "linear" | "log";
+  xtickLabels?: { value: number; label: string }[];
   yscale?: "linear" | "log";
   kind?: "cartesian" | "polar";
   series?: Series[];

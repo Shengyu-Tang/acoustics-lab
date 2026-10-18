@@ -45,6 +45,7 @@ export type P1Lecture = {
   animationPeriod?: (p: Values) => number;
   controls?: "damping" | "string-boundary" | "rod-boundary" | "materials" | "pluck";
   boundaryEquations?: string[];
+  materials?: { name: string; E: number; rho: number }[];
 };
 export function lecture(
   id: string,
