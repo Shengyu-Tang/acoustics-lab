@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e316 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -17,7 +18,7 @@ const P0 = parameter("P0", "静态压强", "P₀", "Pa", 80000, 150000, 100),
   rho = parameter("rho", "静态密度", "ρ₀", "kg/m³", 0.5, 2, 0.01);
 const p = { ...defaults, P0: 101325, gamma: 1.4, span: 0.5, s: 0.001 };
 const s = parameter("s", "压缩量", "s", "—", 0.00001, 0.05, 0.00001);
-export default p2Lecture("3.1.6", {
+const completedLecture = p2Lecture("3.1.6", {
   defaults: p,
   parameters: [P0, gamma, rho, span],
   keyPoints: [
@@ -167,3 +168,5 @@ export default p2Lecture("3.1.6", {
     "压力传感器把密度扰动转换为声压时，需要介质的正确热力学斜率；温度和静态状态变化后应重新计算。",
   ),
 });
+
+export default completeExamples(completedLecture);

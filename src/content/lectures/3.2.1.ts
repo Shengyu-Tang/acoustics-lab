@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e321 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -19,7 +20,7 @@ const coordinates = [
   String.raw`\nabla^2=\frac1{r^2}\partial_r(r^2\partial_r)+\frac1{r^2\sin\theta}\partial_\theta(\sin\theta\partial_\theta)+\frac1{r^2\sin^2\theta}\partial_\varphi^2`,
   String.raw`\nabla^2=\frac1r\partial_r(r\partial_r)+\frac1{r^2}\partial_\varphi^2+\partial_z^2`,
 ];
-export default p2Lecture("3.2.1", {
+const completedLecture = p2Lecture("3.2.1", {
   defaults: p,
   parameters: [params.pa, params.f, params.c],
   boundaryEquations: coordinates,
@@ -213,3 +214,5 @@ export default p2Lecture("3.2.1", {
     "通风管道模态与反射",
   ),
 });
+
+export default completeExamples(completedLecture);

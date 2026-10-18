@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e342 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -15,7 +16,7 @@ import {
 const obs = parameter("obs", "观察点位置", "x₁", "m", 0, 2, 0.01),
   bulk = parameter("bulk", "介质体积模量", "K", "GPa", 0.0001, 3, 0.0001);
 const p = { ...defaults, obs: 0.25, bulk: 0.000142 };
-export default p2Lecture("3.4.2", {
+const completedLecture = p2Lecture("3.4.2", {
   defaults: p,
   parameters: [params.pa, params.f, params.c, obs],
   animation: true,
@@ -157,3 +158,5 @@ export default p2Lecture("3.4.2", {
     "水下监听接收器选型",
   ),
 });
+
+export default completeExamples(completedLecture);

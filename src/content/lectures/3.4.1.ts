@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e341 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -13,7 +14,7 @@ import {
 } from "../p2";
 const B = parameter("B", "反向波声压峰值", "B", "Pa", 0, 10, 0.01);
 const p = { ...defaults, B: 0.4 };
-export default p2Lecture("3.4.1", {
+const completedLecture = p2Lecture("3.4.1", {
   defaults: p,
   parameters: [params.pa, B, params.f, params.rho, params.c],
   animation: true,
@@ -148,3 +149,5 @@ export default p2Lecture("3.4.1", {
     "通风管道模态与反射",
   ),
 });
+
+export default completeExamples(completedLecture);

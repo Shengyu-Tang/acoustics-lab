@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e391 } from "../../plot/p3Examples";
 import {
   makeLecture,
@@ -49,7 +50,7 @@ const asks = [
     (p) => [argument].map((d) => `${d.symbol} = ${p[d.key]} ${d.unit}`).join("，"),
   ),
 ];
-export default makeLecture("3.9.1", {
+const completedLecture = makeLecture("3.9.1", {
   defaults: p,
   parameters: [argument],
 
@@ -99,3 +100,5 @@ export default makeLecture("3.9.1", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

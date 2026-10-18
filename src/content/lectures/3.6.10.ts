@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e3610 } from "../../plot/p3Examples";
 import {
   makeLecture,
@@ -42,7 +43,7 @@ const asks = [
     (p) => [lectureFrequency].map((d) => `${d.symbol} = ${p[d.key]} ${d.unit}`).join("，"),
   ),
 ];
-export default makeLecture("3.6.10", {
+const completedLecture = makeLecture("3.6.10", {
   defaults: p,
   parameters: [lectureFrequency, params.c, c2, theta, Z1, Z2, params.pa],
 
@@ -96,3 +97,5 @@ export default makeLecture("3.6.10", {
     "超声无损检测",
   ),
 });
+
+export default completeExamples(completedLecture);

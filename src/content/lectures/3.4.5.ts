@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e345 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -31,7 +32,7 @@ const waveform = (p: Record<string, number>, s: number) =>
     p.shape,
     Array.from({ length: 9 }, (_, i) => p[`h${i}`]),
   );
-export default p2Lecture("3.4.5", {
+const completedLecture = p2Lecture("3.4.5", {
   defaults: p,
   parameters: [params.pa, B, params.f, params.c],
   animation: true,
@@ -173,3 +174,5 @@ export default p2Lecture("3.4.5", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

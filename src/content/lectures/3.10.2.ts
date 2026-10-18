@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e3102 } from "../../plot/p3Examples";
 import {
   makeLecture,
@@ -69,7 +70,7 @@ const asks = [
       [v0, params.rho, params.c, h].map((d) => `${d.symbol} = ${p[d.key]} ${d.unit}`).join("，"),
   ),
 ];
-export default makeLecture("3.10.2", {
+const completedLecture = makeLecture("3.10.2", {
   defaults: p,
   parameters: [
     h,
@@ -139,3 +140,5 @@ export default makeLecture("3.10.2", {
     "通风管道模态与反射",
   ),
 });
+
+export default completeExamples(completedLecture);

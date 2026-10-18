@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e312 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -20,7 +21,7 @@ const values = (p: Record<string, number>) => {
     rms = pressureFromLevel(p.level, p.medium ? 1e-6 : 20e-6);
   return { rms, ...planeQuantities(Math.SQRT2 * rms, p.f, rho, c) };
 };
-export default p2Lecture("3.1.2", {
+const completedLecture = p2Lecture("3.1.2", {
   defaults: p,
   parameters: [level, params.f],
   interactive: {
@@ -182,3 +183,5 @@ export default p2Lecture("3.1.2", {
     "水下监听接收器选型",
   ),
 });
+
+export default completeExamples(completedLecture);

@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e351 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -14,7 +15,7 @@ import { helmholtzField, helmholtzY } from "../../physics/chapter3";
 const ratio = parameter("ratio", "切向波数比", "kₓ/k", "—", 0, 1.5, 0.01),
   y = parameter("depth", "法向距离", "y", "m", 0.001, 1, 0.001);
 const p = { ...defaults, ratio: 0.6, depth: 0.1 };
-export default p2Lecture("3.5.1", {
+const completedLecture = p2Lecture("3.5.1", {
   defaults: p,
   parameters: [ratio, params.f, params.c],
   animation: true,
@@ -135,3 +136,5 @@ export default p2Lecture("3.5.1", {
     "声透镜与水下机器人",
   ),
 });
+
+export default completeExamples(completedLecture);

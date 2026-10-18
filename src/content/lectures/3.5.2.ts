@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e352 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -30,7 +31,7 @@ const p = {
   a4: -45,
 };
 const projection = (v: number[]): [number, number] => [v[0] + 0.45 * v[1], v[2] + 0.3 * v[1]];
-export default p2Lecture("3.5.2", {
+const completedLecture = p2Lecture("3.5.2", {
   defaults: p,
   parameters: [params.f, params.c, azimuth, elevation, { ...wavecount, integer: true }, ...angles],
   animation: true,
@@ -216,3 +217,5 @@ export default p2Lecture("3.5.2", {
     "声透镜与水下机器人",
   ),
 });
+
+export default completeExamples(completedLecture);

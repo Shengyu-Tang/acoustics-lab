@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e346 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -16,7 +17,7 @@ import { pressureLevel, powerLevel, sumLevels } from "../../physics/chapter3";
 const n = parameter("n", "相同非相干声源数", "n", "—", 1, 20, 1),
   sourceLevel = parameter("sourceLevel", "单声源声压级", "L₁", "dB", 20, 140, 1);
 const p = { ...defaults, medium: 0, pRms: 1, intensity: 0.01, power: 0.1, n: 2, sourceLevel: 80 };
-export default p2Lecture("3.4.6", {
+const completedLecture = p2Lecture("3.4.6", {
   defaults: p,
   parameters: [{ ...n, integer: true }, sourceLevel, params.rho, params.c],
   interactive: {
@@ -183,3 +184,5 @@ export default p2Lecture("3.4.6", {
     "设备降噪设计要在线性能量域合成互不相干声源，并统一测点、参考声压与工况后比较声级。",
   ),
 });
+
+export default completeExamples(completedLecture);

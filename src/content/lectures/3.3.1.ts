@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e331 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -12,7 +13,7 @@ import {
 } from "../p2";
 import { acousticEnergy, planeQuantities } from "../../physics/chapter3";
 const p = { ...defaults, standing: 0 };
-export default p2Lecture("3.3.1", {
+const completedLecture = p2Lecture("3.3.1", {
   defaults: p,
   parameters: [params.pa, params.rho, params.c, params.f],
   animation: true,
@@ -129,3 +130,5 @@ export default p2Lecture("3.3.1", {
     "封闭舱室中的强驻波可有高声压和储能；降噪评估不能只依据穿过某个截面的净声强。",
   ),
 });
+
+export default completeExamples(completedLecture);

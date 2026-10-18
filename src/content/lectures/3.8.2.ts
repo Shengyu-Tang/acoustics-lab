@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e382 } from "../../plot/p3Examples";
 import {
   makeLecture,
@@ -54,7 +55,7 @@ const asks = [
         .join("，"),
   ),
 ];
-export default makeLecture("3.8.2", {
+const completedLecture = makeLecture("3.8.2", {
   defaults: p,
   parameters: [lectureFrequency, params.c, params.rho],
 
@@ -116,3 +117,5 @@ export default makeLecture("3.8.2", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

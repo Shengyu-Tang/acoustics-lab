@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e322 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -12,7 +13,7 @@ import {
 } from "../p2";
 import { potential } from "../../physics/chapter3";
 const p = { ...defaults, spherical: 0 };
-export default p2Lecture("3.2.2", {
+const completedLecture = p2Lecture("3.2.2", {
   defaults: p,
   parameters: [params.pa, params.f, params.rho, params.c],
   animation: true,
@@ -150,3 +151,5 @@ export default p2Lecture("3.2.2", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

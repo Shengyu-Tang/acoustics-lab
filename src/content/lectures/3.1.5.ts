@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e315 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -11,7 +12,7 @@ import {
   engineering,
 } from "../p2";
 const p = { ...defaults };
-export default p2Lecture("3.1.5", {
+const completedLecture = p2Lecture("3.1.5", {
   defaults: p,
   parameters: [params.pa, params.f, params.rho, params.c],
   animation: true,
@@ -144,3 +145,5 @@ export default p2Lecture("3.1.5", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

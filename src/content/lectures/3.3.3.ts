@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e333 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -15,7 +16,7 @@ import { meanIntensity, powerLevel } from "../../physics/chapter3";
 const phase = parameter("phase", "压力与振速相位差", "φ", "°", 0, 90, 1),
   ua = parameter("ua", "振速峰值", "uₐ", "m/s", 0.00001, 0.02, 0.00001);
 const p = { ...defaults, phase: 30, ua: 0.002 };
-export default p2Lecture("3.3.3", {
+const completedLecture = p2Lecture("3.3.3", {
   defaults: p,
   parameters: [params.pa, ua, phase, params.f],
   keyPoints: [
@@ -160,3 +161,5 @@ export default p2Lecture("3.3.3", {
     "声强探头利用声压与振速的相位信息区分净传能和反应性声场，舱室或风道中的高声压不一定意味着大净声功率。",
   ),
 });
+
+export default completeExamples(completedLecture);

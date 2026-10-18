@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e344 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -13,7 +14,7 @@ import {
 } from "../p2";
 const p = { ...defaults };
 const impedances = [1.21 * 343, 1.5e6, 1025 * 1500, 7850 * 5000, 1100 * 1600];
-export default p2Lecture("3.4.4", {
+const completedLecture = p2Lecture("3.4.4", {
   defaults: p,
   parameters: [params.pa, params.rho, params.c, params.f],
   animation: true,
@@ -191,3 +192,5 @@ export default p2Lecture("3.4.4", {
     "水下监听接收器选型",
   ),
 });
+
+export default completeExamples(completedLecture);

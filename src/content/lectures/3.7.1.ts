@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e371 } from "../../plot/p3Examples";
 import {
   makeLecture,
@@ -51,7 +52,7 @@ const asks = [
     (p) => [res, react].map((d) => `${d.symbol} = ${p[d.key]} ${d.unit}`).join("，"),
   ),
 ];
-export default makeLecture("3.7.1", {
+const completedLecture = makeLecture("3.7.1", {
   defaults: p,
   parameters: [res, react, lectureFrequency, params.c, params.pa],
 
@@ -101,3 +102,5 @@ export default makeLecture("3.7.1", {
     "交通枢纽语音清晰度",
   ),
 });
+
+export default completeExamples(completedLecture);

@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e365 } from "../../plot/p3Examples";
 import {
   makeLecture,
@@ -55,7 +56,7 @@ const asks = [
     (p) => [Z1, Z2].map((d) => `${d.symbol} = ${p[d.key]} ${d.unit}`).join("，"),
   ),
 ];
-export default makeLecture("3.6.5", {
+const completedLecture = makeLecture("3.6.5", {
   defaults: p,
   parameters: [Z1, Z2],
 
@@ -101,3 +102,5 @@ export default makeLecture("3.6.5", {
     "超声无损检测",
   ),
 });
+
+export default completeExamples(completedLecture);

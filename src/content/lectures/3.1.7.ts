@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e317 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -18,7 +19,7 @@ const T = parameter("T", "气温", "T", "°C", -30, 50, 1),
   bulk = parameter("bulk", "水体积模量", "K", "GPa", 1.5, 3, 0.01),
   waterRho = parameter("waterRho", "水密度", "ρ水", "kg/m³", 950, 1050, 1);
 const p = { ...defaults, T: 20, gamma: 1.4, P0: 101325, bulk: 2.25, waterRho: 1000 };
-export default p2Lecture("3.1.7", {
+const completedLecture = p2Lecture("3.1.7", {
   defaults: p,
   parameters: [T, gamma, P0],
   keyPoints: [
@@ -166,3 +167,5 @@ export default p2Lecture("3.1.7", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

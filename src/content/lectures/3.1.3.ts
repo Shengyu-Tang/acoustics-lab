@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e313 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -22,7 +23,7 @@ const p = {
   distortion: 0.35,
 };
 const distortion = parameter("distortion", "非线性示意强度", "ε", "—", 0, 0.45, 0.01);
-export default p2Lecture("3.1.3", {
+const completedLecture = p2Lecture("3.1.3", {
   defaults: p,
   parameters: [params.pa, params.rho, params.c, distortion],
   interactive: {
@@ -289,3 +290,5 @@ export default p2Lecture("3.1.3", {
     "工业噪声的线性计算需要先核对声压与静态体积模量的比值；气流、温度梯度和边界耗散可能需要额外模型。",
   ),
 });
+
+export default completeExamples(completedLecture);

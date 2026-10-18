@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e311 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -16,7 +17,7 @@ import {
 const p = { ...defaults, mode: 0, L: 10, xi: 0.0004 };
 const xi = parameter("xi", "质点位移峰值", "ξₐ", "m", 0.00001, 0.001, 0.00001),
   L = parameter("L", "测量距离", "L", "m", 1, 100, 1);
-export default p2Lecture("3.1.1", {
+const completedLecture = p2Lecture("3.1.1", {
   defaults: p,
   parameters: [params.f, params.c, xi],
   animation: true,
@@ -166,3 +167,5 @@ export default p2Lecture("3.1.1", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

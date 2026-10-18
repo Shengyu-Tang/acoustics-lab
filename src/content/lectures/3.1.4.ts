@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e314 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -19,7 +20,7 @@ const left = parameter("left", "左面流速（向右为正）", "u入", "m/s", 
   L = parameter("L", "体元长度", "dx", "m", 0.01, 0.5, 0.01),
   S = parameter("S", "截面积", "S", "m²", 0.001, 0.1, 0.001);
 const p = { ...defaults, left: 0.012, right: 0.008, L: 0.1, S: 0.01 };
-export default p2Lecture("3.1.4", {
+const completedLecture = p2Lecture("3.1.4", {
   defaults: p,
   parameters: [left, right, L, S, params.rho],
   animation: true,
@@ -142,3 +143,5 @@ export default p2Lecture("3.1.4", {
     "通风管道模态与反射",
   ),
 });
+
+export default completeExamples(completedLecture);

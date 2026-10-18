@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { e318 } from "../../plot/p2Examples";
 import {
   p2Lecture,
@@ -11,7 +12,7 @@ import {
   engineering,
 } from "../p2";
 const p = { ...defaults };
-export default p2Lecture("3.1.8", {
+const completedLecture = p2Lecture("3.1.8", {
   defaults: p,
   parameters: [params.pa, params.f, params.rho, params.c],
   animation: true,
@@ -156,3 +157,5 @@ export default p2Lecture("3.1.8", {
     "振速探头测量运动时，需要区分局部声学扰动和平均流动；有强背景流时应保留适当的随流体导数。",
   ),
 });
+
+export default completeExamples(completedLecture);
