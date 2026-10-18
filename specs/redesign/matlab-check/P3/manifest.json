@@ -1,0 +1,3099 @@
+{
+  "executable": "C:/Program Files/MATLAB/R2024b/bin/matlab.exe",
+  "processPolicy": "One independent -batch process per script; never a shared MATLAB session.",
+  "status": "Standard MATLAB startup times out; -nojvm does not support figures.",
+  "jobs": [
+    {
+      "name": "3.10.1-1",
+      "set": 0,
+      "filename": "fig_3_10_1_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        343,
+        6.283185307179586
+      ],
+      "sha256": "286e9246e896b42e453ce83506754b9b8fc277ad3be68def0f048f05505d1b6b",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.1-1",
+      "set": 1,
+      "filename": "fig_3_10_1_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        320.1333333333333,
+        5.983986006837701
+      ],
+      "sha256": "5693667093f83e5c9ded02084d9776630bc0f1c76230772903c211c1b756b314",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.1-E1",
+      "set": 0,
+      "filename": "fig_3_10_1_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 1
+      },
+      "expectedAnswers": [
+        343,
+        6.283185307179586
+      ],
+      "sha256": "b1ad33dafa4b8227cb37eacc30a7f4ab2d2b0a2d7b88048669678b11b0c222fc",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.1-E1",
+      "set": 1,
+      "filename": "fig_3_10_1_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedAnswers": [
+        320.1333333333333,
+        5.983986006837701
+      ],
+      "sha256": "254db26be784952eed4e5a074c610200e7b412394b63e1e2e7ee3a6dd058577c",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.2-1",
+      "set": 0,
+      "filename": "fig_3_10_2_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1200,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 0,
+        "v0": 0.01,
+        "sourceType": 0,
+        "offset": 0.3,
+        "width": 0.18,
+        "a1": 0.4,
+        "a2": -0.2,
+        "a3": 0.1
+      },
+      "expectedReadouts": [
+        4.1503,
+        343
+      ],
+      "sha256": "2d7c5fbff891b84c0381d907557f4f213226c22afdd151990cecf5d7982f2f4e",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.2-1",
+      "set": 1,
+      "filename": "fig_3_10_2_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1296,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1,
+        "v0": 0.011000000000000001,
+        "sourceType": 1,
+        "offset": 0.33,
+        "width": 0.198,
+        "a1": 0.44000000000000006,
+        "a2": -0.22000000000000003,
+        "a3": 0.11000000000000001
+      },
+      "expectedReadouts": [
+        4.92142574,
+        320.1333333333333
+      ],
+      "sha256": "22882ec4de46505a56da52e35fb66a35a86c953303122269692283187667c62c",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.2-E1",
+      "set": 0,
+      "filename": "fig_3_10_2_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1200,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 0,
+        "v0": 0.01,
+        "sourceType": 0,
+        "offset": 0.3,
+        "width": 0.18,
+        "a1": 0.4,
+        "a2": -0.2,
+        "a3": 0.1
+      },
+      "expectedAnswers": [
+        4.1503,
+        343
+      ],
+      "sha256": "0a69046b8898cf864c5b6d5f0fa8d3d9836adb0a17a3d5524033e3b5afb909cb",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.2-E1",
+      "set": 1,
+      "filename": "fig_3_10_2_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1296,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1,
+        "v0": 0.011000000000000001,
+        "sourceType": 1,
+        "offset": 0.33,
+        "width": 0.198,
+        "a1": 0.44000000000000006,
+        "a2": -0.22000000000000003,
+        "a3": 0.11000000000000001
+      },
+      "expectedAnswers": [
+        4.92142574,
+        320.1333333333333
+      ],
+      "sha256": "df01919f9472fd7ad450fc7ead52d7b08ae011e80941019ca74e716517702bc5",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.3-1",
+      "set": 0,
+      "filename": "fig_3_6_3_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        -0.9994468197132127,
+        0.0005531802867873222
+      ],
+      "sha256": "e9c2561fe2ac73f56420ec0182940f26efec8215b1a41d751fa41123b7170767",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.3-1",
+      "set": 1,
+      "filename": "fig_3_6_3_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        -0.9994719576330069,
+        0.0005280423669930804
+      ],
+      "sha256": "c4c5be627eed9aef6c8c7d708fb11df1caf46e8bb3b2919749040d21ebffac4c",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.3-E1",
+      "set": 0,
+      "filename": "fig_3_6_3_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        -0.9994468197132127,
+        0.0005531802867873222
+      ],
+      "sha256": "ab58fa13b61acff5f2e6c49b4d68e0783ca6a8ae0127cedbb58eb69e99540df1",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.3-E1",
+      "set": 1,
+      "filename": "fig_3_6_3_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        -0.9994719576330069,
+        0.0005280423669930804
+      ],
+      "sha256": "440fe6488bec77785c059751372de0dd5a2294f3ea8def2b8bfb3536b134924f",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.4-1",
+      "set": 0,
+      "filename": "fig_3_6_4_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "boundary": 1
+      },
+      "expectedReadouts": [
+        0.6,
+        1.6,
+        2.6666666666666667e-7
+      ],
+      "sha256": "dfeace45044cf0caba2b74ac07e85c13888e610eba9b137df0594f62c7d03204",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.4-1",
+      "set": 1,
+      "filename": "fig_3_6_4_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "boundary": 1
+      },
+      "expectedReadouts": [
+        0.6,
+        1.7600000000000002,
+        2.6666666666666667e-7
+      ],
+      "sha256": "83b0b0707db94dc3a44767c759be0263e214e25bd567c2f872aef4c25509d100",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.4-E1",
+      "set": 0,
+      "filename": "fig_3_6_4_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 46000000,
+        "theta": 30,
+        "boundary": 1
+      },
+      "expectedAnswers": [
+        0.9368421052631579,
+        1.936842105263158
+      ],
+      "sha256": "321e5409e4113ed6a74304518c5c2df594b26a0ae4433471e5348f7b927aab4d",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.4-E1",
+      "set": 1,
+      "filename": "fig_3_6_4_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 48300000,
+        "theta": 28.5,
+        "boundary": 1
+      },
+      "expectedAnswers": [
+        0.933933933933934,
+        1.9339339339339339
+      ],
+      "sha256": "54c4835a2b6074c26ff32b7ee8a6c1541c7132f9d9a0851f5ad6864dddaeb81f",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.5-1",
+      "set": 0,
+      "filename": "fig_3_6_5_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        -0.9994468197132127,
+        0.0005531802867873222,
+        0.0011060545651449542,
+        29.562234473922466
+      ],
+      "sha256": "58e83bc4e78206469d51f839754664405ccc313b2cf413e0280ab8562915d0c8",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.5-1",
+      "set": 1,
+      "filename": "fig_3_6_5_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        -0.9994719576330069,
+        0.0005280423669930804,
+        0.001055805905244821,
+        29.764159132688846
+      ],
+      "sha256": "168a01def4729af05e848bef906042a6816d68af5bf1815c9754b6185d53cdf7",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.5-E1",
+      "set": 0,
+      "filename": "fig_3_6_5_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        -0.9994468197132127,
+        0.0005531802867873222,
+        0.0011060545651449542,
+        29.562234473922466
+      ],
+      "sha256": "33f1e2b962c2a2adba7d9b22bd9a697465dfcad79b937d3a3b47ecb4ec8a356d",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.5-E1",
+      "set": 1,
+      "filename": "fig_3_6_5_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        -0.9994719576330069,
+        0.0005280423669930804,
+        0.001055805905244821,
+        29.764159132688846
+      ],
+      "sha256": "ba810549f95e31d31853f51a4a541b5e7cffe0c32fd7f525f1648372fcd7e273",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.6-1",
+      "set": 0,
+      "filename": "fig_3_6_6_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        0.75,
+        0.0000013333333333333334
+      ],
+      "sha256": "26217a4aa67f8ed7a0a775b8df0ce3e94716dc59d4f4e7d27a1b6683e578a9a4",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.6-1",
+      "set": 1,
+      "filename": "fig_3_6_6_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        0.6805555555555556,
+        0.0000013333333333333332
+      ],
+      "sha256": "151e3366bdabba5cadeb571596b8f52f8197bbdf650ab8c806b77ca98d43717e",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.6-2",
+      "set": 0,
+      "filename": "fig_3_6_6_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        0.75,
+        0.0000013333333333333334
+      ],
+      "sha256": "bbf0b9b17b1361f6ed81cff4788d753b43c8bef4260f1c507916fea154167a17",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.6-2",
+      "set": 1,
+      "filename": "fig_3_6_6_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        0.6805555555555556,
+        0.0000013333333333333332
+      ],
+      "sha256": "44484dd984c128fb5ead8eb2263823e4caac60fb6dc6f986ff44623cd6831f30",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.6-E1",
+      "set": 0,
+      "filename": "fig_3_6_6_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        0.75,
+        0.0000013333333333333334
+      ],
+      "sha256": "fb1652497a39481b91d8520c769169215a942b978538cb236f46105840081476",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.6-E1",
+      "set": 1,
+      "filename": "fig_3_6_6_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        0.6805555555555556,
+        0.0000013333333333333332
+      ],
+      "sha256": "d3b9c8cfede7e6e44c4803f126a7a13dbc7f7e65af2bf0a6099f425063515189",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.7-1",
+      "set": 0,
+      "filename": "fig_3_6_7_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        19.471220634490688,
+        0.24040820577345745
+      ],
+      "sha256": "646cea7a12bbfe1f019f2e4fab50e1c4e071935117c908fec5de8748718efff2",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.7-1",
+      "set": 1,
+      "filename": "fig_3_6_7_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        19.334932346051676,
+        0.25574934500342306
+      ],
+      "sha256": "2a47cffb755e05b2d04c500fd54ae9c9675e78b5ee4148b435ae35f6ae117f1c",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.7-E1",
+      "set": 0,
+      "filename": "fig_3_6_7_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        19.471220634490688,
+        0.24040820577345745
+      ],
+      "sha256": "cb69335cf2e50c67ae4abcfecdae634c44a89ff6a11acd3e4f2f0ba1b77bff4c",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.7-E1",
+      "set": 1,
+      "filename": "fig_3_6_7_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        19.334932346051676,
+        0.25574934500342306
+      ],
+      "sha256": "53eb2d1dedf72540af4e48b99f42d224ba50ea22e319ca426c258f3965df07bb",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.8-1",
+      "set": 0,
+      "filename": "fig_3_6_8_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        19.471220634490688,
+        0.24040820577345745
+      ],
+      "sha256": "bc5512db0149154c1c41c936605be1c16e7c469c26e360df643f70631d4bd930",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.8-1",
+      "set": 1,
+      "filename": "fig_3_6_8_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        19.334932346051676,
+        0.25574934500342306
+      ],
+      "sha256": "1d3f8925aa8eec7707cdbc59ff2046f10d297f985006d13656f2a2149732f24f",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.8-2",
+      "set": 0,
+      "filename": "fig_3_6_8_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        19.471220634490688,
+        0.24040820577345745
+      ],
+      "sha256": "ad291db225f8bb3fa8c8405010e1a8630cca485136fbaae7a4ed8c2f5f332072",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.8-2",
+      "set": 1,
+      "filename": "fig_3_6_8_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        19.334932346051676,
+        0.25574934500342306
+      ],
+      "sha256": "a723b5650a4163fcbfca8f0add2c47f7e9425a42c651312ab7e00890f776a0d0",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.8-E1",
+      "set": 0,
+      "filename": "fig_3_6_8_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        19.471220634490688,
+        0.24040820577345745
+      ],
+      "sha256": "94f456db42c796aa3e3afb902752d5d742766c675d98272a4e7fb128498d99f8",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.8-E1",
+      "set": 1,
+      "filename": "fig_3_6_8_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        19.334932346051676,
+        0.25574934500342306
+      ],
+      "sha256": "1c6fee4e40028603ede84215340d8bf84922577177dd8425ecdfdfdf16c68a0b",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.9-1",
+      "set": 0,
+      "filename": "fig_3_6_9_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1000,
+        "c2": 1500,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1000000,
+        "Z2": 500000,
+        "theta": 30,
+        "scenario": 0
+      },
+      "expectedReadouts": [
+        41.810314895778596,
+        37.76124390703504
+      ],
+      "sha256": "f9e0829d481ccbfafed2b0c4d7ce52b0a03dbad2631881fc8f0e5ae180ca3dc5",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.9-1",
+      "set": 1,
+      "filename": "fig_3_6_9_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 980,
+        "c2": 1530,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1100000,
+        "Z2": 525000,
+        "theta": 28.5,
+        "scenario": 1
+      },
+      "expectedReadouts": [
+        41.810314895778596,
+        null
+      ],
+      "sha256": "e439836477446bda02689aead222cefe0ad32805bb5191481b342cafb4975567",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.9-E1",
+      "set": 0,
+      "filename": "fig_3_6_9_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1000,
+        "c2": 1500,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1000000,
+        "Z2": 500000,
+        "theta": 30,
+        "scenario": 0
+      },
+      "expectedAnswers": [
+        41.810314895778596,
+        37.76124390703504
+      ],
+      "sha256": "1d55808cb05b2882eea8054b56257331eb2110c8f13674c07f8ae95876bac940",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.9-E1",
+      "set": 1,
+      "filename": "fig_3_6_9_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 980,
+        "c2": 1530,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1100000,
+        "Z2": 525000,
+        "theta": 28.5,
+        "scenario": 1
+      },
+      "expectedAnswers": [
+        39.830820089802266,
+        36.239643216697104
+      ],
+      "sha256": "c2602ebe9be5f616647769f034c386b669044b2da43f0899cf298f794729272b",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.1-1",
+      "set": 0,
+      "filename": "fig_3_7_1_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "res": 2,
+        "react": 1
+      },
+      "expectedReadouts": [
+        0.447213595499958,
+        2.618033988749895
+      ],
+      "sha256": "59a27341224866607668d9fa6a6303333b2a5afa33080d46855c5ba333dbfd0a",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.1-1",
+      "set": 1,
+      "filename": "fig_3_7_1_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "res": 2.2,
+        "react": 0.9
+      },
+      "expectedReadouts": [
+        0.45124262819714006,
+        2.6445979639950896
+      ],
+      "sha256": "e0ca720582230ceefa0b86f0fd253a16b05b2569bede34d77f64cacc449fd969",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.1-E1",
+      "set": 0,
+      "filename": "fig_3_7_1_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "res": 2,
+        "react": 1
+      },
+      "expectedAnswers": [
+        0.447213595499958,
+        2.618033988749895
+      ],
+      "sha256": "56d6d15beaec611c4537e9290403849eb3336129e5b996b86aa098fb823af80b",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.1-E1",
+      "set": 1,
+      "filename": "fig_3_7_1_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "res": 2.2,
+        "react": 0.9
+      },
+      "expectedAnswers": [
+        0.45124262819714006,
+        2.6445979639950896
+      ],
+      "sha256": "6dabe886a9e8a3a53d1012b6172d7478d385d261f8622b3ba0f673f54f780ba5",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.2-1",
+      "set": 0,
+      "filename": "fig_3_7_2_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "res": 2,
+        "react": 1,
+        "probe": 0.18
+      },
+      "expectedReadouts": [
+        1.4472135954999579,
+        0.552786404500042,
+        0.09840529521352466,
+        26.56505117707799,
+        2.618033988749895,
+        0.7999999999999999,
+        830.06,
+        415.03
+      ],
+      "sha256": "a9be09f34fa1182fcd33a8853cdd1ba76bd2591c86a39a69f40414016f8b5c14",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.2-1",
+      "set": 1,
+      "filename": "fig_3_7_2_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "res": 2.2,
+        "react": 0.9,
+        "probe": 0.198
+      },
+      "expectedReadouts": [
+        1.596366891016854,
+        0.603633108983146,
+        0.08695774932462533,
+        21.161259816828277,
+        2.6445979639950896,
+        0.7963800904977376,
+        984.285148,
+        402.662106
+      ],
+      "sha256": "e3d93159a184e3febd480f1fbb379946640c3e7a2293535af48d680e57b8f4e0",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.2-2",
+      "set": 0,
+      "filename": "fig_3_7_2_2_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "res": 2,
+        "react": 1,
+        "probe": 0.18
+      },
+      "expectedReadouts": [
+        1.4472135954999579,
+        0.552786404500042,
+        0.09840529521352466,
+        26.56505117707799,
+        2.618033988749895,
+        0.7999999999999999,
+        830.06,
+        415.03
+      ],
+      "sha256": "683f800813ff8ed6657109f6f9ccdecdf269ce8a82651ed434d9d8e288226257",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.2-2",
+      "set": 1,
+      "filename": "fig_3_7_2_2_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "res": 2.2,
+        "react": 0.9,
+        "probe": 0.198
+      },
+      "expectedReadouts": [
+        1.596366891016854,
+        0.603633108983146,
+        0.08695774932462533,
+        21.161259816828277,
+        2.6445979639950896,
+        0.7963800904977376,
+        984.285148,
+        402.662106
+      ],
+      "sha256": "139459e6f33a079af6380089564237d64151b6faac81415206ca224b65de5427",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.2-E1",
+      "set": 0,
+      "filename": "fig_3_7_2_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "res": 2,
+        "react": 1,
+        "probe": 0.18
+      },
+      "expectedAnswers": [
+        2.618033988749895,
+        0.7999999999999999
+      ],
+      "sha256": "f74e6217c701bf70c25127c37bf061863a40e2c8b1eb8a67bf38d71d2a6b35f8",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.7.2-E1",
+      "set": 1,
+      "filename": "fig_3_7_2_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "res": 2.2,
+        "react": 0.9,
+        "probe": 0.198
+      },
+      "expectedAnswers": [
+        2.6445979639950896,
+        0.7963800904977376
+      ],
+      "sha256": "18f31c19bda9f3825cc8abd73d21c284d8f61d058641d617e2272d2f96a858f2",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.1-1",
+      "set": 0,
+      "filename": "fig_3_8_1_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedReadouts": [
+        10,
+        0.027451068964754976
+      ],
+      "sha256": "2fdd31ac5e56318cf07668ef08dd4e243ad1c545d1e4eb4e19eb09bcb85a5f09",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.1-1",
+      "set": 1,
+      "filename": "fig_3_8_1_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedReadouts": [
+        10,
+        0.024513016499191895
+      ],
+      "sha256": "3b01cfc976feec68ce80ccb39a440b8eafb612da9e9407d6bf105a233501d7d6",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.1-2",
+      "set": 0,
+      "filename": "fig_3_8_1_2_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedReadouts": [
+        10,
+        0.027451068964754976
+      ],
+      "sha256": "7bf40fab3082554b407e89a2e6ad9eba3f33f8b977fa844412298326781c8231",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.1-2",
+      "set": 1,
+      "filename": "fig_3_8_1_2_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedReadouts": [
+        10,
+        0.024513016499191895
+      ],
+      "sha256": "bc5a5be449425c5c40f2d32eb349c5d8241dd97aba7fdb5584cb378dfcb3f572",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.1-E1",
+      "set": 0,
+      "filename": "fig_3_8_1_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedAnswers": [
+        10,
+        0.027451068964754976
+      ],
+      "sha256": "118eb6668a85858261b0119852990675dc8c7c8de885234b678217daf84d1519",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.1-E1",
+      "set": 1,
+      "filename": "fig_3_8_1_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedAnswers": [
+        10,
+        0.024513016499191895
+      ],
+      "sha256": "14e0e8bc73124321e486a095e92ff275d8ef8aa029343a32a49c82284a6a4b4d",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.3-1",
+      "set": 0,
+      "filename": "fig_3_10_3_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 500,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "expectedReadouts": [
+        686,
+        8.60368625632922
+      ],
+      "sha256": "dd2b826e9d98b3970a564a94e122957653ab4d31c973e08b7b417fb36a2a6123",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.3-1",
+      "set": 1,
+      "filename": "fig_3_10_3_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 540,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        320.1333333333333,
+        0
+      ],
+      "sha256": "2207c3da18961c7c6867a3e0e14e94c75d152413b781a84687d92f21a85dc470",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.3-2",
+      "set": 0,
+      "filename": "fig_3_10_3_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 500,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "expectedReadouts": [
+        686,
+        8.60368625632922
+      ],
+      "sha256": "77c8cd7e5b5a8adf9cc3d57e8bdcfae750a87d6ce53c8ea328e44ac7c7abf4bb",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.3-2",
+      "set": 1,
+      "filename": "fig_3_10_3_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 540,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        320.1333333333333,
+        0
+      ],
+      "sha256": "1adc5ea7b4884d7c47ef7ea063b6223d65c28f95e153de623af5f0f4f81af76e",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.3-E1",
+      "set": 0,
+      "filename": "fig_3_10_3_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 500,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "expectedAnswers": [
+        686,
+        8.60368625632922
+      ],
+      "sha256": "421e8bc83ccaf97d5632766f95a7651cf1c9d0ba3254d5de5f97ed66cc6fcb73",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.3-E1",
+      "set": 1,
+      "filename": "fig_3_10_3_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 540,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedAnswers": [
+        320.1333333333333,
+        0
+      ],
+      "sha256": "34f8a097b6e37073c58e26efde6c0466aa38b77488b8da08d18e9ed54d5b103d",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.2-1",
+      "set": 0,
+      "filename": "fig_3_8_2_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedReadouts": [
+        319.7436938966497,
+        174.54854766296995
+      ],
+      "sha256": "fb9f1842392325eb526bbd5e8fd5b201053347d43b1f16ca579d4097e2ae55eb",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.2-1",
+      "set": 1,
+      "filename": "fig_3_8_2_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedReadouts": [
+        371.97027322385065,
+        167.50667595222592
+      ],
+      "sha256": "37f646cc915b41d11dab758fd46053073e64456b9808302b1d71c654a0723f17",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.2-2",
+      "set": 0,
+      "filename": "fig_3_8_2_2_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedReadouts": [
+        319.7436938966497,
+        174.54854766296995
+      ],
+      "sha256": "e8217089cd3edce96ac1c1d1fca3d10284beac347dbceeac752651dd6e9f513f",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.2-2",
+      "set": 1,
+      "filename": "fig_3_8_2_2_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedReadouts": [
+        371.97027322385065,
+        167.50667595222592
+      ],
+      "sha256": "593400ac7ef0cd644776bba11037279dec2a1df86272bfb305c284df35eeca2e",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.2-E1",
+      "set": 0,
+      "filename": "fig_3_8_2_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedAnswers": [
+        319.7436938966497,
+        174.54854766296995
+      ],
+      "sha256": "f513ce4c4315821c08aca450b40689e0b085bec485a68f64051565644ea39769",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.2-E1",
+      "set": 1,
+      "filename": "fig_3_8_2_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedAnswers": [
+        371.97027322385065,
+        167.50667595222592
+      ],
+      "sha256": "3dd9e2e522e0694f85f3e9648f8cc2798942cff0977a4876e4f6a06edc2468d4",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.3-1",
+      "set": 0,
+      "filename": "fig_3_8_3_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.05
+      },
+      "expectedReadouts": [
+        343,
+        751.8675225477728
+      ],
+      "sha256": "80698525bde720cefd6e4757dd4e95a78ba038f9a47c501b2d889b6ed267ec94",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.3-1",
+      "set": 1,
+      "filename": "fig_3_8_3_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.05500000000000001
+      },
+      "expectedReadouts": [
+        336.14,
+        608.8040998096731
+      ],
+      "sha256": "5913daabf8b9e8975e361c282d28b9df045de780143b4da657bca6183c314fdd",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.3-E1",
+      "set": 0,
+      "filename": "fig_3_8_3_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.05
+      },
+      "expectedAnswers": [
+        343,
+        751.8675225477728
+      ],
+      "sha256": "ff827f40dda6a72bd73ca2bfc95f97e8fe4ed3208312f692645e97b157f4edc7",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.3-E1",
+      "set": 1,
+      "filename": "fig_3_8_3_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.05500000000000001
+      },
+      "expectedAnswers": [
+        336.14,
+        608.8040998096731
+      ],
+      "sha256": "4696b9925f751fba7a88be480e97b57364da7f23270db69a5e40e2495502b7be",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.4-1",
+      "set": 0,
+      "filename": "fig_3_8_4_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 1
+      },
+      "expectedReadouts": [
+        0.0012047321880346,
+        0.015139111165890626
+      ],
+      "sha256": "1d68f134c9439c9d516ce23859f29d65680b915dec61c741e0590b594116d278",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.4-1",
+      "set": 1,
+      "filename": "fig_3_8_4_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 1.1
+      },
+      "expectedReadouts": [
+        0.0011175623265627088,
+        0.01699287988008132
+      ],
+      "sha256": "12c18d9a77a281a867d6b3134f719d29d30892025a4c1cb8e0654113206f96c5",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.4-2",
+      "set": 0,
+      "filename": "fig_3_8_4_2_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 1
+      },
+      "expectedReadouts": [
+        0.0012047321880346,
+        0.015139111165890626
+      ],
+      "sha256": "1c70c3b799aab4d0c967e71532cd241f4662d90a214e5658fafad3018577229f",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.4-2",
+      "set": 1,
+      "filename": "fig_3_8_4_2_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 1.1
+      },
+      "expectedReadouts": [
+        0.0011175623265627088,
+        0.01699287988008132
+      ],
+      "sha256": "dce93f23bc8a489a7840b7cfac5d9324e10a3d164801af8e1fc1e17479cddcc0",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.4-E1",
+      "set": 0,
+      "filename": "fig_3_8_4_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 1
+      },
+      "expectedAnswers": [
+        0.0012047321880346,
+        0.015139111165890626
+      ],
+      "sha256": "c36c1984e2feb80ec5eb2cb8b77183abdb24ecf38495570032e5d7b536c87bdb",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.4-E1",
+      "set": 1,
+      "filename": "fig_3_8_4_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 1.1
+      },
+      "expectedAnswers": [
+        0.0011175623265627088,
+        0.01699287988008132
+      ],
+      "sha256": "b7089db5d431c8b3b5b933a8fc1ab4c360cf82949073fe03642ae4306840b583",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.5-1",
+      "set": 0,
+      "filename": "fig_3_8_5_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "depth": 1,
+        "distance": 3,
+        "boundary": 0,
+        "receiverDepth": 2
+      },
+      "expectedReadouts": [
+        1.0803630269509061,
+        0.42809579711012163
+      ],
+      "sha256": "28a9600f4463ae76ab1564f9f7d4c46d7c883cc3c9bd1563d2c6cfdf46b09f89",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.5-1",
+      "set": 1,
+      "filename": "fig_3_8_5_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "depth": 1.1,
+        "distance": 3.3000000000000003,
+        "boundary": 1,
+        "receiverDepth": 2.2
+      },
+      "expectedReadouts": [
+        1.1883993296459963,
+        0.5096130458981033
+      ],
+      "sha256": "74920b7dc71eb430f56cfdd4284bd579834e239c8f11ffdb3799f265fd3e6621",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.5-2",
+      "set": 0,
+      "filename": "fig_3_8_5_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "depth": 1,
+        "distance": 3,
+        "boundary": 0,
+        "receiverDepth": 2
+      },
+      "expectedReadouts": [
+        1.0803630269509061,
+        0.42809579711012163
+      ],
+      "sha256": "658a928330742ad16f5f59cac193f6de79fb930b1d8e3eebe19f66d87ec5f6d4",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.5-2",
+      "set": 1,
+      "filename": "fig_3_8_5_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "depth": 1.1,
+        "distance": 3.3000000000000003,
+        "boundary": 1,
+        "receiverDepth": 2.2
+      },
+      "expectedReadouts": [
+        1.1883993296459963,
+        0.5096130458981033
+      ],
+      "sha256": "e6500e04bef814004dce9773a8c1973a013b2fcd9097923ca9fc0be4d2677d3b",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.5-E1",
+      "set": 0,
+      "filename": "fig_3_8_5_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "depth": 1,
+        "distance": 3,
+        "boundary": 0,
+        "receiverDepth": 2
+      },
+      "expectedAnswers": [
+        1.0803630269509061,
+        0.42809579711012163
+      ],
+      "sha256": "b425950f29ba90b0f458a0f489d809fbe0dc83eab7138b319db9aff693655fa6",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.8.5-E1",
+      "set": 1,
+      "filename": "fig_3_8_5_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "depth": 1.1,
+        "distance": 3.3000000000000003,
+        "boundary": 1,
+        "receiverDepth": 2.2
+      },
+      "expectedAnswers": [
+        1.1883993296459963,
+        0.5096130458981033
+      ],
+      "sha256": "1b6fa52e76b24008bcc2ee1c8010dc4d9c8515472ed84574412c6d7690735491",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.1-1",
+      "set": 0,
+      "filename": "fig_3_9_1_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "argument": 10
+      },
+      "expectedReadouts": [
+        -0.2459357644513713,
+        0.05567116728363524
+      ],
+      "sha256": "7682a7a522eded37c325c202f3e16e35c5e313a99f4882fc0b2ede3e1b8a52e1",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.1-1",
+      "set": 1,
+      "filename": "fig_3_9_1_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "argument": 11
+      },
+      "expectedReadouts": [
+        -0.17119030040708297,
+        -0.16884732389162063
+      ],
+      "sha256": "bbb91df115dfa8f1bcaa728ab6df3c2b3d86e82b0c86a3b704e83b0a6c4497c7",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.1-E1",
+      "set": 0,
+      "filename": "fig_3_9_1_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "argument": 10
+      },
+      "expectedAnswers": [
+        -0.2459357644513713,
+        0.05567116728363524
+      ],
+      "sha256": "a927a580a7a8654d0b89c26997e93905d9ca17ea2de0bee8c466c9c88f32bf46",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.1-E1",
+      "set": 1,
+      "filename": "fig_3_9_1_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "argument": 11
+      },
+      "expectedAnswers": [
+        -0.17119030040708297,
+        -0.16884732389162063
+      ],
+      "sha256": "6b217554ef8121cf48ee0521896b8d668061fb222d29e495608bea75f3173219",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.2-1",
+      "set": 0,
+      "filename": "fig_3_9_2_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedReadouts": [
+        0.5812383778429908,
+        0.0014860919626530993
+      ],
+      "sha256": "644ee4ccb4fb1479dffc680155b9225d10df420666b1df544b39f0b01914c98a",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.2-1",
+      "set": 1,
+      "filename": "fig_3_9_2_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedReadouts": [
+        0.5829536530307627,
+        0.0013598240892667098
+      ],
+      "sha256": "2e27fe8447e1b0320eddc5853342f59a2784151364b651b9f672733b008f2b33",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.2-2",
+      "set": 0,
+      "filename": "fig_3_9_2_2_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedReadouts": [
+        0.5812383778429908,
+        0.0014860919626530993
+      ],
+      "sha256": "fb08389b146d3bfda663f24b287ef609cd7fad532a9c91474c3325241c7be4e0",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.2-2",
+      "set": 1,
+      "filename": "fig_3_9_2_2_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedReadouts": [
+        0.5829536530307627,
+        0.0013598240892667098
+      ],
+      "sha256": "e88fee4ec183d24e4baf47b2b200ea9d069bc34bfd7ca434c4e6c86e10d9f93c",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.2-E1",
+      "set": 0,
+      "filename": "fig_3_9_2_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1
+      },
+      "expectedAnswers": [
+        0.5812383778429908,
+        0.0014860919626530993
+      ],
+      "sha256": "4dc8f35307edc3ad824844ae5a5a9c008bd4fbef68fa83e2069f10d4a04257ad",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.2-E1",
+      "set": 1,
+      "filename": "fig_3_9_2_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001
+      },
+      "expectedAnswers": [
+        0.5829536530307627,
+        0.0013598240892667098
+      ],
+      "sha256": "de00ec3b37f64b14716872bd38437d3c0be5f8cf8955a1437622cd6ddd923694",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.3-1",
+      "set": 0,
+      "filename": "fig_3_9_3_1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1,
+        "level": 100,
+        "reference": 1
+      },
+      "expectedReadouts": [
+        379.16087216213657,
+        95.9733386846468
+      ],
+      "sha256": "c3663a0248c692e5a5c12bfe142684eddff64499875c46b87e889d78a8a40ff6",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.3-1",
+      "set": 1,
+      "filename": "fig_3_9_3_1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001,
+        "level": 110.00000000000001,
+        "reference": 1.1
+      },
+      "expectedReadouts": [
+        419.3007777379292,
+        89.26756306433754
+      ],
+      "sha256": "fede261a50015909e44ca53d171b9da6d959d0ece355a7a198fbdb0e7f5586cd",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.3-2",
+      "set": 0,
+      "filename": "fig_3_9_3_2_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1,
+        "level": 100,
+        "reference": 1
+      },
+      "expectedReadouts": [
+        379.16087216213657,
+        95.9733386846468
+      ],
+      "sha256": "f94e126b30c8f1e5638c7a9c148f40a079b924df84680ad8cf47bc0e7b13a1e7",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.3-2",
+      "set": 1,
+      "filename": "fig_3_9_3_2_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001,
+        "level": 110.00000000000001,
+        "reference": 1.1
+      },
+      "expectedReadouts": [
+        419.3007777379292,
+        89.26756306433754
+      ],
+      "sha256": "0f71e2fb0b7790ebbfe973aa8bb4a53b0bd23457a354f72b418d9c946f9df376",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.3-E1",
+      "set": 0,
+      "filename": "fig_3_9_3_E1_set0",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "obs": 0.1,
+        "level": 100,
+        "reference": 1
+      },
+      "expectedAnswers": [
+        379.16087216213657,
+        95.9733386846468
+      ],
+      "sha256": "8ac5fd7e1bb34441ec25365cc8d24682aec4946257d72f7f977e0de68d83f696",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.9.3-E1",
+      "set": 1,
+      "filename": "fig_3_9_3_E1_set1",
+      "parameters": {
+        "rho": 1.331,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "obs": 0.11000000000000001,
+        "level": 110.00000000000001,
+        "reference": 1.1
+      },
+      "expectedAnswers": [
+        419.3007777379292,
+        89.26756306433754
+      ],
+      "sha256": "92bc4614a78acdb60944baf005e9f1149a43148106e431017055a45ad7ef272f",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.4-1",
+      "set": 0,
+      "filename": "fig_3_10_4_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1200,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "expectedReadouts": [
+        686,
+        34.86652945038569
+      ],
+      "sha256": "0ededf23512a33dff3b126c3c83855a4fe08db675a45ae060eeedb6fbb86be69",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.4-1",
+      "set": 1,
+      "filename": "fig_3_10_4_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1296,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        320.1333333333333,
+        14.301031675219901
+      ],
+      "sha256": "56370a4e48fdd3616dbafaacb1e4657645a8ca7f7638c9e6177b499c9dff4c49",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.4-E1",
+      "set": 0,
+      "filename": "fig_3_10_4_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1200,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "expectedAnswers": [
+        686,
+        34.86652945038569
+      ],
+      "sha256": "ba0381fcf96f9fbe6ba25927cc0761136d3964e0bc9ab6475cd79f85e4d9dc0d",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.4-E1",
+      "set": 1,
+      "filename": "fig_3_10_4_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1296,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedAnswers": [
+        320.1333333333333,
+        14.301031675219901
+      ],
+      "sha256": "1a9859d0e313126ff0907c72ba76b11a8cfafd147c88016a81361a5d9a4be49e",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.5-1",
+      "set": 0,
+      "filename": "fig_3_10_5_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1500,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        352.33519881021795,
+        333.9121393414075
+      ],
+      "sha256": "71db641144d41d92cb1c1252b378ac4a0a029e2b927a51097bf6fddb7d9971b9",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.5-1",
+      "set": 1,
+      "filename": "fig_3_10_5_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1620,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        342.90199995412553,
+        329.51134614296836
+      ],
+      "sha256": "6cb264b53f0d1534e0d7e94c43fd439e7368fdc2e5e8411adb7b8d47948a6516",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.5-2",
+      "set": 0,
+      "filename": "fig_3_10_5_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1500,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        352.33519881021795,
+        333.9121393414075
+      ],
+      "sha256": "52d16e03c4cc2445580edcb201ca1acc6c87fd24150c951b282491379ab2a49d",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.5-2",
+      "set": 1,
+      "filename": "fig_3_10_5_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1620,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedReadouts": [
+        342.90199995412553,
+        329.51134614296836
+      ],
+      "sha256": "974beb0006f32466a79b8baf0c4ad7c1b2f2713d3d9e06661f47be43db555679",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.5-E1",
+      "set": 0,
+      "filename": "fig_3_10_5_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1500,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 1
+      },
+      "expectedAnswers": [
+        352.33519881021795,
+        333.9121393414075
+      ],
+      "sha256": "b4127ee90833746945a7480bfe9aba46231f97a8646125edf0f8f16137728848",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.10.5-E1",
+      "set": 1,
+      "filename": "fig_3_10_5_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 349.86,
+        "f": 1620,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "h": 0.525,
+        "mode": 1
+      },
+      "expectedAnswers": [
+        342.90199995412553,
+        329.51134614296836
+      ],
+      "sha256": "6b2dfeb25c6274fff4b53fa48d7cffbdc96bc75553ea045f9cb8204701f1ac40",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.1-1",
+      "set": 0,
+      "filename": "fig_3_6_1_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 3000000,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        0.3333333333333333,
+        1.3333333333333333
+      ],
+      "sha256": "3738e58c50ddea9e77be7944150d6793df3c29b44526b999b3f496579d76f8f4",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.1-1",
+      "set": 1,
+      "filename": "fig_3_6_1_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 3150000,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        0.31249999999999994,
+        1.3125
+      ],
+      "sha256": "2815d7f97d5b8aa863f6d109d428104651af83b5df0ca615895af57036d9f4cb",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.1-E1",
+      "set": 0,
+      "filename": "fig_3_6_1_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 3000000,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        0.3333333333333333,
+        1.3333333333333333
+      ],
+      "sha256": "dd6b9534f4f562fc44bf466ef8559ee5f7194f1aed8940cfe859b9cc5d280727",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.1-E1",
+      "set": 1,
+      "filename": "fig_3_6_1_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 3150000,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        0.31249999999999994,
+        1.3125
+      ],
+      "sha256": "54e100c115032d5bfeb84ee52b4fe05e3a904c59ccd028200aff64cd30ff8d20",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.10-1",
+      "set": 0,
+      "filename": "fig_3_6_10_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 1500,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 415,
+        "Z2": 1500000,
+        "theta": 60
+      },
+      "expectedReadouts": [
+        13.218585549095884,
+        0.06535461998977078
+      ],
+      "sha256": "019bb927e57ab2affc900a77efa3638138b962e4647d08a9f8a476586d26a8bc",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.10-1",
+      "set": 1,
+      "filename": "fig_3_6_10_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 1530,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 456.50000000000006,
+        "Z2": 1575000,
+        "theta": 57
+      },
+      "expectedReadouts": [
+        12.691374782222915,
+        0.061201575216018905
+      ],
+      "sha256": "383e54b5405cd626d707ac4da6f504e1f7691cb538b555fea76260fee30e47ec",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.10-2",
+      "set": 0,
+      "filename": "fig_3_6_10_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 1500,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 415,
+        "Z2": 1500000,
+        "theta": 60
+      },
+      "expectedReadouts": [
+        13.218585549095884,
+        0.06535461998977078
+      ],
+      "sha256": "426a294e77953b43f045b5f4a4bb5bbd3c2cb27275d4dde448156f33c714d3fc",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.10-2",
+      "set": 1,
+      "filename": "fig_3_6_10_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 1530,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 456.50000000000006,
+        "Z2": 1575000,
+        "theta": 57
+      },
+      "expectedReadouts": [
+        12.691374782222915,
+        0.061201575216018905
+      ],
+      "sha256": "31be23c909018065a6270d3dc05db4095527609df9f43972678818df7f43bbcc",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.10-E1",
+      "set": 0,
+      "filename": "fig_3_6_10_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 1500,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 415,
+        "Z2": 1500000,
+        "theta": 60
+      },
+      "expectedAnswers": [
+        13.218585549095884,
+        0.06535461998977078
+      ],
+      "sha256": "034f3c8d92d9e51b826ca104f3809bf64b549fc7374eea7be9ba9cd956718791",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.10-E1",
+      "set": 1,
+      "filename": "fig_3_6_10_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 336.14,
+        "c2": 1530,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 456.50000000000006,
+        "Z2": 1575000,
+        "theta": 57
+      },
+      "expectedAnswers": [
+        12.691374782222915,
+        0.061201575216018905
+      ],
+      "sha256": "e71f9ee638a4401c511dee6516d95b622d6607c277f5454293e3f0c1d2f344a2",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.11-1",
+      "set": 0,
+      "filename": "fig_3_6_11_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "radius": 32.5,
+        "source": 0.95,
+        "launch": 80
+      },
+      "expectedReadouts": [
+        204.20352248333654,
+        6.115931485848934
+      ],
+      "sha256": "83fe0fe0e714613338fbbbbe6a2785ff69f2739668fe55c40720aa059af16d2b",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.11-1",
+      "set": 1,
+      "filename": "fig_3_6_11_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "radius": 34.125,
+        "source": 0.9309999999999999,
+        "launch": 76
+      },
+      "expectedReadouts": [
+        214.4136986075034,
+        6.9507413570815935
+      ],
+      "sha256": "4bbc130b846b4bd1ffe3513867266a2e78598e7ac529817ef02bfb5fd39d0fc0",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.11-2",
+      "set": 0,
+      "filename": "fig_3_6_11_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "radius": 32.5,
+        "source": 0.95,
+        "launch": 80
+      },
+      "expectedReadouts": [
+        204.20352248333654,
+        6.115931485848934
+      ],
+      "sha256": "316c0ef515e4de21d03a5245ae6f4a9eeeb7bae97da7f646c00585046c452677",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.11-2",
+      "set": 1,
+      "filename": "fig_3_6_11_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "radius": 34.125,
+        "source": 0.9309999999999999,
+        "launch": 76
+      },
+      "expectedReadouts": [
+        214.4136986075034,
+        6.9507413570815935
+      ],
+      "sha256": "da38c99539f9c9c12e4820dc9490391b26ed3dfc832ef5a3c9ba1313e209eb47",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.11-E1",
+      "set": 0,
+      "filename": "fig_3_6_11_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "radius": 32.5,
+        "source": 0.95,
+        "launch": 80
+      },
+      "expectedAnswers": [
+        204.20352248333654,
+        6.115931485848934
+      ],
+      "sha256": "a6371f9cbaecd8730a2e4e9c3a880f87666362ef6cf652d50599d55dc859e62e",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.11-E1",
+      "set": 1,
+      "filename": "fig_3_6_11_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 435.75,
+        "theta": 28.5,
+        "radius": 34.125,
+        "source": 0.9309999999999999,
+        "launch": 76
+      },
+      "expectedAnswers": [
+        214.4136986075034,
+        6.9507413570815935
+      ],
+      "sha256": "1d483712f21780df18bc764ee1e72060df8d9a7bab2f0cff1dbe170b5a8f82df",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.12-1",
+      "set": 0,
+      "filename": "fig_3_6_12_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        0.24040820577345745,
+        0.9422038945967869
+      ],
+      "sha256": "80532994b0cac1037dda013e07cba994db77a6f8c78fafe83c364dc7239786b6",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.12-1",
+      "set": 1,
+      "filename": "fig_3_6_12_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        0.25574934500342306,
+        0.9345922725303201
+      ],
+      "sha256": "501ca852a1b4bf9f2bae859e3dc02211418324d63531a05aa15d5f0bab838e09",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.12-2",
+      "set": 0,
+      "filename": "fig_3_6_12_2_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        0.24040820577345745,
+        0.9422038945967869
+      ],
+      "sha256": "770a3ade3da04e951253ba09dfe1da0ad34b873d7b094e1d723e7a26424f7a22",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.12-2",
+      "set": 1,
+      "filename": "fig_3_6_12_2_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        0.25574934500342306,
+        0.9345922725303201
+      ],
+      "sha256": "47ad88cc9d8f1cb14c9be3e20a9d7c66e9f689804f6a77de72ac9e63bfac958a",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.12-E1",
+      "set": 0,
+      "filename": "fig_3_6_12_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 1000,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 1000000,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        0.24040820577345745,
+        0.9422038945967869
+      ],
+      "sha256": "02e4816bbc7749b79cf229a1f6b815fc3cb4b46041871c24fadcc735172a2b99",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.12-E1",
+      "set": 1,
+      "filename": "fig_3_6_12_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 1020,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 1050000,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        0.25574934500342306,
+        0.9345922725303201
+      ],
+      "sha256": "1e5a6d851dee8d1b581f10353f8cec781c475a3feb074cec8c13ba96a5b8393e",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.2-1",
+      "set": 0,
+      "filename": "fig_3_6_2_1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 3000000,
+        "theta": 30
+      },
+      "expectedReadouts": [
+        0.3333333333333333,
+        1.3333333333333333
+      ],
+      "sha256": "45f1c70cd247fd67026afece367ffe78503eeae5b3026e3d46877eb7d38a4c03",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.2-1",
+      "set": 1,
+      "filename": "fig_3_6_2_1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 3150000,
+        "theta": 28.5
+      },
+      "expectedReadouts": [
+        0.31249999999999994,
+        1.3125
+      ],
+      "sha256": "aa3203a12b710f8a9545cc0e7348a08e4467f72eff732e9f99bb650f17d1796d",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.2-E1",
+      "set": 0,
+      "filename": "fig_3_6_2_E1_set0",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 3000000,
+        "theta": 30
+      },
+      "expectedAnswers": [
+        0.3333333333333333,
+        1.3333333333333333
+      ],
+      "sha256": "c021f0a18bb2294dc3cc41f809d3d19b524577f0bc4822cafb9b03ef6768b4a1",
+      "runtimeVerified": false
+    },
+    {
+      "name": "3.6.2-E1",
+      "set": 1,
+      "filename": "fig_3_6_2_E1_set1",
+      "parameters": {
+        "rho": 1100,
+        "c": 1470,
+        "c2": 349.86,
+        "f": 1080,
+        "pa": 1.1,
+        "Z1": 1650000.0000000002,
+        "Z2": 3150000,
+        "theta": 28.5
+      },
+      "expectedAnswers": [
+        0.31249999999999994,
+        1.3125
+      ],
+      "sha256": "e6a193a9450aff8389c06b388477d6f712e5af539ebdbb693f8d7f9068e46907",
+      "runtimeVerified": false
+    }
+  ]
+}

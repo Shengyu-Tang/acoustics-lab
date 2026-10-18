@@ -1,0 +1,1137 @@
+{
+  "status": "Implementation and local web checks complete; MATLAB runtime/PNG acceptance blocked.",
+  "lectures": 27,
+  "figures": 41,
+  "examples": 27,
+  "independentAnswers": 56,
+  "originalQuestions": 88,
+  "axisFailures": [],
+  "sensitivityFailures": [],
+  "P3BrowserRoutes": 54,
+  "browserErrors": [],
+  "sliderEndpoints": 232,
+  "defaultScreenshots": 27,
+  "desktopMobilePngs": 300,
+  "matlab": {
+    "scripts": 136,
+    "pngs": 0,
+    "complete": false
+  },
+  "performance": {
+    "baseline": {
+      "css": {
+        "bytes": 55019,
+        "gzip": 10866
+      },
+      "js": {
+        "bytes": 202864,
+        "gzip": 63927
+      }
+    },
+    "current": {
+      "css": {
+        "bytes": 55019,
+        "gzip": 10866
+      },
+      "js": {
+        "bytes": 202881,
+        "gzip": 63886
+      }
+    }
+  },
+  "perLecture": [
+    {
+      "id": "3.6.1",
+      "title": "声学边界条件",
+      "figures": [
+        {
+          "number": "3.6.1-1",
+          "title": "分界面两侧的声压与法向振速连续"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水与另一流体的界面阻抗为 1.5×10⁶ 与 3×10⁶ $\\mathrm{Pa\\cdot s/m}$",
+          "answers": [
+            {
+              "quantity": "(1) 声压反射系数",
+              "value": 0.3333333333333333,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 声压折射系数",
+              "value": 1.3333333333333333,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "声压折射系数 = 1.333 —"
+        }
+      ],
+      "summaryPages": [
+        8
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "声学定解问题需同时满足波动方程与边界条件。",
+        "无面质量的流体分界面两侧声压连续。",
+        "流体分界面两侧法向质点振速连续，切向振速不要求相等。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.6.2",
+      "title": "平面波垂直入射（1）",
+      "figures": [
+        {
+          "number": "3.6.2-1",
+          "title": "垂直入射的三列波及入射侧合成场"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水中平面波垂直入射阻抗为 3×10⁶ $\\mathrm{Pa\\cdot s/m}$ 的流体",
+          "answers": [
+            {
+              "quantity": "(1) 声压反射系数",
+              "value": 0.3333333333333333,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 声压折射系数",
+              "value": 1.3333333333333333,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "声压折射系数 = 1.333 —"
+        }
+      ],
+      "summaryPages": [
+        11
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "垂直入射问题由两种介质中的波动方程和界面条件组成。",
+        "入射侧声压是入射波与反射波之和，透射侧只保留向外传播的透射波。",
+        "质点振速由运动方程求得，反向传播分量的振速符号与声压相反。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.6.3",
+      "title": "平面波垂直入射（2）",
+      "figures": [
+        {
+          "number": "3.6.3-1",
+          "title": "声压和振速系数随阻抗比变化"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水下信号垂直射向水面，水和空气阻抗分别为 1.5×10⁶ 与 415 $\\mathrm{Pa\\cdot s/m}$",
+          "answers": [
+            {
+              "quantity": "(1) 声压反射系数",
+              "value": -0.9994468197132127,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 声压折射系数",
+              "value": 0.0005531802867873222,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "声压折射系数 = 0.0005532 —"
+        }
+      ],
+      "summaryPages": [
+        17
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "反射系数定义为反射波与入射波的复幅值之比。",
+        "折射系数定义为透射波与入射波的复幅值之比。",
+        "声压和振速的两组系数不同，由声压连续与法向振速连续联立求出。"
+      ],
+      "questionCount": 4
+    },
+    {
+      "id": "3.6.4",
+      "title": "平面波垂直入射（3）",
+      "figures": [
+        {
+          "number": "3.6.4-1",
+          "title": "五种阻抗边界的声压与振速包络"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水入射钢表面的近似流体模型中，阻抗为 1.5×10⁶ 与 4.6×10⁷ $\\mathrm{Pa\\cdot s/m}$",
+          "answers": [
+            {
+              "quantity": "(1) 声压反射系数",
+              "value": 0.9368421052631579,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 声压折射系数",
+              "value": 1.936842105263158,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "声压折射系数 = 1.937 —"
+        }
+      ],
+      "summaryPages": [
+        10
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "特性阻抗相等时无反射，声压全部透射。",
+        "透射侧阻抗较大称硬边界，较小称软边界。",
+        "绝对硬边界的声压加倍、法向振速为零；绝对软边界声压为零、振速加倍。"
+      ],
+      "questionCount": 3
+    },
+    {
+      "id": "3.6.5",
+      "title": "平面波垂直通过分界面时的能量关系",
+      "figures": [
+        {
+          "number": "3.6.5-1",
+          "title": "声强反射与透射的能量守恒"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水下声信号能否传到空气中",
+          "answers": [
+            {
+              "quantity": "(1) 声压反射系数",
+              "value": -0.9994468197132127,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 声压折射系数",
+              "value": 0.0005531802867873222,
+              "unit": "—"
+            },
+            {
+              "quantity": "(3) 声强透射系数",
+              "value": 0.0011060545651449542,
+              "unit": "—"
+            },
+            {
+              "quantity": "(4) 透射损失",
+              "value": 29.562234473922466,
+              "unit": "dB"
+            }
+          ],
+          "figureTitle": "透射损失 = 29.56 dB"
+        }
+      ],
+      "summaryPages": [
+        9
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "声强反射系数、透射系数分别是反射声强与透射声强对入射声强的比值。",
+        "无耗散、垂直入射的两种半无限流体满足声强系数之和为一。",
+        "透射损失是入射声强与透射声强比值的分贝数；水到空气的透射能量很小。"
+      ],
+      "questionCount": 4
+    },
+    {
+      "id": "3.6.6",
+      "title": "平面波垂直入射全反射波场特性",
+      "figures": [
+        {
+          "number": "3.6.6-1",
+          "title": "绝对软边界前声压与振速的驻波分布"
+        },
+        {
+          "number": "3.6.6-2",
+          "title": "纯驻波的能量密度与零平均声强"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　1 kHz 水声波的入射声压峰值为 1 Pa",
+          "answers": [
+            {
+              "quantity": "(1) 相邻声压波节间距",
+              "value": 0.75,
+              "unit": "m"
+            },
+            {
+              "quantity": "(2) 界面振速峰值",
+              "value": 0.0000013333333333333334,
+              "unit": "m/s"
+            }
+          ],
+          "figureTitle": "界面振速峰值 = 0.000001333 m/s"
+        }
+      ],
+      "summaryPages": [
+        16
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "绝对软边界使声波全部反射且声压反相，入射侧形成纯驻波。",
+        "界面声压为零、振速为入射振速的两倍；声压波节对应振速波腹。",
+        "声压与振速时间相位相差四分之一周期；驻波平均声强为零，但声能密度不为零。"
+      ],
+      "questionCount": 3
+    },
+    {
+      "id": "3.6.7",
+      "title": "平面波倾斜入射（1）",
+      "figures": [
+        {
+          "number": "3.6.7-1",
+          "title": "斜入射的入射、反射与折射声场"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水声以 30° 入射声速 1000 m/s、阻抗 1×10⁶ $\\mathrm{Pa\\cdot s/m}$ 的流体",
+          "answers": [
+            {
+              "quantity": "(1) 折射角",
+              "value": 19.471220634490688,
+              "unit": "°"
+            },
+            {
+              "quantity": "(2) 声压反射系数模值",
+              "value": 0.24040820577345745,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "声压反射系数模值 = 0.2404 —"
+        }
+      ],
+      "summaryPages": [
+        12
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "入射角、反射角、折射角均相对界面法线定义。",
+        "两侧波动方程形式相同而声速不同，入射侧由入射与反射波叠加。",
+        "边界条件要求声压和法向振速连续，法向振速带有方向余弦。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.6.8",
+      "title": "平面波倾斜入射（2）",
+      "figures": [
+        {
+          "number": "3.6.8-1",
+          "title": "界面三列波的共同迹波长"
+        },
+        {
+          "number": "3.6.8-2",
+          "title": "声压系数随入射角变化"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水中声束以 30° 入射另一流体，声速由 1500 变为 1000 m/s",
+          "answers": [
+            {
+              "quantity": "(1) 折射角",
+              "value": 19.471220634490688,
+              "unit": "°"
+            },
+            {
+              "quantity": "(2) 声压反射系数模值",
+              "value": 0.24040820577345745,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "声压反射系数模值 = 0.2404 —"
+        }
+      ],
+      "summaryPages": [
+        13
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "界面上切向相位连续给出反射定律和折射定律。",
+        "反射角等于入射角；Snell 定律为 $\\sin\\theta_i/c_1=\\sin\\theta_t/c_2$。",
+        "声压反射与折射系数同时依赖介质阻抗及方向余弦；折射角到达直角时对应临界入射角。"
+      ],
+      "questionCount": 5
+    },
+    {
+      "id": "3.6.9",
+      "title": "平面波倾斜入射（3）",
+      "figures": [
+        {
+          "number": "3.6.9-1",
+          "title": "全透射角、临界角及四种存在条件"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　声速为 1000 与 1500 m/s、阻抗为 1×10⁶ 与 5×10⁵ $\\mathrm{Pa\\cdot s/m}$ 的两种流体",
+          "answers": [
+            {
+              "quantity": "(1) 临界角",
+              "value": 41.810314895778596,
+              "unit": "°"
+            },
+            {
+              "quantity": "(2) 全透射角",
+              "value": 37.76124390703504,
+              "unit": "°"
+            }
+          ],
+          "figureTitle": "全透射角 = 37.76 °"
+        }
+      ],
+      "summaryPages": [
+        11
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "全透射要求声压反射系数为零，存在性同时受声速比与阻抗比限制。",
+        "透射侧声速大于入射侧才有临界角；超过临界角发生全内反射。",
+        "全内反射时反射系数模值为一，透射侧可存在法向衰减的倏逝波。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.6.10",
+      "title": "平面波倾斜入射（4）",
+      "figures": [
+        {
+          "number": "3.6.10-1",
+          "title": "全内反射时透射侧的倏逝声场与切向能流"
+        },
+        {
+          "number": "3.6.10-2",
+          "title": "穿透深度随入射角变化"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气声以 60° 入射水面，频率为 1 kHz",
+          "answers": [
+            {
+              "quantity": "(1) 临界角",
+              "value": 13.218585549095884,
+              "unit": "°"
+            },
+            {
+              "quantity": "(2) 法向穿透深度",
+              "value": 0.06535461998977078,
+              "unit": "m"
+            }
+          ],
+          "figureTitle": "法向穿透深度 = 0.06535 m"
+        }
+      ],
+      "summaryPages": [
+        11
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "全内反射时透射侧仍有非均匀平面波声场。",
+        "波沿界面传播，沿法向的幅值按指数规律衰减。",
+        "法向声压与振速处于正交相位，时间平均法向声能流为零，切向能流可不为零。"
+      ],
+      "questionCount": 1
+    },
+    {
+      "id": "3.6.11",
+      "title": "回音壁现象",
+      "figures": [
+        {
+          "number": "3.6.11-1",
+          "title": "回音壁的圆墙与多次掠射声线"
+        },
+        {
+          "number": "3.6.11-2",
+          "title": "四种介质条件的反射模值与相角"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　半径 32.5 m 的圆形围墙内，声源距圆心为半径的 0.95 倍，出射方向与径向夹角 80°",
+          "answers": [
+            {
+              "quantity": "(1) 围墙周长",
+              "value": 204.20352248333654,
+              "unit": "m"
+            },
+            {
+              "quantity": "(2) 首次撞墙传播距离",
+              "value": 6.115931485848934,
+              "unit": "m"
+            }
+          ],
+          "figureTitle": "首次撞墙传播距离 = 6.116 m"
+        }
+      ],
+      "summaryPages": [
+        9,
+        12
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "回音壁与私语走廊利用圆环形、光滑墙面的连续掠射反射传声。",
+        "声波以大入射角撞击墙面，反射系数模值接近一。",
+        "无论是否存在全透射角和临界角，接近掠射时都趋于强反射；几何声线模型忽略衍射和吸收。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.6.12",
+      "title": "声波反射和折射时的能量关系",
+      "figures": [
+        {
+          "number": "3.6.12-1",
+          "title": "入射、反射、透射声束截面及法向投影"
+        },
+        {
+          "number": "3.6.12-2",
+          "title": "声强系数与声功率系数的区别"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水声束以 30° 入射声速 1000 m/s、阻抗 1×10⁶ $\\mathrm{Pa\\cdot s/m}$ 的流体",
+          "answers": [
+            {
+              "quantity": "(2) 声压反射系数模值",
+              "value": 0.24040820577345745,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 功率透射系数",
+              "value": 0.9422038945967869,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "功率透射系数 = 0.9422 —"
+        }
+      ],
+      "summaryPages": [
+        10
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "声强反射、折射系数比较各声束单位截面积的声功率。",
+        "斜入射时声束截面积发生变化，声强不直接相加。",
+        "对同一界面足迹投影后，声功率反射与折射系数之和为一。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.7.1",
+      "title": "简谐平面波在阻抗表面上的反射（1）",
+      "figures": [
+        {
+          "number": "3.7.1-1",
+          "title": "复反射系数与一般驻波声压包络"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　吸声材料的归一化法向阻抗为 2+j",
+          "answers": [
+            {
+              "quantity": "(1) 反射系数模值",
+              "value": 0.447213595499958,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 驻波比",
+              "value": 2.618033988749895,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "驻波比 = 2.618 —"
+        }
+      ],
+      "summaryPages": [
+        13
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "局部作用表面的法向声阻抗率是表面声压与指向表面法向振速的比值。",
+        "纯驻波的波节幅值为零，一般驻波波节仍有非零幅值。",
+        "驻波比为波腹与波节声压幅值之比；一般驻波的局部波阻抗是复数。"
+      ],
+      "questionCount": 6
+    },
+    {
+      "id": "3.7.2",
+      "title": "简谐平面波在阻抗表面上的反射（2）",
+      "figures": [
+        {
+          "number": "3.7.2-1",
+          "title": "一般驻波分解为剩余行波与纯驻波"
+        },
+        {
+          "number": "3.7.2-2",
+          "title": "移动探管测量极大值、极小值和第一极小点"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　阻抗管被测材料的归一化阻抗为 2+j，频率为 1 kHz",
+          "answers": [
+            {
+              "quantity": "(2) 驻波比",
+              "value": 2.618033988749895,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 吸声系数",
+              "value": 0.7999999999999999,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "吸声系数 = 0.8 —"
+        }
+      ],
+      "summaryPages": [
+        13
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "一般驻波可分解为剩余行波与纯驻波之和。",
+        "相邻波节和相邻波腹间距均为半波长，波节与相邻波腹相距四分之一波长。",
+        "驻波管测得驻波比和第一极小点位置，可反演反射系数的模与相角、吸声系数及法向声阻抗率。"
+      ],
+      "questionCount": 3
+    },
+    {
+      "id": "3.8.1",
+      "title": "球面波（1）",
+      "figures": [
+        {
+          "number": "3.8.1-1",
+          "title": "扩张与收敛球面脉冲的传播"
+        },
+        {
+          "number": "3.8.1-2",
+          "title": "近场与远场的声压和振速时间函数"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气中球面声源的幅度常数为 1 Pa·m，频率为 1 kHz",
+          "answers": [
+            {
+              "quantity": "(1) 声压峰值",
+              "value": 10,
+              "unit": "Pa"
+            },
+            {
+              "quantity": "(2) 振速峰值",
+              "value": 0.027451068964754976,
+              "unit": "m/s"
+            }
+          ],
+          "figureTitle": "振速峰值 = 0.02745 m/s"
+        }
+      ],
+      "summaryPages": [
+        15
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "均匀球面波的等相位面是同心球面。",
+        "球面波方程对 $rp$ 化为一维波动方程，包含扩张波与收敛波。",
+        "扩张声压随半径反比衰减，振速还含近场项，近处声压与振速的波形不同。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.8.2",
+      "title": "球面波（2）",
+      "figures": [
+        {
+          "number": "3.8.2-1",
+          "title": "球面波波阻、波抗的物理距离与无量纲比较"
+        },
+        {
+          "number": "3.8.2-2",
+          "title": "球面波阻抗模值、相角的物理距离与无量纲比较"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气中 1 kHz 球面波在距声源 0.1 m 处测量",
+          "answers": [
+            {
+              "quantity": "(1) 球面波波阻",
+              "value": 319.7436938966497,
+              "unit": "Pa·s/m"
+            },
+            {
+              "quantity": "(2) 球面波波抗",
+              "value": 174.54854766296995,
+              "unit": "Pa·s/m"
+            }
+          ],
+          "figureTitle": "球面波波抗 = 174.5 Pa·s/m"
+        }
+      ],
+      "summaryPages": [
+        16
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "简谐均匀扩张球面波的声压幅值随半径反比衰减，振速还含近场项。",
+        "球面波波阻抗为 $Z_a=\\rho_0c_0jkr/(1+jkr)$，一般为复数。",
+        "波阻随无量纲距离增加趋近特性阻抗，波抗先增后减；远场阻抗相角趋于零。"
+      ],
+      "questionCount": 6
+    },
+    {
+      "id": "3.8.3",
+      "title": "球面波（3）",
+      "figures": [
+        {
+          "number": "3.8.3-1",
+          "title": "球面波声压与振速的局部相速度"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气中球面波频率为 1 kHz，在半径 0.05 m 处比较声压与振速相速度",
+          "answers": [
+            {
+              "quantity": "(1) 声压相速度",
+              "value": 343,
+              "unit": "m/s"
+            },
+            {
+              "quantity": "(2) 振速相速度",
+              "value": 751.8675225477728,
+              "unit": "m/s"
+            }
+          ],
+          "figureTitle": "振速相速度 = 751.9 m/s"
+        }
+      ],
+      "summaryPages": [
+        8
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "相速度由等相位面随时间移动的速度定义。",
+        "均匀扩张球面波的声压相速度等于介质声速。",
+        "振速的附加空间相位使其近场相速度大于声速，远场趋于声速；相速度不等同于信号速度。"
+      ],
+      "questionCount": 3
+    },
+    {
+      "id": "3.8.4",
+      "title": "球面波（4）",
+      "figures": [
+        {
+          "number": "3.8.4-1",
+          "title": "三个物理位置的声压、振速、能流与平均声强"
+        },
+        {
+          "number": "3.8.4-2",
+          "title": "球面扩展的声压级与距离"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气中 1 kHz 球面波的幅度常数为 1 Pa·m",
+          "answers": [
+            {
+              "quantity": "(1) 平均声强",
+              "value": 0.0012047321880346,
+              "unit": "W/m²"
+            },
+            {
+              "quantity": "(2) 穿过球面的声功率",
+              "value": 0.015139111165890626,
+              "unit": "W"
+            }
+          ],
+          "figureTitle": "穿过球面的声功率 = 0.01514 W"
+        }
+      ],
+      "summaryPages": [
+        8
+      ],
+      "summaryImageOnly": true,
+      "keyPoints": [
+        "声能流密度由瞬时声压与振速相乘求得，近场可出现指向声源的瞬时能流。",
+        "时间平均声强始终径向向外，与声压有效值的平方成正比。",
+        "无吸收球面波声强随距离平方反比衰减，穿过同心球面的平均声功率守恒。"
+      ],
+      "questionCount": 4
+    },
+    {
+      "id": "3.8.5",
+      "title": "球面波在两种介质分界面上的反射",
+      "figures": [
+        {
+          "number": "3.8.5-1",
+          "title": "软硬界面的实源、虚源与镜像叠加声场"
+        },
+        {
+          "number": "3.8.5-2",
+          "title": "固定水平距离处的劳埃德镜干涉"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　水中点声源深度 1 m，接收深度 2 m，水平距离 3 m，频率 1 kHz",
+          "answers": [
+            {
+              "quantity": "(1) 实源与虚源路径差",
+              "value": 1.0803630269509061,
+              "unit": "m"
+            },
+            {
+              "quantity": "(2) 合成声压幅值",
+              "value": 0.42809579711012163,
+              "unit": "Pa"
+            }
+          ],
+          "figureTitle": "合成声压幅值 = 0.4281 Pa"
+        }
+      ],
+      "summaryPages": [
+        16
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "镜像法用满足边界条件的虚源代替反射界面。",
+        "水中近水面声源的软边界镜像反相，构成偶极子式声场。",
+        "空气中近水面声源的硬边界镜像同相，构成同性极子声场。"
+      ],
+      "questionCount": 3
+    },
+    {
+      "id": "3.9.1",
+      "title": "柱面波（1）",
+      "figures": [
+        {
+          "number": "3.9.1-1",
+          "title": "第一、第二类零阶贝塞尔函数与远场渐近式"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　一条长线声源在观测位置满足无量纲距离为 10",
+          "answers": [
+            {
+              "quantity": "(1) 第一类零阶柱函数",
+              "value": -0.2459357644513713,
+              "unit": "—"
+            },
+            {
+              "quantity": "(2) 第二类零阶柱函数",
+              "value": 0.05567116728363524,
+              "unit": "—"
+            }
+          ],
+          "figureTitle": "第二类零阶柱函数 = 0.05567 —"
+        }
+      ],
+      "summaryPages": [
+        12
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "柱面波的等相位面是同轴圆柱面，均匀柱面波仅依赖径向距离。",
+        "零阶贝塞尔方程的实解是第一类和第二类柱函数。",
+        "汉克尔函数组合表示收敛、扩张柱面行波，单独实柱函数表示驻波；远场幅度按半径平方根反比衰减。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.9.2",
+      "title": "柱面波（2）",
+      "figures": [
+        {
+          "number": "3.9.2-1",
+          "title": "近远场三个位置的柱面声压与振速"
+        },
+        {
+          "number": "3.9.2-2",
+          "title": "柱面波三个时刻的物理空间分布"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气中长线声源的柱面声压幅度系数为 1 Pa，频率为 1 kHz",
+          "answers": [
+            {
+              "quantity": "(1) 柱面声压峰值",
+              "value": 0.5812383778429908,
+              "unit": "Pa"
+            },
+            {
+              "quantity": "(2) 柱面振速峰值",
+              "value": 0.0014860919626530993,
+              "unit": "m/s"
+            }
+          ],
+          "figureTitle": "柱面振速峰值 = 0.001486 m/s"
+        }
+      ],
+      "summaryPages": [
+        10
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "正时间因子下扩张柱面波以第二类汉克尔函数 $H_0^{(2)}(kr)$ 表示。",
+        "由速度势的时间导数得到声压 $p=\\rho_0\\partial\\phi/\\partial t$。",
+        "由负空间梯度得到振速 $u_r=-\\partial\\phi/\\partial r$；近场声压与振速存在相位差。"
+      ],
+      "questionCount": 3
+    },
+    {
+      "id": "3.9.3",
+      "title": "柱面波（3）",
+      "figures": [
+        {
+          "number": "3.9.3-1",
+          "title": "柱面波阻抗的实部、虚部、模和相角"
+        },
+        {
+          "number": "3.9.3-2",
+          "title": "平面、柱面与球面波的距离扩展比较"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气中 1 kHz 长线声源，取半径 0.1 m 的局部声场",
+          "answers": [
+            {
+              "quantity": "(1) 柱面波波阻",
+              "value": 379.16087216213657,
+              "unit": "Pa·s/m"
+            },
+            {
+              "quantity": "(2) 柱面波波抗",
+              "value": 95.9733386846468,
+              "unit": "Pa·s/m"
+            }
+          ],
+          "figureTitle": "柱面波波抗 = 95.97 Pa·s/m"
+        }
+      ],
+      "summaryPages": [
+        12
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "柱面波阻抗为复数，远场趋于介质特性阻抗。",
+        "柱面波振速相速度在近场大于声速，远场趋近声速。",
+        "近场瞬时声能流可反向；平均声强与半径成反比，单位长度圆柱面的功率守恒。"
+      ],
+      "questionCount": 5
+    },
+    {
+      "id": "3.10.1",
+      "title": "声波在平行平面层波导中的传播（1）",
+      "figures": [
+        {
+          "number": "3.10.1-1",
+          "title": "平行刚性壁几何及前四阶横向本征函数"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气刚性平面层波导厚度为 0.5 m，声速为 343 m/s",
+          "answers": [
+            {
+              "quantity": "(1) 本阶截止频率",
+              "value": 343,
+              "unit": "Hz"
+            },
+            {
+              "quantity": "(2) 横向波数",
+              "value": 6.283185307179586,
+              "unit": "rad/m"
+            }
+          ],
+          "figureTitle": "横向波数 = 6.283 rad/m"
+        }
+      ],
+      "summaryPages": [
+        12
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "波导利用边界约束使声波主要沿不受限方向传播。",
+        "平行平面层波导由两平行无限平面围成，绝对硬边界要求法向声压梯度为零。",
+        "分离变量得到横向本征函数 $\\cos(n\\pi x/h)$，纵向波数由总波数与横向波数决定。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.10.2",
+      "title": "声波在平行平面层波导中的传播（2）",
+      "figures": [
+        {
+          "number": "3.10.2-1",
+          "title": "源振速分布、模态系数和合成声场"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气波导层厚为 0.5 m，均匀面源振速峰值为 0.01 m/s",
+          "answers": [
+            {
+              "quantity": "(1) 均匀源激发的平面波声压峰值",
+              "value": 4.1503,
+              "unit": "Pa"
+            },
+            {
+              "quantity": "(2) 第一高阶截止频率",
+              "value": 343,
+              "unit": "Hz"
+            }
+          ],
+          "figureTitle": "第一高阶截止频率 = 343 Hz"
+        }
+      ],
+      "summaryPages": [
+        9
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "两平行绝对硬边界要求横向法向振速均为零。",
+        "源的截面振速分布通过本征函数正交展开确定各阶激励系数。",
+        "与截面同形且振速均匀的面源只激发零阶平面行波，高阶模态系数为零。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.10.3",
+      "title": "声波在平行平面层波导中的传播（3）",
+      "figures": [
+        {
+          "number": "3.10.3-1",
+          "title": "可传播模式图与各阶截止频率"
+        },
+        {
+          "number": "3.10.3-2",
+          "title": "截止以下本征函数沿波导衰减"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气波导厚度 0.5 m，频率 500 Hz，考察第二阶本征函数",
+          "answers": [
+            {
+              "quantity": "(1) 本阶截止频率",
+              "value": 686,
+              "unit": "Hz"
+            },
+            {
+              "quantity": "(2) 截止下衰减系数",
+              "value": 8.60368625632922,
+              "unit": "m⁻¹"
+            }
+          ],
+          "figureTitle": "截止下衰减系数 = 8.604 m⁻¹"
+        }
+      ],
+      "summaryPages": [
+        10
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "简正波在受限方向为驻波，在不受限方向为行波。",
+        "本征函数并非必然是简正波；纵向波数为实数时才可正常传播。",
+        "频率大于本阶截止频率时传播，小于截止频率时蜕化为纵向衰减的非均匀波。"
+      ],
+      "questionCount": 5
+    },
+    {
+      "id": "3.10.4",
+      "title": "声波在平行平面层波导中的传播（4）",
+      "figures": [
+        {
+          "number": "3.10.4-1",
+          "title": "两列斜行平面波及其叠加简正波"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气波导层厚为 0.5 m，第二阶模式以 1200 Hz 传播",
+          "answers": [
+            {
+              "quantity": "(1) 本阶截止频率",
+              "value": 686,
+              "unit": "Hz"
+            },
+            {
+              "quantity": "(2) 平面波与纵轴夹角",
+              "value": 34.86652945038569,
+              "unit": "°"
+            }
+          ],
+          "figureTitle": "平面波与纵轴夹角 = 34.87 °"
+        }
+      ],
+      "summaryPages": [
+        7
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "各阶简正波沿截面的幅值服从对应横向本征函数，高阶幅值分布不均匀。",
+        "每个传播简正波可以分解为两列横向波数相反的斜行平面波。",
+        "阶数越高斜行角越大；同阶模式的频率升高时，传播方向更接近波导纵轴。"
+      ],
+      "questionCount": 2
+    },
+    {
+      "id": "3.10.5",
+      "title": "声波在平行平面层波导中的传播（5）",
+      "figures": [
+        {
+          "number": "3.10.5-1",
+          "title": "前五阶相速度与群速度的频率特性"
+        },
+        {
+          "number": "3.10.5-2",
+          "title": "两相近频率形成的拍包络与相位标记"
+        }
+      ],
+      "examples": [
+        {
+          "title": "例题　空气波导层厚 0.5 m，第一高阶模态以 1500 Hz 传播",
+          "answers": [
+            {
+              "quantity": "(1) 相速度",
+              "value": 352.33519881021795,
+              "unit": "m/s"
+            },
+            {
+              "quantity": "(2) 群速度",
+              "value": 333.9121393414075,
+              "unit": "m/s"
+            }
+          ],
+          "figureTitle": "群速度 = 333.9 m/s"
+        }
+      ],
+      "summaryPages": [
+        12
+      ],
+      "summaryImageOnly": false,
+      "keyPoints": [
+        "相速度是等相位面的传播速度，波导中大于等于介质声速。",
+        "群速度描述窄带信号、能量和包络的传播速度，小于等于介质声速。",
+        "各阶模式具有不同频散关系，相速度与群速度的乘积等于声速平方；宽带信号传播后形状会改变。"
+      ],
+      "questionCount": 8
+    }
+  ]
+}

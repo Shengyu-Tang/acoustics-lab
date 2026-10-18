@@ -1,0 +1,6 @@
+[
+  {
+    "name": "fig_3_6_1_1_set0",
+    "error": "AssertionError [ERR_ASSERTION]: fig_3_6_1_1_set0\nMATLAB startup/script timed out after 300 seconds.\n\n\n4294967295 !== 0\n"
+  }
+]
