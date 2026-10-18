@@ -1,0 +1,89 @@
+{
+  "review": "P3-1",
+  "lectures": {
+    "P2": 21,
+    "P3": 27
+  },
+  "simulationFigures": 75,
+  "examples": 48,
+  "screenshots": 246,
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "reviewBrowserFailures": [],
+  "reviewBrowserErrors": [],
+  "allRoutes": {
+    "lectures": 82,
+    "errors": [],
+    "checks": [
+      "parameters",
+      "bounds",
+      "Q overlay",
+      "grading",
+      "two hints",
+      "reactive solution",
+      "PNG/CSV/MATLAB downloads",
+      "print",
+      "all lecture routes",
+      "fixed screen font sizes and nonoverlapping horizontal annotations",
+      "mobile formula scrolling and separate equation numbers",
+      "distinct power/bandwidth exercise grading, hints and reactive solution",
+      "160×80 smoothly interpolated legacy field",
+      "completed-lecture thumbnails only",
+      "all lecture document titles",
+      "polish control dimensions, inline actions, breadcrumbs, export links and shared footer",
+      "eight default-state viewport screenshots"
+    ]
+  },
+  "passed": [
+    "npm ci",
+    "npm test",
+    "node scripts/check-animations.mjs",
+    "npm run build",
+    "node scripts/check-browser.mjs",
+    "node scripts/check-p3-review-browser.mjs --all --capture"
+  ],
+  "matlabSyntax": {
+    "files": 246,
+    "tool": "MATLAB R2024b mlint.exe -id",
+    "exit": 0,
+    "counts": {
+      "NASGU": 1336,
+      "NBRAK2": 116,
+      "AGROW": 364,
+      "DEFNU": 7254,
+      "ALIGN": 246,
+      "ASGLU": 252,
+      "NOSEMI": 114,
+      "CAXIS": 34
+    },
+    "syntaxDiagnostics": [],
+    "runtimeValidated": false
+  },
+  "matlabRuntime": {
+    "attempts": 1,
+    "timeoutSeconds": 300,
+    "elapsedSeconds": 300.523,
+    "timedOut": true,
+    "entered": false,
+    "exit": {
+      "code": 4294967295,
+      "signal": null
+    },
+    "runtimeValidated": false
+  },
+  "visualReview": {
+    "desktopFigures": 123,
+    "mobileFigures": 123,
+    "examplesIncluded": 48,
+    "boards": "outputs/P3-1/boards",
+    "notes": "Scientific-axis multipliers and wrapped scientific tokens corrected during visual review; requested figures re-inspected."
+  }
+}
