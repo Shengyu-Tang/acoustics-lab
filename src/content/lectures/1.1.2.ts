@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, parameter, fmt, industry, type Values } from "../p1";
 import { panel, line, extent, working, segment } from "../../plot/p1Helpers";
 const defaults = { M: 1.5, D: 1350, A: 0.004 };
@@ -19,7 +20,7 @@ const energy = (p: Values) => {
     ],
   );
 };
-export default lecture(
+const completedLecture = lecture(
   "1.1.2",
   [
     "总机械能守恒，动能与势能以两倍位移振动频率交替变化；一项增加时另一项等量减少。",
@@ -191,3 +192,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);

@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, force, ratio, parameter, fmt, industry, type Values } from "../p1";
 import { decay, forcedMotion } from "../../physics/p1";
 import { panel, line, extent, working } from "../../plot/p1Helpers";
@@ -30,7 +31,7 @@ const plots = (p: Values) => {
     legend: false,
   }));
 };
-export default lecture(
+const completedLecture = lecture(
   "1.2.2",
   [
     "暂态分量的包络按 $e^{-\\delta t}$ 衰减，振动频率为阻尼固有频率；长时间后暂态分量趋于零。",
@@ -141,3 +142,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);

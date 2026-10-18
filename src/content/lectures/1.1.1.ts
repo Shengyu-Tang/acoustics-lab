@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, initial, fmt, industry, type Values } from "../p1";
 import { decay, freeMotion } from "../../physics/p1";
 import { panel, line, extent, working, segment } from "../../plot/p1Helpers";
@@ -19,7 +20,7 @@ const curves = (p: Values) => {
     ],
   );
 };
-export default lecture(
+const completedLecture = lecture(
   "1.1.1",
   [
     "位移是时间的正弦或余弦函数；加速度与位移成正比并反向。",
@@ -147,3 +148,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);

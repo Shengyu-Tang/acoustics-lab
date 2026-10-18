@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, initial, parameter, fmt, industry, type Values } from "../p1";
 import { freeMotion } from "../../physics/p1";
 import { panel, line, extent, working, segment } from "../../plot/p1Helpers";
@@ -33,7 +34,7 @@ const curves = (p: Values) => {
     series,
   );
 };
-export default lecture(
+const completedLecture = lecture(
   "1.1.3",
   [
     "特征根为两个不同的负实数，解是两个衰减指数之和，不含周期项，过零不超过一次。物理上阻力很强，惯性不足以维持往复运动。",
@@ -74,8 +75,7 @@ export default lecture(
       {
         number: "1.1.3-2",
         independentOf: ["M", "D", "x0", "v0"],
-        dimensionlessComparison:
-          "无量纲特征根比较：采用 $s/\\omega_0$；初始条件不决定特征根。",
+        dimensionlessComparison: "无量纲特征根比较：采用 $s/\\omega_0$；初始条件不决定特征根。",
         title: "阻尼从 0 到 2ω₀ 的特征根轨迹",
         rows: 1,
         cols: 1,
@@ -164,3 +164,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);

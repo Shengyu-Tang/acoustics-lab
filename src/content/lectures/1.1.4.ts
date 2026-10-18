@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, initial, parameter, fmt, industry, type Values } from "../p1";
 import { decay, freeMotion } from "../../physics/p1";
 import { panel, line, extent, working } from "../../plot/p1Helpers";
@@ -37,7 +38,7 @@ const curves = (p: Values) => {
           ],
   };
 };
-export default lecture(
+const completedLecture = lecture(
   "1.1.4",
   [
     "不是周期函数。虽然过零间隔相等，但每个周期振幅减少，不能满足 $x(t+T)=x(t)$。",
@@ -170,3 +171,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);

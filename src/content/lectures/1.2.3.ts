@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, force, parameter, fmt, industry, type Values } from "../p1";
 import { decay, forcedMotion, pulseMotion } from "../../physics/p1";
 import { panel, line, extent, working } from "../../plot/p1Helpers";
@@ -41,7 +42,7 @@ const rise = (p: Values) => {
     ],
   };
 };
-export default lecture(
+const completedLecture = lecture(
   "1.2.3",
   [
     "暂态频率接近固有频率，稳态频率等于外力频率；两者相近时叠加形成拍。暂态指数衰减，因此拍逐渐消失。",
@@ -205,3 +206,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);

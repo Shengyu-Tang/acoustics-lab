@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, force, ratio, parameter, fmt, industry, type Values } from "../p1";
 import { forcedMotion } from "../../physics/p1";
 import { panel, line, extent, working } from "../../plot/p1Helpers";
@@ -26,7 +27,7 @@ const resonant = (p: Values, end = extent((12 * 2 * Math.PI) / Math.sqrt(p.D / p
     ],
   );
 };
-export default lecture(
+const completedLecture = lecture(
   "1.2.1",
   [
     "调音时频率相近的两个音叉或乐器产生时强时弱的响度；机械系统也可能由相近转频激起拍。",
@@ -169,3 +170,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);

@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, mechanics, parameter, fmt, industry, type Values } from "../p1";
 import { freeMotion } from "../../physics/p1";
 import { panel, line, extent, working } from "../../plot/p1Helpers";
@@ -62,7 +63,7 @@ const curves = (p: Values) => {
     })),
   };
 };
-export default lecture(
+const completedLecture = lecture(
   "1.1.5",
   [
     "δ 为单位时间内振幅衰减比的自然对数，即 $\\ln[A(t)/A(t+\\Delta t)]/\\Delta t$；单位为 s⁻¹。δ 越大，振幅衰减越快。",
@@ -182,3 +183,5 @@ export default lecture(
     ),
   },
 );
+
+export default completeExamples(completedLecture);
