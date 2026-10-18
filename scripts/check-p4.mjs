@@ -1,9 +1,14 @@
 ﻿import assert from "node:assert/strict";
 import fs from "node:fs";
 import { models } from "./p4-models.mjs";
+const references = JSON.parse(fs.readFileSync("scripts/p4-reference-answers.json", "utf8"));
 const a = await models(),
   near = (v, e, t = 1e-7) =>
     assert.ok(Math.abs(v - e) < Math.max(1e-9, t * Math.abs(e)), v + " vs " + e);
+assert.ok(
+  !fs.readFileSync("src/plot/export.ts", "utf8").includes("xticks(ceil(xl(1)):floor(xl(2)))"),
+  "integer ticks must use sparse nice ticks",
+);
 for (const f of [10, 1000, 50000])
   for (const radius of [0.01, 0.05, 0.1]) {
     const q = a.sphere(radius, f, 1000, 1500, 0.01, 2),
@@ -92,6 +97,13 @@ for (const f of [500, 1000, 5000]) {
 }
 near(a.thorp(1000), 0.0690040904657);
 for (const l of a.lectures) {
+  l.examples[0].asks.forEach((ask, i) =>
+    assert.ok(
+      Math.abs(ask.calc(l.examples[0].defaults) - references[l.id][i]) <=
+        Math.max(1e-30, Math.abs(references[l.id][i]) * 0.0049),
+      l.id + " independent example answer <0.5%",
+    ),
+  );
   const t = JSON.parse(fs.readFileSync("src/topics.json", "utf8")).find((t) => t.id === l.id);
   assert.deepEqual(
     l.questions.map((q) => q.text),
@@ -102,7 +114,7 @@ for (const l of a.lectures) {
   for (const e of l.examples) {
     const p = e.plot(e.defaults);
     assert.ok(p.matlabModel);
-    assert.ok(!/qaRange|宸ヤ綔鐐箌渚嬮绛旀/.test(p.title));
+    assert.ok(!/qaRange|工作点|例题答案/.test(p.title));
     assert.ok(e.asks.some((q) => p.title.startsWith(q.text.replace(/^\(\d+\)\s*/, ""))));
   }
   for (const f of l.figures)
@@ -113,6 +125,63 @@ for (const l of a.lectures) {
           assert.ok(Number.isFinite(x + y), f.number + " finite curve");
     }
 }
+for (const ka of [0.001, 0.003])
+  for (const theta of [0, 0.8, Math.PI])
+    near(
+      a.magnitude(a.cylinderFar(ka, theta, false)) / ka ** 2,
+      (Math.PI / 4) * Math.abs(1 - 2 * Math.cos(theta)),
+      0.001,
+    );
+near(a.magnitude(a.sphereReceive(0)), 1);
+near(a.magnitude(a.diskReceive(0)), 1);
+assert.ok(a.magnitude(a.diskReceive(100)) > 1.98 && a.magnitude(a.diskReceive(100)) < 2.02);
+for (const alpha of [1e-4, 0.1])
+  for (const r of [1, 10, 1000]) near(-20 * Math.log10(Math.exp(-alpha * r)), a.npToDb(alpha) * r);
+const designs = new Set();
+for (const l of a.lectures)
+  for (const e of l.examples)
+    for (const p of [
+      e.defaults,
+      ...e.given.flatMap((d) => [d.min, d.max].map((v) => ({ ...e.defaults, [d.key]: v }))),
+    ]) {
+      const q = e.plot(p);
+      if (q.equalAspect || q.field || q.kind === "polar" || q.yscale === "log") continue;
+      const ys = (q.series ?? []).flatMap((s) =>
+        s.points
+          .filter(([x, y]) => x >= q.xlim[0] && x <= q.xlim[1] && Number.isFinite(y))
+          .map((p) => p[1]),
+      );
+      const lo = Math.min(...ys),
+        hi = Math.max(...ys),
+        span = q.ylim[1] - q.ylim[0];
+      assert.ok(
+        lo >= q.ylim[0] - span * 1e-9 && hi <= q.ylim[1] + span * 1e-9,
+        l.id + " example clips current response",
+      );
+      if (q.series?.some((s) => s.kind === "bar"))
+        assert.equal(q.ylim[0], 0, l.id + " example bars start at zero");
+      else if (hi - lo > 1e-30)
+        assert.ok((hi - lo) / span >= 0.4 - 1e-8, l.id + " example amplitude occupancy <40%");
+    }
+for (const l of a.lectures)
+  for (const e of l.examples) {
+    const p = e.plot(e.defaults),
+      shape = JSON.stringify([
+        p.xlabel,
+        p.ylabel,
+        p.series?.map((s) => [s.name.replace(/[-+]?\d+(\.\d+)?/g, "#"), s.kind, s.style]),
+      ]);
+    assert.ok(!designs.has(shape), l.id + " repeats an example design");
+    designs.add(shape);
+    for (const d of e.given) {
+      const v = e.defaults[d.key];
+      if (v)
+        assert.ok(
+          !(Math.abs(p.xlim[0] / v - 0.9) < 0.03 && Math.abs(p.xlim[1] / v - 1.1) < 0.03),
+          l.id + " example sweeps a known value ±10%",
+        );
+    }
+  }
 console.log(
   "PASS P4 physics: sphere impedance/power, point source, dipole power, Helmholtz representation, piston axis and beam, Rayleigh distance, sphere/cylinder limits, reciprocity and absorption; " +
     a.lectures.length +

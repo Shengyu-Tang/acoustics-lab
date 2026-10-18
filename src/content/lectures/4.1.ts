@@ -44,7 +44,7 @@ const asks = [
 const setup = "[Rs,Xs,Prad,Ms]=p4Sphere(a,f,rho,c,v);";
 export default makeLecture("4.1", {
   defaults: p,
-  parameters: [f, a, Rm, v],
+  parameters: [f, a, Rm],
   keyPoints: [
     "辐射器推动介质，介质的惯性与弹性使振动传播到远处，形成声辐射。",
     "辐射定解问题包括亥姆霍兹方程、振源表面的法向振速条件与无穷远辐射条件。",
@@ -110,7 +110,7 @@ export default makeLecture("4.1", {
               { x: 1.5, y: 2.5, text: "质量 M" },
               { x: 3.5, y: 2.5, text: "弹性 D" },
               { x: 5.5, y: 2.5, text: "内阻 Rₘ" },
-              { x: 7.5, y: 2.5, text: "辐射 Rₛ+jXₛ" },
+              { x: 7.5, y: 2.5, text: "辐射负载" },
             ],
           },
         ),

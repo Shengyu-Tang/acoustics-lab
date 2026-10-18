@@ -36,7 +36,7 @@ function checkFigureText(text, name) {
     .replace(/\\[A-Za-z]+/g, "")
     .replace(/\$[^$]*\$/g, "")
     .replace(
-      /\b(?:Pa|MPa|GPa|Hz|kHz|kg|mm|cm|rad|dB|Re|Im|sin|cos|tan|log|ln|lg|exp|max|min|rms|dx|dz|dt|kr|kL|Mq|rho)\b/g,
+      /\b(?:Pa|MPa|GPa|Hz|kHz|kg|mm|cm|km|rad|dB|Np|Re|Im|sin|cos|tan|log|ln|lg|exp|max|min|rms|dx|dz|dt|kr|ka|kd|kL|Mq|rho)\b/g,
       "",
     )
     .replace(/ρSL|ABCDEFGH/g, "")
@@ -99,9 +99,11 @@ for (const l of lectures) {
     e.hints.forEach((text) => checkText(text, `${l.id} hint`));
     if (l.defaults) {
       const q = e.plot(e.defaults);
-      const answer = e.asks.find(a => q.title.startsWith(a.text.replace(/^\(\d+\)\s*/, "") + " = "));
+      const answer = e.asks.find((a) =>
+        q.title.startsWith(a.text.replace(/^\(\d+\)\s*/, "") + " = "),
+      );
       assert.ok(answer, l.id + " example title names a requested answer");
-      const labels = (q.annotations ?? []).map(a => a.label);
+      const labels = (q.annotations ?? []).map((a) => a.label);
       assert.equal(new Set(labels).size, labels.length, l.id + " distinct annotation labels");
     }
   }

@@ -2,6 +2,7 @@
 export const COLORS = ["#0072BD", "#D95319", "#EDB120", "#7E2F8E", "#77AC30", "#4DBEEE", "#A2142F"];
 export type Point = [number, number];
 export type MatlabModel = {
+  fieldLimits?: string;
   amplitudeAxes?: boolean;
   envelopePeriod?: string;
   textLabels?: { x: string; y: string }[];
@@ -40,6 +41,8 @@ export type Field = {
   limits?: [number, number];
 };
 export type Panel = {
+  /** Fixed coordinate plane, including dimensionless impedance contours. */
+  coordinateY?: boolean;
   answerKey?: string;
   equalAspect?: boolean;
   // Analytic poles have no finite envelope. The explicitly labelled display
@@ -91,5 +94,7 @@ export function fieldLimits(f: Field): [number, number] {
 }
 
 export function fieldFill(f: Field, value: number) {
- return f.categories?.find(c => c.value === value)?.color ?? fieldColor(value,fieldLimits(f),f.map);
+  return (
+    f.categories?.find((c) => c.value === value)?.color ?? fieldColor(value, fieldLimits(f), f.map)
+  );
 }

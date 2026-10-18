@@ -40,7 +40,7 @@ for nn=0:ceil(ka+12),h=besselh(nn,2,ka);if nn==0,dh=-besselh(1,2,ka);dj=-besselj
 if soft,q=besselj(nn,ka)/h;else,q=dj/dh;end
 ps=ps-(1+(nn>0))*q*(-1i)^nn*besselh(nn,2,k*r).*cos(nn*theta);end
 pii=exp(-1i*k*x);if part==0,p=pii;elseif part==1,p=ps;else,p=pii+ps;end
-p(rr<a)=0;
+if part~=0,p(rr<a*(1-1e-12))=0;end
 end
 function value=p4CylFar(ka,theta,soft)
 value=zeros(size(theta));for nn=0:ceil(ka+12),h=besselh(nn,2,ka);if nn==0,dh=-besselh(1,2,ka);dj=-besselj(1,ka);else,dh=besselh(nn-1,2,ka)-nn/ka*h;dj=besselj(nn-1,ka)-nn/ka*besselj(nn,ka);end
@@ -85,5 +85,11 @@ function y=p4PorousRe(f,d,sigma,rho,c)
 end
 function y=p4PorousIm(f,d,sigma,rho,c)
 [~,z]=p4Porous(f,d,sigma,rho,c);y=imag(z);
+end
+function y=p4PorousPeak(d,sigma,rho,c)
+ff=linspace(400,4000,401);aa=p4Porous(ff,d,sigma,rho,c);[~,ii]=max(aa);y=ff(ii);
+end
+function y=p4PorousWidth(d,sigma,rho,c)
+ff=linspace(400,4000,401);aa=p4Porous(ff,d,sigma,rho,c);inside=ff(aa>=max(aa)/2);y=inside(end)-inside(1);
 end
 `;

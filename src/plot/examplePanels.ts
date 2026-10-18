@@ -301,8 +301,16 @@ export function examplePanel(id: string, p: Values, original: Panel, e: P1Exampl
   setup += `worksheet_answers=[${e.asks.map((a) => a.key).join(" ")}];`;
   const modeled = attach([result], p, e.given, setup, [curves], [annotations])[0];
   if (id === "1.1.1") modeled.matlabModel!.ylim = "[-1.3 2.2]*max(amp,1e-9)";
-  if (id === "2.1")
-    modeled.matlabModel!.annotationLabels = ["sprintf('单程时间 L/c = %.4g s',L/sqrt(T/mu))"];
+  if (id === "2.1") modeled.matlabModel!.annotationLabels = ["sprintf('当前张力 T = %.4g N',T)"];
+  if (id === "2.1") modeled.annotations![0].label = `当前张力 T = ${p.T} N`;
+  if (id === "2.2") modeled.answerKey = "targetTension";
+  if (id === "1.1.5") modeled.answerKey = "tau";
+  if (id === "1.1.3") modeled.series![0].name = "按所需力阻设计的回位响应";
+  if (id === "1.2.2") {
+    modeled.matlabModel!.legendLocation = "southeast";
+    modeled.annotations!.push({ axis: "y", value: e.asks[0].calc(p), label: "稳态位移幅值" });
+    modeled.matlabModel!.annotations!.push("amplitude");
+  }
   if (id === "2.3") modeled.matlabModel!.title = "sprintf('本题带质量钢棒：c = %.4g m/s',speed)";
   return answerTitle(modeled, e.asks, p);
 }

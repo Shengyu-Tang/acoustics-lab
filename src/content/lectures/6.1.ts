@@ -57,7 +57,7 @@ export default makeLecture("6.1", {
     },
     {
       number: "6.1-2",
-      tex: "\\gamma_{\\mathrm{球}}=\\frac1{1+jka},\\quad |\\gamma_{\\mathrm{球}}|=\\frac1{\\sqrt{1+(ka)^2}}",
+      tex: "\\gamma_{\\text{球}}=\\frac1{1+jka},\\quad |\\gamma_{\\text{球}}|=\\frac1{\\sqrt{1+(ka)^2}}",
       meaning:
         "球面平均压力系数的幅值在低频趋于一；本页波形图隔离这一因素，假设机械阻抗平坦且二次辐射负载可忽略。",
     },

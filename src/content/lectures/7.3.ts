@@ -70,7 +70,7 @@ export default makeLecture("7.3", {
   parameters: [res, react, d, sigma, f],
   keyPoints: [
     "吸声系数为被材料或结构吸收的声能与入射声能之比；正入射时由声压反射系数模值求得。",
-    "均匀弹性材料、空气多孔材料的损耗机制不同；最大吸声频率与有效吸声带宽共同描述频率选择性。",
+    "有损均匀弹性材料通过内部摩擦与黏弹性迟滞耗能，多孔材料主要通过孔隙中的粘滞与热交换耗能；最大吸声频率与有效吸声带宽共同描述频率选择性。",
     "空气多孔层中粘滞与热交换造成耗散；本页采用刚性背衬的德拉尼—巴兹利模型，明确限制于空气中高孔隙率纤维材料。",
     "水声常用谐振型吸声结构及阻抗过渡型尖劈结构；阻抗渐变能减小入口反射，最终吸收仍需依靠材料内部损耗。",
   ],
@@ -140,7 +140,7 @@ export default makeLecture("7.3", {
           points("当前阻抗", [[p.res, p.react]], "res", "react", { marker: "o", style: "none" }),
         ],
         setup,
-        { equalAspect: true },
+        { equalAspect: true, coordinateY: true },
       ),
     ]),
     figure("7.3-2", "刚性背衬空气多孔层的吸声频响、峰值与显示带宽", (p) => {
@@ -247,7 +247,7 @@ export default makeLecture("7.3", {
   ],
   exampleTitle: "例题　五厘米空气多孔吸声层的阻抗匹配",
   background:
-    "空气中刚性背衬纤维吸声层厚 50 mm、流阻率 10000 Pa·s/m²，在 1 kHz 正入射。采用德拉尼—巴兹利模型求反射系数模值与吸声系数，并将表面阻抗放到匹配等值线上检验。",
+    "空气中刚性背衬纤维吸声层厚 50 mm、流阻率 $10000\\ \\mathrm{Pa\\cdot s/m^2}$，在 1 kHz 正入射。采用德拉尼—巴兹利模型求反射系数模值与吸声系数，并将表面阻抗放到匹配等值线上检验。",
   exampleDefaults: p,
   given: [d, sigma, f],
   asks,

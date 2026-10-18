@@ -87,6 +87,11 @@ const vector = (ns: number[]) =>
   "[" + ns.map((n) => (Number.isFinite(n) ? String(n) : "NaN")).join(" ") + "]";
 export function matlab(panels: Panel[], rows: number, cols: number, title: string) {
   const model = panels.find((p) => p.matlabModel)?.matlabModel;
+  const complexPlaneLegend =
+    panels.length === 1 &&
+    panels[0].equalAspect &&
+    (panels[0].series?.filter((s) => s.legend !== false).length ?? 0) > 2 &&
+    model?.setup.includes("p4");
   const out = [
     `% ${title.replace(/[\r\n]/g, " ")}`,
     ...(model
@@ -99,7 +104,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       : ["% Exported current data; SI units unless an axis specifies otherwise."]),
     "set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');",
     "set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');",
-    `figure('Color','w','Position',[80 80 ${640 * cols} ${340 * rows}]);`,
+    `figure('Color','w','Position',[80 80 ${640 * cols} ${complexPlaneLegend ? 560 : 340 * rows}]);`,
   ];
   panels.forEach((original, k) => {
     const m = original.matlabModel ? { ...original.matlabModel } : undefined;
@@ -125,7 +130,9 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       : (m?.series.map(() => ({ name: "模型曲线", points: [], legend: false })) ?? []);
     out.push(`subplot(${rows},${cols},${k + 1});`);
     if (p.kind === "polar")
-      out.push("pos=get(gca,'Position'); delete(gca); polaraxes('Position',pos);");
+      out.push(
+        "pos=get(gca,'Position');pos(2)=pos(2)+.03;pos(4)=pos(4)*.78; delete(gca); polaraxes('Position',pos);",
+      );
     out.push("hold on;");
     if (p.field) {
       const f = p.field;
@@ -136,7 +143,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         `if isprop(im,'Interpolation'), im.Interpolation='${f.categories ? "nearest" : "bilinear"}'; end`,
         "set(im,'HandleVisibility','off');",
         "set(gca,'YDir','normal');",
-        `caxis(${vector(fieldLimits(f))});`,
+        `caxis(${m?.fieldLimits ?? vector(fieldLimits(f))});`,
       );
       out.push(
         `% ${f.map ?? "parula"}, identical 64 colors to browser`,
@@ -153,10 +160,10 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         );
       else out.push(`cb=colorbar; ylabel(cb,${tex(f.label)},'Interpreter','tex');`);
     }
-    p.bands?.forEach((b) => {
+    p.bands?.forEach((b, bandIndex) => {
       if (m?.ylim) out.push(`band_limits=${m.ylim};`);
       out.push(
-        `patch([${m?.bands?.[0]?.from ?? b.from} ${m?.bands?.[0]?.to ?? b.to} ${m?.bands?.[0]?.to ?? b.to} ${m?.bands?.[0]?.from ?? b.from}],${m?.ylim ? "band_limits([1 1 2 2])" : `[${p.ylim[0]} ${p.ylim[0]} ${p.ylim[1]} ${p.ylim[1]}]`},[.9 .9 .9],'EdgeColor','none','HandleVisibility','off');`,
+        `patch([${m?.bands?.[bandIndex]?.from ?? b.from} ${m?.bands?.[bandIndex]?.to ?? b.to} ${m?.bands?.[bandIndex]?.to ?? b.to} ${m?.bands?.[bandIndex]?.from ?? b.from}],${m?.ylim ? "band_limits([1 1 2 2])" : `[${p.ylim[0]} ${p.ylim[0]} ${p.ylim[1]} ${p.ylim[1]}]`},[.9 .9 .9],'EdgeColor','none','HandleVisibility','off','Tag','parameterband');`,
       );
     });
     plotSeries.forEach((s, i) => {
@@ -328,15 +335,21 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
               .join(
                 " ",
               )}]; model_values=model_values(isfinite(model_values)); if ~isempty(model_values), if strcmp(get(gca,'YScale'),'log'), positive=model_values(model_values>0); if ~isempty(positive),ylim([min(positive)*.5 max(positive)*2]);end; else, lo=min(0,min(model_values)); hi=max(0,max(model_values)); pad=max((hi-lo)*${modelHeader ? String(0.3 + 0.2 * (p.annotations?.filter((a) => a.axis === "x").length ?? 0)) : p.legend === false || p.series?.every((s) => s.kind === "bar") ? ".08" : ".4"},1e-12); ylim([lo-pad hi+pad]);end;end;`,
-        ...(p.integerX ? ["xl=xlim; xticks(ceil(xl(1)):floor(xl(2)));"] : []),
+        ...(p.integerX ? [`xticks(${vector(xt.values.filter(Number.isInteger))});`] : []),
       );
     if (p.equalAspect) out.push("daspect([1 1 1]);");
+    if (p.bands?.length)
+      out.push(
+        "band_axes_limits=ylim;band_handles=findobj(gca,'Tag','parameterband');for band_index=1:numel(band_handles),set(band_handles(band_index),'YData',band_axes_limits([1 1 2 2]));end",
+      );
     // Model headers occupy the left of the reserved top strip; keep the legend
     // in its clear right-hand area rather than letting MATLAB cover readouts.
     if (modelHeader && p.legend !== false && plotSeries.some((s) => s.legend !== false))
       out.push(`lgd.Location='${m?.legendLocation ?? "northeast"}';`);
     else if (m?.legendLocation && p.legend !== false && plotSeries.some((s) => s.legend !== false))
       out.push(`lgd.Location='${m.legendLocation}';`);
+    if (complexPlaneLegend && p.legend !== false)
+      out.push("lgd.Location='southoutside';lgd.FontSize=10;");
     if (p.xtickLabels)
       out.push(
         `xticks(${vector(p.xtickLabels.map((t) => t.value))});xticklabels({${p.xtickLabels.map((t) => tex(t.label)).join(",")}});`,

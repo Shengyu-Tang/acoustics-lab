@@ -61,11 +61,16 @@ function field(p: Record<string, number>) {
       [-0.3, 0.3],
       (x, y) =>
         p.pa *
-        states[Math.round(((y + 0.3) / 0.6) * 80)][Math.round(((x + 0.3) / 0.6) * 160)][part].re,
+        (part === "incident"
+          ? Math.cos(phy.kWave(p.f, p.c) * x)
+          : states[Math.round(((y + 0.3) / 0.6) * 80)][Math.round(((x + 0.3) / 0.6) * 160)][part]
+              .re),
       "pa*real(p4Cyl(XX,YY,a,f,c,0," + index + "))",
       "",
       boundary,
       [-2 * p.pa, 2 * p.pa],
+      "声压 (Pa)",
+      "[-2 2]*pa",
     ),
   );
   if (cache.size > 8) cache.clear();

@@ -59,7 +59,16 @@ function cumulative(p: Record<string, number>) {
 }
 export default makeLecture("5.2", {
   defaults: p,
-  parameters: [a, f, pa],
+  parameters: [a, f],
+  measurements: [
+    { name: "无量纲尺寸", unit: "—", matlab: "k*a", calc: (p) => phy.kWave(p.f, p.c) * p.a },
+    {
+      name: "散射截面与几何截面之比",
+      unit: "—",
+      matlab: "p4Sigma(k*a)",
+      calc: (p) => phy.rigidSphere(phy.kWave(p.f, p.c) * p.a, 0).crossSection,
+    },
+  ],
   keyPoints: [
     "刚性球表面总声场的径向导数为零，散射场由球贝塞尔函数与勒让德多项式级数构成。",
     "无量纲尺寸控制散射指向性，小球与波长相当或更大的球具有不同角分布。",
@@ -111,7 +120,7 @@ export default makeLecture("5.2", {
         2,
         2,
       ),
-      ["a", "f", "pa"],
+      ["a", "f"],
       "本图固定四组无量纲尺寸以比较方向函数；当前尺寸与绝对散射功率见下图及例题。",
     ),
     figure(

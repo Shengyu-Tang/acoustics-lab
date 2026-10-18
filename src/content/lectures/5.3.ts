@@ -27,7 +27,7 @@ const asks = [
     "(1) 后向散射声压峰值",
     "Pa",
     "|P_s|\\simeq p_a\\sqrt{\\frac{2}{\\pi kr}}|C(\\theta)|",
-    "pa*sqrt(2/(pi*k*r))*abs(Cback)",
+    "pa*sqrt(2/(pi*k*r))*abs(p4CylFar(k*a,theta*pi/180,1))",
     (p) => p.pa * Math.sqrt(2 / (Math.PI * phy.kWave(p.f, p.c) * p.r)) * coefficient(p),
     substitution,
   ),
@@ -63,6 +63,8 @@ function field(p: Record<string, number>) {
     "",
     boundary,
     [-2 * p.pa, 2 * p.pa],
+    "声压 (Pa)",
+    "[-2 2]*pa",
   );
   if (cache.size > 8) cache.clear();
   cache.set(key, q);

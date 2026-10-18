@@ -13,11 +13,11 @@ import {
 } from "../p4";
 import * as phy from "../../physics/chapter4";
 const f = parameter("f", "工作频率", "f", "Hz", 1000, 100000, 1000),
-  tau = parameter("tau", "弛豫时间", "τ", "s", 1e-6, 1e-4, 1e-6),
+  relaxTime = parameter("relaxTime", "弛豫时间", "τ", "s", 1e-6, 1e-4, 1e-6),
   A = parameter("A", "弛豫强度", "A", "s/m", 1e-9, 5e-8, 1e-9),
   B = parameter("B", "古典吸收常数", "B", "s²/m", 1e-15, 5e-14, 1e-15),
   r = parameter("r", "传播距离", "r", "m", 100, 5000, 100);
-const p = { ...water, f: 50000, tau: 2e-5, A: 1e-8, B: 5e-15, r: 1000, SL: 180 },
+const p = { ...water, f: 50000, relaxTime: 2e-5, A: 1e-8, B: 5e-15, r: 1000, SL: 180 },
   setup = "alphaSea=p4Thorp(f);";
 const asks = [
   ask(
@@ -50,7 +50,7 @@ const asks = [
 ];
 export default makeLecture("7.2", {
   defaults: p,
-  parameters: [tau, A, B, f],
+  parameters: [relaxTime, A, B, f],
   keyPoints: [
     "古典吸收由粘滞与热传导造成，在其适用条件下吸收系数正比于频率平方。",
     "实际介质的吸收可能明显超过古典理论预测，称为超吸收。",
@@ -60,7 +60,7 @@ export default makeLecture("7.2", {
   formulas: [
     {
       number: "7.2-1",
-      tex: "\\alpha_{\\mathrm{古典}}=Bf^2,\\quad\\alpha_{\\mathrm{弛豫}}=\\frac{A\\omega^2\\tau}{1+\\omega^2\\tau^2}",
+      tex: "\\alpha_{\\text{古典}}=Bf^2,\\quad\\alpha_{\\text{弛豫}}=\\frac{A\\omega^2\\tau}{1+\\omega^2\\tau^2}",
       meaning: "示意模型隔离古典与单一弛豫过程；古典常数含粘滞、热传导及介质参数。",
     },
     {
@@ -101,21 +101,21 @@ export default makeLecture("7.2", {
           ),
           points(
             "单一弛豫吸收",
-            log(100, 1000000).map((f) => [f, phy.relaxation(f, p.A, p.tau)]),
+            log(100, 1000000).map((f) => [f, phy.relaxation(f, p.A, p.relaxTime)]),
             "logspace(2,6,401)",
-            "p4Relax(x,A,tau)",
+            "p4Relax(x,A,relaxTime)",
           ),
           points(
             "两机制总和",
-            log(100, 1000000).map((f) => [f, p.B * f * f + phy.relaxation(f, p.A, p.tau)]),
+            log(100, 1000000).map((f) => [f, p.B * f * f + phy.relaxation(f, p.A, p.relaxTime)]),
             "logspace(2,6,401)",
-            "B*x.^2+p4Relax(x,A,tau)",
+            "B*x.^2+p4Relax(x,A,relaxTime)",
           ),
           points(
             "当前频率的总吸收",
-            [[p.f, p.B * p.f * p.f + phy.relaxation(p.f, p.A, p.tau)]],
+            [[p.f, p.B * p.f * p.f + phy.relaxation(p.f, p.A, p.relaxTime)]],
             "f",
-            "B*f^2+p4Relax(f,A,tau)",
+            "B*f^2+p4Relax(f,A,relaxTime)",
             { marker: "o", style: "none" },
           ),
         ],

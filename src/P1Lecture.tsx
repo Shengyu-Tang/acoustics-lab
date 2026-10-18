@@ -149,6 +149,32 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
             ))}
           </fieldset>
         )}
+        {l.id === "7.1" && (
+          <fieldset className="parameter-panel">
+            <legend>幅值吸收系数双向换算</legend>
+            <label className="p2-converter">
+              奈贝与分贝
+              <NumberField
+                label="吸收系数奈贝每米"
+                value={p.alpha}
+                min={0.00001}
+                max={0.2}
+                step={0.00001}
+                onChange={(v) => setParameter("alpha", v)}
+              />
+              Np/m
+              <NumberField
+                label="吸收系数分贝每米"
+                value={(20 / Math.LN10) * p.alpha}
+                min={(20 / Math.LN10) * 0.00001}
+                max={(20 / Math.LN10) * 0.2}
+                step={0.0001}
+                onChange={(v) => setParameter("alpha", (v * Math.LN10) / 20)}
+              />
+              dB/m
+            </label>
+          </fieldset>
+        )}
         {l.interactive?.selectors?.map((s) => (
           <label key={s.key} className="p2-choice">
             {s.label}{" "}

@@ -33,7 +33,7 @@ const asks = [
 const cache = new Map<string, ReturnType<typeof imagePanel>>();
 function field(p: Record<string, number>) {
   const key = JSON.stringify(p);
-  if (cache.has(key)) return cache.get(key)!;
+  if (cache.has(key)) return structuredClone(cache.get(key)!);
   const boundary = circle(p).series!.map((s) => ({
     ...s,
     mx: "a*cos(linspace(0,2*pi,181))",
@@ -57,7 +57,7 @@ function field(p: Record<string, number>) {
   );
   if (cache.size > 8) cache.clear();
   cache.set(key, q);
-  return q;
+  return structuredClone(q);
 }
 export default makeLecture("4.4.2", {
   defaults: p,

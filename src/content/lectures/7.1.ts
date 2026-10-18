@@ -150,7 +150,7 @@ export default makeLecture("7.1", {
   ],
   exampleTitle: "例题　一千米水声链路的扩展与吸收预算",
   background:
-    "水下声源的一米无吸收参考声压峰值为 1 Pa，幅值吸收系数为 10⁻⁴ Np/m，接收器距声源 1 km。求分贝每米吸收系数、总传播损失与接收声压峰值，区分两类损失来源。",
+    "水下声源的一米无吸收参考声压峰值为 1 Pa，幅值吸收系数为 $10^{-4}\\ \\mathrm{Np/m}$，接收器距声源 1 km。求分贝每米吸收系数、总传播损失与接收声压峰值，区分两类损失来源。",
   exampleDefaults: { ...p, rho: 1000, c: 1500, alpha: 0.0001 },
   given: [alpha, pa],
   asks,

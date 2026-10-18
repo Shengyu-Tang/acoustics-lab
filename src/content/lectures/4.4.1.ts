@@ -17,7 +17,7 @@ const f = parameter("f", "频率", "f", "Hz", 200, 1500, 100),
   a = parameter("a", "积分圆半径", "a", "m", 0.3, 1, 0.05),
   N = { ...parameter("N", "边界离散点数", "N", "—", 8, 128, 8), integer: true };
 const p = { ...water, a: 0.5, N: 16, xobs: 0.25, yobs: 0.1 },
-  Ns = [8, 16, 24, 32, 48, 64, 96, 128];
+  Ns = [1, 8, 16, 24, 32, 48, 64, 96, 128, 150];
 const reconstruction = (p: Record<string, number>, n = p.N) =>
   phy.helmholtz(p.xobs, p.yobs, p.a, p.f, p.c, n);
 const error = (p: Record<string, number>, n = p.N) =>
@@ -39,7 +39,7 @@ const asks = [
     "errorPercent",
     "(2) 重建相对误差",
     "%",
-    "\\epsilon_N=|P_N-P_{\\mathrm{精确}}|/|P_{\\mathrm{精确}}|",
+    "\\epsilon_N=|P_N-P_{\\text{精确}}|/|P_{\\text{精确}}|",
     "100*abs(p4Helm(xobs,yobs,a,f,c,N,0)-exp(-1i*k*xobs))",
     (p) => error(p),
     substitution,
@@ -48,7 +48,7 @@ const asks = [
 const cache = new Map<string, ReturnType<typeof imagePanel>[]>();
 function fields(p: Record<string, number>) {
   const key = JSON.stringify(p);
-  if (cache.has(key)) return cache.get(key)!;
+  if (cache.has(key)) return structuredClone(cache.get(key)!);
   const boundary = circle(p).series!.map((s) => ({
     ...s,
     mx: "a*cos(linspace(0,2*pi,181))",
@@ -60,8 +60,8 @@ function fields(p: Record<string, number>) {
     "圆内平面波精确声场",
     [-1.2, 1.2],
     [-1.2, 1.2],
-    (x, y) => (Math.hypot(x, y) < 0.9 * p.a ? Math.cos(phy.kWave(p.f, p.c) * x) : 0),
-    "cos(k*XX).*(hypot(XX,YY)<.9*a)",
+    (x, y) => (Math.hypot(x, y) < 0.9 * p.a * (1 - 1e-12) ? Math.cos(phy.kWave(p.f, p.c) * x) : 0),
+    "cos(k*XX).*(hypot(XX,YY)<.9*a*(1-1e-12))",
     "",
     boundary,
     [-1, 1],
@@ -72,15 +72,16 @@ function fields(p: Record<string, number>) {
     "圆周边界重建圆内声场（显示半径小于 0.9a）",
     [-1.2, 1.2],
     [-1.2, 1.2],
-    (x, y) => (Math.hypot(x, y) < 0.9 * p.a ? phy.helmholtz(x, y, p.a, p.f, p.c, p.N).re : 0),
-    "real(p4Helm(XX,YY,a,f,c,N,0)).*(hypot(XX,YY)<.9*a)",
+    (x, y) =>
+      Math.hypot(x, y) < 0.9 * p.a * (1 - 1e-12) ? phy.helmholtz(x, y, p.a, p.f, p.c, p.N).re : 0,
+    "real(p4Helm(XX,YY,a,f,c,N,0)).*(hypot(XX,YY)<.9*a*(1-1e-12))",
     "",
     boundary,
     [-1, 1],
   );
   if (cache.size > 8) cache.clear();
   cache.set(key, [exact, numeric]);
-  return [exact, numeric];
+  return structuredClone([exact, numeric]);
 }
 export default makeLecture("4.4.1", {
   defaults: p,
@@ -115,13 +116,13 @@ export default makeLecture("4.4.1", {
           "固定内场点处的求积误差随边界点数下降",
           "边界离散点数 N",
           "相对误差 (%)",
-          [8, 128],
+          [0, 150],
           [1e-13, 100],
           [
             points(
               "内域重建误差",
               Ns.map((n) => [n, Math.max(1e-13, error(p, n))]),
-              "[8 16 24 32 48 64 96 128]",
+              "[1 8 16 24 32 48 64 96 128 150]",
               "max(1e-13,100*abs(arrayfun(@(nn)p4Helm(xobs,yobs,a,f,c,nn,0),x)-exp(-1i*k*xobs)))",
               { marker: "o" },
             ),
@@ -154,13 +155,13 @@ export default makeLecture("4.4.1", {
         "固定接收点的离散重建精度与采样成本",
         "圆周采样点数 N",
         "重建相对误差 (%)",
-        [8, 128],
+        [0, 150],
         [1e-13, 100],
         [
           points(
             "该测点的重建误差",
             Ns.map((n) => [n, Math.max(1e-13, error(p, n))]),
-            "[8 16 24 32 48 64 96 128]",
+            "[1 8 16 24 32 48 64 96 128 150]",
             "max(1e-13,100*abs(arrayfun(@(nn)p4Helm(xobs,yobs,a,f,c,nn,0),x)-exp(-1i*k*xobs)))",
             { marker: "s" },
           ),

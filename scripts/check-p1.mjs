@@ -3,7 +3,7 @@ import fs from "node:fs";
 import { build } from "esbuild";
 const files = fs
   .readdirSync("src/content/lectures")
-  .filter((f) => !f.startsWith("3.") && !["1.2.4.ts", "1.2.5.ts"].includes(f));
+  .filter((f) => /^[12]\./.test(f) && !["1.2.4.ts", "1.2.5.ts"].includes(f));
 fs.mkdirSync("outputs", { recursive: true });
 await build({
   stdin: {
@@ -279,6 +279,30 @@ for (const l of lectures) {
       near(all.rodFrequency(1, Math.sqrt(e.E / 7850), L, "free-free"), f);
     }
   const e = l.examples[0];
+  if (l.id === "2.2") {
+    const q = e.plot(e.defaults),
+      ans = e.asks.find((a) => a.key === "targetTension");
+    assert.ok(
+      q.title.startsWith(ans.text.replace(/^\(\d+\)\s*/, "")),
+      "target tension title describes marked abscissa",
+    );
+    near(q.series.find((s) => s.marker === "o").points[0][0], ans.calc(e.defaults));
+  }
+  if (l.id === "1.1.5") {
+    const q = e.plot(e.defaults),
+      ans = e.asks.find((a) => a.key === "tau");
+    assert.ok(
+      q.title.startsWith(ans.text.replace(/^\(\d+\)\s*/, "")),
+      "decay title describes marked time constant",
+    );
+    near(q.series.find((s) => s.marker === "o").points[0][0], ans.calc(e.defaults));
+  }
+  if (l.id === "2.1") assert.match(e.plot(e.defaults).annotations[0].label, /当前张力/);
+  if (l.id === "1.2.2")
+    near(
+      e.plot(e.defaults).annotations.find((a) => a.label === "稳态位移幅值").value,
+      e.asks[0].calc(e.defaults),
+    );
   assert.ok(/\d/.test(e.plot(e.defaults).title), l.id + " numeric example title");
   assert.ok(
     !/例题答案|工作点/.test(e.plot(e.defaults).title),

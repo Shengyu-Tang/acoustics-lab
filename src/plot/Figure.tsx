@@ -191,10 +191,7 @@ export function Axes({
   const W = width,
     H = height;
   let L = 62,
-    AW =
-      W -
-      L -
-      (p.kind === "polar" ? 130 : (p.field && !p.field.categories) || p.rightLabel ? 100 : 24);
+    AW = W - L - ((p.field && !p.field.categories) || p.rightLabel ? 100 : 24);
   const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
   const legendSeries = [
     ...(p.series ?? []),
@@ -227,14 +224,15 @@ export function Axes({
     labelTop + (labels.length ? (Math.max(...labels.map((a) => a.lane)) + 1) * 17 + 4 : 0);
   const T =
     p.kind === "polar"
-      ? 52
+      ? legendTop + (p.legend !== false && legendSeries.length ? legendH + 26 : 18)
       : legendTop +
         (p.legend !== false && legendSeries.length ? legendH + 6 : 0) +
         (yt.exponent || (p.rightLabel && rt.exponent) ? 18 : 0);
-  const AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
+  let AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
   if (p.equalAspect) {
     AW = Math.min(AW, (AH * (p.xlim[1] - p.xlim[0])) / (p.ylim[1] - p.ylim[0]));
-    L = (W - AW) / 2;
+    AH = (AW * (p.ylim[1] - p.ylim[0])) / (p.xlim[1] - p.xlim[0]);
+    L = Math.max(62, (W - AW) / 2);
   }
   const layout = { W, H, L, T, AW, AH };
   const id = useId().replaceAll(":", ""),
@@ -302,7 +300,7 @@ export function Axes({
       return canvas.toDataURL();
     }, [field]),
     limits = field ? fieldLimits(field) : ([0, 1] as [number, number]);
-  const legend = p.kind === "polar" ? [L + AW / 2 + AH / 2 + 22, T] : [L + AW - legendW, legendTop];
+  const legend = [L + AW - legendW, legendTop];
   return (
     <g fontFamily="Arial, Helvetica, Microsoft YaHei, sans-serif" fontSize="11" fill="#1a1a1a">
       <defs>
@@ -355,7 +353,7 @@ export function Axes({
             <g key={y}>
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h${AW}`} stroke="#e5e5e5" />
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h5m${AW - 5} 0h-5`} stroke="black" />
-              <text x={L - 8} y={T + (1 - ys(y)) * AH + 4} textAnchor="end">
+              <text data-y-tick={y} x={L - 8} y={T + (1 - ys(y)) * AH + 4} textAnchor="end">
                 <ScriptText
                   text={
                     p.ytickLabels?.find((t) => t.value === y)?.label ??
@@ -574,11 +572,11 @@ export function Axes({
           <text
             key="left-axis-label"
             data-axis-label="left"
-            x={p.equalAspect ? Math.max(15, L - 46) : 15}
+            x={p.equalAspect ? Math.max(15, L - 58) : 15}
             y={T + AH / 2}
             fontSize="12"
             textAnchor="middle"
-            transform={`rotate(-90 ${p.equalAspect ? Math.max(15, L - 46) : 15} ${T + AH / 2})`}
+            transform={`rotate(-90 ${p.equalAspect ? Math.max(15, L - 58) : 15} ${T + AH / 2})`}
           >
             <ScriptText text={p.ylabel} svg />
           </text>
@@ -655,6 +653,7 @@ export function Axes({
       {p.textLabels?.map((s, i) => (
         <text
           key={i}
+          data-free-label="true"
           x={L + xs(s.x) * AW}
           y={T + (1 - ys(s.y)) * AH}
           textAnchor="middle"

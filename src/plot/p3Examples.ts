@@ -374,10 +374,7 @@ export function e3610(p: Values) {
     "[RR,DD,CT]=p3Oblique(Z1,Z2,c,c2,theta);qaAlpha=-2*pi*f/c2*imag(CT);qaDepth=1;if qaAlpha>0,qaDepth=1/qaAlpha;end;",
     {
       answerKey: "depthAnswer",
-      annotations: [
-        xmark(depth, value("y", depth, "m")),
-        ymark(1 / Math.E, "|p(y)|/|p(0)| = 1/e"),
-      ],
+      annotations: [xmark(depth, value("y", depth, "m")), ymark(1 / Math.E, "|p(y)|/|p(0)| = 1/e")],
     },
     { annotations: ["qaDepth", "1/exp(1)"] },
   );
@@ -414,7 +411,7 @@ export function e3611(p: Values) {
     ],
     "qaRays=p3Rays(radius,source,launch);",
     { equalAspect: true, ylim: [-p.radius, p.radius] },
-    { ylim: "[-radius radius]" },
+    { ylim: "[-radius radius]", legendLocation: "northeastoutside" },
   );
 }
 export function e3612(p: Values) {
@@ -442,13 +439,7 @@ export function e3612(p: Values) {
         "--",
       ),
       line("功率守恒", () => 1, range, "ones(size(x))", ":"),
-      dot(
-        value("本题透射功率系数", q.t),
-        p.theta,
-        q.t,
-        "theta",
-        "p3Power(Z1,Z2,c,c2,theta)",
-      ),
+      dot(value("本题透射功率系数", q.t), p.theta, q.t, "theta", "p3Power(Z1,Z2,c,c2,theta)"),
     ],
     "",
     { annotations: [xmark(p.theta, value("本题透射功率", q.t))] },

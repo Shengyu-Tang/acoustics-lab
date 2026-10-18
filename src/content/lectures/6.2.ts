@@ -55,7 +55,7 @@ export default makeLecture("6.2", {
     },
     {
       number: "6.2-2",
-      tex: "G_{AB}=G_{BA},\\quad D_{\\mathrm{接收}}(\\theta)=D_{\\mathrm{发射}}(\\theta)",
+      tex: "G_{AB}=G_{BA},\\quad D_{\\text{接收}}(\\theta)=D_{\\text{发射}}(\\theta)",
       meaning: "方向函数相等采用相同的角度与归一化参考；它不要求接收、发射的有量纲灵敏度数值相同。",
     },
   ],
@@ -192,7 +192,7 @@ export default makeLecture("6.2", {
   ],
   exampleTitle: "例题　水池中交换收发位置的互易校验",
   background:
-    "两个换能器位置为 A=(0,0) m、B=(3,2) m，在水中使用相同的 1 kHz、10⁻⁵ m³/s 体积速度源。求两点间距与两次接收声压峰值，作为互易校准的理想基准。",
+    "两个换能器位置为 A=(0,0) m、B=(3,2) m，在水中使用相同的 1 kHz、$10^{-5}\\ \\mathrm{m^3/s}$ 体积速度源。求两点间距与两次接收声压峰值，作为互易校准的理想基准。",
   exampleDefaults: p,
   given: [xB, yB, f, Q],
   asks,

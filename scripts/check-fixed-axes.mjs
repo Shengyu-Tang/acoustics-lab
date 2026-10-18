@@ -6,6 +6,7 @@ const { axisTicks } = await import("../outputs/sensitivity-bundle.mjs");
 const failures = [],
   measurements = [];
 const geometryY = (p) =>
+  p.coordinateY ||
   /截面坐标|Cross-section|投影|projection|示意坐标/.test(p.ylabel) ||
   p.series?.some((s) => s.geometry?.axis === "y");
 for (const l of lectures) {

@@ -19,7 +19,15 @@ const f = parameter("f", "频率", "f", "Hz", 1000, 10000, 100),
   Q = parameter("Q", "单元体积速度", "Q", "m³/s", 1e-6, 3e-5, 1e-6);
 const p = { ...water, f: 5000, N: 4, d: 0.15, Q: 1e-5, r: 5 };
 const asks = [
-  ask("strength", "(1) 阵元体积速度幅值", "m³/s", "Q=4\\pi a^2v_0", "Q", (p) => p.Q, substitution),
+  ask(
+    "singlePressure",
+    "(1) 单源正前方声压峰值",
+    "Pa",
+    "|P_1|=\\rho_0fQ/(2r)",
+    "rho*f*Q/(2*r)",
+    (p) => (p.rho * p.f * p.Q) / (2 * p.r),
+    substitution,
+  ),
   ask(
     "pressure",
     "(2) 正前方测点声压峰值",
@@ -46,7 +54,7 @@ export default makeLecture("4.2.3", {
     },
     {
       number: "4.2.3-2",
-      tex: "\\Phi=-\\frac{Q}{4\\pi r}e^{-jkr},\\quad P=-j\\omega\\rho_0\\Phi,\\quad P_{\\mathrm{阵}}=\\sum_n P_n",
+      tex: "\\Phi=-\\frac{Q}{4\\pi r}e^{-jkr},\\quad P=-j\\omega\\rho_0\\Phi,\\quad P_{\\text{阵}}=\\sum_n P_n",
       meaning: "采用 $\\mathbf u=\\nabla\\Phi$ 与 $e^{j\\omega t}$，叠加时须保留相位。",
     },
   ],
@@ -71,6 +79,8 @@ export default makeLecture("4.2.3", {
           ),
         ],
         [-p.rho * p.f * p.Q * 2, p.rho * p.f * p.Q * 2],
+        "声压 (Pa)",
+        "[-2 2]*rho*f*Q",
       ),
     ]),
   ],
@@ -82,7 +92,7 @@ export default makeLecture("4.2.3", {
   ],
   exampleTitle: "例题　四阵元水声线阵的正前方声压",
   background:
-    "四只小型体积速度源同相工作，频率 5 kHz、单元体积速度峰值 10⁻⁵ m³/s、间距 0.15 m。接收点在阵列中心正前方 5 m。求阵元强度与接收声压，并观察横向干涉起伏。",
+    "四只小型体积速度源同相工作，频率 5 kHz、单元体积速度峰值 $10^{-5}\\ \\mathrm{m^3/s}$、间距 0.15 m。接收点在阵列中心正前方 5 m。求阵元强度与接收声压，并观察横向干涉起伏。",
   exampleDefaults: p,
   given: [N, d, f, Q],
   asks,

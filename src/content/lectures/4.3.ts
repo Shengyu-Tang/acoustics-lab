@@ -68,11 +68,11 @@ export default makeLecture("4.3", {
       imagePanel(
         p,
         0,
-        "偶极轴沿水平方向，赤道方向相消",
+        "四分之一周期的偶极声场（近源颜色饱和）",
         [-0.5, 0.5],
         [-0.5, 0.5],
-        (x, y) => phy.dipolePressure(x, y, p.d, p.Q, p.f, p.rho, p.c).re,
-        "real(p4Dipole(XX,YY,d,Q,f,rho,c))",
+        (x, y) => -phy.dipolePressure(x, y, p.d, p.Q, p.f, p.rho, p.c).im,
+        "-imag(p4Dipole(XX,YY,d,Q,f,rho,c))",
         "",
         [
           points(
@@ -86,7 +86,12 @@ export default makeLecture("4.3", {
             { marker: "o", style: "none", geometry: { key: "d", axis: "x" } },
           ),
         ],
-        [-p.rho * p.f * p.Q, p.rho * p.f * p.Q],
+        [
+          -p.rho * p.f * p.Q * phy.kWave(p.f, p.c) * p.d,
+          p.rho * p.f * p.Q * phy.kWave(p.f, p.c) * p.d,
+        ],
+        "声压 (Pa)",
+        "[-1 1]*rho*f*Q*k*d",
       ),
     ]),
     comparison(
@@ -184,7 +189,7 @@ export default makeLecture("4.3", {
   ],
   exampleTitle: "例题　反相水声源对的低频辐射",
   background:
-    "两只间距 20 mm 的点源在水中以 1 kHz 等强反相工作，单源体积速度峰值为 10⁻⁵ m³/s。求相对于一个单极子的总功率比，并求 10 m 处与偶极轴成 30° 方向的声压峰值。",
+    "两只间距 20 mm 的点源在水中以 1 kHz 等强反相工作，单源体积速度峰值为 $10^{-5}\\ \\mathrm{m^3/s}$。求相对于一个单极子的总功率比，并求 10 m 处与偶极轴成 30° 方向的声压峰值。",
   exampleDefaults: p,
   given: [d, f, Q],
   asks,

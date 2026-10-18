@@ -4,7 +4,9 @@ import { axisTicks } from "./ticks";
 import axes from "./fixedAxes.json";
 type Limits = { xlim: [number, number]; ylim: [number, number]; rightLim?: [number, number] };
 export const geometryY = (p: Panel) =>
-  /截面坐标|投影|示意坐标/.test(p.ylabel) || p.series?.some((s) => s.geometry?.axis === "y");
+  p.coordinateY ||
+  /截面坐标|投影|示意坐标/.test(p.ylabel) ||
+  p.series?.some((s) => s.geometry?.axis === "y");
 export function amplitudeLimits(values: number[], bars = false, log = false): [number, number] {
   const ys = values.filter((v) => Number.isFinite(v) && (!log || v > 0));
   if (!ys.length) return log ? [1e-6, 1] : [0, 1];
@@ -132,17 +134,19 @@ export function withFigureAxes<P extends Record<string, number>>(
       cache.set(next, envelope);
     }
     const lectureId = id.slice(0, id.lastIndexOf("-"));
-    const expression = lectureId.startsWith("3.")
-      ? ["3.1.4", "3.3.2"].includes(lectureId)
-        ? "1"
-        : "1/f"
-      : lectureId.startsWith("1.")
-        ? "2*pi/sqrt(D/M)"
-        : ["2.3", "2.4"].includes(lectureId)
-          ? "2*L/sqrt(E*1e9/rho)"
-          : lectureId === "2.1"
-            ? "(2+4*(boundary~=0))*L/sqrt(T/mu)"
-            : "2*L/sqrt(T/mu)";
+    const expression = /^[4-7]\./.test(lectureId)
+      ? "1/f"
+      : lectureId.startsWith("3.")
+        ? ["3.1.4", "3.3.2"].includes(lectureId)
+          ? "1"
+          : "1/f"
+        : lectureId.startsWith("1.")
+          ? "2*pi/sqrt(D/M)"
+          : ["2.3", "2.4"].includes(lectureId)
+            ? "2*L/sqrt(E*1e9/rho)"
+            : lectureId === "2.1"
+              ? "(2+4*(boundary~=0))*L/sqrt(T/mu)"
+              : "2*L/sqrt(T/mu)";
     const envelope = cache.get(next);
     return fixedFigureAxes(
       id,

@@ -59,16 +59,17 @@ function field(p: Record<string, number>, t: number) {
       my: "a*sin(linspace(0,2*pi,181))",
     })),
     setup +
-      "[XX,YY]=meshgrid(linspace(-.5,.5,161),linspace(-.5,.5,81));RR=hypot(XX,YY);ZZ=real(p4SphereP(max(a,RR),a,f,rho,c,v)*exp(1i*w*tView));ZZ(RR<a)=0;",
+      "[XX,YY]=meshgrid(linspace(-.5,.5,161),linspace(-.5,.5,81));RR=hypot(XX,YY);ZZ=real(p4SphereP(max(a,RR),a,f,rho,c,v)*exp(1i*w*tView));ZZ(RR<a*(1+1e-12))=0;",
     {
       equalAspect: true,
+      legend: false,
       field: {
         x: xs,
         y: ys,
         z: ys.map((y) =>
           xs.map((x) => {
             const r = Math.hypot(x, y);
-            if (r < p.a) return 0;
+            if (r < p.a * (1 + 1e-12)) return 0;
             const z = phy.sphere(p.a, p.f, p.rho, p.c, p.v, r).pressure;
             return z.re * Math.cos(2 * Math.PI * p.f * t) - z.im * Math.sin(2 * Math.PI * p.f * t);
           }),
@@ -78,7 +79,10 @@ function field(p: Record<string, number>, t: number) {
         map: "RdBu",
       },
     },
-    { field: { x: "linspace(-.5,.5,161)", y: "linspace(-.5,.5,81)", z: "ZZ" } },
+    {
+      field: { x: "linspace(-.5,.5,161)", y: "linspace(-.5,.5,81)", z: "ZZ" },
+      fieldLimits: "[-1 1]*abs(p4SphereP(a,a,f,rho,c,v))",
+    },
   );
 }
 export default makeLecture("4.2.1", {

@@ -40,6 +40,16 @@ export function axisTicks(input: [number, number], log = false): AxisTicks {
       exponent: 0,
       step: 10,
     };
+  if ((lo === 0 && (hi === 180 || hi === 360)) || (lo === -90 && hi === 90)) {
+    const step = hi === 360 ? 60 : 30;
+    return {
+      limits: [lo, hi],
+      values: Array.from({ length: Math.round((hi - lo) / step) + 1 }, (_, i) => lo + i * step),
+      minor: [],
+      exponent: 0,
+      step,
+    };
+  }
   const raw = (hi - lo) / 5,
     decade = 10 ** Math.floor(Math.log10(raw));
   const candidates = [1, 2, 2.5, 5, 10].map((m) => m * decade);
