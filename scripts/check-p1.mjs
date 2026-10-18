@@ -59,9 +59,30 @@ for (const Rm of [0, 4, 80, 120]) {
   const max = Math.max(...numeric.map(([t, x]) => Math.abs(x - all.freeMotion(u, t))));
   assert.ok(max < 1e-8, `RK4/free solution ${Rm}: ${max}`);
 }
+for (const zeta of [1.01, 1.5, 2, 5]) {
+  const u = { ...p, Rm: 2 * zeta * Math.sqrt(p.M * p.D) },
+    w = Math.sqrt(u.D / u.M),
+    d = zeta * w;
+  const roots = [-d + Math.sqrt(d * d - w * w), -d - Math.sqrt(d * d - w * w)];
+  assert.ok(roots.every((s) => s < 0));
+  for (const [x0, v0] of [
+    [0.005, 0],
+    [0, 0.2],
+    [0.005, -0.2],
+  ]) {
+    const xs = Array.from({ length: 5001 }, (_, i) =>
+      all.freeMotion({ ...u, x0, v0 }, i * 0.001),
+    ).filter((x) => Math.abs(x) > 1e-12);
+    assert.ok(
+      xs.slice(1).filter((x, i) => x * xs[i] < 0).length <= 1,
+      "Overdamped response may cross zero at most once",
+    );
+  }
+}
 const references = {
   "1.1.1": [3.183098861837907, 0.006403124237432849],
   "1.1.2": [0.12, 3.6, 0.0108],
+  "1.1.3": [300, 7.639320225002102],
 };
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);
