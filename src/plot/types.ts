@@ -40,6 +40,7 @@ export type Field = {
   limits?: [number, number];
 };
 export type Panel = {
+  answerKey?: string;
   equalAspect?: boolean;
   // Analytic poles have no finite envelope. The explicitly labelled display
   // window follows a current physical scale; finite curves are clipped by SVG.

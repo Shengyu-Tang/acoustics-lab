@@ -36,7 +36,7 @@ xlim([0 0.8]); ylim([-1.5 1.5]);
 xticks([0 0.2 0.4 0.6 0.8]); yticks([-1.5 -1 -0.5 0 0.5 1 1.5]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('空间位置 x (m)','Interpreter','tex'); ylabel('声压 (Pa)','Interpreter','tex');
-xline(0,'--',sprintf('T  = %.4g',0),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
+xline(0,'--',sprintf('起始波峰 x  = %.4g',0),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
 xline(c/f,'--',sprintf('λ  = %.4g',c/f),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
 title({sprintf('周期 = %s ms',answerNumber(period)),'经过四分之一周期，波形平移四分之一波长'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');

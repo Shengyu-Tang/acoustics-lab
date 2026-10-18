@@ -22,7 +22,7 @@ export function e311(p: Values) {
     {
       annotations: [
         xmark(arrival, value("首达 t", arrival, "ms")),
-        ymark(p.L, value("λ", p.c / p.f, "m")),
+        ymark(p.L, value("接收距离 L", p.L, "m")),
       ],
     },
     { annotations: ["1000*L/c", "L"] },
@@ -429,7 +429,7 @@ export function e333(p: Values) {
       ),
     ],
     "",
-    { annotations: [ymark(mean, value("声强级", 10 * Math.log10(mean / 1e-12), "dB"))] },
+    { annotations: [ymark(mean, value("平均声强", mean, "W/m²"))] },
     { annotations: ["pa*ua*cosd(phase)/2"] },
   );
 }
@@ -491,7 +491,7 @@ export function e342(p: Values) {
     "",
     {
       annotations: [
-        xmark(0, value("T", 1000 / p.f, "ms")),
+        xmark(0, "起始波峰 x = 0 m"),
         xmark(p.c / p.f, value("λ", p.c / p.f, "m")),
       ],
     },
@@ -513,7 +513,7 @@ export function e343(p: Values) {
       dot(value("振速峰值", u, "m/s"), p.pa, u, "pa", "pa/Z"),
     ],
     "",
-    { annotations: [ymark(0, value("一周期波前距离", p.c / p.f, "m"))] },
+    { annotations: [ymark(0, "振速为零")] },
     { annotations: ["0"] },
   );
 }

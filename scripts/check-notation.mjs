@@ -97,6 +97,13 @@ for (const l of lectures) {
   for (const e of examples) {
     checkText(e.background, `${l.id} background`);
     e.hints.forEach((text) => checkText(text, `${l.id} hint`));
+    if (l.defaults) {
+      const q = e.plot(e.defaults);
+      const answer = e.asks.find(a => q.title.startsWith(a.text.replace(/^\(\d+\)\s*/, "") + " = "));
+      assert.ok(answer, l.id + " example title names a requested answer");
+      const labels = (q.annotations ?? []).map(a => a.label);
+      assert.equal(new Set(labels).size, labels.length, l.id + " distinct annotation labels");
+    }
   }
 }
 // All assigned characters in U+2080–U+209C, grouped scripts, and Unicode superscripts.

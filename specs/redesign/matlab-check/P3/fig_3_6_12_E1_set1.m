@@ -36,7 +36,7 @@ plot(x,y,'LineStyle',':','Marker','none','Color',[0.9294117647058824 0.694117647
 x=theta;
 y=p3Power(Z1,Z2,c,c2,theta);
 model_x{1,4}=x; model_y{1,4}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.49411764705882355 0.1843137254901961 0.5568627450980392],'LineWidth',1.5,'DisplayName','本题 |r_{p}| = 0.245');
+plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.49411764705882355 0.1843137254901961 0.5568627450980392],'LineWidth',1.5,'DisplayName','本题透射功率系数 = 0.94');
 set(gca,'XScale','linear','YScale','linear');
 xlim([0 90]); ylim([-0.25 1.25]);
 xticks([0 10 20 30 40 50 60 70 80 90]); yticks([-0.25 0 0.25 0.5 0.75 1 1.25]);

@@ -23,7 +23,7 @@ export function scriptParts(text: string) {
 export default function ScriptText({ text, svg = false }: { text: string; svg?: boolean }) {
   return scriptParts(text).map(({ value, shift }, i) =>
     !shift ? (
-      value
+      svg ? <tspan key={i}>{value}</tspan> : value
     ) : svg ? (
       <tspan key={i} baselineShift={shift} fontSize="75%">
         {value}

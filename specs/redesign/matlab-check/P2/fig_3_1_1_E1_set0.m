@@ -34,7 +34,7 @@ xticks([0 2 4 6 8 10]); yticks([0 5 10 15 20]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('发射后时间 t (ms)','Interpreter','tex'); ylabel('波前距发射器的距离 (m)','Interpreter','tex');
 xline(1000*L/c,'--',sprintf('首达 t  = %.4g',1000*L/c),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
-yline(L,'--',sprintf('λ  = %.4g',L),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
+yline(L,'--',sprintf('接收距离 L  = %.4g',L),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
 title({sprintf('传播时延 = %s ms',answerNumber(delay)),'两只水下传感器与传播声程'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');

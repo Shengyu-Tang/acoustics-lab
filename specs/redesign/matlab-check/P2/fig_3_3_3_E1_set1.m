@@ -32,7 +32,7 @@ xlim([0 2]); ylim([-0.0005 0.0025]);
 xticks([0 0.5 1 1.5 2]); yticks([-0.0005 0 0.0005 0.001 0.0015 0.002 0.0025]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('时间 t (ms)','Interpreter','tex'); ylabel('声强 (W/m^{2})','Interpreter','tex');
-yline(pa*ua*cosd(phase)/2,'--',sprintf('声强级  = %.4g',pa*ua*cosd(phase)/2),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
+yline(pa*ua*cosd(phase)/2,'--',sprintf('平均声强  = %.4g',pa*ua*cosd(phase)/2),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
 title({sprintf('平均声强 = %s W/m²',answerNumber(intensity)),'压力和振速有相位差时的瞬时能流'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');

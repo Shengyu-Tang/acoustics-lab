@@ -36,7 +36,7 @@ xlim([-1.5 1.5]); ylim([-0.006 0.006]);
 xticks([-1.5 -1 -0.5 0 0.5 1 1.5]); yticks([-0.006 -0.004 -0.002 0 0.002 0.004 0.006]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('表面声压 p (Pa)','Interpreter','tex'); ylabel('表面法向振速 u (m/s)','Interpreter','tex');
-yline(0,'--',sprintf('驻波比  = %.4g',0),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
+yline(0,'--',sprintf('法向振速为零 = %.4g',0),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
 title({sprintf('反射系数模值 = %s',answerNumber(reflect)),'复阻抗表面处压力—振速的椭圆轨迹'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');

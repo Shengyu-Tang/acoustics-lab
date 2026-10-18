@@ -119,5 +119,22 @@ check("B3 Lloyd mirror displays finite levels without artificial zero-depth floo
   assert.ok(q.ylim[1] - q.ylim[0] < 100, "destructive boundary sentinel stretches y axis");
   assert.ok(ys.length > 700, "finite interior interference retained");
 });
+check("P3-2 titles identify a plotted answer and distinct lines have distinct labels", () => {
+  for (const l of lectures) for (const e of l.examples) {
+    const q = e.plot(e.defaults);
+    const a = e.asks.find(a => q.title.startsWith(a.text.replace(/^\(\d+\)\s*/, "") + " = "));
+    assert.ok(a, l.id + " title must identify an actual requested quantity");
+    const answer = a.calc(e.defaults);
+    const evidence = [...(q.annotations ?? []).map(a => a.label), ...(q.series ?? []).map(s => s.name)].join(" ");
+    const coordinates = [...(q.annotations ?? []).map(a => a.value), ...(q.series ?? []).filter(s => s.marker).flatMap(s => s.points.flat())];
+    assert.ok(evidence.includes(fmt(answer)) || coordinates.some(v => Math.abs(v-answer) < 1e-9*Math.max(1,Math.abs(answer))), l.id + " title answer has no plotted evidence");
+    const labels = (q.annotations ?? []).map(a => a.label);
+    assert.equal(new Set(labels).size, labels.length, l.id + " different lines repeat the same label");
+  }
+  const l = lectures.find(l => l.id === "3.6.10"), q = l.examples[0].plot(l.examples[0].defaults);
+  assert.ok(q.title.startsWith("法向穿透深度"));
+  assert.equal(q.annotations[1].label, "|p(y)|/|p(0)| = 1/e");
+  assert.equal(q.series[0].points.at(-1)[0], q.xlim[1]);
+});
 fs.writeFileSync("outputs/P3-1/regressions.json", JSON.stringify({ failures }, null, 2));
 assert.deepEqual(failures, []);

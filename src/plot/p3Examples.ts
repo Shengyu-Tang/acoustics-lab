@@ -353,14 +353,14 @@ export function e3610(p: Values) {
   const q = phy.oblique(p.Z1, p.Z2, p.c, p.c2, p.theta),
     alpha = ((-2 * pi * p.f) / p.c2) * q.ct.im,
     depth = alpha > 0 ? 1 / alpha : 1,
-    range: [number, number] = [0, 5 * depth];
+    range: [number, number] = [0, 0.4];
   return physical(
     p,
     "空气入射水面后的非均匀透射波",
     "离界面法向距离 y (m)",
     "透射声压相对幅值 |p(y)|/|p(0)|",
     range,
-    "[0 5*qaDepth]",
+    "[0 0.4]",
     [
       line("透射侧声压指数包络", (y) => Math.exp(-alpha * y), range, "exp(-qaAlpha*x)"),
       dot(
@@ -373,9 +373,10 @@ export function e3610(p: Values) {
     ],
     "[RR,DD,CT]=p3Oblique(Z1,Z2,c,c2,theta);qaAlpha=-2*pi*f/c2*imag(CT);qaDepth=1;if qaAlpha>0,qaDepth=1/qaAlpha;end;",
     {
+      answerKey: "depthAnswer",
       annotations: [
-        xmark(depth, "幅值降至 1/e"),
-        ymark(1 / Math.E, value("临界角", (Math.asin(Math.min(1, p.c / p.c2)) * 180) / pi, "°")),
+        xmark(depth, value("y", depth, "m")),
+        ymark(1 / Math.E, "|p(y)|/|p(0)| = 1/e"),
       ],
     },
     { annotations: ["qaDepth", "1/exp(1)"] },
@@ -442,7 +443,7 @@ export function e3612(p: Values) {
       ),
       line("功率守恒", () => 1, range, "ones(size(x))", ":"),
       dot(
-        value("本题 |rₚ|", phy.magnitude(q.R)),
+        value("本题透射功率系数", q.t),
         p.theta,
         q.t,
         "theta",
@@ -478,7 +479,7 @@ export function e371(p: Values) {
       line("纯行波参考", (x) => x / (p.rho * p.c), range, "x/Z", "--"),
     ],
     "qaR=(res-1+1i*react)/(res+1+1i*react);",
-    { annotations: [ymark(0, value("驻波比", (1 + mag) / (1 - mag)))] },
+    { annotations: [ymark(0, "法向振速为零")] },
     { annotations: ["0"] },
   );
 }

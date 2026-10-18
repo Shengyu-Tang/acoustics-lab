@@ -30,7 +30,7 @@ xlim([-100 100]); ylim([-0.0001 0.0001]);
 xticks([-100 -50 0 50 100]); yticks([-0.0001 -0.00005 0 0.00005 0.0001]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('一个周期内的声压 p (Pa)','Interpreter','tex'); ylabel('振速 u (m/s)','Interpreter','tex');
-yline(0,'--',sprintf('一周期波前距离  = %.4g',0),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
+yline(0,'--',sprintf('振速为零 = %.4g',0),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
 title({sprintf('振速峰值 = %s m/s',answerNumber(velocity)),'水听器和振速探头的同相校准轨迹'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');

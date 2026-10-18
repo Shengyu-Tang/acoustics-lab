@@ -6,7 +6,7 @@ import { fmt } from "../content/p1";
 export function answerTitle(panel: Panel, asks: Ask[], p: Values): Panel {
   const marker = panel.series?.find((s) => s.marker === "o")?.points[0]?.[1];
   const a =
-    asks.find(
+    asks.find((a) => a.key === panel.answerKey) ?? asks.find(
       (a) =>
         marker !== undefined && Math.abs(a.calc(p) - marker) < 1e-9 * Math.max(1, Math.abs(marker)),
     ) ?? asks[0];

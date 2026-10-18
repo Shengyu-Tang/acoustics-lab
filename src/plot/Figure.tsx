@@ -572,11 +572,11 @@ export function Axes({
           <text
             key="left-axis-label"
             data-axis-label="left"
-            x="15"
+            x={p.equalAspect ? Math.max(15, L - 46) : 15}
             y={T + AH / 2}
             fontSize="12"
             textAnchor="middle"
-            transform={`rotate(-90 15 ${T + AH / 2})`}
+            transform={`rotate(-90 ${p.equalAspect ? Math.max(15, L - 46) : 15} ${T + AH / 2})`}
           >
             <ScriptText text={p.ylabel} svg />
           </text>
@@ -764,6 +764,7 @@ export default function Figure({
         </button>
       </div>
       <svg
+        key={name}
         ref={svg}
         xmlns="http://www.w3.org/2000/svg"
         viewBox={`0 0 ${W * columns} ${H * nrows}`}
