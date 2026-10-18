@@ -1,0 +1,30 @@
+{
+  "branch": "redesign/p5-cases",
+  "lectureExamples": 79,
+  "cases": 9,
+  "gradedCaseQuestions": 52,
+  "caseParameters": 70,
+  "caseFigures": 12,
+  "matlabScripts": 28,
+  "matlabFigurePanels": 34,
+  "matlabParameterSets": 2,
+  "worstCurveError": 4.644637177436375e-15,
+  "browserCaseVisits": 18,
+  "expandedLectureVisits": 158,
+  "checks": {
+    "npmCi": true,
+    "npmTest": true,
+    "animations": true,
+    "build": true,
+    "allRoutesBothViewports": true,
+    "independentPythonReference": true,
+    "sensitivity": true,
+    "notation": true,
+    "matlabRuntime": true,
+    "visualInspection": true
+  },
+  "unresolved": [
+    "npm ci reports two inherited high-severity dependency audit notices; dependencies and lockfile unchanged",
+    "Remote CI not triggered because no push was requested"
+  ]
+}

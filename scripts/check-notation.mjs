@@ -13,7 +13,7 @@ await build({
       "export {default as Home} from './src/Home';" +
       "export {default as P1Lecture} from './src/P1Lecture';export {default as SampleLecture} from './src/SampleLecture';" +
       "export {example as instrument} from './src/content/examples/instrument';export {bandwidthExample as bandwidth} from './src/content/examples/bandwidth';" +
-      "export {Axes} from './src/plot/Figure';export {matlab} from './src/plot/export';",
+      "export {Axes} from './src/plot/Figure';export {matlab} from './src/plot/export';export {engineeringCases} from './src/content/cases';",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -106,6 +106,24 @@ for (const l of lectures) {
       const labels = (q.annotations ?? []).map((a) => a.label);
       assert.equal(new Set(labels).size, labels.length, l.id + " distinct annotation labels");
     }
+  }
+}
+for (const e of all.engineeringCases) {
+  for (const q of [e.plot(e.defaults), ...(e.additionalPlots?.(e.defaults) ?? [])]) {
+    [
+      q.title,
+      q.xlabel,
+      q.ylabel,
+      q.rightLabel,
+      q.responseNote,
+      ...q.series.map((s) => s.name),
+      ...(q.annotations ?? []).map((a) => a.label),
+    ]
+      .filter(Boolean)
+      .forEach((t) => checkFigureText(t, e.id));
+    const svg = render(h("svg", null, h(all.Axes, { panel: q })));
+    assert.ok(!/(?:NaN|Infinity)/.test(svg), e.id + " finite case SVG");
+    assert.ok(!/[\u2080-\u209c⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ]/.test(svg), e.id + " case SVG scripts");
   }
 }
 // All assigned characters in U+2080–U+209C, grouped scripts, and Unicode superscripts.

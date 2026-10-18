@@ -1,0 +1,370 @@
+{
+  "method": "Direct visual inspection of original figures and contact boards, including complete page top/middle/end, desktop/mobile and both MATLAB parameter sets",
+  "matlabImages": [
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_1_2_5_E1_set0.png",
+      "sha256": "18ec07cea1bd2a914d6a5e9c58578db277a7caee01f36dbe962df11dd2c685bf",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_1_2_5_E1_set1.png",
+      "sha256": "545fe7a116833ac758cff4a06b79bf1fd4cd7cdfd6356dd8bb641edc250239a1",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_ocean_set0.png",
+      "sha256": "489ddfd110b8371de56457cfb36546dbf51c9598ae5bc2a265929ff9921d70a2",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_ocean_set1.png",
+      "sha256": "7d7b4b3bc1d57c0194e539a7b20624b50f8a6c5f95d2600c503184950d979567",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_building_set0.png",
+      "sha256": "e958d17176e1ce2ffa3289616dbec721756f6ccfd5ea96df149bd28cea4bdb02",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_building_set1.png",
+      "sha256": "f568a22accff0536097011aea6994fcfd0f86501b69c0eb66d4222bca025c7de",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_industry_set0.png",
+      "sha256": "e922e6dc6387d32709db6136884b0928df07b4ad16f9ec3778e68ab33b327b22",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_industry_set1.png",
+      "sha256": "162883a6e96939c5c2afca5d247cb614b723771b9c6db1bf173594d8b9bd5ba9",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_ultrasound_set0.png",
+      "sha256": "d86f6a9ae395657afb21380b87206b83d51869ea593ddb2756316054dde04fcb",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_ultrasound_set1.png",
+      "sha256": "ffe8fedfdfa43d0604deb22ea2a4f357caa7d20899316b288ca96a6a4e13f645",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_music_set0.png",
+      "sha256": "eff71d4e0e38ad2cf75d7221d6218963721b0836231e4aa67b01940e29c78f89",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_music_set1.png",
+      "sha256": "cb90661041e6428e90380b36c962ce88baf44e6b798ce66da3fbca41deee1c7f",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_measurement_set0.png",
+      "sha256": "e0d17b341d795ce5e033c0239bacf9e5363d16334dae7631f845d377fc3b6748",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_measurement_set1.png",
+      "sha256": "be05ef6a6d2b3625ba8a287aff0fe49b2435a6c2bef84dd2f35287cced97646e",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_transport_set0.png",
+      "sha256": "d7705030327b2a394e61d7ca73bb072af380f82039cb4167fc1dfd6cfcda5ff3",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_transport_set1.png",
+      "sha256": "3aeb5e07a350a0f615dc05175e41e3b8e9f7d43c1c25a3ae6079952982e6f34b",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_duct_set0.png",
+      "sha256": "b6117a51d0f5724a2a3b1d5de5529a154a12d2764aeb4425f8ce098d0adad651",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_duct_set1.png",
+      "sha256": "50f393b17225cc8ab1c8595def97b71ef55c1ff0a1ae8de8435d6769e9f1956f",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_grin_lens_set0.png",
+      "sha256": "0e346d41ed9559e8e6e6622530fcf99713389b2968ecf015babfbd10c59f1c02",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_grin_lens_set1.png",
+      "sha256": "dc82d9ecd3b6ab14265024c38cca0a4efe05ea8fe7d0a25ae86c4273d932b3aa",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_1_3_E1_set0.png",
+      "sha256": "3f89d7b090befaa67a1922ce02d70bb407393d629f89c55f7f43b0224da91f2b",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_1_3_E1_set1.png",
+      "sha256": "8f391b18429e1e5a89ec56ee5cba865fab1ca715cb40f6ec524dfe76788c1851",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_1_5_E1_set0.png",
+      "sha256": "06be73243ce3ae9777815734ef89eda6b81c75f7551a713006fe4a730ea44c7c",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_1_5_E1_set1.png",
+      "sha256": "bf5f023b984e868574c51b7fb0adb603256a4f997e5bb3509df234da0a8bb2bc",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_1_8_E1_set0.png",
+      "sha256": "13f6baf64b88cb79173122ee6fe41fc37c1793d10683bed1a778f460eebf0bca",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_1_8_E1_set1.png",
+      "sha256": "c743b0c0e222cd87df84e0dc6e717d5abc6b552366f62bc47e80236a96d8c02b",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_6_8_E1_set0.png",
+      "sha256": "5a2a4733cee30e16634621c4bd09d6b3aa159bf5a252716fbb7c668fa604f0ec",
+      "viewed": true
+    },
+    {
+      "file": "specs/redesign/matlab-check/P5/fig_3_6_8_E1_set1.png",
+      "sha256": "9df4f683bbc019aa9bd0a5ec721ebcbba503c1d06b1c1942227c73e91577513d",
+      "viewed": true
+    }
+  ],
+  "pages": [
+    {
+      "case": "ocean",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 5,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/ocean-desktop.png",
+      "sha256": "4e61719157102cff6008797d0958ae8f103436b16039f14cc2a4158860c53ede",
+      "viewed": true
+    },
+    {
+      "case": "building",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 4,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/building-desktop.png",
+      "sha256": "e78725afae96766e6358a718975df4cae7cba1546184878229e0aab0a71ee597",
+      "viewed": true
+    },
+    {
+      "case": "industry",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 7,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/industry-desktop.png",
+      "sha256": "857eebe3920e6d878d4506f2b0bceaa9a540822832d27ad63bfa42053dff7af2",
+      "viewed": true
+    },
+    {
+      "case": "ultrasound",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/ultrasound-desktop.png",
+      "sha256": "01576778f8ff64a025320d18d3e1913cfd8fcfa6badd387d9afda54d07cc4448",
+      "viewed": true
+    },
+    {
+      "case": "music",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 2,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/music-desktop.png",
+      "sha256": "f8964df52a63b2c40112eac43b6b798af59fd177f355b946d1203f0d95b52316",
+      "viewed": true
+    },
+    {
+      "case": "measurement",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/measurement-desktop.png",
+      "sha256": "4e91af5aee83360c23c8b3bc38b00b10d5667d3c540342a6720b9405c5fbdeb9",
+      "viewed": true
+    },
+    {
+      "case": "transport",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/transport-desktop.png",
+      "sha256": "8558b4d068a071e18c6281846a847e20572a0ff7bc892c82237600aab3192721",
+      "viewed": true
+    },
+    {
+      "case": "grin-lens",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 2,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/grin-lens-desktop.png",
+      "sha256": "3e44ff3ca89c2a98de3db7c2eab1474206a54afbc83d8b7f7f284518f8fd4f1d",
+      "viewed": true
+    },
+    {
+      "case": "ocean",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 5,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/ocean-mobile.png",
+      "sha256": "00eb4ba59a71f5dae7e73713e1fb42fffb17ca5db18481f417a28762e8a6a182",
+      "viewed": true
+    },
+    {
+      "case": "building",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 4,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/building-mobile.png",
+      "sha256": "d8cb2571aedd8a0b26e30e1465d62d55af9aed8b0a645eab01a99901d52ed19b",
+      "viewed": true
+    },
+    {
+      "case": "industry",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 7,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/industry-mobile.png",
+      "sha256": "59fb19a498cd98cc7249db953ca47cd82649cc9c159c14125cd9a9586d193375",
+      "viewed": true
+    },
+    {
+      "case": "ultrasound",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/ultrasound-mobile.png",
+      "sha256": "53906c2209a153080ad4563d7af9ecd43173464130afb94caaeca9c9b9589b41",
+      "viewed": true
+    },
+    {
+      "case": "music",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 2,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/music-mobile.png",
+      "sha256": "c690123b799b328f3e17afd12121274b6d84150bb93061cc513b06fb56bf391b",
+      "viewed": true
+    },
+    {
+      "case": "measurement",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/measurement-mobile.png",
+      "sha256": "d6140d44f163404d0dc2a65de6cd98cec2089e14d5c88c22a328bb6fe77c3fb9",
+      "viewed": true
+    },
+    {
+      "case": "transport",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 1,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/transport-mobile.png",
+      "sha256": "1780441aefa80b33b0e88933232bdd36061ff9444a30b5e02eda195bc406c21d",
+      "viewed": true
+    },
+    {
+      "case": "grin-lens",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 2,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/grin-lens-mobile.png",
+      "sha256": "cebcd483dc6db60b4684016920b9c5f02f911f8ae8ff89553940614e5c57a59a",
+      "viewed": true
+    },
+    {
+      "case": "duct",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 2,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/duct-desktop.png",
+      "sha256": "caddd953671187cc8ad95c22a479c32d3d60a09c90fe6e53e3fe1a7421ca642b",
+      "viewed": true
+    },
+    {
+      "case": "duct",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 2,
+      "passed": true,
+      "file": "specs/redesign/screenshots/P5/duct-mobile.png",
+      "sha256": "819f424e53fa3be74a40dc9afd7c6dc3570c8f51fb709faadbbfec8daf0be2e5",
+      "viewed": true
+    }
+  ],
+  "observations": [
+    "Chinese labels, quantity-and-answer titles, marked answers and dimensionless units checked",
+    "No geometry-only test fillers or near-constant default case response",
+    "Fixed physical geometric domains; amplitude limits follow current data",
+    "Staggered xline labels remain inside axes; MATLAB label alignment and spacing reviewed",
+    "Desktop/mobile givens, student feedback, reference steps, figures, links and print/export controls inspected"
+  ]
+}

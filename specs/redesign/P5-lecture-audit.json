@@ -1,0 +1,1765 @@
+[
+  {
+    "lecture": "1.1.1",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　仪器支架释放后的振动",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "f0": 3.183098861837907,
+          "amplitude": 0.006403124237432849
+        },
+        "substitutions": [
+          "代入：$\\frac{1}{2\\pi}\\sqrt{\\left(800\\,\\mathrm{N/m}\\right)/\\left(2\\,\\mathrm{kg}\\right)}$。√(800/2)/(2π) Hz",
+          "代入：$\\sqrt{\\left(0.005\\,\\mathrm{m}\\right)^2+Mv_0^2/\\left(800\\,\\mathrm{N/m}\\right)}$。√[(0.005 m)² + (0.08 m/s)² × 2 kg / (800 N/m)]"
+        ],
+        "figure": "固有频率 = 3.183 Hz",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.1.2",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　振动传感器的量程选择",
+        "editableGivens": 3,
+        "gradedQuestions": 3,
+        "hints": 2,
+        "answers": {
+          "vmax": 0.12,
+          "amax": 3.6,
+          "energy": 0.010799999999999999
+        },
+        "substitutions": [
+          "代入：$\\left(0.004\\,\\mathrm{m}\\right)\\sqrt{\\left(1350\\,\\mathrm{N/m}\\right)/\\left(1.5\\,\\mathrm{kg}\\right)}$。0.004 m × √[1350 N/m / (1.5 kg)]",
+          "代入：$\\left(0.004\\,\\mathrm{m}\\right)D/\\left(1.5\\,\\mathrm{kg}\\right)$。0.004 m × 1350 N/m / (1.5 kg)",
+          "代入：$\\left(1350\\,\\mathrm{N/m}\\right)\\left(0.004\\,\\mathrm{m}\\right)^2/2$。1350 N/m × (0.004 m)² / 2"
+        ],
+        "figure": "最大振速 = 0.12 m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.1.3",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　缓冲机构的大阻尼校核",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "resistance": 300,
+          "slowRate": 7.639320225002103
+        },
+        "substitutions": [
+          "代入：$2\\zeta\\sqrt{\\left(5\\,\\mathrm{kg}\\right)\\left(2000\\,\\mathrm{N/m}\\right)}$。2 × 1.5 × √[5 kg × 2000 N/m]",
+          "代入：$\\omega_0(\\zeta-\\sqrt{\\zeta^2-1})$。√(2000/5) / [1.5 + √(1.5² − 1)] s⁻¹"
+        ],
+        "figure": "所需力阻 = 300 kg/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.1.4",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　振动余振的衰减测量",
+        "editableGivens": 3,
+        "gradedQuestions": 3,
+        "hints": 2,
+        "answers": {
+          "fd": 6.353751577414242,
+          "tau": 0.4,
+          "decrement": 0.39346832647451635
+        },
+        "substitutions": [
+          "代入：$\\frac{\\sqrt{\\left(3200\\,\\mathrm{N/m}\\right)/\\left(2\\,\\mathrm{kg}\\right)}}{2\\pi}\\sqrt{1-\\frac{1}{4\\left(8\\right)^2}}$。√(3200/2) × √[1−1/(4×8²)] / (2π) Hz",
+          "代入：$1/\\delta=2\\left(8\\right)/\\omega_0$。2 × 8 / √(3200/2) s",
+          "代入：$\\ln(A_n/A_{n+1})=2\\pi\\delta/\\omega_0'$。π / [8 × √(1−1/(4×8²))]"
+        ],
+        "figure": "阻尼振动频率 = 6.354 Hz",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.1.5",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　由衰减记录确定支架阻尼",
+        "editableGivens": 3,
+        "gradedQuestions": 3,
+        "hints": 2,
+        "answers": {
+          "resistance": 397.4921382870358,
+          "delta": 19.87460691435179,
+          "tau": 0.05031546054266276
+        },
+        "substitutions": [
+          "代入：$\\sqrt{\\left(10\\,\\mathrm{kg}\\right)\\left(395000\\,\\mathrm{N/m}\\right)}/\\left(5\\right)$。√[10 kg × 395000 N/m] / 5",
+          "代入：$\\frac{\\sqrt{\\left(395000\\,\\mathrm{N/m}\\right)/\\left(10\\,\\mathrm{kg}\\right)}}{2\\left(5\\right)}$。√(395000/10) / (2×5) s⁻¹",
+          "代入：$2\\left(5\\right)/\\omega_0$。2 × 5 / √(395000/10) s"
+        ],
+        "figure": "振幅时间常数 = 0.05032 s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.2.1",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　相近转频引起的拍与共振行程",
+        "editableGivens": 5,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "beatPeriod": 3.926990816987243,
+          "resonantEnvelope": 0.01
+        },
+        "substitutions": [
+          "代入：$\\frac{2\\pi}{|1-r|\\sqrt{\\left(2000\\,\\mathrm{N/m}\\right)/\\left(5\\,\\mathrm{kg}\\right)}}$。2π / [|1−0.92| × √(2000/5)] s",
+          "代入：$F_0\\left(1\\,\\mathrm{s}\\right)/(2\\sqrt{\\left(5\\,\\mathrm{kg}\\right)\\left(2000\\,\\mathrm{N/m}\\right)})$。2 N × 1 s / [2√(5×2000)]"
+        ],
+        "figure": "共振位移包络 = 0.01 m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.2.2",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　振动台的稳定测量幅值",
+        "editableGivens": 5,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "amplitude": 0.0025383654128340477,
+          "transientFrequency": 7.917858446492745
+        },
+        "substitutions": [
+          "代入：$\\frac{\\left(10\\,\\mathrm{N}\\right)}{\\left(10000\\,\\mathrm{N/m}\\right)\\sqrt{(1-r^2)^2+(r/\\left(5\\right))^2}}$。10 N / [10000 N/m × √((1−0.8²)²+(0.8/5)²)]",
+          "代入：$\\frac{\\sqrt{\\left(10000\\,\\mathrm{N/m}\\right)/\\left(4\\,\\mathrm{kg}\\right)}}{2\\pi}\\sqrt{1-\\frac1{4\\left(5\\right)^2}}$。√(10000/4) × √[1−1/(4×5²)] / (2π) Hz"
+        ],
+        "figure": "稳态位移幅值 = 0.002538 m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.2.3",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题　脉冲发射器的建立时间与脉宽",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "time95": 0.30146329801277444,
+          "riseFraction": 0.9189974078420569
+        },
+        "substitutions": [
+          "代入：$2\\left(10\\right)\\ln20/\\sqrt{\\left(395000\\,\\mathrm{N/m}\\right)/\\left(10\\,\\mathrm{kg}\\right)}$。2 × 10 × ln20 / √(395000/10) s",
+          "代入：$1-e^{-\\pi N_{\\rm on}/\\left(10\\right)}$。1 − exp[−π × 8/10]"
+        ],
+        "figure": "脉冲末建立比例 = 0.919",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.2.4",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "样题 A　船载仪器支架的共振校核",
+        "editableGivens": 6,
+        "gradedQuestions": 5,
+        "hints": 2,
+        "answers": {
+          "f0": 31.63141932427449,
+          "Qm": 24.843258642939738,
+          "bandwidth": 1.2732395447351628,
+          "xMm": 3.1364177549030656,
+          "minimumRm": 251.2582839309485
+        },
+        "stepsSource": "src/InstrumentExample.tsx",
+        "figure": "支架位移幅值 = 3.136 mm",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "1.2.5",
+    "case": "#/cases?project=industry",
+    "examples": [
+      {
+        "title": "例题 B　振动台的带宽测量与输入功率",
+        "editableGivens": 5,
+        "gradedQuestions": 4,
+        "hints": 2,
+        "answers": {
+          "Qm": 9.498924722004356,
+          "Rm": 209.23007072908013,
+          "power": 4.1846014145816035,
+          "force": 41.84601414581603
+        },
+        "stepsSource": "src/BandwidthExample.tsx",
+        "figure": "平均输入功率 = 4.185 W",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "2.1",
+    "case": "#/cases?project=music",
+    "examples": [
+      {
+        "title": "例题　吉他弦的传播速度与传播时间",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "speed": 418.33001326703777,
+          "travelTime": 0.0015537971921347118
+        },
+        "substitutions": [
+          "代入：$\\sqrt{\\left(70\\,\\mathrm{N}\\right)/\\rho_l}$。√[70 N / (0.0004 kg/m)]",
+          "代入：$\\left(0.65\\,\\mathrm{m}\\right)/\\left(418.3\\,\\mathrm{m/s}\\right)=\\left(0.65\\,\\mathrm{m}\\right)\\sqrt{\\rho_l/\\left(70\\,\\mathrm{N}\\right)}$。0.65 m × √[0.0004 kg/m / (70 N)]"
+        ],
+        "figure": "弦上横波速度 = 418.3 m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "2.2",
+    "case": "#/cases?project=music",
+    "examples": [
+      {
+        "title": "例题　琴弦调音的张力设计",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "fundamental": 321.7923178977214,
+          "targetTension": 130.8736
+        },
+        "substitutions": [
+          "代入：$\\sqrt{\\left(70\\,\\mathrm{N}\\right)/\\rho_l}/(2\\left(0.65\\,\\mathrm{m}\\right))$。√(70/0.0004) / (2×0.65) Hz",
+          "代入：$\\rho_l(2Lf_{\\rm \\left(440\\,\\mathrm{Hz}\\right)})^2$。0.0004 kg/m × (2×0.65 m × 440 Hz)²"
+        ],
+        "figure": "目标所需张力 = 130.9 N",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "2.3",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　带端部传感器质量的钢棒",
+        "editableGivens": 5,
+        "gradedQuestions": 3,
+        "hints": 2,
+        "answers": {
+          "speed": 5047.544651250688,
+          "q1": 0.8603335890193797,
+          "frequency": 691.1418322461324
+        },
+        "substitutions": [
+          "代入：$\\sqrt{\\left(200\\,\\mathrm{GPa}\\right)/\\rho}$。√[200×10⁹ Pa / (7850 kg/m³)]",
+          "代入：$\\rho \\left(0.0001\\,\\mathrm{m^2}\\right)L/\\left(0.785\\,\\mathrm{kg}\\right),\\quad 0<q_1<\\pi/2$。q₁ tan q₁ = 7850 × 0.0001 × 1 / 0.785",
+          "代入：$q_1\\left(5048\\,\\mathrm{m/s}\\right)/(2\\pi \\left(1\\,\\mathrm{m}\\right))$。0.8603 × √(200×10⁹/7850) / (2π×1) Hz"
+        ],
+        "figure": "第一阶固有频率 = 691.1 Hz",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "2.4",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题与测量计算器　共振法测杨氏模量",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "measuredSpeed": 5000,
+          "modulus": 196.25
+        },
+        "substitutions": [
+          "代入：$2Lf_1$。2 × 1 m × 2500 Hz",
+          "代入：$\\rho(2Lf_1)^2$。7850 kg/m³ × (2×1 m × 2500 Hz)² / 10⁹"
+        ],
+        "figure": "杨氏模量 = 196.3 GPa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.1",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水声信号的传播时延",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "delay": 6.666666666666667,
+          "lambda": 0.15
+        },
+        "substitutions": [
+          "代入：$\\left(10\\,\\mathrm{m}\\right)/\\left(1500\\,\\mathrm{m/s}\\right)$。10 m ÷ 1500 m/s × 1000",
+          "代入：$\\left(1500\\,\\mathrm{m/s}\\right)/\\left(10000\\,\\mathrm{Hz}\\right)$。1500 m/s ÷ 10000 Hz"
+        ],
+        "figure": "传播时延 = 6.667 ms",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.2",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　校准声场中质点运动的量级",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "ua": 0.0024094643760692,
+          "xi": 3.8347816565524267e-7
+        },
+        "substitutions": [
+          "代入：$\\left(1\\,\\mathrm{Pa}\\right)/(\\rho_0\\left(343\\,\\mathrm{m/s}\\right))$。1 Pa ÷ (1.21 kg/m³ × 343 m/s)",
+          "代入：$\\left(0.002409\\,\\mathrm{m/s}\\right)/(2\\pi \\left(1000\\,\\mathrm{Hz}\\right))$。0.0024094643760692 m/s ÷ (2π × 1000 Hz)"
+        ],
+        "figure": "振速峰值 = 0.002409 m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.3",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　工业噪声的小振幅条件",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "mach": 0.00014049354962502626,
+          "density": 0.00016999719504628174
+        },
+        "substitutions": [
+          "代入：$u_a/\\left(343\\,\\mathrm{m/s}\\right)=\\left(20\\,\\mathrm{Pa}\\right)/(\\rho_0\\left(343\\,\\mathrm{m/s}\\right)^2)$。20 Pa ÷ (1.21 kg/m³ × (343 m/s)²)",
+          "代入：$\\left(20\\,\\mathrm{Pa}\\right)/\\left(343\\,\\mathrm{m/s}\\right)^2$。20 Pa ÷ (343 m/s)²"
+        ],
+        "figure": "密度逾量峰值 = 1.7×10⁻⁴ kg/m³",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.4",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　小型风道体元的质量收支",
+        "editableGivens": 5,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "massRate": 0.0000484,
+          "rate": 0.04839999999999999
+        },
+        "substitutions": [
+          "代入：$\\left(1.21\\,\\mathrm{kg/m^3}\\right)\\left(0.01\\,\\mathrm{m^2}\\right)(u_{\\rm in}-u_{\\rm out})$。1.21 kg/m³ × 0.01 m² × (0.012−0.008) m/s",
+          "代入：$\\dot m/(Sdx)$。0.0000484 kg/s ÷ (0.01 m² × 0.1 m)"
+        ],
+        "figure": "净流入质量率 = 4.84×10⁻⁵ kg/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.5",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水声试验的线性化误差估计",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "rate": 0.5585053606381855,
+          "ratio": 4.444444444444445e-8
+        },
+        "substitutions": [
+          "代入：$\\left(12570\\,\\mathrm{rad/s}\\right) \\left(100\\,\\mathrm{Pa}\\right)/\\left(1500\\,\\mathrm{m/s}\\right)^2$。2π × 2000 Hz × 100 Pa ÷ (1500 m/s)²",
+          "代入：$\\left(100\\,\\mathrm{Pa}\\right)/(\\rho_0\\left(1500\\,\\mathrm{m/s}\\right)^2)$。100 Pa ÷ (1000 kg/m³ × (1500 m/s)²)"
+        ],
+        "figure": "密度变化率幅值 = 0.5585 kg/(m³·s)",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.6",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　空气压缩扰动的声压估计",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "pressure": 141.855,
+          "density": 0.00121
+        },
+        "substitutions": [
+          "代入：$\\gamma P_0\\left(0.001\\right)$。1.4 × 101325 Pa × 0.001",
+          "代入：$\\rho_0\\left(0.001\\right)$。1.21 kg/m³ × 0.001"
+        ],
+        "figure": "线性声压 = 141.9 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.7",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　空气与水中的测距声速",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "airSpeed": 343.2319776769059,
+          "waterSpeed": 1500
+        },
+        "substitutions": [
+          "代入：$\\sqrt{\\gamma R(\\left(20\\,\\mathrm{°C}\\right)+273.15)}$。√(1.4 × 287.05 $\\mathrm{J/(kg\\cdot K)}$ × (20+273.15) K)",
+          "代入：$\\sqrt{\\left(2.25\\,\\mathrm{GPa}\\right)_s/\\rho_w}$。√(2.25×10⁹ Pa ÷ 1000 kg/m³)"
+        ],
+        "figure": "水声速 = 1500 m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.1.8",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　声压引起的空气质点加速度",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "gradient": 36.63664902145531,
+          "acceleration": 30.27822233178125
+        },
+        "substitutions": [
+          "代入：$kp_a$。2π × 1000 Hz ÷ 343 m/s × 2 Pa",
+          "代入：$kp_a/\\left(1.21\\,\\mathrm{kg/m^3}\\right)$。36.63664902145531 Pa/m ÷ 1.21 kg/m³"
+        ],
+        "figure": "压力梯度幅值 = 36.64 Pa/m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.10.1",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　空气刚性平面层波导厚度为 0.5 m，声速为 343 m/s",
+        "editableGivens": 1,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "cutoff": 343,
+          "crossNumber": 6.283185307179586
+        },
+        "substitutions": [
+          "代入：$nc_0/(2\\left(0.5\\,\\mathrm{m}\\right))$。h = 0.5 m",
+          "代入：$\\left(1\\right)\\pi/\\left(0.5\\,\\mathrm{m}\\right)$。h = 0.5 m"
+        ],
+        "figure": "本阶截止频率 = 343 Hz",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.10.2",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　空气波导层厚为 0.5 m，均匀面源振速峰值为 0.01 m/s",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "planePressure": 4.1503,
+          "firstCutoff": 343
+        },
+        "substitutions": [
+          "代入：$\\rho_0\\left(343\\,\\mathrm{m/s}\\right)_0\\left(0.01\\,\\mathrm{m/s}\\right)$。v₀ = 0.01 m/s，ρ₀ = 1.21 kg/m³，c₀ = 343 m/s，h = 0.5 m",
+          "代入：$\\left(343\\,\\mathrm{m/s}\\right)/(2\\left(0.5\\,\\mathrm{m}\\right))$。v₀ = 0.01 m/s，ρ₀ = 1.21 kg/m³，c₀ = 343 m/s，h = 0.5 m"
+        ],
+        "figure": "均匀源激发的平面波声压峰值 = 4.15 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.10.3",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　空气波导厚度 0.5 m，频率 500 Hz，考察第二阶本征函数",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "cutoff": 686,
+          "decay": 8.60368625632922
+        },
+        "substitutions": [
+          "代入：$nc_0/(2\\left(0.5\\,\\mathrm{m}\\right))$。h = 0.5 m，c₀ = 343 m/s，f = 500 Hz",
+          "代入：$\\sqrt{(\\left(2\\right)\\pi/\\left(0.5\\,\\mathrm{m}\\right))^2-(2\\pi \\left(500\\,\\mathrm{Hz}\\right)/\\left(343\\,\\mathrm{m/s}\\right))^2}$。h = 0.5 m，c₀ = 343 m/s，f = 500 Hz"
+        ],
+        "figure": "本阶截止频率 = 686 Hz",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.10.4",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　空气波导层厚为 0.5 m，第二阶模式以 1200 Hz 传播",
+        "editableGivens": 1,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "cutoff": 686,
+          "inclination": 34.86652945038569
+        },
+        "substitutions": [
+          "代入：$nc_0/(2\\left(0.5\\right))$。f = 1200 Hz",
+          "代入：$\\arcsin[nc_0/(2hf)]$。f = 1200 Hz"
+        ],
+        "figure": "本阶截止频率 = 686 Hz",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.10.5",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　空气波导层厚 0.5 m，第一高阶模态以 1500 Hz 传播",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "phaseSpeed": 352.33519881021795,
+          "groupSpeed": 333.9121393414075
+        },
+        "substitutions": [
+          "代入：$\\left(343\\,\\mathrm{m/s}\\right)/\\sqrt{1-(\\left(343\\,\\mathrm{Hz}\\right)/\\left(1500\\,\\mathrm{Hz}\\right))^2}$。f = 1500 Hz，c₀ = 343 m/s，h = 0.5 m",
+          "代入：$\\left(343\\,\\mathrm{m/s}\\right)\\sqrt{1-(\\left(343\\,\\mathrm{Hz}\\right)/\\left(1500\\,\\mathrm{Hz}\\right))^2}$。f = 1500 Hz，c₀ = 343 m/s，h = 0.5 m"
+        ],
+        "figure": "相速度 = 352.3 m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.2.1",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　阵列相邻测点的相位差",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "waveNumber": 18.318324510727656,
+          "phaseLag": 0.9159162255363829
+        },
+        "substitutions": [
+          "代入：$2\\pi \\left(1000\\,\\mathrm{Hz}\\right)/\\left(343\\,\\mathrm{m/s}\\right)$。2π × 1000 Hz ÷ 343 m/s",
+          "代入：$\\left(18.32\\,\\mathrm{rad/m}\\right)L$。18.318324510727656 rad/m × 0.05 m"
+        ],
+        "figure": "波数 = 18.32 rad/m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.2.2",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　由水声平面波速度势求量程",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "phiAmplitude": 0.000007957747154594767,
+          "velocity": 0.00006666666666666667
+        },
+        "substitutions": [
+          "代入：$\\left(100\\,\\mathrm{Pa}\\right)/(\\left(1000\\,\\mathrm{kg/m^3}\\right)\\left(12570\\,\\mathrm{rad/s}\\right))$。100 Pa ÷ (1000 kg/m³ × 2π × 2000 Hz)",
+          "代入：$\\left(8.378\\,\\mathrm{rad/m}\\right)\\Psi_a$。8.377580409572781 rad/m × 0.000007957747154594767 m²/s"
+        ],
+        "figure": "速度势幅值 = 7.958×10⁻⁶ m²/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.3.1",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　舱内平面行波的储能",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "kinetic": 0.000007024677481251311,
+          "total": 0.000014049354962502622
+        },
+        "substitutions": [
+          "代入：$\\left(2\\,\\mathrm{Pa}\\right)^2/(4\\rho_0\\left(343\\,\\mathrm{m/s}\\right)^2)$。2² Pa² ÷ (4 × 1.21 kg/m³ × 343² m²/s²)",
+          "代入：$2\\overline E_k$。2 × 0.000007024677481251311 J/m³"
+        ],
+        "figure": "平均总能量密度 = 1.405×10⁻⁵ J/m³",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.3.2",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　风道微元的瞬时能量积累",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "power": 0.00001,
+          "rate": 0.01
+        },
+        "substitutions": [
+          "代入：$\\left(0.01\\,\\mathrm{m^2}\\right)(W_{\\rm in}-W_{\\rm out})$。0.01 m² × (0.004−0.003) W/m²",
+          "代入：$P_{\\rm net}/(Sdx)$。0.00001 W ÷ (0.01 m² × 0.1 m)"
+        ],
+        "figure": "净流入声功率 = 1×10⁻⁵ W",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.3.3",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　相位差对声强测量的影响",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "intensity": 0.0008660254037844387,
+          "level": 89.3753063169585
+        },
+        "substitutions": [
+          "代入：$p_au_a\\cos\\varphi/2$。1 Pa × 0.002 m/s × cos(30°) ÷ 2",
+          "代入：$10\\lg(\\left(0.000866\\,\\mathrm{W/m^2}\\right)/10^{-12})$。10 lg(0.0008660254037844387 W/m² ÷ 10⁻¹² W/m²)"
+        ],
+        "figure": "平均声强 = 8.66×10⁻⁴ W/m²",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.4.1",
+    "case": "#/cases?project=duct",
+    "examples": [
+      {
+        "title": "例题　风道中的双向波分量",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "envelope": 1.4,
+          "netIntensity": 0.001011975037949064
+        },
+        "substitutions": [
+          "代入：$A+\\left(0.4\\,\\mathrm{Pa}\\right)$。1 Pa + 0.4 Pa",
+          "代入：$(A^2-\\left(0.4\\,\\mathrm{Pa}\\right)^2)/(2\\rho_0\\left(343\\,\\mathrm{m/s}\\right))$。(1²−0.4²) Pa² ÷ (2 × 1.21 kg/m³ × 343 m/s)"
+        ],
+        "figure": "最大声压包络 = 1.4 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.4.2",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　空气声波的时间与空间周期",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "period": 1,
+          "lambda": 0.343
+        },
+        "substitutions": [
+          "代入：$1/\\left(1000\\,\\mathrm{Hz}\\right)$。1000 ÷ 1000 Hz",
+          "代入：$\\left(343\\,\\mathrm{m/s}\\right)/\\left(1000\\,\\mathrm{Hz}\\right)$。343 m/s ÷ 1000 Hz"
+        ],
+        "figure": "周期 = 1 ms",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.4.3",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　水听器与振速探头的互校",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "velocity": 0.00006666666666666667,
+          "travel": 0.75
+        },
+        "substitutions": [
+          "代入：$\\left(100\\,\\mathrm{Pa}\\right)/(\\rho_0\\left(1500\\,\\mathrm{m/s}\\right))$。100 Pa ÷ (1000 kg/m³ × 1500 m/s)",
+          "代入：$\\left(1500\\,\\mathrm{m/s}\\right)T=\\left(1500\\,\\mathrm{m/s}\\right)/\\left(2000\\,\\mathrm{Hz}\\right)$。1500 m/s ÷ 2000 Hz"
+        ],
+        "figure": "振速峰值 = 6.667×10⁻⁵ m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.4.4",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　水中定幅行波的声强",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "impedance": 1500000,
+          "intensity": 0.0033333333333333335
+        },
+        "substitutions": [
+          "代入：$\\rho_0\\left(1500\\,\\mathrm{m/s}\\right)$。1000 kg/m³ × 1500 m/s",
+          "代入：$\\left(100\\,\\mathrm{Pa}\\right)^2/(2\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right))$。100² Pa² ÷ (2 × 1500000 Pa·s/m)"
+        ],
+        "figure": "声强 = 0.003333 W/m²",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.4.5",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水声脉冲的长度与到达时间",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "length": 0.75,
+          "arrival": 6.666666666666667
+        },
+        "substitutions": [
+          "代入：$\\left(1500\\,\\mathrm{m/s}\\right)\\tau$。1500 m/s × 0.5 ms ÷ 1000",
+          "代入：$\\left(10\\,\\mathrm{m}\\right)/\\left(1500\\,\\mathrm{m/s}\\right)$。10 m ÷ 1500 m/s × 1000"
+        ],
+        "figure": "首达时间 = 6.667 ms",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.4.6",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　两台非相干设备的声级叠加",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "combined": 83.01029995663981,
+          "rms": 0.28284271247461906
+        },
+        "substitutions": [
+          "代入：$\\left(80\\,\\mathrm{dB}\\right)+10\\lg \\left(2\\right)$。80 dB + 10 lg(2)",
+          "代入：$20\\times10^{-6}10^{\\left(83.01\\,\\mathrm{dB}\\right)/20}$。20×10⁻⁶ Pa × 10^((80+10 lg(2))/20)"
+        ],
+        "figure": "有效声压 = 0.2828 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.5.1",
+    "case": "#/cases?project=grin-lens",
+    "examples": [
+      {
+        "title": "例题　近场空间分量的衰减",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "alpha": 13.738743383045742,
+          "amplitude": 0.2531243679012814
+        },
+        "substitutions": [
+          "代入：$(2\\pi \\left(1000\\,\\mathrm{Hz}\\right)/\\left(343\\,\\mathrm{m/s}\\right))\\sqrt{(\\left(1.25\\right))^2-1}$。2π × 1000 Hz ÷ 343 m/s × √(1.25²−1)",
+          "代入：$e^{-\\left(13.74\\,\\mathrm{m^{-1}}\\right) \\left(0.1\\,\\mathrm{m}\\right)}$。exp(−13.738743383045742 m⁻¹ × 0.1 m)"
+        ],
+        "figure": "相对幅值 = 0.2531",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.5.2",
+    "case": "#/cases?project=grin-lens",
+    "examples": [
+      {
+        "title": "例题　平面波在阵列轴向的波数分量",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "waveNumber": 8.377580409572781,
+          "kx": 6.575441951710386
+        },
+        "substitutions": [
+          "代入：$2\\pi \\left(2000\\,\\mathrm{Hz}\\right)/\\left(1500\\,\\mathrm{m/s}\\right)$。2π × 2000 Hz ÷ 1500 m/s",
+          "代入：$\\left(8.378\\,\\mathrm{rad/m}\\right)\\cos\\theta\\cos\\varphi$。8.377580409572781 rad/m × cos(25°) × cos(30°)"
+        ],
+        "figure": "总波数 = 8.378 rad/m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.1",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水与另一流体的界面阻抗为 1.5×10⁶ 与 3×10⁶ $\\mathrm{Pa\\cdot s/m}$",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "reflection": 0.3333333333333333,
+          "transmission": 1.3333333333333333
+        },
+        "substitutions": [
+          "代入：$\\frac{\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 3000000 Pa·s/m",
+          "代入：$\\frac{2\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 3000000 Pa·s/m"
+        ],
+        "figure": "声压反射系数 = 0.3333",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.10",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　空气声以 60° 入射水面，频率为 1 kHz",
+        "editableGivens": 1,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "critical": 13.218585549095884,
+          "depthAnswer": 0.06535461998977078
+        },
+        "substitutions": [
+          "代入：$\\arcsin(\\left(343\\,\\mathrm{m/s}\\right)/\\left(1500\\,\\mathrm{m/s}\\right))$。f = 1000 Hz",
+          "代入：$\\frac{1}{\\sqrt{(\\left(18.32\\,\\mathrm{rad/m}\\right)\\sin\\theta_i)^2-\\left(4.189\\,\\mathrm{rad/m}\\right)^2}}$。f = 1000 Hz"
+        ],
+        "figure": "法向穿透深度 = 0.06535 m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.11",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　半径 32.5 m 的圆形围墙内，声源距圆心为半径的 0.95 倍，出射方向与径向夹角 80°",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "circumference": 204.20352248333654,
+          "chord": 6.115931485848934
+        },
+        "substitutions": [
+          "代入：$2\\pi \\left(32.5\\,\\mathrm{m}\\right)$。a = 32.5 m，rₛ/a = 0.95 —，γ = 80 °",
+          "代入：$-r_s\\cos\\gamma+\\sqrt{\\left(32.5\\,\\mathrm{m}\\right)^2-r_s^2\\sin^2\\gamma}$。a = 32.5 m，rₛ/a = 0.95 —，γ = 80 °"
+        ],
+        "figure": "围墙周长 = 204.2 m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.12",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水声束以 30° 入射声速 1000 m/s、阻抗 1×10⁶ $\\mathrm{Pa\\cdot s/m}$ 的流体",
+        "editableGivens": 5,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "reflectAbs": 0.24040820577345745,
+          "powerT": 0.9422038945967869
+        },
+        "substitutions": [
+          "代入：$\\left|\\frac{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_i-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_t}{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_i+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_t}\\right|$。θᵢ = 30 °，c₀ = 1500 m/s，c₂ = 1000 m/s，Z₁ = 1500000 Pa·s/m，Z₂ = 1000000 Pa·s/m",
+          "代入：$\\frac{\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)}|D_p|^2\\frac{\\cos\\theta_t}{\\cos\\theta_i}$。θᵢ = 30 °，c₀ = 1500 m/s，c₂ = 1000 m/s，Z₁ = 1500000 Pa·s/m，Z₂ = 1000000 Pa·s/m"
+        ],
+        "figure": "功率透射系数 = 0.9422",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.2",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水中平面波垂直入射阻抗为 3×10⁶ $\\mathrm{Pa\\cdot s/m}$ 的流体",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "reflection": 0.3333333333333333,
+          "transmission": 1.3333333333333333
+        },
+        "substitutions": [
+          "代入：$\\frac{\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 3000000 Pa·s/m",
+          "代入：$\\frac{2\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(3000000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 3000000 Pa·s/m"
+        ],
+        "figure": "声压反射系数 = 0.3333",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.3",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水下信号垂直射向水面，水和空气阻抗分别为 1.5×10⁶ 与 415 $\\mathrm{Pa\\cdot s/m}$",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "reflection": -0.9994468197132127,
+          "transmission": 0.0005531802867873222
+        },
+        "substitutions": [
+          "代入：$\\frac{\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 415 Pa·s/m",
+          "代入：$\\frac{2\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 415 Pa·s/m"
+        ],
+        "figure": "声压反射系数 = -0.9994",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.4",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水入射钢表面的近似流体模型中，阻抗为 1.5×10⁶ 与 4.6×10⁷ $\\mathrm{Pa\\cdot s/m}$",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "reflection": 0.9368421052631579,
+          "transmission": 1.936842105263158
+        },
+        "substitutions": [
+          "代入：$\\frac{\\left(46000000\\,\\mathrm{Pa\\cdot s/m}\\right)-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(46000000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 46000000 Pa·s/m",
+          "代入：$\\frac{2\\left(46000000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(46000000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 46000000 Pa·s/m"
+        ],
+        "figure": "声压折射系数 = 1.937",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.5",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水下声信号能否传到空气中",
+        "editableGivens": 2,
+        "gradedQuestions": 4,
+        "hints": 2,
+        "answers": {
+          "reflection": -0.9994468197132127,
+          "transmission": 0.0005531802867873222,
+          "energy": 0.0011060545651449542,
+          "loss": 29.562234473922466
+        },
+        "substitutions": [
+          "代入：$\\frac{\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 415 Pa·s/m",
+          "代入：$\\frac{2\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)}{\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)}$。Z₁ = 1500000 Pa·s/m，Z₂ = 415 Pa·s/m",
+          "代入：$\\frac{4\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right)}{(\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)+\\left(415\\,\\mathrm{Pa\\cdot s/m}\\right))^2}$。Z₁ = 1500000 Pa·s/m，Z₂ = 415 Pa·s/m",
+          "代入：$-10\\lg \\left(0.001106\\right)$。Z₁ = 1500000 Pa·s/m，Z₂ = 415 Pa·s/m"
+        ],
+        "figure": "声强透射系数 = 0.001106",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.6",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　1 kHz 水声波的入射声压峰值为 1 Pa",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "nodeGap": 0.75,
+          "umax": 0.0000013333333333333334
+        },
+        "substitutions": [
+          "代入：$\\left(1.5\\,\\mathrm{m}\\right)/2=\\left(1500\\,\\mathrm{m/s}\\right)/(2\\left(1000\\,\\mathrm{Hz}\\right))$。f = 1000 Hz，c₀ = 1500 m/s，pₐ = 1 Pa，Z₁ = 1500000 Pa·s/m",
+          "代入：$2\\left(1\\,\\mathrm{Pa}\\right)/\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)$。f = 1000 Hz，c₀ = 1500 m/s，pₐ = 1 Pa，Z₁ = 1500000 Pa·s/m"
+        ],
+        "figure": "界面振速峰值 = 1.333×10⁻⁶ m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.7",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水声以 30° 入射声速 1000 m/s、阻抗 1×10⁶ $\\mathrm{Pa\\cdot s/m}$ 的流体",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "angle": 19.471220634490688,
+          "reflectAbs": 0.24040820577345745
+        },
+        "substitutions": [
+          "代入：$\\arcsin[(\\left(1000\\,\\mathrm{m/s}\\right)/\\left(1500\\,\\mathrm{m/s}\\right))\\sin\\theta_i]$。θᵢ = 30 °，c₀ = 1500 m/s，c₂ = 1000 m/s，Z₁ = 1500000 Pa·s/m，Z₂ = 1000000 Pa·s/m",
+          "代入：$\\left|\\frac{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_i-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_t}{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_i+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_t}\\right|$。θᵢ = 30 °，c₀ = 1500 m/s，c₂ = 1000 m/s，Z₁ = 1500000 Pa·s/m，Z₂ = 1000000 Pa·s/m"
+        ],
+        "figure": "折射角 = 19.47 °",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.8",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　水中声束以 30° 入射另一流体，声速由 1500 变为 1000 m/s",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "angle": 19.471220634490688,
+          "reflectAbs": 0.24040820577345745
+        },
+        "substitutions": [
+          "代入：$\\arcsin[(\\left(1000\\,\\mathrm{m/s}\\right)/\\left(1500\\,\\mathrm{m/s}\\right))\\sin\\theta_i]$。θᵢ = 30 °，c₀ = 1500 m/s，c₂ = 1000 m/s，Z₁ = 1500000 Pa·s/m，Z₂ = 1000000 Pa·s/m",
+          "代入：$\\left|\\frac{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_i-\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_t}{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_i+\\left(1500000\\,\\mathrm{Pa\\cdot s/m}\\right)\\cos\\theta_t}\\right|$。θᵢ = 30 °，c₀ = 1500 m/s，c₂ = 1000 m/s，Z₁ = 1500000 Pa·s/m，Z₂ = 1000000 Pa·s/m"
+        ],
+        "figure": "声压反射系数模值 = 0.2404",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.6.9",
+    "case": "#/cases?project=ultrasound",
+    "examples": [
+      {
+        "title": "例题　声速为 1000 与 1500 m/s、阻抗为 1×10⁶ 与 5×10⁵ $\\mathrm{Pa\\cdot s/m}$ 的两种流体",
+        "editableGivens": 1,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "critical": 41.810314895778596,
+          "full": 37.76124390703504
+        },
+        "substitutions": [
+          "代入：$\\arcsin(\\left(1000\\,\\mathrm{m/s}\\right)/\\left(1500\\,\\mathrm{m/s}\\right))$。Z₁ = 1000000 Pa·s/m",
+          "代入：$\\arcsin\\sqrt{\\frac{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)^2-Z_2^2}{\\left(1000000\\,\\mathrm{Pa\\cdot s/m}\\right)^2(\\left(1500\\,\\mathrm{m/s}\\right)/\\left(1000\\,\\mathrm{m/s}\\right))^2-Z_2^2}}$。Z₁ = 1000000 Pa·s/m"
+        ],
+        "figure": "临界角 = 41.81 °",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.7.1",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　吸声材料的归一化法向阻抗为 2+j",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "reflect": 0.447213595499958,
+          "standingRatio": 2.618033988749895
+        },
+        "substitutions": [
+          "代入：$\\left|\\frac{(2+j(1))-1}{(2+j(1))+1}\\right|$。Re Zₙ/ρc = 2 —，Im Zₙ/ρc = 1 —",
+          "代入：$\\frac{1+|R_p|}{1-|R_p|}$。Re Zₙ/ρc = 2 —，Im Zₙ/ρc = 1 —"
+        ],
+        "figure": "反射系数模值 = 0.4472",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.7.2",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　阻抗管被测材料的归一化阻抗为 2+j，频率为 1 kHz",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "standingRatio": 2.618033988749895,
+          "absorption": 0.7999999999999999
+        },
+        "substitutions": [
+          "代入：$\\frac{1+|R_p|}{1-|R_p|}$。Re Zₙ/ρc = 2 —，Im Zₙ/ρc = 1 —",
+          "代入：$1-|R_p|^2$。Re Zₙ/ρc = 2 —，Im Zₙ/ρc = 1 —"
+        ],
+        "figure": "驻波比 = 2.618",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.8.1",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　空气中球面声源的幅度常数为 1 Pa·m，频率为 1 kHz",
+        "editableGivens": 5,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "pressure": 10,
+          "velocity": 0.027451068964754976
+        },
+        "substitutions": [
+          "代入：$\\left(1\\,\\mathrm{Pa\\cdot m}\\right)/\\left(0.1\\,\\mathrm{m}\\right)$。r = 0.1 m，A = 1 Pa·m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³",
+          "代入：$\\frac{\\left(1\\,\\mathrm{Pa\\cdot m}\\right)}{\\rho_0\\left(343\\,\\mathrm{m/s}\\right)_0\\left(0.1\\,\\mathrm{m}\\right)}\\sqrt{1+(kr)^{-2}}$。r = 0.1 m，A = 1 Pa·m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³"
+        ],
+        "figure": "声压峰值 = 10 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.8.2",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　空气中 1 kHz 球面波在距声源 0.1 m 处测量",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "resistance": 319.7436938966497,
+          "reactance": 174.54854766296995
+        },
+        "substitutions": [
+          "代入：$\\rho_0\\left(343\\,\\mathrm{m/s}\\right)\\frac{(kr)^2}{1+(kr)^2}$。r = 0.1 m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³",
+          "代入：$\\rho_0\\left(343\\,\\mathrm{m/s}\\right)\\frac{kr}{1+(kr)^2}$。r = 0.1 m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³"
+        ],
+        "figure": "球面波波阻 = 319.7 Pa·s/m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.8.3",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　空气中球面波频率为 1 kHz，在半径 0.05 m 处比较声压与振速相速度",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "pressureSpeed": 343,
+          "velocitySpeed": 751.8675225477728
+        },
+        "substitutions": [
+          "代入：$\\left(343\\,\\mathrm{m/s}\\right)$。r = 0.05 m，f = 1000 Hz，c₀ = 343 m/s",
+          "代入：$\\left(343\\,\\mathrm{m/s}\\right)[1+(kr)^{-2}]$。r = 0.05 m，f = 1000 Hz，c₀ = 343 m/s"
+        ],
+        "figure": "振速相速度 = 751.9 m/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.8.4",
+    "case": "#/cases?project=transport",
+    "examples": [
+      {
+        "title": "例题　空气中 1 kHz 球面波的幅度常数为 1 Pa·m",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "intensity": 0.0012047321880346,
+          "power": 0.015139111165890626
+        },
+        "substitutions": [
+          "代入：$\\left(1\\,\\mathrm{Pa\\cdot m}\\right)^2/(2\\rho_0\\left(343\\,\\mathrm{m/s}\\right)_0\\left(1\\,\\mathrm{m}\\right)^2)$。A = 1 Pa·m，ρ₀ = 1.21 kg/m³，c₀ = 343 m/s，r = 1 m",
+          "代入：$4\\pi \\left(1\\,\\mathrm{m}\\right)^2\\left(0.001205\\,\\mathrm{W/m^2}\\right)=2\\pi \\left(1\\,\\mathrm{Pa\\cdot m}\\right)^2/(\\rho_0\\left(343\\,\\mathrm{m/s}\\right))$。A = 1 Pa·m，ρ₀ = 1.21 kg/m³，c₀ = 343 m/s，r = 1 m"
+        ],
+        "figure": "平均声强 = 0.001205 W/m²",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.8.5",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水中点声源深度 1 m，接收深度 2 m，水平距离 3 m，频率 1 kHz",
+        "editableGivens": 5,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "path": 1.0803630269509061,
+          "pressure": 0.42809579711012163
+        },
+        "substitutions": [
+          "代入：$\\sqrt{\\left(3\\,\\mathrm{m}\\right)^2+(y+\\left(1\\,\\mathrm{m}\\right))^2}-\\sqrt{\\left(3\\,\\mathrm{m}\\right)^2+(y-\\left(1\\,\\mathrm{m}\\right))^2}$。f = 1000 Hz，c₀ = 1500 m/s，A = 1 Pa·m，h = 1 m，x = 3 m",
+          "代入：$\\left(1\\,\\mathrm{Pa\\cdot m}\\right)|e^{-jkr_1}/r_1+s e^{-jkr_2}/r_2|$。f = 1000 Hz，c₀ = 1500 m/s，A = 1 Pa·m，h = 1 m，x = 3 m"
+        ],
+        "figure": "合成声压幅值 = 0.4281 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.9.1",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　一条长线声源在观测位置满足无量纲距离为 10",
+        "editableGivens": 1,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "firstKind": -0.2459357644513713,
+          "secondKind": 0.05567116728363524
+        },
+        "substitutions": [
+          "代入：$J_0(z)$。kr = 10 —",
+          "代入：$Y_0(z)$。kr = 10 —"
+        ],
+        "figure": "第一类零阶柱函数 = -0.2459",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.9.2",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　空气中长线声源的柱面声压幅度系数为 1 Pa，频率为 1 kHz",
+        "editableGivens": 5,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "cylPressure": 0.5812383778429908,
+          "cylVelocity": 0.0014860919626530993
+        },
+        "substitutions": [
+          "代入：$\\left(1\\,\\mathrm{Pa}\\right)|H_0^{(2)}(kr)|$。r = 0.1 m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³，A = 1 Pa",
+          "代入：$\\frac{\\left(1\\,\\mathrm{Pa}\\right)}{\\rho_0\\left(343\\,\\mathrm{m/s}\\right)}|H_1^{(2)}(kr)|$。r = 0.1 m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³，A = 1 Pa"
+        ],
+        "figure": "柱面声压峰值 = 0.5812 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "3.9.3",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　空气中 1 kHz 长线声源，取半径 0.1 m 的局部声场",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "cylResistance": 379.16087216213657,
+          "cylReactance": 95.9733386846468
+        },
+        "substitutions": [
+          "代入：$j\\rho_0\\left(343\\,\\mathrm{m/s}\\right) H_0^{(2)}(kr)/H_1^{(2)}(kr)$。r = 0.1 m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³",
+          "代入：$\\Im \\left(379.2\\,\\mathrm{Pa\\cdot s/m}\\right)$。r = 0.1 m，f = 1000 Hz，c₀ = 343 m/s，ρ₀ = 1.21 kg/m³"
+        ],
+        "figure": "柱面波波阻 = 379.2 Pa·s/m",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.1",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水下脉动球的输入功率分配",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "efficiency": 90.82662569046477,
+          "radiated": 0.09901114096702163
+        },
+        "substitutions": [
+          "代入：$\\left(1980\\,\\mathrm{kg/s}\\right)/(\\left(1980\\,\\mathrm{kg/s}\\right)+\\left(200\\,\\mathrm{kg/s}\\right))$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；Rm：$200\\,\\mathrm{kg/s}$；M：$0.1\\,\\mathrm{kg}$；D：$100000\\,\\mathrm{N/m}$",
+          "代入：$\\tfrac12R_sv_0^2$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；Rm：$200\\,\\mathrm{kg/s}$；M：$0.1\\,\\mathrm{kg}$；D：$100000\\,\\mathrm{N/m}$"
+        ],
+        "figure": "辐射声功率 = 0.09901 W",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.2.1",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水下球面发射器的声压校准",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "pressure": 76.87192068483934,
+          "intensity": 0.0019697640632587434
+        },
+        "substitutions": [
+          "代入：$\\frac{\\rho_0\\left(1500\\right)_0\\left(0.01\\,\\mathrm{m/s}\\right)_0ka^2}{\\left(2\\,\\mathrm{m}\\right)\\sqrt{1+(ka)^2}}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；r：$2\\,\\mathrm{m}$",
+          "代入：$|P|^2/(2\\rho_0\\left(1500\\,\\mathrm{m/s}\\right))$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；r：$2\\,\\mathrm{m}$"
+        ],
+        "figure": "测点声压峰值 = 76.87 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.2.2",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水下小球的辐射负载与伴振质量",
+        "editableGivens": 3,
+        "gradedQuestions": 3,
+        "hints": 2,
+        "answers": {
+          "resistance": 1980.2228193404324,
+          "mass": 1.5047888994835488,
+          "power": 0.09901114096702163
+        },
+        "substitutions": [
+          "代入：$\\rho_0\\left(1500\\,\\mathrm{m/s}\\right)\\left(0.03142\\,\\mathrm{m^2}\\right)\\frac{(ka)^2}{1+(ka)^2}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$",
+          "代入：$\\left(9455\\,\\mathrm{kg/s}\\right)/\\left(6283\\,\\mathrm{rad/s}\\right)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$",
+          "代入：$\\tfrac12\\left(0.01\\,\\mathrm{m/s}\\right)^2\\left(1980\\,\\mathrm{kg/s}\\right)=4\\pi r^2I(r)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$"
+        ],
+        "figure": "辐射阻 = 1980 kg/s",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.2.3",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　四阵元水声线阵的正前方声压",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "singlePressure": 5.000000000000001,
+          "pressure": 19.96660044326578
+        },
+        "substitutions": [
+          "代入：$\\rho_0\\left(5000\\,\\mathrm{Hz}\\right)\\left(0.00001\\,\\mathrm{m^3/s}\\right)/(2\\left(5\\right))$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$5000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；N：$4$；d：$0.15\\,\\mathrm{m}$；Q：$0.00001\\,\\mathrm{m^3/s}$；r：$5\\,\\mathrm{m}$",
+          "代入：$\\sum_n\\frac{j\\rho_0\\left(31420\\,\\mathrm{rad/s}\\right) \\left(0.00001\\,\\mathrm{m^3/s}\\right)}{4\\pi \\left(5\\right)_n}e^{-jkr_n}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$5000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；N：$4$；d：$0.15\\,\\mathrm{m}$；Q：$0.00001\\,\\mathrm{m^3/s}$；r：$5\\,\\mathrm{m}$"
+        ],
+        "figure": "正前方测点声压峰值 = 19.97 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.3",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　反相水声源对的低频辐射",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "ratio": 0.0023394617839619216,
+          "pressure": 0.036275987284684355
+        },
+        "substitutions": [
+          "代入：$(kd)^2/3$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；d：$0.02\\,\\mathrm{m}$；Q：$0.00001\\,\\mathrm{m^3/s}$；r：$10\\,\\mathrm{m}$；theta：$30\\,\\mathrm{deg}$",
+          "代入：$|P_d|\\simeq\\frac{\\left(1000\\,\\mathrm{kg/m^3}\\right)\\left(6283\\,\\mathrm{rad/s}\\right) \\left(0.00001\\,\\mathrm{m^3/s}\\right)}{4\\pi \\left(10\\right)}kd|\\cos\\theta|$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；d：$0.02\\,\\mathrm{m}$；Q：$0.00001\\,\\mathrm{m^3/s}$；r：$10\\,\\mathrm{m}$；theta：$30\\,\\mathrm{deg}$"
+        ],
+        "figure": "三十度方向声压峰值 = 0.03628 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.4.1",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　声全息圆周采样的重建误差",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "realPressure": 0.5000436137668018,
+          "errorPercent": 0.005961729544673635
+        },
+        "substitutions": [
+          "代入：$\\Re\\sum_s(G\\partial_np-P\\partial_nG)\\Delta s$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.5\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；N：$16$；xobs：$0.25\\,\\mathrm{m}$；yobs：$0.1\\,\\mathrm{m}$",
+          "代入：$|P_N-P_{\\text{精确}}|/|P_{\\text{精确}}|$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.5\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；N：$16$；xobs：$0.25\\,\\mathrm{m}$；yobs：$0.1\\,\\mathrm{m}$"
+        ],
+        "figure": "重建相对误差 = 0.005962 %",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.4.2",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　封闭测量边界外的二维声场外推",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "wavelength": 1.5,
+          "pressure": 0.07945620877315587
+        },
+        "substitutions": [
+          "代入：$\\left(1500\\,\\mathrm{m/s}\\right)/\\left(1000\\,\\mathrm{Hz}\\right)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.5\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；N：$32$；r：$1.5\\,\\mathrm{m}$",
+          "代入：$-\\sum_s(G\\partial_nP-P\\partial_nG)\\Delta s$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.5\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；N：$32$；r：$1.5\\,\\mathrm{m}$"
+        ],
+        "figure": "外场重建幅值 = 0.07946",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.4.3",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　海底观测站换能器的波束宽度",
+        "editableGivens": 2,
+        "gradedQuestions": 4,
+        "hints": 2,
+        "answers": {
+          "wavelength": 0.03,
+          "size": 10.471975511965978,
+          "nullAngle": 21.46304029204735,
+          "beamwidth": 17.758095771889487
+        },
+        "substitutions": [
+          "代入：$\\left(1500\\,\\mathrm{m/s}\\right)/\\left(50000\\,\\mathrm{Hz}\\right)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$",
+          "代入：$2\\pi af/\\left(1500\\,\\mathrm{m/s}\\right)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$",
+          "代入：$\\arcsin(3.831706/\\left(10.47\\right))$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$",
+          "代入：$2\\arcsin(1.616340/\\left(10.47\\right))$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$"
+        ],
+        "figure": "半功率全波束宽度 = 17.76 °",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "4.4.4",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　活塞换能器的一米校准距离是否足够",
+        "editableGivens": 3,
+        "gradedQuestions": 4,
+        "hints": 2,
+        "answers": {
+          "lastMax": 0.07583333333333336,
+          "rayleigh": 0.3333333333333334,
+          "pressure": 3913.3554187112777,
+          "error": 0.3484324017892185
+        },
+        "substitutions": [
+          "代入：$\\left(0.05\\,\\mathrm{m}\\right)^2/\\left(0.03\\,\\mathrm{m}\\right)-\\left(0.03\\,\\mathrm{m}\\right)/4$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；zobs：$1\\,\\mathrm{m}$",
+          "代入：$d^2/\\left(0.03\\,\\mathrm{m}\\right)=4\\left(0.05\\,\\mathrm{m}\\right)^2/\\left(0.03\\,\\mathrm{m}\\right)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；zobs：$1\\,\\mathrm{m}$",
+          "代入：$2\\rho_0\\left(1500\\right)_0\\left(0.01\\,\\mathrm{m/s}\\right)|\\sin[\\tfrac k2(\\sqrt{z^2+\\left(0.05\\,\\mathrm{m}\\right)^2}-z)]|$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；zobs：$1\\,\\mathrm{m}$",
+          "代入：$\\left|\\frac{\\rho_0fa^2\\pi \\left(0.01\\,\\mathrm{m/s}\\right)/z}{|P(z)|}-1\\right|$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；zobs：$1\\,\\mathrm{m}$"
+        ],
+        "figure": "一米处远场幅值近似误差 = 0.3484 %",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "5.1",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　水中刚性圆柱迎声面的压力放大",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "frontPressure": 1.5948766062994992,
+          "gain": 1.5948766062994992
+        },
+        "substitutions": [
+          "代入：$P_i+P_s,\\quad\\partial_nP=0$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$3000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；pa：$1\\,\\mathrm{Pa}$",
+          "代入：$|\\left(1.595\\,\\mathrm{Pa}\\right)(-\\left(0.05\\,\\mathrm{m}\\right),0)|/\\left(1\\,\\mathrm{Pa}\\right)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$3000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；pa：$1\\,\\mathrm{Pa}$"
+        ],
+        "figure": "迎声面总声压峰值 = 1.595 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "5.2",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　水中刚性球的散射功率预算",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "crossSection": 0.0027935169561945495,
+          "scatteredPower": 9.311723187315168e-10
+        },
+        "substitutions": [
+          "代入：$\\frac{4\\pi \\left(0.05\\,\\mathrm{m}\\right)^2}{(ka)^2}\\sum_{n=0}^{\\infty}(2n+1)|j_n'(ka)/h_n^{(2)\\prime}(ka)|^2$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$5000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；pa：$1\\,\\mathrm{Pa}$",
+          "代入：$I_i\\sigma_s,\\quad I_i=\\left(1\\,\\mathrm{Pa}\\right)^2/(2\\rho_0\\left(1500\\,\\mathrm{m/s}\\right))$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$5000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；pa：$1\\,\\mathrm{Pa}$"
+        ],
+        "figure": "总散射声功率 = 9.312×10⁻¹⁰ W",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "5.3",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　长软圆柱的后向散射回波",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "pressure": 0.07814986370739273,
+          "intensity": 2.035800399161353e-9
+        },
+        "substitutions": [
+          "代入：$|P_s|\\simeq \\left(1\\,\\mathrm{Pa}\\right)\\sqrt{\\frac{2}{\\pi kr}}|C(\\theta)|$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$5000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；pa：$1\\,\\mathrm{Pa}$；r：$5\\,\\mathrm{m}$；theta：$180\\,\\mathrm{deg}$",
+          "代入：$|P_s|^2/(2\\rho_0\\left(1500\\,\\mathrm{m/s}\\right))$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$5000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；pa：$1\\,\\mathrm{Pa}$；r：$5\\,\\mathrm{m}$；theta：$180\\,\\mathrm{deg}$"
+        ],
+        "figure": "后向平均散射声强 = 2.036×10⁻⁹ W/m²",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "6.1",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　宽带水听器的尺寸上限",
+        "editableGivens": 2,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "coefficient": 0.9223508241308513,
+          "maximumRadius": 0.0017008763348909945
+        },
+        "substitutions": [
+          "代入：$1/\\sqrt{1+(ka)^2}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$20000\\,\\mathrm{Hz}$；a：$0.005\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；criterion：$0.99$",
+          "代入：$\\frac{\\left(1500\\,\\mathrm{m/s}\\right)}{2\\pi \\left(20000\\,\\mathrm{Hz}\\right)}\\sqrt{\\gamma_{\\min}^{-2}-1}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$20000\\,\\mathrm{Hz}$；a：$0.005\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；criterion：$0.99$"
+        ],
+        "figure": "圆球压力系数模值 = 0.9224",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "6.2",
+    "case": "#/cases?project=measurement",
+    "examples": [
+      {
+        "title": "例题　水池中交换收发位置的互易校验",
+        "editableGivens": 4,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "distance": 3.6055512754639896,
+          "pressure": 1.3867504905630728
+        },
+        "substitutions": [
+          "代入：$\\sqrt{(\\left(3\\,\\mathrm{m}\\right)-\\left(0\\,\\mathrm{m}\\right))^2+(\\left(2\\,\\mathrm{m}\\right)-\\left(0\\,\\mathrm{m}\\right))^2}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；xB：$3\\,\\mathrm{m}$；yB：$2\\,\\mathrm{m}$；Q：$0.00001\\,\\mathrm{m^3/s}$",
+          "代入：$|P_A|=\\frac{\\left(1000\\,\\mathrm{kg/m^3}\\right) \\left(1000\\,\\mathrm{Hz}\\right) \\left(0.00001\\,\\mathrm{m^3/s}\\right)}{2\\left(3.606\\,\\mathrm{m}\\right)},\\quad \\left(0.00001\\,\\mathrm{m^3/s}\\right)_A=\\left(0.00001\\,\\mathrm{m^3/s}\\right)_B=\\left(0.00001\\,\\mathrm{m^3/s}\\right)$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；xB：$3\\,\\mathrm{m}$；yB：$2\\,\\mathrm{m}$；Q：$0.00001\\,\\mathrm{m^3/s}$"
+        ],
+        "figure": "交换前后声压峰值 = 1.387 Pa",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "7.1",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　一千米水声链路的扩展与吸收预算",
+        "editableGivens": 2,
+        "gradedQuestions": 3,
+        "hints": 2,
+        "answers": {
+          "dbPerM": 0.0008685889638065036,
+          "loss": 60.8685889638065,
+          "pressure": 0.0009048374180359595
+        },
+        "substitutions": [
+          "代入：$20\\alpha/\\ln10$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$500\\,\\mathrm{Hz}$；pa：$1\\,\\mathrm{Pa}$；alpha：$0.0001\\,\\mathrm{Np/m}$；r：$1000\\,\\mathrm{m}$",
+          "代入：$20\\lg(\\left(1000\\right)/\\left(1000\\right)_0)+\\alpha'\\left(1000\\right),\\quad \\left(1000\\right)_0=1\\ \\mathrm m$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$500\\,\\mathrm{Hz}$；pa：$1\\,\\mathrm{Pa}$；alpha：$0.0001\\,\\mathrm{Np/m}$；r：$1000\\,\\mathrm{m}$",
+          "代入：$\\left(1\\,\\mathrm{Pa}\\right)(\\left(1000\\right)_0/\\left(1000\\right))e^{-\\alpha \\left(1000\\right)}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$500\\,\\mathrm{Hz}$；pa：$1\\,\\mathrm{Pa}$；alpha：$0.0001\\,\\mathrm{Np/m}$；r：$1000\\,\\mathrm{m}$"
+        ],
+        "figure": "总传播损失 = 60.87 dB",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "7.2",
+    "case": "#/cases?project=ocean",
+    "examples": [
+      {
+        "title": "例题　五十千赫声呐的一千米接收预算",
+        "editableGivens": 2,
+        "gradedQuestions": 3,
+        "hints": 2,
+        "answers": {
+          "absorption": 17.467122684259632,
+          "absorbed": 17.467122684259632,
+          "receivedLevel": 102.53287731574036
+        },
+        "substitutions": [
+          "代入：$0.11\\frac{F^2}{1+F^2}+44\\frac{F^2}{4100+F^2}+2.75\\times10^{-4}F^2+0.003$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；relaxTime：$0.00002\\,\\mathrm{s}$；A：$1\\times10^{-8}\\,\\mathrm{s/m}$；B：$5\\times10^{-15}\\,\\mathrm{s^2/m}$；r：$1000\\,\\mathrm{m}$；SL：$180\\,\\mathrm{dB}$",
+          "代入：$\\left(17.47\\,\\mathrm{dB/km}\\right) \\left(1000\\,\\mathrm{m}\\right)_{\\mathrm{km}}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；relaxTime：$0.00002\\,\\mathrm{s}$；A：$1\\times10^{-8}\\,\\mathrm{s/m}$；B：$5\\times10^{-15}\\,\\mathrm{s^2/m}$；r：$1000\\,\\mathrm{m}$；SL：$180\\,\\mathrm{dB}$",
+          "代入：$\\left(180\\right)-20\\lg(\\left(1000\\,\\mathrm{m}\\right)/\\left(1000\\,\\mathrm{m}\\right)_0)-\\left(17.47\\,\\mathrm{dB/km}\\right) \\left(1000\\,\\mathrm{m}\\right)_{\\mathrm{km}}$。rho：$1000\\,\\mathrm{kg/m^3}$；c：$1500\\,\\mathrm{m/s}$；f：$50000\\,\\mathrm{Hz}$；a：$0.05\\,\\mathrm{m}$；v：$0.01\\,\\mathrm{m/s}$；relaxTime：$0.00002\\,\\mathrm{s}$；A：$1\\times10^{-8}\\,\\mathrm{s/m}$；B：$5\\times10^{-15}\\,\\mathrm{s^2/m}$；r：$1000\\,\\mathrm{m}$；SL：$180\\,\\mathrm{dB}$"
+        ],
+        "figure": "接收声压级 = 102.5 dB",
+        "matlabModel": true
+      }
+    ]
+  },
+  {
+    "lecture": "7.3",
+    "case": "#/cases?project=building",
+    "examples": [
+      {
+        "title": "例题　五厘米空气多孔吸声层的阻抗匹配",
+        "editableGivens": 3,
+        "gradedQuestions": 2,
+        "hints": 2,
+        "answers": {
+          "reflection": 0.33926186279244236,
+          "absorption": 0.8849013884546021
+        },
+        "substitutions": [
+          "代入：$([(0.6542+j(-0.4698))\\times415\\,\\mathrm{Pa\\cdot s/m}]-\\rho_0\\left(343\\,\\mathrm{m/s}\\right))/([(0.6542+j(-0.4698))\\times415\\,\\mathrm{Pa\\cdot s/m}]+\\rho_0\\left(343\\,\\mathrm{m/s}\\right))$。rho：$1.21\\,\\mathrm{kg/m^3}$；c：$343\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；res：$1$；react：$0$；d：$0.05\\,\\mathrm{m}$；sigma：$10000\\,\\mathrm{Pa\\cdot s/m^2}$",
+          "代入：$1-|\\left(0.3393\\right)|^2$。rho：$1.21\\,\\mathrm{kg/m^3}$；c：$343\\,\\mathrm{m/s}$；f：$1000\\,\\mathrm{Hz}$；res：$1$；react：$0$；d：$0.05\\,\\mathrm{m}$；sigma：$10000\\,\\mathrm{Pa\\cdot s/m^2}$"
+        ],
+        "figure": "正入射吸声系数 = 0.8849",
+        "matlabModel": true
+      }
+    ]
+  }
+]

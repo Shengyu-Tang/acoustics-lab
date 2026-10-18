@@ -13,13 +13,27 @@ const audit = all.lectures.map((l) => ({
       answers: Object.fromEntries(
         e.asks.map((a) => [a.key, a.calc ? a.calc(e.defaults) : e.solve(e.defaults)[a.key]]),
       ),
-      substitutions: e.asks.map((a) => a.sub?.(e.defaults)),
-      figure: e.plot?.(e.defaults).title,
-      matlabModel: Boolean(e.plot?.(e.defaults).matlabModel),
+      substitutions: l.defaults ? e.asks.map((a) => a.sub(e.defaults)) : undefined,
+      stepsSource: l.defaults
+        ? undefined
+        : l.id === "1.2.4"
+          ? "src/InstrumentExample.tsx"
+          : "src/BandwidthExample.tsx",
+      figure: (
+        e.plot?.(e.defaults) ??
+        (l.id === "1.2.4" ? all.instrumentPanel(e.defaults) : all.bandwidthPanel(e.defaults))
+      ).title,
+      matlabModel: Boolean(
+        (
+          e.plot?.(e.defaults) ??
+          (l.id === "1.2.4" ? all.instrumentPanel(e.defaults) : all.bandwidthPanel(e.defaults))
+        ).matlabModel,
+      ),
     }),
   ),
 }));
 fs.writeFileSync("outputs/P5/lecture-audit.json", JSON.stringify(audit, null, 2));
+fs.writeFileSync("specs/redesign/P5-lecture-audit.json", JSON.stringify(audit, null, 2) + "\n");
 console.log(
   JSON.stringify(
     {

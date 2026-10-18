@@ -1,0 +1,162 @@
+{
+  "parameters": 70,
+  "figures": [
+    {
+      "case": "ocean",
+      "figure": 1,
+      "xlim": [
+        10000,
+        80000
+      ],
+      "ylim": [
+        0,
+        125
+      ],
+      "title": "选定频率（无可行方案填 0） = 5×10⁴ Hz"
+    },
+    {
+      "case": "building",
+      "figure": 1,
+      "xlim": [
+        500,
+        2000
+      ],
+      "ylim": [
+        0.4,
+        1.2
+      ],
+      "title": "最薄合格厚度（无解填 0） = 0.057 m"
+    },
+    {
+      "case": "industry",
+      "figure": 1,
+      "xlim": [
+        20,
+        60
+      ],
+      "ylim": [
+        -1,
+        4
+      ],
+      "title": "候选刚度的位移幅值 = 0.1404 mm"
+    },
+    {
+      "case": "ultrasound",
+      "figure": 1,
+      "xlim": [
+        0,
+        0.08
+      ],
+      "ylim": [
+        0,
+        0.02
+      ],
+      "title": "高频探头的轴向分辨长度 = 0.00118 m"
+    },
+    {
+      "case": "music",
+      "figure": 1,
+      "xlim": [
+        0,
+        5
+      ],
+      "ylim": [
+        -200,
+        0
+      ],
+      "title": "候选处理后的衰减 60 dB 时间 = 1.999 s"
+    },
+    {
+      "case": "music",
+      "figure": 2,
+      "xlim": [
+        200,
+        500
+      ],
+      "ylim": [
+        0,
+        200
+      ],
+      "title": "目标基频与允许张力的联合校核"
+    },
+    {
+      "case": "measurement",
+      "figure": 1,
+      "xlim": [
+        100,
+        20000
+      ],
+      "ylim": [
+        -1,
+        5
+      ],
+      "title": "现有接收器的幅值损失 = 1.445 dB"
+    },
+    {
+      "case": "transport",
+      "figure": 1,
+      "xlim": [
+        -200,
+        200
+      ],
+      "ylim": [
+        -60,
+        60
+      ],
+      "title": "接近位置的多普勒频移 = 42.1 Hz"
+    },
+    {
+      "case": "duct",
+      "figure": 1,
+      "xlim": [
+        0,
+        2
+      ],
+      "ylim": [
+        0.6,
+        1.4
+      ],
+      "title": "终端声压反射系数模值 = 0.3313"
+    },
+    {
+      "case": "duct",
+      "figure": 2,
+      "xlim": [
+        200,
+        2000
+      ],
+      "ylim": [
+        0,
+        400
+      ],
+      "title": "第一高阶群速度与截止裕量"
+    },
+    {
+      "case": "grin-lens",
+      "figure": 1,
+      "xlim": [
+        0,
+        0.4
+      ],
+      "ylim": [
+        -0.1,
+        0.1
+      ],
+      "title": "边缘声线的交轴距离 = 0.1835 m"
+    },
+    {
+      "case": "grin-lens",
+      "figure": 2,
+      "xlim": [
+        30000,
+        100000
+      ],
+      "ylim": [
+        10,
+        60
+      ],
+      "title": "孔径波束宽度与频率选择"
+    }
+  ],
+  "failures": []
+}

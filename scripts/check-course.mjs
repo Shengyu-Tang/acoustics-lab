@@ -44,8 +44,10 @@ for (const name of ["CourseTree.tsx", "KnowledgeGraph.tsx"])
   );
 for (const t of topics) {
   assert.ok(cases[t.model], t.id + " missing case");
+  const design = projectData.find((p) => p.id === cases[t.model]);
+  assert.ok(design, t.id + " graded integrated case route");
   for (const field of ["title", "background", "mapping", "challenge"])
-    assert.ok(cases[t.model][field]?.length > 8, t.id + " " + field);
+    assert.ok(design[field]?.length > 8, t.id + " " + field);
   assert.ok(models[t.model]);
 }
 for (const [k, m] of Object.entries(models)) {

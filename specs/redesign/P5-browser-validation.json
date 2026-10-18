@@ -1,0 +1,167 @@
+{
+  "report": [
+    {
+      "case": "ocean",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 5,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "building",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 4,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "industry",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 7,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "ultrasound",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "music",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 2,
+      "passed": true
+    },
+    {
+      "case": "measurement",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "transport",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "grin-lens",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 2,
+      "passed": true
+    },
+    {
+      "case": "ocean",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 5,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "building",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 4,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "industry",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 7,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "ultrasound",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "music",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 2,
+      "passed": true
+    },
+    {
+      "case": "measurement",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "transport",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 1,
+      "passed": true
+    },
+    {
+      "case": "grin-lens",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 2,
+      "passed": true
+    },
+    {
+      "case": "duct",
+      "size": "desktop",
+      "width": 1440,
+      "height": 900,
+      "questions": 6,
+      "figures": 2,
+      "passed": true
+    },
+    {
+      "case": "duct",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "questions": 6,
+      "figures": 2,
+      "passed": true
+    }
+  ],
+  "errors": []
+}

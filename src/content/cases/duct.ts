@@ -142,7 +142,10 @@ export default problem({
         ],
         responseNote: `截止频率 ${fmt(cutoff(p))} Hz；所选高度 ${fmt(height(p))} m；诊断群速度 ${fmt(cg(p, p.testF, 1))} m/s。`,
       },
-      { annotations: ["1+rp", "1-rp"] },
+      {
+        annotations: ["1+rp", "1-rp"],
+        annotationLabels: ["sprintf('波腹声压 %.4g Pa',1+rp)", "sprintf('波节声压 %.4g Pa',1-rp)"],
+      },
     );
   },
   additionalPlots: (p) => [

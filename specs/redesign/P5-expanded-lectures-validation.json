@@ -1,0 +1,1111 @@
+{
+  "report": [
+    {
+      "lecture": "1.1.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.5",
+      "width": 1440,
+      "height": 900,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 5,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.5",
+      "width": 1440,
+      "height": 900,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "2.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "2.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "2.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "2.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.5",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.6",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.7",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.8",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.5",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.2.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.2.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.3.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.3.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.3.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.5",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.6",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.5.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.5.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.10",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.11",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.12",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.5",
+      "width": 1440,
+      "height": 900,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.6",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.7",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.8",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.9",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.7.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.7.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.5",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.9.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.9.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.9.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.2.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.2.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "4.2.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.4",
+      "width": 1440,
+      "height": 900,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "5.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "5.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "5.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "6.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "6.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "7.1",
+      "width": 1440,
+      "height": 900,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "7.2",
+      "width": 1440,
+      "height": 900,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "7.3",
+      "width": 1440,
+      "height": 900,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.2",
+      "width": 390,
+      "height": 844,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.4",
+      "width": 390,
+      "height": 844,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "1.1.5",
+      "width": 390,
+      "height": 844,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.4",
+      "width": 390,
+      "height": 844,
+      "asks": 5,
+      "passed": true
+    },
+    {
+      "lecture": "1.2.5",
+      "width": 390,
+      "height": 844,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "2.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "2.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "2.3",
+      "width": 390,
+      "height": 844,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "2.4",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.4",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.5",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.6",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.7",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.1.8",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.4",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.10.5",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.2.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.2.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.3.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.3.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.3.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.4",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.5",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.4.6",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.5.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.5.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.10",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.11",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.12",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.4",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.5",
+      "width": 390,
+      "height": 844,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.6",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.7",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.8",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.6.9",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.7.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.7.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.4",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.8.5",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.9.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.9.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "3.9.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.2.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.2.2",
+      "width": 390,
+      "height": 844,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "4.2.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.3",
+      "width": 390,
+      "height": 844,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "4.4.4",
+      "width": 390,
+      "height": 844,
+      "asks": 4,
+      "passed": true
+    },
+    {
+      "lecture": "5.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "5.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "5.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "6.1",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "6.2",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    },
+    {
+      "lecture": "7.1",
+      "width": 390,
+      "height": 844,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "7.2",
+      "width": 390,
+      "height": 844,
+      "asks": 3,
+      "passed": true
+    },
+    {
+      "lecture": "7.3",
+      "width": 390,
+      "height": 844,
+      "asks": 2,
+      "passed": true
+    }
+  ],
+  "errors": []
+}
