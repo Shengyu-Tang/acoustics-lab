@@ -1,0 +1,27 @@
+Running 26 scripts; 3 isolated MATLAB workers, one process per script.
+PASS fig_1_1_1_E1_set1 
+PASS fig_1_1_1_E1_set0 
+PASS fig_1_1_4_E1_set0 
+PASS fig_2_3_E1_set1 
+PASS fig_2_3_E1_set0 
+PASS fig_1_1_4_E1_set1 
+PASS fig_3_10_1_E1_set0 
+PASS fig_3_10_1_E1_set1 
+PASS fig_3_10_3_E1_set0 
+PASS fig_3_10_3_E1_set1 
+FAIL fig_3_10_4_E1_set1 panel 0 series 2 y finite
+FAIL fig_3_10_4_E1_set0 panel 0 series 2 y finite
+PASS fig_ocean_set0 
+PASS fig_building_set0 
+PASS fig_ocean_set1 
+PASS fig_building_set1 
+PASS fig_transport_set0 
+PASS fig_transport_set1 
+PASS fig_2_3_1_set0 
+PASS fig_2_3_1_set1 
+PASS fig_3_3_2_1_set0 
+PASS fig_3_3_2_1_set1 
+PASS fig_3_3_2_2_set0 
+PASS fig_3_3_2_2_set1 
+PASS fig_6_2_1_set0 
+PASS fig_6_2_1_set1 

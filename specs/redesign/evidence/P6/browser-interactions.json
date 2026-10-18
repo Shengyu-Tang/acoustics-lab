@@ -1,0 +1,81 @@
+{
+  "measurements": [
+    {
+      "name": "home",
+      "size": "desktop",
+      "viewport": 1440,
+      "scroll": 1440,
+      "header": 56
+    },
+    {
+      "name": "lecture-1.2.4",
+      "size": "desktop",
+      "viewport": 1440,
+      "scroll": 1440,
+      "header": 56
+    },
+    {
+      "name": "lecture-1.2.5",
+      "size": "desktop",
+      "viewport": 1440,
+      "scroll": 1440,
+      "header": 56
+    },
+    {
+      "name": "plot-demo",
+      "size": "desktop",
+      "viewport": 1440,
+      "scroll": 1440,
+      "header": 56
+    },
+    {
+      "name": "home",
+      "size": "mobile",
+      "viewport": 390,
+      "scroll": 390,
+      "header": 56
+    },
+    {
+      "name": "lecture-1.2.4",
+      "size": "mobile",
+      "viewport": 390,
+      "scroll": 390,
+      "header": 56
+    },
+    {
+      "name": "lecture-1.2.5",
+      "size": "mobile",
+      "viewport": 390,
+      "scroll": 390,
+      "header": 56
+    },
+    {
+      "name": "plot-demo",
+      "size": "mobile",
+      "viewport": 390,
+      "scroll": 390,
+      "header": 56
+    }
+  ],
+  "errors": [],
+  "lectures": 82,
+  "checks": [
+    "parameters",
+    "bounds",
+    "Q overlay",
+    "grading",
+    "two hints",
+    "reactive solution",
+    "PNG/CSV/MATLAB downloads",
+    "print",
+    "all lecture routes",
+    "fixed screen font sizes and nonoverlapping horizontal annotations",
+    "mobile formula scrolling and separate equation numbers",
+    "distinct power/bandwidth exercise grading, hints and reactive solution",
+    "160×80 smoothly interpolated legacy field",
+    "completed-lecture thumbnails only",
+    "all lecture document titles",
+    "polish control dimensions, inline actions, breadcrumbs, export links and shared footer",
+    "eight default-state viewport screenshots"
+  ]
+}

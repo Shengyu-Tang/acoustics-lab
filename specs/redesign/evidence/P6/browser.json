@@ -1,0 +1,6147 @@
+{
+  "results": [
+    {
+      "name": "home",
+      "hash": "#/",
+      "width": 1440,
+      "screenshot": "screenshots/P6/home-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 52,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "calendar",
+      "hash": "#/calendar",
+      "width": 1440,
+      "screenshot": "screenshots/P6/calendar-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 135,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "teacher",
+      "hash": "#/about",
+      "width": 1440,
+      "screenshot": "screenshots/P6/teacher-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 11,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "feedback",
+      "hash": "#/feedback",
+      "width": 1440,
+      "screenshot": "screenshots/P6/feedback-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 10,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "mind-map",
+      "hash": "#/map",
+      "width": 1440,
+      "screenshot": "screenshots/P6/mind-map-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 22,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "knowledge-graph",
+      "hash": "#/map",
+      "width": 1440,
+      "screenshot": "screenshots/P6/knowledge-graph-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 26,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "plot-demo",
+      "hash": "#/plot-demo",
+      "width": 1440,
+      "screenshot": "screenshots/P6/plot-demo-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 39,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "compare-layer",
+      "hash": "#/compare?experiment=layer",
+      "width": 1440,
+      "screenshot": "screenshots/P6/compare-layer-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 28,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "compare-array",
+      "hash": "#/compare?experiment=array",
+      "width": 1440,
+      "screenshot": "screenshots/P6/compare-array-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 28,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "compare-duct",
+      "hash": "#/compare?experiment=duct",
+      "width": 1440,
+      "screenshot": "screenshots/P6/compare-duct-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 31,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "cases",
+      "hash": "#/cases",
+      "width": 1440,
+      "screenshot": "screenshots/P6/cases-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-ocean",
+      "hash": "#/cases?project=ocean",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-ocean-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-building",
+      "hash": "#/cases?project=building",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-building-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-industry",
+      "hash": "#/cases?project=industry",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-industry-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-ultrasound",
+      "hash": "#/cases?project=ultrasound",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-ultrasound-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 46,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-music",
+      "hash": "#/cases?project=music",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-music-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 44,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-measurement",
+      "hash": "#/cases?project=measurement",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-measurement-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 39,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-transport",
+      "hash": "#/cases?project=transport",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-transport-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-duct",
+      "hash": "#/cases?project=duct",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-duct-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-grin-lens",
+      "hash": "#/cases?project=grin-lens",
+      "width": 1440,
+      "screenshot": "screenshots/P6/case-grin-lens-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 46,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.1",
+      "hash": "#/lab?topic=1.1.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.1.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 63,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.2",
+      "hash": "#/lab?topic=1.1.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.1.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 67,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.3",
+      "hash": "#/lab?topic=1.1.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.1.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 62,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.4",
+      "hash": "#/lab?topic=1.1.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.1.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 65,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.5",
+      "hash": "#/lab?topic=1.1.5",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.1.5-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 58,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.1",
+      "hash": "#/lab?topic=1.2.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.2.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 64,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.2",
+      "hash": "#/lab?topic=1.2.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.2.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 62,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.3",
+      "hash": "#/lab?topic=1.2.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.2.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 71,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.4",
+      "hash": "#/lab?topic=1.2.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.2.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 72,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.5",
+      "hash": "#/lab?topic=1.2.5",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-1.2.5-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 66,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.1",
+      "hash": "#/lab?topic=2.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-2.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 62,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.2",
+      "hash": "#/lab?topic=2.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-2.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 69,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.3",
+      "hash": "#/lab?topic=2.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-2.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 71,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.4",
+      "hash": "#/lab?topic=2.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-2.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 60,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.1",
+      "hash": "#/lab?topic=3.1.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 103,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.2",
+      "hash": "#/lab?topic=3.1.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 99,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.3",
+      "hash": "#/lab?topic=3.1.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 113,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.4",
+      "hash": "#/lab?topic=3.1.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 108,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.5",
+      "hash": "#/lab?topic=3.1.5",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.5-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.6",
+      "hash": "#/lab?topic=3.1.6",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.6-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 98,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.7",
+      "hash": "#/lab?topic=3.1.7",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.7-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 99,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.8",
+      "hash": "#/lab?topic=3.1.8",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.1.8-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 105,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.2.1",
+      "hash": "#/lab?topic=3.2.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.2.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 102,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.2.2",
+      "hash": "#/lab?topic=3.2.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.2.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 104,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.3.1",
+      "hash": "#/lab?topic=3.3.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.3.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 102,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.3.2",
+      "hash": "#/lab?topic=3.3.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.3.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 104,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.3.3",
+      "hash": "#/lab?topic=3.3.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.3.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 99,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.1",
+      "hash": "#/lab?topic=3.4.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.4.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 108,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.2",
+      "hash": "#/lab?topic=3.4.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.4.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 102,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.3",
+      "hash": "#/lab?topic=3.4.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.4.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 109,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.4",
+      "hash": "#/lab?topic=3.4.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.4.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.5",
+      "hash": "#/lab?topic=3.4.5",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.4.5-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 104,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.6",
+      "hash": "#/lab?topic=3.4.6",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.4.6-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 114,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.5.1",
+      "hash": "#/lab?topic=3.5.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.5.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 102,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.5.2",
+      "hash": "#/lab?topic=3.5.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.5.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 116,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.1",
+      "hash": "#/lab?topic=3.6.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 102,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.2",
+      "hash": "#/lab?topic=3.6.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.3",
+      "hash": "#/lab?topic=3.6.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 95,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.4",
+      "hash": "#/lab?topic=3.6.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 100,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.5",
+      "hash": "#/lab?topic=3.6.5",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.5-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 97,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.6",
+      "hash": "#/lab?topic=3.6.6",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.6-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 106,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.7",
+      "hash": "#/lab?topic=3.6.7",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.7-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.8",
+      "hash": "#/lab?topic=3.6.8",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.8-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 108,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.9",
+      "hash": "#/lab?topic=3.6.9",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.9-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 91,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.10",
+      "hash": "#/lab?topic=3.6.10",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.10-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.11",
+      "hash": "#/lab?topic=3.6.11",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.11-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 99,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.12",
+      "hash": "#/lab?topic=3.6.12",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.6.12-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 105,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.7.1",
+      "hash": "#/lab?topic=3.7.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.7.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 103,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.7.2",
+      "hash": "#/lab?topic=3.7.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.7.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 110,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.1",
+      "hash": "#/lab?topic=3.8.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.8.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 106,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.2",
+      "hash": "#/lab?topic=3.8.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.8.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 104,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.3",
+      "hash": "#/lab?topic=3.8.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.8.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 95,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.4",
+      "hash": "#/lab?topic=3.8.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.8.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 104,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.5",
+      "hash": "#/lab?topic=3.8.5",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.8.5-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 111,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.9.1",
+      "hash": "#/lab?topic=3.9.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.9.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 90,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.9.2",
+      "hash": "#/lab?topic=3.9.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.9.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.9.3",
+      "hash": "#/lab?topic=3.9.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.9.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.1",
+      "hash": "#/lab?topic=3.10.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.10.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 90,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.2",
+      "hash": "#/lab?topic=3.10.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.10.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 117,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.3",
+      "hash": "#/lab?topic=3.10.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.10.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 107,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.4",
+      "hash": "#/lab?topic=3.10.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.10.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 99,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.5",
+      "hash": "#/lab?topic=3.10.5",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.10.5-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 108,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.1",
+      "hash": "#/lab?topic=4.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 64,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.2.1",
+      "hash": "#/lab?topic=4.2.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.2.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 62,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.2.2",
+      "hash": "#/lab?topic=4.2.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.2.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 62,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.2.3",
+      "hash": "#/lab?topic=4.2.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.2.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 60,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.3",
+      "hash": "#/lab?topic=4.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 64,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.1",
+      "hash": "#/lab?topic=4.4.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.4.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 56,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.2",
+      "hash": "#/lab?topic=4.4.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.4.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 54,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.3",
+      "hash": "#/lab?topic=4.4.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.4.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 57,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.4",
+      "hash": "#/lab?topic=4.4.4",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-4.4.4-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 59,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-5.1",
+      "hash": "#/lab?topic=5.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-5.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 50,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-5.2",
+      "hash": "#/lab?topic=5.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-5.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 50,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-5.3",
+      "hash": "#/lab?topic=5.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-5.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 51,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-6.1",
+      "hash": "#/lab?topic=6.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-6.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 50,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-6.2",
+      "hash": "#/lab?topic=6.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-6.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 55,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-7.1",
+      "hash": "#/lab?topic=7.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-7.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 58,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-7.2",
+      "hash": "#/lab?topic=7.2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-7.2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 56,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-7.3",
+      "hash": "#/lab?topic=7.3",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-7.3-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 62,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.S1",
+      "hash": "#/lab?topic=3.S1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.S1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 85,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.S2",
+      "hash": "#/lab?topic=3.S2",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-3.S2-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 84,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-8.1",
+      "hash": "#/lab?topic=8.1",
+      "width": 1440,
+      "screenshot": "screenshots/P6/lecture-8.1-1440.jpg",
+      "scrollWidth": 1440,
+      "controls": 36,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "home",
+      "hash": "#/",
+      "width": 390,
+      "screenshot": "screenshots/P6/home-390.jpg",
+      "scrollWidth": 390,
+      "controls": 48,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "calendar",
+      "hash": "#/calendar",
+      "width": 390,
+      "screenshot": "screenshots/P6/calendar-390.jpg",
+      "scrollWidth": 390,
+      "controls": 131,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "teacher",
+      "hash": "#/about",
+      "width": 390,
+      "screenshot": "screenshots/P6/teacher-390.jpg",
+      "scrollWidth": 390,
+      "controls": 7,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "feedback",
+      "hash": "#/feedback",
+      "width": 390,
+      "screenshot": "screenshots/P6/feedback-390.jpg",
+      "scrollWidth": 390,
+      "controls": 6,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "mind-map",
+      "hash": "#/map",
+      "width": 390,
+      "screenshot": "screenshots/P6/mind-map-390.jpg",
+      "scrollWidth": 390,
+      "controls": 18,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "knowledge-graph",
+      "hash": "#/map",
+      "width": 390,
+      "screenshot": "screenshots/P6/knowledge-graph-390.jpg",
+      "scrollWidth": 390,
+      "controls": 22,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "plot-demo",
+      "hash": "#/plot-demo",
+      "width": 390,
+      "screenshot": "screenshots/P6/plot-demo-390.jpg",
+      "scrollWidth": 390,
+      "controls": 35,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "compare-layer",
+      "hash": "#/compare?experiment=layer",
+      "width": 390,
+      "screenshot": "screenshots/P6/compare-layer-390.jpg",
+      "scrollWidth": 390,
+      "controls": 24,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "compare-array",
+      "hash": "#/compare?experiment=array",
+      "width": 390,
+      "screenshot": "screenshots/P6/compare-array-390.jpg",
+      "scrollWidth": 390,
+      "controls": 24,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "compare-duct",
+      "hash": "#/compare?experiment=duct",
+      "width": 390,
+      "screenshot": "screenshots/P6/compare-duct-390.jpg",
+      "scrollWidth": 390,
+      "controls": 27,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "cases",
+      "hash": "#/cases",
+      "width": 390,
+      "screenshot": "screenshots/P6/cases-390.jpg",
+      "scrollWidth": 390,
+      "controls": 38,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-ocean",
+      "hash": "#/cases?project=ocean",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-ocean-390.jpg",
+      "scrollWidth": 390,
+      "controls": 38,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-building",
+      "hash": "#/cases?project=building",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-building-390.jpg",
+      "scrollWidth": 390,
+      "controls": 36,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-industry",
+      "hash": "#/cases?project=industry",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-industry-390.jpg",
+      "scrollWidth": 390,
+      "controls": 38,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-ultrasound",
+      "hash": "#/cases?project=ultrasound",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-ultrasound-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-music",
+      "hash": "#/cases?project=music",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-music-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-measurement",
+      "hash": "#/cases?project=measurement",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-measurement-390.jpg",
+      "scrollWidth": 390,
+      "controls": 35,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-transport",
+      "hash": "#/cases?project=transport",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-transport-390.jpg",
+      "scrollWidth": 390,
+      "controls": 38,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-duct",
+      "hash": "#/cases?project=duct",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-duct-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "case-grin-lens",
+      "hash": "#/cases?project=grin-lens",
+      "width": 390,
+      "screenshot": "screenshots/P6/case-grin-lens-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.1",
+      "hash": "#/lab?topic=1.1.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.1.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.2",
+      "hash": "#/lab?topic=1.1.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.1.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.3",
+      "hash": "#/lab?topic=1.1.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.1.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.4",
+      "hash": "#/lab?topic=1.1.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.1.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 43,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.1.5",
+      "hash": "#/lab?topic=1.1.5",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.1.5-390.jpg",
+      "scrollWidth": 390,
+      "controls": 36,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.1",
+      "hash": "#/lab?topic=1.2.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.2.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.2",
+      "hash": "#/lab?topic=1.2.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.2.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.3",
+      "hash": "#/lab?topic=1.2.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.2.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 49,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.4",
+      "hash": "#/lab?topic=1.2.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.2.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 50,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-1.2.5",
+      "hash": "#/lab?topic=1.2.5",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-1.2.5-390.jpg",
+      "scrollWidth": 390,
+      "controls": 44,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.1",
+      "hash": "#/lab?topic=2.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-2.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 46,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.2",
+      "hash": "#/lab?topic=2.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-2.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 53,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.3",
+      "hash": "#/lab?topic=2.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-2.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 55,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-2.4",
+      "hash": "#/lab?topic=2.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-2.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 44,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.1",
+      "hash": "#/lab?topic=3.1.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.2",
+      "hash": "#/lab?topic=3.1.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 37,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.3",
+      "hash": "#/lab?topic=3.1.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 51,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.4",
+      "hash": "#/lab?topic=3.1.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 46,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.5",
+      "hash": "#/lab?topic=3.1.5",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.5-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.6",
+      "hash": "#/lab?topic=3.1.6",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.6-390.jpg",
+      "scrollWidth": 390,
+      "controls": 36,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.7",
+      "hash": "#/lab?topic=3.1.7",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.7-390.jpg",
+      "scrollWidth": 390,
+      "controls": 37,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.1.8",
+      "hash": "#/lab?topic=3.1.8",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.1.8-390.jpg",
+      "scrollWidth": 390,
+      "controls": 43,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.2.1",
+      "hash": "#/lab?topic=3.2.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.2.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.2.2",
+      "hash": "#/lab?topic=3.2.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.2.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.3.1",
+      "hash": "#/lab?topic=3.3.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.3.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.3.2",
+      "hash": "#/lab?topic=3.3.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.3.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.3.3",
+      "hash": "#/lab?topic=3.3.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.3.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 37,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.1",
+      "hash": "#/lab?topic=3.4.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.4.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 46,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.2",
+      "hash": "#/lab?topic=3.4.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.4.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.3",
+      "hash": "#/lab?topic=3.4.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.4.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 47,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.4",
+      "hash": "#/lab?topic=3.4.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.4.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.5",
+      "hash": "#/lab?topic=3.4.5",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.4.5-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.4.6",
+      "hash": "#/lab?topic=3.4.6",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.4.6-390.jpg",
+      "scrollWidth": 390,
+      "controls": 52,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.5.1",
+      "hash": "#/lab?topic=3.5.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.5.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.5.2",
+      "hash": "#/lab?topic=3.5.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.5.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 54,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.1",
+      "hash": "#/lab?topic=3.6.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 40,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.2",
+      "hash": "#/lab?topic=3.6.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.3",
+      "hash": "#/lab?topic=3.6.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 33,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.4",
+      "hash": "#/lab?topic=3.6.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 38,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.5",
+      "hash": "#/lab?topic=3.6.5",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.5-390.jpg",
+      "scrollWidth": 390,
+      "controls": 35,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.6",
+      "hash": "#/lab?topic=3.6.6",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.6-390.jpg",
+      "scrollWidth": 390,
+      "controls": 44,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.7",
+      "hash": "#/lab?topic=3.6.7",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.7-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.8",
+      "hash": "#/lab?topic=3.6.8",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.8-390.jpg",
+      "scrollWidth": 390,
+      "controls": 46,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.9",
+      "hash": "#/lab?topic=3.6.9",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.9-390.jpg",
+      "scrollWidth": 390,
+      "controls": 29,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.10",
+      "hash": "#/lab?topic=3.6.10",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.10-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.11",
+      "hash": "#/lab?topic=3.6.11",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.11-390.jpg",
+      "scrollWidth": 390,
+      "controls": 37,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.6.12",
+      "hash": "#/lab?topic=3.6.12",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.6.12-390.jpg",
+      "scrollWidth": 390,
+      "controls": 43,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.7.1",
+      "hash": "#/lab?topic=3.7.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.7.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.7.2",
+      "hash": "#/lab?topic=3.7.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.7.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 48,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.1",
+      "hash": "#/lab?topic=3.8.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.8.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 44,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.2",
+      "hash": "#/lab?topic=3.8.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.8.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.3",
+      "hash": "#/lab?topic=3.8.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.8.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 33,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.4",
+      "hash": "#/lab?topic=3.8.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.8.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 42,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.8.5",
+      "hash": "#/lab?topic=3.8.5",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.8.5-390.jpg",
+      "scrollWidth": 390,
+      "controls": 49,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.9.1",
+      "hash": "#/lab?topic=3.9.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.9.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 28,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.9.2",
+      "hash": "#/lab?topic=3.9.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.9.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.9.3",
+      "hash": "#/lab?topic=3.9.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.9.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.1",
+      "hash": "#/lab?topic=3.10.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.10.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 28,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.2",
+      "hash": "#/lab?topic=3.10.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.10.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 55,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.3",
+      "hash": "#/lab?topic=3.10.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.10.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 45,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.4",
+      "hash": "#/lab?topic=3.10.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.10.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 37,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.10.5",
+      "hash": "#/lab?topic=3.10.5",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.10.5-390.jpg",
+      "scrollWidth": 390,
+      "controls": 46,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.1",
+      "hash": "#/lab?topic=4.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 43,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.2.1",
+      "hash": "#/lab?topic=4.2.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.2.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.2.2",
+      "hash": "#/lab?topic=4.2.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.2.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.2.3",
+      "hash": "#/lab?topic=4.2.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.2.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 39,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.3",
+      "hash": "#/lab?topic=4.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 43,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.1",
+      "hash": "#/lab?topic=4.4.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.4.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 35,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.2",
+      "hash": "#/lab?topic=4.4.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.4.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 33,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.3",
+      "hash": "#/lab?topic=4.4.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.4.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 36,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-4.4.4",
+      "hash": "#/lab?topic=4.4.4",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-4.4.4-390.jpg",
+      "scrollWidth": 390,
+      "controls": 38,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-5.1",
+      "hash": "#/lab?topic=5.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-5.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 35,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-5.2",
+      "hash": "#/lab?topic=5.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-5.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 35,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-5.3",
+      "hash": "#/lab?topic=5.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-5.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 36,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-6.1",
+      "hash": "#/lab?topic=6.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-6.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 36,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-6.2",
+      "hash": "#/lab?topic=6.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-6.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-7.1",
+      "hash": "#/lab?topic=7.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-7.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 43,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-7.2",
+      "hash": "#/lab?topic=7.2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-7.2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 41,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-7.3",
+      "hash": "#/lab?topic=7.3",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-7.3-390.jpg",
+      "scrollWidth": 390,
+      "controls": 47,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.S1",
+      "hash": "#/lab?topic=3.S1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.S1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 23,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-3.S2",
+      "hash": "#/lab?topic=3.S2",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-3.S2-390.jpg",
+      "scrollWidth": 390,
+      "controls": 22,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    },
+    {
+      "name": "lecture-8.1",
+      "hash": "#/lab?topic=8.1",
+      "width": 390,
+      "screenshot": "screenshots/P6/lecture-8.1-390.jpg",
+      "scrollWidth": 390,
+      "controls": 23,
+      "small": 0,
+      "overlaps": 0,
+      "decorations": 0
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "resourceReview": [
+    {
+      "name": "home",
+      "width": 1440,
+      "js": [
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "calendar",
+      "width": 1440,
+      "js": [
+        {
+          "file": "Calendar-CdlPvoxH.js",
+          "bytes": 3405
+        },
+        {
+          "file": "calendar-C2V_jN4J.js",
+          "bytes": 22541
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "teacher",
+      "width": 1440,
+      "js": [
+        {
+          "file": "About-CjFLKDff.js",
+          "bytes": 2458
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "feedback",
+      "width": 1440,
+      "js": [
+        {
+          "file": "Feedback-qLY5BKBt.js",
+          "bytes": 1232
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "mind-map",
+      "width": 1440,
+      "js": [
+        {
+          "file": "MindMap-86wj9oaN.js",
+          "bytes": 5866
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "atlas-gY7Xb-qd.js",
+          "bytes": 9796
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "knowledge-graph",
+      "width": 1440,
+      "js": [
+        {
+          "file": "KnowledgeGraph-BfO28Im5.js",
+          "bytes": 14167
+        },
+        {
+          "file": "Formula-B7kApH_K.js",
+          "bytes": 5662
+        },
+        {
+          "file": "katex-CYxd_6QP.js",
+          "bytes": 259085
+        },
+        {
+          "file": "physics-CH1QNpUS.js",
+          "bytes": 33970
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "plot-demo",
+      "width": 1440,
+      "js": [
+        {
+          "file": "PlotDemo-6W2apDvg.js",
+          "bytes": 2767
+        },
+        {
+          "file": "Figure-COU_wUrL.js",
+          "bytes": 48584
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "compare-layer",
+      "width": 1440,
+      "js": [
+        {
+          "file": "Comparisons-Bx9pHR0x.js",
+          "bytes": 11680
+        },
+        {
+          "file": "ComparisonScene-CJlvqROy.js",
+          "bytes": 4921
+        },
+        {
+          "file": "OrbitControls-CtbltYEP.js",
+          "bytes": 566803
+        }
+      ],
+      "fonts": [
+        "/current/assets/KaTeX_Math-Italic-t53AETM-.woff2",
+        "/current/assets/KaTeX_Main-Regular-B22Nviop.woff2"
+      ]
+    },
+    {
+      "name": "compare-array",
+      "width": 1440,
+      "js": [],
+      "fonts": [
+        "/current/assets/KaTeX_AMS-Regular-BQhdFMY1.woff2",
+        "/current/assets/KaTeX_Size2-Regular-Dy4dx90m.woff2"
+      ]
+    },
+    {
+      "name": "compare-duct",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "cases",
+      "width": 1440,
+      "js": [
+        {
+          "file": "Projects-Bkps6Rxu.js",
+          "bytes": 45227
+        },
+        {
+          "file": "EngineeringCase-B-5yZ9HM.js",
+          "bytes": 41567
+        },
+        {
+          "file": "p2-CEltD24H.js",
+          "bytes": 2643
+        },
+        {
+          "file": "chapter4-y06Eq1yI.js",
+          "bytes": 7802
+        },
+        {
+          "file": "physicalExample-1XcEEEaT.js",
+          "bytes": 1330
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "case-ocean",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-building",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-industry",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-ultrasound",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-music",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-measurement",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-transport",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-duct",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-grin-lens",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "Lab-J57c0Z5K.js",
+          "bytes": 60476
+        },
+        {
+          "file": "fieldPhysics-0QN0-hZO.js",
+          "bytes": 3640
+        },
+        {
+          "file": "1.1.1-C7rvQFTo.js",
+          "bytes": 3819
+        },
+        {
+          "file": "calculationSteps-Dhfkjhlf.js",
+          "bytes": 2243
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "1.1.2-BlTaZHEW.js",
+          "bytes": 4463
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "1.1.3-CbMxcZV_.js",
+          "bytes": 4113
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "1.1.4-BRBZqr9B.js",
+          "bytes": 4388
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.5",
+      "width": 1440,
+      "js": [
+        {
+          "file": "1.1.5-DgLi3ho4.js",
+          "bytes": 4772
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "1.2.1-YzKfv9bz.js",
+          "bytes": 4603
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "1.2.2-CNMs-psH.js",
+          "bytes": 4312
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "1.2.3-Cr65vosa.js",
+          "bytes": 5481
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.4",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.5",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "2.1-CnzQDj30.js",
+          "bytes": 5420
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "2.2-BcQCjTc5.js",
+          "bytes": 6139
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "2.3-DMNwSorC.js",
+          "bytes": 6903
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "2.4-BDC2n6Fk.js",
+          "bytes": 5358
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.1-EsCm6m6Y.js",
+          "bytes": 3853
+        },
+        {
+          "file": "p2Examples-CM0AxKsQ.js",
+          "bytes": 11272
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.2-WRkchGDD.js",
+          "bytes": 4398
+        },
+        {
+          "file": "chapter3-DvH-xYT6.js",
+          "bytes": 1468
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.3-Cc2uwfZz.js",
+          "bytes": 6194
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.4-Dwo98SEh.js",
+          "bytes": 3718
+        },
+        {
+          "file": "p2Diagrams-JRLy1rWU.js",
+          "bytes": 2742
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.5",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.5-tbHp0OPP.js",
+          "bytes": 3539
+        }
+      ],
+      "fonts": [
+        "/current/assets/KaTeX_Main-Bold-Cx986IdX.woff2"
+      ]
+    },
+    {
+      "name": "lecture-3.1.6",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.6-HYQmmht-.js",
+          "bytes": 3753
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.7",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.7-JJaIgzL8.js",
+          "bytes": 4505
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.8",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.1.8-Be33k8pW.js",
+          "bytes": 3741
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.2.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.2.1-DGuVPbO_.js",
+          "bytes": 5140
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.2.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.2.2-BtwFWTSo.js",
+          "bytes": 3822
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.3.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.3.1-CpLSO515.js",
+          "bytes": 3433
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.3.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.3.2-BYjMipQG.js",
+          "bytes": 3576
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.3.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.3.3-Dywu1YKe.js",
+          "bytes": 3761
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.4.1-CpmpApH6.js",
+          "bytes": 3503
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.4.2-CV0_HnxN.js",
+          "bytes": 3504
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.4.3-BJj-AN7z.js",
+          "bytes": 3617
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.4.4-Dewb5UM4.js",
+          "bytes": 4145
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.5",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.4.5-DXKrvb8y.js",
+          "bytes": 4043
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.6",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.4.6-BCX_X5CX.js",
+          "bytes": 5123
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.5.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.5.1-C7obOe9-.js",
+          "bytes": 4196
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.5.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.5.2-DCkydEPV.js",
+          "bytes": 5586
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.1-CiPeUOV9.js",
+          "bytes": 2715
+        },
+        {
+          "file": "p3-hD8p2rv-.js",
+          "bytes": 1183
+        },
+        {
+          "file": "p3Examples-9fXouav0.js",
+          "bytes": 18443
+        },
+        {
+          "file": "p3Interfaces-DoY9fMgK.js",
+          "bytes": 10026
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.2-CqaAFH5L.js",
+          "bytes": 2801
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.3-DheNmljf.js",
+          "bytes": 2539
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.4-DfiG0-R2.js",
+          "bytes": 3093
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.5",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.5-Ciq4j1xy.js",
+          "bytes": 2957
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.6",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.6-DhOl-Sbs.js",
+          "bytes": 2601
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.7",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.7-Ds1QSOO0.js",
+          "bytes": 2819
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.8",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.8-DFF036Zc.js",
+          "bytes": 3258
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.9",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.9-C3ZE8Nqs.js",
+          "bytes": 3341
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.10",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.10-DlVNXOnl.js",
+          "bytes": 2822
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.11",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.11-mSBkX6fj.js",
+          "bytes": 3158
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.12",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.6.12-CKrqKAPC.js",
+          "bytes": 3111
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.7.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.7.1-Cw9Sidlm.js",
+          "bytes": 3037
+        },
+        {
+          "file": "p3Surface-CEAkJyyX.js",
+          "bytes": 2327
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.7.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.7.2-CvsdKcDb.js",
+          "bytes": 4466
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.8.1-EGQO3oYs.js",
+          "bytes": 2896
+        },
+        {
+          "file": "p3Radial-vOxeRWj2.js",
+          "bytes": 6166
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.8.2-Cm4LovYP.js",
+          "bytes": 3089
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.8.3-22fBUmBg.js",
+          "bytes": 2544
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.8.4-DA1N6nzt.js",
+          "bytes": 2942
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.5",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.8.5-D4PMqGZ9.js",
+          "bytes": 3800
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.9.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.9.1-BIpToarF.js",
+          "bytes": 2641
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.9.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.9.2-Cp40kLGg.js",
+          "bytes": 3183
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.9.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.9.3-DHWxhpJF.js",
+          "bytes": 3399
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.10.1-DJdZVsI1.js",
+          "bytes": 2549
+        },
+        {
+          "file": "p3Guide-C6__XmlS.js",
+          "bytes": 6666
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.10.2-BftNM29U.js",
+          "bytes": 3208
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.10.3-CuX1cCkz.js",
+          "bytes": 3024
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.10.4-CE6NN6Vo.js",
+          "bytes": 2669
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.5",
+      "width": 1440,
+      "js": [
+        {
+          "file": "3.10.5-BhFUZqPz.js",
+          "bytes": 3381
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.1-C_2sjDjV.js",
+          "bytes": 6368
+        },
+        {
+          "file": "p4-Be6F7PVZ.js",
+          "bytes": 2452
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.2.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.2.1-CT-4hR1w.js",
+          "bytes": 4547
+        },
+        {
+          "file": "p4Fields-ny1ksOTR.js",
+          "bytes": 846
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.2.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.2.2-Bkv8bwsB.js",
+          "bytes": 4627
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.2.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.2.3-BBZWgaFM.js",
+          "bytes": 3540
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.3-Co2kFb3B.js",
+          "bytes": 5696
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.4.1-BalBmZer.js",
+          "bytes": 4567
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.4.2-yufcb4fq.js",
+          "bytes": 4228
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.4.3-C11bzayj.js",
+          "bytes": 4746
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.4",
+      "width": 1440,
+      "js": [
+        {
+          "file": "4.4.4-adkSiZxe.js",
+          "bytes": 5363
+        }
+      ],
+      "fonts": [
+        "/current/assets/KaTeX_Size1-Regular-mCD8mA8B.woff2"
+      ]
+    },
+    {
+      "name": "lecture-5.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "5.1-C8ewkKIV.js",
+          "bytes": 4064
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-5.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "5.2-CzDTNYe4.js",
+          "bytes": 4709
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-5.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "5.3-Cq330tPe.js",
+          "bytes": 4123
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-6.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "6.1-Bxh-0hmr.js",
+          "bytes": 4780
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-6.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "6.2-DTYJ1xYb.js",
+          "bytes": 5168
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-7.1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "7.1-lOReFpzK.js",
+          "bytes": 4366
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-7.2",
+      "width": 1440,
+      "js": [
+        {
+          "file": "7.2-Cn-id-Cy.js",
+          "bytes": 4817
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-7.3",
+      "width": 1440,
+      "js": [
+        {
+          "file": "7.3-ILvyKdBD.js",
+          "bytes": 7080
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.S1",
+      "width": 1440,
+      "js": [
+        {
+          "file": "Scene3D-BqMdYonf.js",
+          "bytes": 18092
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.S2",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-8.1",
+      "width": 1440,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "js": [
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "calendar",
+      "width": 390,
+      "js": [
+        {
+          "file": "Calendar-CdlPvoxH.js",
+          "bytes": 3405
+        },
+        {
+          "file": "calendar-C2V_jN4J.js",
+          "bytes": 22541
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "teacher",
+      "width": 390,
+      "js": [
+        {
+          "file": "About-CjFLKDff.js",
+          "bytes": 2458
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "feedback",
+      "width": 390,
+      "js": [
+        {
+          "file": "Feedback-qLY5BKBt.js",
+          "bytes": 1232
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "mind-map",
+      "width": 390,
+      "js": [
+        {
+          "file": "MindMap-86wj9oaN.js",
+          "bytes": 5866
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "atlas-gY7Xb-qd.js",
+          "bytes": 9796
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "knowledge-graph",
+      "width": 390,
+      "js": [
+        {
+          "file": "KnowledgeGraph-BfO28Im5.js",
+          "bytes": 14167
+        },
+        {
+          "file": "Formula-B7kApH_K.js",
+          "bytes": 5662
+        },
+        {
+          "file": "physics-CH1QNpUS.js",
+          "bytes": 33970
+        },
+        {
+          "file": "katex-CYxd_6QP.js",
+          "bytes": 259085
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "plot-demo",
+      "width": 390,
+      "js": [
+        {
+          "file": "PlotDemo-6W2apDvg.js",
+          "bytes": 2767
+        },
+        {
+          "file": "Figure-COU_wUrL.js",
+          "bytes": 48584
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "compare-layer",
+      "width": 390,
+      "js": [
+        {
+          "file": "Comparisons-Bx9pHR0x.js",
+          "bytes": 11680
+        },
+        {
+          "file": "ComparisonScene-CJlvqROy.js",
+          "bytes": 4921
+        },
+        {
+          "file": "OrbitControls-CtbltYEP.js",
+          "bytes": 566803
+        }
+      ],
+      "fonts": [
+        "/current/assets/KaTeX_Math-Italic-t53AETM-.woff2",
+        "/current/assets/KaTeX_Main-Regular-B22Nviop.woff2"
+      ]
+    },
+    {
+      "name": "compare-array",
+      "width": 390,
+      "js": [],
+      "fonts": [
+        "/current/assets/KaTeX_AMS-Regular-BQhdFMY1.woff2",
+        "/current/assets/KaTeX_Size2-Regular-Dy4dx90m.woff2"
+      ]
+    },
+    {
+      "name": "compare-duct",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "cases",
+      "width": 390,
+      "js": [
+        {
+          "file": "Projects-Bkps6Rxu.js",
+          "bytes": 45227
+        },
+        {
+          "file": "EngineeringCase-B-5yZ9HM.js",
+          "bytes": 41567
+        },
+        {
+          "file": "p2-CEltD24H.js",
+          "bytes": 2643
+        },
+        {
+          "file": "chapter4-y06Eq1yI.js",
+          "bytes": 7802
+        },
+        {
+          "file": "physicalExample-1XcEEEaT.js",
+          "bytes": 1330
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "case-ocean",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-building",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-industry",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-ultrasound",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-music",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-measurement",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-transport",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-duct",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "case-grin-lens",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "Lab-J57c0Z5K.js",
+          "bytes": 60476
+        },
+        {
+          "file": "fieldPhysics-0QN0-hZO.js",
+          "bytes": 3640
+        },
+        {
+          "file": "1.1.1-C7rvQFTo.js",
+          "bytes": 3819
+        },
+        {
+          "file": "calculationSteps-Dhfkjhlf.js",
+          "bytes": 2243
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "1.1.2-BlTaZHEW.js",
+          "bytes": 4463
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "1.1.3-CbMxcZV_.js",
+          "bytes": 4113
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "1.1.4-BRBZqr9B.js",
+          "bytes": 4388
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.1.5",
+      "width": 390,
+      "js": [
+        {
+          "file": "1.1.5-DgLi3ho4.js",
+          "bytes": 4772
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "1.2.1-YzKfv9bz.js",
+          "bytes": 4603
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "1.2.2-CNMs-psH.js",
+          "bytes": 4312
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "1.2.3-Cr65vosa.js",
+          "bytes": 5481
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.4",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-1.2.5",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "2.1-CnzQDj30.js",
+          "bytes": 5420
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "2.2-BcQCjTc5.js",
+          "bytes": 6139
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "2.3-DMNwSorC.js",
+          "bytes": 6903
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-2.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "2.4-BDC2n6Fk.js",
+          "bytes": 5358
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.1-EsCm6m6Y.js",
+          "bytes": 3853
+        },
+        {
+          "file": "p2Examples-CM0AxKsQ.js",
+          "bytes": 11272
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.2-WRkchGDD.js",
+          "bytes": 4398
+        },
+        {
+          "file": "chapter3-DvH-xYT6.js",
+          "bytes": 1468
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.3-Cc2uwfZz.js",
+          "bytes": 6194
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.4-Dwo98SEh.js",
+          "bytes": 3718
+        },
+        {
+          "file": "p2Diagrams-JRLy1rWU.js",
+          "bytes": 2742
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.5",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.5-tbHp0OPP.js",
+          "bytes": 3539
+        }
+      ],
+      "fonts": [
+        "/current/assets/KaTeX_Main-Bold-Cx986IdX.woff2"
+      ]
+    },
+    {
+      "name": "lecture-3.1.6",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.6-HYQmmht-.js",
+          "bytes": 3753
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.7",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.7-JJaIgzL8.js",
+          "bytes": 4505
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.1.8",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.1.8-Be33k8pW.js",
+          "bytes": 3741
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.2.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.2.1-DGuVPbO_.js",
+          "bytes": 5140
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.2.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.2.2-BtwFWTSo.js",
+          "bytes": 3822
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.3.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.3.1-CpLSO515.js",
+          "bytes": 3433
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.3.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.3.2-BYjMipQG.js",
+          "bytes": 3576
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.3.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.3.3-Dywu1YKe.js",
+          "bytes": 3761
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.4.1-CpmpApH6.js",
+          "bytes": 3503
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.4.2-CV0_HnxN.js",
+          "bytes": 3504
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.4.3-BJj-AN7z.js",
+          "bytes": 3617
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.4.4-Dewb5UM4.js",
+          "bytes": 4145
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.5",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.4.5-DXKrvb8y.js",
+          "bytes": 4043
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.4.6",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.4.6-BCX_X5CX.js",
+          "bytes": 5123
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.5.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.5.1-C7obOe9-.js",
+          "bytes": 4196
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.5.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.5.2-DCkydEPV.js",
+          "bytes": 5586
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.1-CiPeUOV9.js",
+          "bytes": 2715
+        },
+        {
+          "file": "p3-hD8p2rv-.js",
+          "bytes": 1183
+        },
+        {
+          "file": "p3Examples-9fXouav0.js",
+          "bytes": 18443
+        },
+        {
+          "file": "p3Interfaces-DoY9fMgK.js",
+          "bytes": 10026
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.2-CqaAFH5L.js",
+          "bytes": 2801
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.3-DheNmljf.js",
+          "bytes": 2539
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.4-DfiG0-R2.js",
+          "bytes": 3093
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.5",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.5-Ciq4j1xy.js",
+          "bytes": 2957
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.6",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.6-DhOl-Sbs.js",
+          "bytes": 2601
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.7",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.7-Ds1QSOO0.js",
+          "bytes": 2819
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.8",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.8-DFF036Zc.js",
+          "bytes": 3258
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.9",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.9-C3ZE8Nqs.js",
+          "bytes": 3341
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.10",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.10-DlVNXOnl.js",
+          "bytes": 2822
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.11",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.11-mSBkX6fj.js",
+          "bytes": 3158
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.6.12",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.6.12-CKrqKAPC.js",
+          "bytes": 3111
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.7.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.7.1-Cw9Sidlm.js",
+          "bytes": 3037
+        },
+        {
+          "file": "p3Surface-CEAkJyyX.js",
+          "bytes": 2327
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.7.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.7.2-CvsdKcDb.js",
+          "bytes": 4466
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.8.1-EGQO3oYs.js",
+          "bytes": 2896
+        },
+        {
+          "file": "p3Radial-vOxeRWj2.js",
+          "bytes": 6166
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.8.2-Cm4LovYP.js",
+          "bytes": 3089
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.8.3-22fBUmBg.js",
+          "bytes": 2544
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.8.4-DA1N6nzt.js",
+          "bytes": 2942
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.8.5",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.8.5-D4PMqGZ9.js",
+          "bytes": 3800
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.9.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.9.1-BIpToarF.js",
+          "bytes": 2641
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.9.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.9.2-Cp40kLGg.js",
+          "bytes": 3183
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.9.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.9.3-DHWxhpJF.js",
+          "bytes": 3399
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.10.1-DJdZVsI1.js",
+          "bytes": 2549
+        },
+        {
+          "file": "p3Guide-C6__XmlS.js",
+          "bytes": 6666
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.10.2-BftNM29U.js",
+          "bytes": 3208
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.10.3-CuX1cCkz.js",
+          "bytes": 3024
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.10.4-CE6NN6Vo.js",
+          "bytes": 2669
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.10.5",
+      "width": 390,
+      "js": [
+        {
+          "file": "3.10.5-BhFUZqPz.js",
+          "bytes": 3381
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.1-C_2sjDjV.js",
+          "bytes": 6368
+        },
+        {
+          "file": "p4-Be6F7PVZ.js",
+          "bytes": 2452
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.2.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.2.1-CT-4hR1w.js",
+          "bytes": 4547
+        },
+        {
+          "file": "p4Fields-ny1ksOTR.js",
+          "bytes": 846
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.2.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.2.2-Bkv8bwsB.js",
+          "bytes": 4627
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.2.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.2.3-BBZWgaFM.js",
+          "bytes": 3540
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.3-Co2kFb3B.js",
+          "bytes": 5696
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.4.1-BalBmZer.js",
+          "bytes": 4567
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.4.2-yufcb4fq.js",
+          "bytes": 4228
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.4.3-C11bzayj.js",
+          "bytes": 4746
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-4.4.4",
+      "width": 390,
+      "js": [
+        {
+          "file": "4.4.4-adkSiZxe.js",
+          "bytes": 5363
+        }
+      ],
+      "fonts": [
+        "/current/assets/KaTeX_Size1-Regular-mCD8mA8B.woff2"
+      ]
+    },
+    {
+      "name": "lecture-5.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "5.1-C8ewkKIV.js",
+          "bytes": 4064
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-5.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "5.2-CzDTNYe4.js",
+          "bytes": 4709
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-5.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "5.3-Cq330tPe.js",
+          "bytes": 4123
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-6.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "6.1-Bxh-0hmr.js",
+          "bytes": 4780
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-6.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "6.2-DTYJ1xYb.js",
+          "bytes": 5168
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-7.1",
+      "width": 390,
+      "js": [
+        {
+          "file": "7.1-lOReFpzK.js",
+          "bytes": 4366
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-7.2",
+      "width": 390,
+      "js": [
+        {
+          "file": "7.2-Cn-id-Cy.js",
+          "bytes": 4817
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-7.3",
+      "width": 390,
+      "js": [
+        {
+          "file": "7.3-ILvyKdBD.js",
+          "bytes": 7080
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.S1",
+      "width": 390,
+      "js": [
+        {
+          "file": "Scene3D-BqMdYonf.js",
+          "bytes": 18092
+        }
+      ],
+      "fonts": []
+    },
+    {
+      "name": "lecture-3.S2",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "lecture-8.1",
+      "width": 390,
+      "js": [],
+      "fonts": []
+    },
+    {
+      "name": "home",
+      "target": "baseline",
+      "width": 1440,
+      "totalBytes": 434477,
+      "jsBytes": 211941,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "1.1.1.svg",
+          "bytes": 732
+        },
+        {
+          "file": "1.1.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.1.3.svg",
+          "bytes": 1875
+        },
+        {
+          "file": "1.1.4.svg",
+          "bytes": 1881
+        },
+        {
+          "file": "1.1.5.svg",
+          "bytes": 4026
+        },
+        {
+          "file": "1.2.1.svg",
+          "bytes": 764
+        },
+        {
+          "file": "1.2.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.2.3.svg",
+          "bytes": 1881
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "1.2.4.svg",
+          "bytes": 757
+        },
+        {
+          "file": "1.2.5.svg",
+          "bytes": 764
+        },
+        {
+          "file": "2.1.svg",
+          "bytes": 1521
+        },
+        {
+          "file": "2.2.svg",
+          "bytes": 987
+        },
+        {
+          "file": "2.3.svg",
+          "bytes": 823
+        },
+        {
+          "file": "2.4.svg",
+          "bytes": 1134
+        },
+        {
+          "file": "3.1.1.svg",
+          "bytes": 4017
+        },
+        {
+          "file": "3.1.2.svg",
+          "bytes": 522
+        },
+        {
+          "file": "3.1.3.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.1.4.svg",
+          "bytes": 1415
+        },
+        {
+          "file": "3.1.5.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.1.6.svg",
+          "bytes": 1525
+        },
+        {
+          "file": "3.1.7.svg",
+          "bytes": 1637
+        },
+        {
+          "file": "3.1.8.svg",
+          "bytes": 1980
+        },
+        {
+          "file": "3.2.1.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.2.2.svg",
+          "bytes": 805
+        },
+        {
+          "file": "3.3.1.svg",
+          "bytes": 1980
+        },
+        {
+          "file": "3.3.2.svg",
+          "bytes": 1415
+        },
+        {
+          "file": "3.3.3.svg",
+          "bytes": 1391
+        },
+        {
+          "file": "3.4.1.svg",
+          "bytes": 1983
+        },
+        {
+          "file": "3.4.2.svg",
+          "bytes": 805
+        },
+        {
+          "file": "3.4.3.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.4.4.svg",
+          "bytes": 806
+        },
+        {
+          "file": "3.4.5.svg",
+          "bytes": 805
+        },
+        {
+          "file": "3.4.6.svg",
+          "bytes": 746
+        },
+        {
+          "file": "3.5.1.svg",
+          "bytes": 116245
+        },
+        {
+          "file": "3.5.2.svg",
+          "bytes": 832
+        },
+        {
+          "file": "3.6.1.svg",
+          "bytes": 720
+        },
+        {
+          "file": "3.6.2.svg",
+          "bytes": 2423
+        }
+      ]
+    },
+    {
+      "name": "lecture-1.1.1",
+      "target": "baseline",
+      "width": 1440,
+      "totalBytes": 1220753,
+      "jsBytes": 1092377,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "katex.min-BWOnLaxM.js",
+          "bytes": 35768
+        },
+        {
+          "file": "calendar-DHTu7VL0.js",
+          "bytes": 22541
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "Lab-BI8MPiPj.js",
+          "bytes": 405048
+        },
+        {
+          "file": "Comparisons-CWPqRnol.js",
+          "bytes": 48082
+        },
+        {
+          "file": "physicalExample-Br73cysj.js",
+          "bytes": 52336
+        },
+        {
+          "file": "Formula-D6U3X5dY.js",
+          "bytes": 5663
+        },
+        {
+          "file": "fieldPhysics-CdzSlS7U.js",
+          "bytes": 3649
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "Figure-D2A3eZGy.js",
+          "bytes": 307349
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "lecture-3.6.3",
+      "target": "baseline",
+      "width": 1440,
+      "totalBytes": 1220753,
+      "jsBytes": 1092377,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "katex.min-BWOnLaxM.js",
+          "bytes": 35768
+        },
+        {
+          "file": "Comparisons-CWPqRnol.js",
+          "bytes": 48082
+        },
+        {
+          "file": "Lab-BI8MPiPj.js",
+          "bytes": 405048
+        },
+        {
+          "file": "physicalExample-Br73cysj.js",
+          "bytes": 52336
+        },
+        {
+          "file": "calendar-DHTu7VL0.js",
+          "bytes": 22541
+        },
+        {
+          "file": "Figure-D2A3eZGy.js",
+          "bytes": 307349
+        },
+        {
+          "file": "Formula-D6U3X5dY.js",
+          "bytes": 5663
+        },
+        {
+          "file": "fieldPhysics-CdzSlS7U.js",
+          "bytes": 3649
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "teacher",
+      "target": "baseline",
+      "width": 1440,
+      "totalBytes": 529671,
+      "jsBytes": 215779,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "About-DOMqt0iT.js",
+          "bytes": 3838
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "profile-photo-D4vNzakj.jpg",
+          "bytes": 257671
+        }
+      ]
+    },
+    {
+      "name": "mind-map",
+      "target": "baseline",
+      "width": 1440,
+      "totalBytes": 723519,
+      "jsBytes": 637855,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "MindMap-DH4lVeIL.js",
+          "bytes": 29052
+        },
+        {
+          "file": "katex.min-BWOnLaxM.js",
+          "bytes": 35768
+        },
+        {
+          "file": "Comparisons-CWPqRnol.js",
+          "bytes": 48082
+        },
+        {
+          "file": "Formula-D6U3X5dY.js",
+          "bytes": 5663
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "Figure-D2A3eZGy.js",
+          "bytes": 307349
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "target": "baseline",
+      "width": 390,
+      "totalBytes": 431334,
+      "jsBytes": 211941,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "1.1.1.svg",
+          "bytes": 732
+        },
+        {
+          "file": "1.1.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.1.3.svg",
+          "bytes": 1875
+        },
+        {
+          "file": "1.1.4.svg",
+          "bytes": 1881
+        },
+        {
+          "file": "1.1.5.svg",
+          "bytes": 4026
+        },
+        {
+          "file": "1.2.1.svg",
+          "bytes": 764
+        },
+        {
+          "file": "1.2.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.2.3.svg",
+          "bytes": 1881
+        },
+        {
+          "file": "1.2.4.svg",
+          "bytes": 757
+        },
+        {
+          "file": "1.2.5.svg",
+          "bytes": 764
+        },
+        {
+          "file": "2.1.svg",
+          "bytes": 1521
+        },
+        {
+          "file": "2.2.svg",
+          "bytes": 987
+        },
+        {
+          "file": "2.3.svg",
+          "bytes": 823
+        },
+        {
+          "file": "2.4.svg",
+          "bytes": 1134
+        },
+        {
+          "file": "3.1.1.svg",
+          "bytes": 4017
+        },
+        {
+          "file": "3.1.2.svg",
+          "bytes": 522
+        },
+        {
+          "file": "3.1.3.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.1.4.svg",
+          "bytes": 1415
+        },
+        {
+          "file": "3.1.5.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.1.6.svg",
+          "bytes": 1525
+        },
+        {
+          "file": "3.1.7.svg",
+          "bytes": 1637
+        },
+        {
+          "file": "3.1.8.svg",
+          "bytes": 1980
+        },
+        {
+          "file": "3.2.1.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.2.2.svg",
+          "bytes": 805
+        },
+        {
+          "file": "3.3.1.svg",
+          "bytes": 1980
+        },
+        {
+          "file": "3.3.2.svg",
+          "bytes": 1415
+        },
+        {
+          "file": "3.3.3.svg",
+          "bytes": 1391
+        },
+        {
+          "file": "3.4.1.svg",
+          "bytes": 1983
+        },
+        {
+          "file": "3.4.2.svg",
+          "bytes": 805
+        },
+        {
+          "file": "3.4.3.svg",
+          "bytes": 1394
+        },
+        {
+          "file": "3.4.4.svg",
+          "bytes": 806
+        },
+        {
+          "file": "3.4.5.svg",
+          "bytes": 805
+        },
+        {
+          "file": "3.4.6.svg",
+          "bytes": 746
+        },
+        {
+          "file": "3.5.1.svg",
+          "bytes": 116245
+        },
+        {
+          "file": "3.5.2.svg",
+          "bytes": 832
+        }
+      ]
+    },
+    {
+      "name": "lecture-1.1.1",
+      "target": "baseline",
+      "width": 390,
+      "totalBytes": 1220753,
+      "jsBytes": 1092377,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "katex.min-BWOnLaxM.js",
+          "bytes": 35768
+        },
+        {
+          "file": "Comparisons-CWPqRnol.js",
+          "bytes": 48082
+        },
+        {
+          "file": "Lab-BI8MPiPj.js",
+          "bytes": 405048
+        },
+        {
+          "file": "physicalExample-Br73cysj.js",
+          "bytes": 52336
+        },
+        {
+          "file": "calendar-DHTu7VL0.js",
+          "bytes": 22541
+        },
+        {
+          "file": "Formula-D6U3X5dY.js",
+          "bytes": 5663
+        },
+        {
+          "file": "Figure-D2A3eZGy.js",
+          "bytes": 307349
+        },
+        {
+          "file": "fieldPhysics-CdzSlS7U.js",
+          "bytes": 3649
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "lecture-3.6.3",
+      "target": "baseline",
+      "width": 390,
+      "totalBytes": 1220753,
+      "jsBytes": 1092377,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "katex.min-BWOnLaxM.js",
+          "bytes": 35768
+        },
+        {
+          "file": "Lab-BI8MPiPj.js",
+          "bytes": 405048
+        },
+        {
+          "file": "Comparisons-CWPqRnol.js",
+          "bytes": 48082
+        },
+        {
+          "file": "physicalExample-Br73cysj.js",
+          "bytes": 52336
+        },
+        {
+          "file": "calendar-DHTu7VL0.js",
+          "bytes": 22541
+        },
+        {
+          "file": "Formula-D6U3X5dY.js",
+          "bytes": 5663
+        },
+        {
+          "file": "Figure-D2A3eZGy.js",
+          "bytes": 307349
+        },
+        {
+          "file": "fieldPhysics-CdzSlS7U.js",
+          "bytes": 3649
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "teacher",
+      "target": "baseline",
+      "width": 390,
+      "totalBytes": 529671,
+      "jsBytes": 215779,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "About-DOMqt0iT.js",
+          "bytes": 3838
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "profile-photo-D4vNzakj.jpg",
+          "bytes": 257671
+        }
+      ]
+    },
+    {
+      "name": "mind-map",
+      "target": "baseline",
+      "width": 390,
+      "totalBytes": 723519,
+      "jsBytes": 637855,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-WwlErAis.css",
+          "bytes": 56001
+        },
+        {
+          "file": "index-BL8jWUc9.js",
+          "bytes": 211941
+        },
+        {
+          "file": "MindMap-DH4lVeIL.js",
+          "bytes": 29052
+        },
+        {
+          "file": "katex.min-BWOnLaxM.js",
+          "bytes": 35768
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "Comparisons-CWPqRnol.js",
+          "bytes": 48082
+        },
+        {
+          "file": "Formula-D6U3X5dY.js",
+          "bytes": 5663
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "Figure-D2A3eZGy.js",
+          "bytes": 307349
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "target": "current",
+      "width": 1440,
+      "totalBytes": 304334,
+      "jsBytes": 203663,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "1.1.1.svg",
+          "bytes": 731
+        },
+        {
+          "file": "1.1.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.2.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.1.3.svg",
+          "bytes": 1872
+        },
+        {
+          "file": "1.1.4.svg",
+          "bytes": 1877
+        },
+        {
+          "file": "1.1.5.svg",
+          "bytes": 4585
+        },
+        {
+          "file": "1.2.1.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.2.3.svg",
+          "bytes": 1820
+        },
+        {
+          "file": "1.2.4.svg",
+          "bytes": 764
+        },
+        {
+          "file": "1.2.5.svg",
+          "bytes": 889
+        },
+        {
+          "file": "2.1.svg",
+          "bytes": 1469
+        },
+        {
+          "file": "2.2.svg",
+          "bytes": 982
+        },
+        {
+          "file": "2.3.svg",
+          "bytes": 971
+        },
+        {
+          "file": "2.4.svg",
+          "bytes": 1129
+        },
+        {
+          "file": "4.1.svg",
+          "bytes": 3210
+        },
+        {
+          "file": "4.2.1.svg",
+          "bytes": 1921
+        },
+        {
+          "file": "4.2.2.svg",
+          "bytes": 1553
+        },
+        {
+          "file": "4.2.3.svg",
+          "bytes": 2784
+        },
+        {
+          "file": "4.3.svg",
+          "bytes": 1599
+        },
+        {
+          "file": "4.4.1.svg",
+          "bytes": 1117
+        },
+        {
+          "file": "4.4.2.svg",
+          "bytes": 2121
+        },
+        {
+          "file": "4.4.3.svg",
+          "bytes": 1189
+        },
+        {
+          "file": "4.4.4.svg",
+          "bytes": 1373
+        },
+        {
+          "file": "5.1.svg",
+          "bytes": 1121
+        },
+        {
+          "file": "5.2.svg",
+          "bytes": 762
+        },
+        {
+          "file": "5.3.svg",
+          "bytes": 762
+        }
+      ]
+    },
+    {
+      "name": "lecture-1.1.1",
+      "target": "current",
+      "width": 1440,
+      "totalBytes": 851706,
+      "jsBytes": 717794,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "Lab-J57c0Z5K.js",
+          "bytes": 60476
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "EngineeringCase-B-5yZ9HM.js",
+          "bytes": 41567
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "Figure-COU_wUrL.js",
+          "bytes": 48584
+        },
+        {
+          "file": "katex-CYxd_6QP.js",
+          "bytes": 259085
+        },
+        {
+          "file": "Formula-B7kApH_K.js",
+          "bytes": 5662
+        },
+        {
+          "file": "fieldPhysics-0QN0-hZO.js",
+          "bytes": 3640
+        },
+        {
+          "file": "physics-CH1QNpUS.js",
+          "bytes": 33970
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "1.1.1-C7rvQFTo.js",
+          "bytes": 3819
+        },
+        {
+          "file": "calculationSteps-Dhfkjhlf.js",
+          "bytes": 2243
+        },
+        {
+          "file": "chapter4-y06Eq1yI.js",
+          "bytes": 7802
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "lecture-3.6.3",
+      "target": "current",
+      "width": 1440,
+      "totalBytes": 906592,
+      "jsBytes": 772680,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "Lab-J57c0Z5K.js",
+          "bytes": 60476
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "EngineeringCase-B-5yZ9HM.js",
+          "bytes": 41567
+        },
+        {
+          "file": "katex-CYxd_6QP.js",
+          "bytes": 259085
+        },
+        {
+          "file": "Formula-B7kApH_K.js",
+          "bytes": 5662
+        },
+        {
+          "file": "Figure-COU_wUrL.js",
+          "bytes": 48584
+        },
+        {
+          "file": "fieldPhysics-0QN0-hZO.js",
+          "bytes": 3640
+        },
+        {
+          "file": "physics-CH1QNpUS.js",
+          "bytes": 33970
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "3.6.3-DheNmljf.js",
+          "bytes": 2539
+        },
+        {
+          "file": "calculationSteps-Dhfkjhlf.js",
+          "bytes": 2243
+        },
+        {
+          "file": "chapter4-y06Eq1yI.js",
+          "bytes": 7802
+        },
+        {
+          "file": "p2-CEltD24H.js",
+          "bytes": 2643
+        },
+        {
+          "file": "calendar-C2V_jN4J.js",
+          "bytes": 22541
+        },
+        {
+          "file": "p3-hD8p2rv-.js",
+          "bytes": 1183
+        },
+        {
+          "file": "p3Examples-9fXouav0.js",
+          "bytes": 18443
+        },
+        {
+          "file": "physicalExample-1XcEEEaT.js",
+          "bytes": 1330
+        },
+        {
+          "file": "p3Interfaces-DoY9fMgK.js",
+          "bytes": 10026
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "teacher",
+      "target": "current",
+      "width": 1440,
+      "totalBytes": 322592,
+      "jsBytes": 206121,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "About-CjFLKDff.js",
+          "bytes": 2458
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "profile-photo-CqqSQoAL.jpg",
+          "bytes": 54714
+        }
+      ]
+    },
+    {
+      "name": "mind-map",
+      "target": "current",
+      "width": 1440,
+      "totalBytes": 328365,
+      "jsBytes": 266608,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "MindMap-86wj9oaN.js",
+          "bytes": 5866
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "atlas-gY7Xb-qd.js",
+          "bytes": 9796
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "target": "current",
+      "width": 390,
+      "totalBytes": 300316,
+      "jsBytes": 203663,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "1.1.1.svg",
+          "bytes": 731
+        },
+        {
+          "file": "1.1.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.2.2.svg",
+          "bytes": 771
+        },
+        {
+          "file": "1.1.3.svg",
+          "bytes": 1872
+        },
+        {
+          "file": "1.1.4.svg",
+          "bytes": 1877
+        },
+        {
+          "file": "1.1.5.svg",
+          "bytes": 4585
+        },
+        {
+          "file": "1.2.1.svg",
+          "bytes": 771
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "1.2.3.svg",
+          "bytes": 1820
+        },
+        {
+          "file": "1.2.4.svg",
+          "bytes": 764
+        },
+        {
+          "file": "1.2.5.svg",
+          "bytes": 889
+        },
+        {
+          "file": "2.1.svg",
+          "bytes": 1469
+        },
+        {
+          "file": "2.2.svg",
+          "bytes": 982
+        },
+        {
+          "file": "2.3.svg",
+          "bytes": 971
+        },
+        {
+          "file": "2.4.svg",
+          "bytes": 1129
+        },
+        {
+          "file": "4.1.svg",
+          "bytes": 3210
+        },
+        {
+          "file": "4.2.1.svg",
+          "bytes": 1921
+        },
+        {
+          "file": "4.2.2.svg",
+          "bytes": 1553
+        },
+        {
+          "file": "4.2.3.svg",
+          "bytes": 2784
+        },
+        {
+          "file": "4.3.svg",
+          "bytes": 1599
+        },
+        {
+          "file": "4.4.1.svg",
+          "bytes": 1117
+        },
+        {
+          "file": "4.4.2.svg",
+          "bytes": 2121
+        },
+        {
+          "file": "4.4.3.svg",
+          "bytes": 1189
+        }
+      ]
+    },
+    {
+      "name": "lecture-1.1.1",
+      "target": "current",
+      "width": 390,
+      "totalBytes": 851706,
+      "jsBytes": 717794,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "Lab-J57c0Z5K.js",
+          "bytes": 60476
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "EngineeringCase-B-5yZ9HM.js",
+          "bytes": 41567
+        },
+        {
+          "file": "Figure-COU_wUrL.js",
+          "bytes": 48584
+        },
+        {
+          "file": "katex-CYxd_6QP.js",
+          "bytes": 259085
+        },
+        {
+          "file": "Formula-B7kApH_K.js",
+          "bytes": 5662
+        },
+        {
+          "file": "fieldPhysics-0QN0-hZO.js",
+          "bytes": 3640
+        },
+        {
+          "file": "physics-CH1QNpUS.js",
+          "bytes": 33970
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "1.1.1-C7rvQFTo.js",
+          "bytes": 3819
+        },
+        {
+          "file": "calculationSteps-Dhfkjhlf.js",
+          "bytes": 2243
+        },
+        {
+          "file": "chapter4-y06Eq1yI.js",
+          "bytes": 7802
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "lecture-3.6.3",
+      "target": "current",
+      "width": 390,
+      "totalBytes": 906592,
+      "jsBytes": 772680,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "Lab-J57c0Z5K.js",
+          "bytes": 60476
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "Figure-COU_wUrL.js",
+          "bytes": 48584
+        },
+        {
+          "file": "EngineeringCase-B-5yZ9HM.js",
+          "bytes": 41567
+        },
+        {
+          "file": "katex-BkW8oxaT.css",
+          "bytes": 29443
+        },
+        {
+          "file": "katex-CYxd_6QP.js",
+          "bytes": 259085
+        },
+        {
+          "file": "Formula-B7kApH_K.js",
+          "bytes": 5662
+        },
+        {
+          "file": "fieldPhysics-0QN0-hZO.js",
+          "bytes": 3640
+        },
+        {
+          "file": "physics-CH1QNpUS.js",
+          "bytes": 33970
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "3.6.3-DheNmljf.js",
+          "bytes": 2539
+        },
+        {
+          "file": "calculationSteps-Dhfkjhlf.js",
+          "bytes": 2243
+        },
+        {
+          "file": "chapter4-y06Eq1yI.js",
+          "bytes": 7802
+        },
+        {
+          "file": "p2-CEltD24H.js",
+          "bytes": 2643
+        },
+        {
+          "file": "calendar-C2V_jN4J.js",
+          "bytes": 22541
+        },
+        {
+          "file": "p3-hD8p2rv-.js",
+          "bytes": 1183
+        },
+        {
+          "file": "p3Examples-9fXouav0.js",
+          "bytes": 18443
+        },
+        {
+          "file": "physicalExample-1XcEEEaT.js",
+          "bytes": 1330
+        },
+        {
+          "file": "p3Interfaces-DoY9fMgK.js",
+          "bytes": 10026
+        },
+        {
+          "file": "KaTeX_Math-Italic-t53AETM-.woff2",
+          "bytes": 16440
+        },
+        {
+          "file": "KaTeX_Main-Regular-B22Nviop.woff2",
+          "bytes": 26272
+        }
+      ]
+    },
+    {
+      "name": "teacher",
+      "target": "current",
+      "width": 390,
+      "totalBytes": 322592,
+      "jsBytes": 206121,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "About-CjFLKDff.js",
+          "bytes": 2458
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        },
+        {
+          "file": "profile-photo-CqqSQoAL.jpg",
+          "bytes": 54714
+        }
+      ]
+    },
+    {
+      "name": "mind-map",
+      "target": "current",
+      "width": 390,
+      "totalBytes": 328365,
+      "jsBytes": 266608,
+      "files": [
+        {
+          "file": "",
+          "bytes": 0
+        },
+        {
+          "file": "index-CuVeKUu7.css",
+          "bytes": 61537
+        },
+        {
+          "file": "index-CzDhhQEC.js",
+          "bytes": 203663
+        },
+        {
+          "file": "MindMap-86wj9oaN.js",
+          "bytes": 5866
+        },
+        {
+          "file": "comparisonPhysics-kLJmgcKB.js",
+          "bytes": 2252
+        },
+        {
+          "file": "projects-CgqrgKMn.js",
+          "bytes": 45031
+        },
+        {
+          "file": "atlas-gY7Xb-qd.js",
+          "bytes": 9796
+        },
+        {
+          "file": "favicon.svg",
+          "bytes": 220
+        }
+      ]
+    }
+  ],
+  "coldMeasurementsComplete": true
+}

@@ -1,0 +1,36 @@
+{
+  "branch": "redesign/p6-final",
+  "implementationCommit": "123c7b57236bbacf12a1c48ef1f7558f502957f6",
+  "baselineCommit": "fc45eb0",
+  "commands": {
+    "npm ci": 0,
+    "npm test": 0,
+    "node scripts/check-animations.mjs": 0,
+    "npm run build": 0,
+    "node scripts/check-browser.mjs": 0,
+    "node scripts/check-p6-browser.mjs": 0,
+    "node scripts/check-p6-home-expanded.mjs": 0
+  },
+  "routeViewportChecks": 204,
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "consoleErrors": 0,
+  "layoutFailures": 0,
+  "formalLectures": 79,
+  "matlabScripts": 26,
+  "matlabFigures": 13,
+  "oneMatlabProcessPerScript": true,
+  "portraitBytes": 54714,
+  "githubActions": {
+    "status": "not_run",
+    "reason": "User requested no push."
+  }
+}

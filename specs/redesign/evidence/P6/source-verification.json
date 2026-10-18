@@ -1,0 +1,798 @@
+{
+  "readOnly": true,
+  "lectures": 79,
+  "snapshotSummariesVerified": 65,
+  "records": [
+    {
+      "id": "1.1.1",
+      "source": "1.1.1 单自由度无阻尼自由振动（1）PPT.pdf",
+      "sha256": "c140d67c40c0120f40019325d713bb078067068134706d7baa8d88ad99259157",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.1.2",
+      "source": "1.1.2 单自由度无阻尼自由振动（2）PPT.pdf",
+      "sha256": "02de85f9505fe09792a97afe5e24b116cb92cc4275a9d41fa5e7803609d516d5",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.1.3",
+      "source": "1.1.3 单自由度有阻尼自由振动（1）PPT.pdf",
+      "sha256": "e8e6491a0d9d5eb6326ff9a405eef4ade1af34f8006397f71dab1a92f1fcecee",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.1.4",
+      "source": "1.1.4 单自由度有阻尼自由振动（2）PPT.pdf",
+      "sha256": "fdb20d509af636b59a02a80aae1c0abcfd69288d4af527f1145facefe3cea6d4",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.1.5",
+      "source": "1.1.5 阻尼振动系统中阻尼量的描述PPT.pdf",
+      "sha256": "a7119d301c6dc40a02a0550e391b1ffc5957018fbce54c6bf5f40f39ced82151",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.2.1",
+      "source": "1.2.1 单自由度无阻尼强迫振动PPT.pdf",
+      "sha256": "141e50749dbf024c8a43aabe887b328cfe522bb66fc39131c6c39a13c63d570a",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.2.2",
+      "source": "1.2.2 单自由度有阻尼强迫振动PPT.pdf",
+      "sha256": "2d7cef0afa4199dc0e819a0809433383a1b73880335a3b9afbec47be469381b2",
+      "pages": 8,
+      "summaryPages": [
+        8
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.2.3",
+      "source": "1.2.3 强迫振动的过渡过程PPT.pdf",
+      "sha256": "7cb34a8829b53ecced39778ac6e129e942b0c5369a3bfd5e419a69610b8a4fa7",
+      "pages": 14,
+      "summaryPages": [
+        14
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.2.4",
+      "source": "1.2.4 强迫振动的稳态振动（1）PPT.pdf",
+      "sha256": "6189283fb0f0eddaf902797a9eaba74e1b38a1964fdb35b47b0fb24d678016b1",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "1.2.5",
+      "source": "1.2.5 强迫振动的稳态振动（2）PPT.pdf",
+      "sha256": "edf098bb957a96d892cfff3ac46d31656bb509712ab8d492bcb2c903cad5a888",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "2.1",
+      "source": "2.1 弦的振动.pdf",
+      "sha256": "522bf125dd75b589426083ba35f8694c41fb56e18b8aceb8093ed270938226b2",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "2.2",
+      "source": "2.2 弦振动方程的解.pdf",
+      "sha256": "2670dc8667df7999e87a4e9fec66c411a97213678b69939d8b6a35d996e066f9",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "2.3",
+      "source": "2.3均匀细棒的纵振动.pdf",
+      "sha256": "32bed6861e769a53c8ae2f0c62b5787d8e73fd1b5f3d61b88a1da304a509288f",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "2.4",
+      "source": "2.4均匀细棒纵振动方程的解.pdf",
+      "sha256": "7e29880e9494befbd99836965b91551dbce22e31f387714532b3de7356863498",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P1-polish-source-notes.md"
+    },
+    {
+      "id": "3.1.1",
+      "source": "3.1.1 什么是声？PPT.pdf",
+      "sha256": "1b899f6d42bd5bdef2431ce9dd202659f926af8889725636eca08c20f771a1ec",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.1.2",
+      "source": "3.1.2 三个基本声学量PPT.pdf",
+      "sha256": "a42c9f852e915eb24119eb2d42fea335fe3a06dc60db09690b97a5279645222c",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.1.3",
+      "source": "3.1.3 波动方程推导的假设条件PPT.pdf",
+      "sha256": "7264ec60973c5cc3e2a2b77970fc2f70a4e09460ece25c776b707ae982449423",
+      "pages": 6,
+      "summaryPages": [
+        6
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.1.4",
+      "source": "3.1.4 连续性方程（1）PPT.pdf",
+      "sha256": "6ec5614f5e1afc445666d467634c2783a854b07572545db2285d0bd333401142",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.1.5",
+      "source": "3.1.5 连续性方程（2）PPT.pdf",
+      "sha256": "992370ce23eba073a6bdb3b0ca9198df82e3861a343521fbd605d67bf174532d",
+      "pages": 14,
+      "summaryPages": [
+        14
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.1.6",
+      "source": "3.1.6 状态方程PPT.pdf",
+      "sha256": "6cc62099ac7d6b529e6fe783c568009d31ea8bcec1cbe6729f7091ad7170e505",
+      "pages": 8,
+      "summaryPages": [
+        8
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.1.7",
+      "source": "3.1.7 介质的波速PPT.pdf",
+      "sha256": "1040ca93abb95629fb9da8a1f070d8c8c312f61a1a23bbfdb0e7a97d64e0c9bd",
+      "pages": 9,
+      "summaryPages": [
+        9
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.1.8",
+      "source": "3.1.8 运动方程PPT.pdf",
+      "sha256": "6e9a99e462e7bd218822a66a177f811474d7f9070dcb91653cddcc9974814e14",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.10.1",
+      "source": "3.10.1 声波在平行平面层波导中的传播（1）PPT.pdf",
+      "sha256": "ad71bf757f3b260cff0d522b8805db8efdcaa624a9f688c283108a59856c67d7",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.10.2",
+      "source": "3.10.2 声波在平行平面层波导中的传播（2）PPT.pdf",
+      "sha256": "6f6af8220a2b62042a48fa47569e8148e08775da4342098530c2d31087ea809f",
+      "pages": 9,
+      "summaryPages": [
+        9
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.10.3",
+      "source": "3.10.3 声波在平行平面层波导中的传播（3）PPT.pdf",
+      "sha256": "f17063a80412cbdd5d7589202d14291bae59b12d825efb30aaa415f25adfc18b",
+      "pages": 10,
+      "summaryPages": [
+        10
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.10.4",
+      "source": "3.10.4 声波在平行平面层波导中的传播（4）PPT.pdf",
+      "sha256": "856a4243b4639debc994c09907fc45350dd92cf0ded4cb1f185cab479ae8cb7f",
+      "pages": 7,
+      "summaryPages": [
+        7
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.10.5",
+      "source": "3.10.5 声波在平行平面层波导中的传播（5）PPT.pdf",
+      "sha256": "989941f634ac73abf8814b28ca5207b86cf61bbd70a3aa0b9fedf7401dd4f724",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.2.1",
+      "source": "3.2.1 波动方程的推导（1）PPT.pdf",
+      "sha256": "216d7394b1b96fe06fb2015bc0bd51856af11f7c8eb14a9dfc41117cbf15f1cf",
+      "pages": 7,
+      "summaryPages": [
+        7
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.2.2",
+      "source": "3.2.2 波动方程的推导（2）PPT.pdf",
+      "sha256": "f0b5e206b08322344798a9007a6f984a85cbb94068b73bcc56f86b116a640381",
+      "pages": 9,
+      "summaryPages": [
+        9
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.3.1",
+      "source": "3.3.1 声能量密度PPT.pdf",
+      "sha256": "fc8e2ed48f5ad07edf02fe88fbe068c5bd4f6461cb199d87001e09e03e5e5064",
+      "pages": 8,
+      "summaryPages": [
+        8
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.3.2",
+      "source": "3.3.2 声能流密度PPT.pdf",
+      "sha256": "5aff325d39a5e441fa6ac7daf56f4f6897f996b53b152a49950e5a55b1df231f",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.3.3",
+      "source": "3.3.3 声能流密度和声强PPT.pdf",
+      "sha256": "ab9ebe3e11d1691e7732f9c20564e86b144df1da9d264d9b6600f8592cb9f5cd",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.4.1",
+      "source": "3.4.1 谐和平面波场（1）PPT.pdf",
+      "sha256": "4d84d0d98d8d7372b37286f443b8702e84b2c5ca40f186962c378f2bb7fb543e",
+      "pages": 14,
+      "summaryPages": [
+        14
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.4.2",
+      "source": "3.4.2 谐和平面波场（2）PPT.pdf",
+      "sha256": "c720a846a4cc1d8af7eb6968261ca0d0ed537dde7d34a950c990886d8e773653",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.4.3",
+      "source": "3.4.3 谐和平面波场（3）PPT.pdf",
+      "sha256": "274cea2a5aa07ded7a3f0b29457db235025f24f20316013d76a96572b58b7475",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.4.4",
+      "source": "3.4.4 谐和平面波场（4）PPT.pdf",
+      "sha256": "379f42a5aa087daaaac7abcfb0ce49917920a722dccacc85f65e4ccb1484381c",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.4.5",
+      "source": "3.4.5 一般平面波PPT.pdf",
+      "sha256": "fbba0aed781a7e1faf323881bfaeaf4e02829f56565f79346aaf6cb98eb7e0d8",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.4.6",
+      "source": "3.4.6 声压级和声强级PPT.pdf",
+      "sha256": "2fd8783a3dcf42fd94ec283321f419b3bf7daca8d64bcc4989cbf56c3d997ab3",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.5.1",
+      "source": "3.5.1 亥母霍兹方程在直角坐标系下的解（1）PPT.pdf",
+      "sha256": "37818eff0b2c57066b30e12e04d33636bbaddc303f660a1b3aa0505c110acbdb",
+      "pages": 10,
+      "summaryPages": [
+        10
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.5.2",
+      "source": "3.5.2 亥姆霍兹方程在直角坐标系下的解（2）PPT.pdf",
+      "sha256": "05641329df307f0894c331bb2ff0f5a243bd309b3a46de063c3f234674a71050",
+      "pages": 9,
+      "summaryPages": [
+        9
+      ],
+      "coverage": "P2-source-notes.json"
+    },
+    {
+      "id": "3.6.1",
+      "source": "3.6.1 声学边界条件PPT.pdf",
+      "sha256": "5044e5cb27679916d7f48a9dbe6806446a04f4fcd85c2e94c46329a5e0fb7d76",
+      "pages": 8,
+      "summaryPages": [
+        8
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.10",
+      "source": "3.6.10 平面波倾斜入射（4）PPT.pdf",
+      "sha256": "8830aaf24c8abc459471905d6983908419972bb62ff69a3935e71c9201eb0d76",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.11",
+      "source": "3.6.11 回音壁现象PPT.pdf",
+      "sha256": "ff22acbe9580d747a3ce7605ead04d7ea4b08007f869d4eee2b834b3b9952b69",
+      "pages": 12,
+      "summaryPages": [
+        9,
+        12
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.12",
+      "source": "3.6.12 声波反射和折射时的能量关系PPT.pdf",
+      "sha256": "6de0acaf84d6efcc1365d173a379e254bf87d68ba3e81e15c4bd57a5d84f53e1",
+      "pages": 10,
+      "summaryPages": [
+        10
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.2",
+      "source": "3.6.2 平面波垂直入射（1）PPT.pdf",
+      "sha256": "88ca6d5a7cd4dae19cce4cc5c3fa40a7ddfefb198fa48d33fda4590d13f93384",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.3",
+      "source": "3.6.3 平面波垂直入射（2）PPT.pdf",
+      "sha256": "9f7b1df2e42aef4c5fdcbd19dadb1df15e8cc9fbf1865af6513adda2e93eb710",
+      "pages": 17,
+      "summaryPages": [
+        17
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.4",
+      "source": "3.6.4 平面波垂直入射（3）PPT.pdf",
+      "sha256": "87b81b447e884d7a7b6eb8b2a2ac3fb478085312ff803a2b7e79d94fd2841c6a",
+      "pages": 10,
+      "summaryPages": [
+        10
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.5",
+      "source": "3.6.5 平面波垂直通过分界面时的能量关系PPT.pdf",
+      "sha256": "80f0581c3b4ffd70cdda7bf1a208d91471d42f834ca0d567586a7faf8362b8eb",
+      "pages": 9,
+      "summaryPages": [
+        9
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.6",
+      "source": "3.6.6 平面波垂直入射全反射波场特性PPT.pdf",
+      "sha256": "0bb642afc17036d014f278eb93d27459927b302c88bbb6d77c9f2f8718db6858",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.7",
+      "source": "3.6.7 平面波倾斜入射（1）PPT.pdf",
+      "sha256": "b303dc556fbe543fcf70ac3cf3b0e2ec13eeb6928a50cd2661e904f86a8b5331",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.8",
+      "source": "3.6.8 平面波倾斜入射（2）PPT.pdf",
+      "sha256": "2cc2db731f4cd0658cef1e5fa70becf17fd4c4ab9e38785eb425870f2a3a29df",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.6.9",
+      "source": "3.6.9 平面波倾斜入射（3）PPT.pdf",
+      "sha256": "06a3afd972bf564fa4b0718b4f8800f2043c80b5d2a1f280873b4e78d5f7bd23",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.7.1",
+      "source": "3.7.1 简谐平面波在阻抗表面上的反射（1）PPT.pdf",
+      "sha256": "10bb590248aed0deaec0865292764e277d229caf4334b7eb98c7bceb5ae04d71",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.7.2",
+      "source": "3.7.2 简谐平面波在阻抗表面上的反射（2）PPT.pdf",
+      "sha256": "73b09b95059287f3b7c023bf45b6415ed706320c689a1d0e93a4f7d9d5eaed4f",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.8.1",
+      "source": "3.8.1 球面波（1）PPT.pdf",
+      "sha256": "ae1eeaade039ce5f16e5b3830979354ad541d33de47d37850532fc2c8f4acd89",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.8.2",
+      "source": "3.8.2 球面波（2）PPT.pdf",
+      "sha256": "35ba2dd1772e3acacdc52828b08d2312c85f67d4086e47f84c769dc91459aba6",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.8.3",
+      "source": "3.8.3 球面波（3）PPT.pdf",
+      "sha256": "e763b6406ee78441da866c08a72f37bf5871d10d1717d81878b383cf95595bd9",
+      "pages": 8,
+      "summaryPages": [
+        8
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.8.4",
+      "source": "3.8.4 球面波（4）PPT.pdf",
+      "sha256": "199bbb7c8447f279c31a870b14446fe3ea4d15b50585ab5196b2cc441ce904aa",
+      "pages": 8,
+      "summaryPages": [
+        8
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.8.5",
+      "source": "3.8.5 球面波在两种介质分界面上的反射PPT.pdf",
+      "sha256": "32cb994b423db94411fc9b4f25f25803ff91607226c8f9c675d84cc7634f627d",
+      "pages": 16,
+      "summaryPages": [
+        16
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.9.1",
+      "source": "3.9.1 柱面波（1）PPT.pdf",
+      "sha256": "719230d816047c53a689ae8555872035ad5b70cf69dc4f3430e2fcc5a8da5d1b",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.9.2",
+      "source": "3.9.2 柱面波（2）PPT.pdf",
+      "sha256": "93b5d56eecf85a81ccf0bb704c2b8f9ab5a56b0b8f31ee9414bf31f3e56bc4b7",
+      "pages": 10,
+      "summaryPages": [
+        10
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "3.9.3",
+      "source": "3.9.3 柱面波（3）PPT.pdf",
+      "sha256": "013bc36ae9a2f5bba2aeaaa7640071a5efb77a9b667b2b4addb3fc0d47801fc2",
+      "pages": 12,
+      "summaryPages": [
+        12
+      ],
+      "coverage": "P3-summary-coverage.md"
+    },
+    {
+      "id": "4.1",
+      "source": "4.1 声波的辐射过程和辐射阻抗PPT.pdf",
+      "sha256": "cdcf64f25db68d15e916072e09bffbb4239af36a658bf322e92ddb7812e1701c",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.2.1",
+      "source": "4.2.1 均匀脉动球源声辐射PPT.pdf",
+      "sha256": "6ef2157a634f41a438b97b2c73c5dc3f957addf0d1ed90fe5f7e2dfaa157f71c",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.2.2",
+      "source": "4.2.2 均匀脉动球源的辐射阻抗和辐射声功率PPT.pdf",
+      "sha256": "998b53d54ebc79b90914b0266a394c6553fe68cfdd7d2ac48f95c045435f5643",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.2.3",
+      "source": "4.2.3 点声源PPT.pdf",
+      "sha256": "879439f5e7ca2d1eb239f4c28a62ed16948288ba76b34302335b133240e08309",
+      "pages": 7,
+      "summaryPages": [
+        7
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.3",
+      "source": "4.3 声偶极子PPT.pdf",
+      "sha256": "c559b391cd100cb99f3fd63c7f251917939c40956ab881e3486ec366e88d8b6f",
+      "pages": 17,
+      "summaryPages": [
+        17
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.4.1",
+      "source": "4.4.1 亥姆霍兹(Helmholtz)积分公式（1）PPT.pdf",
+      "sha256": "8b22d6bb56a206a34eb077e67b86764996e6347a84894510744ae89486e9757a",
+      "pages": 15,
+      "summaryPages": [
+        15
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.4.2",
+      "source": "4.4.2 亥姆霍兹(Helmholtz)积分公式（2）PPT.pdf",
+      "sha256": "3f9e25bda133fa407290584889c4b45799aaff23fe0754c7097b7ea74cfb8d81",
+      "pages": 14,
+      "summaryPages": [
+        14
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.4.3",
+      "source": "4.4.3 无限大刚性障板上辐射器的辐射声场PPT.pdf",
+      "sha256": "bf4dc4caacb950a1372820249beee992f7c1ee0755433e57e812653efa44b853",
+      "pages": 14,
+      "summaryPages": [
+        14
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "4.4.4",
+      "source": "4.4.4 声源的远近场PPT.pdf",
+      "sha256": "66d53c86d8fee1380a3cd13ee5542601700f6972387ee1d973662dfbbb41e7ee",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "5.1",
+      "source": "5.1 声波的散射过程和散射定解问题PPT.pdf",
+      "sha256": "4f6f76d9c802e17807b4fc7f798cfdb5abd2fdd1a8b6e519b7c63fb99d24469c",
+      "pages": 8,
+      "summaryPages": [
+        8
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "5.2",
+      "source": "5.2 平面波在刚性球面上的声散射PPT.pdf",
+      "sha256": "33b9b46322a9305bfdfec883df73a3349f633a1562e09a87ab7b36c9ec2d3a56",
+      "pages": 10,
+      "summaryPages": [
+        10
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "5.3",
+      "source": "5.3 平面波在绝对软无限长圆柱面上的声散射PPT.pdf",
+      "sha256": "b3ed7a93beac54539d610cb102ddab8b5e106d97e53ec59458d6c0cd25e8c3cd",
+      "pages": 10,
+      "summaryPages": [
+        10
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "6.1",
+      "source": "6.1 声波的接收PPT.pdf",
+      "sha256": "54b5d325f32f5cee9581bd39701cd6dd050db240bee79933d4224c0a2f336d48",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "6.2",
+      "source": "6.2 声场互易原理PPT.pdf",
+      "sha256": "aab1155c20df265a6e8ff99f0e506335626999c279a675aaeef1f7de57a8496c",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "7.1",
+      "source": "7.1 介质的声吸收PPT.pdf",
+      "sha256": "11a8fff9e7e95ee68b4c94b2ceb2310414c6ef9de24a02dab1b7a5fc1e45be3a",
+      "pages": 9,
+      "summaryPages": [
+        9
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "7.2",
+      "source": "7.2 介质声吸收机理PPT.pdf",
+      "sha256": "3e463d46e6e1c878a7f843c862a15c798ab5abeb01073cb5ea43fa63355a148e",
+      "pages": 11,
+      "summaryPages": [
+        11
+      ],
+      "coverage": "P4-summary-coverage.md"
+    },
+    {
+      "id": "7.3",
+      "source": "7.3 吸声材料PPT.pdf",
+      "sha256": "ad9f034e6f7baf9090215823bd6d7ca4a28c3869580dc7d236e7af26b7b744b3",
+      "pages": 13,
+      "summaryPages": [
+        13
+      ],
+      "coverage": "P4-summary-coverage.md"
+    }
+  ]
+}

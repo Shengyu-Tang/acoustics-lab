@@ -1,0 +1,64 @@
+PASS: home desktop 1440×900
+PASS: lecture-1.2.4 desktop 1440×900
+PASS: lecture-1.2.5 desktop 1440×900
+PASS: plot-demo desktop 1440×900
+PASS: home mobile 390×844
+PASS: lecture-1.2.4 mobile 390×844
+PASS: lecture-1.2.5 mobile 390×844
+PASS: plot-demo mobile 390×844
+Checking 导出 PNG download
+Checking 导出数据 CSV download
+Checking 导出 MATLAB 代码 download
+PASS: retained lecture 1/82 at 1440
+PASS: retained lecture 21/82 at 1440
+PASS: retained lecture 41/82 at 1440
+PASS: retained lecture 61/82 at 1440
+PASS: retained lecture 81/82 at 1440
+PASS: retained lecture 1/82 at 390
+PASS: retained lecture 21/82 at 390
+PASS: retained lecture 41/82 at 390
+PASS: retained lecture 61/82 at 390
+PASS: retained lecture 81/82 at 390
+Checking route #/cases at 1440
+Checking route #/calendar at 1440
+Checking route #/about at 1440
+Checking route #/map at 1440
+Checking route #/compare at 1440
+Checking route #/compare?experiment=layer at 1440
+Checking route #/compare?experiment=array at 1440
+Checking route #/compare?experiment=duct at 1440
+Checking route #/cases?project=ocean at 1440
+Checking route #/cases?project=building at 1440
+Checking route #/cases?project=industry at 1440
+Checking route #/cases?project=ultrasound at 1440
+Checking route #/cases?project=music at 1440
+Checking route #/cases?project=measurement at 1440
+Checking route #/cases?project=transport at 1440
+Checking route #/cases?project=duct at 1440
+Checking route #/cases?project=grin-lens at 1440
+Checking route #/cases at 390
+Checking route #/calendar at 390
+Checking route #/about at 390
+Checking route #/map at 390
+Checking route #/compare at 390
+Checking route #/compare?experiment=layer at 390
+Checking route #/compare?experiment=array at 390
+Checking route #/compare?experiment=duct at 390
+Checking route #/cases?project=ocean at 390
+Checking route #/cases?project=building at 390
+Checking route #/cases?project=industry at 390
+Checking route #/cases?project=ultrasound at 390
+Checking route #/cases?project=music at 390
+Checking route #/cases?project=measurement at 390
+Checking route #/cases?project=transport at 390
+Checking route #/cases?project=duct at 390
+Checking route #/cases?project=grin-lens at 390
+PASS: polish layout, title and screenshot home desktop
+PASS: polish layout, title and screenshot 1.1.1 desktop
+PASS: polish layout, title and screenshot 1.2.4 desktop
+PASS: polish layout, title and screenshot 2.2 desktop
+PASS: polish layout, title and screenshot home mobile
+PASS: polish layout, title and screenshot 1.1.1 mobile
+PASS: polish layout, title and screenshot 1.2.4 mobile
+PASS: polish layout, title and screenshot 2.2 mobile
+PASS: browser interactions, exports, print and all lecture routes; no console errors.
