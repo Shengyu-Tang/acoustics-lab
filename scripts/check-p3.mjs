@@ -138,15 +138,17 @@ for (let i = 0; i < files.length; i++) {
     );
     assert.ok(panel.matlabModel.setup.includes("worksheet_answers"));
     const xy = panel.series[0].points.filter(([x, y]) => Number.isFinite(x + y));
-    const ys = panel.series
-        .filter((s) => s.axis !== "right")
-        .flatMap((s) => s.points.map((pt) => pt[1]))
-        .filter(Number.isFinite),
+    const rawY = panel.series
+      .filter((s) => s.axis !== "right")
+      .flatMap((s) => s.points.map((pt) => pt[1]))
+      .filter(Number.isFinite);
+    const ys = panel.yscale === "log" ? rawY.filter((v) => v > 0).map(Math.log10) : rawY,
+      displayLimits = panel.yscale === "log" ? panel.ylim.map(Math.log10) : panel.ylim,
       lo = Math.min(...ys),
       hi = Math.max(...ys);
     if (hi - lo > 1e-12 && !panel.rightLabel && !panel.equalAspect)
       assert.ok(
-        (hi - lo) / (panel.ylim[1] - panel.ylim[0]) >= 0.2 - 1e-9,
+        (hi - lo) / (displayLimits[1] - displayLimits[0]) >= (panel.yscale === "log" ? 0.2 : 0.4) - 1e-9,
         `${l.id}: readable example amplitude`,
       );
     assert.ok(xy.length > 1, `${l.id}: physical example has finite data`);

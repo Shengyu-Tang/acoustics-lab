@@ -5,7 +5,8 @@ export const textWidth = (text: string) =>
 /** Wrap prose at screen-pixel widths, retaining readable font sizes. */
 export function textLines(text: string, width: number): string[] {
   const lines: string[] = [""];
-  for (const c of text) {
+  const tokens = text.match(/[-+]?\d+(?:\.\d+)?×10[⁻⁺⁰¹²³⁴⁵⁶⁷⁸⁹]+|[_^]\{[^}]+\}|[\s\S]/g) ?? [];
+  for (const c of tokens) {
     if (lines.at(-1) && textWidth(lines.at(-1)! + c) > width) lines.push("");
     lines[lines.length - 1] += c;
   }
