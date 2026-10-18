@@ -3,6 +3,7 @@ import { bandwidthExample as example } from "./content/examples/bandwidth";
 import ExampleWorksheet from "./ExampleWorksheet";
 import { powerPanel } from "./plot/chapter1Figures";
 import { download, matlab } from "./plot/export";
+import { modelsFor } from "./plot/matlabModels";
 const fmt = (n: number) => Number(n.toPrecision(4)).toString();
 export default function BandwidthExample() {
   const [p, setP] = useState(example.defaults),
@@ -14,6 +15,9 @@ export default function BandwidthExample() {
     marker: "o",
     style: "none",
   });
+  const model = modelsFor("B-1", { ...p, Rm: s.Rm, F0: s.force }, [panel], [...example.given])[0]
+    .matlabModel!;
+  panel.matlabModel = model;
   const steps = [
     {
       tex: String.raw`f_0=\frac{1}{2\pi}\sqrt{D/M},\quad\Delta f=f_2-f_1,\quad Q_m=\frac{f_0}{\Delta f}`,
@@ -38,12 +42,7 @@ export default function BandwidthExample() {
   ];
   const judgment = `驱动器至少需提供 ${fmt(s.power)} W 平均机械功率及 ${fmt(s.force)} N 激励力峰值，并留出裕量。电功率还需考虑效率。实测几何中心 √(f₁f₂) = ${fmt(s.measuredF0)} Hz，与 M、D 计算值偏差 ${(100 * s.mismatch).toFixed(2)}%。${s.mismatch > 0.02 ? "偏差超过 2%，应复核测试条件和单自由度模型，当前识别结果仅作估算。" : "测量中心与模型基本一致。"}`;
   function exportScript() {
-    download(
-      `% Constant-force half-power sweep; velocity is peak, SI units\nM=${p.M}; D=${p.D}; f1=${p.f1}; f2=${p.f2}; vm=${p.velocity};\nf0=sqrt(D/M)/(2*pi); df=f2-f1; Qm=f0/df; Rm=2*pi*M*df; Wavg=Rm*vm^2/2; F0=Rm*vm;\nfprintf('Qm=%.6g; Rm=%.6g kg/s; Wavg=%.6g W; F0=%.6g N\\n',Qm,Rm,Wavg,F0);\n` +
-        matlab([panel], 1, 1, example.title),
-      "bandwidth-B.m",
-      "text/plain;charset=utf-8",
-    );
+    download(matlab([panel], 1, 1, example.title), "bandwidth_B.m", "text/plain;charset=utf-8");
   }
   return (
     <ExampleWorksheet

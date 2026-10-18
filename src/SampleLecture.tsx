@@ -41,116 +41,122 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
       </section>
       <section id="simulation">
         <h2>仿真</h2>
-        <Figure
-          rows={l.figures[0].rows}
-          cols={l.figures[0].cols}
-          panels={panels}
-          caption={`图 ${l.figures[0].number}　${l.figures[0].title}`}
-          name={l.figures[0].number}
-        />
-        <fieldset className="parameter-panel">
-          <legend>图形参数（SI 单位）</legend>
-          {l.figures[0].parameters.map((d) => (
-            <Parameter
-              key={d.key}
-              definition={d}
-              value={p[d.key as keyof typeof p]}
-              onChange={(n) => setP({ ...p, [d.key]: n })}
+        <div className="simulation-layout">
+          <div className="simulation-plots">
+            <Figure
+              rows={l.figures[0].rows}
+              cols={l.figures[0].cols}
+              panels={panels}
+              caption={`图 ${l.figures[0].number}　${l.figures[0].title}`}
+              name={l.figures[0].number}
             />
-          ))}
-          {first && (
-            <>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={compare}
-                  onChange={(e) => setCompare(e.target.checked)}
-                />{" "}
-                <MathProse text="叠画 $Q_m = 1.7, 5, 10$（此时各曲线用 $Q_m$ 换算 $R_m$）" />
-              </label>
-            </>
-          )}
-          <div className="parameter-actions">
-            {first &&
-              [1.7, 5, 10].map((q) => (
+            <Figure
+              panels={l.figures[1].plot(p)}
+              caption={`图 ${l.figures[1].number}　${l.figures[1].title}`}
+              name={l.figures[1].number}
+            />
+          </div>
+          <div className="simulation-sidebar">
+            <fieldset className="parameter-panel">
+              <legend>图形参数（SI 单位）</legend>
+              {l.figures[0].parameters.map((d) => (
+                <Parameter
+                  key={d.key}
+                  definition={d}
+                  value={p[d.key as keyof typeof p]}
+                  onChange={(n) => setP({ ...p, [d.key]: n })}
+                />
+              ))}
+              {first && (
+                <>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={compare}
+                      onChange={(e) => setCompare(e.target.checked)}
+                    />{" "}
+                    <MathProse text="叠画 $Q_m = 1.7, 5, 10$（此时各曲线用 $Q_m$ 换算 $R_m$）" />
+                  </label>
+                </>
+              )}
+              <div className="parameter-actions">
+                {first &&
+                  [1.7, 5, 10].map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => {
+                        setCompare(false);
+                        setP({ ...p, Rm: (c.omega0 * p.M) / q });
+                      }}
+                    >
+                      <MathProse text="Qₘ" /> = {q}
+                    </button>
+                  ))}
                 <button
-                  key={q}
+                  className="text-button"
                   onClick={() => {
+                    setP({ ...instrument, Rm: 400 });
                     setCompare(false);
-                    setP({ ...p, Rm: (c.omega0 * p.M) / q });
                   }}
                 >
-                  <MathProse text="Qₘ" /> = {q}
+                  恢复默认参数
                 </button>
-              ))}
-            <button
-              className="text-button"
-              onClick={() => {
-                setP({ ...instrument, Rm: 400 });
-                setCompare(false);
-              }}
-            >
-              恢复默认参数
-            </button>
+              </div>
+            </fieldset>
+            <table className="readouts">
+              <caption>
+                <MathProse
+                  text={`当前力阻 Rₘ 对应的关键读数${compare ? "（叠画曲线的 Qₘ 见图例）" : ""}`}
+                />
+              </caption>
+              <thead>
+                <tr>
+                  <th>量</th>
+                  <th>数值</th>
+                  <th>单位</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(first
+                  ? [
+                      ["固有频率 f₀", c.f0, "Hz"],
+                      ["品质因数 Qₘ", c.Qm, "—"],
+                      ["位移共振 f_x", c.fx, "Hz"],
+                      ["速度共振 f_v", c.fv, "Hz"],
+                      ["加速度共振 f_a", c.fa, "Hz"],
+                      ["f₀ 处 |Zₘ|", r.impedance, "kg/s"],
+                      ["f₀ 处 Xₘ", r.reactance, "kg/s"],
+                    ]
+                  : [
+                      ["半功率点 f₁", c.f1, "Hz"],
+                      ["半功率点 f₂", c.f2, "Hz"],
+                      ["带宽 Δf", c.bandwidth, "Hz"],
+                      ["f₀/Qₘ", c.f0 / c.Qm, "Hz"],
+                      ["最大平均功率", p.F0 ** 2 / (2 * p.Rm), "W"],
+                      ["f₀ 处平均输入功率", r.power, "W"],
+                      ["f₀ 处平均阻尼耗散", 0.5 * p.Rm * r.v * r.v, "W"],
+                    ]
+                ).map(([label, value, unit]) => (
+                  <tr key={String(label)}>
+                    <td>
+                      <MathProse text={String(label)} />
+                    </td>
+                    <td>
+                      {value === null
+                        ? "无有限频率共振峰"
+                        : typeof value === "number"
+                          ? Number(value.toPrecision(4)).toString()
+                          : value}
+                    </td>
+                    <td>
+                      <MathProse text={String(unit)} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </fieldset>
-        <table className="readouts">
-          <caption>
-            <MathProse
-              text={`当前力阻 Rₘ 对应的关键读数${compare ? "（叠画曲线的 Qₘ 见图例）" : ""}`}
-            />
-          </caption>
-          <thead>
-            <tr>
-              <th>量</th>
-              <th>数值</th>
-              <th>单位</th>
-            </tr>
-          </thead>
-          <tbody>
-            {(first
-              ? [
-                  ["固有频率 f₀", c.f0, "Hz"],
-                  ["品质因数 Qₘ", c.Qm, "—"],
-                  ["位移共振 f_x", c.fx, "Hz"],
-                  ["速度共振 f_v", c.fv, "Hz"],
-                  ["加速度共振 f_a", c.fa, "Hz"],
-                  ["f₀ 处 |Zₘ|", r.impedance, "kg/s"],
-                  ["f₀ 处 Xₘ", r.reactance, "kg/s"],
-                ]
-              : [
-                  ["半功率点 f₁", c.f1, "Hz"],
-                  ["半功率点 f₂", c.f2, "Hz"],
-                  ["带宽 Δf", c.bandwidth, "Hz"],
-                  ["f₀/Qₘ", c.f0 / c.Qm, "Hz"],
-                  ["最大平均功率", p.F0 ** 2 / (2 * p.Rm), "W"],
-                  ["f₀ 处平均输入功率", r.power, "W"],
-                  ["f₀ 处平均阻尼耗散", 0.5 * p.Rm * r.v * r.v, "W"],
-                ]
-            ).map(([label, value, unit]) => (
-              <tr key={String(label)}>
-                <td>
-                  <MathProse text={String(label)} />
-                </td>
-                <td>
-                  {value === null
-                    ? "无有限频率共振峰"
-                    : typeof value === "number"
-                      ? Number(value.toPrecision(4)).toString()
-                      : value}
-                </td>
-                <td>
-                  <MathProse text={String(unit)} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <Figure
-          panels={l.figures[1].plot(p)}
-          caption={`图 ${l.figures[1].number}　${l.figures[1].title}`}
-          name={l.figures[1].number}
-        />
+        </div>
         <p>
           <MathProse
             text={

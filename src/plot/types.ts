@@ -1,6 +1,19 @@
 ﻿import { colorTable } from "./colormaps";
 export const COLORS = ["#0072BD", "#D95319", "#EDB120", "#7E2F8E", "#77AC30", "#4DBEEE", "#A2142F"];
 export type Point = [number, number];
+export type MatlabModel = {
+  parameters: { key: string; value: number; comment: string }[];
+  setup: string;
+  series: { x: string; y: string }[];
+  annotations?: string[];
+  annotationLabels?: string[];
+  bands?: { from: string; to: string }[];
+  xlim?: string;
+  ylim?: string;
+  rightLim?: string;
+  title?: string;
+  legendLocation?: "northeast" | "southeast";
+};
 export type Series = {
   kind?: "line" | "bar";
   name: string;
@@ -20,6 +33,8 @@ export type Field = {
   limits?: [number, number];
 };
 export type Panel = {
+  matlabModel?: MatlabModel;
+  integerX?: boolean;
   title: string;
   xlabel: string;
   ylabel: string;

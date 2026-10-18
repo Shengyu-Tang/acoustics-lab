@@ -188,7 +188,10 @@ assert.ok(exported.includes("yline("));
 assert.ok(!exported.includes("undefined"));
 assert.ok(exported.includes("'MarkerIndices',[1]"));
 assert.ok(exported.includes("defaultAxesFontName','Microsoft YaHei'"));
-assert.ok(exported.includes("'LabelOrientation','horizontal','LabelVerticalAlignment','top'"));
+assert.ok(
+  exported.includes("'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top'"),
+  "horizontal annotation readouts stay inside the axes",
+);
 assert.ok(exported.includes("'LineStyle','none','Marker','o'"));
 assert.ok(!/[₀-₉ₘ\u0304]/u.test(exported));
 assert.ok(!exported.includes("'Interpreter','none'"));

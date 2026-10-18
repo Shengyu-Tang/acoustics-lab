@@ -2,7 +2,7 @@ import { lecture, mechanics, initial, parameter, fmt, industry, type Values } fr
 import { freeMotion } from "../../physics/p1";
 import { panel, line, extent, working, segment } from "../../plot/p1Helpers";
 const zeta = parameter("zeta", "阻尼比（大阻尼）", "δ/ω₀", "—", 1.05, 2, 0.05);
-const defaults = { M: 5, D: 2000, zeta: 1.5, x0: 0.008, v0: -0.03 };
+const defaults = { M: 5, D: 2000, zeta: 1.5, x0: 0.005, v0: -0.3 };
 const motion = (p: Values) => ({ ...p, Rm: 2 * p.zeta * Math.sqrt(p.M * p.D) });
 const roots = (p: Values) => {
   const w = Math.sqrt(p.D / p.M),
@@ -14,17 +14,23 @@ const curves = (p: Values) => {
     end = extent(6 / -r.s1),
     data = [
       { name: "(x₀, 0)", x0: p.x0, v0: 0 },
-      { name: "(0, v₀)", x0: 0, v0: p.v0 },
+      { name: "(0, −v₀)：先增后减", x0: 0, v0: -p.v0 },
       { name: "(x₀, v₀)", x0: p.x0, v0: p.v0 },
     ],
-    A = Math.max(0.001, Math.abs(p.x0) + Math.abs(p.v0) / r.w);
+    series = data.map((d) =>
+      line(d.name, (t) => freeMotion({ ...motion(p), x0: d.x0, v0: d.v0 }, t), end),
+    ),
+    ys = series.flatMap((s) => s.points.map((v) => v[1])),
+    lo = Math.min(0, ...ys),
+    hi = Math.max(0, ...ys),
+    pad = Math.max(1e-5, (hi - lo) * 0.12);
   return panel(
     "大阻尼：三个初始条件",
     "时间 t (s)",
     "位移 x (m)",
     [0, end],
-    [-A * 1.5, A * 1.8],
-    data.map((d) => line(d.name, (t) => freeMotion({ ...motion(p), x0: d.x0, v0: d.v0 }, t), end)),
+    [lo - pad, hi + pad],
+    series,
   );
 };
 export default lecture(

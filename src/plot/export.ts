@@ -1,7 +1,8 @@
-import { COLORS, type Panel, fieldLimits } from "./types";
+import { COLORS, type Panel, type Series, fieldLimits } from "./types";
 import { colorTable } from "./colormaps";
 import { axisTicks } from "./ticks";
 import { labelLanes } from "./layout";
+import { MATLAB_FUNCTIONS } from "./matlabFunctions";
 /** MATLAB's TeX interpreter does not support Unicode subscript glyphs. */
 export function toTex(text: string): string {
   const subs: Record<string, string> = {
@@ -45,6 +46,13 @@ export function toTex(text: string): string {
 }
 const quote = (s: string) => "'" + s.replaceAll("'", "''").replace(/[\r\n]/g, " ") + "'";
 const tex = (s: string) => quote(toTex(s));
+const dynamicText = (label: string, value: string | number) =>
+  `sprintf(${tex(
+    label
+      .split(/[：:=]/)[0]
+      .replace(/\s+[-+]?\d+(?:\.\d+)?(?:e[-+]?\d+)?\s*(?:s|Hz|m\/s|mm|m|W)?$/i, "")
+      .replaceAll("%", "%%") + " = %.4g",
+  )},${value})`;
 // R2024b's TeX subset lacks \bar. Math-only labels can use LaTeX;
 // Chinese prose keeps the TeX interpreter and Microsoft YaHei font.
 const axisLabel = (s: string) =>
@@ -54,14 +62,24 @@ const axisLabel = (s: string) =>
 const vector = (ns: number[]) =>
   "[" + ns.map((n) => (Number.isFinite(n) ? String(n) : "NaN")).join(" ") + "]";
 export function matlab(panels: Panel[], rows: number, cols: number, title: string) {
+  const model = panels.find((p) => p.matlabModel)?.matlabModel;
   const out = [
     `% ${title.replace(/[\r\n]/g, " ")}`,
-    "% Exported current data; SI units unless an axis specifies otherwise.",
+    ...(model
+      ? [
+          "% 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。",
+          ...model.parameters.map((p) => `${p.key} = ${p.value}; % ${p.comment}`),
+          "% 以下为计算模型与绘图，可独立运行，无需网页。",
+          "model_x={}; model_y={};",
+        ]
+      : ["% Exported current data; SI units unless an axis specifies otherwise."]),
     "set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');",
     "set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');",
     `figure('Color','w','Position',[80 80 ${640 * cols} ${340 * rows}]);`,
   ];
   panels.forEach((original, k) => {
+    const m = original.matlabModel;
+    if (m) out.push(m.setup);
     const xt = axisTicks(original.xlim, original.xscale === "log"),
       yt = axisTicks(original.ylim, original.yscale === "log"),
       rt = axisTicks(original.rightLim ?? original.ylim, original.yscale === "log");
@@ -69,6 +87,15 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       original.kind === "polar"
         ? original
         : { ...original, xlim: xt.limits, ylim: yt.limits, rightLim: rt.limits };
+    const modelHeader = Boolean(
+      m && !original.annotationHeader && original.annotations?.some((a) => a.axis === "x"),
+    );
+    if (modelHeader) p.annotationHeader = true;
+    // A zero-energy log panel has no visible browser series; retain its formula
+    // so changing x0/v0 in the downloaded script can create a nonzero curve.
+    const plotSeries: Series[] = p.series?.length
+      ? p.series
+      : (m?.series.map(() => ({ name: "模型曲线", points: [], legend: false })) ?? []);
     out.push(`subplot(${rows},${cols},${k + 1});`);
     if (p.kind === "polar")
       out.push("pos=get(gca,'Position'); delete(gca); polaraxes('Position',pos);");
@@ -89,18 +116,20 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       );
       out.push(`cb=colorbar; ylabel(cb,${tex(f.label)},'Interpreter','tex');`);
     }
-    p.bands?.forEach((b) =>
+    p.bands?.forEach((b) => {
+      if (m?.ylim) out.push(`band_limits=${m.ylim};`);
       out.push(
-        `patch([${b.from} ${b.to} ${b.to} ${b.from}],[${p.ylim[0]} ${p.ylim[0]} ${p.ylim[1]} ${p.ylim[1]}],[.9 .9 .9],'EdgeColor','none','HandleVisibility','off');`,
-      ),
-    );
-    p.series?.forEach((s, i) => {
+        `patch([${m?.bands?.[0]?.from ?? b.from} ${m?.bands?.[0]?.to ?? b.to} ${m?.bands?.[0]?.to ?? b.to} ${m?.bands?.[0]?.from ?? b.from}],${m?.ylim ? "band_limits([1 1 2 2])" : `[${p.ylim[0]} ${p.ylim[0]} ${p.ylim[1]} ${p.ylim[1]}]`},[.9 .9 .9],'EdgeColor','none','HandleVisibility','off');`,
+      );
+    });
+    plotSeries.forEach((s, i) => {
       if (p.rightLabel) out.push(`yyaxis ${s.axis === "right" ? "right" : "left"};`);
       const c = s.color ?? COLORS[i % COLORS.length];
       const rgb = [1, 3, 5].map((n) => parseInt(c.slice(n, n + 2), 16) / 255);
       out.push(
-        `x=${vector(s.points.map((v) => v[0]))};`,
-        `y=${vector(s.points.map((v) => v[1]))};`,
+        `x=${m?.series[i]?.x ?? vector(s.points.map((v) => v[0]))};`,
+        `y=${m?.series[i]?.y ?? vector(s.points.map((v) => v[1]))};`,
+        ...(m ? [`model_x{${k + 1},${i + 1}}=x; model_y{${k + 1},${i + 1}}=y;`] : []),
       );
       const fn = p.kind === "polar" ? "polarplot" : "plot";
       if (s.kind === "bar") {
@@ -126,7 +155,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       out.push(
         `set(gca,'XScale',${quote(p.xscale ?? "linear")},'YScale',${quote(p.yscale ?? "linear")});`,
         `xlim(${vector(p.xlim)}); ylim(${vector(p.ylim)});`,
-        `xticks(${vector(xt.values)}); yticks(${vector(yt.values)});`,
+        `xticks(${vector(p.integerX ? xt.values.filter(Number.isInteger) : xt.values)}); yticks(${vector(yt.values)});`,
         ...(p.xtickLabels
           ? [
               `xticks(${vector(p.xtickLabels.map((t) => t.value))}); xticklabels({${p.xtickLabels.map((t) => tex(t.label)).join(",")}});`,
@@ -139,30 +168,48 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         p.xscale === "log"
           ? Math.log10(value / p.xlim[0]) / Math.log10(p.xlim[1] / p.xlim[0])
           : (value - p.xlim[0]) / (p.xlim[1] - p.xlim[0]);
-      const labels = labelLanes(p, 0, 440, xs);
-      p.annotations?.forEach((a) => {
+      const labels = labelLanes(p, 0, 440, xs).map((label, i) =>
+        modelHeader ? { ...label, x: 8, lane: i } : label,
+      );
+      p.annotations?.forEach((a, ai) => {
+        const value = m?.annotations?.[ai] ?? a.value;
         if (p.annotationHeader && a.axis === "x") {
-          out.push(`xline(${a.value},'--','HandleVisibility','off');`);
+          out.push(`xline(${value},'--','HandleVisibility','off');`);
           return;
         }
         const lane = labels.find((l) => l.text === a.label)?.lane ?? 0;
-        const label = lane
-          ? `{${Array(lane * 2)
-              .fill("' '")
-              .join(";")};${tex(a.label)}}`
-          : tex(a.label);
+        const dynamicLabel =
+          m?.annotationLabels?.[ai] ??
+          (m?.annotations?.[ai] && !a.label.startsWith("Qₘ=")
+            ? dynamicText(a.label, value)
+            : tex(a.label));
+        const label =
+          lane && !m
+            ? `{${Array(lane * 2)
+                .fill("' '")
+                .join(";")};${tex(a.label)}}`
+            : dynamicLabel;
         out.push(
           a.axis === "x"
-            ? `xline(${a.value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');`
-            : `yline(${a.value},'--',${tex(a.label)},'Interpreter','tex','LabelVerticalAlignment','${a.labelPosition === "below-left" ? "bottom" : "top"}','LabelHorizontalAlignment','${a.labelPosition === "below-left" ? "left" : "right"}','HandleVisibility','off');`,
+            ? `xline(${value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');`
+            : `yline(${value},'--',${dynamicLabel},'Interpreter','tex','LabelVerticalAlignment','${a.labelPosition === "below-left" ? "bottom" : "top"}','LabelHorizontalAlignment','${a.labelPosition === "below-left" ? "left" : "right"}','HandleVisibility','off');`,
         );
       });
       if (p.annotationHeader) {
-        labels.forEach((label) =>
+        labels.forEach((label) => {
+          const ai = p.annotations?.findIndex((a) => a.label === label.text) ?? -1;
+          const value = m?.annotations?.[ai];
+          const text =
+            m?.annotationLabels?.[ai] ??
+            (value && !label.text.startsWith("Qₘ=")
+              ? dynamicText(label.text, value)
+              : m?.bands && label.text.startsWith("Δf")
+                ? "sprintf('\\\\Delta{}f = %.4g Hz',f2-f1)"
+                : tex(label.text));
           out.push(
-            `text(${label.x / 440},${0.97 - label.lane * 0.12},${tex(label.text)},'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');`,
-          ),
-        );
+            `text(${label.x / 440},${0.97 - label.lane * 0.12},${text},'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');`,
+          );
+        });
       } else
         p.bands?.forEach((b) => {
           const lane = labels.find((l) => l.text === b.label)?.lane ?? 0;
@@ -172,21 +219,43 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         });
     } else out.push(`rlim(${vector(p.ylim)});`);
     out.push(
-      `title(${tex(p.title)},'Interpreter','tex','FontSize',12);`,
+      `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
       p.kind === "polar"
         ? "grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');",
     );
-    if (p.legend !== false && p.series?.length) {
+    if (p.legend !== false && plotSeries.some((s) => s.legend !== false)) {
       out.push(
         `lgd=legend('show','Location','${p.kind === "polar" ? "northeastoutside" : "best"}','Color','w','Box','on','Interpreter','tex');`,
       );
-      if (p.annotationHeader)
+      if (original.annotationHeader)
         out.push(
           "drawnow; lgd.Units='normalized'; axpos=get(gca,'Position'); lp=lgd.Position; lp(2)=min(lp(2),axpos(2)+0.83*axpos(4)-lp(4)); lgd.Position=lp;",
         );
     }
+    if (m)
+      out.push(
+        "% 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。",
+        ...(p.rightLabel
+          ? ["yyaxis right; set(gca,'YLimMode','auto','YTickMode','auto'); yyaxis left;"]
+          : []),
+        `xlim(${m.xlim ?? vector(p.xlim)}); set(gca,'XTickMode','auto','YTickMode','auto');`,
+        m.ylim
+          ? `ylim(${m.ylim});`
+          : `model_values=[${plotSeries
+              .map((s, i) => (s.axis === "right" ? "" : `model_y{${k + 1},${i + 1}}`))
+              .filter(Boolean)
+              .join(
+                " ",
+              )}]; model_values=model_values(isfinite(model_values)); if ~isempty(model_values), if strcmp(get(gca,'YScale'),'log'), positive=model_values(model_values>0); if ~isempty(positive),ylim([min(positive)*.5 max(positive)*2]);end; else, lo=min(0,min(model_values)); hi=max(0,max(model_values)); pad=max((hi-lo)*${modelHeader ? String(0.3 + 0.2 * (p.annotations?.filter((a) => a.axis === "x").length ?? 0)) : p.legend === false || p.series?.every((s) => s.kind === "bar") ? ".08" : ".4"},1e-12); ylim([lo-pad hi+pad]);end;end;`,
+        ...(p.integerX ? ["xl=xlim; xticks(ceil(xl(1)):floor(xl(2)));"] : []),
+      );
+    // Model headers occupy the left of the reserved top strip; keep the legend
+    // in its clear right-hand area rather than letting MATLAB cover readouts.
+    if (modelHeader && p.legend !== false && plotSeries.some((s) => s.legend !== false))
+      out.push(`lgd.Location='${m?.legendLocation ?? "northeast"}';`);
   });
+  if (model) out.push(MATLAB_FUNCTIONS);
   return out.join("\n") + "\n";
 }
 export function csv(panels: Panel[]) {

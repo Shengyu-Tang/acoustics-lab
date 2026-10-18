@@ -139,7 +139,8 @@ export function Axes({
   width?: number;
   height?: number;
 }) {
-  const xt = axisTicks(panel.xlim, panel.xscale === "log"),
+  const xtBase = axisTicks(panel.xlim, panel.xscale === "log"),
+    xt = panel.integerX ? { ...xtBase, values: xtBase.values.filter(Number.isInteger) } : xtBase,
     yt = axisTicks(panel.ylim, panel.yscale === "log"),
     rt = axisTicks(panel.rightLim ?? panel.ylim, panel.yscale === "log");
   const p =
@@ -251,7 +252,7 @@ export function Axes({
             <g key={x}>
               <path d={`M${L + xs(x) * AW} ${T}v${AH}`} stroke="#e5e5e5" />
               <path d={`M${L + xs(x) * AW} ${T}v5m0 ${AH - 5}v-5`} stroke="black" />
-              <text x={L + xs(x) * AW} y={T + AH + 17} textAnchor="middle">
+              <text data-x-tick={x} x={L + xs(x) * AW} y={T + AH + 17} textAnchor="middle">
                 <ScriptText
                   text={
                     p.xtickLabels?.find((t) => Math.abs(t.value - x) < 1e-10)?.label ??
@@ -624,10 +625,14 @@ export default function Figure({
         <button
           aria-label="导出 MATLAB 代码"
           onClick={() =>
-            download(matlab(panels, rows, cols, caption), name + ".m", "text/plain;charset=utf-8")
+            download(
+              matlab(panels, rows, cols, caption),
+              "figure_" + name.replace(/\W/g, "_") + ".m",
+              "text/plain;charset=utf-8",
+            )
           }
         >
-          MATLAB
+          MATLAB{panels.every((p) => p.matlabModel) ? "（可改参数）" : ""}
         </button>
       </div>
       <svg

@@ -253,7 +253,7 @@ thead th {
   display: none;
 }
 .matlab-figure {
-  margin: 20px 0;
+  margin: 20px auto;
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
   padding: 8px 0;
@@ -812,7 +812,7 @@ summary {
     justify-self: end;
   }
   .matlab-figure {
-    margin: 16px 0;
+    margin: 16px auto;
   }
 
   .lesson-pagination {
@@ -882,4 +882,79 @@ sub,
 sup {
   font-size: 75%;
   line-height: 0;
+}
+/* Chapter 1–2 simulation controls share a bounded, sticky side column. */
+.simulation-layout,
+.simulation-plots,
+.simulation-sidebar {
+  min-width: 0;
+}
+@media (min-width: 1200px) {
+  .lecture-layout {
+    grid-template-columns: 180px minmax(0, 960px);
+    max-width: 1220px;
+    gap: 24px;
+  }
+  .lecture-body {
+    max-width: none;
+  }
+  .page-toc {
+    display: none;
+  }
+  .simulation-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 640px) 300px;
+    gap: 20px;
+    align-items: start;
+  }
+  .simulation-sidebar {
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+  .simulation-sidebar .parameter-panel {
+    grid-template-columns: minmax(65px, 1fr) 88px 42px minmax(32px, 1fr);
+    gap: 6px 4px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .simulation-sidebar .readouts {
+    font-size: 13px;
+    width: 100%;
+  }
+  .simulation-sidebar .readouts th,
+  .simulation-sidebar .readouts td {
+    padding: 5px 4px;
+  }
+  .simulation-sidebar .compact-parameter > span:first-child {
+    overflow-wrap: anywhere;
+  }
+  .simulation-sidebar .parameter-actions {
+    gap: 4px;
+  }
+  .simulation-sidebar .parameter-actions button {
+    font-size: 12px;
+    padding: 4px 3px;
+    min-width: 0;
+  }
+}
+@media (min-width: 1600px) {
+  .lecture-layout {
+    grid-template-columns: 220px minmax(0, 960px) 145px;
+    max-width: 1410px;
+  }
+  .page-toc {
+    display: block;
+  }
+}
+@media print {
+  .simulation-layout {
+    display: block;
+  }
+  .simulation-sidebar {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
 }

@@ -9,6 +9,7 @@ export type Lecture = {
   keyPoints: string[];
   formulas: { number: string; tex: string; meaning: string }[];
   figures: {
+    matlabModel?: typeof import("../plot/matlabModels").modelsFor;
     number: string;
     title: string;
     plot: (parameters: Oscillator, compare?: boolean) => Panel[];

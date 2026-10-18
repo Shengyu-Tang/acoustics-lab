@@ -1,3 +1,4 @@
+import { modelsFor } from "../../plot/matlabModels";
 import type { Lecture } from "../types";
 import { frequencyPanels, impedancePanel } from "../../plot/chapter1Figures";
 import { example } from "../examples/instrument";
@@ -83,4 +84,5 @@ const lecture: Lecture = {
     title: "精密车间设备振动治理",
   },
 };
+lecture.figures.forEach((f) => (f.matlabModel = modelsFor));
 export default lecture;

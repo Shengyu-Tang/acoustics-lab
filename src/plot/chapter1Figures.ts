@@ -1,3 +1,4 @@
+import { modelsFor } from "./matlabModels";
 import {
   characteristics,
   instantaneous,
@@ -8,12 +9,12 @@ import {
 } from "../physics/chapter1";
 import { sample, type Panel, type Series } from "./types";
 import { axisTicks } from "./ticks";
-export function frequencyPanels(p: Oscillator, compare: boolean): Panel[] {
+function frequencyPanelsData(p: Oscillator, compare: boolean): Panel[] {
   const c = characteristics(p),
     xmax = axisTicks([0, c.f0 * 2.5]).limits[1];
   const variants = compare
     ? [1.7, 5, 10].map((Q) => ({ name: `Qₘ = ${Q}`, p: { ...p, Rm: (c.omega0 * p.M) / Q } }))
-    : [{ name: `Qₘ = ${c.Qm.toPrecision(3)}`, p }];
+    : [{ name: "当前参数", p }];
   const data = (key: "x" | "v" | "a" | "px" | "pv" | "pa") =>
     variants.map(({ p, name }) => ({
       name,
@@ -81,7 +82,7 @@ export function frequencyPanels(p: Oscillator, compare: boolean): Panel[] {
   );
   return [...amplitudes, ...phase];
 }
-export function impedancePanel(p: Oscillator): Panel {
+function impedancePanelData(p: Oscillator): Panel {
   const c = characteristics(p),
     min = 0.001 * c.f0,
     max = axisTicks([0, 2.5 * c.f0]).limits[1];
@@ -102,7 +103,7 @@ export function impedancePanel(p: Oscillator): Panel {
     ],
   };
 }
-export function instantaneousPanels(p: Oscillator): Panel[] {
+function instantaneousPanelsData(p: Oscillator): Panel[] {
   const c = characteristics(p),
     duration = axisTicks([0, 3 / c.f0]).limits[1],
     bound = ((p.F0 * p.F0) / p.Rm) * 1.1;
@@ -121,7 +122,7 @@ export function instantaneousPanels(p: Oscillator): Panel[] {
           points: sample((t) => instantaneous(p, f, t).input, 0, duration, 601),
         },
         {
-          name: `平均输入功率 ${w.toPrecision(3)} W`,
+          name: "平均输入功率",
           points: [
             [0, w],
             [duration, w],
@@ -132,7 +133,7 @@ export function instantaneousPanels(p: Oscillator): Panel[] {
     };
   });
 }
-export function powerPanel(p: Oscillator): Panel {
+function powerPanelData(p: Oscillator): Panel {
   const c = characteristics(p),
     peak = p.F0 ** 2 / (2 * p.Rm),
     xmax = axisTicks([0, Math.max(c.f0 * 2, c.f2 * 1.15)]).limits[1];
@@ -158,7 +159,7 @@ export function powerPanel(p: Oscillator): Panel {
     ],
   };
 }
-export function instrumentPanel(p: typeof instrument): Panel {
+function instrumentPanelData(p: typeof instrument): Panel {
   const s = instrumentSolution(p),
     xmax = axisTicks([0, Math.max(60, s.f0 * 1.8)]).limits[1],
     ymax =
@@ -181,7 +182,7 @@ export function instrumentPanel(p: typeof instrument): Panel {
     xlim: [0, xmax],
     ylim: [0, ymax],
     series: [
-      curve(p.Rm, `原设计 Qₘ=${s.Qm.toPrecision(3)}`),
+      curve(p.Rm, "原设计"),
       curve(400, `Rₘ=400 kg/s`),
       { name: "当前工作点", points: [[s.f, s.xMm]], marker: "o", style: "none" },
     ],
@@ -192,3 +193,13 @@ export function instrumentPanel(p: typeof instrument): Panel {
     ],
   };
 }
+
+export const frequencyPanels = (p: Oscillator, compare: boolean) =>
+  modelsFor("1.2.4-1", { ...p }, frequencyPanelsData(p, compare), [], 0, compare);
+export const impedancePanel = (p: Oscillator) =>
+  modelsFor("1.2.4-2", { ...p }, [impedancePanelData(p)])[0];
+export const instantaneousPanels = (p: Oscillator) =>
+  modelsFor("1.2.5-2", { ...p }, instantaneousPanelsData(p));
+export const powerPanel = (p: Oscillator) => modelsFor("1.2.5-1", { ...p }, [powerPanelData(p)])[0];
+export const instrumentPanel = (p: typeof instrument) =>
+  modelsFor("A-1", { ...p }, [instrumentPanelData(p)])[0];

@@ -1,6 +1,9 @@
 ﻿import topics from "../topics.json";
 import type { ParameterDefinition } from "../Parameter";
 import type { Panel } from "../plot/types";
+import { modelsFor } from "../plot/matlabModels";
+import { examplePanel } from "../plot/examplePanels";
+import { matlabReadouts } from "../plot/matlabReadouts";
 export type Values = Record<string, number>;
 export type Ask = {
   key: string;
@@ -36,6 +39,7 @@ export type P1Lecture = {
     rows: number;
     cols: number;
     plot: (p: Values, t: number) => Panel[];
+    matlabModel?: typeof modelsFor;
   }[];
   readouts: (p: Values) => [string, number, string][];
   questions: { text: string; answer: string }[];
@@ -60,12 +64,29 @@ export function lecture(
     title: topic.title,
     moocSource: topic.source,
     classNumber: id.startsWith("2.")
-      ? "第 4、5 次课"
+      ? "第 5 次课"
       : id.startsWith("1.1")
-        ? "第 1、2 次课"
+        ? id === "1.1.5"
+          ? "第 3 次课"
+          : "第 2 次课"
         : "第 3 次课",
     questions: topic.questions!.map((text, i) => ({ text, answer: answers[i] })),
     ...data,
+    figures: data.figures.map((f) => ({
+      ...f,
+      matlabModel: modelsFor,
+      plot: (p, t) => {
+        const panels = modelsFor(f.number, p, f.plot(p, t), data.parameters, t);
+        const readouts = matlabReadouts[id];
+        // Each figure can reproduce the shared lecture's table without another download.
+        panels.forEach(
+          (panel) =>
+            (panel.matlabModel!.setup += `${id === "1.2.3" ? "\nd=w0/(2*Qm);" : ""}\nlecture_readouts=${readouts};`),
+        );
+        return panels;
+      },
+    })),
+    examples: data.examples.map((e) => ({ ...e, plot: (p) => examplePanel(id, p, e.plot(p), e) })),
   };
 }
 export const parameter = (

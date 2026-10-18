@@ -356,7 +356,7 @@ try {
   const bandwidthDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "导出 MATLAB 计算脚本", exact: true }).click();
   await (await bandwidthDownload).saveAs("outputs/downloads/bandwidth-B.m");
-  assert.ok(fs.readFileSync("outputs/downloads/bandwidth-B.m", "utf8").includes("vm=0.4"));
+  assert.ok(fs.readFileSync("outputs/downloads/bandwidth-B.m", "utf8").includes("velocity = 0.4;"));
   await page.goto("http://127.0.0.1:4174/#/lab?topic=3.10.5");
   await page.locator(".matlab-figure image").first().waitFor();
   const raster = await page
@@ -406,6 +406,19 @@ try {
       if (!l) continue;
       await page.waitForTimeout(50);
       await checkNotationLayout(page);
+      if (l.id === "2.2") {
+        const ticks = await page
+          .locator("#simulation .matlab-figure")
+          .nth(1)
+          .locator("svg > g")
+          .nth(1)
+          .locator("[data-x-tick]")
+          .evaluateAll((nodes) => nodes.map((n) => Number(n.dataset.xTick)));
+        assert.ok(
+          ticks.length > 1 && ticks.every(Number.isInteger),
+          "modal order ticks must be integers",
+        );
+      }
       const hiddenCurves = await page.locator(".matlab-figure svg").evaluateAll((svgs) =>
         svgs.flatMap((svg) => {
           const hidden = [];
@@ -577,7 +590,8 @@ try {
       assert.equal(await page.title(), title + "声学基础 · 中国海洋大学");
       assert.equal(await page.locator(".site-footer").count(), 1);
       assert.ok((await page.locator(".site-footer").textContent()).includes("© 2026 中国海洋大学"));
-      assert.equal(await page.locator(".email-placeholder").textContent(), "");
+      assert.equal(await page.locator(".email-placeholder").count(), 0);
+      assert.ok(!(await page.locator(".site-footer").textContent()).includes("????"));
       const metrics = await page.evaluate(() => {
         const box = (el) => el.getBoundingClientRect().toJSON();
         return {

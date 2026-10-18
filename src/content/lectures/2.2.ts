@@ -127,7 +127,16 @@ export default lecture(
                 "阶数 n (—)",
                 "系数 bₙ (m)",
                 [0, 14],
-                [-h, h * 1.5],
+                [
+                  Math.min(
+                    0,
+                    ...Array.from({ length: 12 }, (_, i) => pluckCoefficient(i + 1, h, p.pluck)),
+                  ) * 1.15,
+                  Math.max(
+                    1e-8,
+                    ...Array.from({ length: 12 }, (_, i) => pluckCoefficient(i + 1, h, p.pluck)),
+                  ) * 1.15,
+                ],
                 [
                   {
                     name: "模态系数",
@@ -140,6 +149,7 @@ export default lecture(
                 ],
               ),
               legend: false,
+              integerX: true,
             },
             panel(
               "反向行波叠加为驻波（慢放）",
