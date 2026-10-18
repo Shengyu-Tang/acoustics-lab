@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { example } from "./content/examples/instrument";
-import { grade } from "./physics/chapter1";
-import { NumberField } from "./Parameter";
-import MathText from "./Math";
-import Figure from "./plot/Figure";
+import ExampleWorksheet from "./ExampleWorksheet";
 import { instrumentPanel } from "./plot/chapter1Figures";
 import { download, matlab } from "./plot/export";
 const fmt = (v: number) => Number(v.toPrecision(4)).toString();
 export default function InstrumentExample() {
-  const [p, setP] = useState(example.defaults),
-    [answers, setAnswers] = useState<Record<string, string>>({}),
-    [submitted, setSubmitted] = useState(false),
-    [hint, setHint] = useState(0);
+  const [p, setP] = useState(example.defaults);
   const s = example.solve(p),
     panel = instrumentPanel(p);
   const steps = [
@@ -44,130 +38,17 @@ export default function InstrumentExample() {
     download(code, "instrument-A.m", "text/plain;charset=utf-8");
   }
   return (
-    <article className="calculation-example">
-      <h3>{example.title}</h3>
-      <p>{example.background}</p>
-      <h4>已知条件（可修改）</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>符号</th>
-            <th>名称</th>
-            <th>数值</th>
-            <th>单位</th>
-          </tr>
-        </thead>
-        <tbody>
-          {example.given.map((d) => (
-            <tr key={d.key}>
-              <td>{d.symbol}</td>
-              <td>{d.name}</td>
-              <td>
-                <NumberField
-                  label={`例题${d.name}`}
-                  value={p[d.key]}
-                  onChange={(n) => {
-                    setP({ ...p, [d.key]: n });
-                    setSubmitted(false);
-                  }}
-                  {...d}
-                />
-              </td>
-              <td>{d.unit}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setSubmitted(true);
-        }}
-      >
-        <h4>求与学生作答</h4>
-        <p>按相对误差 ±2% 判分，内部计算保留完整精度。</p>
-        {example.asks.map((a) => (
-          <label className="student-answer" key={a.key}>
-            <span>{a.text}</span>
-            <input
-              type="number"
-              step="any"
-              aria-label={a.text}
-              value={answers[a.key] ?? ""}
-              onChange={(e) => {
-                setAnswers({ ...answers, [a.key]: e.target.value });
-                setSubmitted(false);
-              }}
-            />
-            <span>{a.unit}</span>
-            {submitted && (
-              <output>
-                {answers[a.key]?.trim() ? grade(Number(answers[a.key]), s[a.key]) : "尚未作答"}
-              </output>
-            )}
-          </label>
-        ))}
-        <button type="submit">提交答案</button>
-        <div role="status">{submitted ? "判分已更新，请查看每一问的反馈。" : ""}</div>
-      </form>
-      <div className="example-hints">
-        <button disabled={hint === 2} onClick={() => setHint(Math.min(2, hint + 1))}>
-          {hint === 0 ? "提示 1：选择公式" : hint === 1 ? "提示 2：代入步骤" : "已显示两级提示"}
-        </button>
-        {example.hints.slice(0, hint).map((h) => (
-          <p key={h}>{h}</p>
-        ))}
-      </div>
-      <details className="reference-solution">
-        <summary>展开分步参考解答（随已知条件重算）</summary>
-        <div className="solution-content">
-          {steps.map((step, i) => (
-            <section key={i}>
-              <h4>第 {i + 1} 步</h4>
-              <MathText tex={step.tex} />
-              <p>{step.sub}</p>
-              <p>
-                <strong>{step.value}</strong>
-              </p>
-            </section>
-          ))}
-          <p>
-            <strong>工程判断：</strong>
-            {judgment}
-          </p>
-          <p>
-            注：这里反解的是当前工作点的精确力阻阈值；接近谐振时可用 Rₘ ≈ F₀/(ωx限)
-            估算。线性、单自由度、黏性阻尼模型忽略船体多模态耦合。
-          </p>
-        </div>
-      </details>
-      <Figure
-        panels={[panel]}
-        caption="图 A-1　仪器支架位移幅频曲线、泵转频范围与当前工作点"
-        name="instrument-A"
-      />
-      <div className="example-export">
-        <button
-          onClick={(event) => {
-            const solution = event.currentTarget
-              .closest("article")!
-              .querySelector<HTMLDetailsElement>(".reference-solution")!;
-            const wasOpen = solution.open;
-            solution.open = true;
-            document.body.classList.add("printing-example");
-            const done = () => {
-              solution.open = wasOpen;
-              document.body.classList.remove("printing-example");
-              window.removeEventListener("afterprint", done);
-            };
-            window.addEventListener("afterprint", done);
-            window.print();
-          }}
-        >
-          打印本题
-        </button>
-        <button onClick={exportScript}>导出 MATLAB 计算脚本</button>
-      </div>
-    </article>
+    <ExampleWorksheet
+      example={example}
+      p={p}
+      setParameter={(key, value) => setP({ ...p, [key]: value })}
+      solution={s}
+      steps={steps}
+      judgment={judgment}
+      note="这里反解当前工作点的精确力阻阈值；接近谐振时可用 Rₘ ≈ F₀/(ωx限) 估算。线性、单自由度、黏性阻尼模型忽略船体多模态耦合。"
+      panel={panel}
+      caption="图 A-1　仪器支架位移幅频曲线、泵转频范围与当前工作点"
+      exportScript={exportScript}
+    />
   );
 }

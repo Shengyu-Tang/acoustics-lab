@@ -5,6 +5,7 @@ import Parameter from "./Parameter";
 import MathText from "./Math";
 import Figure from "./plot/Figure";
 import InstrumentExample from "./InstrumentExample";
+import BandwidthExample from "./BandwidthExample";
 export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
   const [p, setP] = useState({ ...instrument, Rm: 400 }),
     [compare, setCompare] = useState(false),
@@ -144,7 +145,7 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
       </section>
       <section id="examples">
         <h2>例题与参考解答</h2>
-        <InstrumentExample />
+        {first ? <InstrumentExample /> : <BandwidthExample />}
       </section>
       <section id="questions">
         <h2>思考题</h2>

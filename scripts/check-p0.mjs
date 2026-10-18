@@ -19,6 +19,8 @@ const {
   instantaneous,
   instrument,
   instrumentSolution,
+  bandwidthExperiment,
+  bandwidthSolution,
   grade,
   frequencyPanels,
   impedancePanel,
@@ -106,6 +108,37 @@ assert.equal(
   null,
 );
 assert.equal(response(instrument, 0).x, instrument.F0 / instrument.D);
+for (const M of [1, 10, 100]) {
+  const p = { ...instrument, M };
+  const f0 = characteristics(p).f0;
+  assert.equal(response(p, f0).reactance, 0);
+  assert.notEqual(response(p, f0 * (1 + 1e-7)).reactance, 0);
+}
+const measured = { M: 10, D: 10 * (60 * Math.PI) ** 2, f1: 24, f2: 37.5, velocity: 0.2 };
+const b = bandwidthSolution(measured);
+near(b.f0, 30, 1e-12);
+near(b.Qm, 30 / 13.5, 1e-12);
+near(b.Rm, 270 * Math.PI, 1e-12);
+near(b.power, 5.4 * Math.PI, 1e-12);
+near(b.force, 54 * Math.PI, 1e-12);
+for (const f of [measured.f1, measured.f2])
+  near(response({ ...measured, Rm: b.Rm, F0: b.force }, f).power, b.power / 2, 1e-12);
+near(bandwidthSolution({ ...measured, velocity: 0.4 }).power, b.power * 4, 1e-12);
+near(bandwidthSolution({ ...measured, f2: 40 }).Rm, 320 * Math.PI, 1e-12);
+assert.ok(bandwidthSolution(bandwidthExperiment).mismatch < 0.005);
+assert.throws(() => bandwidthSolution({ ...measured, f1: 40 }), RangeError);
+assert.notDeepEqual(lecture124.examples, lecture125.examples);
+assert.equal(lecture125.figures[0].rows, 3);
+assert.equal(lecture125.figures[0].cols, 1);
+const powerPlots = instantaneousPanels(instrument);
+assert.ok(
+  powerPlots.every(
+    (p) =>
+      JSON.stringify(p.xlim) === JSON.stringify(powerPlots[0].xlim) &&
+      JSON.stringify(p.ylim) === JSON.stringify(powerPlots[0].ylim),
+  ),
+);
+assert.ok(matlab(powerPlots, 3, 1, "Power").includes("subplot(3,1,3)"));
 assert.equal(grade(31.63, s.f0), "正确");
 assert.equal(grade(40, s.f0), "偏大");
 assert.equal(grade(20, s.f0), "偏小");
@@ -143,5 +176,5 @@ for (const l of [lecture124, lecture125]) {
   assert.ok(l.keyPoints.length >= 3 && l.formulas.length >= 3 && l.examples.length);
 }
 console.log(
-  "PASS: P0 peak search, numerical half-power bandwidth, cycle-averaged energy balance, Sample A (<0.5%), grading, finite plot data, exports and original MOOC questions.",
+  "PASS: P0 peak search, numerical half-power bandwidth, cycle-averaged energy balance, Sample A (<0.5%), bandwidth/power exercise, resonance roundoff, shared 3×1 axes, grading, finite plot data, exports and original MOOC questions.",
 );

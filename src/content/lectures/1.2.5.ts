@@ -49,7 +49,7 @@ const lecture: Lecture = {
       readouts: ["f1", "f2", "bandwidth", "maximum power"],
     },
   ],
-  examples: ["instrument-A"],
+  examples: ["bandwidth-B"],
   questions: [
     {
       text: "1、谐振频率与系统固有频率的关系？",

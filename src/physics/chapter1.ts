@@ -40,7 +40,15 @@ export function response(p: Oscillator, f: number) {
       power: 0,
     };
   const w = 2 * Math.PI * f,
-    reactance = w * p.M - p.D / w,
+    massTerm = w * p.M,
+    springTerm = p.D / w,
+    difference = massTerm - springTerm,
+    // Cancellation at resonance is roundoff, relative to the two impedance terms.
+    reactance =
+      Math.abs(difference) <=
+      8 * Number.EPSILON * Math.max(Math.abs(massTerm), Math.abs(springTerm))
+        ? 0
+        : difference,
     impedance = Math.hypot(p.Rm, reactance);
   const v = p.F0 / impedance,
     pv = -Math.atan2(reactance, p.Rm);
@@ -88,4 +96,26 @@ export function grade(answer: number, expected: number, tolerance = 0.02) {
   if (answer <= 0 || Math.max(Math.abs(answer / expected), Math.abs(expected / answer)) >= 10)
     return "量级错误";
   return answer > expected ? "偏大" : "偏小";
+}
+
+export const bandwidthExperiment = { M: 10, D: 395000, f1: 30, f2: 100 / 3, velocity: 0.2 };
+export function bandwidthSolution(p: typeof bandwidthExperiment) {
+  if (p.f1 <= 0 || p.f2 <= p.f1) throw new RangeError("半功率频率须满足 0 < f₁ < f₂");
+  const f0 = Math.sqrt(p.D / p.M) / (2 * Math.PI),
+    measuredF0 = Math.sqrt(p.f1 * p.f2),
+    bandwidth = p.f2 - p.f1,
+    Rm = 2 * Math.PI * p.M * bandwidth,
+    Qm = f0 / bandwidth,
+    power = 0.5 * Rm * p.velocity ** 2,
+    force = Rm * p.velocity;
+  return {
+    f0,
+    measuredF0,
+    bandwidth,
+    Rm,
+    Qm,
+    power,
+    force,
+    mismatch: Math.abs(measuredF0 / f0 - 1),
+  };
 }
