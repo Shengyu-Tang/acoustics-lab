@@ -31,6 +31,12 @@ check('A3 complementary time-averaged standing-wave energies',()=>{
     assert.equal(q.rightLabel,undefined,'unused intensity axis remains');
   }
 });
+check('A2 worksheet wrapper preserves physical axis definitions',()=>{
+ const l=lectures.find(l=>l.id==='3.6.6'),e=l.examples[0],q=e.plot(e.defaults);
+ assert.equal(q.ylabel,'振速幅值 (m/s)','an answer marker must not redefine the physical axis');
+ const ray=lectures.find(l=>l.id==='3.6.11');
+ assert.equal(ray.examples[0].plot(ray.examples[0].defaults).ylabel,'示意坐标 y (m)');
+});
 check('A4 binary fields are categorical throughout P2/P3',()=>{
  for(const l of lectures) for(const f of l.figures) for(const p of f.plot(l.defaults,0)) if(p.field){const vals=[...new Set(p.field.z.flat())];if(vals.length===2 && vals.every(v=>v===0||v===1)) assert.equal(p.field.categories?.length,2,l.id+' binary field has continuous scale');}
 });

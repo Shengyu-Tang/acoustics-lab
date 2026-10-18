@@ -3,10 +3,10 @@ import {build,stop} from 'esbuild';
 export async function models() {
   const files=fs.readdirSync('src/content/lectures').filter(f=>/^3\./.test(f));
   fs.mkdirSync('outputs/P3-1',{recursive:true});
-  await build({stdin:{contents:files.map((f,i)=>`export {default as l${i}} from './src/content/lectures/${f}';`).join('')+"export {matlab} from './src/plot/export';export {fmt} from './src/content/p1';",resolveDir:process.cwd()},bundle:true,platform:'node',format:'esm',outfile:'outputs/P3-1/models.mjs'});
+  await build({stdin:{contents:files.map((f,i)=>`export {default as l${i}} from './src/content/lectures/${f}';`).join('')+"export {matlab} from './src/plot/export';export {fmt} from './src/content/p1';export {scriptParts} from './src/ScriptText';",resolveDir:process.cwd()},bundle:true,platform:'node',format:'esm',outfile:'outputs/P3-1/models.mjs'});
   stop();
   const all=await import('../outputs/P3-1/models.mjs?'+Date.now());
-  return {lectures:files.map((_,i)=>all['l'+i]),matlab:all.matlab,fmt:all.fmt};
+  return {lectures:files.map((_,i)=>all['l'+i]),matlab:all.matlab,fmt:all.fmt,scriptParts:all.scriptParts};
 }
 if(process.argv.includes('--inventory')) {
   const {lectures}=await models();
