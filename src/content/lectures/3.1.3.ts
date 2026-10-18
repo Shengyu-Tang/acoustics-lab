@@ -55,129 +55,158 @@ export default p2Lecture("3.1.3", {
     },
   ],
   figures: [
-    figure(
-      "3.1.3-1",
-      "逐项取消假设后的对比示意",
-      (p) =>
+    figure("3.1.3-3", "Small-amplitude validity", (p) => [
+      graph(
+        p,
+        0,
+        "Acoustic Mach number and compression",
+        "Pressure amplitude (Pa)",
+        "p / (rho c^2)",
+        [0, 200],
+        [0, 0.011],
         [
-          graph(
-            p,
-            0,
-            p.small ? "小振幅：正弦波" : "非线性示意：波形变陡",
-            "相位坐标（—）",
-            "归一化声压（—）",
-            [0, 2],
-            [-1.5, 1.5],
-            [
-              curve(
-                "线性基准",
-                (x) => Math.sin(2 * Math.PI * x),
-                [0, 2],
-                "linspace(0,2,401)",
-                "sin(2*pi*x)",
-                "--",
-              ),
-              curve(
-                "当前假设",
-                (x) =>
-                  Math.sin(2 * Math.PI * x) +
-                  (1 - p.small) * p.distortion * Math.sin(4 * Math.PI * x),
-                [0, 2],
-                "linspace(0,2,401)",
-                "sin(2*pi*x)+(1-small)*distortion*sin(4*pi*x)",
-              ),
-            ],
+          curve(
+            "Compression = acoustic Mach number",
+            (x) => x / (p.rho * p.c ** 2),
+            [0, 200],
+            "linspace(0,200,401)",
+            "x/(rho*c^2)",
           ),
-          graph(
-            p,
-            0,
-            p.ideal ? "无耗散：振幅不变" : "有耗散示意：振幅衰减",
-            "传播距离（示意）",
-            "归一化振幅（—）",
-            [0, 2],
-            [0, 1.5],
-            [
-              curve(
-                "振幅包络",
-                (x) => Math.exp(-(1 - p.ideal) * x),
-                [0, 2],
-                "linspace(0,2,401)",
-                "exp(-(1-ideal)*x)",
-              ),
-            ],
-          ),
-          graph(
-            p,
-            0,
-            p.uniform ? "均匀静止：直声线" : "非均匀介质示意：声线弯曲",
-            "水平位置（示意）",
-            "垂直位置（示意）",
-            [0, 2],
-            [0, 1.5],
-            [
-              curve(
-                "声线",
-                (x) => 0.2 + ((1 - p.uniform) * x * x) / 4,
-                [0, 2],
-                "linspace(0,2,401)",
-                ".2+(1-uniform)*x.^2/4",
-              ),
-            ],
-          ),
-          graph(
-            p,
-            0,
-            p.continuous ? "连续场：可取空间导数" : "微观示意：连续场描述失效",
-            "空间坐标（示意）",
-            "扰动（示意）",
-            [0, 2],
-            [-1.5, 1.5],
-            [
-              curve(
-                "介质描述",
-                (x) => Math.sin(2 * Math.PI * x),
-                [0, 2],
-                "linspace(0,2,401*continuous+17*(1-continuous))",
-                "sin(2*pi*x)",
-                p.continuous ? "-" : "none",
-                p.continuous ? 401 : 17,
-              ),
-            ].map((s) => ({ ...s, marker: p.continuous ? undefined : "o" })),
-          ),
-          graph(
-            p,
-            0,
-            p.compressible ? "有限可压缩性：有限声速" : "不可压缩极限：本模型无有限速压缩波",
-            "静态密度比（—）",
-            "声压扰动（归一化）",
-            [0.9, 1.1],
-            [-1.5, 1.5],
-            [
-              curve(
-                "状态斜率",
-                (x) =>
-                  p.compressible ? 10 * (x - 1) : Math.max(-1.5, Math.min(1.5, 10000 * (x - 1))),
-                [0.9, 1.1],
-                "linspace(.9,1.1,401)",
-                "min(1.5,max(-1.5,(10*compressible+10000*(1-compressible))*(x-1)))",
-              ),
-            ],
-          ),
-        ].map((panel, i) => {
-          const choices = [
-            ["small", "非线性示意：波形变陡", "小振幅：正弦波"],
-            ["ideal", "有耗散示意：振幅衰减", "无耗散：振幅不变"],
-            ["uniform", "非均匀介质示意：声线弯曲", "均匀静止：直声线"],
-            ["continuous", "微观示意：连续场描述失效", "连续场：可取空间导数"],
-            ["compressible", "不可压缩极限：无有限速压缩波", "有限可压缩性：有限声速"],
-          ][i];
-          panel.matlabModel!.setup += `mtitles={'${choices[1]}','${choices[2]}'};`;
-          panel.matlabModel!.title = `mtitles{1+${choices[0]}}`;
-          return panel;
-        }),
-      3,
-      2,
-    ),
+          points("Current pressure", [[p.pa, p.pa / (p.rho * p.c ** 2)]], "pa", "pa/(rho*c^2)", {
+            style: "none",
+            marker: "o",
+          }),
+        ],
+      ),
+    ]),
+    {
+      ...figure(
+        "3.1.3-1",
+        "逐项取消假设后的对比示意",
+        (p) =>
+          [
+            graph(
+              p,
+              0,
+              p.small ? "小振幅：正弦波" : "非线性示意：波形变陡",
+              "相位坐标（—）",
+              "归一化声压（—）",
+              [0, 2],
+              [-1.5, 1.5],
+              [
+                curve(
+                  "线性基准",
+                  (x) => Math.sin(2 * Math.PI * x),
+                  [0, 2],
+                  "linspace(0,2,401)",
+                  "sin(2*pi*x)",
+                  "--",
+                ),
+                curve(
+                  "当前假设",
+                  (x) =>
+                    Math.sin(2 * Math.PI * x) +
+                    (1 - p.small) * p.distortion * Math.sin(4 * Math.PI * x),
+                  [0, 2],
+                  "linspace(0,2,401)",
+                  "sin(2*pi*x)+(1-small)*distortion*sin(4*pi*x)",
+                ),
+              ],
+            ),
+            graph(
+              p,
+              0,
+              p.ideal ? "无耗散：振幅不变" : "有耗散示意：振幅衰减",
+              "传播距离（示意）",
+              "归一化振幅（—）",
+              [0, 2],
+              [0, 1.5],
+              [
+                curve(
+                  "振幅包络",
+                  (x) => Math.exp(-(1 - p.ideal) * x),
+                  [0, 2],
+                  "linspace(0,2,401)",
+                  "exp(-(1-ideal)*x)",
+                ),
+              ],
+            ),
+            graph(
+              p,
+              0,
+              p.uniform ? "均匀静止：直声线" : "非均匀介质示意：声线弯曲",
+              "水平位置（示意）",
+              "垂直位置（示意）",
+              [0, 2],
+              [0, 1.5],
+              [
+                curve(
+                  "声线",
+                  (x) => 0.2 + ((1 - p.uniform) * x * x) / 4,
+                  [0, 2],
+                  "linspace(0,2,401)",
+                  ".2+(1-uniform)*x.^2/4",
+                ),
+              ],
+            ),
+            graph(
+              p,
+              0,
+              p.continuous ? "连续场：可取空间导数" : "微观示意：连续场描述失效",
+              "空间坐标（示意）",
+              "扰动（示意）",
+              [0, 2],
+              [-1.5, 1.5],
+              [
+                curve(
+                  "介质描述",
+                  (x) => Math.sin(2 * Math.PI * x),
+                  [0, 2],
+                  "linspace(0,2,401*continuous+17*(1-continuous))",
+                  "sin(2*pi*x)",
+                  p.continuous ? "-" : "none",
+                  p.continuous ? 401 : 17,
+                ),
+              ].map((s) => ({ ...s, marker: p.continuous ? undefined : "o" })),
+            ),
+            graph(
+              p,
+              0,
+              p.compressible ? "有限可压缩性：有限声速" : "不可压缩极限：本模型无有限速压缩波",
+              "静态密度比（—）",
+              "声压扰动（归一化）",
+              [0.9, 1.1],
+              [-1.5, 1.5],
+              [
+                curve(
+                  "状态斜率",
+                  (x) =>
+                    p.compressible ? 10 * (x - 1) : Math.max(-1.5, Math.min(1.5, 10000 * (x - 1))),
+                  [0.9, 1.1],
+                  "linspace(.9,1.1,401)",
+                  "min(1.5,max(-1.5,(10*compressible+10000*(1-compressible))*(x-1)))",
+                ),
+              ],
+            ),
+          ].map((panel, i) => {
+            const choices = [
+              ["small", "非线性示意：波形变陡", "小振幅：正弦波"],
+              ["ideal", "有耗散示意：振幅衰减", "无耗散：振幅不变"],
+              ["uniform", "非均匀介质示意：声线弯曲", "均匀静止：直声线"],
+              ["continuous", "微观示意：连续场描述失效", "连续场：可取空间导数"],
+              ["compressible", "不可压缩极限：无有限速压缩波", "有限可压缩性：有限声速"],
+            ][i];
+            panel.matlabModel!.setup += `mtitles={'${choices[1]}','${choices[2]}'};`;
+            panel.matlabModel!.title = `mtitles{1+${choices[0]}}`;
+            return panel;
+          }),
+        3,
+        2,
+      ),
+      independentOf: ["pa", "rho", "c"],
+      dimensionlessComparison:
+        "Dimensionless comparison of model assumptions; physical small-amplitude validity is plotted separately.",
+    },
     figure("3.1.3-2", "三定律到波动方程的推导路线", (p) => [
       graph(
         p,

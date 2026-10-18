@@ -1,5 +1,8 @@
 // Local functions make each downloaded script self-contained in MATLAB R2024b.
 export const MATLAB_FUNCTIONS = String.raw`
+function R=dampingResistance(M,D,input,value)
+if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
+end
 function y=freeResponse(t,M,D,R,x0,v0)
 w=sqrt(D/M); d=R/(2*M); q=d*d-w*w;
 if abs(q)<1e-10*w*w

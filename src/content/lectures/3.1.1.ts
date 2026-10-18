@@ -45,16 +45,16 @@ export default p2Lecture("3.1.1", {
       "纵波与横波中的质点运动",
       (p, t) => {
         const q = Array.from({ length: 31 }, (_, i) => i / 10),
-          d = (r: number) => 0.065 * Math.cos(2 * Math.PI * p.f * t - 2 * Math.PI * r);
+          d = (r: number) => p.xi * Math.cos(2 * Math.PI * p.f * t - (2 * Math.PI * p.f * r) / p.c);
         return [
           graph(
             p,
             t,
             "质点位移放大；波向右传播",
-            "平衡位置 x/λ（—）",
-            "横向示意位置（—）",
+            "平衡位置 x (m)",
+            "y (m)",
             [-0.2, 3.2],
-            [-0.4, 0.4],
+            [-0.0015, 0.0015],
             [
               points(
                 "平衡位置",
@@ -66,15 +66,15 @@ export default p2Lecture("3.1.1", {
               points(
                 "运动质点",
                 q.map((x) => [x + (p.mode === 0 ? d(x) : 0), p.mode === 1 ? d(x) : 0]),
-                "(0:.1:3)+(mode==0)*.065*cos(tau-2*pi*(0:.1:3))",
-                "(mode==1)*.065*cos(tau-2*pi*(0:.1:3))",
+                "(0:.1:3)+(mode==0)*xi*cos(tau-k*(0:.1:3))",
+                "(mode==1)*xi*cos(tau-k*(0:.1:3))",
                 { style: "none", marker: "o", color: "#777777" },
               ),
               points(
                 "被观察质点",
                 [[1.5 + (p.mode === 0 ? d(1.5) : 0), p.mode === 1 ? d(1.5) : 0]],
-                "1.5+(mode==0)*.065*cos(tau-3*pi)",
-                "(mode==1)*.065*cos(tau-3*pi)",
+                "1.5+(mode==0)*xi*cos(tau-k*1.5)",
+                "(mode==1)*xi*cos(tau-k*1.5)",
                 { style: "none", marker: "o", color: "#0072BD" },
               ),
             ],
@@ -83,23 +83,28 @@ export default p2Lecture("3.1.1", {
             p,
             t,
             "同一质点的位移时间史",
-            "时间 t/T（—）",
+            "时间 t (s)",
             "实际位移 ξ (m)",
-            [0, 2],
+            [0, 0.002],
             [-1.5 * p.xi, 1.5 * p.xi],
             [
               curve(
                 "质点位移",
-                (r) => p.xi * Math.cos(2 * Math.PI * r - 3 * Math.PI),
-                [0, 2],
-                "linspace(0,2,401)",
-                "xi*cos(2*pi*x-3*pi)",
+                (r) => p.xi * Math.cos(2 * Math.PI * p.f * r - (2 * Math.PI * p.f * 1.5) / p.c),
+                [0, 0.002],
+                "linspace(0,.002,401)",
+                "xi*cos(w*x-k*1.5)",
               ),
               points(
                 "当前时刻",
-                [[(p.f * t) % 2, p.xi * Math.cos(2 * Math.PI * p.f * t - 3 * Math.PI)]],
-                "mod(f*tView,2)",
-                "xi*cos(tau-3*pi)",
+                [
+                  [
+                    t % 0.002,
+                    p.xi * Math.cos(2 * Math.PI * p.f * t - (2 * Math.PI * p.f * 1.5) / p.c),
+                  ],
+                ],
+                "mod(tView,.002)",
+                "xi*cos(tau-k*1.5)",
                 { style: "none", marker: "o" },
               ),
             ],

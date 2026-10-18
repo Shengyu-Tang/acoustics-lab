@@ -111,6 +111,26 @@ export default p2Lecture("3.4.6", {
         { ylim: "[sourceLevel sourceLevel+20]" },
       ),
     ]),
+    figure("3.4.6-3", "Plane-wave pressure and intensity levels", (p) => [
+      graph(
+        p,
+        0,
+        "Reference pressure and medium impedance determine the offset",
+        "SPL (dB)",
+        "SIL (dB)",
+        [0, 140],
+        [-100, 160],
+        [
+          curve(
+            "SIL",
+            (x) => x + 10 * Math.log10((p.medium ? 1e-6 : 20e-6) ** 2 / (p.rho * p.c * 1e-12)),
+            [0, 140],
+            "linspace(0,140,401)",
+            "x+10*log10((20e-6*(1-medium)+1e-6*medium)^2/(Z*1e-12))",
+          ),
+        ],
+      ),
+    ]),
   ],
   readouts: (p) => [
     ["声压级", pressureLevel(p.pRms, p.medium ? 1e-6 : 20e-6), "dB"],

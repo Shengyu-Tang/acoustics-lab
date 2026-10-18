@@ -50,19 +50,21 @@ export default p2Lecture("3.5.1", {
           p,
           t,
           p.ratio <= 1 ? "实 k_y：均匀波，等相位线为直线" : "k_y = −jα：沿 y 指数衰减",
-          "位置 x/λ（—）",
-          "位置 y/λ（—）",
+          "位置 x (m)",
+          "位置 y (m)",
           [0, 2],
           [0, 2],
           [],
-          "[XX,YY]=meshgrid(linspace(0,2,161),linspace(0,2,81));qr=sqrt(max(0,1-ratio^2));qa=sqrt(max(0,ratio^2-1));Pfield=exp(-2*pi*qa*YY).*cos(tau-2*pi*(ratio*XX+qr*YY));",
+          "[XX,YY]=meshgrid(linspace(0,2,161),linspace(0,2,81));qr=sqrt(max(0,1-ratio^2));qa=sqrt(max(0,ratio^2-1));Pfield=exp(-k*qa*YY).*cos(tau-k*(ratio*XX+qr*YY));",
           {
             legend: false,
             field: {
               x: xs,
               y: ys,
               z: ys.map((y) =>
-                xs.map((x) => helmholtzField(x, y, 2 * Math.PI, p.ratio, 2 * Math.PI * p.f * t)),
+                xs.map((x) =>
+                  helmholtzField(x, y, (2 * Math.PI * p.f) / p.c, p.ratio, 2 * Math.PI * p.f * t),
+                ),
               ),
               limits: [-1, 1],
               map: "RdBu",

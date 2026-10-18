@@ -357,6 +357,18 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
                   cols={f.cols}
                   panels={f.plot(p, t)}
                 />
+                {f.dimensionlessComparison && (
+                  <p className="figure-independence">
+                    <MathProse text={f.dimensionlessComparison} />
+                    <MathProse
+                      text={
+                        f.independentOf?.length
+                          ? `；本图与 ${f.independentOf.map((key) => l.parameters.find((d) => d.key === key)?.symbol ?? key).join("、")} 无关`
+                          : ""
+                      }
+                    />
+                  </p>
+                )}
               </div>
             ))}
           </div>

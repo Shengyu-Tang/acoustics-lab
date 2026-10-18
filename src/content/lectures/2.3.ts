@@ -185,6 +185,9 @@ export default lecture(
       },
       {
         number: "2.3-3",
+        independentOf: ["E", "sigma", "gradient"],
+        dimensionlessComparison:
+          "Dimensionless frequency-equation comparison q=kL; elastic modulus converts roots to Hz in the readouts.",
         title: "固定—质量负载边界的固有频率图解",
         rows: 1,
         cols: 1,

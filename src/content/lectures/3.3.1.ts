@@ -47,7 +47,7 @@ export default p2Lecture("3.3.1", {
     figure("3.3.1-1", "行波与驻波的动能、势能和总能量", (p, t) => {
       const energies = (r: number) => {
         const a = 2 * Math.PI * p.f * t,
-          b = 2 * Math.PI * r;
+          b = (2 * Math.PI * p.f * r) / p.c;
         return acousticEnergy(
           p.standing ? 2 * p.pa * Math.cos(b) * Math.cos(a) : p.pa * Math.cos(a - b),
           p.standing
@@ -63,7 +63,7 @@ export default p2Lecture("3.3.1", {
           p,
           t,
           "瞬时能量分布；同一峰值刻度比较两种波场",
-          "位置 x/λ（—）",
+          "位置 x (m)",
           "能量密度 (J/m³)",
           [0, 2],
           [0, max * 1.4],
@@ -82,7 +82,7 @@ export default p2Lecture("3.3.1", {
               ),
             ),
           ],
-          "r=linspace(0,2,401);pv=(1-standing)*pa*cos(tau-2*pi*r)+standing*2*pa*cos(2*pi*r)*cos(tau);uv=(1-standing)*pa/Z*cos(tau-2*pi*r)+standing*2*pa/Z*sin(2*pi*r)*sin(tau);",
+          "r=linspace(0,2,401);pv=(1-standing)*pa*cos(tau-k*r)+standing*2*pa*cos(k*r)*cos(tau);uv=(1-standing)*pa/Z*cos(tau-k*r)+standing*2*pa/Z*sin(k*r)*sin(tau);",
           {},
           { ylim: "[0 (1+standing)*1.4*pa^2/(rho*c^2)]" },
         ),

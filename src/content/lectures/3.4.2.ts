@@ -12,7 +12,7 @@ import {
   answerCurve,
   engineering,
 } from "../p2";
-const obs = parameter("obs", "观察点位置", "x₁/λ", "—", 0, 2, 0.01),
+const obs = parameter("obs", "观察点位置", "x₁", "m", 0, 2, 0.01),
   bulk = parameter("bulk", "介质体积模量", "K", "GPa", 0.0001, 3, 0.0001);
 const p = { ...defaults, obs: 0.25, bulk: 0.000142 };
 export default p2Lecture("3.4.2", {
@@ -47,24 +47,24 @@ export default p2Lecture("3.4.2", {
           p,
           t,
           "固定观察点 x₁：标线间为一个周期",
-          "时间 t/T（—）",
+          "时间 t (s)",
           "声压 p (Pa)",
-          [0, 2],
+          [0, 0.002],
           [-1.7 * p.pa, 1.7 * p.pa],
           [
             curve(
               "p(x₁,t)",
-              (q) => p.pa * Math.cos(2 * Math.PI * (q - p.obs)),
-              [0, 2],
-              "linspace(0,2,401)",
-              "pa*cos(2*pi*(x-obs))",
+              (q) => p.pa * Math.cos(2 * Math.PI * (p.f * q - (p.f * p.obs) / p.c)),
+              [0, 0.002],
+              "linspace(0,.002,401)",
+              "pa*cos(w*x-k*obs)",
             ),
           ],
           "",
           {
             annotations: [
               { axis: "x", value: 0, label: "0" },
-              { axis: "x", value: 1, label: "T" },
+              { axis: "x", value: 1 / p.f, label: "T" },
             ],
           },
           { ylim: "[-1.7 1.7]*pa" },
@@ -73,23 +73,23 @@ export default p2Lecture("3.4.2", {
           p,
           t,
           "固定时刻：标线间为一个波长",
-          "位置 x/λ（—）",
+          "位置 x (m)",
           "声压 p (Pa)",
           [0, 2],
           [-1.7 * p.pa, 1.7 * p.pa],
           [
             curve(
               "p(x,t)",
-              (q) => p.pa * Math.cos(2 * Math.PI * (p.f * t - q)),
+              (q) => p.pa * Math.cos(2 * Math.PI * (p.f * t - (p.f * q) / p.c)),
               [0, 2],
               "linspace(0,2,401)",
-              "pa*cos(tau-2*pi*x)",
+              "pa*cos(tau-k*x)",
             ),
             points(
               "观察点",
-              [[p.obs, p.pa * Math.cos(2 * Math.PI * (p.f * t - p.obs))]],
+              [[p.obs, p.pa * Math.cos(2 * Math.PI * (p.f * t - (p.f * p.obs) / p.c))]],
               "obs",
-              "pa*cos(tau-2*pi*obs)",
+              "pa*cos(tau-k*obs)",
               { style: "none", marker: "o" },
             ),
           ],
@@ -97,7 +97,7 @@ export default p2Lecture("3.4.2", {
           {
             annotations: [
               { axis: "x", value: 0, label: "0" },
-              { axis: "x", value: 1, label: "λ" },
+              { axis: "x", value: p.c / p.f, label: "λ" },
             ],
           },
           { ylim: "[-1.7 1.7]*pa" },
@@ -111,10 +111,10 @@ export default p2Lecture("3.4.2", {
     ["周期", 1000 / p.f, "ms"],
     ["波长", p.c / p.f, "m"],
     ["角频率", 2 * Math.PI * p.f, "rad/s"],
-    ["观察点距离", (p.obs * p.c) / p.f, "m"],
-    ["相位落后", 2 * Math.PI * p.obs, "rad"],
+    ["观察点距离", p.obs, "m"],
+    ["相位落后", (2 * Math.PI * p.f * p.obs) / p.c, "rad"],
   ],
-  readoutModel: "[1000/f c/f w obs*c/f 2*pi*obs]",
+  readoutModel: "[1000/f c/f w obs k*obs]",
   examples: [
     example(
       "例题　空气声波的时间与空间周期",

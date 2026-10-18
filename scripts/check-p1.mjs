@@ -331,8 +331,10 @@ for (const l of lectures) {
             !panel.xlabel.includes("实部")
           ) {
             const xs = s.points.map((p) => p[0]);
-            near(Math.min(...xs), xt.limits[0], 0.01);
-            near(Math.max(...xs), xt.limits[1], 0.01);
+            assert.ok(
+              Math.min(...xs) >= xt.limits[0] - 1e-9 && Math.max(...xs) <= xt.limits[1] + 1e-9,
+              `${f.number}: curve inside fixed physical axes`,
+            );
           }
         }
         assert.ok(!all.matlab([panel], 1, 1, f.title).includes("undefined"));

@@ -50,6 +50,23 @@ export default p2Lecture("3.1.7", {
         [-40, 60],
         [200, 450],
         [
+          points(
+            "Current temperature",
+            [[p.T, gasSpeed(p.T, p.gamma, p.P0).adiabatic]],
+            "T",
+            "sqrt(gamma*287.05*(T+273.15))",
+            { style: "none", marker: "o" },
+          ),
+          {
+            ...curve(
+              "Static density",
+              (T) => p.P0 / (287.05 * (T + 273.15)),
+              [-40, 60],
+              "linspace(-40,60,401)",
+              "P0./(287.05*(x+273.15))",
+            ),
+            axis: "right",
+          },
           curve(
             "等熵（拉普拉斯）",
             (T) => gasSpeed(T, p.gamma, p.P0).adiabatic,
@@ -77,6 +94,8 @@ export default p2Lecture("3.1.7", {
         ],
         "",
         {
+          rightLabel: "Static density (kg/m^3)",
+          rightLim: [0, 3],
           annotations: [
             {
               axis: "x",
@@ -86,6 +105,7 @@ export default p2Lecture("3.1.7", {
           ],
         },
         {
+          rightLim: "[0 3]",
           annotationLabels: [
             "sprintf('0 C: %.0f / %.0f m/s',sqrt(gamma*287.05*273.15),sqrt(287.05*273.15))",
           ],

@@ -73,6 +73,9 @@ export default lecture(
       },
       {
         number: "1.1.3-2",
+        independentOf: ["M", "D", "x0", "v0"],
+        dimensionlessComparison:
+          "Dimensionless characteristic-root comparison s/omega0; initial conditions do not determine the roots.",
         title: "阻尼从 0 到 2ω₀ 的特征根轨迹",
         rows: 1,
         cols: 1,

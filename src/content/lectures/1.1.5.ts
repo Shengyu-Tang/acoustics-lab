@@ -1,4 +1,5 @@
 import { lecture, mechanics, parameter, fmt, industry, type Values } from "../p1";
+import { freeMotion } from "../../physics/p1";
 import { panel, line, extent, working } from "../../plot/p1Helpers";
 const defaults = { M: 10, D: 395000, input: 2, value: 5 };
 const settings = (p: Values) => {
@@ -22,6 +23,12 @@ const curves = (p: Values) => {
       [0, end],
       [-1.2, 2.2],
       [
+        line(
+          "Current damping",
+          (t) => freeMotion({ M: p.M, D: p.D, Rm: settings(p).Rm, x0: 1, v0: 0 }, t),
+          end,
+          "-.",
+        ),
         ...[1.7, 5, 10].flatMap((Q, i) => {
           const d = w / (2 * Q),
             wd = w * Math.sqrt(1 - 1 / (4 * Q * Q));

@@ -44,35 +44,35 @@ export default p2Lecture("3.1.6", {
       "绝热状态曲线、切线与线性化误差",
       (p) => {
         const a = p.span,
-          r = axisTicks([-p.span, p.span]).limits[1];
+          r = p.span * p.rho;
         return [
           graph(
             p,
             0,
             "平衡点附近：绝热曲线与切线",
-            "压缩量 ρ′/ρ₀（—）",
+            "Density excess (kg/m^3)",
             "声压 p (Pa)",
             [-r, r],
             [-1.8 * p.P0 * p.gamma * a, 1.8 * p.P0 * p.gamma * a],
             [
               curve(
                 "绝热曲线",
-                (s) => p.P0 * ((1 + s) ** p.gamma - 1),
+                (s) => p.P0 * ((1 + s / p.rho) ** p.gamma - 1),
                 [-r, r],
                 "linspace(rr(1),rr(2),401)",
-                "P0*((1+x).^gamma-1)",
+                "P0*((1+x/rho).^gamma-1)",
               ),
               curve(
                 "切线",
-                (s) => p.P0 * p.gamma * s,
+                (s) => (p.P0 * p.gamma * s) / p.rho,
                 [-r, r],
                 "linspace(rr(1),rr(2),401)",
-                "gamma*P0*x",
+                "gamma*P0*x/rho",
                 "--",
               ),
               points("平衡点", [[0, 0]], "0", "0", { style: "none", marker: "o" }),
             ],
-            "rr=p2NiceLimits(-span,span);",
+            "rr=[-span span]*rho;",
             {},
             { xlim: "rr", ylim: "[-1.8 1.8]*P0*gamma*span" },
           ),
@@ -158,7 +158,7 @@ export default p2Lecture("3.1.6", {
         ),
       ],
       () => "压缩量小，切线近似有效；应保持静态密度、压强与温度一致。",
-      (p) => answerCurve(p, "s", "压缩量", "—", (q) => q.gamma * q.P0 * q.s, "gamma*P0*x"),
+      (p) => answerCurve(p, "s", "压缩量", "—", (q) => q.gamma * q.P0 * q.s, "gamma*P0*x/rho"),
     ),
   ],
   answers: [

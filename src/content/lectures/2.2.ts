@@ -72,7 +72,7 @@ export default lecture(
             ...panel(
               `第 ${n} 阶：${fmt(stringFrequency(n, c, p.L))} Hz`,
               "位置 x (m)",
-              "归一化位移 y (m)",
+              "横向位移 y (m)",
               [0, 1.5],
               [-0.015, 0.015],
               [

@@ -53,77 +53,82 @@ export default p2Lecture("3.5.2", {
     },
   ],
   figures: [
-    figure("3.5.2-1", "三维波数矢量与垂直等相位面（正交投影）", (p) => {
-      const a = (p.azimuth * Math.PI) / 180,
-        e = (p.elevation * Math.PI) / 180,
-        n = waveVector(1, p.azimuth, p.elevation),
-        u = [-Math.sin(a), Math.cos(a), 0],
-        v = [-Math.sin(e) * Math.cos(a), -Math.sin(e) * Math.sin(a), Math.cos(e)];
-      const ar = arrow("k/k", [0, 0], projection(n));
-      const setup =
-        "nn=[cosd(elevation)*cosd(azimuth) cosd(elevation)*sind(azimuth) sind(elevation)];uu=[-sind(azimuth) cosd(azimuth) 0];vv=[-sind(elevation)*cosd(azimuth) -sind(elevation)*sind(azimuth) cosd(elevation)];proj=[1 0;.45 .3;0 1];kk=arrowPoints([0 0],nn*proj,1);";
-      return [
-        graph(
-          p,
-          0,
-          "三维正交投影：平面法向与 k 相同",
-          "x + 0.45y（示意）",
-          "z + 0.30y（示意）",
-          [-1.5, 1.5],
-          [-1.5, 1.5],
-          [
-            ...[-0.45, 0.45].map((s, i) => {
-              const corners = [
-                [-0.5, -0.5],
-                [0.5, -0.5],
-                [0.5, 0.5],
-                [-0.5, 0.5],
-                [-0.5, -0.5],
-              ];
-              const xyz = corners.map(([a, b]) =>
-                projection(n.map((q, j) => s * q + a * u[j] + b * v[j])),
-              );
-              return points(
-                `等相位面 ${i + 1}`,
-                xyz,
-                `plane${i + 1}(:,1)'`,
-                `plane${i + 1}(:,2)'`,
-                { color: "#777777", legend: i === 0 },
-              );
-            }),
-            points("波数矢量 k/k", ar.points, "kk(:,1)'", "kk(:,2)'"),
-            points(
-              "x、y、z 轴",
-              [
-                [0, 0],
-                [1.2, 0],
-                [0, 0],
-                [0.54, 0.36],
-                [0, 0],
-                [0, 1.2],
-              ],
-              "[0 1.2 0 .54 0 0]",
-              "[0 0 0 .36 0 1.2]",
-              { color: "#777777", style: ":" },
-            ),
-          ],
-          setup +
-            [-0.45, 0.45]
-              .map(
-                (s, i) =>
-                  `plane${i + 1}=(${s}*ones(5,1)*nn+[-.5 -.5;.5 -.5;.5 .5;-.5 .5;-.5 -.5]*[uu;vv])*proj;`,
-              )
-              .join(""),
-          {
-            textLabels: [
-              { x: 1.3, y: 0, text: "x" },
-              { x: 0.6, y: 0.4, text: "y" },
-              { x: 0, y: 1.3, text: "z" },
+    {
+      ...figure("3.5.2-1", "三维波数矢量与垂直等相位面（正交投影）", (p) => {
+        const a = (p.azimuth * Math.PI) / 180,
+          e = (p.elevation * Math.PI) / 180,
+          n = waveVector(1, p.azimuth, p.elevation),
+          u = [-Math.sin(a), Math.cos(a), 0],
+          v = [-Math.sin(e) * Math.cos(a), -Math.sin(e) * Math.sin(a), Math.cos(e)];
+        const ar = arrow("k/k", [0, 0], projection(n));
+        const setup =
+          "nn=[cosd(elevation)*cosd(azimuth) cosd(elevation)*sind(azimuth) sind(elevation)];uu=[-sind(azimuth) cosd(azimuth) 0];vv=[-sind(elevation)*cosd(azimuth) -sind(elevation)*sind(azimuth) cosd(elevation)];proj=[1 0;.45 .3;0 1];kk=arrowPoints([0 0],nn*proj,1);";
+        return [
+          graph(
+            p,
+            0,
+            "三维正交投影：平面法向与 k 相同",
+            "x + 0.45y（示意）",
+            "z + 0.30y（示意）",
+            [-1.5, 1.5],
+            [-1.5, 1.5],
+            [
+              ...[-0.45, 0.45].map((s, i) => {
+                const corners = [
+                  [-0.5, -0.5],
+                  [0.5, -0.5],
+                  [0.5, 0.5],
+                  [-0.5, 0.5],
+                  [-0.5, -0.5],
+                ];
+                const xyz = corners.map(([a, b]) =>
+                  projection(n.map((q, j) => s * q + a * u[j] + b * v[j])),
+                );
+                return points(
+                  `等相位面 ${i + 1}`,
+                  xyz,
+                  `plane${i + 1}(:,1)'`,
+                  `plane${i + 1}(:,2)'`,
+                  { color: "#777777", legend: i === 0 },
+                );
+              }),
+              points("波数矢量 k/k", ar.points, "kk(:,1)'", "kk(:,2)'"),
+              points(
+                "x、y、z 轴",
+                [
+                  [0, 0],
+                  [1.2, 0],
+                  [0, 0],
+                  [0.54, 0.36],
+                  [0, 0],
+                  [0, 1.2],
+                ],
+                "[0 1.2 0 .54 0 0]",
+                "[0 0 0 .36 0 1.2]",
+                { color: "#777777", style: ":" },
+              ),
             ],
-          },
-        ),
-      ];
-    }),
+            setup +
+              [-0.45, 0.45]
+                .map(
+                  (s, i) =>
+                    `plane${i + 1}=(${s}*ones(5,1)*nn+[-.5 -.5;.5 -.5;.5 .5;-.5 .5;-.5 -.5]*[uu;vv])*proj;`,
+                )
+                .join(""),
+            {
+              textLabels: [
+                { x: 1.3, y: 0, text: "x" },
+                { x: 0.6, y: 0.4, text: "y" },
+                { x: 0, y: 1.3, text: "z" },
+              ],
+            },
+          ),
+        ];
+      }),
+      independentOf: ["f", "c", "wavecount", "a1", "a2", "a3", "a4"],
+      dimensionlessComparison:
+        "Unit-direction comparison k/|k|; the physical field is shown below.",
+    },
     figure("3.5.2-2", "二至四列不同方向的平面波叠加", (p, t) => {
       const xs = Array.from({ length: 161 }, (_, i) => -1 + (2 * i) / 160),
         ys = Array.from({ length: 81 }, (_, i) => -1 + (2 * i) / 80);
@@ -131,7 +136,9 @@ export default p2Lecture("3.5.2", {
         xs.map((x) =>
           Array.from({ length: p.wavecount }, (_, i) => {
             const a = (p[`a${i + 1}`] * Math.PI) / 180;
-            return Math.cos(2 * Math.PI * (p.f * t - x * Math.cos(a) - y * Math.sin(a)));
+            return Math.cos(
+              2 * Math.PI * (p.f * t - (p.f / p.c) * (x * Math.cos(a) + y * Math.sin(a))),
+            );
           }).reduce((a, b) => a + b, 0),
         ),
       );
@@ -140,12 +147,12 @@ export default p2Lecture("3.5.2", {
           p,
           t,
           "每列波具有独立方向；场为线性叠加",
-          "位置 x/λ（—）",
-          "位置 y/λ（—）",
+          "位置 x (m)",
+          "位置 y (m)",
           [-1, 1],
           [-1, 1],
           [],
-          "[XX,YY]=meshgrid(linspace(-1,1,161),linspace(-1,1,81));AA=[a1 a2 a3 a4];Pfield=zeros(size(XX));for jj=1:wavecount,Pfield=Pfield+cos(tau-2*pi*(XX*cosd(AA(jj))+YY*sind(AA(jj))));end;",
+          "[XX,YY]=meshgrid(linspace(-1,1,161),linspace(-1,1,81));AA=[a1 a2 a3 a4];Pfield=zeros(size(XX));for jj=1:wavecount,Pfield=Pfield+cos(tau-k*(XX*cosd(AA(jj))+YY*sind(AA(jj))));end;",
           {
             legend: false,
             field: { x: xs, y: ys, z, limits: [-4, 4], map: "RdBu", label: "合成归一化声压（—）" },

@@ -41,40 +41,63 @@ export default p2Lecture("3.4.1", {
         p,
         t,
         "B = 0 为纯正向行波；A = B 为驻波",
-        "位置 x/λ（—）",
+        "位置 x (m)",
         "声压 p (Pa)",
         [0, 2],
         [-1.7 * (p.pa + p.B), 1.7 * (p.pa + p.B)],
         [
           curve(
             "正向波 A",
-            (r) => p.pa * Math.cos(2 * Math.PI * (p.f * t - r)),
+            (r) => p.pa * Math.cos(2 * Math.PI * (p.f * t - (p.f * r) / p.c)),
             [0, 2],
             "linspace(0,2,401)",
-            "pa*cos(tau-2*pi*x)",
+            "pa*cos(tau-k*x)",
             "--",
           ),
           curve(
             "反向波 B",
-            (r) => p.B * Math.cos(2 * Math.PI * (p.f * t + r)),
+            (r) => p.B * Math.cos(2 * Math.PI * (p.f * t + (p.f * r) / p.c)),
             [0, 2],
             "linspace(0,2,401)",
-            "B*cos(tau+2*pi*x)",
+            "B*cos(tau+k*x)",
             ":",
           ),
           curve(
             "合成声压",
             (r) =>
-              p.pa * Math.cos(2 * Math.PI * (p.f * t - r)) +
-              p.B * Math.cos(2 * Math.PI * (p.f * t + r)),
+              p.pa * Math.cos(2 * Math.PI * (p.f * t - (p.f * r) / p.c)) +
+              p.B * Math.cos(2 * Math.PI * (p.f * t + (p.f * r) / p.c)),
             [0, 2],
             "linspace(0,2,401)",
-            "pa*cos(tau-2*pi*x)+B*cos(tau+2*pi*x)",
+            "pa*cos(tau-k*x)+B*cos(tau+k*x)",
           ),
         ],
         "",
         {},
         { ylim: "[-1.7 1.7]*(pa+B)", legendLocation: "northeastoutside" },
+      ),
+    ]),
+    figure("3.4.1-2", "Particle velocity", (p, t) => [
+      graph(
+        p,
+        t,
+        "Velocity uses the difference of pressure components",
+        "Position x (m)",
+        "Velocity (m/s)",
+        [0, 2],
+        [-2.2, 2.2],
+        [
+          curve(
+            "Particle velocity",
+            (x) =>
+              (p.pa * Math.cos(2 * Math.PI * p.f * (t - x / p.c)) -
+                p.B * Math.cos(2 * Math.PI * p.f * (t + x / p.c))) /
+              (p.rho * p.c),
+            [0, 2],
+            "linspace(0,2,401)",
+            "(pa*cos(tau-k*x)-B*cos(tau+k*x))/Z",
+          ),
+        ],
       ),
     ]),
   ],

@@ -113,6 +113,7 @@ export function modelsFor(
       setup = common + "finish=niceEnd(12*T0);";
       curves = [
         [
+          time("finish", "freeResponse(x,M,D,dampingResistance(M,D,input,value),1,0)"),
           ...[1.7, 5, 10].flatMap((q) => [
             time("finish", `exp(-w0*x/(2*${q})).*cos(w0*sqrt(1-1/(4*${q}^2))*x)`),
             time("finish", `exp(-w0*x/(2*${q}))`),

@@ -75,25 +75,25 @@ export default p2Lecture("3.4.4", {
           p,
           t,
           "声压与振速同相",
-          "位置 x/λ（—）",
+          "位置 x (m)",
           "声压 p (Pa)",
           [0, 2],
           [-1.5 * p.pa, 1.5 * p.pa],
           [
             curve(
               "声压",
-              (x) => p.pa * Math.cos(2 * Math.PI * (p.f * t - x)),
+              (x) => p.pa * Math.cos(2 * Math.PI * (p.f * t - (p.f * x) / p.c)),
               [0, 2],
               "linspace(0,2,401)",
-              "pa*cos(tau-2*pi*x)",
+              "pa*cos(tau-k*x)",
             ),
             {
               ...curve(
                 "振速（右轴）",
-                (x) => (p.pa / (p.rho * p.c)) * Math.cos(2 * Math.PI * (p.f * t - x)),
+                (x) => (p.pa / (p.rho * p.c)) * Math.cos(2 * Math.PI * (p.f * t - (p.f * x) / p.c)),
                 [0, 2],
                 "linspace(0,2,401)",
-                "pa/Z*cos(tau-2*pi*x)",
+                "pa/Z*cos(tau-k*x)",
                 "--",
               ),
               axis: "right",
@@ -110,17 +110,19 @@ export default p2Lecture("3.4.4", {
           p,
           t,
           "W 非负；周期平均 I 与位置无关",
-          "位置 x/λ（—）",
+          "位置 x (m)",
           "能流与声强 (W/m²)",
           [0, 2],
           [0, (1.6 * p.pa ** 2) / (p.rho * p.c)],
           [
             curve(
               "瞬时能流 W",
-              (x) => (p.pa ** 2 / (p.rho * p.c)) * Math.cos(2 * Math.PI * (p.f * t - x)) ** 2,
+              (x) =>
+                (p.pa ** 2 / (p.rho * p.c)) *
+                Math.cos(2 * Math.PI * (p.f * t - (p.f * x) / p.c)) ** 2,
               [0, 2],
               "linspace(0,2,401)",
-              "pa^2/Z*cos(tau-2*pi*x).^2",
+              "pa^2/Z*cos(tau-k*x).^2",
             ),
             curve(
               "声强 I",

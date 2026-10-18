@@ -990,3 +990,9 @@ sup {
   border-left: 2px solid #1f5fa8;
   padding-left: 8px;
 }
+
+.figure-independence {
+  color: #777;
+  font-size: 12px;
+  margin: 4px 0 20px;
+}

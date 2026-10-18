@@ -88,6 +88,8 @@ export default lecture(
       },
       {
         number: "1.1.2-2",
+        independentOf: ["A"],
+        dimensionlessComparison: "Phase comparison: each vector is divided by its own amplitude.",
         title: "复平面旋转矢量与实轴投影",
         rows: 1,
         cols: 1,

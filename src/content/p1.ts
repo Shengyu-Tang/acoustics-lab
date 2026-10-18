@@ -34,6 +34,8 @@ export type P1Lecture = {
   defaults: Values;
   parameters: ParameterDefinition[];
   figures: {
+    independentOf?: string[];
+    dimensionlessComparison?: string;
     number: string;
     title: string;
     rows: number;
