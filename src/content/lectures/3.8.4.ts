@@ -1,3 +1,4 @@
+import { e384 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -97,15 +97,7 @@ export default makeLecture("3.8.4", {
   given: [amplitude, params.rho, params.c, obs],
   asks,
   judgment: "不同球面上的声强随半径平方衰减，而总平均声功率相同；这属于几何扩展。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "pa",
-      "球面波幅度常数",
-      "Pa·m",
-      (p) => (2 * Math.PI * p.pa ** 2) / (p.rho * p.c),
-      "2*pi*x^2/(rho*c)",
-    ),
+  examplePlot: (p) => e384(p),
   engineering: engineering(
     "声呐传播预算需区分几何扩展和介质吸收。无耗散球面波的声强按距离平方下降，球面积增加使总功率保持不变。",
     "sonar",

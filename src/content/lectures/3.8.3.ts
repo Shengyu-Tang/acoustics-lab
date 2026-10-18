@@ -1,3 +1,4 @@
+import { e383 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -93,15 +93,7 @@ export default makeLecture("3.8.3", {
   given: [obs, lectureFrequency, params.c],
   asks,
   judgment: "振速相速度大于声速源于局部相位变化，不表示信号或能量超声速传播。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "obs",
-      "观察距离",
-      "m",
-      (p) => p.c * (1 + (p.c / (2 * Math.PI * p.f * p.obs)) ** 2),
-      "c*(1+(c/(2*pi*f*x))^2)",
-    ),
+  examplePlot: (p) => e383(p),
   engineering: engineering(
     "声压与质点振速的空间相位梯度不同，导致近场局部相速度不同。估计传输时延时应关注信号传播，不能把局部振速相位速度当作能量速度。",
     "sonar",

@@ -1,3 +1,4 @@
+import { e391 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -92,15 +92,7 @@ export default makeLecture("3.9.1", {
   given: [argument],
   asks,
   judgment: "近轴区域应使用精确柱函数，远场才可用渐近正余弦估计声场。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "argument",
-      "无量纲自变量",
-      "—",
-      (p) => phy.cylindricalBessel(p.argument).Y0,
-      "bessely(0,x)",
-    ),
+  examplePlot: (p) => e391(p),
   engineering: engineering(
     "长线声源在远离端部的位置可近似为柱面辐射。精确柱函数用于近场，渐近正余弦用于远场估算，两者需要按无量纲距离选择。",
     "sonar",

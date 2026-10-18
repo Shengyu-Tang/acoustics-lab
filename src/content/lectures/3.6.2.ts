@@ -1,3 +1,4 @@
+import { e362 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -91,15 +91,7 @@ export default makeLecture("3.6.2", {
   given: [Z1, Z2],
   asks,
   judgment: "两侧阻抗相等时没有反射，失配时必须保留反射分量才能重建界面附近的声场。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "Z1",
-      "入射介质阻抗",
-      "Pa·s/m",
-      (p) => phy.normalInterface(p.Z1, p.Z2).D,
-      "2*Z2/(x+Z2)",
-    ),
+  examplePlot: (p) => e362(p),
   engineering: engineering(
     "脉冲回波检测通过入射、反射与透射分量区分材料界面。界面附近的总场包含干涉，测量探头位置会影响读到的瞬时声压。",
     "ultrasound",

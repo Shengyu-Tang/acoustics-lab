@@ -1,3 +1,4 @@
+import { e385 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -132,27 +132,7 @@ export default makeLecture("3.8.5", {
   given: [lectureFrequency, params.c, amplitude, depth, distance],
   asks,
   judgment: "反相镜像产生明显干涉，不能仅用实源的球面扩展预测接收声压。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "f",
-      "频率",
-      "Hz",
-      (p) =>
-        phy.magnitude(
-          phy.add(
-            phy.polar(
-              p.pa / Math.hypot(p.distance, p.receiverDepth - p.depth),
-              ((-2 * Math.PI * p.f) / p.c) * Math.hypot(p.distance, p.receiverDepth - p.depth),
-            ),
-            phy.polar(
-              ((2 * p.boundary - 1) * p.pa) / Math.hypot(p.distance, p.receiverDepth + p.depth),
-              ((-2 * Math.PI * p.f) / p.c) * Math.hypot(p.distance, p.receiverDepth + p.depth),
-            ),
-          ),
-        ),
-      "pa*abs(exp(-1i*2*pi*x/c*sqrt(distance^2+(receiverDepth-depth)^2))/sqrt(distance^2+(receiverDepth-depth)^2)+(2*boundary-1)*exp(-1i*2*pi*x/c*sqrt(distance^2+(receiverDepth+depth)^2))/sqrt(distance^2+(receiverDepth+depth)^2))",
-    ),
+  examplePlot: (p) => e385(p),
   engineering: engineering(
     "近水面发射器与接收器会产生直达波和水面反射波干涉。镜像法给出两条声程，可用于预测接收深度变化引起的信号起伏。",
     "sonar",

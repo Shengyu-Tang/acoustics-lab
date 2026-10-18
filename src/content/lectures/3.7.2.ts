@@ -1,3 +1,4 @@
+import { e372 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -166,15 +166,7 @@ export default makeLecture("3.7.2", {
   asks,
   judgment: (p) =>
     `当前吸声系数 ${asks[1].calc(p).toPrecision(4)}；还需测得第一极小点位置以恢复阻抗相角。`,
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "res",
-      "归一化声阻",
-      "—",
-      (p) => phy.surfaceReflection(p.res, p.react).alpha,
-      "1-abs((x-1+1i*react)/(x+1+1i*react))^2",
-    ),
+  examplePlot: (p) => e372(p),
   engineering: engineering(
     "实验中沿管道移动探管，测得最大、最小声压及第一个极小点位置。由此反演反射系数、吸声系数与法向阻抗，为吸声材料选择提供数据。",
     "hall",

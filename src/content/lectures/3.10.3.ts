@@ -1,3 +1,4 @@
+import { e3103 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -98,15 +98,7 @@ export default makeLecture("3.10.3", {
     phy.guideMode(p.mode, p.f, p.h, p.c).propagating
       ? "当前频率高于本阶截止频率，可形成传播简正波。"
       : "当前频率不高于本阶截止频率，不能视为传播简正波。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "h",
-      "层厚",
-      "m",
-      (p) => phy.guideMode(p.mode, p.f, p.h, p.c).decay,
-      "sqrt(max(0,(mode*pi/x)^2-(2*pi*f/c)^2))",
-    ),
+  examplePlot: (p) => e3103(p),
   engineering: engineering(
     "设计管道消声器前，应逐阶判断目标频率是否高于截止频率。截止以下场随纵向衰减，传播模态则需要进一步评估反射与吸收。",
     "duct",

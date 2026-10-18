@@ -1,3 +1,4 @@
+import { e3610 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -89,20 +89,7 @@ export default makeLecture("3.6.10", {
   given: [lectureFrequency],
   asks,
   judgment: "本题远高于临界角，水中只有界面附近的倏逝场，不能用传播折射角解释。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "f",
-      "频率",
-      "Hz",
-      (p) =>
-        1 /
-        Math.sqrt(
-          (((2 * Math.PI * p.f) / p.c) * Math.sin((p.theta * Math.PI) / 180)) ** 2 -
-            ((2 * Math.PI * p.f) / p.c2) ** 2,
-        ),
-      "p3Depth(theta,c,c2,x)",
-    ),
+  examplePlot: (p) => e3610(p),
   engineering: engineering(
     "全内反射附近的界面探测利用倏逝场对邻近介质敏感的特点。接收器离开界面后幅值迅速降低，法向穿透深度决定有效探测范围。",
     "ultrasound",

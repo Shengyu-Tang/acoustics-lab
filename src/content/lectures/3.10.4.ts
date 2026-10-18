@@ -1,3 +1,4 @@
+import { e3104 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -90,15 +90,7 @@ export default makeLecture("3.10.4", {
   given: [{ ...lectureFrequency, min: 800, max: 2000 }],
   asks,
   judgment: (p) => `当前斜行角 ${asks[1].calc(p).toPrecision(4)}°；提高同阶频率会减小传播角。`,
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "f",
-      "频率",
-      "Hz",
-      (p) => phy.guideMode(p.mode, p.f, p.h, p.c).theta,
-      "p3ModeAngle(mode,c,h,x)",
-    ),
+  examplePlot: (p) => e3104(p),
   engineering: engineering(
     "简正波的斜平面波分解把模态传播与几何声线联系起来。阶数、频率或层厚改变时，折返声线角度随之改变，影响壁面相互作用次数。",
     "duct",

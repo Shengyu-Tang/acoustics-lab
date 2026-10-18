@@ -1,3 +1,4 @@
+import { e365 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -94,15 +94,7 @@ export default makeLecture("3.6.5", {
   given: [Z1, Z2],
   asks,
   judgment: "阻抗失配会降低穿过界面的声功率；透射声压系数不能直接当作能量系数。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "Z1",
-      "入射介质阻抗",
-      "Pa·s/m",
-      (p) => phy.normalInterface(p.Z1, p.Z2).TL,
-      "-10*log10(4*x*Z2/(x+Z2)^2)",
-    ),
+  examplePlot: (p) => e365(p),
   engineering: engineering(
     "水下通信信号跨越水面会遭遇严重的阻抗失配。透射损失是链路预算中的界面损失，不能与水中传播吸收混为一谈。",
     "ultrasound",

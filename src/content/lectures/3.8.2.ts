@@ -1,3 +1,4 @@
+import { e382 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -109,15 +109,7 @@ export default makeLecture("3.8.2", {
   given: [obs, lectureFrequency, params.c, params.rho],
   asks,
   judgment: "波抗与波阻的比值量化近场修正，该比足够小时才能采用平面行波阻抗近似。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "obs",
-      "观察距离",
-      "m",
-      (p) => p.rho * p.c * phy.sphericalImpedance((2 * Math.PI * p.f * p.obs) / p.c).im,
-      "rho*c*(2*pi*f*x/c)/(1+(2*pi*f*x/c)^2)",
-    ),
+  examplePlot: (p) => e382(p),
   engineering: engineering(
     "水听器近场校准需要复波阻抗，而远场可近似使用介质特性阻抗。通过频率、距离和声速确定无量纲距离，再决定是否保留波抗。",
     "sonar",

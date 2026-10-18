@@ -1,3 +1,4 @@
+import { e393 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -122,15 +122,7 @@ export default makeLecture("3.9.3", {
   given: [obs, lectureFrequency, params.c, params.rho],
   asks,
   judgment: "本题柱面波阻抗仍有虚部，距离加倍的几何扩展约为 3 dB，不能套用球面波的 6 dB。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "obs",
-      "观察距离",
-      "m",
-      (p) => p.rho * p.c * phy.cylindricalImpedance((2 * Math.PI * p.f * p.obs) / p.c).im,
-      "imag(1i*rho*c*besselh(0,2,2*pi*f*x/c)/besselh(1,2,2*pi*f*x/c))",
-    ),
+  examplePlot: (p) => e393(p),
   engineering: engineering(
     "长线源的几何扩展速度比点源慢。进行水下噪声距离外推时，先判断声场更接近柱面还是球面，再选择相应的声压级衰减规律。",
     "sonar",

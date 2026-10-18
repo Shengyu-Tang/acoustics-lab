@@ -1,3 +1,4 @@
+import { e3102 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -132,7 +132,7 @@ export default makeLecture("3.10.2", {
   given: [v0, params.rho, params.c, h],
   asks,
   judgment: "理想均匀面源只激发零阶平面波；实际源偏置或振速不均匀会引入高阶模式。",
-  examplePlot: (p) => answerCurve(p, "c", "声速", "m/s", (p) => p.c / (2 * p.h), "x/(2*h)"),
+  examplePlot: (p) => e3102(p),
   engineering: engineering(
     "管道扬声器的振速分布会决定激发哪些模态。尽量均匀覆盖截面可减少高阶模式，局部偏置激励则可用于主动模态控制。",
     "duct",

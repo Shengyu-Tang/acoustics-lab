@@ -1,3 +1,4 @@
+import { e367 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -79,15 +79,7 @@ export default makeLecture("3.6.7", {
   given: [theta, Z1, Z2],
   asks,
   judgment: "折射方向比入射方向更靠近法线；声束指向校准必须使用实际折射角。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "theta",
-      "入射角",
-      "°",
-      (p) => phy.magnitude(phy.oblique(p.Z1, p.Z2, p.c, p.c2, p.theta).R),
-      "abs(p3Oblique(Z1,Z2,c,c2,x))",
-    ),
+  examplePlot: (p) => e367(p),
   engineering: engineering(
     "斜入射超声探头需要把外部声束方向换算成材料中的传播方向。两流体模型用于说明法向投影和折射规律，固体检测另需考虑模式转换。",
     "ultrasound",

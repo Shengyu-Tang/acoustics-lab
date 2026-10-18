@@ -1,3 +1,4 @@
+import { e3101 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -96,8 +96,7 @@ export default makeLecture("3.10.1", {
   given: [h],
   asks,
   judgment: "本题结果给出第一高阶截止频率；低于该频率时只有零阶模式可远距离传播。",
-  examplePlot: (p) =>
-    answerCurve(p, "h", "层厚", "m", (p) => (p.mode * Math.PI) / p.h, "mode*pi/x"),
+  examplePlot: (p) => e3101(p),
   engineering: engineering(
     "刚性通风管道的横向边界约束产生离散模态。由管道横向尺寸估算截止频率，是判断是否可用一维平面波模型的第一步。",
     "duct",

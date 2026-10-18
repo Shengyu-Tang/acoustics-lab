@@ -1,3 +1,4 @@
+import { e371 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -94,15 +94,7 @@ export default makeLecture("3.7.1", {
   given: [res, react],
   asks,
   judgment: "根据反射模值和驻波比区分匹配、一般驻波和纯驻波，复阻抗还决定波节位置。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "res",
-      "归一化声阻",
-      "—",
-      (p) => phy.surfaceReflection(p.res, p.react).G,
-      "(1+abs((x-1+1i*react)/(x+1+1i*react)))/(1-abs((x-1+1i*react)/(x+1+1i*react)))",
-    ),
+  examplePlot: (p) => e371(p),
   engineering: engineering(
     "通风管道和阻抗管通过驻波测量材料的法向声阻抗。反射系数的模决定驻波起伏，反射相角决定波节相对材料表面的位置。",
     "hall",

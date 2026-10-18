@@ -1,3 +1,4 @@
+import { e368 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -90,15 +90,7 @@ export default makeLecture("3.6.8", {
   given: [theta, Z1, Z2],
   asks,
   judgment: "界面上三列波的迹波长相等；阵列相位补偿应采用切向波数相等的约束。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "theta",
-      "入射角",
-      "°",
-      (p) => phy.magnitude(phy.oblique(p.Z1, p.Z2, p.c, p.c2, p.theta).R),
-      "abs(p3Oblique(Z1,Z2,c,c2,x))",
-    ),
+  examplePlot: (p) => e368(p),
   engineering: engineering(
     "水下机器人透声罩改变声束的传播方向。设计时同时匹配切向波数和法向边界条件，才能正确计算接收角与透射幅值。",
     "ultrasound",

@@ -1,3 +1,4 @@
+import { e3612 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -97,15 +97,7 @@ export default makeLecture("3.6.12", {
   given: [theta, params.c, c2, Z1, Z2],
   asks,
   judgment: "本题法向功率透射约为 94.2%；直接把三列波的声强相加会遗漏截面投影。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "theta",
-      "入射角",
-      "°",
-      (p) => phy.oblique(p.Z1, p.Z2, p.c, p.c2, p.theta).t,
-      "p3Power(Z1,Z2,c,c2,x)",
-    ),
+  examplePlot: (p) => e3612(p),
   engineering: engineering(
     "计算斜入射声束通过界面的声功率时，应使用与传播方向垂直的截面积。统一界面足迹的法向投影后，才能进行传输效率与能量预算。",
     "ultrasound",

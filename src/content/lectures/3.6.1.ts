@@ -1,3 +1,4 @@
+import { e361 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -88,15 +88,7 @@ export default makeLecture("3.6.1", {
   given: [Z1, Z2],
   asks,
   judgment: "声压幅值增加不代表能量被放大，界面还必须满足法向振速连续。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "Z1",
-      "入射介质阻抗",
-      "Pa·s/m",
-      (p) => phy.normalInterface(p.Z1, p.Z2).D,
-      "2*Z2/(x+Z2)",
-    ),
+  examplePlot: (p) => e361(p),
   engineering: engineering(
     "换能器封装层与水接触时，界面两侧的声压与法向振速必须连续。利用这两个条件求未知反射量，再校核封装层材料匹配。",
     "ultrasound",

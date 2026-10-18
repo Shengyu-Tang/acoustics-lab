@@ -1,3 +1,4 @@
+import { e3105 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -115,15 +115,7 @@ export default makeLecture("3.10.5", {
   asks,
   judgment: (p) =>
     `当前相速度 ${asks[0].calc(p).toPrecision(4)} m/s，群速度 ${asks[1].calc(p).toPrecision(4)} m/s；信号延迟按群速度估计。`,
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "f",
-      "频率",
-      "Hz",
-      (p) => phy.guideMode(p.mode, p.f, p.h, p.c).cg,
-      "c*sqrt(1-(mode*c/(2*h*x))^2)",
-    ),
+  examplePlot: (p) => e3105(p),
   engineering: engineering(
     "宽带声信号在波导中传播时，不同频率分量具有不同群延迟。多模态管道测量应按模态的群速度估计到达时刻，并考虑脉冲展宽。",
     "duct",

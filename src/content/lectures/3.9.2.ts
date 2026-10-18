@@ -1,3 +1,4 @@
+import { e392 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -123,20 +123,7 @@ export default makeLecture("3.9.2", {
   given: [obs, lectureFrequency, params.c, params.rho, amplitude],
   asks,
   judgment: "有限半径处声压与振速相位不同，校准长线声源时应保留汉克尔函数关系。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "obs",
-      "观察距离",
-      "m",
-      (p) =>
-        (p.pa / (p.rho * p.c)) *
-        Math.hypot(
-          phy.cylindricalBessel((2 * Math.PI * p.f * p.obs) / p.c).J1,
-          phy.cylindricalBessel((2 * Math.PI * p.f * p.obs) / p.c).Y1,
-        ),
-      "pa/(rho*c)*abs(besselh(1,2,2*pi*f*x/c))",
-    ),
+  examplePlot: (p) => e392(p),
   engineering: engineering(
     "长线阵或长圆柱换能器附近的声压与径向振速可用扩张柱面波估计。近场相位差影响声强测量，应保留声压和振速的复数关系。",
     "sonar",

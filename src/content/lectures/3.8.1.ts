@@ -1,3 +1,4 @@
+import { e381 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -106,16 +106,7 @@ export default makeLecture("3.8.1", {
   given: [obs, amplitude, lectureFrequency, params.c, params.rho],
   asks,
   judgment: "应先用无量纲距离评估近场振速项，只有足够远时才可近似忽略。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "obs",
-      "观察距离",
-      "m",
-      (p) =>
-        (p.pa / (p.rho * p.c * p.obs)) * Math.sqrt(1 + (p.c / (2 * Math.PI * p.f * p.obs)) ** 2),
-      "pa/(rho*c*x)*sqrt(1+(c/(2*pi*f*x))^2)",
-    ),
+  examplePlot: (p) => e381(p),
   engineering: engineering(
     "小型水声发射器远离源区后常用扩张球面波近似。近场振速包含附加项，因此声压与振速传感器的校准距离不能只按幅度衰减判断。",
     "sonar",

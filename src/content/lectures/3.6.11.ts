@@ -1,3 +1,4 @@
+import { e3611 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -110,19 +110,7 @@ export default makeLecture("3.6.11", {
   given: [radius, source, launch],
   asks,
   judgment: "声线在光滑圆墙上多次掠射；实际可听距离还受墙面吸收和粗糙度限制。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "radius",
-      "围墙半径",
-      "m",
-      (p) =>
-        -p.radius * p.source * Math.cos((p.launch * Math.PI) / 180) +
-        Math.sqrt(
-          p.radius ** 2 - (p.radius * p.source * Math.sin((p.launch * Math.PI) / 180)) ** 2,
-        ),
-      "-x*source*cosd(launch)+sqrt(x^2-(x*source*sind(launch))^2)",
-    ),
+  examplePlot: (p) => e3611(p),
   engineering: engineering(
     "圆形展厅和环廊中可能出现远处低语异常清晰的现象。平滑墙面的连续掠射是主要机制，可通过改变墙面形状或增加吸声减轻聚声。",
     "hall",

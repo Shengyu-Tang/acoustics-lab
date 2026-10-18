@@ -1,3 +1,4 @@
+import { e363 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -77,15 +77,7 @@ export default makeLecture("3.6.3", {
   given: [Z1, Z2],
   asks,
   judgment: "反射系数的符号表示相位关系；能量透射比例还需同时计入两侧阻抗。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "Z1",
-      "入射介质阻抗",
-      "Pa·s/m",
-      (p) => phy.normalInterface(p.Z1, p.Z2).D,
-      "2*Z2/(x+Z2)",
-    ),
+  examplePlot: (p) => e363(p),
   engineering: engineering(
     "水浸超声检测首先需要估算水与试件的阻抗失配。幅度系数描述回波与透射信号，能量比例还需用特性阻抗换算。",
     "ultrasound",

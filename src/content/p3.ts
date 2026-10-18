@@ -1,7 +1,5 @@
 import type { Values, Ask, P1Lecture } from "./p1";
 import type { Panel } from "../plot/types";
-import { fixedFigureAxes } from "../plot/fixedAxes";
-import { axisTicks } from "../plot/ticks";
 import {
   p2Lecture,
   parameter,
@@ -15,49 +13,6 @@ import {
   engineering,
 } from "./p2";
 export { parameter, params, graph, curve, points, figure, example, ask, engineering };
-/** Sweep around a nonzero engineering condition; singular zero limits are excluded. */
-export function answerCurve(
-  p: Values,
-  key: string,
-  label: string,
-  unit: string,
-  fn: (p: Values) => number,
-  expr: string,
-): Panel {
-  const [a, b] = axisTicks([
-    p[key] === 0 ? -0.5 : Math.min(0.9 * p[key], 1.1 * p[key]),
-    p[key] === 0 ? 0.5 : Math.max(0.9 * p[key], 1.1 * p[key]),
-  ]).limits;
-  const ys = lin(a, b)
-    .map((x) => fn({ ...p, [key]: x }))
-    .filter(Number.isFinite);
-  const panel = graph(
-    p,
-    0,
-    "计算量随已知条件变化",
-    `${label} (${unit})`,
-    "计算结果（见题目单位）",
-    [a, b],
-    [Math.min(0, ...ys), Math.max(1e-12, ...ys) * 1.15],
-    [
-      curve(
-        "参考计算",
-        (x) => fn({ ...p, [key]: x }),
-        [a, b],
-        "linspace(qaRange(1),qaRange(2),401)",
-        expr,
-      ),
-      points("本题数值", [[p[key], fn(p)]], key, expr.replace(/\bx\b/g, key), {
-        marker: "o",
-        style: "none",
-      }),
-    ],
-    `qaRange=sort([.9*${key} 1.1*${key}]);if ${key}==0,qaRange=[-.5 .5];end;qaRange=p2NiceLimits(qaRange(1),qaRange(2));`,
-    {},
-    { xlim: "qaRange", ylim: "[min(0,min(model_y{1,1})) max(1e-12,max(model_y{1,1}))*1.15]" },
-  );
-  return fixedFigureAxes("P3-E", [panel])[0];
-}
 export const lin = (a: number, b: number, n = 401) =>
   Array.from({ length: n }, (_, i) => a + ((b - a) * i) / (n - 1));
 export const log = (a: number, b: number, n = 401) =>

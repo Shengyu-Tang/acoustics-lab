@@ -1,3 +1,4 @@
+import { e364 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -115,15 +115,7 @@ export default makeLecture("3.6.4", {
       : p.Z2 < p.Z1
         ? "当前为软边界，声压反射反相。"
         : "当前阻抗匹配，没有反射。",
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "Z1",
-      "入射介质阻抗",
-      "Pa·s/m",
-      (p) => phy.normalInterface(p.Z1, p.Z2).D,
-      "2*Z2/(x+Z2)",
-    ),
+  examplePlot: (p) => e364(p),
   engineering: engineering(
     "高阻抗试件表面常近似为硬边界，液体自由表面常近似为软边界。依据阻抗比选择近似，再用有限阻抗模型估计近似误差。",
     "ultrasound",

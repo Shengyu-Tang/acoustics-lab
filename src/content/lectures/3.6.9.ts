@@ -1,3 +1,4 @@
+import { e369 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -127,15 +127,7 @@ export default makeLecture("3.6.9", {
   asks,
   judgment: (p) =>
     `当前临界角 ${asks[0].calc(p).toPrecision(4)}°，全透射角 ${asks[1].calc(p).toPrecision(4)}°；两个角的机制不同。`,
-  examplePlot: (p) =>
-    answerCurve(
-      p,
-      "Z1",
-      "入射介质阻抗",
-      "Pa·s/m",
-      (p) => phy.interfaceAngles(p.Z1, p.Z2, p.c, p.c2).brewster,
-      "asind(sqrt((x^2-Z2^2)/(x^2*(c2/c)^2-Z2^2)))",
-    ),
+  examplePlot: (p) => e369(p),
   engineering: engineering(
     "声透镜和分层介质测量需要区分全透射与全内反射。只有满足对应介质条件时才使用该特征角，不能将其作为任何界面的通用角度。",
     "ultrasound",

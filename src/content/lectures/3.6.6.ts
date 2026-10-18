@@ -1,3 +1,4 @@
+import { e366 } from "../../plot/p3Examples";
 import {
   makeLecture,
   parameter,
@@ -9,7 +10,6 @@ import {
   figure,
   comparison,
   ask,
-  answerCurve,
   engineering,
 } from "../p3";
 import * as phy from "../../physics/chapter3b";
@@ -96,7 +96,7 @@ export default makeLecture("3.6.6", {
   given: [lectureFrequency, params.c, params.pa, Z1],
   asks,
   judgment: "水面处声压为波节而振速为波腹，水听器贴近水面可能低估入射信号。",
-  examplePlot: (p) => answerCurve(p, "pa", "幅度系数", "Pa", (p) => (2 * p.pa) / p.Z1, "2*x/Z1"),
+  examplePlot: (p) => e366(p),
   engineering: engineering(
     "靠近水面的水听器会受到反相反射影响。布放深度应避开目标频率附近的声压波节，声压低谷并不说明介质中没有声能。",
     "ultrasound",
