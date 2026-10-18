@@ -1,0 +1,406 @@
+{
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "report": [
+    {
+      "id": "3.1.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.5",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.6",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.7",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.8",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.2.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.2.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.3.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.3.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.5",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.6",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.5.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.5.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.5",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.6",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.7",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.8",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.2.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.2.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.3.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.3.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.5",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.6",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.5.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.5.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.4",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.4.4",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.4",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.3.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.1.4",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "3.3.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "all graded answers",
+    "reactive solutions",
+    "editable MATLAB downloads",
+    "selectors",
+    "single-step animations",
+    "five assumptions",
+    "derivation",
+    "bidirectional level conversion",
+    "student-drawn waveform",
+    "dragged observation point",
+    "integer source counts"
+  ]
+}

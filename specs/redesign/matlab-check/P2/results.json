@@ -1,0 +1,2440 @@
+[
+  {
+    "name": "3.1.1-1",
+    "set": 0,
+    "filename": "fig_3_1_1_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "mode": 0,
+      "L": 10,
+      "xi": 0.0004
+    },
+    "valuesCompared": 930,
+    "maxNormalizedError": 2.4399351696565674e-16,
+    "readouts": [
+      0.343,
+      2.5132741228718345,
+      0.029154518950437316
+    ],
+    "exit": 0,
+    "seconds": 68.549
+  },
+  {
+    "name": "3.1.1-E1",
+    "set": 1,
+    "filename": "fig_3_1_1_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 1470,
+      "f": 12000,
+      "pa": 1.1,
+      "mode": 1,
+      "L": 11,
+      "xi": 0.00032
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      7.482993197278912,
+      0.1225
+    ],
+    "exit": 0,
+    "seconds": 54.951,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.2-1",
+    "set": 0,
+    "filename": "fig_3_1_2_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "medium": 0,
+      "level": 93.9794000867
+    },
+    "valuesCompared": 8,
+    "maxNormalizedError": 4.336808689942018e-19,
+    "readouts": [
+      0.9999999999976542,
+      1.4142135623697778,
+      0.0034074971986838972,
+      5.423200227423285e-7,
+      0.000012020616939963602,
+      0.000009934394165259175
+    ],
+    "exit": 0,
+    "seconds": 65.636
+  },
+  {
+    "name": "3.1.1-E1",
+    "set": 0,
+    "filename": "fig_3_1_1_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 1500,
+      "f": 10000,
+      "pa": 1,
+      "mode": 0,
+      "L": 10,
+      "xi": 0.0004
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      6.666666666666667,
+      0.15
+    ],
+    "exit": 0,
+    "seconds": 62.252,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.1-1",
+    "set": 1,
+    "filename": "fig_3_1_1_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "mode": 1,
+      "L": 11,
+      "xi": 0.00032
+    },
+    "valuesCompared": 930,
+    "maxNormalizedError": 1.8503717077085943e-16,
+    "readouts": [
+      0.2801166666666667,
+      2.412743157956961,
+      0.029749509133099306
+    ],
+    "exit": 0,
+    "seconds": 54.273
+  },
+  {
+    "name": "3.1.2-1",
+    "set": 1,
+    "filename": "fig_3_1_2_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "medium": 1,
+      "level": 95.858988088434
+    },
+    "valuesCompared": 8,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.062079670681310296,
+      0.08779391222516443,
+      5.8529274816776284e-8,
+      7.762686168894945e-12,
+      3.9019516544517525e-8,
+      3.901951654451752e-11
+    ],
+    "exit": 0,
+    "seconds": 73.925
+  },
+  {
+    "name": "3.1.2-E1",
+    "set": 0,
+    "filename": "fig_3_1_2_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "medium": 0,
+      "level": 93.9794000867
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.0024094643760692,
+      3.8347816565524267e-7
+    ],
+    "exit": 0,
+    "seconds": 33.263,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.3.1-1",
+    "set": 0,
+    "filename": "fig_3_3_1_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "standing": 0
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 1.6940658945086007e-21,
+    "readouts": [
+      0.0000035123387406256555,
+      0.0012047321880346
+    ],
+    "exit": 0,
+    "seconds": 38.203
+  },
+  {
+    "name": "3.1.2-E1",
+    "set": 1,
+    "filename": "fig_3_1_2_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "medium": 1,
+      "level": 95.858988088434
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.0025757150764588147,
+      3.4161482201228295e-7
+    ],
+    "exit": 0,
+    "seconds": 37.853,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.3.1-1",
+    "set": 1,
+    "filename": "fig_3_3_1_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "standing": 1
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 3.3881317890172014e-21,
+    "readouts": [
+      0.00000421444425552552,
+      0
+    ],
+    "exit": 0,
+    "seconds": 138.982
+  },
+  {
+    "name": "3.3.1-E1",
+    "set": 1,
+    "filename": "fig_3_3_1_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 2.2,
+      "standing": 1
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.00000842888851105104,
+      0.00001685777702210208
+    ],
+    "exit": 0,
+    "seconds": 46.298,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.3.2-2",
+    "set": 0,
+    "filename": "fig_3_3_2_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "wLeft": 0.004,
+      "wRight": 0.003,
+      "L": 0.1,
+      "S": 0.01,
+      "left": 0.012,
+      "right": 0.008
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.00001,
+      0.01,
+      0.04839999999999999
+    ],
+    "exit": 0,
+    "seconds": 11.419
+  },
+  {
+    "name": "3.3.2-1",
+    "set": 1,
+    "filename": "fig_3_3_2_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "wLeft": -0.004,
+      "wRight": 0.0027,
+      "L": 0.11000000000000001,
+      "S": 0.011000000000000001,
+      "left": 0,
+      "right": 0.007200000000000001
+    },
+    "valuesCompared": 120,
+    "maxNormalizedError": 0,
+    "readouts": [
+      -0.00007370000000000002,
+      -0.060909090909090906,
+      -0.08316
+    ],
+    "exit": 0,
+    "seconds": 147.843
+  },
+  {
+    "name": "3.3.1-E1",
+    "set": 0,
+    "filename": "fig_3_3_1_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 2,
+      "standing": 0
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.000007024677481251311,
+      0.000014049354962502622
+    ],
+    "exit": 0,
+    "seconds": 33.265,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.3.2-1",
+    "set": 0,
+    "filename": "fig_3_3_2_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "wLeft": 0.004,
+      "wRight": 0.003,
+      "L": 0.1,
+      "S": 0.01,
+      "left": 0.012,
+      "right": 0.008
+    },
+    "valuesCompared": 120,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.00001,
+      0.01,
+      0.04839999999999999
+    ],
+    "exit": 0,
+    "seconds": 30.729
+  },
+  {
+    "name": "3.3.2-E1",
+    "set": 0,
+    "filename": "fig_3_3_2_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "wLeft": 0.004,
+      "wRight": 0.003,
+      "L": 0.1,
+      "S": 0.01,
+      "left": 0.012,
+      "right": 0.008
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.00001,
+      0.01
+    ],
+    "exit": 0,
+    "seconds": 40.516,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.3.2-E1",
+    "set": 1,
+    "filename": "fig_3_3_2_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "wLeft": -0.004,
+      "wRight": 0.0027,
+      "L": 0.11000000000000001,
+      "S": 0.011000000000000001,
+      "left": 0,
+      "right": 0.007200000000000001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      -0.00007370000000000002,
+      -0.060909090909090906
+    ],
+    "exit": 0,
+    "seconds": 34.43,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.3.2-2",
+    "set": 1,
+    "filename": "fig_3_3_2_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "wLeft": -0.004,
+      "wRight": 0.0027,
+      "L": 0.11000000000000001,
+      "S": 0.011000000000000001,
+      "left": 0,
+      "right": 0.007200000000000001
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      -0.00007370000000000002,
+      -0.060909090909090906,
+      -0.08316
+    ],
+    "exit": 0,
+    "seconds": 11.749
+  },
+  {
+    "name": "3.3.3-1",
+    "set": 0,
+    "filename": "fig_3_3_3_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "phase": 30,
+      "ua": 0.002
+    },
+    "valuesCompared": 3208,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.0008660254037844387,
+      89.3753063169585
+    ],
+    "exit": 0,
+    "seconds": 61.737
+  },
+  {
+    "name": "3.3.3-1",
+    "set": 1,
+    "filename": "fig_3_3_3_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "phase": 60,
+      "ua": 0.002
+    },
+    "valuesCompared": 3208,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.0005500000000000001,
+      87.40362689494245
+    ],
+    "exit": 0,
+    "seconds": 66.275
+  },
+  {
+    "name": "3.3.3-E1",
+    "set": 0,
+    "filename": "fig_3_3_3_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "phase": 30,
+      "ua": 0.002
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.0008660254037844387,
+      89.3753063169585
+    ],
+    "exit": 0,
+    "seconds": 35.76,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.3.3-E1",
+    "set": 1,
+    "filename": "fig_3_3_3_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "phase": 60,
+      "ua": 0.002
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.0005500000000000001,
+      87.40362689494245
+    ],
+    "exit": 0,
+    "seconds": 30.723,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.1-E1",
+    "set": 0,
+    "filename": "fig_3_4_1_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "B": 0.4
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      1.4,
+      0.001011975037949064
+    ],
+    "exit": 0,
+    "seconds": 25.975,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.1-1",
+    "set": 1,
+    "filename": "fig_3_4_1_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "B": 0.44000000000000006
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.0014166432920523482,
+      -0.00022666292672837574,
+      0.0011899803653239724
+    ],
+    "exit": 0,
+    "seconds": 28.531
+  },
+  {
+    "name": "3.4.2-1",
+    "set": 1,
+    "filename": "fig_3_4_2_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "obs": 0.3,
+      "bulk": 0.00015620000000000003
+    },
+    "valuesCompared": 1606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.8333333333333334,
+      0.2801166666666667,
+      7539.822368615503,
+      0.084035,
+      1.8849555921538759
+    ],
+    "exit": 0,
+    "seconds": 17.998
+  },
+  {
+    "name": "3.4.2-1",
+    "set": 0,
+    "filename": "fig_3_4_2_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "obs": 0.25,
+      "bulk": 0.000142
+    },
+    "valuesCompared": 1606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      1,
+      0.343,
+      6283.185307179586,
+      0.08575,
+      1.5707963267948966
+    ],
+    "exit": 0,
+    "seconds": 40.064
+  },
+  {
+    "name": "3.4.1-E1",
+    "set": 1,
+    "filename": "fig_3_4_1_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "B": 0.44000000000000006
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      1.54,
+      0.0011899803653239724
+    ],
+    "exit": 0,
+    "seconds": 59.768,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.2-E1",
+    "set": 0,
+    "filename": "fig_3_4_2_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "obs": 0.25,
+      "bulk": 0.000142
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      1,
+      0.343
+    ],
+    "exit": 0,
+    "seconds": 58.926,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.1-1",
+    "set": 0,
+    "filename": "fig_3_4_1_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "B": 0.4
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.0012047321880346,
+      -0.00019275715008553604,
+      0.001011975037949064
+    ],
+    "exit": 0,
+    "seconds": 28.459
+  },
+  {
+    "name": "3.4.2-E1",
+    "set": 1,
+    "filename": "fig_3_4_2_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "obs": 0.3,
+      "bulk": 0.00015620000000000003
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.8333333333333334,
+      0.2801166666666667
+    ],
+    "exit": 0,
+    "seconds": 49.352,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.3-1",
+    "set": 1,
+    "filename": "fig_3_4_3_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 4812,
+    "maxNormalizedError": 1.7763568394002505e-15,
+    "readouts": [
+      1.1,
+      0.0025757150764588147,
+      427.06586999999996,
+      336.14
+    ],
+    "exit": 0,
+    "seconds": 74.564
+  },
+  {
+    "name": "3.4.3-2",
+    "set": 0,
+    "filename": "fig_3_4_3_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 4812,
+    "maxNormalizedError": 0,
+    "readouts": [
+      1,
+      0.0024094643760692,
+      415.03,
+      343
+    ],
+    "exit": 0,
+    "seconds": 80.495
+  },
+  {
+    "name": "3.4.3-1",
+    "set": 0,
+    "filename": "fig_3_4_3_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 4812,
+    "maxNormalizedError": 1.7763568394002505e-15,
+    "readouts": [
+      1,
+      0.0024094643760692,
+      415.03,
+      343
+    ],
+    "exit": 0,
+    "seconds": 85.343
+  },
+  {
+    "name": "3.4.3-2",
+    "set": 1,
+    "filename": "fig_3_4_3_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 4812,
+    "maxNormalizedError": 0,
+    "readouts": [
+      1.1,
+      0.0025757150764588147,
+      427.06586999999996,
+      336.14
+    ],
+    "exit": 0,
+    "seconds": 209.146
+  },
+  {
+    "name": "3.4.3-E1",
+    "set": 1,
+    "filename": "fig_3_4_3_E1_set1",
+    "parameters": {
+      "rho": 1050,
+      "c": 1470,
+      "f": 2400,
+      "pa": 110.00000000000001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.00007126660187884679,
+      0.6125
+    ],
+    "exit": 0,
+    "seconds": 65.346,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.3-E1",
+    "set": 0,
+    "filename": "fig_3_4_3_E1_set0",
+    "parameters": {
+      "rho": 1000,
+      "c": 1500,
+      "f": 2000,
+      "pa": 100
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.00006666666666666667,
+      0.75
+    ],
+    "exit": 0,
+    "seconds": 37.991,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.4-1",
+    "set": 0,
+    "filename": "fig_3_4_4_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 10,
+    "maxNormalizedError": 0,
+    "readouts": [
+      415.03,
+      415.03,
+      -415.03,
+      0.0012047321880346
+    ],
+    "exit": 0,
+    "seconds": 32.072
+  },
+  {
+    "name": "3.4.4-1",
+    "set": 1,
+    "filename": "fig_3_4_4_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 10,
+    "maxNormalizedError": 0,
+    "readouts": [
+      427.06586999999996,
+      427.06586999999996,
+      -427.06586999999996,
+      0.0014166432920523482
+    ],
+    "exit": 0,
+    "seconds": 29.741
+  },
+  {
+    "name": "3.4.4-2",
+    "set": 1,
+    "filename": "fig_3_4_4_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 3208,
+    "maxNormalizedError": 0,
+    "readouts": [
+      427.06586999999996,
+      427.06586999999996,
+      -427.06586999999996,
+      0.0014166432920523482
+    ],
+    "exit": 0,
+    "seconds": 48.318
+  },
+  {
+    "name": "3.4.4-2",
+    "set": 0,
+    "filename": "fig_3_4_4_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 3208,
+    "maxNormalizedError": 0,
+    "readouts": [
+      415.03,
+      415.03,
+      -415.03,
+      0.0012047321880346
+    ],
+    "exit": 0,
+    "seconds": 54.119
+  },
+  {
+    "name": "3.4.4-E1",
+    "set": 0,
+    "filename": "fig_3_4_4_E1_set0",
+    "parameters": {
+      "rho": 1000,
+      "c": 1500,
+      "f": 1000,
+      "pa": 100
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      1500000,
+      0.0033333333333333335
+    ],
+    "exit": 0,
+    "seconds": 60.43,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.4-E1",
+    "set": 1,
+    "filename": "fig_3_4_4_E1_set1",
+    "parameters": {
+      "rho": 1050,
+      "c": 1470,
+      "f": 1200,
+      "pa": 110.00000000000001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      1543500,
+      0.003919663103336574
+    ],
+    "exit": 0,
+    "seconds": 104.221,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.5-1",
+    "set": 1,
+    "filename": "fig_3_4_5_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "shape": 2,
+      "B": 0.33,
+      "L": 11,
+      "duration": 0.5,
+      "h0": 0,
+      "h1": 0.24,
+      "h2": 0.8,
+      "h3": 0.16000000000000003,
+      "h4": -0.4,
+      "h5": 0,
+      "h6": 0,
+      "h7": 0,
+      "h8": 0
+    },
+    "valuesCompared": 3208,
+    "maxNormalizedError": 0,
+    "readouts": [
+      336.14,
+      0.2801166666666667,
+      427.06586999999996
+    ],
+    "exit": 0,
+    "seconds": 27.553
+  },
+  {
+    "name": "3.4.5-E1",
+    "set": 1,
+    "filename": "fig_3_4_5_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 1470,
+      "f": 1200,
+      "pa": 1.1,
+      "shape": 2,
+      "B": 0.33,
+      "L": 11,
+      "duration": 0.5,
+      "h0": 0,
+      "h1": 0.24,
+      "h2": 0.8,
+      "h3": 0.16000000000000003,
+      "h4": -0.4,
+      "h5": 0,
+      "h6": 0,
+      "h7": 0,
+      "h8": 0
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.735,
+      7.482993197278912
+    ],
+    "exit": 0,
+    "seconds": 55.553,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.5-1",
+    "set": 0,
+    "filename": "fig_3_4_5_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "shape": 0,
+      "B": 0.3,
+      "L": 10,
+      "duration": 0.5,
+      "h0": 0,
+      "h1": 0.3,
+      "h2": 1,
+      "h3": 0.2,
+      "h4": -0.5,
+      "h5": 0,
+      "h6": 0,
+      "h7": 0,
+      "h8": 0
+    },
+    "valuesCompared": 3208,
+    "maxNormalizedError": 0,
+    "readouts": [
+      343,
+      0.343,
+      415.03
+    ],
+    "exit": 0,
+    "seconds": 35.292
+  },
+  {
+    "name": "3.4.5-E1",
+    "set": 0,
+    "filename": "fig_3_4_5_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 1500,
+      "f": 1000,
+      "pa": 1,
+      "shape": 0,
+      "B": 0.3,
+      "L": 10,
+      "duration": 0.5,
+      "h0": 0,
+      "h1": 0.3,
+      "h2": 1,
+      "h3": 0.2,
+      "h4": -0.5,
+      "h5": 0,
+      "h6": 0,
+      "h7": 0,
+      "h8": 0
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.75,
+      6.666666666666667
+    ],
+    "exit": 0,
+    "seconds": 75.848,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.4.6-2",
+    "set": 0,
+    "filename": "fig_3_4_6_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "medium": 0,
+      "pRms": 1,
+      "intensity": 0.01,
+      "power": 0.1,
+      "n": 2,
+      "sourceLevel": 80
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "readouts": [
+      93.97940008672037,
+      100,
+      110,
+      -0.1601949903125815,
+      83.01029995663981
+    ],
+    "exit": 0,
+    "seconds": 44.565
+  },
+  {
+    "name": "3.4.6-1",
+    "set": 0,
+    "filename": "fig_3_4_6_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "medium": 0,
+      "pRms": 1,
+      "intensity": 0.01,
+      "power": 0.1,
+      "n": 2,
+      "sourceLevel": 80
+    },
+    "valuesCompared": 10,
+    "maxNormalizedError": 0,
+    "readouts": [
+      93.97940008672037,
+      100,
+      110,
+      -0.1601949903125815,
+      83.01029995663981
+    ],
+    "exit": 0,
+    "seconds": 60.319
+  },
+  {
+    "name": "3.4.6-E1",
+    "set": 0,
+    "filename": "fig_3_4_6_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "medium": 0,
+      "pRms": 1,
+      "intensity": 0.01,
+      "power": 0.1,
+      "n": 2,
+      "sourceLevel": 80
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      83.01029995663981,
+      0.28284271247461906
+    ],
+    "exit": 0,
+    "seconds": 11.028,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.5.1-1",
+    "set": 0,
+    "filename": "fig_3_5_1_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "ratio": 0.6,
+      "depth": 0.1
+    },
+    "valuesCompared": 13041,
+    "maxNormalizedError": 3.552713678800501e-15,
+    "readouts": [
+      18.318324510727656,
+      10.990994706436593,
+      14.654659608582126,
+      0
+    ],
+    "exit": 0,
+    "seconds": 55.599
+  },
+  {
+    "name": "3.4.6-E1",
+    "set": 1,
+    "filename": "fig_3_4_6_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "medium": 1,
+      "pRms": 1.2,
+      "intensity": 0.012,
+      "power": 0.12,
+      "n": 3,
+      "sourceLevel": 84
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      88.77121254719663,
+      0.549023106782538
+    ],
+    "exit": 0,
+    "seconds": 24.992,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.5.1-1",
+    "set": 1,
+    "filename": "fig_3_5_1_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "ratio": 1.25,
+      "depth": 0.12
+    },
+    "valuesCompared": 13041,
+    "maxNormalizedError": 1.762479051592436e-15,
+    "readouts": [
+      22.430601441707335,
+      28.03825180213417,
+      0,
+      16.8229510812805
+    ],
+    "exit": 0,
+    "seconds": 48.452
+  },
+  {
+    "name": "3.4.6-1",
+    "set": 1,
+    "filename": "fig_3_4_6_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "medium": 1,
+      "pRms": 1.2,
+      "intensity": 0.012,
+      "power": 0.12,
+      "n": 3,
+      "sourceLevel": 84
+    },
+    "valuesCompared": 10,
+    "maxNormalizedError": 0,
+    "readouts": [
+      121.5836249209525,
+      100.79181246047625,
+      110.79181246047625,
+      -0.2843487379369107,
+      88.77121254719663
+    ],
+    "exit": 0,
+    "seconds": 115.459
+  },
+  {
+    "name": "3.4.6-2",
+    "set": 1,
+    "filename": "fig_3_4_6_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "medium": 1,
+      "pRms": 1.2,
+      "intensity": 0.012,
+      "power": 0.12,
+      "n": 3,
+      "sourceLevel": 84
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "readouts": [
+      121.5836249209525,
+      100.79181246047625,
+      110.79181246047625,
+      -0.2843487379369107,
+      88.77121254719663
+    ],
+    "exit": 0,
+    "seconds": 54.976
+  },
+  {
+    "name": "3.1.3-2",
+    "set": 1,
+    "filename": "fig_3_1_3_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "ideal": 0,
+      "continuous": 0,
+      "compressible": 0,
+      "uniform": 0,
+      "small": 0,
+      "distortion": 0.35
+    },
+    "valuesCompared": 24,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.000007662625919137308,
+      0.000007662625919137308
+    ],
+    "exit": 0,
+    "seconds": 39.118
+  },
+  {
+    "name": "3.1.3-1",
+    "set": 0,
+    "filename": "fig_3_1_3_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "ideal": 1,
+      "continuous": 1,
+      "compressible": 1,
+      "uniform": 1,
+      "small": 1,
+      "distortion": 0.35
+    },
+    "valuesCompared": 4812,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.000007024677481251313,
+      0.000007024677481251313
+    ],
+    "exit": 0,
+    "seconds": 51.968
+  },
+  {
+    "name": "3.1.3-2",
+    "set": 0,
+    "filename": "fig_3_1_3_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "ideal": 1,
+      "continuous": 1,
+      "compressible": 1,
+      "uniform": 1,
+      "small": 1,
+      "distortion": 0.35
+    },
+    "valuesCompared": 24,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.000007024677481251313,
+      0.000007024677481251313
+    ],
+    "exit": 0,
+    "seconds": 45.122
+  },
+  {
+    "name": "3.1.3-1",
+    "set": 1,
+    "filename": "fig_3_1_3_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "ideal": 0,
+      "continuous": 0,
+      "compressible": 0,
+      "uniform": 0,
+      "small": 0,
+      "distortion": 0.35
+    },
+    "valuesCompared": 4044,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.000007662625919137308,
+      0.000007662625919137308
+    ],
+    "exit": 0,
+    "seconds": 48.452
+  },
+  {
+    "name": "3.1.3-E1",
+    "set": 0,
+    "filename": "fig_3_1_3_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 20,
+      "ideal": 1,
+      "continuous": 1,
+      "compressible": 1,
+      "uniform": 1,
+      "small": 1,
+      "distortion": 0.35
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 1.0842021724855044e-19,
+    "answers": [
+      0.00014049354962502626,
+      0.00016999719504628174
+    ],
+    "exit": 0,
+    "seconds": 45.117,
+    "maxAnswerRelativeError": 3.8585478670700992e-16
+  },
+  {
+    "name": "3.1.3-E1",
+    "set": 1,
+    "filename": "fig_3_1_3_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 22,
+      "ideal": 0,
+      "continuous": 0,
+      "compressible": 0,
+      "uniform": 0,
+      "small": 0,
+      "distortion": 0.35
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 1.0842021724855044e-19,
+    "answers": [
+      0.00015325251838274614,
+      0.00019470732460527898
+    ],
+    "exit": 0,
+    "seconds": 32.081,
+    "maxAnswerRelativeError": 1.7686531091412865e-16
+  },
+  {
+    "name": "3.5.2-2",
+    "set": 0,
+    "filename": "fig_3_5_2_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "azimuth": 60,
+      "elevation": 25,
+      "wavecount": 3,
+      "a1": 0,
+      "a2": 60,
+      "a3": 120,
+      "a4": -45
+    },
+    "valuesCompared": 13041,
+    "maxNormalizedError": 4.3298697960381105e-15,
+    "readouts": [
+      18.318324510727656,
+      8.301020074768404,
+      14.377788524148073,
+      7.741658462725771
+    ],
+    "exit": 0,
+    "seconds": 33.045
+  },
+  {
+    "name": "3.5.2-1",
+    "set": 0,
+    "filename": "fig_3_5_2_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "azimuth": 60,
+      "elevation": 25,
+      "wavecount": 3,
+      "a1": 0,
+      "a2": 60,
+      "a3": 120,
+      "a4": -45
+    },
+    "valuesCompared": 42,
+    "maxNormalizedError": 2.220446049250313e-16,
+    "readouts": [
+      18.318324510727656,
+      8.301020074768404,
+      14.377788524148073,
+      7.741658462725771
+    ],
+    "exit": 0,
+    "seconds": 43.713
+  },
+  {
+    "name": "3.5.2-1",
+    "set": 1,
+    "filename": "fig_3_5_2_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "azimuth": -35,
+      "elevation": 45,
+      "wavecount": 4,
+      "a1": 0,
+      "a2": 54,
+      "a3": 96,
+      "a4": -54
+    },
+    "valuesCompared": 42,
+    "maxNormalizedError": 1.1102230246251565e-16,
+    "readouts": [
+      22.430601441707335,
+      12.992431634422948,
+      -9.097398570097248,
+      15.860830385524004
+    ],
+    "exit": 0,
+    "seconds": 39.761
+  },
+  {
+    "name": "3.5.2-2",
+    "set": 1,
+    "filename": "fig_3_5_2_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "azimuth": -35,
+      "elevation": 45,
+      "wavecount": 4,
+      "a1": 0,
+      "a2": 54,
+      "a3": 96,
+      "a4": -54
+    },
+    "valuesCompared": 13041,
+    "maxNormalizedError": 3.4416913763379853e-15,
+    "readouts": [
+      22.430601441707335,
+      12.992431634422948,
+      -9.097398570097248,
+      15.860830385524004
+    ],
+    "exit": 0,
+    "seconds": 42.828
+  },
+  {
+    "name": "3.5.2-E1",
+    "set": 1,
+    "filename": "fig_3_5_2_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 1470,
+      "f": 2400,
+      "pa": 1.1,
+      "azimuth": -35,
+      "elevation": 45,
+      "wavecount": 4,
+      "a1": 0,
+      "a2": 54,
+      "a3": 96,
+      "a4": -54
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      10.258261726007488,
+      5.941872067476095
+    ],
+    "exit": 0,
+    "seconds": 92.508,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.5.2-E1",
+    "set": 0,
+    "filename": "fig_3_5_2_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 1500,
+      "f": 2000,
+      "pa": 1,
+      "azimuth": 30,
+      "elevation": 25,
+      "wavecount": 3,
+      "a1": 0,
+      "a2": 60,
+      "a3": 120,
+      "a4": -45
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 2.270169595891355e-16,
+    "answers": [
+      8.377580409572781,
+      6.575441951710386
+    ],
+    "exit": 0,
+    "seconds": 32.978,
+    "maxAnswerRelativeError": 1.3507509095553564e-16
+  },
+  {
+    "name": "3.1.4-2",
+    "set": 1,
+    "filename": "fig_3_1_4_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "left": 0,
+      "right": 0.007200000000000001,
+      "L": 0.11000000000000001,
+      "S": 0.011000000000000001
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0,
+      0.00010062360000000002,
+      0.0012100000000000004,
+      -0.08316
+    ],
+    "exit": 0,
+    "seconds": 64.805
+  },
+  {
+    "name": "3.1.4-1",
+    "set": 1,
+    "filename": "fig_3_1_4_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "left": 0,
+      "right": 0.007200000000000001,
+      "L": 0.11000000000000001,
+      "S": 0.011000000000000001
+    },
+    "valuesCompared": 60,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0,
+      0.00010062360000000002,
+      0.0012100000000000004,
+      -0.08316
+    ],
+    "exit": 0,
+    "seconds": 12.442
+  },
+  {
+    "name": "3.1.4-1",
+    "set": 0,
+    "filename": "fig_3_1_4_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "left": 0.012,
+      "right": 0.008,
+      "L": 0.1,
+      "S": 0.01
+    },
+    "valuesCompared": 60,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.0001452,
+      0.0000968,
+      0.001,
+      0.04839999999999999
+    ],
+    "exit": 0,
+    "seconds": 58.789
+  },
+  {
+    "name": "3.1.4-2",
+    "set": 0,
+    "filename": "fig_3_1_4_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "left": 0.012,
+      "right": 0.008,
+      "L": 0.1,
+      "S": 0.01
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.0001452,
+      0.0000968,
+      0.001,
+      0.04839999999999999
+    ],
+    "exit": 0,
+    "seconds": 43.301
+  },
+  {
+    "name": "3.1.4-E1",
+    "set": 1,
+    "filename": "fig_3_1_4_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "left": 0,
+      "right": 0.007200000000000001,
+      "L": 0.11000000000000001,
+      "S": 0.011000000000000001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      -0.00010062360000000002,
+      -0.08316
+    ],
+    "exit": 0,
+    "seconds": 41.767,
+    "maxAnswerRelativeError": 1.668805652695341e-16
+  },
+  {
+    "name": "3.1.5-2",
+    "set": 0,
+    "filename": "fig_3_1_5_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 802,
+    "maxNormalizedError": 1.8319775871265538e-16,
+    "readouts": [
+      0.053406193908826984,
+      0.000007024677481251311
+    ],
+    "exit": 0,
+    "seconds": 27.563
+  },
+  {
+    "name": "3.1.4-E1",
+    "set": 0,
+    "filename": "fig_3_1_4_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "left": 0.012,
+      "right": 0.008,
+      "L": 0.1,
+      "S": 0.01
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.0000484,
+      0.04839999999999999
+    ],
+    "exit": 0,
+    "seconds": 30.474,
+    "maxAnswerRelativeError": 1.4336557652700888e-16
+  },
+  {
+    "name": "3.1.5-1",
+    "set": 0,
+    "filename": "fig_3_1_5_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 1604,
+    "maxNormalizedError": 6.938893903907228e-18,
+    "readouts": [
+      0.053406193908826984,
+      0.000007024677481251311
+    ],
+    "exit": 0,
+    "seconds": 45.144
+  },
+  {
+    "name": "3.1.5-2",
+    "set": 1,
+    "filename": "fig_3_1_5_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 802,
+    "maxNormalizedError": 1.8319775871265538e-16,
+    "readouts": [
+      0.07340293206960812,
+      0.000007662625919137308
+    ],
+    "exit": 0,
+    "seconds": 11.419
+  },
+  {
+    "name": "3.1.5-1",
+    "set": 1,
+    "filename": "fig_3_1_5_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 1604,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.07340293206960812,
+      0.000007662625919137308
+    ],
+    "exit": 0,
+    "seconds": 94.445
+  },
+  {
+    "name": "3.1.6-1",
+    "set": 1,
+    "filename": "fig_3_1_6_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "P0": 111457.50000000001,
+      "gamma": 1.47,
+      "span": 0.025,
+      "s": 0.001
+    },
+    "valuesCompared": 2408,
+    "maxNormalizedError": 1.1438072711200675e-12,
+    "readouts": [
+      359.10874524173164,
+      128959.09090909093,
+      0.5815281805807965
+    ],
+    "exit": 0,
+    "seconds": 43.963
+  },
+  {
+    "name": "3.1.6-1",
+    "set": 0,
+    "filename": "fig_3_1_6_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "P0": 101325,
+      "gamma": 1.4,
+      "span": 0.05,
+      "s": 0.001
+    },
+    "valuesCompared": 2408,
+    "maxNormalizedError": 1.3880008253863707e-12,
+    "readouts": [
+      342.3967540589172,
+      117235.53719008264,
+      0.9804862259425464
+    ],
+    "exit": 0,
+    "seconds": 62.668
+  },
+  {
+    "name": "3.1.5-E1",
+    "set": 1,
+    "filename": "fig_3_1_5_E1_set1",
+    "parameters": {
+      "rho": 1050,
+      "c": 1470,
+      "f": 2400,
+      "pa": 110.00000000000001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.7676250271162067,
+      4.848068155023591e-8
+    ],
+    "exit": 0,
+    "seconds": 50.857,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.6-E1",
+    "set": 1,
+    "filename": "fig_3_1_6_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "P0": 111457.50000000001,
+      "gamma": 1.47,
+      "span": 0.025,
+      "s": 0.001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      163.84252500000002,
+      0.0012705
+    ],
+    "exit": 0,
+    "seconds": 12.026,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.6-E1",
+    "set": 0,
+    "filename": "fig_3_1_6_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "P0": 101325,
+      "gamma": 1.4,
+      "span": 0.05,
+      "s": 0.001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      141.855,
+      0.00121
+    ],
+    "exit": 0,
+    "seconds": 11.334,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.7-1",
+    "set": 0,
+    "filename": "fig_3_1_7_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "T": 20,
+      "gamma": 1.4,
+      "P0": 101325,
+      "bulk": 2.25,
+      "waterRho": 1000
+    },
+    "valuesCompared": 1608,
+    "maxNormalizedError": 1.9747659681783162e-16,
+    "readouts": [
+      1.2041183163746156,
+      343.2319776769059,
+      290.0839662925202,
+      18.32159566199232
+    ],
+    "exit": 0,
+    "seconds": 25.019
+  },
+  {
+    "name": "3.1.7-E1",
+    "set": 0,
+    "filename": "fig_3_1_7_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "T": 20,
+      "gamma": 1.4,
+      "P0": 101325,
+      "bulk": 2.25,
+      "waterRho": 1000
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      343.2319776769059,
+      1500
+    ],
+    "exit": 0,
+    "seconds": 28.394,
+    "maxAnswerRelativeError": 1.6561224640413998e-16
+  },
+  {
+    "name": "3.1.7-E1",
+    "set": 1,
+    "filename": "fig_3_1_7_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "T": 24,
+      "gamma": 1.47,
+      "P0": 111457.50000000001,
+      "bulk": 2.475,
+      "waterRho": 1010
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      354.0994973520861,
+      1565.405714025904
+    ],
+    "exit": 0,
+    "seconds": 11.341,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.7-1",
+    "set": 1,
+    "filename": "fig_3_1_7_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "T": 24,
+      "gamma": 1.47,
+      "P0": 111457.50000000001,
+      "bulk": 2.475,
+      "waterRho": 1010
+    },
+    "valuesCompared": 1608,
+    "maxNormalizedError": 1.9128149413314447e-16,
+    "readouts": [
+      1.3067003630817449,
+      354.0994973520861,
+      292.05634302305435,
+      21.24355652982142
+    ],
+    "exit": 0,
+    "seconds": 26.261
+  },
+  {
+    "name": "3.1.8-2",
+    "set": 0,
+    "filename": "fig_3_1_8_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 1604,
+    "maxNormalizedError": 2.9805666519509163e-16,
+    "readouts": [
+      18.318324510727656,
+      15.139111165890625,
+      0.000007024677481251311
+    ],
+    "exit": 0,
+    "seconds": 12.159
+  },
+  {
+    "name": "3.1.8-1",
+    "set": 0,
+    "filename": "fig_3_1_8_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      18.318324510727656,
+      15.139111165890625,
+      0.000007024677481251311
+    ],
+    "exit": 0,
+    "seconds": 28.479
+  },
+  {
+    "name": "3.1.5-E1",
+    "set": 0,
+    "filename": "fig_3_1_5_E1_set0",
+    "parameters": {
+      "rho": 1000,
+      "c": 1500,
+      "f": 2000,
+      "pa": 100
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.5585053606381855,
+      4.444444444444445e-8
+    ],
+    "exit": 0,
+    "seconds": 35.707,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.8-1",
+    "set": 1,
+    "filename": "fig_3_1_8_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 2.5616858062015944e-16,
+    "readouts": [
+      24.673661585878072,
+      19.420434148664363,
+      0.000007662625919137308
+    ],
+    "exit": 0,
+    "seconds": 25.961
+  },
+  {
+    "name": "3.2.1-1",
+    "set": 0,
+    "filename": "fig_3_2_1_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "step": 0,
+      "boundary": 0,
+      "L": 2
+    },
+    "valuesCompared": 1604,
+    "maxNormalizedError": 0,
+    "readouts": [
+      18.318324510727656,
+      0.343
+    ],
+    "exit": 0,
+    "seconds": 34.467
+  },
+  {
+    "name": "3.1.8-E1",
+    "set": 1,
+    "filename": "fig_3_1_8_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 2.2
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 2.8252800376933596e-16,
+    "answers": [
+      49.347323171756145,
+      38.840868297328726
+    ],
+    "exit": 0,
+    "seconds": 34.256,
+    "maxAnswerRelativeError": 1.8293688244064504e-16
+  },
+  {
+    "name": "3.1.8-E1",
+    "set": 0,
+    "filename": "fig_3_1_8_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 2
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 2.5717393913138336e-16,
+    "answers": [
+      36.63664902145531,
+      30.27822233178125
+    ],
+    "exit": 0,
+    "seconds": 46.174,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.1.8-2",
+    "set": 1,
+    "filename": "fig_3_1_8_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1
+    },
+    "valuesCompared": 1604,
+    "maxNormalizedError": 3.183759753910228e-16,
+    "readouts": [
+      24.673661585878072,
+      19.420434148664363,
+      0.000007662625919137308
+    ],
+    "exit": 0,
+    "seconds": 33.792
+  },
+  {
+    "name": "3.2.1-2",
+    "set": 0,
+    "filename": "fig_3_2_1_2_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "step": 0,
+      "boundary": 0,
+      "L": 2
+    },
+    "valuesCompared": 20,
+    "maxNormalizedError": 0,
+    "readouts": [
+      18.318324510727656,
+      0.343
+    ],
+    "exit": 0,
+    "seconds": 26.51
+  },
+  {
+    "name": "3.2.1-1",
+    "set": 1,
+    "filename": "fig_3_2_1_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "step": 0,
+      "boundary": 2,
+      "L": 2.2
+    },
+    "valuesCompared": 1604,
+    "maxNormalizedError": 0,
+    "readouts": [
+      22.430601441707335,
+      0.2801166666666667
+    ],
+    "exit": 0,
+    "seconds": 39.621
+  },
+  {
+    "name": "3.2.1-E1",
+    "set": 1,
+    "filename": "fig_3_2_1_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "step": 0,
+      "boundary": 2,
+      "L": 0.05500000000000001
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 2.1555104954276227e-16,
+    "answers": [
+      22.430601441707335,
+      1.2336830792939038
+    ],
+    "exit": 0,
+    "seconds": 49.869,
+    "maxAnswerRelativeError": 1.7998512636820643e-16
+  },
+  {
+    "name": "3.2.2-1",
+    "set": 0,
+    "filename": "fig_3_2_2_1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "spherical": 0
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.00006663402186006896,
+      0.8621838972819452,
+      0.002077401386121353
+    ],
+    "exit": 0,
+    "seconds": 11.406
+  },
+  {
+    "name": "3.2.2-1",
+    "set": 1,
+    "filename": "fig_3_2_2_1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "spherical": 1
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.00004885395116934856,
+      -0.9954830308545479,
+      -0.002282128458767901
+    ],
+    "exit": 0,
+    "seconds": 47.505
+  },
+  {
+    "name": "3.2.1-E1",
+    "set": 0,
+    "filename": "fig_3_2_1_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "step": 0,
+      "boundary": 0,
+      "L": 0.05
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 2.1939271105922302e-16,
+    "answers": [
+      18.318324510727656,
+      0.9159162255363829
+    ],
+    "exit": 0,
+    "seconds": 47.919,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.2.1-2",
+    "set": 1,
+    "filename": "fig_3_2_1_2_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "step": 0,
+      "boundary": 2,
+      "L": 2.2
+    },
+    "valuesCompared": 332,
+    "maxNormalizedError": 0,
+    "readouts": [
+      22.430601441707335,
+      0.2801166666666667
+    ],
+    "exit": 0,
+    "seconds": 40.327
+  },
+  {
+    "name": "3.2.2-E1",
+    "set": 1,
+    "filename": "fig_3_2_2_E1_set1",
+    "parameters": {
+      "rho": 1050,
+      "c": 1470,
+      "f": 2400,
+      "pa": 110.00000000000001,
+      "spherical": 1
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.000006947239579408132,
+      0.00007126660187884679
+    ],
+    "exit": 0,
+    "seconds": 81.984,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.2.2-E1",
+    "set": 0,
+    "filename": "fig_3_2_2_E1_set0",
+    "parameters": {
+      "rho": 1000,
+      "c": 1500,
+      "f": 2000,
+      "pa": 100,
+      "spherical": 0
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.000007957747154594767,
+      0.00006666666666666667
+    ],
+    "exit": 0,
+    "seconds": 33.573,
+    "maxAnswerRelativeError": 2.0328790734103208e-16
+  },
+  {
+    "name": "3.5.1-E1",
+    "set": 0,
+    "filename": "fig_3_5_1_E1_set0",
+    "parameters": {
+      "rho": 1.21,
+      "c": 343,
+      "f": 1000,
+      "pa": 1,
+      "ratio": 1.25,
+      "depth": 0.1
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      13.738743383045742,
+      0.2531243679012814
+    ],
+    "exit": 0,
+    "seconds": 23.043,
+    "maxAnswerRelativeError": 0
+  },
+  {
+    "name": "3.5.1-E1",
+    "set": 1,
+    "filename": "fig_3_5_1_E1_set1",
+    "parameters": {
+      "rho": 1.2705,
+      "c": 336.14,
+      "f": 1200,
+      "pa": 1.1,
+      "ratio": 1.25,
+      "depth": 0.12
+    },
+    "valuesCompared": 804,
+    "maxNormalizedError": 0,
+    "answers": [
+      16.8229510812805,
+      0.13282083957326865
+    ],
+    "exit": 0,
+    "seconds": 40.969,
+    "maxAnswerRelativeError": 0
+  }
+]

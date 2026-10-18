@@ -25,7 +25,7 @@ const lectures = files.map((_, i) => a[`l${i}`]);
 const refs = JSON.parse(fs.readFileSync("scripts/p2-reference-answers.json", "utf8"));
 const sources = JSON.parse(fs.readFileSync("specs/redesign/P2-source-notes.json", "utf8"));
 const projects = JSON.parse(fs.readFileSync("src/projects.json", "utf8"));
-assert.ok(lectures.length > 0 && lectures.length <= 21, "P2 explicit lecture IDs");
+assert.equal(lectures.length, 21, "P2 explicit lecture IDs");
 near(a.gasSpeed(0).adiabatic, 331.316749, 1e-7);
 near(a.gasSpeed(20).adiabatic, 343.2319777, 1e-8);
 near(a.gasSpeed(0).isothermal, 280.0137630546, 1e-7);

@@ -1,0 +1,1735 @@
+{
+  "branch": "redesign/p2-ch3a",
+  "lectures": 21,
+  "simulations": 31,
+  "examples": 21,
+  "originalQuestions": 71,
+  "matlab": {
+    "parameterSets": 104,
+    "valuesCompared": 188996,
+    "maxNormalizedError": 1.3880008253863707e-12,
+    "maxAnswerRelativeError": 3.8585478670700992e-16,
+    "failures": []
+  },
+  "browser": {
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "lectureViewportChecks": 42,
+    "allRoutes": 82,
+    "errors": []
+  },
+  "visualReview": {
+    "method": "All 21 PPT summaries, all 104 MATLAB PNGs, and every new lecture in desktop/mobile screenshots viewed using contact sheets; corrected figures reopened at full size.",
+    "images": [
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_1_1_set0.png",
+        "bytes": 56444,
+        "sha256": "ebe35f2ffd6e7db038c4a297fb7984458d498d9e900293947437b2cb9a99cc6e"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_1_1_set1.png",
+        "bytes": 56790,
+        "sha256": "0a1ac86bcfa08460895026f65845724102103975519a620431607574e5acbd06"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_1_E1_set0.png",
+        "bytes": 21898,
+        "sha256": "21fa430a4a1209a4b9a844a48f4e3aeffb8534c412bb856fadf83028df0bccce"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_1_E1_set1.png",
+        "bytes": 21937,
+        "sha256": "e973aaf5c8696083f298768c521e5ba146888590ab0e90194c1b8234aa0c8c0d"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_2_1_set0.png",
+        "bytes": 39687,
+        "sha256": "96d2e5eb41855c21659344bf36edae81b0a9b135b2ac65a9b27a5363a7ecf14b"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_2_1_set1.png",
+        "bytes": 39720,
+        "sha256": "e27e804e0062d30f79548969ce3b61c50b2ad08dcd1c3acfc5c71cb4ef327491"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_2_E1_set0.png",
+        "bytes": 24237,
+        "sha256": "7254883336a5f96a24c8e70e842642d92864b579526c1e29630d0d02ea1b4827"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_2_E1_set1.png",
+        "bytes": 24400,
+        "sha256": "1bbd935eb758e8c07f3073bbda2e9a8d686a7d88d943ff2cd2476bd50b444a47"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_3_1_set0.png",
+        "bytes": 98109,
+        "sha256": "83a691996f28167b0df07a9b6223ecb00befb6019f1af60a49f653f76cffc56c"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_3_1_set1.png",
+        "bytes": 111291,
+        "sha256": "e4d0b65f4a3535d82e4636e3e9ff32366e41fb2ad456486d7ab6def44c2f6c21"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_3_2_set0.png",
+        "bytes": 24740,
+        "sha256": "a7c5fb3166bb8f99e20e60a061436984ea466ab490488f80a45ac17c7eb65b5a"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_3_2_set1.png",
+        "bytes": 24740,
+        "sha256": "a7c5fb3166bb8f99e20e60a061436984ea466ab490488f80a45ac17c7eb65b5a"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_3_E1_set0.png",
+        "bytes": 26640,
+        "sha256": "bc28567bba50471585d74d0235cfee14d796db657b3d0c900645e8b54e618932"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_3_E1_set1.png",
+        "bytes": 26696,
+        "sha256": "d0a68e691dbccd6d36f921cc86e0310c027fb16415973d303832d4dcd26af4d7"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_4_1_set0.png",
+        "bytes": 30945,
+        "sha256": "85ad82588913d6832ffa1d693089cb8bcd5036149a562c3374ac86d940971a8a"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_4_1_set1.png",
+        "bytes": 30828,
+        "sha256": "0140452c6351c724467190d00ab8d207565c8d7aaa6da2777f41e897c4ff2e44"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_4_2_set0.png",
+        "bytes": 28301,
+        "sha256": "af91a0f0510f624f39d6fb7ffe174f239729e997a136421bcd065f0e9dab6c7c"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_4_2_set1.png",
+        "bytes": 30061,
+        "sha256": "1af52755d73a6f8d9f12343213012f199fe9c1b87909e4c502ece5bfe74ed1b9"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_4_E1_set0.png",
+        "bytes": 29478,
+        "sha256": "70a3df3c8f41410a3535f2173654ab1656104f8f09f8fb4e97ccad6dc465b635"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_4_E1_set1.png",
+        "bytes": 27814,
+        "sha256": "fea578bb8c07539021a17e34efead987d7d217bce78ebd651787e97ffcb89cac"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_5_1_set0.png",
+        "bytes": 31301,
+        "sha256": "5b38b57b643c411c4b5de613095247a4ca39582e385161e53c5d08e7761e6068"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_5_1_set1.png",
+        "bytes": 32509,
+        "sha256": "edabbc22a8e81144baea1ce8bed7b71b0aceee60b08a244711ec19b30f8af680"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_5_2_set0.png",
+        "bytes": 28658,
+        "sha256": "f47fac0103fbc03556112b6e96e0b99f4b15e85c713fbef29b317d1e33628a2a"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_5_2_set1.png",
+        "bytes": 28598,
+        "sha256": "9df94b78385b094888de5cef78a893a86e6adaeeadb1aefb293fbe5cdefdaa90"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_5_E1_set0.png",
+        "bytes": 28778,
+        "sha256": "44b30b44876720e5f7a952e62ff95614fe67d32fec67b689859a5dc17140c095"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_5_E1_set1.png",
+        "bytes": 26204,
+        "sha256": "1d6e4d1f5433def812dcb75a27c296e6c918fbcd24aec0f746f83c1673ccc7fb"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_6_1_set0.png",
+        "bytes": 47447,
+        "sha256": "919b1519b0d8785e571144540d2e37a81dac216ae30836ac8db7f337b8811efb"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_6_1_set1.png",
+        "bytes": 51342,
+        "sha256": "bd8a4ef67b68af4a0abb6a6c558486882a5a976f619fc01dc5998120e6fd9746"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_6_E1_set0.png",
+        "bytes": 26272,
+        "sha256": "d1634078abaad668608aaf83fb1b9aad590e9b5fa8d4090920e125b0bcc1a774"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_6_E1_set1.png",
+        "bytes": 23800,
+        "sha256": "e6743b015d0071aec95a33d9148368c131c2aa5121f056dc6692bacf67fc72a6"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_7_1_set0.png",
+        "bytes": 32862,
+        "sha256": "7f605481781aa912a7ad927f57a665b0f6cc911e309a746928ca05466439e255"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_7_1_set1.png",
+        "bytes": 33019,
+        "sha256": "246fac595c2f83545a817929cbdbfb5670b9a2dcc79a15190643434c21c4d448"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_7_E1_set0.png",
+        "bytes": 27361,
+        "sha256": "c5d436ee2e4f02fe687b9946088fa2f6c900207f04975ffb3879b60182ddf398"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_7_E1_set1.png",
+        "bytes": 27426,
+        "sha256": "b17d2e1e5953ab165f3c34d178894561dffd5ec0d52cf726e6098599af6c2362"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_8_1_set0.png",
+        "bytes": 40988,
+        "sha256": "9d48da4563f94981273c0fb5e4d4eeabed6e4a6efe79e0dd02056ace5a62b1b1"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_8_1_set1.png",
+        "bytes": 41798,
+        "sha256": "7b839f135e856e98f6281e40eb4de6f13b847cf7f052ab087051413e614bbedb"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_8_2_set0.png",
+        "bytes": 30845,
+        "sha256": "ed13e9f9d8e98b7e6a798dbbf18496300b142ec2da7746f4f79240c2efda220c"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_8_2_set1.png",
+        "bytes": 30796,
+        "sha256": "9232cf16d78693bf767d60179a472a70c630b35fe30663a9770d8b72c7064943"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_8_E1_set0.png",
+        "bytes": 28712,
+        "sha256": "61079da886dc56b1ced7aa15e8641c4497f6fd27597ada9d87a029f53d14c598"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_1_8_E1_set1.png",
+        "bytes": 27637,
+        "sha256": "5d25b96c991745e023eeccddb6d3097b42c28df74b42c1971a147f6b21b85435"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_1_1_set0.png",
+        "bytes": 31851,
+        "sha256": "80140b57b6ddc45406d633ca0e2b194716f6fd0f2cbc4c83b39eab452e44de16"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_1_1_set1.png",
+        "bytes": 31879,
+        "sha256": "588d187441d7c4822d1969f3fd2c9272179508f8d3d56f0b043e5eb1b7259910"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_1_2_set0.png",
+        "bytes": 23675,
+        "sha256": "9d9d2e17441bb6c7623ce4175744087bd1b9308478a37cadc5156eaa732beed0"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_1_2_set1.png",
+        "bytes": 27117,
+        "sha256": "81622a80fa91c7a0dd0942d0f1bdf9507e61b0afef088b08817a611e0d3ebb71"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_1_E1_set0.png",
+        "bytes": 24722,
+        "sha256": "a31cfa0ce065366793b3fe1dd836b8cc73868465fa36d6664c72539837e6d5a8"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_1_E1_set1.png",
+        "bytes": 25884,
+        "sha256": "926bc7c2f5d0eaee46c56c2d056ea5e6eb43a32042896c96f7cbabeae085d3ef"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_2_1_set0.png",
+        "bytes": 60876,
+        "sha256": "769b22a4e6342d06192f3ea5bf83deaf41a922dbc1461dd0ae46fa52359d1633"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_2_1_set1.png",
+        "bytes": 60358,
+        "sha256": "69c6967db7fe740ad1552b411b170aa2efa3ca6db3a615e403e319ed8aa32f03"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_2_E1_set0.png",
+        "bytes": 25075,
+        "sha256": "36a60d34b14cd1faa72bf441d1391cec510aa05ad293d764412d4d857f00af95"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_2_2_E1_set1.png",
+        "bytes": 24748,
+        "sha256": "eb29bd805464b9c8d6d4f407fe64015e7d43e479ebc28ee3b8a28ec3713e9b2b"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_1_1_set0.png",
+        "bytes": 40043,
+        "sha256": "9194df7273ba767877344a8ee3bcdaedd4cdcb25226f726a5e94271c9f793de6"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_1_1_set1.png",
+        "bytes": 32525,
+        "sha256": "0d31dfa6696c9012478dc0399d27823874cb4f8b6e04a672c891efce32f3151f"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_1_E1_set0.png",
+        "bytes": 27877,
+        "sha256": "4b3c86129722fa02222db60cd304d736d4a302200682abddbc0153b0fa4045e7"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_1_E1_set1.png",
+        "bytes": 27122,
+        "sha256": "2ff59a4f1e491c2dec92e6cdbbee384f6dabc9203322b73640d5e7b8e52d9b0f"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_2_1_set0.png",
+        "bytes": 42549,
+        "sha256": "72797d740b2d4e1ea72308181dd28dd646c0a32262003399af5ee4b6c2a07aaf"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_2_1_set1.png",
+        "bytes": 42469,
+        "sha256": "e3aa2e0d920308ba2406de6ad269729ff9339e81ee4b097b8bb9f2bd62ac151c"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_2_2_set0.png",
+        "bytes": 30628,
+        "sha256": "9cf990192c2a542a1274899e15f2b13f195f2cb004c6e882c88eb2befda2bc55"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_2_2_set1.png",
+        "bytes": 29234,
+        "sha256": "86ad1b14fb5336e361f01af494f4a4a5da7339b52f11f4c79786a09e249a2faf"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_2_E1_set0.png",
+        "bytes": 31987,
+        "sha256": "8cc35c95ab48b666007afa5d84f6946857ce24f78b7cda2a2c96efc3f2e45185"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_2_E1_set1.png",
+        "bytes": 32482,
+        "sha256": "e785eabc3a652b2dad34228047abf37fd4c4535f91886977a47fd0fe2b19820e"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_3_1_set0.png",
+        "bytes": 55309,
+        "sha256": "a205b832fa17e1c1e9dc234d3188e54b2c24bc875c1410b213ea2bf91775a2f4"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_3_1_set1.png",
+        "bytes": 55805,
+        "sha256": "ef43a5f607886d86df144176717ee51dd8a784b8fdc62d340661e7a819922016"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_3_E1_set0.png",
+        "bytes": 24350,
+        "sha256": "a7610836baf216614eff4d1477be9ae426bd3449c2584d6fd57bb63a5dba51ee"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_3_3_E1_set1.png",
+        "bytes": 26698,
+        "sha256": "6ccb046aca338c8b9cfc89c53d9041db8c85c01236e1b371a0daa3531a59798e"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_1_1_set0.png",
+        "bytes": 32344,
+        "sha256": "49b73c8dcaabd9548bf471fa92311ee66fc4cb8a4b777489c381d58036b72ed1"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_1_1_set1.png",
+        "bytes": 32424,
+        "sha256": "258fa7faabf66093e8c2903f7f89cf080c25d1aafc986d1b8e119ee6ca5e9d42"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_1_E1_set0.png",
+        "bytes": 26318,
+        "sha256": "662f914f8ba8d988e3ef887700251dccfb5bd80a093e3552f5a57cf749ea4364"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_1_E1_set1.png",
+        "bytes": 26724,
+        "sha256": "c82028d34f970175a15ad988269867cf97ccc62e45c4a5787ad0eb9cf71dccc5"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_2_1_set0.png",
+        "bytes": 42751,
+        "sha256": "6c66947017e0aa36b5c7da8026630cd0a5721f71a1bfac28ef7284cbaad76ddf"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_2_1_set1.png",
+        "bytes": 42963,
+        "sha256": "89b309e5070cb4ddfd3affb7fbb880b741bab087c5a99c5814732c6817057a97"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_2_E1_set0.png",
+        "bytes": 23799,
+        "sha256": "d3cbdfa1eb93d640c23335c68885a447920fb5bc413b2a421b78c9a2d81dcad0"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_2_E1_set1.png",
+        "bytes": 25605,
+        "sha256": "26249f95961b148a133981bfb632829f2aa1d3c5600100b7ed3ad94ead0c1caa"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_3_1_set0.png",
+        "bytes": 77856,
+        "sha256": "ab3c6ac73318343a41fd9d1ecdcfddcd4ceef4cb9871f2df7f98cf62e85b8778"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_3_1_set1.png",
+        "bytes": 77856,
+        "sha256": "70fd5fca16baad573deca313ea68abd25369c13f662dfbab5691749ca7014b00"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_3_2_set0.png",
+        "bytes": 75116,
+        "sha256": "15bab04c13928bcb67e7d519bf7d3cd4ebf14b7bd36453e19495655e70d82aae"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_3_2_set1.png",
+        "bytes": 75116,
+        "sha256": "fff6a2ac6177e00fcc133336343988b7d686dc6d9f1867d106afd6e33ad767c2"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_3_E1_set0.png",
+        "bytes": 23739,
+        "sha256": "ce7ec141e33bd855d17343a39f78cf08ffe81b2bc1f5553a655d6cbaea5cf7d7"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_3_E1_set1.png",
+        "bytes": 23777,
+        "sha256": "0be6f246b41a7b10b5f52363d82548789abef799ad68236b6231a54c6d0bf770"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_4_1_set0.png",
+        "bytes": 26165,
+        "sha256": "a57c5a57cfa0e8ba27ff118e9e074bdc24aa54607fb50f3ba0c01e7b8e351481"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_4_1_set1.png",
+        "bytes": 26165,
+        "sha256": "ae4a7543800fd0da4db0fa953109b0db9b02f0d858661754ac3f50be9f662c49"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_4_2_set0.png",
+        "bytes": 59894,
+        "sha256": "b103ad864856887c0dd03c5313908aae2274266360e129d23862684eb3ac9c1f"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_4_2_set1.png",
+        "bytes": 58895,
+        "sha256": "b61ea1655bc6eb61f8286264980bc2a2958781583a1b56435710edd9350b6910"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_4_E1_set0.png",
+        "bytes": 23747,
+        "sha256": "b95ae1ed92f261fa604dbe47d08b7d067b10d2bff0ff8024a7b2a9cd2bb6f721"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_4_E1_set1.png",
+        "bytes": 24520,
+        "sha256": "747952a37cabb1607939a61ba11094091fc7d891af6f510d5b25869565722ae6"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_5_1_set0.png",
+        "bytes": 51043,
+        "sha256": "e2e714eb37de488ccfadc043cea88dcecd0f852bb2f39eab3d7bd44b6fd8555f"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_5_1_set1.png",
+        "bytes": 51065,
+        "sha256": "527bd7a064f68ea9ff26d7c27831f326539717cc8575cb08bedad25029de1e92"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_5_E1_set0.png",
+        "bytes": 22429,
+        "sha256": "3e5f0531642100e1b35010d3df778fbd6355bbe8fa82f5e5eca87c2377fe4b26"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_5_E1_set1.png",
+        "bytes": 22425,
+        "sha256": "e5566f01296bc48fabbd8293d93715a032b8c8aeab03963c3243887eeddbb585"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_6_1_set0.png",
+        "bytes": 24881,
+        "sha256": "6434e2c7c7e3391dcfa1879d732a8ef922ff6f54000f4b9b5af535a18928a789"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_6_1_set1.png",
+        "bytes": 24881,
+        "sha256": "b824c80cf1cf97187e344f743875cbada555e22c90472b0d67e30718c45ecde5"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_6_2_set0.png",
+        "bytes": 26886,
+        "sha256": "a3d58c08f467094261dc74633f4f0c4cd2f178375ab5cd99d4b0fe811df2dd82"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_6_2_set1.png",
+        "bytes": 26327,
+        "sha256": "bb3f480febe927fd7370d08d2ed61498d5aafe7c736840cc37a0a3d3176cc737"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_6_E1_set0.png",
+        "bytes": 28170,
+        "sha256": "b04816c07da087174df02fb013f1e1eb4d42ca3adb5a730117f440ec72460660"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_4_6_E1_set1.png",
+        "bytes": 27808,
+        "sha256": "300502d7b2b96a318df62c7d5a6b82a6f5c9ca0ecfad564a5b93e40d97a4087a"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_1_1_set0.png",
+        "bytes": 155237,
+        "sha256": "b813246a7a15d66ab64187292b267365a9e5824323fd022dd806575f91123980"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_1_1_set1.png",
+        "bytes": 49244,
+        "sha256": "1296562e6915ebc54ec4d63ee84e92265f60c1226dcae26c2ca76872289f2d61"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_1_E1_set0.png",
+        "bytes": 25737,
+        "sha256": "bd0dbbd0a2804f7a4f45e2cefc482c1e216a2747fbf953f3d12ed7d6fd00c3ce"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_1_E1_set1.png",
+        "bytes": 25725,
+        "sha256": "142059cbb6bc13b792794ad97db60f8758bcbaa835c2350e882bd02af6710e7f"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_2_1_set0.png",
+        "bytes": 31123,
+        "sha256": "e52ef9db9ad1aaca0a7b092ce262ca761a875182e0b713c815037a67edd8cdd6"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_2_1_set1.png",
+        "bytes": 30707,
+        "sha256": "0a074c80b1d4722513e0a4c7b0e1520260513a9d41645288fb44cb596c9a01e2"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_2_2_set0.png",
+        "bytes": 111530,
+        "sha256": "5c74908169c0f624e9bbabd6e7c50736145392462403e9a25b0e16dd754affa2"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_2_2_set1.png",
+        "bytes": 113971,
+        "sha256": "31eae03d1c98060874d0a370aa57cd55af55b36f17b6ba69353fafd6f32c93c9"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_2_E1_set0.png",
+        "bytes": 25402,
+        "sha256": "afbb6257325f50825fb650a57dce1d0692075c31f41e8ca6e33383d565b2724c"
+      },
+      {
+        "path": "specs/redesign/matlab-check/P2/fig_3_5_2_E1_set1.png",
+        "bytes": 25430,
+        "sha256": "419670b82be8378b245ee98c3b97df84ea7110b99bd215ecdab0b14cc31f0e4e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-desktop-full.png",
+        "bytes": 271184,
+        "sha256": "376e4284385704bb29d557adaafd37dbe149b85b01e271a7923c0182001f5153"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-desktop.png",
+        "bytes": 102347,
+        "sha256": "f81afe2d8a12449b09b0151cbc22e456a0105a1863cb93c5501bc871ab849be9"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-figure1-desktop.png",
+        "bytes": 33344,
+        "sha256": "2ea662655c057e98f6bd3e54045261391ee1e7766be80eaae32153203a7da6c5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-figure1-mobile.png",
+        "bytes": 26594,
+        "sha256": "0bc2f7051183d63fb6db21ba12e9a61395e892175d911b26b329d94d8824f6ab"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-figure2-desktop.png",
+        "bytes": 17339,
+        "sha256": "8016974875d112034818d3a28f5919a9b7e544c38fd1237c682b711a578b70d3"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-figure2-mobile.png",
+        "bytes": 12480,
+        "sha256": "15e231f884bc9e9ef2cf7261420a74974a5821bb1e283dc85b6e3b14f2d662a8"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-mobile-full.png",
+        "bytes": 201893,
+        "sha256": "0f67250cbe35216fe5c699583b1506ef43fb2700f888807403bc058499fe6f61"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-mobile.png",
+        "bytes": 35776,
+        "sha256": "fd70f35d08a52daf38eb0ea31e8a91c2b6ed9fe40fdb26f64c59ff415a02e2db"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-worked-desktop.png",
+        "bytes": 98265,
+        "sha256": "5aa229dafe5502e6aa33ede05e8fea4caeafe435121a15a19ef7960b27aa9dad"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.1-worked-mobile.png",
+        "bytes": 85675,
+        "sha256": "496d3c1236234f174fadbb14a9557eee142370509146160becac6f15ab9471ff"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-desktop-full.png",
+        "bytes": 275256,
+        "sha256": "b48de79f03fb33b98ec91ca652722326f1c187ce2f2070d0e28637c2e20bd9c6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-desktop.png",
+        "bytes": 95934,
+        "sha256": "af26e3a4effac0c72cb2d862cee753652ea117ed23b276f4a0fb89c8d69f491f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-figure1-desktop.png",
+        "bytes": 27718,
+        "sha256": "0629de021bec4f7aca2f847a8db413e1304fad5093c5dcb41f330f70092600c6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-figure1-mobile.png",
+        "bytes": 25174,
+        "sha256": "351fcbdaae4352ceed2f62a2c64950b931283338b90740f151067d28dcf44477"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-figure2-desktop.png",
+        "bytes": 17868,
+        "sha256": "2fba83b560262463d50043ceef201e9e00f6bf49ed173d8b374fa3adffca9437"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-figure2-mobile.png",
+        "bytes": 13173,
+        "sha256": "6d25a63679610e49889e6738a6a143fdb9f4476128def56006f82e404754ab6c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-mobile-full.png",
+        "bytes": 208881,
+        "sha256": "5410bc6a6643ffb25bf2ed4717d95f383d87c80ee7788afab7176c0126f7d86a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-mobile.png",
+        "bytes": 30641,
+        "sha256": "2f6745a27f914c11b25260031b7bafcd0c9f238bb426a15a012cf66e1ebdbf73"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-worked-desktop.png",
+        "bytes": 112891,
+        "sha256": "4b7ff0d48d4d14df0deeb39e7b09cd0c9e797a3b8bbfa100b4090da6d006b5e0"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.2-worked-mobile.png",
+        "bytes": 99225,
+        "sha256": "b19f9d2d3851eb53e1685155de9ecc5164432338243b9b2802e50b9d185bf28d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-desktop-full.png",
+        "bytes": 306755,
+        "sha256": "fdb8463beb111d9099aaf3b14a218400798bcc721d3446cd834e0678eada15e0"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-desktop.png",
+        "bytes": 113513,
+        "sha256": "e37127d74f46eda7558d55dae7fa38c0e8f073b4089ab32af9262a95982fa654"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-figure1-desktop.png",
+        "bytes": 45076,
+        "sha256": "d4d3cf8b610b17dcf6ec73484f5845499867c22d27c8054cf2328120670f0bbe"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-figure1-mobile.png",
+        "bytes": 49387,
+        "sha256": "93ae99779486e09ea2369108f9dfe800542a9af3919e523980cdb1ca5a3492a2"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-figure2-desktop.png",
+        "bytes": 15506,
+        "sha256": "fe41744108ebbcd0362e430dc8beed83e3aba53c9283d3556e26ba263644bdf5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-figure2-mobile.png",
+        "bytes": 14368,
+        "sha256": "70232771977661729ff478628d23d7d576f9cc76432c22d255c3f7dcc2718558"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-figure3-desktop.png",
+        "bytes": 18305,
+        "sha256": "8e3e75899bd3e6b3031d49b7b7413c651214b93dfad149318a7b53f7d6f36d3a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-figure3-mobile.png",
+        "bytes": 12808,
+        "sha256": "8976de55efc5761b1092a8b5262665b2a88582e3f6433c7fc41f0cd1e35e6adb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-mobile-full.png",
+        "bytes": 242253,
+        "sha256": "1c08e96bd05f941c90f441086c1a99b4441ed39ca9219cf742d7665b15e74459"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-mobile.png",
+        "bytes": 35543,
+        "sha256": "f5b97d29af759d12249a190d781d65314f0227c9eb9a78313265ed0ac91bbc48"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-nonlinear-mobile.png",
+        "bytes": 53076,
+        "sha256": "44684bea6d542e1469c514da807287621093231c8c9103cbcf1dfa2ab4b2e242"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-worked-desktop.png",
+        "bytes": 111782,
+        "sha256": "4338a18144fb80bb3f662778341714a6df211200bd19d19ed2da3f705335af39"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.3-worked-mobile.png",
+        "bytes": 98457,
+        "sha256": "88862b371148ae11060f375b1c5be65a1b6eb7380bd9a9594f2bc502dc18090d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-desktop-full.png",
+        "bytes": 286836,
+        "sha256": "b3dd489d0c92c042557c9197892f47251ea2ee7e61fb85feb9ccc415d7d2ac49"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-desktop.png",
+        "bytes": 107299,
+        "sha256": "f785c041b6845012c8254ff0b691a6101c44343d6e768a995b3bf5e27c376063"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-figure1-desktop.png",
+        "bytes": 17874,
+        "sha256": "88b7de82780ab09a254270c635b3d7c34144c1c9324b85d932772d8be7827187"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-figure1-mobile.png",
+        "bytes": 16903,
+        "sha256": "b2bdb3a61c65b42484e3019ef5ce2cd4fa7d60a1df2c58eafd827a83275a5834"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-figure2-desktop.png",
+        "bytes": 16806,
+        "sha256": "8828c9efd392d66726799c4477951f53de72d9941d8c0a6d444acb5aa86713f0"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-figure2-mobile.png",
+        "bytes": 15420,
+        "sha256": "d33ff511795d27b7e52e2994138e9477e5006378eef42c18f2bda7b6db42f528"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-figure3-desktop.png",
+        "bytes": 20023,
+        "sha256": "8a048ca5c21107fb2f8315eafe4898a817ac093c3474607c814d142f7c2e0ce8"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-figure3-mobile.png",
+        "bytes": 14569,
+        "sha256": "54afb3cbb84554523d4a756a23b8be0194e97f31b9f51f771087cbf65682ed02"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-mobile-full.png",
+        "bytes": 217387,
+        "sha256": "f7e24988af3d1813a899561097635177c91939701ca03da38d302e7f21b9fba5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-mobile.png",
+        "bytes": 33380,
+        "sha256": "001291664547efc96230038edee9493ecfbc53aacc9d2323a13f67977a12e985"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-worked-desktop.png",
+        "bytes": 119737,
+        "sha256": "660b4fb7b6d9d5b9bf4483b9ff6ea22cb3b692cdbee7e5dedf1482be4850037c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.4-worked-mobile.png",
+        "bytes": 105352,
+        "sha256": "91d5bbe2d63923a5d487c433e2aaac4b46b3fd9755ebfaac31c6d27ff2464701"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-desktop-full.png",
+        "bytes": 300810,
+        "sha256": "1a809d773f4d9c533e39c1a5eda18b1cc3fd3d781acd91295d2260baee395724"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-desktop.png",
+        "bytes": 109435,
+        "sha256": "7fe7f06a2b2aa78e154c1736c4cf99426328c914b586383379715922b4a9b98c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-figure1-desktop.png",
+        "bytes": 24400,
+        "sha256": "4138f9254640d27d8d6d7374be4a9c8680b9f82f746a312e04d2fe08a7bc7494"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-figure1-mobile.png",
+        "bytes": 18717,
+        "sha256": "3d6cb0a0e4fd328b3ffc26394b635716f508a87bca0a234070973b240bfe1498"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-figure2-desktop.png",
+        "bytes": 28300,
+        "sha256": "2a8d869134ee75af6985e5f46e6391a18ad46bdcdc2117383cbcd96c3119d0f3"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-figure2-mobile.png",
+        "bytes": 21119,
+        "sha256": "77a72b96bfc8f8cea8ce715e2697445714b6cc7895e0a30a98428afc1ead3545"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-figure3-desktop.png",
+        "bytes": 20728,
+        "sha256": "3bccaa262bb85ccc2309fa31c8e5ab624a1e04e3e633e70676aebc38b2262b91"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-figure3-mobile.png",
+        "bytes": 15118,
+        "sha256": "c50b38dd6e837eb89066f39b155159ca93260c8f9644869a8e591e15a891663f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-mobile-full.png",
+        "bytes": 220757,
+        "sha256": "4abc8b766b9c221cd427499d7f36f7b41afa0a4d4de05cf26001fc1e98fff0fa"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-mobile.png",
+        "bytes": 36358,
+        "sha256": "b50eebc91b8a389c1c16582dd00ca0938be1c23d485b1829536e2eae9e20dd46"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-worked-desktop.png",
+        "bytes": 115370,
+        "sha256": "99530f05775c652384ee0ded4c00cda75e7111abf99f218b646d7f65ee3ab620"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.5-worked-mobile.png",
+        "bytes": 101463,
+        "sha256": "50cba0473a00d28bd5fc4c5b21ee60b3d93fae4a07017331ea0b41812f30da25"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-desktop-full.png",
+        "bytes": 266236,
+        "sha256": "c4cdf05482b5e74db03aec1815d4ecfa3848a26ff0c8c01be8ae70ae88159ea2"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-desktop.png",
+        "bytes": 102627,
+        "sha256": "8101eecbb416a2074b9c286a4847b05e33bdea41fb18c93bcdde419fde9d2275"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-figure1-desktop.png",
+        "bytes": 34533,
+        "sha256": "36f59601a6217a555a32216e8b84d20b08357e0b2a0b55ec28770ceb637b818b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-figure1-mobile.png",
+        "bytes": 26219,
+        "sha256": "9d0a64fb09b19bf50ae0489d34a07b206467763bc9c7aea3e6af403b76990ff9"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-figure2-desktop.png",
+        "bytes": 18773,
+        "sha256": "ae21ee7b14ea6cd4a8de2b8636e545c09b5471133f285c072c352d233774d2eb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-figure2-mobile.png",
+        "bytes": 13375,
+        "sha256": "bac53c8d831cc24b20231179c94b8ae000e62071eff0d45973182cdcd6527ca1"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-mobile-full.png",
+        "bytes": 192851,
+        "sha256": "e29cdbb3bdd3590a56287e8cd399ab1874df02e0fabdd98f37a3bc686849e0f4"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-mobile.png",
+        "bytes": 31832,
+        "sha256": "ef1c49f0931d32b3bb96270e4676bb165f6877bcab306bd61ba879631aa076e7"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-worked-desktop.png",
+        "bytes": 103891,
+        "sha256": "ef4967aec592c7ad7cc99dd1ed57409a26c7b09730b444817f06cce4951ca603"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.6-worked-mobile.png",
+        "bytes": 91455,
+        "sha256": "38a9db216f72b4ad56ec1b654715dd114c48f3b9bc84e7af14bbcca7d70e43d4"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-desktop-full.png",
+        "bytes": 268095,
+        "sha256": "747e4c2ca2e8e07dbd9f791dbc8231068e57a07c89c355460c4ef815ac833bc6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-desktop.png",
+        "bytes": 111228,
+        "sha256": "aaf8d41c7d47e5562d07f19108b29a230a514f00f82e4ce119f4b41023de5b81"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-figure1-desktop.png",
+        "bytes": 19559,
+        "sha256": "36e780c68ca45270007124771af14ce58515d1b61059cbaee37c4c5038b58db5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-figure1-mobile.png",
+        "bytes": 18304,
+        "sha256": "84f5c9920b23fdf2b77d294067648d978dec99a53514ff2cf237e89baab127ac"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-figure2-desktop.png",
+        "bytes": 19515,
+        "sha256": "204d01185a14fd8d67a43168f15f731b89a41d2ee5dfacb5c5205cc992a2a74b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-figure2-mobile.png",
+        "bytes": 14969,
+        "sha256": "f65881d22c22b2036f480540411aad3badcac3d2f5cb02a93fba9cc1d9f236af"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-mobile-full.png",
+        "bytes": 204470,
+        "sha256": "3548980d37a9908c28b52ac43785130c739f37589678a4eafb5fc645478e86c6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-mobile.png",
+        "bytes": 33911,
+        "sha256": "bf70f0eff343e14db7c6ab6489fcdfec8d4ec0eff83fbc03a67ccf3fb94591fb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-worked-desktop.png",
+        "bytes": 115292,
+        "sha256": "a4718e4fd65f9b25aae97a8c27446412d9f4fbb7f053412b9717bfea47d46d86"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.7-worked-mobile.png",
+        "bytes": 101986,
+        "sha256": "6fb02ebdd84bd00a306095824781f284a5df42d924ef12d9ad270f27e771dc36"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-desktop-full.png",
+        "bytes": 305621,
+        "sha256": "2e66998a9d8c55b976ec49f6bcbac0f6fdf58c26e00af7239580567b812d20d1"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-desktop.png",
+        "bytes": 118615,
+        "sha256": "0e2250e1e5c1ea2e262b0deab5484312b41d8e66777bdcc157b91e3782efd77d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-figure1-desktop.png",
+        "bytes": 29087,
+        "sha256": "a9a5a530a82208b8bb5f365e4c44b083382f113dcfe525f0098a1a5e12ae2507"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-figure1-mobile.png",
+        "bytes": 20619,
+        "sha256": "5489b9b04b62b235614f7d6f1525b9ecf07efd798db80d45129bd0a06a314841"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-figure2-desktop.png",
+        "bytes": 33288,
+        "sha256": "6a8407794db0eab5a03575f00ab6a273226f0180725757116fa944dfb5d1d720"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-figure2-mobile.png",
+        "bytes": 27233,
+        "sha256": "d447748a0c3d1d51993a37e6dfd62a9b7aadc0063ead289161c480d1dad13523"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-figure3-desktop.png",
+        "bytes": 18866,
+        "sha256": "e891a8edbb74a296cf181f6a05e1d2c4ed8386ae702c4c32993c6db1955d83c2"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-figure3-mobile.png",
+        "bytes": 13748,
+        "sha256": "15ca24f93a898400f235051bbb204b556766e53cc1fd16390f44d34b2dcecad8"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-mobile-full.png",
+        "bytes": 224796,
+        "sha256": "73e165cfa8eecd6fab27b1104009ace6a2cc50479425971f2d4b0f0adcf9a4a4"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-mobile.png",
+        "bytes": 41553,
+        "sha256": "639f946077916fcd9bd20caed775d1059e15dd038d0b67120b83738557fdf8c6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-worked-desktop.png",
+        "bytes": 112356,
+        "sha256": "40eece55e686bc40cec6074bd9a414d9f278a2ed068a81a0c7ee553f16007498"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.1.8-worked-mobile.png",
+        "bytes": 99030,
+        "sha256": "9cd0e5907ba68af7699cf98bcf546a2714f2c7b668b193cac9bd35af8cf4170b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-desktop-full.png",
+        "bytes": 292923,
+        "sha256": "da448c1f90a1c2b8e99ea74408b117650fb264a8a5c298ddcdc84c1e5684da45"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-desktop.png",
+        "bytes": 96381,
+        "sha256": "923fc30bef543bd213159573c468a1aa3380434b42454ac03b9008a549a00625"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-figure1-desktop.png",
+        "bytes": 24644,
+        "sha256": "6be977ce9d073f2e2796fdc7b06930956de70ec81b33706e36a4544f9b407e0e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-figure1-mobile.png",
+        "bytes": 19107,
+        "sha256": "cc777f98d76acd276e5547b88ffaee5f2562efdfea66ad544a65cb0c21262ca0"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-figure2-desktop.png",
+        "bytes": 15982,
+        "sha256": "ac2fbb24ac007a2beac3447f98ae988440a648dd64a95022d1f23bdc190d5430"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-figure2-mobile.png",
+        "bytes": 14655,
+        "sha256": "89483b9a3a87f863a49d6de7bc7e39c9d1a0847affae8c0fbfee15f00bafc10e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-figure3-desktop.png",
+        "bytes": 19380,
+        "sha256": "39a4f5569d705f0c842b434fc2f40173c1e5bcc5c64154f6c79a0442776dd03b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-figure3-mobile.png",
+        "bytes": 14483,
+        "sha256": "2d62e0c82f6390b6fdb63195fc54dccc0b99baaef13f09efaf380499cde6d844"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-mobile-full.png",
+        "bytes": 217168,
+        "sha256": "994f646ca9ac65ec96dea95a7abd4c3a133a656464349d1c4fb494713b57df47"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-mobile.png",
+        "bytes": 33827,
+        "sha256": "cbb2c2c8b1fef4a25b88331bce50808e38c361285ebebcf988f91979fec91f04"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-worked-desktop.png",
+        "bytes": 104196,
+        "sha256": "1838ee999b81896176e9fa1f5baed56d0d4d49bd55087ce12c575e80f50e3b9e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.1-worked-mobile.png",
+        "bytes": 92009,
+        "sha256": "ba1159d9b5afb8e82b2a927c9ddd8a177e1fa1cbc79a55c66b28e95855473a5b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-desktop-full.png",
+        "bytes": 300245,
+        "sha256": "6203c1639e6b4e2ea28db7916d4ee1636553768561e03582ef0df85e4b80f7a4"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-desktop.png",
+        "bytes": 94560,
+        "sha256": "1143ced74cc7c9e06cd29cb25c9c7a9e844078c6af4510e84658ba6e71cd1381"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-figure1-desktop.png",
+        "bytes": 43007,
+        "sha256": "44efb6f6640ff41cddc0dbc44e5225fb6051d6a9952df918ae8e6c9f31530893"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-figure1-mobile.png",
+        "bytes": 34074,
+        "sha256": "afd06604e6415d3cd13ea84861a07b02e9054552da6b77d9f6e0c51cc5bc99cb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-figure2-desktop.png",
+        "bytes": 19101,
+        "sha256": "849e836f7361d074c7890aac7e8ae2c4f3a95b822b869d81b9b1ce428aa92eca"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-figure2-mobile.png",
+        "bytes": 13987,
+        "sha256": "f4c48667f2366864bcf393fece2401f4a712c824e45646c660e532276264383a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-mobile-full.png",
+        "bytes": 222912,
+        "sha256": "b006438e33bff42c5809f3b07a7eb6b72ccb935d59c6671125fa8759130259a1"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-mobile.png",
+        "bytes": 31715,
+        "sha256": "a7a7af887fbb655423a8dd69bc8b4c23e0862492a52320b399bc3b11448d544e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-worked-desktop.png",
+        "bytes": 114017,
+        "sha256": "6ff2ddb3a08712ecec56e67a72806939aa857e412eff3fb12c701f8e97b30734"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.2.2-worked-mobile.png",
+        "bytes": 100405,
+        "sha256": "911380c0fb5791f6da213959afa76ffebde23a46414177fe77c37d65064eec1d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-desktop-full.png",
+        "bytes": 267097,
+        "sha256": "faa368335105455dd58b574e0202d76a460d43358210f23afcf8cb351320725f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-desktop.png",
+        "bytes": 123451,
+        "sha256": "a29f56ba638ce24f27533e05e02434c4fadc6b5bef4a82b27fb872a4ee223de5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-figure1-desktop.png",
+        "bytes": 31935,
+        "sha256": "fb3acaf33e94b5dd2dae13f3296c0170ef97a2b0efc6442a3c28de3eef047a8d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-figure1-mobile.png",
+        "bytes": 22274,
+        "sha256": "53cad1310ea423a999a1ccf1ad75155574f097dc28dfb14c650524c4ade8c63c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-figure2-desktop.png",
+        "bytes": 18850,
+        "sha256": "a3aefeeeaa3012d4f79d615a108d698f423f7cafac33a0ed3be0d09615a339cb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-figure2-mobile.png",
+        "bytes": 13974,
+        "sha256": "8930357f6be889392778b8dd0c55acf40ee326bff33d1860a22c055c61ef3a6b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-mobile-full.png",
+        "bytes": 192811,
+        "sha256": "26a95e1f421a29c178561768c7ed5ed31fae1da6cd314f8a09c90dd8b39ba8bd"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-mobile.png",
+        "bytes": 38993,
+        "sha256": "935cc6949fca31b367f69caef902670816fa9ee4bc57dada3bfc3901a8a466a4"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-worked-desktop.png",
+        "bytes": 110955,
+        "sha256": "5124c41e3fac0e3d43212b03c47e85708a212361821a00f28e3c3bc85f579d1c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.1-worked-mobile.png",
+        "bytes": 97369,
+        "sha256": "a1e1464d384c997c206f89ee800da6e087b87404276d906ba06fb6c24954d95a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-desktop-full.png",
+        "bytes": 287881,
+        "sha256": "6d60d2d6db84ad749b9f614fa8672fce9b945327fcb223fd273d718c64c050e9"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-desktop.png",
+        "bytes": 110226,
+        "sha256": "b5c28de074e21b1b5c8fa3da2b0a0d9798cf18cf49a5a4c9d6a559a1af48a7eb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-figure1-desktop.png",
+        "bytes": 20897,
+        "sha256": "f0037c0712d23143b0842d14e4c7fda64d96c47b81a8798f09c13ed69d3a1239"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-figure1-mobile.png",
+        "bytes": 28231,
+        "sha256": "1125d1c8229e5248dc4ee2513a7907bdb40b8ab2af6d3d5a608e4bbc005f7efe"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-figure2-desktop.png",
+        "bytes": 17523,
+        "sha256": "a6be27c315ae99bbdb57fa9d38a2827838448332c996b89686251ec7f0f23be1"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-figure2-mobile.png",
+        "bytes": 15639,
+        "sha256": "70741c893e0571fae0166cb13c989e6bd5d2e39a9b8267573e73bd1e6a7fdf29"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-figure3-desktop.png",
+        "bytes": 21325,
+        "sha256": "c5c44fca9c8024a4b437e2c879a7a89671a90af7082a0e2c2f807a2fedf8be31"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-figure3-mobile.png",
+        "bytes": 16059,
+        "sha256": "cec76c4636f0fc46b3c30d36ebd125bbeb1d13161fc72b3411ab33e5e8bef786"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-mobile-full.png",
+        "bytes": 225666,
+        "sha256": "27545c709ddf0dfa9cf996981374f95fec5335de2a4cde9860850b0ba7ec6db5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-mobile.png",
+        "bytes": 35511,
+        "sha256": "6e15357e5fe7d216fee530a0eaa2c8c7e42c12c77e84b6f10590a41023893f9d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-worked-desktop.png",
+        "bytes": 122274,
+        "sha256": "35f229d8887b6baeeb5b543d42dc6d195f48f834045c0ca6a0be54c470f6b21f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.2-worked-mobile.png",
+        "bytes": 107569,
+        "sha256": "c8738bca0b02651afb4d38133461c5d17f4f3f22d67cad13c9409a1f3a84e754"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-desktop-full.png",
+        "bytes": 271496,
+        "sha256": "01229938e428ce781c2f1d646800316fe5f1192c51316781a6c04cab282485db"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-desktop.png",
+        "bytes": 99965,
+        "sha256": "fccbc063465eb14c9f49da98f311111e311eda70f5c369ec19fad1b04ec8ba8f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-figure1-desktop.png",
+        "bytes": 34791,
+        "sha256": "20cbf1d9b597f4f19d7e87e2c91d77dffa75b01260c2e59ab4bb447c3f8a6c63"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-figure1-mobile.png",
+        "bytes": 24925,
+        "sha256": "0f49f2f2b0b992ae71a3555d573e95555e3d33aa89d63cb4a1cc7585806be17d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-figure2-desktop.png",
+        "bytes": 18801,
+        "sha256": "ef7af1a869c434b802e9e6fc934d576885fb88a45b9a6d6492b1dd89c7948853"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-figure2-mobile.png",
+        "bytes": 13754,
+        "sha256": "bb27d17f3c3075767600b835aab0cbe7ee5f8a5a19ecf21b9b898fd0b7adcbd6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-mobile-full.png",
+        "bytes": 198003,
+        "sha256": "7c9a55a3fcaf8b1a21f666674ec5aed62a47c1164466e017ce9bfe649e4f3844"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-mobile.png",
+        "bytes": 31344,
+        "sha256": "2c0e54278ce91a02e654b08a5bd80d846e788e5cf4f10b8bbbda0f9eb14cdb37"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-worked-desktop.png",
+        "bytes": 111108,
+        "sha256": "4b6c3ac0771a14bc7329ecfadffff5f9e653bbec70813edb14bded1c8e58486d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.3.3-worked-mobile.png",
+        "bytes": 98653,
+        "sha256": "86a57372e59d7ca8acba96d38572bbc86b42b166871ed91b0d443bee75ce263d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-desktop-full.png",
+        "bytes": 262748,
+        "sha256": "1658b93af9fd05662d3b170df97ab6cf7edf5f17aaacc2db9ca1d00c04938f30"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-desktop.png",
+        "bytes": 121094,
+        "sha256": "85eb0efd2068c57fa7df4aadac8ac7234915423d4930110a52b77c2d4e7ed7e1"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-figure1-desktop.png",
+        "bytes": 23590,
+        "sha256": "2fdf14c22369d0fd09baff96d261930e810d1b72de8dd9ada50d60722615efb2"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-figure1-mobile.png",
+        "bytes": 18003,
+        "sha256": "ebd2b1c3f3c2963160d8f2a1ac1951dc0af4ff9775c3526f54eb20ba504f4091"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-figure2-desktop.png",
+        "bytes": 17923,
+        "sha256": "5c9957e04961645379584a26ff3f4667e6a65d43c062ac24f4fe798af2056453"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-figure2-mobile.png",
+        "bytes": 13766,
+        "sha256": "93c1eabad264eeeaaee42bded3faad918f458d97d7b5d5140ed205c39237fa1a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-mobile-full.png",
+        "bytes": 191936,
+        "sha256": "c87a9a527240286edee46a8547d9157e6e2618fba6d0c7461a84cf8a54b1d84f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-mobile.png",
+        "bytes": 36282,
+        "sha256": "5e3c63db2672e2223cdec28ec69e6c4ae2f0bbd83dbea2082b908a3b9e468d60"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-worked-desktop.png",
+        "bytes": 108055,
+        "sha256": "081c43513b629381b153a63f7f9c1ae111b3b638234aada5975ff9747fed79ec"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.1-worked-mobile.png",
+        "bytes": 95741,
+        "sha256": "6fc3f23d20fb42e19d14067cba43dcd0d8a53dd6157e1ff5af9c41e1ade9ef12"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-desktop-full.png",
+        "bytes": 261264,
+        "sha256": "21f5d4705e01fe363c20a67d65ecfa6631ff4fa2f51d15584dc57700bd9abdc4"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-desktop.png",
+        "bytes": 110296,
+        "sha256": "1e5f2f77e0dae6d17fb1721b806148378e3c65c1df47eb36ca1c47b3ef58f47b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-figure1-desktop.png",
+        "bytes": 19411,
+        "sha256": "7e56edbdbe20e6e79a79593dacc6fc27bd7af6d529a4143363af58e7328791f5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-figure1-mobile.png",
+        "bytes": 22388,
+        "sha256": "0967e9ce7ca0a63889031d88f02ae425a7bb37f7a9f3e21191638a9e9eee7599"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-figure2-desktop.png",
+        "bytes": 17837,
+        "sha256": "6dea76d68d807d8209f5356489a93ec01ec8c4958aa50222c0f39ea1685f8d4e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-figure2-mobile.png",
+        "bytes": 12934,
+        "sha256": "84f35b9835c7c93b7db6c88960ccb8cc186ebfe25f82cabcfaec3d040f9a3251"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-mobile-full.png",
+        "bytes": 199997,
+        "sha256": "9154abb6affa8bb52a83e3696a3321225a0009a3c426c53d1ced65a2403d549b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-mobile.png",
+        "bytes": 28661,
+        "sha256": "e887188c698d5febcd5e5b4152b5c2853a7cc4e2f2690ca9cd01b78b17923fbc"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-worked-desktop.png",
+        "bytes": 93378,
+        "sha256": "454b218d73bddd1ff245d106d3186d0baa3f2ed468f164db5e311eea69878af5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.2-worked-mobile.png",
+        "bytes": 81242,
+        "sha256": "467a4801af131379ae89df66266c576ed00e3fe5f1074799e29b5cd5b74011b6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-desktop-full.png",
+        "bytes": 338690,
+        "sha256": "e74f5887a1eb5f76408e6487d537bbf27fa44861fd2b12857ac28c40e54c0858"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-desktop.png",
+        "bytes": 99077,
+        "sha256": "24f924b7431a35d8b0d72e7cb6ad94214ed22c132a43f0fd1ed722229f108545"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-figure1-desktop.png",
+        "bytes": 41094,
+        "sha256": "87e107bec9d49f6e81ffe1a59157465c8106c46e27984c04b47c5f9f269a288b"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-figure1-mobile.png",
+        "bytes": 34284,
+        "sha256": "5a906e80b65d98704d73e755bc7c00096dbe3c8e45272b3f089d2796ae5cbcec"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-figure2-desktop.png",
+        "bytes": 40495,
+        "sha256": "54b52c71e85bf1a3c7388b548a3f8ccea053478ce8e09b6810be93b344155561"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-figure2-mobile.png",
+        "bytes": 33670,
+        "sha256": "39e680cf2d9c4c88e31d537392c0e650c309c2eae9286e2b31929acbdc939ab6"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-figure3-desktop.png",
+        "bytes": 18158,
+        "sha256": "d54881c8c71d76c786c0df37c55b1aacd345428880a9a616e0d33d3c1a9d9fdf"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-figure3-mobile.png",
+        "bytes": 13237,
+        "sha256": "4682871bb7892102e17390c0f5d408b40cb18e03da3b7e98267cdb77f6b68064"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-mobile-full.png",
+        "bytes": 249905,
+        "sha256": "5aaacb5b4c8af506cddf0074efebdcdf73f501431b433970e83fd8ece19ee10e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-mobile.png",
+        "bytes": 30310,
+        "sha256": "98ce7dc843e9bade69c99fe9ffb9a5f0cda78e29d8bc921d8738879b09c9349e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-worked-desktop.png",
+        "bytes": 113355,
+        "sha256": "b72e4e5fa494c7ff46cc2ba3b01aabf35a0f43ddeaa4d21163b47f39b2f8fbbf"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.3-worked-mobile.png",
+        "bytes": 99335,
+        "sha256": "4ee1be74cae1d25f3ab78bbc0706baa5927eb4344f94ea8637decab590e2de93"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-desktop-full.png",
+        "bytes": 307761,
+        "sha256": "5975e8658dd77f3df2e68f2b685d9fa76acb4f4d662fd36a5908f3f36880f69c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-desktop.png",
+        "bytes": 103358,
+        "sha256": "59ac2fe04e9430382e42a9073613dc12211249591cc64d346595d7076b74e8c1"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-figure1-desktop.png",
+        "bytes": 17911,
+        "sha256": "567fb5bfb8bf723ab979d70ade885a86784bd4fe281749c7755334bad2c57d3f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-figure1-mobile.png",
+        "bytes": 17010,
+        "sha256": "2b540e1143b2a00df6b5848d717d04b985f3dc226bdacda9ea7e06236d0ff51c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-figure2-desktop.png",
+        "bytes": 39601,
+        "sha256": "1043f573153ded268f3ae670ad103d49edcb47e98da17a48a599d1e03e8734c3"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-figure2-mobile.png",
+        "bytes": 28321,
+        "sha256": "e816529e128e242cf206d20bfb13232f8883f7f29464a3f649f416476ed0726d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-figure3-desktop.png",
+        "bytes": 18245,
+        "sha256": "eacb396719845ea775e59bcb17e251b07eb7105033a071ab3824eea4be73b222"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-figure3-mobile.png",
+        "bytes": 13441,
+        "sha256": "34989ea660812284e0e6726c75f72ecea4845290959e5476cedf2e5f4307803a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-mobile-full.png",
+        "bytes": 231361,
+        "sha256": "f11db8ddc85d0bc75f6e854bc82951fecadf5f75798819adc4d1b8e02c45d898"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-mobile.png",
+        "bytes": 32942,
+        "sha256": "3746364019aab3175b94ba18a27d6819da9bae7db3d94a581b6c8199684a819e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-worked-desktop.png",
+        "bytes": 105106,
+        "sha256": "b8041ae02e71a2b45121e3883b99081041c65cd27038a7bfc8d43c0dec52330f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.4-worked-mobile.png",
+        "bytes": 92497,
+        "sha256": "590ebcaa9177106618e46ff0bf6a960c8a25f4e7a97ed63ff56ed1b67e9f26bf"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-desktop-full.png",
+        "bytes": 266703,
+        "sha256": "1d131468e54d01aa60ccef4ce15c8fac7d7b6a1cf90e5bddc5670b81bfc9a9bb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-desktop.png",
+        "bytes": 101428,
+        "sha256": "0704d986a4744947b42bac32312deff2645cd2950f7f441098ca8116736bf4f7"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-figure1-desktop.png",
+        "bytes": 26208,
+        "sha256": "284ecf256141237e02aabf4a963e205cb9917b72145664d632029b366c73ba72"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-figure1-mobile.png",
+        "bytes": 23472,
+        "sha256": "1818bdaab550967c8bc9122ebb724e04826ba0be4356b554603a0f08a6731a5d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-figure2-desktop.png",
+        "bytes": 17469,
+        "sha256": "85dfc76a721e1986d8f9ef9391dbdbe5d61330d70ddb6e970819a7fae72754f9"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-figure2-mobile.png",
+        "bytes": 12620,
+        "sha256": "0abca08b92c524016d2f8bbe020a0a5a1f7c6b289f86fa066ac043d01ff57dca"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-hand-drawn-mobile.png",
+        "bytes": 32222,
+        "sha256": "ecf7be2d6f49c3bbda14701f0bb759c05376778ca2693dab94cecdb7d9d22f07"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-mobile-full.png",
+        "bytes": 197091,
+        "sha256": "d34ea1647f7ea776bf40399e43068d2a4510412c17dbd26bb0a5db0830731d48"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-mobile.png",
+        "bytes": 37661,
+        "sha256": "0b046ecf0f8c7a49c10a914b4e6c7800827f497a25cad99f3336482fe4b65acb"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-worked-desktop.png",
+        "bytes": 99589,
+        "sha256": "46b437278bfa224700df7685b023b7efeaac7613d60c52195b98acc6b6a8f10a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.5-worked-mobile.png",
+        "bytes": 87086,
+        "sha256": "f36a0b196af0c6a0ce7237b53290b32091ab9277cfdd64f2d166c41e82440583"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-desktop-full.png",
+        "bytes": 315761,
+        "sha256": "2c3c5b4713eaebe64f99f45ddfbd12b198b2c82b9d18d3e6748215eb72988f93"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-desktop.png",
+        "bytes": 96066,
+        "sha256": "03bbccedf2fcc10d9b0d1c5bca12e5a965e7627b2e84c3805ea0fa09ccf361b0"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-figure1-desktop.png",
+        "bytes": 16147,
+        "sha256": "1256fbdb9b4b51039c98f521e1301ef909015a021ab66a3a4b8f9c2014cbb36c"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-figure1-mobile.png",
+        "bytes": 15398,
+        "sha256": "95574cd2e19d504f1fa467a5830c651658b46806f7e04ebf8a7b0f5a3075d3b4"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-figure2-desktop.png",
+        "bytes": 19140,
+        "sha256": "ad92cd1e5e1456cd71ca577aef1c81659a58f4878048786b912e419024982e7e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-figure2-mobile.png",
+        "bytes": 16914,
+        "sha256": "bb45231396af438c0cfee2eff64a025885ff83cbd1bca65fdc50880314a531d8"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-figure3-desktop.png",
+        "bytes": 19244,
+        "sha256": "7cc303be032f91c2982cd918754a7892a4fdb4e6144c5ced9769cf15bcf4d280"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-figure3-mobile.png",
+        "bytes": 14634,
+        "sha256": "4d0fe770a1742e538fbefe9950b3e707b4f86f43993ea8f7939a75bf9c1f6ac5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-mobile-full.png",
+        "bytes": 245357,
+        "sha256": "3f719b0c31d6adcab78577119171d1631f34d54d70c01b889b61f63486fabdbf"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-mobile.png",
+        "bytes": 31083,
+        "sha256": "7cba3870ce150870a4594343f96dab1b980e9053c9dd32282d5af1b153c0d186"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-worked-desktop.png",
+        "bytes": 108025,
+        "sha256": "ff770374251f1dd698d3b85f36e6a225797ccf13b4e8c696f396a76f7065ebca"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.4.6-worked-mobile.png",
+        "bytes": 96301,
+        "sha256": "722852f5941207c35068a79385f0292883c3a1953414a4f3f6b64f4b016d16c5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-desktop-full.png",
+        "bytes": 426642,
+        "sha256": "eebde9d3ac311463f235b1981e89ae3e056ce4bac8be3d7fb0138480bff2259f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-desktop.png",
+        "bytes": 257452,
+        "sha256": "60d9344a3bc20b3212c6f4e878ec6eecf2e0a931bd5393cf4f93d68ab0de4d0a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-figure1-desktop.png",
+        "bytes": 149087,
+        "sha256": "94cb835a325522451f76ba2a9248d9fa7146073d4eb46243c4e4638c2d37013a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-figure1-mobile.png",
+        "bytes": 81863,
+        "sha256": "3b2ed76e18119a90a8d0fe74a47dbfc1b1939602595cd9052c60402d4220e286"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-figure2-desktop.png",
+        "bytes": 19187,
+        "sha256": "4bda329a41129bc47fc0f70edeb588ae8ce8b5f9551a7553139e61c04e765315"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-figure2-mobile.png",
+        "bytes": 14068,
+        "sha256": "ce0febf7b85e955d4685d0267cf1f87fc4b01a075a4f3251daba800925c9bba5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-mobile-full.png",
+        "bytes": 280309,
+        "sha256": "23d1f447b4d1ccbac48ab218261ec1e6efaaa9de06b5801e92ad6002e7595b2e"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-mobile.png",
+        "bytes": 102979,
+        "sha256": "a911f26d6c3b215fce18c1c34bf0a64401efa5e0024373067b9a5737d9772775"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-worked-desktop.png",
+        "bytes": 115345,
+        "sha256": "8bf13a3b7db2761a836d709bd5de5bec5c29fc009f6504bd4adf3c29ded0b2e7"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.1-worked-mobile.png",
+        "bytes": 101806,
+        "sha256": "b6197474f923c2684d03e4f99c8656e658fee7b9ede62d337f53275e1d4e9938"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-desktop-full.png",
+        "bytes": 383890,
+        "sha256": "07603ab909dfc52289f7ce4917b0b01e6c90f9de78eb8e2ddfe5cba8e8a48268"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-desktop.png",
+        "bytes": 150872,
+        "sha256": "b427938182f71ff26c68e6abcd253ab15d86ed4d2b2727c4a7f15ff3b90d7e96"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-figure1-desktop.png",
+        "bytes": 21577,
+        "sha256": "81f5c676630e5c6b5280e9081fc101f8a2ace8af6bb6569207b6be1284271ab9"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-figure1-mobile.png",
+        "bytes": 19402,
+        "sha256": "5a322594c4c036fb8222e37b1f150be51405ecb9602d5d46679029b53114def2"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-figure2-desktop.png",
+        "bytes": 92083,
+        "sha256": "bc879b9d6b8f785db7d5608d7d863d82437c39584f96c90e76263097901e8153"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-figure2-mobile.png",
+        "bytes": 58246,
+        "sha256": "1afcb9cd74bf8ccc49d584df31ab61f7ec219ec059c15f7f6b03411ab4761c36"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-figure3-desktop.png",
+        "bytes": 18633,
+        "sha256": "49628674eb7c9e80bcf1160bceb03e845db94af90a111f19ca79921ff37c833a"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-figure3-mobile.png",
+        "bytes": 13325,
+        "sha256": "1bdf9bae3f9c5279540e945ab349d7d8d9c7fcabe1b28930ca63529b1140afb5"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-mobile-full.png",
+        "bytes": 275325,
+        "sha256": "fcc6eaf33ba0b72da7f5cbfdc42511ef020e633467638720e2cf5a9fa9ee7fdc"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-mobile.png",
+        "bytes": 45132,
+        "sha256": "953c3d9e028ee834d6e4d3bce76a1356343155de6ee09d90403fa6b13246e2c8"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-worked-desktop.png",
+        "bytes": 110883,
+        "sha256": "444ac83f676d65c6aa9e6323a3e858cb1c0744a4e312e3f047e753f383864e8f"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/3.5.2-worked-mobile.png",
+        "bytes": 98124,
+        "sha256": "1bfe2a5def0b9475082de5cb453f97af863fe9428463933ebe705de600f4b35d"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/home-desktop.png",
+        "bytes": 291952,
+        "sha256": "2b6fbafb10e4bd3af32d504443fe7fdba48c1df32258315292baafbb6be4ce97"
+      },
+      {
+        "path": "specs/redesign/screenshots/P2/home-mobile.png",
+        "bytes": 242879,
+        "sha256": "518f55f1d4accfffa60ea3788f318b805e628e6d0771955cbfc247e859de2a91"
+      }
+    ]
+  },
+  "checks": [
+    "npm ci --cache .npm-cache",
+    "npm test",
+    "node scripts/check-animations.mjs",
+    "npm run build",
+    "node scripts/check-browser.mjs",
+    "node scripts/check-p2-browser.mjs",
+    "node scripts/check-matlab-models.mjs --batch=P2",
+    "python scripts/check-p2-sources.py",
+    "prettier --check src scripts"
+  ]
+}
