@@ -2,12 +2,15 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import { spawn } from "node:child_process";
 import { build, stop } from "esbuild";
 import { pathToFileURL } from "node:url";
 const review = process.argv.includes("--review-sliders");
+const manifestPath = process.argv.find((a) => a.startsWith("--manifest="))?.slice(11);
+const manifest = manifestPath ? JSON.parse(fs.readFileSync(manifestPath, "utf8")) : null;
 const p3 = process.argv.includes("--batch=P3");
-const p2 = process.argv.includes("--batch=P2") || p3;
+const p2 = process.argv.includes("--batch=P2") || p3 || Boolean(manifest);
 const figuresOnly = process.argv.includes("--figures-only");
 const selected = process.argv.find((a) => a.startsWith("--filter="))?.slice(9);
 const customOut = process.argv.find((a) => a.startsWith("--out="))?.slice(6);
@@ -22,7 +25,9 @@ const root = process.cwd(),
         ? `outputs/slider-matlab/${p2 ? "P2" : "P1"}`
         : `specs/redesign/matlab-check/${p3 ? "P3" : p2 ? "P2" : "P1-fix"}`),
   ),
-  work = path.resolve(`outputs/matlab-models${p3 ? "-P3" : p2 ? "-P2" : ""}`);
+  work = path.resolve(
+    `outputs/matlab-models${manifest ? "-manifest" : p3 ? "-P3" : p2 ? "-P2" : ""}`,
+  );
 assert.ok(
   !path.relative(root, out).startsWith("..") && !path.isAbsolute(path.relative(root, out)),
   "MATLAB output stays inside clone",
@@ -38,11 +43,13 @@ await build({
       fs
         .readdirSync("src/content/lectures")
         .filter((f) =>
-          p3
-            ? /^3\.(6|7|8|9|10)\./.test(f)
-            : p2
-              ? /^3\.[1-5]\./.test(f)
-              : !f.startsWith("3.") && !["1.2.4.ts", "1.2.5.ts"].includes(f),
+          manifest
+            ? manifest.jobs.some((j) => j.lecture + ".ts" === f)
+            : p3
+              ? /^3\.(6|7|8|9|10)\./.test(f)
+              : p2
+                ? /^3\.[1-5]\./.test(f)
+                : /^[12]\./.test(f) && !["1.2.4.ts", "1.2.5.ts"].includes(f),
         )
         .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
         .join("\n") +
@@ -180,14 +187,13 @@ const variant = (p) =>
               }[k] ?? 1),
           ]),
         );
-function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
+function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts, alternate) {
   if (figuresOnly && (name.includes("-E") || ["A-1", "B-1"].includes(name))) return;
   if (selected && !selected.split(",").some((id) => name.includes(id))) return;
   const base = plot(defaults),
     parameters = base[0].matlabModel.parameters;
-  const code = all.matlab(base, rows, cols, name);
   for (const set of [0, 1]) {
-    const p = set ? variant(defaults) : defaults;
+    const p = set ? (alternate ?? variant(defaults)) : defaults;
     if (review && set && "L" in p)
       p.L =
         name.startsWith("2.1") || name.startsWith("2.2")
@@ -202,12 +208,15 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
       expected.every((p) => p.matlabModel),
       name,
     );
-    let script = "set(groot,'defaultFigureVisible','off');\n" + code;
+    // Match the actual download at each parameter set, including numeric legend
+    // labels and marker layouts. Every curve still comes from its MATLAB model.
+    let script =
+      "set(groot,'defaultFigureVisible','off');\n" + all.matlab(expected, rows, cols, name);
     if (set)
       for (const { key } of parameters)
         if (key in p)
           script = script.replace(new RegExp(`^${key} = [^;]+;`, "m"), `${key} = ${p[key]};`);
-    // Crucially the alternate set edits only the original parameter block, not the formulas.
+    // Keep an explicit parameter block in both independently runnable scripts.
     const filename = `fig_${name.replace(/[^\w]/g, "_")}_set${set}`;
     const resultPath = path.join(out, filename + ".json"),
       pngPath = path.join(out, filename + ".png");
@@ -225,20 +234,46 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
       expected: expected.map((p) => (p.series ?? []).map((s) => s.points)),
       expectedFields: expected.map((p) => p.field ?? null),
       expectedLimits: expected.map((p) =>
-        p.matlabModel.amplitudeAxes || p.unboundedY
+        p.kind === "polar" || p.matlabModel.amplitudeAxes || p.unboundedY
           ? {
-              x: all.axisTicks(p.xlim, p.xscale === "log").limits,
-              y: all.axisTicks(p.ylim, p.yscale === "log").limits,
+              x:
+                p.kind === "polar"
+                  ? (p.polarAngleLimits ?? [0, 360])
+                  : p.exactXLimits
+                    ? p.xlim
+                    : all.axisTicks(p.xlim, p.xscale === "log").limits,
+              y: p.kind === "polar" ? p.ylim : all.axisTicks(p.ylim, p.yscale === "log").limits,
             }
           : null,
       ),
       changed,
+      sha256: crypto.createHash("sha256").update(script).digest("hex"),
       answers: answers?.(p),
       readouts: readouts?.(p),
     });
   }
 }
 for (const [key, l] of Object.entries(all).filter(([k]) => /^l\d+$/.test(k))) {
+  if (manifest) {
+    for (const job of manifest.jobs.filter((j) => j.lecture === l.id && j.set === 0)) {
+      const alternate = manifest.jobs.find((j) => j.name === job.name && j.set === 1);
+      assert.ok(alternate, `second parameter set for ${job.name}`);
+      const isExample = job.name.includes("-E");
+      const e = isExample ? l.examples[Number(job.name.split("-E")[1]) - 1] : null;
+      const f = isExample ? null : l.figures.find((f) => f.number === job.name);
+      add(
+        job.name,
+        job.parameters,
+        (p) => (e ? [e.plot(p)] : f.plot(p, 0)),
+        f?.rows ?? 1,
+        f?.cols ?? 1,
+        e ? (p) => e.asks.map((a) => a.calc(p)) : undefined,
+        e ? undefined : (p) => l.readouts(p).map((r) => r[1]),
+        alternate.parameters,
+      );
+    }
+    continue;
+  }
   for (const f of l.figures)
     add(
       f.number,
@@ -322,7 +357,9 @@ const pending = jobs.filter(
     (changedOnly
       ? j.changed
       : !selected || selected.split(",").some((name) => j.name.includes(name))) &&
-    (!resume || !results.some((r) => r.filename === j.filename) || j.changed),
+    (!resume ||
+      !results.some((r) => r.filename === j.filename && r.sha256 === j.sha256) ||
+      j.changed),
 );
 const processCount = pending.length;
 async function runJob(job, slot) {
@@ -459,6 +496,8 @@ async function runJob(job, slot) {
     name: job.name,
     set: job.set,
     filename: job.filename,
+    sha256: job.sha256,
+    png: path.relative(root, path.join(out, job.filename + ".png")).replaceAll("\\", "/"),
     parameters: job.parameters,
     valuesCompared: count,
     maxNormalizedError: maxError,

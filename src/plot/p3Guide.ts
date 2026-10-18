@@ -282,7 +282,7 @@ export function guideFigure(id: string, p: Values, t = 0): Panel[] {
           ...(i === 2 ? [points("折返声线", rays, "rayz", "rayx", { style: "--" })] : []),
         ],
         guideSetup +
-          `[XX,YY]=meshgrid(linspace(0,4,161),linspace(0,h,81));Pfield=exp(imag(kz)*XX).*${i === 0 ? ".5*cos(tau-real(kz)*XX-kx*YY)" : i === 1 ? ".5*cos(tau-real(kz)*XX+kx*YY)" : "cos(kx*YY).*cos(tau-real(kz)*XX)"};jj=0:100;rayz=jj*h/tan(asin(min(1,kx/k)));rayx=mod(jj,2)*h;valid=rayz<=4 & imag(kz)==0;rayx=rayx(valid);rayz=rayz(valid);`,
+          `[XX,YY]=meshgrid(linspace(0,4,161),linspace(0,h,81));Pfield=exp(imag(kz)*XX).*${i === 0 ? ".5.*cos(tau-real(kz)*XX-kx*YY)" : i === 1 ? ".5.*cos(tau-real(kz)*XX+kx*YY)" : "cos(kx*YY).*cos(tau-real(kz)*XX)"};jj=0:100;rayz=jj*h/tan(asin(min(1,kx/k)));rayx=mod(jj,2)*h;valid=rayz<=4 & imag(kz)==0;rayx=rayx(valid);rayz=rayz(valid);`,
         { field: { x: xs, y: ys, z, limits: [-1, 1], map: "RdBu", label: "归一化声压（—）" } },
         { field: { x: "linspace(0,4,161)", y: "linspace(0,h,81)", z: "Pfield" } },
       );

@@ -386,14 +386,15 @@ export function e332(p: Values) {
         ),
         axis: "right",
       },
+      dot(value("净流入声功率", power, "W"), p.L, power, "L", "S*(wLeft-wRight)", {
+        axis: "right",
+      }),
     ],
     "",
     {
+      answerKey: "power",
       rightLabel: "累计储能功率 (W)",
-      annotations: [
-        xmark(0, value("净储能功率", power, "W")),
-        xmark(p.L, value("能量密度变化率", power / (p.S * p.L), "W/m³")),
-      ],
+      annotations: [xmark(0, "控制体入口 x = 0"), xmark(p.L, value("控制体出口 x", p.L, "m"))],
     },
     { annotations: ["0", "L"] },
   );
@@ -490,10 +491,7 @@ export function e342(p: Values) {
     ],
     "",
     {
-      annotations: [
-        xmark(0, "起始波峰 x = 0 m"),
-        xmark(p.c / p.f, value("λ", p.c / p.f, "m")),
-      ],
+      annotations: [xmark(0, "起始波峰 x = 0 m"), xmark(p.c / p.f, value("λ", p.c / p.f, "m"))],
     },
     { annotations: ["0", "c/f"] },
   );
@@ -564,9 +562,10 @@ export function e345(p: Values) {
     ],
     "",
     {
+      answerKey: "arrival",
       annotations: [
         xmark(arrival, value("首达", arrival, "ms")),
-        xmark(arrival + p.duration, value("空间脉冲长", (p.c * p.duration) / 1000, "m")),
+        xmark(arrival + p.duration, value("接收脉冲尾沿时刻", arrival + p.duration, "ms")),
       ],
     },
     { annotations: ["1000*L/c", "1000*L/c+duration"] },
@@ -599,20 +598,28 @@ export function e346(p: Values) {
         "x*(20e-6*10^(sourceLevel/20))^2",
         { marker: "s" },
       ),
+      points(
+        "累计有效声压",
+        index.map((x) => [x, Math.sqrt(x * single)]),
+        "1:n",
+        "sqrt(x)*(20e-6*10^(sourceLevel/20))",
+        { axis: "right", style: "--" },
+      ),
       dot(
         value("合成有效声压", Math.sqrt(count * single), "Pa"),
         count,
-        count * single,
+        Math.sqrt(count * single),
         "n",
-        "n*(20e-6*10^(sourceLevel/20))^2",
+        "sqrt(n)*(20e-6*10^(sourceLevel/20))",
+        { axis: "right" },
       ),
     ],
     "",
     {
+      answerKey: "rms",
+      rightLabel: "有效声压 (Pa)",
       integerX: true,
-      annotations: [
-        ymark(count * single, value("合成级", p.sourceLevel + 10 * Math.log10(count), "dB")),
-      ],
+      annotations: [ymark(count * single, value("合成声压方均值", count * single, "Pa²"))],
     },
     { annotations: ["n*(20e-6*10^(sourceLevel/20))^2"] },
   );

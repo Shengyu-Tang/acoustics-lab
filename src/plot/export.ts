@@ -99,12 +99,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           "% 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。",
           ...model.parameters.map((p) => `${p.key} = ${p.value}; % ${p.comment}`),
           "% 以下为计算模型与绘图，可独立运行，无需网页。",
-          "model_x={}; model_y={};",
+          `model_x=cell(${panels.length},${Math.max(1, ...panels.map((p) => p.series?.length ?? 0))}); model_y=model_x;`,
         ]
       : ["% Exported current data; SI units unless an axis specifies otherwise."]),
     "set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');",
     "set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');",
-    `figure('Color','w','Position',[80 80 ${640 * cols} ${complexPlaneLegend ? 560 : 340 * rows}]);`,
+    `figure('Color','w','Position',[80 80 ${640 * cols} ${520 * rows}]);`,
   ];
   panels.forEach((original, k) => {
     const m = original.matlabModel ? { ...original.matlabModel } : undefined;
@@ -115,7 +115,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     const p =
       original.kind === "polar"
         ? original
-        : { ...original, xlim: xt.limits, ylim: yt.limits, rightLim: rt.limits };
+        : {
+            ...original,
+            xlim: original.exactXLimits ? original.xlim : xt.limits,
+            ylim: yt.limits,
+            rightLim: rt.limits,
+          };
     const modelHeader = Boolean(
       m &&
       !original.annotationHeader &&
@@ -156,7 +161,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       );
       if (f.categories)
         f.categories.forEach((c) =>
-          out.push(`patch(NaN,NaN,${quote(c.color)},'DisplayName',${tex(c.label)});`),
+          out.push(
+            `patch(NaN,NaN,[${c.color
+              .match(/[a-f0-9]{2}/gi)!
+              .map((h) => parseInt(h, 16))
+              .join(" ")}]/255,'DisplayName',${tex(c.label)});`,
+          ),
         );
       else out.push(`cb=colorbar; ylabel(cb,${tex(f.label)},'Interpreter','tex');`);
     }
@@ -169,6 +179,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     plotSeries.forEach((s, i) => {
       if (p.rightLabel) out.push(`yyaxis ${s.axis === "right" ? "right" : "left"};`);
       const c = s.color ?? COLORS[i % COLORS.length];
+      const displayName = m?.legendNames?.[i] ?? tex(s.name);
       const rgb = [1, 3, 5].map((n) => parseInt(c.slice(n, n + 2), 16) / 255);
       out.push(
         `x=${m?.series[i]?.x ?? vector(s.points.map((v) => v[0]))};`,
@@ -178,13 +189,13 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       const fn = p.kind === "polar" ? "polarplot" : "plot";
       if (s.kind === "barh") {
         out.push(
-          `barh(y,x,0.7,'FaceColor',${vector(rgb)},'EdgeColor','k','DisplayName',${tex(s.name)});`,
+          `barh(y,x,0.7,'FaceColor',${vector(rgb)},'EdgeColor','k','DisplayName',${displayName});`,
         );
         return;
       }
       if (s.kind === "bar") {
         out.push(
-          `bar(x,y,0.7,'FaceColor',${vector(rgb)},'EdgeColor','k','DisplayName',${tex(s.name)});`,
+          `bar(x,y,0.7,'FaceColor',${vector(rgb)},'EdgeColor','k','DisplayName',${displayName});`,
         );
         return;
       }
@@ -192,7 +203,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         ? `, 'MarkerIndices',${vector(s.points.map((_, i) => i + 1).filter((_, i) => i % Math.max(1, Math.floor(s.points.length / 18)) === 0))}`
         : "";
       out.push(
-        `${fn}(x,y,'LineStyle',${quote(s.style ?? "-")},'Marker',${quote(s.marker ?? "none")}${markerIndices},'Color',${vector(rgb)},'LineWidth',1.5,'DisplayName',${tex(s.name)}${s.legend === false ? ",'HandleVisibility','off'" : ""});`,
+        `${fn}(x,y,'LineStyle',${quote(s.style ?? "-")},'Marker',${quote(s.marker ?? "none")}${markerIndices},'Color',${vector(rgb)},'LineWidth',1.5,'DisplayName',${displayName}${s.legend === false ? ",'HandleVisibility','off'" : ""});`,
       );
     });
     if (p.kind !== "polar") {
@@ -223,9 +234,19 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         p.xscale === "log"
           ? Math.log10(value / p.xlim[0]) / Math.log10(p.xlim[1] / p.xlim[0])
           : (value - p.xlim[0]) / (p.xlim[1] - p.xlim[0]);
-      const labels = labelLanes(p, 0, 440, xs).map((label, i) =>
-        modelHeader ? { ...label, x: 8, lane: i } : label,
-      );
+      // MATLAB appends recomputed numbers even to labels such as “本题频率”.
+      // Reserve their width before assigning lanes, not only the prose width.
+      const padding = "　000000";
+      const labels = labelLanes(
+        { ...p, annotations: p.annotations?.map((a) => ({ ...a, label: a.label + padding })) },
+        0,
+        440,
+        xs,
+      ).map((label, i) => ({
+        ...label,
+        text: label.text.endsWith(padding) ? label.text.slice(0, -padding.length) : label.text,
+        ...(modelHeader ? { x: 8, lane: i } : {}),
+      }));
       p.annotations?.forEach((a, ai) => {
         const value = m?.annotations?.[ai] ?? a.value;
         if (p.annotationHeader && a.axis === "x") {
@@ -271,7 +292,13 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
             `text(${xs((b.from + b.to) / 2)},${0.97 - lane * 0.065},${tex(b.label)},'Units','normalized','HorizontalAlignment','center','VerticalAlignment','top','Interpreter','tex','Clipping','on');`,
           );
         });
-    } else out.push(`rlim(${vector(p.ylim)});`);
+    } else {
+      out.push(`rlim(${vector(p.ylim)});`);
+      if (p.polarAngleLimits)
+        out.push(
+          `thetalim(${vector(p.polarAngleLimits)}); thetaticks(${vector([-90, -60, -30, 0, 30, 60, 90].filter((a) => a >= p.polarAngleLimits![0] && a <= p.polarAngleLimits![1]))});`,
+        );
+    }
     p.textLabels?.forEach((s, i) =>
       out.push(
         `text(${m?.textLabels?.[i]?.x ?? s.x},${m?.textLabels?.[i]?.y ?? s.y},${tex(s.text)},'HorizontalAlignment','center','Interpreter','tex');`,
@@ -306,7 +333,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       if (m.envelopePeriod)
         out.push(`for qa_phase=0:127, tView=qa_phase/128*(${m.envelopePeriod});`, m.setup);
       plotSeries.forEach((s, i) => {
-        if (s.style === "none") return;
+        if (s.style === "none" && !m.amplitudeMarkers) return;
         out.push(
           `x=${m.series[i]?.x ?? vector(s.points.map((pt) => pt[0]))}; y=${m.series[i]?.y ?? vector(s.points.map((pt) => pt[1]))};`,
           `qa_xl=${m.xlim ?? vector(p.xlim)}; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_${s.axis === "right" ? "right" : "left"}=[qa_${s.axis === "right" ? "right" : "left"} qa_y];`,
@@ -314,7 +341,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       });
       if (m.envelopePeriod) out.push("end; tView=qa_time;", m.setup);
       if (m.amplitudeAxes)
-        m.ylim = `currentAmplitudeLimits(qa_left,${p.series?.some((s) => s.kind === "bar") ? 1 : 0},${p.yscale === "log" ? 1 : 0})`;
+        m.ylim = `qaAmplitudeLimits(qa_left,${vector(p.ylim)},${p.series?.some((s) => s.kind === "bar") ? 1 : 0},${p.yscale === "log" ? 1 : 0})`;
       if (p.rightLabel)
         m.rightLim = `currentAmplitudeLimits(qa_right,0,${p.yscale === "log" ? 1 : 0})`;
     }
@@ -326,7 +353,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
               `yyaxis right; ylim(${m.rightLim ?? vector(p.rightLim ?? p.ylim)}); set(gca,'YTickMode','auto'); yyaxis left;`,
             ]
           : []),
-        `xlim(${m.xlim ?? vector(p.xlim)}); set(gca,'XTickMode','auto','YTickMode','auto');`,
+        `qa_domain=${m.xlim ?? vector(p.xlim)}; xlim(${p.exactXLimits ? "qa_domain" : `qaAxisLimits(qa_domain,${p.xscale === "log" ? 1 : 0})`}); set(gca,'XTickMode','auto','YTickMode','auto');`,
         m.ylim
           ? `ylim(${m.ylim});`
           : `model_values=[${plotSeries
@@ -350,6 +377,13 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       out.push(`lgd.Location='${m.legendLocation}';`);
     if (complexPlaneLegend && p.legend !== false)
       out.push("lgd.Location='southoutside';lgd.FontSize=10;");
+    // "best" can still cover real data. Reserve space outside every axes,
+    // including models that previously requested an interior corner.
+    if (
+      p.legend !== false &&
+      (p.field?.categories?.length || plotSeries.some((s) => s.legend !== false))
+    )
+      out.push("lgd.Location='northoutside';");
     if (p.xtickLabels)
       out.push(
         `xticks(${vector(p.xtickLabels.map((t) => t.value))});xticklabels({${p.xtickLabels.map((t) => tex(t.label)).join(",")}});`,

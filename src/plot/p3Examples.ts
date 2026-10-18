@@ -44,7 +44,10 @@ export function e361(p: Values) {
       rightLabel: "法向振速幅值 (m/s)",
       annotations: [xmark(0, value("rₚ", q.R) + "；" + value("tₚ", q.D))],
     },
-    { annotations: ["0"] },
+    {
+      annotations: ["0"],
+      annotationLabels: ["sprintf('界面 x = 0；r_p = %.4g；t_p = %.4g',Rp,Dp)"],
+    },
   );
 }
 export function e362(p: Values) {
@@ -157,7 +160,7 @@ export function e364(p: Values) {
     ],
     "Rp=(Z2-Z1)/(Z2+Z1);Dp=1+Rp;",
     { annotations: [xmark(0, value("rₚ", q.R))] },
-    { annotations: ["0"] },
+    { annotations: ["0"], annotationLabels: ["sprintf('钢表面 d = 0；r_p = %.4g',Rp)"] },
   );
 }
 export function e365(p: Values) {
@@ -376,7 +379,10 @@ export function e3610(p: Values) {
       answerKey: "depthAnswer",
       annotations: [xmark(depth, value("y", depth, "m")), ymark(1 / Math.E, "|p(y)|/|p(0)| = 1/e")],
     },
-    { annotations: ["qaDepth", "1/exp(1)"] },
+    {
+      annotations: ["qaDepth", "1/exp(1)"],
+      annotationLabels: ["sprintf('y = %.4g m',qaDepth)", "'|p(y)|/|p(0)| = 1/e'"],
+    },
   );
 }
 export function e3611(p: Values) {
@@ -442,7 +448,7 @@ export function e3612(p: Values) {
       dot(value("本题透射功率系数", q.t), p.theta, q.t, "theta", "p3Power(Z1,Z2,c,c2,theta)"),
     ],
     "",
-    { annotations: [xmark(p.theta, value("本题透射功率", q.t))] },
+    { annotations: [xmark(p.theta, value("本题入射角", p.theta, "°"))] },
     { annotations: ["theta"] },
   );
 }
@@ -854,7 +860,7 @@ export function e3102(p: Values) {
     {
       integerX: true,
       rightLabel: "截止频率 (Hz)",
-      annotations: [xmark(1, value("第一高阶截止", p.c / (2 * p.h), "Hz"))],
+      annotations: [xmark(1, "第一高阶 n = 1")],
     },
     { annotations: ["1"] },
   );
@@ -955,7 +961,7 @@ export function e3105(p: Values) {
       ),
       line(
         "群速度 c_g",
-        (f) => phy.guideMode(p.mode, f, p.h, p.c).cg,
+        (f) => (f > fc ? phy.guideMode(p.mode, f, p.h, p.c).cg : NaN),
         range,
         "c*p3GuideSpeed(x,mode,h,c,1)",
         "--",

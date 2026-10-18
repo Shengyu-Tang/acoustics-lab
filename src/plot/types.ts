@@ -4,6 +4,7 @@ export type Point = [number, number];
 export type MatlabModel = {
   fieldLimits?: string;
   amplitudeAxes?: boolean;
+  amplitudeMarkers?: boolean;
   envelopePeriod?: string;
   textLabels?: { x: string; y: string }[];
   parameters: { key: string; value: number; comment: string }[];
@@ -17,6 +18,7 @@ export type MatlabModel = {
   rightLim?: string;
   title?: string;
   legendLocation?: "northeast" | "southeast" | "northeastoutside";
+  legendNames?: string[];
   field?: { x: string; y: string; z: string };
 };
 export type Series = {
@@ -58,6 +60,8 @@ export type Panel = {
   ylabel: string;
   rightLabel?: string;
   xlim: [number, number];
+  /** Retain a strictly positive physical lower bound (e.g. outside a point source). */
+  exactXLimits?: boolean;
   ylim: [number, number];
   rightLim?: [number, number];
   xscale?: "linear" | "log";
@@ -65,6 +69,8 @@ export type Panel = {
   ytickLabels?: { value: number; label: string }[];
   yscale?: "linear" | "log";
   kind?: "cartesian" | "polar";
+  /** Angular display window in degrees; series angles remain in radians. */
+  polarAngleLimits?: [number, number];
   series?: Series[];
   field?: Field;
   legend?: boolean;

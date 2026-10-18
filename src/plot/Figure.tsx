@@ -10,6 +10,10 @@ import { axisTicks, tickLabel, superscript } from "./ticks";
 import { labelLanes, textWidth, textLines } from "./layout";
 type Layout = { W: number; H: number; L: number; T: number; AW: number; AH: number };
 const defaultLayout: Layout = { W: 640, H: 400, L: 64, T: 35, AW: 536, AH: 300 };
+function polarCenter(panel: Panel, { L, T, AW, AH }: Layout) {
+  const half = panel.polarAngleLimits?.[0] === -90 && panel.polarAngleLimits[1] === 90;
+  return [half ? L + (AW - AH / 2) / 2 : L + AW / 2, T + AH / 2];
+}
 /** A small, real data preview: axis text would be unreadable at catalog size. */
 export function ThumbnailAxes({ panel }: { panel: Panel }) {
   const p = {
@@ -74,6 +78,7 @@ export function Line({
   precision?: number;
 }) {
   const { L, T, AW, AH } = layout;
+  const [cx, cy] = polarCenter(panel, layout);
   const xs = scale(panel.xlim, panel.xscale === "log"),
     ys = scale(
       series.axis === "right" ? (panel.rightLim ?? panel.ylim) : panel.ylim,
@@ -81,7 +86,7 @@ export function Line({
     );
   const xy = ([x, y]: [number, number]) =>
     panel.kind === "polar"
-      ? [L + AW / 2 + (Math.cos(x) * ys(y) * AH) / 2, T + AH / 2 - (Math.sin(x) * ys(y) * AH) / 2]
+      ? [cx + (Math.cos(x) * ys(y) * AH) / 2, cy - (Math.sin(x) * ys(y) * AH) / 2]
       : [L + xs(x) * AW, T + (1 - ys(y)) * AH];
   let active = false;
   const d = series.points
@@ -176,7 +181,14 @@ export function Axes({
   width?: number;
   height?: number;
 }) {
-  const xtBase = axisTicks(panel.xlim, panel.xscale === "log"),
+  const niceX = axisTicks(panel.xlim, panel.xscale === "log"),
+    xtBase = panel.exactXLimits
+      ? {
+          ...niceX,
+          limits: panel.xlim,
+          values: niceX.values.filter((v) => v >= panel.xlim[0] && v <= panel.xlim[1]),
+        }
+      : niceX,
     xt = panel.xtickLabels
       ? { ...xtBase, values: panel.xtickLabels.map((t) => t.value) }
       : panel.integerX
@@ -240,6 +252,8 @@ export function Axes({
     ys = scale(p.ylim, p.yscale === "log");
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const polar = p.kind === "polar";
+  const halfPolar = p.polarAngleLimits?.[0] === -90 && p.polarAngleLimits[1] === 90;
+  const [cx, cy] = polarCenter(p, layout);
   function hover(e: React.PointerEvent<SVGRectElement>) {
     const svg = e.currentTarget.ownerSVGElement!,
       pt = svg.createSVGPoint();
@@ -256,8 +270,8 @@ export function Axes({
           s.axis === "right" ? (p.rightLim ?? p.ylim) : p.ylim,
           p.yscale === "log",
         );
-        const px = polar ? L + AW / 2 + (Math.cos(x) * yscale(y) * AH) / 2 : L + xs(x) * AW,
-          py = polar ? T + AH / 2 - (Math.sin(x) * yscale(y) * AH) / 2 : T + (1 - yscale(y)) * AH;
+        const px = polar ? cx + (Math.cos(x) * yscale(y) * AH) / 2 : L + xs(x) * AW,
+          py = polar ? cy - (Math.sin(x) * yscale(y) * AH) / 2 : T + (1 - yscale(y)) * AH;
         const dist = (px - point.x) ** 2 + (py - point.y) ** 2;
         if (dist < best) {
           best = dist;
@@ -488,35 +502,39 @@ export function Axes({
         <>
           {[0.25, 0.5, 0.75, 1].map((r) => (
             <g key={r}>
-              <circle
-                cx={L + AW / 2}
-                cy={T + AH / 2}
-                r={(r * AH) / 2}
+              <path
+                d={
+                  halfPolar
+                    ? `M${cx} ${cy - (r * AH) / 2}a${(r * AH) / 2} ${(r * AH) / 2} 0 0 1 0 ${r * AH}`
+                    : `M${cx} ${cy - (r * AH) / 2}a${(r * AH) / 2} ${(r * AH) / 2} 0 1 1 0 ${r * AH}a${(r * AH) / 2} ${(r * AH) / 2} 0 1 1 0 ${-r * AH}`
+                }
                 fill="none"
                 stroke={r === 1 ? "black" : "#e5e5e5"}
               />
-              <text x={L + AW / 2 + 4} y={T + AH / 2 - (r * AH) / 2 + 12}>
+              <text x={cx + 4} y={cy - (r * AH) / 2 + 12}>
                 {p.ytickLabels?.find(
                   (t) => Math.abs(t.value - (p.ylim[0] + r * (p.ylim[1] - p.ylim[0]))) < 1e-9,
                 )?.label ?? number(p.ylim[0] + r * (p.ylim[1] - p.ylim[0]))}
               </text>
             </g>
           ))}
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
-            <g key={a}>
-              <path
-                d={`M${L + AW / 2} ${T + AH / 2}l${(Math.cos((a * Math.PI) / 180) * AH) / 2} ${(-Math.sin((a * Math.PI) / 180) * AH) / 2}`}
-                stroke="#e5e5e5"
-              />
-              <text
-                x={L + AW / 2 + Math.cos((a * Math.PI) / 180) * (AH / 2 + 8)}
-                y={T + AH / 2 - Math.sin((a * Math.PI) / 180) * (AH / 2 + 8) + 4}
-                textAnchor="middle"
-              >
-                {a}°
-              </text>
-            </g>
-          ))}
+          {(halfPolar ? [-90, -60, -30, 0, 30, 60, 90] : [0, 45, 90, 135, 180, 225, 270, 315]).map(
+            (a) => (
+              <g key={a}>
+                <path
+                  d={`M${cx} ${cy}l${(Math.cos((a * Math.PI) / 180) * AH) / 2} ${(-Math.sin((a * Math.PI) / 180) * AH) / 2}`}
+                  stroke="#e5e5e5"
+                />
+                <text
+                  x={cx + Math.cos((a * Math.PI) / 180) * (AH / 2 + 14)}
+                  y={cy - Math.sin((a * Math.PI) / 180) * (AH / 2 + 14) + 4}
+                  textAnchor="middle"
+                >
+                  {a}°
+                </text>
+              </g>
+            ),
+          )}
           {p.series?.map((s, i) => (
             <Line key={i} series={s} panel={p} index={i} layout={layout} />
           ))}

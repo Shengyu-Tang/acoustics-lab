@@ -119,11 +119,19 @@ export default makeLecture("4.4.3", {
           setup,
           {
             kind: "polar",
+            polarAngleLimits: [-90, 90],
             ytickLabels: [
               { value: 10, label: "−30 dB" },
               { value: 20, label: "−20 dB" },
               { value: 30, label: "−10 dB" },
               { value: 40, label: "0 dB" },
+            ],
+          },
+          {
+            legendNames: [
+              "'圆面活塞'",
+              "sprintf('半功率半角 %.3g°',half)",
+              "sprintf('第一零点半角 %.3g°',null)",
             ],
           },
         ),

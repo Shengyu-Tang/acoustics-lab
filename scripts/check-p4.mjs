@@ -23,6 +23,17 @@ for (const f of [10, 1000, 50000])
   }
 near(a.sphere(0.02, 0.01, 1000, 1500, 0.01, 1).mass, 4 * Math.PI * 1000 * 0.02 ** 3, 1e-8);
 near(a.pistonD(0), 1);
+const pistonLecture = a.lectures.find((l) => l.id === "4.4.3");
+const pistonPanel = pistonLecture.figures[0].plot(pistonLecture.defaults, 0)[0];
+assert.deepEqual(
+  pistonPanel.polarAngleLimits,
+  [-90, 90],
+  "baffled piston displays only the front hemisphere",
+);
+assert.deepEqual(pistonPanel.xlim, [-Math.PI / 2, Math.PI / 2]);
+const pistonMatlab = a.matlab([pistonPanel], 1, 1, "半空间");
+assert.ok(pistonMatlab.includes("thetalim([-90 90])"), "MATLAB uses the same angular window");
+assert.ok(pistonMatlab.includes("thetaticks([-90 -60 -30 0 30 60 90])"));
 near(a.pistonD(3.8317059702075125), 0, 1e-8);
 near(a.pistonHalfAngle(0.05, 50000, 1500), 8.879047887665, 1e-5);
 near(a.pistonNullAngle(0.05, 50000, 1500), 21.463040293267, 1e-5);
