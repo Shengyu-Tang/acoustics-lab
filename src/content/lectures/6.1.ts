@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import {
   makeLecture,
   parameter,
@@ -38,7 +39,7 @@ const asks = [
   ),
 ];
 const exampleFrequency = parameter("f", "最高测量频率", "f", "Hz", 1000, 50000, 1000);
-export default makeLecture("6.1", {
+const completedLecture = makeLecture("6.1", {
   defaults: p,
   parameters: [a, f],
   keyPoints: [
@@ -206,3 +207,5 @@ export default makeLecture("6.1", {
     "水下监听接收器选型",
   ),
 });
+
+export default completeExamples(completedLecture);
