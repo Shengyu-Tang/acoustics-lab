@@ -1,0 +1,107 @@
+{
+  "lectureIds": [
+    "4.1",
+    "4.2.1",
+    "4.2.2",
+    "4.2.3",
+    "4.3",
+    "4.4.1",
+    "4.4.2",
+    "4.4.3",
+    "4.4.4",
+    "5.1",
+    "5.2",
+    "5.3",
+    "6.1",
+    "6.2",
+    "7.1",
+    "7.2",
+    "7.3"
+  ],
+  "lectures": 17,
+  "figures": 31,
+  "examples": 17,
+  "independentAnswers": 41,
+  "sourceQuestions": 54,
+  "matlab": [
+    {
+      "batch": "P4",
+      "scripts": 96,
+      "passed": true,
+      "maxNormalizedError": 1.9377969988952373e-10
+    },
+    {
+      "batch": "P3-2",
+      "scripts": 26,
+      "passed": true,
+      "maxNormalizedError": 5.084664390433656e-15
+    }
+  ],
+  "checks": [
+    {
+      "command": "npm ci --cache outputs/.npm-cache",
+      "passed": true,
+      "log": "outputs/P4/npm-ci-final.log",
+      "sha256": "e75c3c946cba814e4f1409617d1af0e60527aac77bc314c45443eeed1be97a74"
+    },
+    {
+      "command": "npm test",
+      "passed": true,
+      "log": "outputs/P4/npm-test-final.log",
+      "sha256": "a6c149d970c9c725ac0dc747222c0dbb717762d1a90e3a590cd620c8533f8615"
+    },
+    {
+      "command": "node scripts/check-animations.mjs",
+      "passed": true,
+      "log": "outputs/P4/animations-final.log",
+      "sha256": "3640736590f4799bd77b6cea6524f157a816a1e0956eaa5de8ea3c24d6b5ec08"
+    },
+    {
+      "command": "npm run build",
+      "passed": true,
+      "log": "outputs/P4/build-final.log",
+      "sha256": "f4cd2d608c2925ae969dac7c5c86fe2e6d9145eb374f266ceb2dbf9aba1cab8d"
+    },
+    {
+      "command": "node scripts/check-browser.mjs",
+      "passed": true,
+      "log": "outputs/P4/all-routes-final.log",
+      "sha256": "86e55f12f895fe281c222e47baaa45c810192d6a1389ac0b7fd43e633d90e8f0"
+    },
+    {
+      "command": "node scripts/check-p4-browser.mjs",
+      "passed": true,
+      "log": "outputs/P4/browser-final.log",
+      "sha256": "761a1ccd6308505c7bb5d1b6ba61653d6a1fca2d73bfd07144aedae049838dd4"
+    },
+    {
+      "command": "node scripts/check-p4-axes-browser.mjs --capture",
+      "passed": true,
+      "log": "outputs/P4/axes-final.log",
+      "sha256": "6eee9773f4e7301731302e534ef52bc05d414238c52f529016200a0e561afa8e"
+    }
+  ],
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "routes": 82,
+  "sliders": 53,
+  "sliderEndpoints": 106,
+  "inspectedSheets": 59,
+  "pendingMatlab": false,
+  "dependencyAudit": {
+    "unchangedLockfile": true,
+    "high": [
+      "source-map-js",
+      "vite"
+    ],
+    "evidence": "P4-dependency-audit.json"
+  }
+}

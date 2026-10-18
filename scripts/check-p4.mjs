@@ -97,6 +97,11 @@ for (const f of [500, 1000, 5000]) {
 }
 near(a.thorp(1000), 0.0690040904657);
 for (const l of a.lectures) {
+  assert.equal(
+    references[l.id].length,
+    l.examples[0].asks.length,
+    l.id + " reference answer coverage",
+  );
   l.examples[0].asks.forEach((ask, i) =>
     assert.ok(
       Math.abs(ask.calc(l.examples[0].defaults) - references[l.id][i]) <=

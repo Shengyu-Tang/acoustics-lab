@@ -1,0 +1,593 @@
+{
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "defaults": true,
+  "failures": [],
+  "errors": [],
+  "captures": [
+    {
+      "id": "4.1",
+      "name": "4.1-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.1-1-desktop.png"
+    },
+    {
+      "id": "4.1",
+      "name": "4.1-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.1-2-desktop.png"
+    },
+    {
+      "id": "4.1",
+      "name": "4.1-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.1-E1-desktop.png"
+    },
+    {
+      "id": "4.2.1",
+      "name": "4.2.1-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.1-1-desktop.png"
+    },
+    {
+      "id": "4.2.1",
+      "name": "4.2.1-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.1-2-desktop.png"
+    },
+    {
+      "id": "4.2.1",
+      "name": "4.2.1-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.1-E1-desktop.png"
+    },
+    {
+      "id": "4.2.2",
+      "name": "4.2.2-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.2-1-desktop.png"
+    },
+    {
+      "id": "4.2.2",
+      "name": "4.2.2-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.2-2-desktop.png"
+    },
+    {
+      "id": "4.2.2",
+      "name": "4.2.2-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.2-E1-desktop.png"
+    },
+    {
+      "id": "4.2.3",
+      "name": "4.2.3-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.3-1-desktop.png"
+    },
+    {
+      "id": "4.2.3",
+      "name": "4.2.3-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.2.3-E1-desktop.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.3-1-desktop.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.3-2-desktop.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-3",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.3-3-desktop.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.3-E1-desktop.png"
+    },
+    {
+      "id": "4.4.1",
+      "name": "4.4.1-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.1-1-desktop.png"
+    },
+    {
+      "id": "4.4.1",
+      "name": "4.4.1-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.1-E1-desktop.png"
+    },
+    {
+      "id": "4.4.2",
+      "name": "4.4.2-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.2-1-desktop.png"
+    },
+    {
+      "id": "4.4.2",
+      "name": "4.4.2-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.2-E1-desktop.png"
+    },
+    {
+      "id": "4.4.3",
+      "name": "4.4.3-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.3-1-desktop.png"
+    },
+    {
+      "id": "4.4.3",
+      "name": "4.4.3-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.3-2-desktop.png"
+    },
+    {
+      "id": "4.4.3",
+      "name": "4.4.3-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.3-E1-desktop.png"
+    },
+    {
+      "id": "4.4.4",
+      "name": "4.4.4-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.4-1-desktop.png"
+    },
+    {
+      "id": "4.4.4",
+      "name": "4.4.4-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/4.4.4-E1-desktop.png"
+    },
+    {
+      "id": "5.1",
+      "name": "5.1-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.1-1-desktop.png"
+    },
+    {
+      "id": "5.1",
+      "name": "5.1-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.1-E1-desktop.png"
+    },
+    {
+      "id": "5.2",
+      "name": "5.2-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.2-1-desktop.png"
+    },
+    {
+      "id": "5.2",
+      "name": "5.2-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.2-2-desktop.png"
+    },
+    {
+      "id": "5.2",
+      "name": "5.2-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.2-E1-desktop.png"
+    },
+    {
+      "id": "5.3",
+      "name": "5.3-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.3-1-desktop.png"
+    },
+    {
+      "id": "5.3",
+      "name": "5.3-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.3-2-desktop.png"
+    },
+    {
+      "id": "5.3",
+      "name": "5.3-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/5.3-E1-desktop.png"
+    },
+    {
+      "id": "6.1",
+      "name": "6.1-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/6.1-1-desktop.png"
+    },
+    {
+      "id": "6.1",
+      "name": "6.1-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/6.1-2-desktop.png"
+    },
+    {
+      "id": "6.1",
+      "name": "6.1-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/6.1-E1-desktop.png"
+    },
+    {
+      "id": "6.2",
+      "name": "6.2-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/6.2-1-desktop.png"
+    },
+    {
+      "id": "6.2",
+      "name": "6.2-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/6.2-2-desktop.png"
+    },
+    {
+      "id": "6.2",
+      "name": "6.2-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/6.2-E1-desktop.png"
+    },
+    {
+      "id": "7.1",
+      "name": "7.1-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.1-1-desktop.png"
+    },
+    {
+      "id": "7.1",
+      "name": "7.1-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.1-2-desktop.png"
+    },
+    {
+      "id": "7.1",
+      "name": "7.1-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.1-E1-desktop.png"
+    },
+    {
+      "id": "7.2",
+      "name": "7.2-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.2-1-desktop.png"
+    },
+    {
+      "id": "7.2",
+      "name": "7.2-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.2-2-desktop.png"
+    },
+    {
+      "id": "7.2",
+      "name": "7.2-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.2-E1-desktop.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.3-1-desktop.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-2",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.3-2-desktop.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-3",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.3-3-desktop.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-E1",
+      "width": 1440,
+      "file": "specs/redesign/screenshots/P4/7.3-E1-desktop.png"
+    },
+    {
+      "id": "4.1",
+      "name": "4.1-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.1-1-mobile.png"
+    },
+    {
+      "id": "4.1",
+      "name": "4.1-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.1-2-mobile.png"
+    },
+    {
+      "id": "4.1",
+      "name": "4.1-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.1-E1-mobile.png"
+    },
+    {
+      "id": "4.2.1",
+      "name": "4.2.1-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.1-1-mobile.png"
+    },
+    {
+      "id": "4.2.1",
+      "name": "4.2.1-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.1-2-mobile.png"
+    },
+    {
+      "id": "4.2.1",
+      "name": "4.2.1-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.1-E1-mobile.png"
+    },
+    {
+      "id": "4.2.2",
+      "name": "4.2.2-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.2-1-mobile.png"
+    },
+    {
+      "id": "4.2.2",
+      "name": "4.2.2-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.2-2-mobile.png"
+    },
+    {
+      "id": "4.2.2",
+      "name": "4.2.2-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.2-E1-mobile.png"
+    },
+    {
+      "id": "4.2.3",
+      "name": "4.2.3-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.3-1-mobile.png"
+    },
+    {
+      "id": "4.2.3",
+      "name": "4.2.3-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.2.3-E1-mobile.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.3-1-mobile.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.3-2-mobile.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-3",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.3-3-mobile.png"
+    },
+    {
+      "id": "4.3",
+      "name": "4.3-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.3-E1-mobile.png"
+    },
+    {
+      "id": "4.4.1",
+      "name": "4.4.1-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.1-1-mobile.png"
+    },
+    {
+      "id": "4.4.1",
+      "name": "4.4.1-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.1-E1-mobile.png"
+    },
+    {
+      "id": "4.4.2",
+      "name": "4.4.2-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.2-1-mobile.png"
+    },
+    {
+      "id": "4.4.2",
+      "name": "4.4.2-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.2-E1-mobile.png"
+    },
+    {
+      "id": "4.4.3",
+      "name": "4.4.3-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.3-1-mobile.png"
+    },
+    {
+      "id": "4.4.3",
+      "name": "4.4.3-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.3-2-mobile.png"
+    },
+    {
+      "id": "4.4.3",
+      "name": "4.4.3-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.3-E1-mobile.png"
+    },
+    {
+      "id": "4.4.4",
+      "name": "4.4.4-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.4-1-mobile.png"
+    },
+    {
+      "id": "4.4.4",
+      "name": "4.4.4-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/4.4.4-E1-mobile.png"
+    },
+    {
+      "id": "5.1",
+      "name": "5.1-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.1-1-mobile.png"
+    },
+    {
+      "id": "5.1",
+      "name": "5.1-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.1-E1-mobile.png"
+    },
+    {
+      "id": "5.2",
+      "name": "5.2-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.2-1-mobile.png"
+    },
+    {
+      "id": "5.2",
+      "name": "5.2-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.2-2-mobile.png"
+    },
+    {
+      "id": "5.2",
+      "name": "5.2-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.2-E1-mobile.png"
+    },
+    {
+      "id": "5.3",
+      "name": "5.3-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.3-1-mobile.png"
+    },
+    {
+      "id": "5.3",
+      "name": "5.3-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.3-2-mobile.png"
+    },
+    {
+      "id": "5.3",
+      "name": "5.3-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/5.3-E1-mobile.png"
+    },
+    {
+      "id": "6.1",
+      "name": "6.1-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/6.1-1-mobile.png"
+    },
+    {
+      "id": "6.1",
+      "name": "6.1-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/6.1-2-mobile.png"
+    },
+    {
+      "id": "6.1",
+      "name": "6.1-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/6.1-E1-mobile.png"
+    },
+    {
+      "id": "6.2",
+      "name": "6.2-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/6.2-1-mobile.png"
+    },
+    {
+      "id": "6.2",
+      "name": "6.2-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/6.2-2-mobile.png"
+    },
+    {
+      "id": "6.2",
+      "name": "6.2-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/6.2-E1-mobile.png"
+    },
+    {
+      "id": "7.1",
+      "name": "7.1-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.1-1-mobile.png"
+    },
+    {
+      "id": "7.1",
+      "name": "7.1-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.1-2-mobile.png"
+    },
+    {
+      "id": "7.1",
+      "name": "7.1-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.1-E1-mobile.png"
+    },
+    {
+      "id": "7.2",
+      "name": "7.2-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.2-1-mobile.png"
+    },
+    {
+      "id": "7.2",
+      "name": "7.2-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.2-2-mobile.png"
+    },
+    {
+      "id": "7.2",
+      "name": "7.2-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.2-E1-mobile.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.3-1-mobile.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-2",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.3-2-mobile.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-3",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.3-3-mobile.png"
+    },
+    {
+      "id": "7.3",
+      "name": "7.3-E1",
+      "width": 390,
+      "file": "specs/redesign/screenshots/P4/7.3-E1-mobile.png"
+    }
+  ]
+}

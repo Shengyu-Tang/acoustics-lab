@@ -1,0 +1,1842 @@
+{
+  "method": "逐张查看接触表；复平面、色条和例题标线另查原尺寸 PNG。",
+  "inspectedSheets": 59,
+  "sheets": [
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-1.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.1-1-desktop.png",
+          "sha256": "58f81ef5877e91adbb8398a4d94372383f86675c8618fa613abf7a4b07a04c02"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.1-2-desktop.png",
+          "sha256": "689dc3a351785923d889098a1952651f220889d6236c619ac75dd668870e8599"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.1-E1-desktop.png",
+          "sha256": "cd4050250e29e4e61589a5a83bce0dec5270ae919b2e67033ab2d86e9987f509"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.1-1-desktop.png",
+          "sha256": "9ececf68758a2e7c33255eb1c6d7800d46e2e4a0d222d98b54738e63fc7efab8"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.1-2-desktop.png",
+          "sha256": "3a5c91c0df8ac3e63c0367d016e9b6bb6a6d4ef1cffea29e62f256adc0e538e2"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.1-E1-desktop.png",
+          "sha256": "af120707d1a0c7a81b5c6dbc35f3513811c47b69a9fe24d180187b85250342f7"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-2.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.2-1-desktop.png",
+          "sha256": "f8bced06c7ebb9f0aed8cecca429d424cd2e9f89f6daea2e824413aaa3fe4de7"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.2-2-desktop.png",
+          "sha256": "eff347c8fd8cbd60095fb3803b070d909087f02a2257981194b403d80cf27fcb"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.2-E1-desktop.png",
+          "sha256": "59c5af4db7e32972ececc896260c87dc995c8be8ffba232a0f82e17588d38554"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.3-1-desktop.png",
+          "sha256": "eceab73f70f6d08bc12ca123b19abe3992663ffc1a48de624f79e303845b9a87"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.3-E1-desktop.png",
+          "sha256": "0cebfa2f7960e8dbcfb3fcb544260ec910fefcb279c7ff01b59e4e28454d4dda"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-1-desktop.png",
+          "sha256": "2f178abb042739afdbce4067592ef6af7f571bdbc28de7a68088f47caf5f00ca"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-3.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-2-desktop.png",
+          "sha256": "4e99efcbd17afc3c13e946e49bc6043a7ebbd15c2b5d5626f8579b41c8f485d4"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-3-desktop.png",
+          "sha256": "5ca762731f4775ab7d03f99435d9e76281a93ada3a1ada778ae1c73c3442fe1c"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-E1-desktop.png",
+          "sha256": "8568d1bb04adc5a7158f25080e6e065f8f9b70ea04322d07bc56d405eebd492a"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.1-1-desktop.png",
+          "sha256": "a8a6a9994f12667bf5307bce20d38a95dde7b3baa568741aae50775828ce3a52"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.1-E1-desktop.png",
+          "sha256": "e6d08f71c6b2f98eba4d8b512e50f02ea96eea1dcf562c4f37325e3bffdb4fe2"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.2-1-desktop.png",
+          "sha256": "786eb9b2c70a99044b8442c92b78c96a81ec641937ef70d2c7a48921e17ce465"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-4.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.2-E1-desktop.png",
+          "sha256": "14ecc95bbf9b0577f25c9a96b81363c96c975a439f1907553314f84df2279458"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.3-1-desktop.png",
+          "sha256": "7e75f09431b1f42d99a2c70925838e881f70d96b281cf29c933b43e38f81fed6"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.3-2-desktop.png",
+          "sha256": "991f5e8bbd94a25c97fe403561529e287aba466d2fa4510f15872a64c05bff3f"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.3-E1-desktop.png",
+          "sha256": "2ccc9d4d7766384a303986247375da3826325b9694cbced79e99a4395c6e9850"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.4-1-desktop.png",
+          "sha256": "cb90e0c601878d6206c50c3ce6891b258751e8017ad47590576ff05cb391f4d4"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.4-E1-desktop.png",
+          "sha256": "a5a79b2cbab41de17c1fa4e4ff435c5d1b36c72ae64ebf8d22aeb703725bead2"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-5.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/5.1-1-desktop.png",
+          "sha256": "da7fc840430a70b766db574f1d76e91fe731572b02665f21fc36e63c907d6596"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.1-E1-desktop.png",
+          "sha256": "86391f81625f1c2e3aa43c8fb7bfd9fae3249c13ce179d5a7e17e6baf8020b4c"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.2-1-desktop.png",
+          "sha256": "7a01f4849ac15b8b50303ef43c1303da9c0b8a01161a92639100f14226d757dd"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.2-2-desktop.png",
+          "sha256": "2dd7c95ff1501c906f054351187d6f72fe227a971a86f5cf9e66431897a9f70f"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.2-E1-desktop.png",
+          "sha256": "5c06424d9b4b68255a63cecc516b455a9e70fae62a3283b94afd477b9b995a4c"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.3-1-desktop.png",
+          "sha256": "c0f75e528919d937d8338c700970478b9e95c64bf55684d221b9c429e10df70e"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-6.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/5.3-2-desktop.png",
+          "sha256": "1af27e54d69a5a34f96c3683eedf2cdf841b3d8dd9f8b86ce86e20154c41eca4"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.3-E1-desktop.png",
+          "sha256": "5384aaf43c81938a795b9f36b674bd40c3b06bc58d7d5e064ed4eea900632bdb"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.1-1-desktop.png",
+          "sha256": "1b52f3ee9f096729a0b7ec9c1d6e8fd71d7112e3ade79e460dbed1674b3f51fc"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.1-2-desktop.png",
+          "sha256": "e6f1e8cf94e8f8bdcb60fad10fbe7cecb9a282d3f5350473dbfc3c2ecd3c2c73"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.1-E1-desktop.png",
+          "sha256": "b6f833e1b1633717ffdf26b8827b07d9d7d9a1dcdad00cb46734785fbe6e5893"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.2-1-desktop.png",
+          "sha256": "f7f797412388917c9c863af934c6eb294eeb86103f8d14a316fa7f939fa2d15e"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-7.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/6.2-2-desktop.png",
+          "sha256": "85a020b16bd6ddac160cd66eabef315f9fcb1b444b3955a3398edc0538145f67"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.2-E1-desktop.png",
+          "sha256": "966b1b69aa06ac1c6e2ed1c0834529a61c5d7b3d2e0a81ada1a4ee98a9cf9cac"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.1-1-desktop.png",
+          "sha256": "65ed7e22113cc01ed8e874a37f5d1ac5d41ef0e4ef694a7a0031304161ae1c01"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.1-2-desktop.png",
+          "sha256": "67ca85cd64a478ab2992508b01db1ae853dca8089ad414b1a8cf08c7736e013b"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.1-E1-desktop.png",
+          "sha256": "5c59f0faf785aaff0f8ef1901d92a3b58e11d7ad9e8f553522361730bac47131"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.2-1-desktop.png",
+          "sha256": "bd3377bf5cf3844c7fd598ffd63b9bf23d2a55db76f62e1a76e160933627c685"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/desktop-8.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/7.2-2-desktop.png",
+          "sha256": "719d2531b5037f4c6230bef2b5c7430c0bda98b0d46ba376a2bd7382fe4fc174"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.2-E1-desktop.png",
+          "sha256": "6d99f31fd94c10c6b0437271e38622a8659d83b9158af907fbed1223b6c18d03"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-1-desktop.png",
+          "sha256": "88af1ec115658145f071d10f6356f60b50c6ac08612285f016491878f45266e3"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-2-desktop.png",
+          "sha256": "de2b092b708f6599eb4e22d51e7aff8928bb672a1c0364a260d8133dfc373a79"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-3-desktop.png",
+          "sha256": "9e7948dffa2ab06f0e6290f6c2313d310190f84dcdc4752b385a82ffb6f78cdc"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-E1-desktop.png",
+          "sha256": "4e542b9b2fd0bd7aeeca812959edaac36bee006383c8f0464b5a36b747b91100"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-1.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.1-1-mobile.png",
+          "sha256": "efbaa076720d4ff585e28e223505d3016972cfc65bde5cbd8047445916f5e911"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.1-2-mobile.png",
+          "sha256": "6dc4357933d5cd4e5d76870faa4e22a584690733b35514453ffa8ed3c80aa855"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.1-E1-mobile.png",
+          "sha256": "829f0d034878e020045bc89acc64d9fb8651baf7bb513bea022664d39f35c90a"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.1-1-mobile.png",
+          "sha256": "da354ea7d64f020f5f8215270ffecb5d6c0e84daf02b8499e1a2831b845a41f0"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.1-2-mobile.png",
+          "sha256": "e330552547ca3d6cddd73dfdb7973248b9e0a71b6506f40513cf310dd5462997"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.1-E1-mobile.png",
+          "sha256": "98127e4f26e19c675f84ee767cdfc4bf396c43c14e5bed265dad5258112619a9"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-2.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.2-1-mobile.png",
+          "sha256": "77aee43784d6e5a74f59ff840f363d21977f4f41d6119ba511d01017161ec0ed"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.2-2-mobile.png",
+          "sha256": "ff2d248ef3e3f575015c8774ca98db64ea74bbebabc82902f9e5ced23a4c7a26"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.2-E1-mobile.png",
+          "sha256": "505622b0f75068740d7e4c6538e637e8152445130b18941884d708131faaffc9"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.3-1-mobile.png",
+          "sha256": "e218649587072e7eb61cec1ea55e8b78c784a4301fb53adb09a2eeda0aa862da"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.2.3-E1-mobile.png",
+          "sha256": "eaa8058a0f63cdb15f9094096abb39b130fecc3260ef88a7ea217ac6f15baab5"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-1-mobile.png",
+          "sha256": "d63b849edb6948d7fc4e7a25cbb4ecd9a3306a143b6d0d454c035ac49227b548"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-3.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-2-mobile.png",
+          "sha256": "0fc1b2f55e72156de465061e6b9f82d2bd7dcde417598b8b8de70cd9aa0ae6ee"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-3-mobile.png",
+          "sha256": "46843ee3f2bc8094d946e9450bd7fd8264c685f80ab3335c26148105e428d736"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.3-E1-mobile.png",
+          "sha256": "f276403f05f7212ddc8709cfa82bd0db22a42b09ebd6750a68440abed18727d9"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.1-1-mobile.png",
+          "sha256": "bc70e70a7ef61d195d5bbfd6ed37171fec1cbe7996cbf692dd81c098d5cb57ac"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.1-E1-mobile.png",
+          "sha256": "ff8a4d2b3d680a55fd850ad73cc33797ed3d23f8afbbd780df02754deeaccccd"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.2-1-mobile.png",
+          "sha256": "b3a09e138b4846e868c08ace1f0bc0ee7490195c6bda1d46b48f0d8292507b68"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-4.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.2-E1-mobile.png",
+          "sha256": "e0a8419a93ed031045de92277f2e1be2c56755db1072d862176d3aaae03fa223"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.3-1-mobile.png",
+          "sha256": "babe3850fe65041741c952aaa0c0b07a4c57d675251b77b1ac3b5774645288e0"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.3-2-mobile.png",
+          "sha256": "4cf2166817dec6442e00ce588eace2e3eacd5474e7ea963e1f188a18ce841aad"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.3-E1-mobile.png",
+          "sha256": "bae9a0a792d9019fc72844e6682779a7b8b055043f1952ca38a13c04c52b66ca"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.4-1-mobile.png",
+          "sha256": "a9f4d78d887ed481bfac4aaff3bb90c7ec2be78ca7ee9ba4fd4a23af119e2a4a"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/4.4.4-E1-mobile.png",
+          "sha256": "fca033c6a8e45a81e348409444aedd6ea7927cf2794153e46788b327efdd0b1b"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-5.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/5.1-1-mobile.png",
+          "sha256": "ceffe3b3c96c7e64ae5a7eb81beb90dd3bfae338a95993cccd9c26a70d851f8d"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.1-E1-mobile.png",
+          "sha256": "e27074cd66f92fe289e7ce24ed7f8e8e9aa1e02adbbbcc62cf1139ddf289588d"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.2-1-mobile.png",
+          "sha256": "0cb9b6ac8707d76c43c48fce2eef84e66324aadcafeab18ca28b4d29e5bf9723"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.2-2-mobile.png",
+          "sha256": "297fb20d68dbfabaee770cec16d53ac5816087afa6f069cfcceca3dee0b36305"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.2-E1-mobile.png",
+          "sha256": "1eae5847cba56627146c0235968e58642c08cbbf49128e3e4811e7c624a9e129"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.3-1-mobile.png",
+          "sha256": "e05cfc383a462457a5db00c3afc872bd15a392348ef67eb0818a28b51b136938"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-6.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/5.3-2-mobile.png",
+          "sha256": "e73ad25d3ad4146489d3b9ead791e75c0faa0cca2f7cc7032113be34333d5d1d"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/5.3-E1-mobile.png",
+          "sha256": "5ec2475850d9aa734d35128cb5c728331d62d0b70ef38dfddb0873db520a82a1"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.1-1-mobile.png",
+          "sha256": "5a4874f342782ecffc1b60b2089c2ab2674380883d0d3bc3bfe467c107a112e6"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.1-2-mobile.png",
+          "sha256": "660c168f39375b8743d0eba9b065f3d6f7bb4b7a1a2406b4576969ef99eb55f3"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.1-E1-mobile.png",
+          "sha256": "18c4cf25f2a7d033e29252fadc2eceb0615f2594e1686debfdb7280aaabf0606"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.2-1-mobile.png",
+          "sha256": "4e869f145e89f024467101b2eaa76f1b08535aa6e5386059865470df896aa3b9"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-7.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/6.2-2-mobile.png",
+          "sha256": "8c8ab17edfa304e6ea6b97955968704665fa327a7ebf8e6b7681d4a1c4eddb30"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/6.2-E1-mobile.png",
+          "sha256": "3648f9e0bec4060185ef1408079b643282ebb630da67e1d22c1f611b77a158fd"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.1-1-mobile.png",
+          "sha256": "238dbc0a7a8953dc0c4d26a9c2ffee4cbe8e16d8c83275bf9cbc798530b1da8b"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.1-2-mobile.png",
+          "sha256": "ee213efa68f0fe6b46dabecb7406ab1e12db5174de62de53b6bbd6da42d4aee8"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.1-E1-mobile.png",
+          "sha256": "5834260c8bea35746ebb1aabe13de3e2728a32b1622ea10108c1ed2beb3b1f6e"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.2-1-mobile.png",
+          "sha256": "23f343ac3bde7f5b5d276cf0b5fc30f63bde34f10defc4cc0d30254234fe0aa3"
+        }
+      ]
+    },
+    {
+      "mode": "defaults",
+      "board": "outputs/P4/visual-review/mobile-8.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P4/7.2-2-mobile.png",
+          "sha256": "77b20b825387df88e924d954e438d09919b1da6b88a02b191c2e6e46f388fedf"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.2-E1-mobile.png",
+          "sha256": "d718a76a3b7e4cbca8cda4d0ff0ad8d8fa30e98b7b62eb8445a2878e6122e8de"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-1-mobile.png",
+          "sha256": "6815e25cb84781e99e6ae31dce5270e305a2c76a0f5a5ad45359e9dda4cd1074"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-2-mobile.png",
+          "sha256": "f2c5a00017e02caaca9b8b270baf0bdaa64f19a95d9fb921e23b8e8a6c4fa078"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-3-mobile.png",
+          "sha256": "a689835756fe337b2ae7659d12a3870a33980bdcb695b663698ca26500119af8"
+        },
+        {
+          "file": "specs/redesign/screenshots/P4/7.3-E1-mobile.png",
+          "sha256": "99aa269fc2f696b9a900c10473ed6f5f120193729af47a4687e64d5d54cef0c1"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.1-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.1-default.png",
+          "sha256": "8a69aea5d5382b7fd6d5b0ac2bb197600855fc7e3b44b1422269ddaaabafc38f"
+        },
+        {
+          "file": "outputs/slider-check/4.1-slider1-min.png",
+          "sha256": "15f0dc868051bd1e7e8cfa874a6603ca7d795be7609a68da230898735a1e238c"
+        },
+        {
+          "file": "outputs/slider-check/4.1-slider1-max.png",
+          "sha256": "72c4f069d60fd9c18d339f99faa7ce42118d84c6bc5af220b8f790233848d556"
+        },
+        {
+          "file": "outputs/slider-check/4.1-slider2-min.png",
+          "sha256": "a32a54cb1873328b4f07d5216e6c13f1f6ab3c1fdae1453fefbfd207adb48832"
+        },
+        {
+          "file": "outputs/slider-check/4.1-slider2-max.png",
+          "sha256": "7bb0c037c1d76df630dbd957f4e302160bcec4c1dd413166c5b18fc271de63d0"
+        },
+        {
+          "file": "outputs/slider-check/4.1-slider3-min.png",
+          "sha256": "53fda2e1e723743590b75d98d273860e4f44187b4e648d9f2151ae7fe988b919"
+        },
+        {
+          "file": "outputs/slider-check/4.1-slider3-max.png",
+          "sha256": "29685a67ae4e90de76bab205eb4a372eb56eeb07c311c4487ec099d698fddc18"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.2.1-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.2.1-default.png",
+          "sha256": "79295baec53f6d1a18754f3bf34c5e759b666b8cac69e4b4cd863fb7b43d037c"
+        },
+        {
+          "file": "outputs/slider-check/4.2.1-slider1-min.png",
+          "sha256": "2add4dc081b13eaba8f910868eb9a59148c30cabb40d5b116d35079975cd53b5"
+        },
+        {
+          "file": "outputs/slider-check/4.2.1-slider1-max.png",
+          "sha256": "9a141404e9fb3b57b92f0e507012503cddbd165fb73bc00e55cef1dcc81bd540"
+        },
+        {
+          "file": "outputs/slider-check/4.2.1-slider2-min.png",
+          "sha256": "e62c52c15c9f7cb28d63c5ec57402d54e85b96478e587f1c20e430b9adfa9072"
+        },
+        {
+          "file": "outputs/slider-check/4.2.1-slider2-max.png",
+          "sha256": "5386e5d050ac3fa2130e8e8ef5ecc401855b5bae46aeb23e28a817ee42fd6252"
+        },
+        {
+          "file": "outputs/slider-check/4.2.1-slider3-min.png",
+          "sha256": "ba5539cfdf0e66ea8d3f7d8c83a4ace35d710f4862dad00ae83dc6cafdc67050"
+        },
+        {
+          "file": "outputs/slider-check/4.2.1-slider3-max.png",
+          "sha256": "d50b1c2da52663ddcee1dc394734dfc21712d042122bc1c1a7771df9d8b5c6ee"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.2.2-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.2.2-default.png",
+          "sha256": "82ebed5e729a745ff00f8360af4a297b3c6cc747f08c26cea4a9f7ff333162cd"
+        },
+        {
+          "file": "outputs/slider-check/4.2.2-slider1-min.png",
+          "sha256": "0b6aa8ae0b96c960bbf996b25fb923601fa798621baccd3bc7acce22eca36f99"
+        },
+        {
+          "file": "outputs/slider-check/4.2.2-slider1-max.png",
+          "sha256": "51a204871927a427beecd9d8e16ba07577c8bed407b61c6d0d4f30905b9e9e25"
+        },
+        {
+          "file": "outputs/slider-check/4.2.2-slider2-min.png",
+          "sha256": "f6fb3178f405fac1b20208e0020ca246c4ea8efa2d3d0bab2f4bf34eada745a0"
+        },
+        {
+          "file": "outputs/slider-check/4.2.2-slider2-max.png",
+          "sha256": "caf82ac603c4b84c83ae46788b2960ad401c4b19329aa569c3a366343f07bdb8"
+        },
+        {
+          "file": "outputs/slider-check/4.2.2-slider3-min.png",
+          "sha256": "b1836a25b16ba1929148a0312889661dae84dffad8bc6d60a9bc902140deb48c"
+        },
+        {
+          "file": "outputs/slider-check/4.2.2-slider3-max.png",
+          "sha256": "fa2fc8449b40be2d7f11af3c5b1a5602756cbf3e573086c95db664f2094e0f00"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.2.3-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.2.3-default.png",
+          "sha256": "9d2905b371f00da231893dfe309397dded8c04f59299b10f5bf67033a60adb1d"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider1-min.png",
+          "sha256": "6720be092895793d3ef8f3fc6c6e34d3d788181c2c661bed28289d166f943b1e"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider1-max.png",
+          "sha256": "fb2b8fbdb30244508b0c32c9958100c6fc107ecd05ab00437f5fa1b1b3b56721"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider2-min.png",
+          "sha256": "4d0d976833227aefc3581cfc14c2cdd793addadf62f4ef68b42c469362741624"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider2-max.png",
+          "sha256": "67a4e94d803b89488c617e4bd4d55f00a3638dc15970492194fdc94eb4926ef7"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider3-min.png",
+          "sha256": "75a317f54a309a42e749d58634d66656b145ea04bbd9f5904618874003a1424c"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider3-max.png",
+          "sha256": "fb882a34d85180b778da9474a5ccfb2a9bea1fc5ee057c7ddd97ad52c9290caa"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider4-min.png",
+          "sha256": "865358de9a2eefd7c9f935fa0bdca88a50124b154324c1629bbceb2b57739fd3"
+        },
+        {
+          "file": "outputs/slider-check/4.2.3-slider4-max.png",
+          "sha256": "cacedee4694f025906bac83bed0fc1c1acaffb137a145c4569010b8911a39805"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.3-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.3-default.png",
+          "sha256": "549c124cb3add06371f288c7de19028e9eebfd009672f5368e9ad3d53c38c81d"
+        },
+        {
+          "file": "outputs/slider-check/4.3-slider1-min.png",
+          "sha256": "cb7af083c532bd4b2308e4e8c9925f3d1b7c1b82650294985e8361107a20cb97"
+        },
+        {
+          "file": "outputs/slider-check/4.3-slider1-max.png",
+          "sha256": "30adafff0dcecf21a7a0b9a9664dc8c9f3853cfb7036f99b48b43c9456dab619"
+        },
+        {
+          "file": "outputs/slider-check/4.3-slider2-min.png",
+          "sha256": "f2c53d7cfaefd881ce285fe942810d49e2f868d279c6654ceddcf0f9c150f39f"
+        },
+        {
+          "file": "outputs/slider-check/4.3-slider2-max.png",
+          "sha256": "dd507523fbe6e08f3120ba63ab51eda20ac6d2874a47fa1adf09e35ccf5f44d9"
+        },
+        {
+          "file": "outputs/slider-check/4.3-slider3-min.png",
+          "sha256": "06d76949f8c997cef7d8c4e926909cb914226b08b1554ea322694021447652b2"
+        },
+        {
+          "file": "outputs/slider-check/4.3-slider3-max.png",
+          "sha256": "60c429e62f4b542e182404e20dc7d352c50cc7786ee5e860755453369d505486"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.4.1-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.4.1-default.png",
+          "sha256": "ab7b6bd721617d88c240c21341a73e0d08e2c24c7f04a2512fa0f4a352d7a6b1"
+        },
+        {
+          "file": "outputs/slider-check/4.4.1-slider1-min.png",
+          "sha256": "bc54f3a4d4446ffe78c2a28ae7d00ccc45934a88399b5e76a0877fe45f573d8b"
+        },
+        {
+          "file": "outputs/slider-check/4.4.1-slider1-max.png",
+          "sha256": "8482a101f002cbaa189e5a49abe065c556cd91e05242b7878328232c378494a6"
+        },
+        {
+          "file": "outputs/slider-check/4.4.1-slider2-min.png",
+          "sha256": "cda0736d862eca0c11b1a71a7ae855fe22106cf96d57ef9d849d5f16490b9c5b"
+        },
+        {
+          "file": "outputs/slider-check/4.4.1-slider2-max.png",
+          "sha256": "109da777f60885ea4327b50f584b071a954d8649caa41aef9bd9cf40d918edc6"
+        },
+        {
+          "file": "outputs/slider-check/4.4.1-slider3-min.png",
+          "sha256": "524047d9138b7f668e4ee55c4cb6fc7fa51118ad4005b42b173f4e8ad78cb0c9"
+        },
+        {
+          "file": "outputs/slider-check/4.4.1-slider3-max.png",
+          "sha256": "fca83aa3b837c2f7062853875988cee6be41e1a77a84a1510b64a792d88594e9"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.4.2-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.4.2-default.png",
+          "sha256": "22cb1ace25d0da4bd44356337c99e3200e13adfa36800d482c5551d9114de288"
+        },
+        {
+          "file": "outputs/slider-check/4.4.2-slider1-min.png",
+          "sha256": "a56b608e5466417c9aa7afff9487ec06dc29e44c9e4b2a8bdf0966019ab13dc1"
+        },
+        {
+          "file": "outputs/slider-check/4.4.2-slider1-max.png",
+          "sha256": "9695b73d82b1655c34c6126fef92476dfa14bd989ab56caf76e991a52f9fa10d"
+        },
+        {
+          "file": "outputs/slider-check/4.4.2-slider2-min.png",
+          "sha256": "029bd665acfcd2d8154d759eb811aad6856e99719d86ed5873651f26aac83a8f"
+        },
+        {
+          "file": "outputs/slider-check/4.4.2-slider2-max.png",
+          "sha256": "8fd84dac0f59d6309fc126c9c6b816d96f9ff6cc7bf37d8560d9974eab39bdec"
+        },
+        {
+          "file": "outputs/slider-check/4.4.2-slider3-min.png",
+          "sha256": "3c3739ae6edbfc2a3f367185404515d720e9af2b120494a96f566c57a1e2bdf0"
+        },
+        {
+          "file": "outputs/slider-check/4.4.2-slider3-max.png",
+          "sha256": "1955c938d96ef031310f0479ed5338d24dacf0896fea44e6f80584a2bbe38eaf"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.4.3-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.4.3-default.png",
+          "sha256": "9c3689811d2e521c5673a0c847516007d2312dff923113dc76fc3f991e653fbb"
+        },
+        {
+          "file": "outputs/slider-check/4.4.3-slider1-min.png",
+          "sha256": "1342355f85f7fc8ad724b2f7dfe20e3c48ee54da9ea4979dcd51859b10c028f1"
+        },
+        {
+          "file": "outputs/slider-check/4.4.3-slider1-max.png",
+          "sha256": "5552de0714e1a381dea841d207b1ecdaeebca977801403c46f08ef99fd1ea632"
+        },
+        {
+          "file": "outputs/slider-check/4.4.3-slider2-min.png",
+          "sha256": "ee70b3642b0105aa1964c9ffb3e070167914d0c27f277db2cd58f017badfea4a"
+        },
+        {
+          "file": "outputs/slider-check/4.4.3-slider2-max.png",
+          "sha256": "721742c007aa7d231af58a2ac25011357c5561fad14a0a101897cfab26fdbb6d"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/4.4.4-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/4.4.4-default.png",
+          "sha256": "db5374e176e20ad297717eb6ee6b1cefe6793089e58dc424ae992d744760ea36"
+        },
+        {
+          "file": "outputs/slider-check/4.4.4-slider1-min.png",
+          "sha256": "c6b6f4602bf3ccad554b06cc93ac20a5ae05675915d063ef470390884567ba7e"
+        },
+        {
+          "file": "outputs/slider-check/4.4.4-slider1-max.png",
+          "sha256": "0ce0b65d6df3a02beb7b442a1bc19a41de86584a8b4134e9bdf9fb105fe36dd5"
+        },
+        {
+          "file": "outputs/slider-check/4.4.4-slider2-min.png",
+          "sha256": "5dbf318b469952226d98752a6fd5845088d165f0ce3f14ccd48ac5b694c8c263"
+        },
+        {
+          "file": "outputs/slider-check/4.4.4-slider2-max.png",
+          "sha256": "9c3e0bcbb9309552de28ae53119ba0cc773baa2ead5f7b3f7904c2fcad0c6ac6"
+        },
+        {
+          "file": "outputs/slider-check/4.4.4-slider3-min.png",
+          "sha256": "54ba4a64e0c0523f2596edc6d9244c990475c6b33ab9852dec020e8e486f3f96"
+        },
+        {
+          "file": "outputs/slider-check/4.4.4-slider3-max.png",
+          "sha256": "d181c636d4c2846d977c4eb592fad7f634f7332f1e2de1c5d8ab0487651403fd"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/5.1-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/5.1-default.png",
+          "sha256": "1bf97832756b8a9f0599c18e5a9bb645824a214f15f4a78678c1e3bdff0429af"
+        },
+        {
+          "file": "outputs/slider-check/5.1-slider1-min.png",
+          "sha256": "07f4c9cd15d50e96fc220b47cfc3dde351a53d75d309b5614b2a05cdb2e49cde"
+        },
+        {
+          "file": "outputs/slider-check/5.1-slider1-max.png",
+          "sha256": "2f5e9f845f38a352a2a44de281a2fd612bc279bcfbc3c9435679c16db365f157"
+        },
+        {
+          "file": "outputs/slider-check/5.1-slider2-min.png",
+          "sha256": "aae8d95751bd6072dc8cf6aae54e141ef2bbd440a9bb957482846e242870bd58"
+        },
+        {
+          "file": "outputs/slider-check/5.1-slider2-max.png",
+          "sha256": "5866d8ebc94ed3492619c506a8791cf1a1b966b4fda66be570d95601e0706a76"
+        },
+        {
+          "file": "outputs/slider-check/5.1-slider3-min.png",
+          "sha256": "89732d29f5a79d2c9d734a733470bad9b42995cbaaf7a09d37ebdd48cb3ae8ac"
+        },
+        {
+          "file": "outputs/slider-check/5.1-slider3-max.png",
+          "sha256": "30c44afa9ba4a2ec174b1795b33b5ba2939a5356b0d4e26ff6afb8d41de75d58"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/5.2-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/5.2-default.png",
+          "sha256": "e3713b0402438a6509db7382776bab17f97ee540424af5c7f761f21368fe4a55"
+        },
+        {
+          "file": "outputs/slider-check/5.2-slider1-min.png",
+          "sha256": "f65408a067b75c8c41e37d0fb9231db79fe7f63502e3c7dab4a1c2813dbbee76"
+        },
+        {
+          "file": "outputs/slider-check/5.2-slider1-max.png",
+          "sha256": "8dde68cbfecc5c51b149ae2cb053dfc183f4e687c8b60b110c363e0147115608"
+        },
+        {
+          "file": "outputs/slider-check/5.2-slider2-min.png",
+          "sha256": "2c475b3e479de7169cd6151d946b17b8204165372f862bcec3f9c035731d06c8"
+        },
+        {
+          "file": "outputs/slider-check/5.2-slider2-max.png",
+          "sha256": "17e3812825934bc1f634ead823bcf1b568e2ce3b613f8bbb17be8f54c96c6905"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/5.3-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/5.3-default.png",
+          "sha256": "39b97fc177aa33a543d517607ea34527fe39597fa69cfc6e6edd965667d0ac64"
+        },
+        {
+          "file": "outputs/slider-check/5.3-slider1-min.png",
+          "sha256": "89e0c4f51fee125925b1927c081bd7f989bb7bee422d9f4b0646f258d43aaef3"
+        },
+        {
+          "file": "outputs/slider-check/5.3-slider1-max.png",
+          "sha256": "f848b34a0610496a6a3c10b0f81d05b44750a562849b6c90405e2927df61cd82"
+        },
+        {
+          "file": "outputs/slider-check/5.3-slider2-min.png",
+          "sha256": "0e9575b3eafd2006e63f653a2ce89df41e5c1a10fd662f2078bdf0f671445885"
+        },
+        {
+          "file": "outputs/slider-check/5.3-slider2-max.png",
+          "sha256": "0d51514ce2f236deeb9b25bfd647c8909648c9d3b3a0f8194522491a9753d876"
+        },
+        {
+          "file": "outputs/slider-check/5.3-slider3-min.png",
+          "sha256": "d5146afff6f03954846225d7dba723fcaa65cff37f084f70024f2aa8a13ca260"
+        },
+        {
+          "file": "outputs/slider-check/5.3-slider3-max.png",
+          "sha256": "c6112a54e8e5405602d1887041bdcc27b61df838fde91dd80e95e6d77aea2994"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/6.1-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/6.1-default.png",
+          "sha256": "efece57a7d46f043a41bcc68a234f396dd0094260c961d2b1857ab9a708d1e87"
+        },
+        {
+          "file": "outputs/slider-check/6.1-slider1-min.png",
+          "sha256": "21e887f60517be9bb0297251bedd3a2ab7ec6a6297c5847d006f2529d97ca25a"
+        },
+        {
+          "file": "outputs/slider-check/6.1-slider1-max.png",
+          "sha256": "efece57a7d46f043a41bcc68a234f396dd0094260c961d2b1857ab9a708d1e87"
+        },
+        {
+          "file": "outputs/slider-check/6.1-slider2-min.png",
+          "sha256": "e17b42e799a51fe415ab6c0236c291534092ba3c0e56036120afb338bc87dfa6"
+        },
+        {
+          "file": "outputs/slider-check/6.1-slider2-max.png",
+          "sha256": "f0923172d9a226cc34d6476b17b4309bf2ef6b999dead2a8d671192e7d310b5d"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/6.2-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/6.2-default.png",
+          "sha256": "e06b92580f03bb8de2c248d3b897b192eacbd9212bd4321452fd500ec1e45672"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider1-min.png",
+          "sha256": "ad6f871bfcffe9923cf6f800220c332cde61914a28575182b6af1f8588d5cde0"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider1-max.png",
+          "sha256": "d3123155b7a464b3a6244635912d315e07987bffe46cd9ba2ed1c3ebbbbebdc2"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider2-min.png",
+          "sha256": "85627fa10fb558c5e1fd5f009e9ab139fe6e64cda0ac1f7c3fa914a08a6de0c8"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider2-max.png",
+          "sha256": "8848e5973e700744a2c2627f5dee2647c6dcf924655f9f7772e23e48eddfa2d6"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider3-min.png",
+          "sha256": "2d45e0e912e0a8af9ab5606166f41ae8194b52c95605668787ca2d6bc12c99ad"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider3-max.png",
+          "sha256": "10417b6123ab7cb4c40f92d43bf4484533d57597d9da77fe2f5ef831f9b323f2"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider4-min.png",
+          "sha256": "614c8a827dfce0a9374f3d557019fb66dd76100877365cbd49f6d01febd22d0d"
+        },
+        {
+          "file": "outputs/slider-check/6.2-slider4-max.png",
+          "sha256": "0c09a2dd4f07a3938f2c4948c7e8895f065b355b099e8daba79a3d4e87b2172f"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/7.1-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/7.1-default.png",
+          "sha256": "818fb5755f886d1e557410169d1ea8aa6076213cb342cad4f16a02be4c10dcca"
+        },
+        {
+          "file": "outputs/slider-check/7.1-slider1-min.png",
+          "sha256": "6de8f9e4599ca7ed7b6647297e3249f1d47e059df08456cc3d867e6f198179cd"
+        },
+        {
+          "file": "outputs/slider-check/7.1-slider1-max.png",
+          "sha256": "8a3ca5a70a1b73d9c32938e1e120d5ddb60cdc2ca8204d1ba8a2e1c8bb73494f"
+        },
+        {
+          "file": "outputs/slider-check/7.1-slider2-min.png",
+          "sha256": "c45f831ee31417592e5320ca9d3b1d0eb638ab08b7fd2cdcb7f5bba7fe32f02a"
+        },
+        {
+          "file": "outputs/slider-check/7.1-slider2-max.png",
+          "sha256": "efb365915d32f87a0b382a40004e516b04c40e49617514e101480cc818372691"
+        },
+        {
+          "file": "outputs/slider-check/7.1-slider3-min.png",
+          "sha256": "ca455ab41b2db303719817a46308a3e70f10f3f3d1d7676bfa7b9b4644bb4107"
+        },
+        {
+          "file": "outputs/slider-check/7.1-slider3-max.png",
+          "sha256": "7970a72b8747ab287d7a52025997785bc5a6b27150efcf9c104630f41c3fe043"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/7.2-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/7.2-default.png",
+          "sha256": "011ebad07df117105466042d376ac83e5c7ecc036485f9d980cd6472e6072fce"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider1-min.png",
+          "sha256": "f2961dc5d55fec20f11a13fc081d25f3b959f1ca8e6df1a12e5abadbb6eb59d1"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider1-max.png",
+          "sha256": "75ae49ab6932cf4bb890f5393ba8625afd14dbb41743c926cbff4ee9c1a00c95"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider2-min.png",
+          "sha256": "b20a3330365a2bff26fc665e3fbf9e4b3ff478f16d842a63d156c14471b06993"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider2-max.png",
+          "sha256": "e1963b469ad40a9a13e176a6a5f921f045944f8c6e9e26a03713ab28a33139d0"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider3-min.png",
+          "sha256": "f59a2630b660938eb4cad3796a42f44ff65cffa76d0294c84f3ac5aa34668cf6"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider3-max.png",
+          "sha256": "6e660798dddb346fa679e6ee54abea8471a934a392606f4f226832143f3ddba5"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider4-min.png",
+          "sha256": "658c6ed13b7ffbad2080c6f714a10429ea85df2c268ef70b0f4423f5001dd53b"
+        },
+        {
+          "file": "outputs/slider-check/7.2-slider4-max.png",
+          "sha256": "dee419c8c3a443bd9e54038bc1aa77e154549691ac1351ed2f98279219f091f6"
+        }
+      ]
+    },
+    {
+      "mode": "sliders",
+      "board": "outputs/P4/visual-review/7.3-ends.png",
+      "originals": [
+        {
+          "file": "outputs/slider-check/7.3-default.png",
+          "sha256": "63acdaee0ff111577568170ba71f95e5472a40bf4817901ccb8e85e8447a28b6"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider1-min.png",
+          "sha256": "306513df3811de24162d39e4a09a1a533e94bce1578a7533020481000822d225"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider1-max.png",
+          "sha256": "6ebf93a920e70c50bb7f9a2ae2604b1b0d11833905c55208473ecaf0a4cc5915"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider2-min.png",
+          "sha256": "ab1f1d2171ecdf772f03e9ff991a60dc7afbe0a51cc0ed4d0974af8cfed65e3d"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider2-max.png",
+          "sha256": "29bb6c9958e539277048fcc39727e175c7d4b0a3348bdbb7aaf3c20e7452d3d2"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider3-min.png",
+          "sha256": "1da30c0fbd1ec6c32a3f2cb59e78ec1db6b3536eaff48dd42a086b36f7c29b1d"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider3-max.png",
+          "sha256": "0b93b5bcae9999cbc5336ddd398f48eed9c0e310b99fbc66511155f847fe412b"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider4-min.png",
+          "sha256": "7eafecc5e9c4b2885655eb778c36476a58b3cb1aab5cb965b3ad3f9e438ce1e9"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider4-max.png",
+          "sha256": "351a763246ad49bd8b60bafc95a49b403af06888da13d04d7521f6478265ee37"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider5-min.png",
+          "sha256": "9fb0b85e6af1438c4e312c588aac991172ce1b8d7be25809c3d84b34cd9f21a1"
+        },
+        {
+          "file": "outputs/slider-check/7.3-slider5-max.png",
+          "sha256": "22b762034b6e827e572702b2bddf5e90468368fa65327670db01d086cc7720f2"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-1.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_1_1_set0.png",
+          "sha256": "4ff7d653893a789492625f59147304d63bd5fc97172e6d890a065899d5ee2f16"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_1_1_set1.png",
+          "sha256": "383bee9a32f4f5580662f32e125948450b1f6600ff3f197978879594513dd018"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_1_2_set0.png",
+          "sha256": "98069afd7bf286cd8c7ecdedb9f54897d41b36759abe36decde29ee0680290d5"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_1_2_set1.png",
+          "sha256": "0447dffb364193773274f9bb5d9c9242d6cdf5b9c16253732cc7f2f6323f1f0b"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_1_E1_set0.png",
+          "sha256": "0c0763dc29cdf0e1faa2ae68e0b2266153e66f03169cd01bd836a9c671cd8059"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_1_E1_set1.png",
+          "sha256": "eef70692b9b10492293d9f8d3d25df2779c626b0b63155865a13ba622986b5b1"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-2.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_1_1_set0.png",
+          "sha256": "e3af20a9594f57d50126c81b42feb17eb9b35a1bd6dfcd526f422e3b2664216f"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_1_1_set1.png",
+          "sha256": "43471342298b7230e582ee5a34bfd197f91d2cf4f61be36a24e4545b00f3e54a"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_1_2_set0.png",
+          "sha256": "8b8e1a27f1fcd96e2c6e190c395c1a06c3f7e57da0ea1ffda858ce97fcc9e610"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_1_2_set1.png",
+          "sha256": "bb27efae97a886b14cda6a2de19530676261f9e79c4dc0e969f78bd01037ca9e"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_1_E1_set0.png",
+          "sha256": "ccedb0381de50fa14191af6930401526c4e96d2118cf38f5c830e53fb51ddfc7"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_1_E1_set1.png",
+          "sha256": "60e0ba1733ab26b39ad91dd1b209e9f1cac44eefb9cb081aacc2b7152fe33f23"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-3.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_2_1_set0.png",
+          "sha256": "af1363ab9de788f917b77750616623e877d3d4d7221a0d897d32de4ee1587ff3"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_2_1_set1.png",
+          "sha256": "658db187b92943c450132766e029d93a0a1b98f6e7606aed233cb2c35cca43e9"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_2_2_set0.png",
+          "sha256": "d149a2e334c77a55b3b72db007d8b2cc35b54fca7a3e93f716565defee568c4a"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_2_2_set1.png",
+          "sha256": "1737ca9ce6b62a02f87e7c6835175664e0ae5522813227a656d47d64357870a6"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_2_E1_set0.png",
+          "sha256": "ca8b25d2b95726cdef4c9d3d104cfa976e582fd99ec4feeaae15249ef49e1bb9"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_2_E1_set1.png",
+          "sha256": "6e11a55ec9127893ed6e2eb3b59bf12300e20651cbb84ba3cd2328dcbff66a31"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-4.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_3_1_set0.png",
+          "sha256": "a98122cb6978924adc452b07a86c191f0a0de2f0b777024ef862be9347e64ff0"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_3_1_set1.png",
+          "sha256": "d0db2516cc4ae19f13800e30dec93b9ba4f229d976e4032ec7d6b4e9a4443ff2"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_3_E1_set0.png",
+          "sha256": "e815a9ec14532b571a08913ea8b2fbb5af7f27b330ac542eba0f03c6a204781d"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_2_3_E1_set1.png",
+          "sha256": "91470ca3ccebfc29ffce8afb93ac6f522106c9663d8ad2b6a3a6f7a1781b2522"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_1_set0.png",
+          "sha256": "d198bcd1e14ac48077c8282b53386c1ffa8c38d1ae10ae4b48194a4332a0e30e"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_1_set1.png",
+          "sha256": "845eb39e0dff70b57353a904241e1eb90b5ec4e8fdb09c38a95457f6481ae9ca"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-5.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_2_set0.png",
+          "sha256": "0f51b76460d15d0de90e42654ca28e60f72be4e8de337d76d509f189ceea83af"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_2_set1.png",
+          "sha256": "d4f989f3558c60ef80009829730098361c55d5154b07c1fdbee74b0d6c062c05"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_3_set0.png",
+          "sha256": "ea01ce4766855e87d97dccab2a6a40a44c2a6158ddd418c9d2871795889bc920"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_3_set1.png",
+          "sha256": "ebbbffe620f884dda3f4d482d49f1ca0a1dddc2a0847f9b51e4c7c11ff3f6c56"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_E1_set0.png",
+          "sha256": "564a6d2a8ee6092bbc94a7605e8747deb372c200444291c0e468fe5b7ba953bb"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_3_E1_set1.png",
+          "sha256": "1ca1f9438848fac25cabe14855bb55f7c3b93f680461373b842a50b13e71b433"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-6.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_1_1_set0.png",
+          "sha256": "8ca7d5a18288e3fe5d4a56762897ee965ee28b72cb3844fb1f0306b7377edc81"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_1_1_set1.png",
+          "sha256": "398512a6b427880dbc1b6ee751b01775c9876f6febca723ec6b5c7b50d811d69"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_1_E1_set0.png",
+          "sha256": "0bc8effbbc6776c1363b2b006923ef62a0970fa824b733b9c1bb201ed1749032"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_1_E1_set1.png",
+          "sha256": "1378fd31e2ddf90b1028e19ce197a96e1140e6e6cea975d5cd45d4320a24d95d"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_2_1_set0.png",
+          "sha256": "cc3341a7298b6c027ab5d668bf1a7ca8ab46533a2ab4aeca2aaea2afd6915c8b"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_2_1_set1.png",
+          "sha256": "2f9236b3eeccbe26a05812a217a1456033d41c4499500f304371297cd79c1059"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-7.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_2_E1_set0.png",
+          "sha256": "c1e06eec08118c3fdff46b3ad8cfd4537da2edd35d76b9873bdf2926b5b4efc6"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_2_E1_set1.png",
+          "sha256": "ddb7c4101e034dd0ef3fd96cf6b667fa3f99b0c67425780a9878a7fc6ad9d426"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_3_1_set0.png",
+          "sha256": "1111c400ffa9f94302b273f12b070557ff0b36b9e1dcabec58c605c15e31c6b1"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_3_1_set1.png",
+          "sha256": "27832276d336ef686452c65e82e59c0f1c815bb300a15c9abb659c0498dcc1fe"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_3_2_set0.png",
+          "sha256": "b74ec213cc4fb7f1407b6aa6f48daa8891a1625c57fb5ea8a2c64a8c8d81c6e5"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_3_2_set1.png",
+          "sha256": "fd76d51bd8c93f88a7b0e2289f11d9d214d730dda34001f9c83fe9f42fdcc34e"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-8.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_3_E1_set0.png",
+          "sha256": "e522106018e2b0037e1e6536a2ca850c20c9b910bf7eebcf19f659f169c0c469"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_3_E1_set1.png",
+          "sha256": "3587e0394c33ed1840763f1a20484474eb29556ffc0c8f2d4ba22eb324e33dac"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_4_1_set0.png",
+          "sha256": "c718747963bc955309f610c5e407476564f4b3518b9e9033b031893c7b979adc"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_4_1_set1.png",
+          "sha256": "99839d2f5458a9d3096071f7f3448b51147f8235004a9c7a0750e9fa3487f010"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_4_E1_set0.png",
+          "sha256": "cda9225efa8ee0dc7ceee0a219483b196c63ab7586dd8bdf98ba71a8f6185813"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_4_4_4_E1_set1.png",
+          "sha256": "de546e07bf5605dcdd55a94d4510a51351403a784db2c5ec62715072c0c31b79"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-9.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_1_1_set0.png",
+          "sha256": "f4f098968acdb27e5aa1584bc96a423769db2514a0c3b897c4d4086303139b27"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_1_1_set1.png",
+          "sha256": "c59624b4a9e360ea1db5387f3d9830964ca60c347f18948bbd6608317196b44c"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_1_E1_set0.png",
+          "sha256": "e5d5f152b84a79f1623e7273598c927231b8d0ec4c72caa64a4c5a91061e16a3"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_1_E1_set1.png",
+          "sha256": "d66a0fabfe1ce9453bb60daf660b97591300abe7ef845870cd71910e689c185c"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_2_1_set0.png",
+          "sha256": "279864691cadaea4b3a1bf1499925f8ddf350fa4b3bee70c284ce736fe987b71"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_2_1_set1.png",
+          "sha256": "1986a02a33a5d172b1e474d713c03e89b15d3f35bdfab703277d5e4c54539a2c"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-10.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_2_2_set0.png",
+          "sha256": "f3d2425290c457fb97fd854cd98d5a737e22681391c661a6e0c30ab546f1d00d"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_2_2_set1.png",
+          "sha256": "65d7622b414ad1a2020f9796f3f0d10be54799e9615be0843c11713a2ac4cadb"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_2_E1_set0.png",
+          "sha256": "f8773f9a2a642f5b4fd4b2eb47e6cc9281eaf3b625d03bef18a3e68245aa6838"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_2_E1_set1.png",
+          "sha256": "0d163cb524f6fdb0b024579ab218a5e584b39f2c39123a0c97588c508458069b"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_3_1_set0.png",
+          "sha256": "2933f4be2308372fdec00385f6340b03a2e9bd3aff244d0a039d204be280a5c3"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_3_1_set1.png",
+          "sha256": "8027bc3f84a38fadb0aa338e9a06299604edfe703b59552ed00538e09ff08bc5"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-11.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_3_2_set0.png",
+          "sha256": "ffe0179a24e44e43a1c09cf4220eca202b30125bab2698581617bdbcd070027f"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_3_2_set1.png",
+          "sha256": "01eb46e9ba7fdf55a3b1729328c96576bf7aee883ee2e87e2eedd01f97a95742"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_3_E1_set0.png",
+          "sha256": "196e34f3d9b1135ac433ae5a5945b352245cf66df6e54bbd1c8931f0058a44cb"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_5_3_E1_set1.png",
+          "sha256": "3a8188627bf586b54ab53a740b98c2308515b706aa891749ee6374b38c343117"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_1_1_set0.png",
+          "sha256": "fde2b0975eb98ef651fbd78ab6fcb61b2aa73020363e66deb5643c6aae88ec9f"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_1_1_set1.png",
+          "sha256": "7864ed936a41599b35f743075ec2403917df09148b22188a0189af51d1e41970"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-12.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_1_2_set0.png",
+          "sha256": "7d07587d277b3c4c950334591e100b0e9cbc7e368318f2d927e21a5eb0451cbf"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_1_2_set1.png",
+          "sha256": "0c4ee4e85917fa9f34b0754eb4a4cf6ddf4375d5076fb591d4a8d26eef8010cb"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_1_E1_set0.png",
+          "sha256": "3898dd7df0268fc35edd038b4a780179bbe6b3934b0770badabfabadb8390420"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_1_E1_set1.png",
+          "sha256": "169f82526e7343bd66087ded909764907bb8164088f2e7a1eef860f8c2ea96ae"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_2_1_set0.png",
+          "sha256": "5c0ecc03ada02d910a7f73596e360237b5afa72f8a014bbe4d35780d3983cb33"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_2_1_set1.png",
+          "sha256": "a3c883dd25b31702de37e0d5e1b3c6fe0ae6fb7144ec810de44110092331bade"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-13.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_2_2_set0.png",
+          "sha256": "c0c6e57c09d055478afa1a79613fd0be7243cc85c0907ced6be24a8f5a87da1d"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_2_2_set1.png",
+          "sha256": "69038c1bf652f2205abd987701a433500196664460b91f35dc4995fef2f2b5cf"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_2_E1_set0.png",
+          "sha256": "6e341abcbd84b96dee2a0d549b4b72e265b9232dadde8c0cd734ec17b5d98b16"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_6_2_E1_set1.png",
+          "sha256": "21bce2b9e60abeeef4996fb2766ea2c4a524e212c506a8201fc13a614babd4cf"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_1_1_set0.png",
+          "sha256": "2bf2ee3f18068d98da6a2b8bf08e17e7f00a390748652a2e389ba6c7cb4dc9b3"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_1_1_set1.png",
+          "sha256": "96559d4db343b52c0a57eceac7b90c46544b5f8082ceb9988884f011254b9c7f"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-14.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_1_2_set0.png",
+          "sha256": "d69e258a3303561034c4056f38675decbd704dfb84b068445681284ccd2fad8e"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_1_2_set1.png",
+          "sha256": "1dc4eff946f0d1774f9321ba97bf0d0104ea2cc0c6789993bdc31254bab28b7c"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_1_E1_set0.png",
+          "sha256": "e805a073a3e5593ac3af66c07d7a5dff13849bcb2c1fdedbc063f3f85d21593d"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_1_E1_set1.png",
+          "sha256": "c728523055e05d247a03a324dbfa3ee9fc3c27de0050d4ab19899edf7e844715"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_2_1_set0.png",
+          "sha256": "323f41094f3b59ef0a9522792df560a971cb7ac8ebb899bbf67e9da88d677ffa"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_2_1_set1.png",
+          "sha256": "6fb34a617119c0f0330e83915640cdf9988abe339206396959ebcecf1dd973ab"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-15.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_2_2_set0.png",
+          "sha256": "bcc092753b0663a36415cb0cf31149f5cf486337cbcd40de044b70c02a10e5b2"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_2_2_set1.png",
+          "sha256": "4f00e641a62a14eaadbde59e34d03d16d5dc419d7f824fb2292b7c7376748d7c"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_2_E1_set0.png",
+          "sha256": "31d235c0b72e6d3bd8de87c4ded5a4eb8b8ef91c422043396f7def5455f921e8"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_2_E1_set1.png",
+          "sha256": "a2291b677d40babfca17672fa3b549d6637d91d1fd7b929d1b553d103453a582"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_1_set0.png",
+          "sha256": "086a9cb5de5d1f8aba9c04f9f522f297a9a5957f28a655bd73546680c7719fe4"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_1_set1.png",
+          "sha256": "f026bee6a7495f73875035dc2a80ddd1d703fdf1181faa2e1ca8fad15fe7e03b"
+        }
+      ]
+    },
+    {
+      "mode": "matlab",
+      "board": "outputs/P4/visual-review/matlab-16.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_2_set0.png",
+          "sha256": "1e7c2b4136693c2a9c8abe2f9534ecfcd709492fc11ee42290506b1db05b090c"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_2_set1.png",
+          "sha256": "05b3ba51e5a74bcd93b35829ff41a453689619a3456ca91aef5656c770768443"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_3_set0.png",
+          "sha256": "a1d64217bac5cd6d9b0d19f9e70c8a0b3e1925cae7f48ce98d0c2421f5a7012e"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_3_set1.png",
+          "sha256": "6f2421f6f92d136ef933f09f605261dcac90cb5cf60c0a3e7b56ae7f65936bd6"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_E1_set0.png",
+          "sha256": "9bce602a73528a40fdbc2b7e10225aa77fabc00a897527874cb15d2b70dfebfe"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P4/fig_7_3_E1_set1.png",
+          "sha256": "beacef17ad6cf2e8bcc30057e47fc2012b0b26359fd3b28b4fd911e1033928eb"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-matlab-1.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_1_1_3_E1_set0.png",
+          "sha256": "2b44de9ee8d6eff66824fec51b84ddc324089b24acec7880cca33e4ddd400b01"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_1_1_3_E1_set1.png",
+          "sha256": "81787c33d66b3fe86fb490d8eca45766ca98976a768f4da34997fd88b020ec4b"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_1_1_5_E1_set0.png",
+          "sha256": "b9e89039d714fb0915ed8b66fa50c2234eb36aac76bdb3c5320d32cc72ef0e4e"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_1_1_5_E1_set1.png",
+          "sha256": "87c14e92dac8ebe390f29737e46f1d6eb2b8fbcdeb82d1f5755865dc434b42c2"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_1_2_2_E1_set0.png",
+          "sha256": "61b0336c8db2fbb5cdbf4ccfb0ee3e31062e40df3eb2c66e1d3db43e1b906d7a"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_1_2_2_E1_set1.png",
+          "sha256": "5444f5d296e824bef6cdf995d3352b8347d325b848db03e4e249f069a6d68c9e"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-matlab-2.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_2_1_E1_set0.png",
+          "sha256": "096d8eddbe2e0081bd331efb8801941c20eb8ded2052ec6c11fcf124f8a6bade"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_2_1_E1_set1.png",
+          "sha256": "45d68ca364ff807e39b6d4d44d9388b4701d576e23a98026e904daf0395407a1"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_2_2_E1_set0.png",
+          "sha256": "abd051f5888942cc1776cfc4c6f177e86e686930125cd42519c1d89d31ca64dc"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_2_2_E1_set1.png",
+          "sha256": "b5c26ec8fa3e7d6bf468b54ebf89cdd4b442ed52f4f97744dbfe4d2db1999606"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_1_1_E1_set0.png",
+          "sha256": "0e008c0376a87dcaeb63fb0205d9d5dd809ffb004317a613e7bb2b952c39801d"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_1_1_E1_set1.png",
+          "sha256": "7733dc3b75e23086b2273dce3c05f1968b777f17cd39bad9efdd34d5c8f86a73"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-matlab-3.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_3_3_E1_set0.png",
+          "sha256": "e86753c836e877e870b1c499fa49f64c1fc87c356948775e52eb55759d62c086"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_3_3_E1_set1.png",
+          "sha256": "120e75a9a73fa628de5d7d88e5d67547ad78de62b2b1f88b90fd5280f6b8b708"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_4_2_E1_set0.png",
+          "sha256": "f58694fc2d81b7d7e7e7e38dfd5eb6043b1a696c4ade12449d37b6ea83e7fa1d"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_4_2_E1_set1.png",
+          "sha256": "ee095295f27230a4d449fd8c49ce7a63d0818797458fdafebb5ccaf2357daa4a"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_4_3_E1_set0.png",
+          "sha256": "becb45f645b4758203f6fbc7203397939720dd852a29227a517cc6fd9c8b27fb"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_4_3_E1_set1.png",
+          "sha256": "ee1686a035cc628d55851fcceeb2cb0f6d05c85ec82d32a4d45ec91abdcea970"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-matlab-4.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_6_10_E1_set0.png",
+          "sha256": "bea2a439af304d81462d69b4c3797818ae4609cdb749ae102ec34cd4ee0a3ce4"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_6_10_E1_set1.png",
+          "sha256": "bd9417d9840efcc34a6609b113d7c089ebd54d78cf0f4c85f406aa118d12df4e"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_6_11_E1_set0.png",
+          "sha256": "61cec78476b2d7bb3c46391f1401b1b5fe0cee40f0107a4c016886772d68677f"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_6_11_E1_set1.png",
+          "sha256": "339f010cde2a02003053d3ac2363501e7b1fe18c6c886b4d916f4ed41ed60d0a"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_6_12_E1_set0.png",
+          "sha256": "40e72cf97428ead25a8674b2bd6449f828bfea042ad9aca260b0f548422c4710"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_6_12_E1_set1.png",
+          "sha256": "5ec32fce44c83424b43d408ff457021c0a3ed9f22346764a95639bc5636fa333"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-matlab-5.png",
+      "originals": [
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_7_1_E1_set0.png",
+          "sha256": "b809b93359d8d045b5c186160db8838ee4f9bec8f1d8db0c4782881e058a9a46"
+        },
+        {
+          "file": "specs/redesign/matlab-check/P3-2/fig_3_7_1_E1_set1.png",
+          "sha256": "1c0e53fb100136b9c09c431a671ecc5ad552918d3313181838487edd38bb2579"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-browser-1.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P3-2/1.1.3-E1-desktop.png",
+          "sha256": "b63c8835dfd1aa525b68ca24dfd067826ad2ae5d448fb24639c7d6538864e18a"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/1.1.5-E1-desktop.png",
+          "sha256": "9cc2b5d2c04f431492cc5c62463414df35e58f730ac1ad45782a0581fdf9d15c"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/1.2.2-E1-desktop.png",
+          "sha256": "e755a7da19ff9588e761b6561c134accb6731385acda4c827cd90111bd1b6da9"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/2.1-E1-desktop.png",
+          "sha256": "a2a751eb2a533d870245ecf2bd7274b8a88f2646b88276ed7e4fa2895c246b47"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/2.2-E1-desktop.png",
+          "sha256": "197daaa616421126a26cf024b6ddfcc6a2de251e7fbaf0b6fda3e4a91a0e790a"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.1.1-E1-desktop.png",
+          "sha256": "34e421e51444df872c68671aaa0b8a41dae1857a65f921f675149cd1e943cc76"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-browser-2.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.3.3-E1-desktop.png",
+          "sha256": "5a57df07db4ecb242f72891e5150ef38c4c4848d0df726ec7fa5f8fffca688a1"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.4.2-E1-desktop.png",
+          "sha256": "3f50e79323d3cb1284b37c3cb16911c06c61289703cce468feb6959c1fb340ca"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.4.3-E1-desktop.png",
+          "sha256": "cb14b5933e98bacd6e99e6bf8c7f7dddb92bfbd9c765391290817389fd84dcf9"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.6.10-E1-desktop.png",
+          "sha256": "98ecd933f4df72074c0e23ab80a6ddb51bb20e8f45fa4018efb063a821d50981"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.6.11-E1-desktop.png",
+          "sha256": "e9c82c7545551ee30168c9a577cb02fa8baceb105171e4e89bc775158fc62029"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.6.12-E1-desktop.png",
+          "sha256": "41bc5b0b96e77cddc9ab4342fa79a449e3bc20e992650fc0009b87b9005a786e"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-browser-3.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.7.1-E1-desktop.png",
+          "sha256": "47f628542946cf49f86b01f152db8c9d7d70715b550aa9a189bc23c4e6f69f0c"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/1.1.3-E1-mobile.png",
+          "sha256": "8900f48fd46ba01226ccc47c3ea784f64d1d54a6ca2c4ff3a5ac8d27b1d0bd0f"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/1.1.5-E1-mobile.png",
+          "sha256": "45e45716bfec60e1e5ee5316759402615bdd990968c80e9791edab958d0469d1"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/1.2.2-E1-mobile.png",
+          "sha256": "7946689fac3f76e18eddc13d2f03dd8cf422294750c5a04ba0358a73b2ba752b"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/2.1-E1-mobile.png",
+          "sha256": "65791221e79fb966938f47bfcf7ae20fd045122c6d5f8397cb29fd8263cdf6a3"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/2.2-E1-mobile.png",
+          "sha256": "58b0423b0c3208460d797d28fca6149cac1dde6613b3bdd8a5007f2c51afa843"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-browser-4.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.1.1-E1-mobile.png",
+          "sha256": "aa32a487278ede316f9ac9f36e3e6737798abc17e4760c4fd475d4980f142a83"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.3.3-E1-mobile.png",
+          "sha256": "812c0cabf64a2edadd4117659441b3bbab5df6a10f6ca9507c640e26b0433814"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.4.2-E1-mobile.png",
+          "sha256": "6bf6b45ba1f8fe43fc520244a29e9b7c6817d079cdeffed59054aa70730a86aa"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.4.3-E1-mobile.png",
+          "sha256": "6faf07ff531c5a51c840fc4607f950e02827304a5acb47af65601abdaaa69b54"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.6.10-E1-mobile.png",
+          "sha256": "94a907e5b6f23f50ac36dd9599dc2a2810bd413c07f111fec110c332a6c1e2d2"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.6.11-E1-mobile.png",
+          "sha256": "a20e8614c170a7d607cc5f34a8f961ccdf8bcc7e80ff4159cc07c79237dcb825"
+        }
+      ]
+    },
+    {
+      "mode": "prerequisites",
+      "board": "outputs/P4/visual-review/review-browser-5.png",
+      "originals": [
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.6.12-E1-mobile.png",
+          "sha256": "3ce63f9cf1944bcd3c693d3d62e6406b4b4a3f3fe2de32d30f7274134ff19362"
+        },
+        {
+          "file": "specs/redesign/screenshots/P3-2/3.7.1-E1-mobile.png",
+          "sha256": "545a007d159ee753c5f9cd3bb2d154bfa2cae77abbde00c0778afed7f6548aac"
+        }
+      ]
+    }
+  ],
+  "extraInspected": [
+    "home-desktop.png",
+    "home-mobile.png",
+    "7.3-desktop-full.png",
+    "7.3-mobile-full.png",
+    "specs/redesign/matlab-check/P3-2/fig_1_2_2_E1_set0.png"
+  ],
+  "corrections": [
+    "移动端等比例圆形与真实尺寸",
+    "场图图例不遮挡色条",
+    "阵列稀疏整数刻度",
+    "复平面 MATLAB 图例置于图外",
+    "P1–P3 例题答案与标线对应关系"
+  ]
+}

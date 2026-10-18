@@ -1,0 +1,12 @@
+{
+  "attempts": 1,
+  "timeoutSeconds": 300,
+  "elapsedSeconds": 67.839,
+  "timedOut": false,
+  "entered": true,
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "runtimeValidated": true
+}

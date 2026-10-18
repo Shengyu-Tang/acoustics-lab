@@ -1,0 +1,1645 @@
+{
+  "runtimeValidated": true,
+  "jobs": [
+    {
+      "lecture": "4.1",
+      "name": "4.1-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_1_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_1_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "Rm": 200,
+        "M": 0.1,
+        "D": 100000
+      },
+      "sha256": "9e15ad211160791f7d6c12f040d68fbf5dd8dc7f682888b1349877f410d0da9e"
+    },
+    {
+      "lecture": "4.1",
+      "name": "4.1-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_1_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_1_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.056,
+        "v": 0.01,
+        "Rm": 230,
+        "M": 0.1,
+        "D": 100000
+      },
+      "sha256": "c51c09a7a4710e59a911ff2fec3a02a69d01bfde703fb94f317e1a2cdeb96ff7"
+    },
+    {
+      "lecture": "4.1",
+      "name": "4.1-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_1_2_set0.m",
+      "expectedFile": "outputs/P4/fig_4_1_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "Rm": 200,
+        "M": 0.1,
+        "D": 100000
+      },
+      "sha256": "fa4e5ea941c1fae337480489b2fb29c4d636fde7918f41a8433d5734b80d42c6"
+    },
+    {
+      "lecture": "4.1",
+      "name": "4.1-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_1_2_set1.m",
+      "expectedFile": "outputs/P4/fig_4_1_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.056,
+        "v": 0.01,
+        "Rm": 230,
+        "M": 0.1,
+        "D": 100000
+      },
+      "sha256": "7746924929936e106b933dbb8ef923ffbaff3636ef60a2f62d2ca66ccfdb9104"
+    },
+    {
+      "lecture": "4.1",
+      "name": "4.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_1_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_1_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "Rm": 200,
+        "M": 0.1,
+        "D": 100000
+      },
+      "sha256": "fd59a5cdf253cdb0f1991a7ad2821c6ea5958232a18a7b696fba2b1ef626672b"
+    },
+    {
+      "lecture": "4.1",
+      "name": "4.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_1_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_1_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.056,
+        "v": 0.011,
+        "Rm": 230,
+        "M": 0.1,
+        "D": 100000
+      },
+      "sha256": "2d53f2c4026b1fdc23b75cbf1a83501243d679aaf2374434d07f82f710bdb6e4"
+    },
+    {
+      "lecture": "4.2.1",
+      "name": "4.2.1-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_1_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_1_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "r": 2
+      },
+      "sha256": "7765e323e7a517dba4d7ddb1faf8c4d35c9e1d66af1dcec5a0c09c94283f89cd"
+    },
+    {
+      "lecture": "4.2.1",
+      "name": "4.2.1-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_1_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_1_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.056,
+        "v": 0.011,
+        "r": 2
+      },
+      "sha256": "863766719b85338556567742a13d7068fd09f8af89e28359a82b7d8d615cd2c3"
+    },
+    {
+      "lecture": "4.2.1",
+      "name": "4.2.1-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_1_2_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_1_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "r": 2
+      },
+      "sha256": "88db85d8a737b45002931bcb3ded075f1f4a4792069cefa7c2b5f4e50fc35822"
+    },
+    {
+      "lecture": "4.2.1",
+      "name": "4.2.1-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_1_2_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_1_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.056,
+        "v": 0.011,
+        "r": 2
+      },
+      "sha256": "c9b13234ef38c4a40f07c8c790d8ba0ba626fb6c9a3f68ec287dbb3a523d177d"
+    },
+    {
+      "lecture": "4.2.1",
+      "name": "4.2.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_1_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_1_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "r": 2
+      },
+      "sha256": "ddbc53f002c011ff3f76271129077d49b88c1b08c82eab1af5335d9e972e93f5"
+    },
+    {
+      "lecture": "4.2.1",
+      "name": "4.2.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_1_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_1_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.056,
+        "v": 0.011,
+        "r": 2.3000000000000003
+      },
+      "sha256": "ac9cba471b18bd7dbfe4fee382cddc80c0bb2a7e20a60e69a454e416fbb6dc00"
+    },
+    {
+      "lecture": "4.2.2",
+      "name": "4.2.2-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_2_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_2_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01
+      },
+      "sha256": "67750078c0ffe8d98177870feec15053ad8b5ab16b486259e22f9d93103a97f9"
+    },
+    {
+      "lecture": "4.2.2",
+      "name": "4.2.2-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_2_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_2_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.056,
+        "v": 0.011
+      },
+      "sha256": "a39b403034d14e8dda066ba6a56a9217831c70d9c23e4683c9bee9522a9983cc"
+    },
+    {
+      "lecture": "4.2.2",
+      "name": "4.2.2-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_2_2_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_2_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01
+      },
+      "sha256": "ef62155ebb3143c1240e13c8cd18dc927d1f7f048704b4fcbe7a026b62ecf9f1"
+    },
+    {
+      "lecture": "4.2.2",
+      "name": "4.2.2-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_2_2_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_2_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.056,
+        "v": 0.011
+      },
+      "sha256": "a2703ddd616d2962dbd106e8b46a8f79052dfcfbcd1422cfa7ada7a7c4cf2ade"
+    },
+    {
+      "lecture": "4.2.2",
+      "name": "4.2.2-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_2_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_2_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01
+      },
+      "sha256": "6176aef71cac4014e85b3b9f09ff8f5104a3bf128ba41120613422578fee301e"
+    },
+    {
+      "lecture": "4.2.2",
+      "name": "4.2.2-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_2_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_2_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.056,
+        "v": 0.011
+      },
+      "sha256": "5620c50ad8ba7a216a62bd664dd1acae1d4186e8ae6471fe3d65c2e4bc580eb1"
+    },
+    {
+      "lecture": "4.2.3",
+      "name": "4.2.3-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_3_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_3_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "N": 4,
+        "d": 0.15,
+        "Q": 0.00001,
+        "r": 5
+      },
+      "sha256": "655886046b9019c729c8dfbdd9f6645a29901f296ef03e35ba17827c4ef8323f"
+    },
+    {
+      "lecture": "4.2.3",
+      "name": "4.2.3-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_3_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_3_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.05,
+        "v": 0.01,
+        "N": 5,
+        "d": 0.16999999999999998,
+        "Q": 0.000011,
+        "r": 5
+      },
+      "sha256": "b651877a9d1c17daefeebea082d2e8fcc5130d3581037fd845276cfb77a15ded"
+    },
+    {
+      "lecture": "4.2.3",
+      "name": "4.2.3-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_3_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_2_3_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "N": 4,
+        "d": 0.15,
+        "Q": 0.00001,
+        "r": 5
+      },
+      "sha256": "3e858adba04082396e1985c7b68d3cbf74273c0c41901414f15f38fb210d4d74"
+    },
+    {
+      "lecture": "4.2.3",
+      "name": "4.2.3-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_2_3_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_2_3_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.05,
+        "v": 0.01,
+        "N": 5,
+        "d": 0.16999999999999998,
+        "Q": 0.000011,
+        "r": 5
+      },
+      "sha256": "032d0dea4314d18dddc7ed9613d1ddbd2c8dec674071a94d221e85fe195de847"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_3_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.02,
+        "Q": 0.00001,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "4cc86f97fb9da35c16f9d89fe5aa564b1038774f7bf48a818008ac86deb08490"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_3_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.023,
+        "Q": 0.000011,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "a5df232d7827cbb0d730c308d387ae95175c68a7fca152216b476f25ad5ae44d"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_2_set0.m",
+      "expectedFile": "outputs/P4/fig_4_3_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.02,
+        "Q": 0.00001,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "f61eb3a21c9774c1b357724838e00df2359b817a280a95585c405cc6835ef92a"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_2_set1.m",
+      "expectedFile": "outputs/P4/fig_4_3_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.023,
+        "Q": 0.000011,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "25877576621740ef0f7ebbe0332f3669ef69dae3bc27d6979253308faddd00ab"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-3",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_3_set0.m",
+      "expectedFile": "outputs/P4/fig_4_3_3_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.02,
+        "Q": 0.00001,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "878b0fde4e4f04757942afc4fb947155e9bdafd921d67c235c103c04efe1f9b4"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-3",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_3_set1.m",
+      "expectedFile": "outputs/P4/fig_4_3_3_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.023,
+        "Q": 0.000011,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "f0e13a2865814efab42045abd9b9472fb4eda23ff2f1fae09d46574f1ea41481"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_3_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.02,
+        "Q": 0.00001,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "fb7b3c21afa888f9dfcb164d7dfa95b9f297262aa621b878f181355c7c2c2ea7"
+    },
+    {
+      "lecture": "4.3",
+      "name": "4.3-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_3_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_3_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.05,
+        "v": 0.01,
+        "d": 0.023,
+        "Q": 0.000011,
+        "r": 10,
+        "theta": 30
+      },
+      "sha256": "1b889726d81caa36877c9b22a002b2e6f4d6991c677544b44b73aaa6a69dd360"
+    },
+    {
+      "lecture": "4.4.1",
+      "name": "4.4.1-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_1_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_1_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.5,
+        "v": 0.01,
+        "N": 16,
+        "xobs": 0.25,
+        "yobs": 0.1
+      },
+      "sha256": "9b4543426eacd64a59be0482ceb1abdd26212a06c9ed87c38488f822fd981302"
+    },
+    {
+      "lecture": "4.4.1",
+      "name": "4.4.1-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_1_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_1_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.55,
+        "v": 0.01,
+        "N": 16,
+        "xobs": 0.25,
+        "yobs": 0.1
+      },
+      "sha256": "3c7156832fe7e923e4c6a01ee9643126b8afb867028d3e2269fabbed570d4294"
+    },
+    {
+      "lecture": "4.4.1",
+      "name": "4.4.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_1_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_1_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.5,
+        "v": 0.01,
+        "N": 16,
+        "xobs": 0.25,
+        "yobs": 0.1
+      },
+      "sha256": "397533125534d69369660f54682af95d5a01e209b2cddfd55d5e34b1368c2bba"
+    },
+    {
+      "lecture": "4.4.1",
+      "name": "4.4.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_1_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_1_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.55,
+        "v": 0.01,
+        "N": 16,
+        "xobs": 0.25,
+        "yobs": 0.1
+      },
+      "sha256": "24e8d33309773612759de4ed66ce23c264e6bec7215a63b64acfc8680769bfc6"
+    },
+    {
+      "lecture": "4.4.2",
+      "name": "4.4.2-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_2_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_2_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.5,
+        "v": 0.01,
+        "N": 32,
+        "r": 1.5
+      },
+      "sha256": "25e8da233da9c7fa9acb5498ee7b85b17b1b817bbf42d179b26859a5190cdd97"
+    },
+    {
+      "lecture": "4.4.2",
+      "name": "4.4.2-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_2_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_2_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.55,
+        "v": 0.01,
+        "N": 40,
+        "r": 1.5
+      },
+      "sha256": "e8aab2012954a6a28143c86818dd07b200948288d214e59f6a1e709b3b869cd3"
+    },
+    {
+      "lecture": "4.4.2",
+      "name": "4.4.2-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_2_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_2_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.5,
+        "v": 0.01,
+        "N": 32,
+        "r": 1.5
+      },
+      "sha256": "fcbcc10a0b54acc3bc1496c520eccab1feaed3400dc3d393113abf1613652abd"
+    },
+    {
+      "lecture": "4.4.2",
+      "name": "4.4.2-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_2_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_2_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.55,
+        "v": 0.01,
+        "N": 40,
+        "r": 1.5
+      },
+      "sha256": "b64562687fc89a650062ca8b8d8392bb28226f23f84c9ec2bfc8312865fc9201"
+    },
+    {
+      "lecture": "4.4.3",
+      "name": "4.4.3-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_3_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_3_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01
+      },
+      "sha256": "51f75a8c254fe0be0049c316f8ecccb41c4fe9024e9a4a02c5a8ad96d394e2d7"
+    },
+    {
+      "lecture": "4.4.3",
+      "name": "4.4.3-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_3_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_3_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.056,
+        "v": 0.01
+      },
+      "sha256": "075681642500acea02e4886e72821b71c494e3cdc04d7c2a6d000432d9fc98da"
+    },
+    {
+      "lecture": "4.4.3",
+      "name": "4.4.3-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_3_2_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_3_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01
+      },
+      "sha256": "33850e785ed3d96a9dc998bb7b36f09761d0f1d45abfddcea6374cb16da11a9c"
+    },
+    {
+      "lecture": "4.4.3",
+      "name": "4.4.3-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_3_2_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_3_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.056,
+        "v": 0.01
+      },
+      "sha256": "02b9a2bcf7305879c525813382f2785bcaa7e0dfc47e0a4f21b67f4de0a44322"
+    },
+    {
+      "lecture": "4.4.3",
+      "name": "4.4.3-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_3_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_3_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01
+      },
+      "sha256": "f384e9aebc19712700bff87352ce613a2da37ca0bec0024e06bd431501bae638"
+    },
+    {
+      "lecture": "4.4.3",
+      "name": "4.4.3-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_3_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_3_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.056,
+        "v": 0.01
+      },
+      "sha256": "c781b50674bd8af0670797145a72e928f36f511a656b7a6c777da0566ca1218b"
+    },
+    {
+      "lecture": "4.4.4",
+      "name": "4.4.4-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_4_1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_4_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01,
+        "zobs": 1
+      },
+      "sha256": "747ee6a801b6c2a89b48c9b885058f3802aabc74bade55aa1b90382f5e3ccd15"
+    },
+    {
+      "lecture": "4.4.4",
+      "name": "4.4.4-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_4_1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_4_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.056,
+        "v": 0.011,
+        "zobs": 1
+      },
+      "sha256": "9aae6b6bfcfdfdffdc4cb1a5160b2de0772cb17a61cceeb8d0adac885b17025f"
+    },
+    {
+      "lecture": "4.4.4",
+      "name": "4.4.4-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_4_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_4_4_4_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01,
+        "zobs": 1
+      },
+      "sha256": "cf7490b6395e9e144c0902b565f0184b7e3cd2b1b1a0d0effc2371a603909db5"
+    },
+    {
+      "lecture": "4.4.4",
+      "name": "4.4.4-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_4_4_4_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_4_4_4_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.056,
+        "v": 0.011,
+        "zobs": 1
+      },
+      "sha256": "a1167e0c766dd3163a5c03692b912a95d917304eb2e2aef815291895fc034fc9"
+    },
+    {
+      "lecture": "5.1",
+      "name": "5.1-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_1_1_set0.m",
+      "expectedFile": "outputs/P4/fig_5_1_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 3000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1
+      },
+      "sha256": "710959dbda23b843cabab18aa974d8ade70d6518f1acad1feb57ca1b03ea3966"
+    },
+    {
+      "lecture": "5.1",
+      "name": "5.1-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_1_1_set1.m",
+      "expectedFile": "outputs/P4/fig_5_1_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 3400,
+        "a": 0.05600000000000001,
+        "v": 0.01,
+        "pa": 1.1
+      },
+      "sha256": "785de8e1cc74f60db85f6623ae39258097ab6d19f7fb552b003f7633b97fd8d1"
+    },
+    {
+      "lecture": "5.1",
+      "name": "5.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_1_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_5_1_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 3000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1
+      },
+      "sha256": "1c03912ea0bfbec175346a3cc23d3a37f7812174252c513751208142a87cc0d0"
+    },
+    {
+      "lecture": "5.1",
+      "name": "5.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_1_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_5_1_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 3400,
+        "a": 0.05600000000000001,
+        "v": 0.01,
+        "pa": 1.1
+      },
+      "sha256": "6ad6c4f4d84ec4ff5fe2fe45b643bf248588f5bc257fa41992b3a99f8f6d21e1"
+    },
+    {
+      "lecture": "5.2",
+      "name": "5.2-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_2_1_set0.m",
+      "expectedFile": "outputs/P4/fig_5_2_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1
+      },
+      "sha256": "7f6e02ede1b9ac1d9829f588605b57d7725b22259c52e6462d811c69a22d72f7"
+    },
+    {
+      "lecture": "5.2",
+      "name": "5.2-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_2_1_set1.m",
+      "expectedFile": "outputs/P4/fig_5_2_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.056,
+        "v": 0.01,
+        "pa": 1
+      },
+      "sha256": "96559749d32c55677e20ea71f08617165adb8f980a1b08c73ca171d8a805beab"
+    },
+    {
+      "lecture": "5.2",
+      "name": "5.2-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_2_2_set0.m",
+      "expectedFile": "outputs/P4/fig_5_2_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1
+      },
+      "sha256": "cdcb27f22e3a98c4a130b4c0702c3e6d12aadb528c9bd47a77441c996b9f1422"
+    },
+    {
+      "lecture": "5.2",
+      "name": "5.2-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_2_2_set1.m",
+      "expectedFile": "outputs/P4/fig_5_2_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.056,
+        "v": 0.01,
+        "pa": 1
+      },
+      "sha256": "2703bd1fe60a0b80275ed8658d02ef2ea3c0fa0fb45492dee97278b9da02fdf3"
+    },
+    {
+      "lecture": "5.2",
+      "name": "5.2-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_2_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_5_2_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1
+      },
+      "sha256": "9d3ecd3a28859cacc35324703fb801f1f6fe96190801dddf1df116437a51d8dc"
+    },
+    {
+      "lecture": "5.2",
+      "name": "5.2-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_2_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_5_2_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.056,
+        "v": 0.01,
+        "pa": 1.1
+      },
+      "sha256": "bab37ca16231d50d3f41c0cd053022281c4ae849928a542bde5c8349bcb6c361"
+    },
+    {
+      "lecture": "5.3",
+      "name": "5.3-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_3_1_set0.m",
+      "expectedFile": "outputs/P4/fig_5_3_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1,
+        "r": 5,
+        "theta": 180
+      },
+      "sha256": "fb6ffbb89507013bcd7eb3f7e91d46bb5771b06fbfc5747de9d18e6308e20f29"
+    },
+    {
+      "lecture": "5.3",
+      "name": "5.3-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_3_1_set1.m",
+      "expectedFile": "outputs/P4/fig_5_3_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.05600000000000001,
+        "v": 0.01,
+        "pa": 1.1,
+        "r": 5,
+        "theta": 180
+      },
+      "sha256": "8ffa2e9f85c69ded849bba21b966788d82a717a997132fb5be1b173474f96a73"
+    },
+    {
+      "lecture": "5.3",
+      "name": "5.3-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_3_2_set0.m",
+      "expectedFile": "outputs/P4/fig_5_3_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1,
+        "r": 5,
+        "theta": 180
+      },
+      "sha256": "5c4236f8a74d25d76791e38c03c688cbd159c106c6f8531eae5d4e6355084ee6"
+    },
+    {
+      "lecture": "5.3",
+      "name": "5.3-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_3_2_set1.m",
+      "expectedFile": "outputs/P4/fig_5_3_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.05600000000000001,
+        "v": 0.01,
+        "pa": 1.1,
+        "r": 5,
+        "theta": 180
+      },
+      "sha256": "11340caec2b6e9103f151bb05c25a21d383983b1443e631d91663f1b1c98f6e4"
+    },
+    {
+      "lecture": "5.3",
+      "name": "5.3-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_5_3_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_5_3_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5000,
+        "a": 0.05,
+        "v": 0.01,
+        "pa": 1,
+        "r": 5,
+        "theta": 180
+      },
+      "sha256": "7fc0bf5db9c35d4daddfe9e8db3de6c62fba1173805f09bc8e8a2446e450363e"
+    },
+    {
+      "lecture": "5.3",
+      "name": "5.3-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_5_3_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_5_3_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 5600,
+        "a": 0.05600000000000001,
+        "v": 0.01,
+        "pa": 1.1,
+        "r": 5,
+        "theta": 180
+      },
+      "sha256": "a2d7cd45569f29f18afbbc4d2a924fe918353f99a99119d437cb2a57317a7d62"
+    },
+    {
+      "lecture": "6.1",
+      "name": "6.1-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_6_1_1_set0.m",
+      "expectedFile": "outputs/P4/fig_6_1_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 500,
+        "a": 0.05,
+        "v": 0.01,
+        "criterion": 0.99
+      },
+      "sha256": "696bc59bdf285480b9a5d329030a58133f1c6f6386a8833f82b017c897f86fb8"
+    },
+    {
+      "lecture": "6.1",
+      "name": "6.1-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_6_1_1_set1.m",
+      "expectedFile": "outputs/P4/fig_6_1_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 600,
+        "a": 0.0425,
+        "v": 0.01,
+        "criterion": 0.99
+      },
+      "sha256": "b89ce461a610369e89742a97431300d9a5611ecd46135e66a18cfa38da9f94af"
+    },
+    {
+      "lecture": "6.1",
+      "name": "6.1-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_6_1_2_set0.m",
+      "expectedFile": "outputs/P4/fig_6_1_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 500,
+        "a": 0.05,
+        "v": 0.01,
+        "criterion": 0.99
+      },
+      "sha256": "c8e28170e776bfc73f5b6ea10891cdbbab1f4348e92f37155865352fc01dc89a"
+    },
+    {
+      "lecture": "6.1",
+      "name": "6.1-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_6_1_2_set1.m",
+      "expectedFile": "outputs/P4/fig_6_1_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 600,
+        "a": 0.0425,
+        "v": 0.01,
+        "criterion": 0.99
+      },
+      "sha256": "2b9c4f3776970cef6f3964c592734a52cc85063ceab9e9e9c3e927c5559fc3f3"
+    },
+    {
+      "lecture": "6.1",
+      "name": "6.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_6_1_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_6_1_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 20000,
+        "a": 0.005,
+        "v": 0.01,
+        "criterion": 0.99
+      },
+      "sha256": "cfe2859875cb925abfdea6c454ee2353047dd5681a9c8166895d61ad395b626d"
+    },
+    {
+      "lecture": "6.1",
+      "name": "6.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_6_1_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_6_1_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 23000,
+        "a": 0.0055,
+        "v": 0.01,
+        "criterion": 0.99
+      },
+      "sha256": "2382714244556b4822f6bd9767d2cb48a60130b17e300b006411fab999cad55f"
+    },
+    {
+      "lecture": "6.2",
+      "name": "6.2-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_6_2_1_set0.m",
+      "expectedFile": "outputs/P4/fig_6_2_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3,
+        "yB": 2,
+        "Q": 0.00001
+      },
+      "sha256": "f12e57d522d0b3303099812efe8be24ca60953f56215d7dc13e349321ff2b133"
+    },
+    {
+      "lecture": "6.2",
+      "name": "6.2-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_6_2_1_set1.m",
+      "expectedFile": "outputs/P4/fig_6_2_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3.4000000000000004,
+        "yB": 2.3,
+        "Q": 0.000011
+      },
+      "sha256": "39f2ec497f41b9b3595b8b95290bba7fac7206c414d0e4fd34acbbfe8734a9bf"
+    },
+    {
+      "lecture": "6.2",
+      "name": "6.2-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_6_2_2_set0.m",
+      "expectedFile": "outputs/P4/fig_6_2_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3,
+        "yB": 2,
+        "Q": 0.00001
+      },
+      "sha256": "a511536215e94624ff27b7d2b7e4a8c280fe3750e93a6e1ae6bf7813d87fac30"
+    },
+    {
+      "lecture": "6.2",
+      "name": "6.2-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_6_2_2_set1.m",
+      "expectedFile": "outputs/P4/fig_6_2_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3.4000000000000004,
+        "yB": 2.3,
+        "Q": 0.000011
+      },
+      "sha256": "c595422da1efd93bf56434bf02c08ac7bf53b298a5db1673fb5ca5fdece4854f"
+    },
+    {
+      "lecture": "6.2",
+      "name": "6.2-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_6_2_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_6_2_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1000,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3,
+        "yB": 2,
+        "Q": 0.00001
+      },
+      "sha256": "df62d402ac99262bdfb0f429d0eb374307452791dc58a502c07c5793cb73868b"
+    },
+    {
+      "lecture": "6.2",
+      "name": "6.2-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_6_2_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_6_2_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 1100,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3.4000000000000004,
+        "yB": 2.3,
+        "Q": 0.000011
+      },
+      "sha256": "ae4bacc77e2e98f8704a15f35c0978b8a7f208c3d18f5fb51e1daa9938b5b833"
+    },
+    {
+      "lecture": "7.1",
+      "name": "7.1-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_1_1_set0.m",
+      "expectedFile": "outputs/P4/fig_7_1_1_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 500,
+        "pa": 1,
+        "alpha": 0.05,
+        "r": 1000
+      },
+      "sha256": "4148900cc8768f0210aa854968e3321ce897ccefbe142899c60f08196bf382a8"
+    },
+    {
+      "lecture": "7.1",
+      "name": "7.1-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_1_1_set1.m",
+      "expectedFile": "outputs/P4/fig_7_1_1_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 600,
+        "pa": 1.1,
+        "alpha": 0.05650000000000001,
+        "r": 1000
+      },
+      "sha256": "45601f9e6d3e77828454577aac6a95d70e9a1d50bdbff467b2bae3c5a8922a4c"
+    },
+    {
+      "lecture": "7.1",
+      "name": "7.1-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_1_2_set0.m",
+      "expectedFile": "outputs/P4/fig_7_1_2_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 500,
+        "pa": 1,
+        "alpha": 0.05,
+        "r": 1000
+      },
+      "sha256": "3203010e0b596f9921a975a0bf04c0d5516756db1ac3a6a9113a6ba424de76a5"
+    },
+    {
+      "lecture": "7.1",
+      "name": "7.1-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_1_2_set1.m",
+      "expectedFile": "outputs/P4/fig_7_1_2_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 600,
+        "pa": 1.1,
+        "alpha": 0.05650000000000001,
+        "r": 1000
+      },
+      "sha256": "08b27e4129b34a50711fb0db00c6631c99a3c9f6a96850efb3b08a76ba9803a8"
+    },
+    {
+      "lecture": "7.1",
+      "name": "7.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_1_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_7_1_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 500,
+        "pa": 1,
+        "alpha": 0.0001,
+        "r": 1000
+      },
+      "sha256": "46a652ed93bff7ef811541051086b5f805555eb2fefcbdad4fb12ffc0d231fbd"
+    },
+    {
+      "lecture": "7.1",
+      "name": "7.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_1_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_7_1_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 500,
+        "pa": 1.1,
+        "alpha": 0.00011,
+        "r": 1000
+      },
+      "sha256": "cefc219b38a26bcf9048fe29bfad27537e3a699abe77c3d6b7753ba2d6de6f80"
+    },
+    {
+      "lecture": "7.2",
+      "name": "7.2-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_2_1_set0.m",
+      "expectedFile": "outputs/P4/fig_7_2_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01,
+        "relaxTime": 0.00002,
+        "A": 1e-8,
+        "B": 5e-15,
+        "r": 1000,
+        "SL": 180
+      },
+      "sha256": "aacbfba3f41c0466d491aa89efd91da0a6829afea89678e6d64136c877fa179b"
+    },
+    {
+      "lecture": "7.2",
+      "name": "7.2-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_2_1_set1.m",
+      "expectedFile": "outputs/P4/fig_7_2_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.05,
+        "v": 0.01,
+        "relaxTime": 0.000023,
+        "A": 1.1000000000000001e-8,
+        "B": 6.000000000000001e-15,
+        "r": 1000,
+        "SL": 180
+      },
+      "sha256": "95374d025a8fe376503c28c2574b87883d5d8331826d7fbc379d22d9036412db"
+    },
+    {
+      "lecture": "7.2",
+      "name": "7.2-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_2_2_set0.m",
+      "expectedFile": "outputs/P4/fig_7_2_2_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01,
+        "relaxTime": 0.00002,
+        "A": 1e-8,
+        "B": 5e-15,
+        "r": 1000,
+        "SL": 180
+      },
+      "sha256": "a6d0169713ed7354112957ec66fde94d7df7655d093de06ef442f6ac0791700a"
+    },
+    {
+      "lecture": "7.2",
+      "name": "7.2-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_2_2_set1.m",
+      "expectedFile": "outputs/P4/fig_7_2_2_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.05,
+        "v": 0.01,
+        "relaxTime": 0.000023,
+        "A": 1.1000000000000001e-8,
+        "B": 6.000000000000001e-15,
+        "r": 1000,
+        "SL": 180
+      },
+      "sha256": "7ded6f01e7e4c58a514a0035d8797ee13c3e111df563e2db20ee26de67b58125"
+    },
+    {
+      "lecture": "7.2",
+      "name": "7.2-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_2_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_7_2_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "v": 0.01,
+        "relaxTime": 0.00002,
+        "A": 1e-8,
+        "B": 5e-15,
+        "r": 1000,
+        "SL": 180
+      },
+      "sha256": "e922f58ac0776e05751bf6d08236e09480c76928efe0664b4f8747d46c6ef277"
+    },
+    {
+      "lecture": "7.2",
+      "name": "7.2-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_2_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_7_2_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 56000,
+        "a": 0.05,
+        "v": 0.01,
+        "relaxTime": 0.00002,
+        "A": 1e-8,
+        "B": 5e-15,
+        "r": 1100,
+        "SL": 180
+      },
+      "sha256": "40668501a95b76f53bae1c7f6df2c69d460a6f8361141ad174cd7de06e7c3542"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_1_set0.m",
+      "expectedFile": "outputs/P4/fig_7_3_1_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "res": 1,
+        "react": 0,
+        "d": 0.05,
+        "sigma": 10000
+      },
+      "sha256": "5ffd010f21216f2ca2349a9e9b5b54a4bac9780bc70793b03030ad85cf84f16b"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_1_set1.m",
+      "expectedFile": "outputs/P4/fig_7_3_1_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1100,
+        "res": 1.1,
+        "react": 0,
+        "d": 0.05500000000000001,
+        "sigma": 11500
+      },
+      "sha256": "4c7be435327eb7129bdae82331dd0fbe045a927c387f295d6d2e9530becd4ee3"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_2_set0.m",
+      "expectedFile": "outputs/P4/fig_7_3_2_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "res": 1,
+        "react": 0,
+        "d": 0.05,
+        "sigma": 10000
+      },
+      "sha256": "ed32f8c02552609274f2437436e60f6ad725ef0d420d4d25e7ed8d9727c48c5f"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_2_set1.m",
+      "expectedFile": "outputs/P4/fig_7_3_2_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1100,
+        "res": 1.1,
+        "react": 0,
+        "d": 0.05500000000000001,
+        "sigma": 11500
+      },
+      "sha256": "417c6b52d1113e3e9b56b79b28f89a262fd27948864f38fbbfc33dfc185c6a1f"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-3",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_3_set0.m",
+      "expectedFile": "outputs/P4/fig_7_3_3_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "res": 1,
+        "react": 0,
+        "d": 0.05,
+        "sigma": 10000
+      },
+      "sha256": "8e3bc1901672e63df817ef3113f66bc0441cbe00ff1e59d59121bcbb35f2ba5d"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-3",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_3_set1.m",
+      "expectedFile": "outputs/P4/fig_7_3_3_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1100,
+        "res": 1.1,
+        "react": 0,
+        "d": 0.05500000000000001,
+        "sigma": 11500
+      },
+      "sha256": "b34f36e9e3895aa6fbc10069e514bc344bb9e5c575104e1aa3410dd9248256f5"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_E1_set0.m",
+      "expectedFile": "outputs/P4/fig_7_3_E1_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "res": 1,
+        "react": 0,
+        "d": 0.05,
+        "sigma": 10000
+      },
+      "sha256": "d24edd89cb24046e4733e0724c64a9224ad4edd1edc8051363a05331161d79e7"
+    },
+    {
+      "lecture": "7.3",
+      "name": "7.3-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P4/fig_7_3_E1_set1.m",
+      "expectedFile": "outputs/P4/fig_7_3_E1_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1100,
+        "res": 1,
+        "react": 0,
+        "d": 0.05500000000000001,
+        "sigma": 11500
+      },
+      "sha256": "c8f85bf80a5e1020d6355b1d7e76953850933f89ac947e58035c40a258e489d1"
+    }
+  ]
+}

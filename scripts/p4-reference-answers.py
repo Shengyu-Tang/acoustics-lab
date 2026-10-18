@@ -5,7 +5,7 @@ sys.path.insert(0,str(Path.cwd()/'outputs/python'))
 import mpmath as m
 m.mp.dps=45
 pi=m.pi
-inputs=json.loads(Path('outputs/P4/example-inputs.json').read_text(encoding='utf8'))
+inputs=json.loads(Path('specs/redesign/P4-example-inputs.json').read_text(encoding='utf8'))
 def H(n,x):return m.besselj(n,x)-1j*m.bessely(n,x)
 def cyl(ka,kr,th,soft=False):
  total=0
@@ -82,7 +82,6 @@ for item in inputs:
  else:raise ValueError(id)
  refs[id]=[float(ans[x['key']]) for x in item['answers']]
  for x,e in zip(item['answers'],refs[id]):
-  assert abs(x['value']-e)<=max(1e-10,.005*abs(e)),(id,x,e)
+  assert abs(x['value']-e)<max(1e-30,.0049*abs(e)),(id,x,e)
 Path('scripts/p4-reference-answers.json').write_text(json.dumps(refs,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 print('PASS: 17 lectures,',sum(map(len,refs.values())),'independent 45-digit example answers <0.5%.')
-

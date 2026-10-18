@@ -1,0 +1,329 @@
+{
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "report": [
+    {
+      "id": "4.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.2.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.2.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "3/3",
+      "reactivity": true
+    },
+    {
+      "id": "4.2.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "4/4",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.4",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "4/4",
+      "reactivity": true
+    },
+    {
+      "id": "5.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "5.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "5.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "6.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "6.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "7.1",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "3/3",
+      "reactivity": true
+    },
+    {
+      "id": "7.2",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 3,
+      "grading": "3/3",
+      "reactivity": true
+    },
+    {
+      "id": "7.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 4,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.2.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.2.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "3/3",
+      "reactivity": true
+    },
+    {
+      "id": "4.2.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "4/4",
+      "reactivity": true
+    },
+    {
+      "id": "4.4.4",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "4/4",
+      "reactivity": true
+    },
+    {
+      "id": "5.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 2,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "5.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "5.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "6.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "6.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "7.1",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "3/3",
+      "reactivity": true
+    },
+    {
+      "id": "7.2",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 3,
+      "grading": "3/3",
+      "reactivity": true
+    },
+    {
+      "id": "7.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 4,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.3",
+      "size": "desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "figures": 4,
+      "grading": "2/2",
+      "reactivity": true
+    },
+    {
+      "id": "4.3",
+      "size": "mobile",
+      "width": 390,
+      "scroll": 390,
+      "figures": 4,
+      "grading": "2/2",
+      "reactivity": true
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "all graded answers",
+    "reactive solutions",
+    "editable MATLAB downloads",
+    "selectors",
+    "single-step animations",
+    "P4 physical coordinates and mode selectors"
+  ]
+}

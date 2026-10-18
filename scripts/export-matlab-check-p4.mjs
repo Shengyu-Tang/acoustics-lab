@@ -6,6 +6,21 @@ import { models } from "./p4-models.mjs";
 const { lectures, matlab } = await models(),
   folder = "specs/redesign/matlab-check/P4";
 fs.mkdirSync(folder, { recursive: true });
+fs.writeFileSync(
+  "specs/redesign/P4-example-inputs.json",
+  JSON.stringify(
+    lectures.map((l) => ({
+      id: l.id,
+      p: l.examples[0].defaults,
+      answers: l.examples[0].asks.map((a) => ({
+        key: a.key,
+        value: a.calc(l.examples[0].defaults),
+      })),
+    })),
+    null,
+    2,
+  ) + "\n",
+);
 const jobs = [];
 for (const l of lectures) {
   const entries = [

@@ -122,26 +122,56 @@ export default makeLecture("4.3", {
           graph(
             p,
             0,
-            "三维双瓣指向性的经线投影",
+            "三维双瓣指向性的等轴测网格投影",
             "横向投影",
             "轴向投影",
             [-1, 1],
             [-1, 1],
-            Array.from({ length: 7 }, (_, j) => {
-              const phi = (j * Math.PI) / 6;
-              return points(
-                "方位角 " + Math.round((phi * 180) / Math.PI) + "°",
-                Array.from({ length: 181 }, (_, i) => {
-                  const th = (i * Math.PI) / 180,
-                    r = Math.abs(Math.cos(th));
-                  return [r * Math.sin(th) * Math.cos(phi), r * Math.cos(th)];
-                }),
-                "abs(cos(qth)).*sin(qth)*cos(" + phi + ")",
-                "abs(cos(qth)).*cos(qth)",
-                { legend: false },
-              );
-            }),
-            "qth=linspace(0,pi,181);",
+            [
+              ...Array.from({ length: 12 }, (_, j) => {
+                const phi = (j * Math.PI) / 6;
+                return points(
+                  "方位角 " + Math.round((phi * 180) / Math.PI) + "°",
+                  Array.from({ length: 181 }, (_, i) => {
+                    const th = (i * Math.PI) / 180,
+                      r = Math.abs(Math.cos(th));
+                    return [
+                      (r * Math.sin(th) * (Math.cos(phi) - Math.sin(phi))) / Math.sqrt(2),
+                      (r * Math.sin(th) * (Math.cos(phi) + Math.sin(phi))) / Math.sqrt(6) +
+                        Math.sqrt(2 / 3) * r * Math.cos(th),
+                    ];
+                  }),
+                  "abs(cos(qth)).*sin(qth)*(cos(" + phi + ")-sin(" + phi + "))/sqrt(2)",
+                  "abs(cos(qth)).*sin(qth)*(cos(" +
+                    phi +
+                    ")+sin(" +
+                    phi +
+                    "))/sqrt(6)+sqrt(2/3)*abs(cos(qth)).*cos(qth)",
+                  { legend: false, color: "#0072bd" },
+                );
+              }),
+              ...[15, 30, 45, 60, 120, 135, 150, 165].map((angle) => {
+                const th = (angle * Math.PI) / 180,
+                  r = Math.abs(Math.cos(th));
+                return points(
+                  "极角 " + angle + "°",
+                  Array.from({ length: 181 }, (_, i) => {
+                    const phi = (i * Math.PI) / 90;
+                    return [
+                      (r * Math.sin(th) * (Math.cos(phi) - Math.sin(phi))) / Math.sqrt(2),
+                      (r * Math.sin(th) * (Math.cos(phi) + Math.sin(phi))) / Math.sqrt(6) +
+                        Math.sqrt(2 / 3) * r * Math.cos(th),
+                    ];
+                  }),
+                  r * Math.sin(th) + "*(cos(qphi)-sin(qphi))/sqrt(2)",
+                  r * Math.sin(th) +
+                    "*(cos(qphi)+sin(qphi))/sqrt(6)+" +
+                    Math.sqrt(2 / 3) * r * Math.cos(th),
+                  { legend: false, color: "#0072bd" },
+                );
+              }),
+            ],
+            "qth=linspace(0,pi,181);qphi=linspace(0,2*pi,181);",
             { equalAspect: true, legend: false },
           ),
         ],

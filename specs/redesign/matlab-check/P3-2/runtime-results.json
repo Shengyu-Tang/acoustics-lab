@@ -1,0 +1,242 @@
+{
+  "oneProcessPerScript": true,
+  "matlab": "R2024b",
+  "jobs": 26,
+  "results": [
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_1_1_5_E1_set0.m",
+      "sha256": "2bdef8d083f3d8e2ba6fe0645389fcaa5f39250b97bf777c985748b74b87022f",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 15.007,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_1_1_5_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_1_1_3_E1_set0.m",
+      "sha256": "4cbcf67e6273466b45b2171cfe1dc1725933458eb1739278ccc8e7732822f440",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 15.769,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_1_1_3_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_1_1_3_E1_set1.m",
+      "sha256": "8dab5a64cba5aaa69db6ebdda7a0b4a4391dd635d7c3dc5b9db9d55846653205",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 15.916,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_1_1_3_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_1_1_5_E1_set1.m",
+      "sha256": "30563bb83cb8df9deb4b2486268e42204f1fb34fa6ce5b411540c1ca47db1e5a",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 13.416,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_1_1_5_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_1_2_2_E1_set0.m",
+      "sha256": "25bd63a80d60321d102fd7192e769c160b265de08fb9c98eaab9b09b56764f56",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 16.468,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_1_2_2_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_1_2_2_E1_set1.m",
+      "sha256": "bfc54d0fe05f751156aa82ffcc09aa58c695192a8ac32e5baf23e805bb49499d",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 19.486,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_1_2_2_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_2_1_E1_set0.m",
+      "sha256": "436e9112aff708f0174c4bebeb26cd9d68d164d5f7e8987721b7fb28befe2604",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 13.276,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_2_1_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_2_2_E1_set0.m",
+      "sha256": "badd6ec91d6e187358a0321346f3befa149c1502ccf3b4b4b9430ede0ca8bdb5",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 13.925,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_2_2_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_2_1_E1_set1.m",
+      "sha256": "806ea9395b86008db7149d54e6d3296fac86760312b2b3c88c6f6e63c85575c2",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 14.202,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_2_1_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_2_2_E1_set1.m",
+      "sha256": "7ba999ffe24186e447ede9a937f5ea29fe72a055d08e2b7089aaeae1c99cad8f",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 11.259,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_2_2_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_3_3_E1_set0.m",
+      "sha256": "4421cfd6bfe2549bf2b531b028dcddadee4265cc210028b633b365df737918ad",
+      "passed": true,
+      "error": "",
+      "worst": 1.251928832280966e-16,
+      "elapsedSeconds": 15.755,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_3_3_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_1_1_E1_set1.m",
+      "sha256": "ae4a22afc81d0b4b5b9a36b426bfdb568cc6203d26da93b42bcaa346333d77b6",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 15.895,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_1_1_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_1_1_E1_set0.m",
+      "sha256": "053941a5cc66881459e110c0d3d73bf40fedbf0de85424d989a71191ad6ca003",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 16.202,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_1_1_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_4_2_E1_set0.m",
+      "sha256": "a155d32d97d87ad7ba781509d3d07175d128df200b28f284949969d6e94f3c46",
+      "passed": true,
+      "error": "",
+      "worst": 1.7763568394002505e-15,
+      "elapsedSeconds": 14.505,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_4_2_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_3_3_E1_set1.m",
+      "sha256": "b01ba0e9c515746e64f5cce44891a5e1cf51186cf2ddcb505df9b96d371a65c0",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 14.649,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_3_3_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_4_2_E1_set1.m",
+      "sha256": "77996762355e70f2b0ea66fe44f706e5d8371669a407d047cb0412a76ce5982d",
+      "passed": true,
+      "error": "",
+      "worst": 1.7763568394002505e-15,
+      "elapsedSeconds": 14.971,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_4_2_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_4_3_E1_set0.m",
+      "sha256": "6fe2d458bc376b42e6472f0c266fc2d90416bb746180834f06dfa35e27741185",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 14.309,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_4_3_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_4_3_E1_set1.m",
+      "sha256": "b38c4ff30290ae7ba55b174cb4e157fa507405e7584affc2a519a7e3bcb81824",
+      "passed": true,
+      "error": "",
+      "worst": 3.4457300294304933e-16,
+      "elapsedSeconds": 14.603,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_4_3_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_6_10_E1_set0.m",
+      "sha256": "198002fef7f4fd674040bf67e645093ab32ef03f5a441dd9aa5fa40ca2a1615e",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 14.302,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_6_10_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_6_10_E1_set1.m",
+      "sha256": "ee969e6491f48674a990dfb0363f5f008812754792870e9aad1aa5bbc9361d8e",
+      "passed": true,
+      "error": "",
+      "worst": 0,
+      "elapsedSeconds": 14.67,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_6_10_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_6_11_E1_set1.m",
+      "sha256": "1378c06e860fb4b3519bcd63e712c483c5d8d4947fb5d735a6f4ce3f6554204f",
+      "passed": true,
+      "error": "",
+      "worst": 5.084664390433656e-15,
+      "elapsedSeconds": 14.087,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_6_11_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_6_11_E1_set0.m",
+      "sha256": "ce67ca5d2a4955b01d410734201dab35b18386c176bc1ba6117e08c98e36b6cd",
+      "passed": true,
+      "error": "",
+      "worst": 1.5330982481707561e-15,
+      "elapsedSeconds": 14.687,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_6_11_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_7_1_E1_set0.m",
+      "sha256": "e73792a544ef261483a6ef52b83e3d4e25d11fedfe197bf33b254a679a80f7bf",
+      "passed": true,
+      "error": "",
+      "worst": 2.8459828127831167e-16,
+      "elapsedSeconds": 14.103,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_7_1_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_6_12_E1_set1.m",
+      "sha256": "067d371bd945062ae907fa2e7e17a728c48e86589290d3e6589fe4d67ca23c00",
+      "passed": true,
+      "error": "",
+      "worst": 2.0003530082357553e-15,
+      "elapsedSeconds": 14.75,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_6_12_E1_set1.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_6_12_E1_set0.m",
+      "sha256": "08a2310ffb4e6809c9cb6b32dd4918ae09a22d1a53e85243bf7c508cba3ca2b7",
+      "passed": true,
+      "error": "",
+      "worst": 1.8359156787421203e-15,
+      "elapsedSeconds": 15.715,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_6_12_E1_set0.png"
+    },
+    {
+      "file": "specs/redesign/matlab-check/P3-2/fig_3_7_1_E1_set1.m",
+      "sha256": "550142ba0b8bc5dc52d6be5bc36d5282ca30ca2e7598a43765b1bf8c808b26b2",
+      "passed": true,
+      "error": "",
+      "worst": 3.10512059619306e-16,
+      "elapsedSeconds": 10.778,
+      "png": "E:\\tangsy-D\\08教学任务\\07-教学评估\\2026年教学评估\\acoustics-redesign\\specs\\redesign\\matlab-check\\P3-2\\fig_3_7_1_E1_set1.png"
+    }
+  ],
+  "errors": []
+}
