@@ -1,6 +1,8 @@
 ﻿import assert from "node:assert/strict";
 import fs from "node:fs";
 import { build } from "esbuild";
+import { programmingNotation } from "./solution-notation.mjs";
+import { secondSet } from "./p5-parameter-sets.mjs";
 const files = fs.readdirSync("src/content/lectures").filter((f) => f.endsWith(".ts"));
 fs.mkdirSync("outputs", { recursive: true });
 await build({
@@ -13,7 +15,7 @@ await build({
       "export {default as Home} from './src/Home';" +
       "export {default as P1Lecture} from './src/P1Lecture';export {default as SampleLecture} from './src/SampleLecture';" +
       "export {example as instrument} from './src/content/examples/instrument';export {bandwidthExample as bandwidth} from './src/content/examples/bandwidth';" +
-      "export {Axes} from './src/plot/Figure';export {matlab} from './src/plot/export';export {engineeringCases} from './src/content/cases';",
+      "export {Axes} from './src/plot/Figure';export {matlab} from './src/plot/export';export {engineeringCases} from './src/content/cases';export {EngineeringWorksheet} from './src/EngineeringCase';",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -30,6 +32,58 @@ const { renderToStaticMarkup: render } = await import("react-dom/server");
 const lectures = files.map((_, i) => all[`l${i}`]);
 let strings = 0;
 const issues = [];
+// Check the actual reference-solution markup, including bespoke sample worksheets.
+// MATLAB expression strings are deliberately outside this rendered-text contract.
+function checkSolution(html, name) {
+  const solutions = [...html.matchAll(/<div class="solution-content">([\s\S]*?)<\/details>/g)];
+  assert.ok(solutions.length, `${name}: reference solution rendered`);
+  for (const [, content] of solutions) {
+    const text = content
+      .replace(/<annotation\b[^>]*>[\s\S]*?<\/annotation>/g, "")
+      .replace(/<[^>]+>/g, "")
+      .replace(/&#(?:x([a-f\d]+)|(\d+));/gi, (_, hex, dec) =>
+        String.fromCodePoint(parseInt(hex ?? dec, hex ? 16 : 10)),
+      );
+    const bad = text.match(programmingNotation);
+    if (bad) issues.push(`${name}: programming notation in rendered solution: ${bad.join(", ")}`);
+  }
+}
+for (const code of [
+  "hypot(1,2)",
+  "hypot[1,2]",
+  "sqrt(2)",
+  "abs(-2)",
+  "exp(-1)",
+  "log10(2)",
+  "atan2(1,2)",
+  "Math.PI",
+  "2**3",
+]) {
+  assert.ok(code.match(programmingNotation), `${code}: programming notation detected`);
+}
+let solutionSets = 0;
+function checkSolutionVariants(e, name, note = "") {
+  const variants = [
+    e.defaults,
+    secondSet(e),
+    ...e.given.flatMap((d) => [d.min, d.max].map((value) => ({ ...e.defaults, [d.key]: value }))),
+  ];
+  for (const [i, p] of variants.entries()) {
+    const prose = [
+      ...e.asks.flatMap((a) => [`$${a.tex}$`, a.sub(p)]),
+      ...e.hints,
+      e.judgment(p),
+      note,
+    ];
+    checkSolution(
+      `<div class="solution-content">${prose
+        .map((text) => render(h(all.MathProse, { text })))
+        .join("")}</details>`,
+      `${name} parameter set ${i}`,
+    );
+    solutionSets++;
+  }
+}
 function checkFigureText(text, name) {
   // Units, TeX commands, variable symbols and standard math operators are allowed.
   const plain = text
@@ -56,6 +110,7 @@ function checkText(text, name) {
 for (const l of lectures) {
   const p = l.defaults ?? all.instrument.defaults;
   const html = render(h(l.defaults ? all.P1Lecture : all.SampleLecture, { lecture: l }));
+  checkSolution(html, l.id);
   const visible = html.replace(/\s(?:aria-label|value)="[^"]*"/g, "");
   if (/[\u2080-\u209c]/.test(visible))
     issues.push(`${l.id}: rendered subscript ${visible.match(/.{0,60}[\u2080-\u209c].{0,60}/g)}`);
@@ -95,6 +150,7 @@ for (const l of lectures) {
   }
   const examples = l.defaults ? l.examples : [l.id === "1.2.4" ? all.instrument : all.bandwidth];
   for (const e of examples) {
+    if (l.defaults) checkSolutionVariants(e, l.id);
     checkText(e.background, `${l.id} background`);
     e.hints.forEach((text) => checkText(text, `${l.id} hint`));
     if (l.defaults) {
@@ -109,6 +165,8 @@ for (const l of lectures) {
   }
 }
 for (const e of all.engineeringCases) {
+  checkSolution(render(h(all.EngineeringWorksheet, { problem: e })), e.id);
+  checkSolutionVariants(e, e.id, e.assumptions);
   for (const q of [e.plot(e.defaults), ...(e.additionalPlots?.(e.defaults) ?? [])]) {
     [
       q.title,
@@ -209,5 +267,5 @@ const nabla = all.matlab(
 assert.ok(nabla.includes("\\nabla "));
 assert.deepEqual(issues, [], "unmarked prose math");
 console.log(
-  `PASS: ${lectures.length} lectures, ${strings} prose strings, HTML/SVG scripts and MATLAB toTex compatibility`,
+  `PASS: ${lectures.length} lectures, 9 cases, ${solutionSets} solution parameter sets without programming notation, ${strings} prose strings, HTML/SVG scripts and MATLAB toTex compatibility`,
 );

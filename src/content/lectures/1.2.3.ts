@@ -186,7 +186,7 @@ const completedLecture = lecture(
             tex: String.raw`A(t_{\rm on})/A_\infty=1-e^{-\pi N_{\rm on}/Q_m}`,
             matlab: "1-exp(-pi*pulseCycles/Qm)",
             calc: (p) => 1 - Math.exp((-Math.PI * p.pulseCycles) / p.Qm),
-            sub: (p) => `1 − exp[−π × ${p.pulseCycles}/${p.Qm}]`,
+            sub: (p) => String.raw`$1-e^{-\pi\times${p.pulseCycles}/${p.Qm}}$`,
           },
         ],
         hints: [

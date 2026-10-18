@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import { chromium } from "playwright";
+import { programmingNotation } from "./solution-notation.mjs";
 fs.mkdirSync("outputs/browser-tmp", { recursive: true });
 process.env.TEMP = path.resolve("outputs/browser-tmp");
 process.env.TMP = process.env.TEMP;
@@ -71,6 +72,22 @@ async function checkCaseIndex(page) {
       assert.ok(disjoint(a.textBox, b.textBox), `${a.text} / ${b.text}: case index text overlaps`);
     }
   }
+}
+async function checkSolutionNotation(page) {
+  const texts = await page.locator(".solution-content").evaluateAll((nodes) =>
+    nodes.map((node) => {
+      const clone = node.cloneNode(true);
+      clone.querySelectorAll("annotation").forEach((el) => el.remove());
+      return clone.textContent;
+    }),
+  );
+  assert.ok(texts.length, `${page.url()}: reference solution present`);
+  for (const text of texts)
+    assert.equal(
+      text.match(programmingNotation),
+      null,
+      `${page.url()}: rendered solution notation`,
+    );
 }
 async function checkParameterLayout(page) {
   await page.evaluate(() => document.fonts.ready);
@@ -490,6 +507,7 @@ try {
     for (const [i, t] of topics.entries()) {
       await page.goto("http://127.0.0.1:4174/#/lab?topic=" + t.id);
       await page.getByRole("heading", { name: t.id + " " + t.title, exact: true }).waitFor();
+      if (fs.existsSync(`src/content/lectures/${t.id}.ts`)) await checkSolutionNotation(page);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, t.id);
       assert.equal(await page.title(), `${t.id} ${t.title} · 声学基础 · 中国海洋大学`);
       await checkParameterLayout(page);
@@ -601,6 +619,7 @@ try {
         before,
         `${l.id}: reactive solution`,
       );
+      await checkSolutionNotation(page);
       if (l.animation) {
         const svg = page.locator(".matlab-figure svg"),
           before = await svg.evaluateAll((nodes) => nodes.map((n) => n.innerHTML).join(""));
@@ -674,6 +693,17 @@ try {
       await page.locator("header").waitFor();
       await page.waitForTimeout(200);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, hash);
+      if (hash.startsWith("#/cases")) {
+        await checkCaseIndex(page);
+        await page.locator(".reference-solution summary").click();
+        await checkSolutionNotation(page);
+        assert.equal(await page.locator(".katex-error").count(), 0, `${hash}: solution equations`);
+        assert.equal(
+          await page.evaluate(() => document.documentElement.scrollWidth),
+          width,
+          `${hash}: expanded solution overflow`,
+        );
+      }
       if (hash === "#/calendar") {
         const lessons = JSON.parse(fs.readFileSync("src/calendar.json", "utf8"));
         assert.equal(await page.locator(".schedule-heading span").count(), 0);

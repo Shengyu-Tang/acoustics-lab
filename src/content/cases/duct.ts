@@ -65,7 +65,8 @@ export default problem({
       String.raw`|R_p|=\left|\frac{r+jx-1}{r+jx+1}\right|`,
       "rp",
       reflection,
-      (p) => `hypot(${p.res - 1}, ${p.react}) / hypot(${p.res + 1}, ${p.react})。`,
+      (p) =>
+        String.raw`$\frac{\sqrt{(${p.res - 1})^2+${p.react}^2}}{\sqrt{(${p.res + 1})^2+${p.react}^2}}$。`,
     ),
     question(
       "absorption",

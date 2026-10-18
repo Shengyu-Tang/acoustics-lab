@@ -74,7 +74,7 @@ export default problem({
       "amp(fp,D)*1000",
       (p) => 1000 * mountAmplitude(p, f(p)),
       (p) =>
-        `ω = ${fmt(2 * Math.PI * f(p))} rad/s；${p.F0} N / hypot[${p.D} N/m − ${p.M} kg × ω², ${p.Rm} kg/s × ω]，结果从 m 转 mm。`,
+        String.raw`$\omega=2\pi\times${p.n}/60\approx${fmt(2 * Math.PI * f(p))}\,\mathrm{rad/s}$；$\frac{${p.F0}}{\sqrt{(${p.D}-${p.M}\times\omega^2)^2+(${p.Rm}\times\omega)^2}}\,\mathrm{m}$，结果从 m 转 mm。`,
     ),
     question(
       "minimumR",
@@ -103,7 +103,7 @@ export default problem({
       "tr(fp,newD)",
       (p) => forceTransmission({ ...p, D: p.newD }, f(p)),
       (p) =>
-        `分子 hypot[${p.newD} N/m, ${p.Rm} kg/s × ${fmt(2 * Math.PI * f(p))} rad/s]，分母采用第 5 步的动态刚度。`,
+        String.raw`$\frac{\sqrt{${p.newD}^2+(${p.Rm}\times\omega)^2}}{\sqrt{(${p.newD}-${p.M}\times\omega^2)^2+(${p.Rm}\times\omega)^2}}$，其中 $\omega=2\pi\times${p.n}/60\,\mathrm{rad/s}$，采用 SI 单位。`,
     ),
     question(
       "chosen",

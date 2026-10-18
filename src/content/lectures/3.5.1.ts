@@ -117,7 +117,7 @@ const completedLecture = p2Lecture("3.5.1", {
           "exp(-alpha*depth)",
           (p) => Math.exp(((-2 * Math.PI * p.f) / p.c) * Math.sqrt(p.ratio ** 2 - 1) * p.depth),
           (p) =>
-            `exp(−${((2 * Math.PI * p.f) / p.c) * Math.sqrt(p.ratio ** 2 - 1)} m⁻¹ × ${p.depth} m)`,
+            String.raw`$e^{-\frac{2\pi\times${p.f}}{${p.c}}\sqrt{${p.ratio}^2-1}\times${p.depth}}$，采用 SI 单位。`,
         ),
       ],
       () => "该分量沿界面传播而向法向衰减，需在靠近界面处采集空间细节。",
