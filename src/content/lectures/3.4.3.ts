@@ -45,24 +45,24 @@ export default p2Lecture("3.4.3", {
             `t${i + 1} = 当前时间 + ${dt}T`,
             "位置 x (m)",
             "Pressure p (Pa)",
-            [0, 0.002],
+            [0, 2],
             [-320, 320],
             [
               curve(
-                "p/pₐ",
+                "Pressure p",
                 (x) => p.pa * Math.cos(2 * Math.PI * (p.f * t + dt - (p.f * x) / p.c)),
-                [0, 0.002],
-                "linspace(0,.002,401)",
+                [0, 2],
+                "linspace(0,2,401)",
                 `pa*cos(tau+2*pi*${dt}-k*x)`,
               ),
               {
                 ...curve(
-                  "ρ₀c₀u/pₐ",
+                  "Velocity u",
                   (x) =>
                     (p.pa / (p.rho * p.c)) *
                     Math.cos(2 * Math.PI * (p.f * t + dt - (p.f * x) / p.c)),
-                  [0, 0.002],
-                  "linspace(0,.002,401)",
+                  [0, 2],
+                  "linspace(0,2,401)",
                   `pa/Z*cos(tau+2*pi*${dt}-k*x)`,
                   "--",
                 ),
@@ -91,7 +91,7 @@ export default p2Lecture("3.4.3", {
             [-320, 320],
             [
               curve(
-                "p/pₐ",
+                "Pressure p",
                 (x) => p.pa * Math.cos(2 * Math.PI * (p.f * x - (p.f * loc) / p.c)),
                 [0, 0.002],
                 "linspace(0,.002,401)",
@@ -99,7 +99,7 @@ export default p2Lecture("3.4.3", {
               ),
               {
                 ...curve(
-                  "ρ₀c₀u/pₐ",
+                  "Velocity u",
                   (x) =>
                     (p.pa / (p.rho * p.c)) * Math.cos(2 * Math.PI * (p.f * x - (p.f * loc) / p.c)),
                   [0, 0.002],

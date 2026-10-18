@@ -78,6 +78,7 @@ export default lecture(
               [
                 {
                   name: "瞬时振型",
+                  geometry: { key: "L", axis: "x" },
                   points: sample(
                     (x) =>
                       p.height *
@@ -121,7 +122,11 @@ export default lecture(
                 [0, 1.5],
                 [-0.003, 0.018],
                 [
-                  { name: "初始形状", points: sample((x) => initial(x / p.L), 0, p.L) },
+                  {
+                    name: "初始形状",
+                    geometry: { key: "L", axis: "x" },
+                    points: sample((x) => initial(x / p.L), 0, p.L),
+                  },
                   { name: "拨点", points: [[p.pluck * p.L, h]], style: "none", marker: "o" },
                 ],
               ),
@@ -166,6 +171,7 @@ export default lecture(
                 },
                 {
                   name: "合成位移",
+                  geometry: { key: "L", axis: "x" },
                   points: sample((x) => pluckWave(x, t, c, p.L, h, p.pluck), 0, p.L),
                 },
               ],

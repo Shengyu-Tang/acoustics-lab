@@ -55,7 +55,7 @@ export function controlVolume(p: Values, t: number, energy = false) {
           path.map((i) => vertices[i][0]),
           `L*${vector(path.map((i) => vertices[i][0][0] / p.L))}`,
           `sqrt(S)*${vector(path.map((i) => vertices[i][0][1] / Math.sqrt(p.S)))}`,
-          { color: "#777777", legend: i === 0 },
+          { color: "#777777", legend: i === 0, geometry: { key: "L", axis: "x" } },
         ),
       ),
       points(energy ? "能流 W入" : "质量流 ρu入", left.points, "aL(:,1)'", "aL(:,2)'"),

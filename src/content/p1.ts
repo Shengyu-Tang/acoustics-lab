@@ -1,4 +1,5 @@
-﻿import topics from "../topics.json";
+import { fixedFigureAxes } from "../plot/fixedAxes";
+import topics from "../topics.json";
 import type { ParameterDefinition } from "../Parameter";
 import type { Panel } from "../plot/types";
 import { modelsFor } from "../plot/matlabModels";
@@ -93,7 +94,7 @@ export function lecture(
           (panel) =>
             (panel.matlabModel!.setup += `${id === "1.2.3" ? "\nd=w0/(2*Qm);" : ""}\nlecture_readouts=${readouts};`),
         );
-        return panels;
+        return fixedFigureAxes(f.number, panels);
       },
     })),
     examples: data.examples.map((e) => ({ ...e, plot: (p) => examplePanel(id, p, e.plot(p), e) })),
@@ -107,7 +108,16 @@ export const parameter = (
   min: number,
   max: number,
   step: number,
-): ParameterDefinition => ({ key, name, symbol, unit, min, max, step });
+): ParameterDefinition => ({
+  key,
+  name,
+  symbol,
+  unit,
+  min,
+  max,
+  step,
+  ...(unit === "m" && ["L", "a", "d", "radius", "length"].includes(key) ? { geometry: true } : {}),
+});
 export const fmt = (n: number) => Number(n.toPrecision(4)).toString();
 export const mechanics = [
   parameter("M", "质量", "M", "kg", 0.1, 50, 0.1),

@@ -88,25 +88,32 @@ for (const l of lectures) {
     }
     if (!lectureSensitive)
       failures.push(`${l.id} -- ${d.key}: invariant plotted data in every figure`);
-    // Spatial geometry must change at t=0, independently of motion or readouts.
-    if (d.unit === "m" && /^(L|a|d|r|radius|length)$/.test(d.key)) {
-      const spatial = l.figures
-        .flatMap((f) => f.plot(l.defaults, 0).map((p, i) => ({ f, i, p })))
-        .filter(
-          ({ p }) => /位置|距离|轴向|径向|空间|坐标/.test(p.xlabel) && !/^时间/.test(p.xlabel),
+    // Test marked geometric series directly. A moving arrow cannot conceal
+    // a string whose endpoints stay at normalized 0 and 1.
+    if (d.geometry || (d.unit === "m" && /^(L|a|d|r|radius|length)$/.test(d.key))) {
+      let checked = 0;
+      for (const f of l.figures) {
+        const base = f.plot(l.defaults, 0);
+        base.forEach((panel, i) =>
+          (panel.series ?? []).forEach((series, j) => {
+            if (series.geometry?.key !== d.key) return;
+            checked++;
+            const axis = series.geometry.axis === "x" ? 0 : 1;
+            const spans = values.map((v) => {
+              const points = f
+                .plot({ ...l.defaults, [d.key]: v }, 0)
+                [i].series[j].points.map((pt) => pt[axis]);
+              return Math.max(...points) - Math.min(...points);
+            });
+            if (!changed([spans[0]], [spans[1]]))
+              failures.push(`${l.id} -- ${d.key} -- ${f.number}[${i}]: invariant geometry`);
+            const label = axis === 0 ? panel.xlabel : panel.ylabel;
+            if (!label.includes("(m)"))
+              failures.push(`${l.id} -- ${d.key} -- ${f.number}: geometric axis lacks metres`);
+          }),
         );
-      for (const { f, i, p } of spatial) {
-        if (f.independentOf?.includes(d.key)) continue;
-        const ranges = values.map((v) => {
-          const q = f.plot({ ...l.defaults, [d.key]: v }, 0)[i];
-          return [
-            ...(q.series ?? []).flatMap((s) => s.points.map((pt) => pt[0])),
-            ...(q.field?.x ?? []),
-          ];
-        });
-        if (!changed(ranges[0], ranges[1]))
-          failures.push(`${l.id} — ${d.key} — ${f.number}[${i}]: invariant geometry`);
       }
+      if (!checked) failures.push(`${l.id} -- ${d.key}: missing geometric series contract`);
     }
   }
 }

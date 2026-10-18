@@ -1,3 +1,4 @@
+import { fixedFigureAxes } from "./fixedAxes";
 import { modelsFor } from "./matlabModels";
 import {
   characteristics,
@@ -11,7 +12,7 @@ import { sample, type Panel, type Series } from "./types";
 import { axisTicks } from "./ticks";
 function frequencyPanelsData(p: Oscillator, compare: boolean): Panel[] {
   const c = characteristics(p),
-    xmax = axisTicks([0, c.f0 * 2.5]).limits[1];
+    xmax = 400;
   const variants = compare
     ? [1.7, 5, 10].map((Q) => ({ name: `Qₘ = ${Q}`, p: { ...p, Rm: (c.omega0 * p.M) / Q } }))
     : [{ name: "当前参数", p }];
@@ -85,7 +86,7 @@ function frequencyPanelsData(p: Oscillator, compare: boolean): Panel[] {
 function impedancePanelData(p: Oscillator): Panel {
   const c = characteristics(p),
     min = 0.001 * c.f0,
-    max = axisTicks([0, 2.5 * c.f0]).limits[1];
+    max = 400;
   return {
     title: "机械阻抗",
     xlabel: "频率 f (Hz)",
@@ -105,7 +106,7 @@ function impedancePanelData(p: Oscillator): Panel {
 }
 function instantaneousPanelsData(p: Oscillator): Panel[] {
   const c = characteristics(p),
-    duration = axisTicks([0, 3 / c.f0]).limits[1],
+    duration = 6,
     bound = ((p.F0 * p.F0) / p.Rm) * 1.1;
   return [0.8, 1, 1.2].map((r) => {
     const f = c.f0 * r,
@@ -136,7 +137,7 @@ function instantaneousPanelsData(p: Oscillator): Panel[] {
 function powerPanelData(p: Oscillator): Panel {
   const c = characteristics(p),
     peak = p.F0 ** 2 / (2 * p.Rm),
-    xmax = axisTicks([0, Math.max(c.f0 * 2, c.f2 * 1.15)]).limits[1];
+    xmax = 500;
   // Include the exact peak and half-power points among samples.
   const fs = [...sample((x) => x, 0, xmax, 1401).map((p) => p[0]), c.f0, c.f1, c.f2].sort(
     (a, b) => a - b,
@@ -195,11 +196,15 @@ function instrumentPanelData(p: typeof instrument): Panel {
 }
 
 export const frequencyPanels = (p: Oscillator, compare: boolean) =>
-  modelsFor("1.2.4-1", { ...p }, frequencyPanelsData(p, compare), [], 0, compare);
+  fixedFigureAxes(
+    "1.2.4-1",
+    modelsFor("1.2.4-1", { ...p }, frequencyPanelsData(p, compare), [], 0, compare),
+  );
 export const impedancePanel = (p: Oscillator) =>
-  modelsFor("1.2.4-2", { ...p }, [impedancePanelData(p)])[0];
+  fixedFigureAxes("1.2.4-2", modelsFor("1.2.4-2", { ...p }, [impedancePanelData(p)]))[0];
 export const instantaneousPanels = (p: Oscillator) =>
-  modelsFor("1.2.5-2", { ...p }, instantaneousPanelsData(p));
-export const powerPanel = (p: Oscillator) => modelsFor("1.2.5-1", { ...p }, [powerPanelData(p)])[0];
+  fixedFigureAxes("1.2.5-1", modelsFor("1.2.5-2", { ...p }, instantaneousPanelsData(p)));
+export const powerPanel = (p: Oscillator) =>
+  fixedFigureAxes("1.2.5-2", modelsFor("1.2.5-1", { ...p }, [powerPanelData(p)]))[0];
 export const instrumentPanel = (p: typeof instrument) =>
   modelsFor("A-1", { ...p }, [instrumentPanelData(p)])[0];

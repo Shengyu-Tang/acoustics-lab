@@ -278,7 +278,9 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       out.push(
         "% 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。",
         ...(p.rightLabel
-          ? ["yyaxis right; set(gca,'YLimMode','auto','YTickMode','auto'); yyaxis left;"]
+          ? [
+              `yyaxis right; ylim(${m.rightLim ?? vector(p.rightLim ?? p.ylim)}); set(gca,'YTickMode','auto'); yyaxis left;`,
+            ]
           : []),
         `xlim(${m.xlim ?? vector(p.xlim)}); set(gca,'XTickMode','auto','YTickMode','auto');`,
         m.ylim

@@ -128,13 +128,16 @@ export default lecture(
               [0, 2],
               [-0.04, 0.04],
               [
-                segment("Rod extent", [
-                  [0, -Math.sqrt(p.S) / 2],
-                  [p.L, -Math.sqrt(p.S) / 2],
-                  [p.L, Math.sqrt(p.S) / 2],
-                  [0, Math.sqrt(p.S) / 2],
-                  [0, -Math.sqrt(p.S) / 2],
-                ]),
+                {
+                  ...segment("Rod extent", [
+                    [0, -Math.sqrt(p.S) / 2],
+                    [p.L, -Math.sqrt(p.S) / 2],
+                    [p.L, Math.sqrt(p.S) / 2],
+                    [0, Math.sqrt(p.S) / 2],
+                    [0, -Math.sqrt(p.S) / 2],
+                  ]),
+                  geometry: { key: "L", axis: "x" },
+                },
                 segment("微元 S dz", [
                   [0.4 * p.L, -Math.sqrt(p.S) / 2],
                   [0.6 * p.L, -Math.sqrt(p.S) / 2],

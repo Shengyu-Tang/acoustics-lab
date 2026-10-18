@@ -9,6 +9,7 @@ export type ParameterDefinition = {
   max: number;
   step: number;
   integer?: boolean;
+  geometry?: boolean;
 };
 export function NumberField({
   value,

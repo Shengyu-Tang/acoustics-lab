@@ -345,7 +345,7 @@ function frequencyModels(
     curves: Curve[][] = [],
     annotations: string[][] = [];
   if (id === "1.2.4-1") {
-    setup += "finish=niceEnd(2.5*f0);";
+    setup += "finish=400;";
     const rs = compare ? ["w0*M/1.7", "w0*M/5", "w0*M/10"] : ["Rm"];
     curves = [0, 1, 2, 3, 4, 5].map((i) =>
       rs.map((r) => curve(grid("finish", 1201), `frequencyResponse(x,M,D,${r},F0,${i + 1})`)),
@@ -360,7 +360,7 @@ function frequencyModels(
           ),
     );
   } else if (id === "1.2.4-2") {
-    setup += "finish=niceEnd(2.5*f0);";
+    setup += "finish=400;";
     curves = [
       [7, 8, 9].map((i) =>
         curve(grid("finish", 401, ".001*f0"), `frequencyResponse(x,M,D,Rm,F0,${i})`),
@@ -368,12 +368,12 @@ function frequencyModels(
     ];
     annotations = [["f0", "0"]];
   } else if (id === "1.2.5-1" || id === "B-1") {
-    setup += "finish=niceEnd(max(2*f0,1.15*f2)); fs=sort([linspace(0,finish,1401) f0 f1 f2]);";
+    setup += "finish=500; fs=sort([linspace(0,finish,1401) f0 f1 f2]);";
     curves = [[xyz("fs", "frequencyResponse(x,M,D,Rm,F0,10)")]];
     if (id === "B-1") curves[0].push(xyz("f0", "F0^2/(2*Rm)"));
     annotations = [["f0", "f1", "f2", "F0^2/(4*Rm)"]];
   } else if (id === "1.2.5-2") {
-    setup += "finish=niceEnd(3/f0);";
+    setup += "finish=6;";
     curves = [0.8, 1, 1.2].map((r) => [
       time("finish", `instantPower(x,${r}*f0,M,D,Rm,F0)`, 601),
       xyz("[0 finish]", `frequencyResponse(${r}*f0,M,D,Rm,F0,10)*[1 1]`),

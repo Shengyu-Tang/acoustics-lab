@@ -70,7 +70,7 @@ export default lecture(
               [0, 1.5],
               [-0.1, 0.1],
               [
-                { name: "弦形", points: sample(y, 0, p.L) },
+                { name: "弦形", geometry: { key: "L", axis: "x" }, points: sample(y, 0, p.L) },
                 segment("微元 dx", sample(y, 0.4 * p.L, 0.6 * p.L, 21)),
                 arrow(
                   "左端张力 T₁",
@@ -128,7 +128,7 @@ export default lecture(
                 [0, 1.5],
                 [-0.04, 0.04],
                 [
-                  { name: "弦形", points: sample(y, 0, p.L) },
+                  { name: "弦形", geometry: { key: "L", axis: "x" }, points: sample(y, 0, p.L) },
                   {
                     name: "Force boundary comparison",
                     style: "--",

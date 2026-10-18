@@ -64,6 +64,7 @@ export default lecture(
                 [
                   {
                     name: "位移振型",
+                    geometry: { key: "L", axis: "x" },
                     points: sample((r) => Math.cos((n * Math.PI * r) / p.L) * phase, 0, p.L),
                   },
                   {

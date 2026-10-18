@@ -16,6 +16,7 @@ export type MatlabModel = {
   field?: { x: string; y: string; z: string };
 };
 export type Series = {
+  geometry?: { key: string; axis: "x" | "y" };
   kind?: "line" | "bar" | "barh";
   name: string;
   points: Point[];
