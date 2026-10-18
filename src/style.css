@@ -861,16 +861,17 @@ time {
   gap: 20px;
 }
 .calendar-item {
-  padding: 24px;
+  padding: 12px 0;
   background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
 }
 .calendar-item > div {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 .calendar-item p {
   font-size: 14px;
@@ -1101,7 +1102,7 @@ time {
     grid-template-columns: 1fr;
   }
   .calendar-item {
-    padding: 20px;
+    padding: 12px 0;
   }
   .course-mark {
     display: none;
@@ -1940,54 +1941,86 @@ a.secondary {
   color: #555;
 }
 .schedule-heading {
-  margin: 38px 0 22px;
+  margin: 28px 0 12px;
 }
 .week-block {
   display: grid;
   grid-template-columns: 75px minmax(0, 1fr);
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 16px;
+  border-top: 1px solid var(--border);
 }
 .week-marker {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   color: #555;
-  padding-top: 15px;
+  padding-top: 12px;
 }
-.week-marker span {
-  font-size: 10px;
-  letter-spacing: normal;
-}
-.week-marker strong {
-  font-size: 36px;
-  font-weight: 400;
+.week-marker h3 {
+  margin: 0;
+  font-size: 14px;
   color: #555;
-  line-height: 1.5;
-}
-.week-marker small {
-  font-size: 11px;
+  line-height: 1.75;
 }
 .week-lessons {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  min-width: 0;
 }
 .calendar-item {
   scroll-margin-top: 25px;
   min-width: 0;
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: start;
+}
+.calendar-item > div {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+}
+.calendar-item > h3,
+.calendar-item > ul,
+.calendar-item > p,
+.calendar-item > details {
+  grid-column: 2;
+}
+.calendar-item > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 16px;
+  padding: 0;
+  list-style: none;
+}
+.calendar-item > ul > li {
+  margin: 0;
+}
+.calendar-item details {
+  border-bottom: 0;
+  padding: 6px 0;
+}
+.calendar-item:last-child {
+  border-bottom: 0;
+}
+.calendar-item h3 {
+  margin: 0;
+  font-size: 16px;
+}
+.calendar-item p,
+.calendar-item ul {
+  margin: 6px 0;
 }
 .calendar-item li {
   font-size: 14px;
   color: #555;
-  margin: 9px 0;
+  margin: 3px 0;
 }
 .calendar-item ul {
   padding-left: 20px;
 }
 .calendar-item.lesson-picked {
-  border-color: #d9d9d9;
+  background: #f3f6fa;
   box-shadow: none;
+}
+.calendar-item:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 .space-inspector {
   position: absolute;
@@ -2094,9 +2127,6 @@ a.secondary {
   .month-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .week-lessons {
-    grid-template-columns: 1fr;
-  }
   .space-inspector {
     width: 280px;
   }
@@ -2135,20 +2165,15 @@ a.secondary {
     min-height: 44px;
   }
   .week-block {
-    grid-template-columns: 38px minmax(0, 1fr);
-    gap: 12px;
-  }
-  .week-marker strong {
-    font-size: 25px;
-  }
-  .week-marker small {
-    font-size: 9px;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 8px;
   }
   .calendar-item {
-    padding: 16px;
+    padding: 12px 0;
+    display: block;
   }
   .calendar-item h3 {
-    font-size: 17px;
+    font-size: 16px;
   }
   .contact-card {
     padding: 20px;

@@ -153,6 +153,8 @@ try {
     ["plot-demo", "#/plot-demo", "绘图组件演示"],
   ];
   const measurements = [];
+  const reviewShots = "outputs/review-p1-extras";
+  fs.mkdirSync(reviewShots, { recursive: true });
   for (const [size, width, height] of [
     ["desktop", 1440, 900],
     ["mobile", 390, 844],
@@ -436,6 +438,17 @@ try {
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, t.id);
       assert.equal(await page.title(), `${t.id} ${t.title} · 声学基础 · 中国海洋大学`);
       await checkParameterLayout(page);
+      if (["1.1.3", "3.1.1"].includes(t.id)) {
+        const size = width === 1440 ? "desktop" : "mobile";
+        await page.locator(".parameter-panel").first().scrollIntoViewIfNeeded();
+        await page.screenshot({ path: `${reviewShots}/${t.id}-${size}.png` });
+        await page
+          .locator(".parameter-panel")
+          .first()
+          .screenshot({
+            path: `${reviewShots}/${t.id}-parameters-${size}.png`,
+          });
+      }
       if (i % 20 === 0) console.log(`PASS: retained lecture ${i + 1}/${topics.length} at ${width}`);
       const l = p1.find((l) => l.id === t.id);
       if (!l) continue;
@@ -603,6 +616,49 @@ try {
       await page.locator("header").waitFor();
       await page.waitForTimeout(200);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, hash);
+      if (hash === "#/calendar") {
+        const lessons = JSON.parse(fs.readFileSync("src/calendar.json", "utf8"));
+        assert.equal(await page.locator(".schedule-heading span").count(), 0);
+        assert.equal(await page.locator(".calendar-item").count(), lessons.length);
+        const rows = await page.locator(".calendar-item").evaluateAll((items) =>
+          items.map((el) => {
+            const style = getComputedStyle(el);
+            return {
+              left: el.getBoundingClientRect().left,
+              right: el.getBoundingClientRect().right,
+              top: style.borderTopWidth,
+              sides: [style.borderLeftWidth, style.borderRightWidth],
+              bottom: style.borderBottomWidth,
+              radius: style.borderRadius,
+            };
+          }),
+        );
+        for (const row of rows) {
+          assert.equal(row.left, rows[0].left, "schedule rows share a column");
+          assert.equal(row.right, rows[0].right, "schedule rows share a width");
+          assert.equal(row.top, "0px");
+          assert.deepEqual(row.sides, ["0px", "0px"], "schedule has dividers instead of cards");
+          assert.ok(["0px", "1px"].includes(row.bottom));
+          assert.equal(row.radius, "0px");
+        }
+        const size = width === 1440 ? "desktop" : "mobile";
+        await page.screenshot({ path: `${reviewShots}/calendar-${size}.png` });
+        await page.locator(".schedule-heading").evaluate((el) => el.scrollIntoView());
+        await page.screenshot({ path: `${reviewShots}/calendar-schedule-${size}.png` });
+        const secondLesson = page.locator(".calendar-item").nth(1);
+        await page.locator(".class-day").nth(1).click();
+        await page.waitForFunction(() =>
+          document.activeElement?.classList.contains("lesson-picked"),
+        );
+        assert.equal(await secondLesson.evaluate((el) => el === document.activeElement), true);
+        await secondLesson.locator("summary").click();
+        assert.equal(await secondLesson.locator("details").getAttribute("open"), "");
+        assert.equal(
+          await secondLesson.locator("li a").first().getAttribute("href"),
+          "#/lab?topic=1.1.1",
+        );
+        await secondLesson.locator("summary").click();
+      }
     }
   }
   // Review exact viewport screenshots in addition to the full lecture captures.

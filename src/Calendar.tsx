@@ -83,13 +83,11 @@ export default function Calendar() {
         </section>
         <div className="schedule-heading">
           <h2>每周学习安排</h2>
-          <span>课前预习 → 课堂实验 → 课后解释</span>
         </div>
         {weeks.map((week) => (
           <section className="week-block" key={week}>
             <div className="week-marker">
-              <strong>{String(week).padStart(2, "0")}</strong>
-              <small>第 {week} 周</small>
+              <h3>第 {week} 周</h3>
             </div>
             <div className="week-lessons">
               {lessons.map((l, i) =>
