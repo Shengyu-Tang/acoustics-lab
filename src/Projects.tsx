@@ -4,7 +4,7 @@ import { engineeringCases } from "./content/cases";
 import { EngineeringWorksheet } from "./EngineeringCase";
 import topics from "./topics.json";
 import { MathProse } from "./Math";
-import { ComparisonLinks } from "./Comparisons";
+import { ComparisonLinks } from "./ComparisonLinks";
 import projects from "./projects.json";
 export default function Projects() {
   const selection = () =>

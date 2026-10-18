@@ -26,6 +26,7 @@ const errors = [];
 const solutionReview = [];
 const routeReview = [];
 async function auditExpandedSolutions(page, id, width, capture = false) {
+  await page.locator(".reference-solution").first().waitFor({ state: "attached" });
   await page.locator(".reference-solution").evaluateAll((nodes) => {
     nodes.forEach((el) => {
       el.open = true;
@@ -148,6 +149,7 @@ async function checkSolutionNotation(page) {
     );
 }
 async function checkParameterLayout(page) {
+  await page.locator(".parameter-panel").first().waitFor();
   await page.evaluate(() => document.fonts.ready);
   const fields = await page.locator(".compact-parameter").evaluateAll((rows) =>
     rows.map((row) => {
@@ -181,6 +183,7 @@ async function checkParameterLayout(page) {
   }
 }
 async function checkNotationLayout(page) {
+  await page.locator(".matlab-figure").first().waitFor();
   const report = await page.evaluate(() => {
     const walker = document.createTreeWalker(
       document.querySelector(".lecture-content") ?? document.querySelector("main"),
@@ -987,9 +990,8 @@ try {
             section === "examples" ? (width === 390 ? 350 : 460) : 80,
           );
         await reviewPage.waitForTimeout(400);
-        // Warm the headless compositor before recording the review frame.
-        if (section === "examples")
-          await reviewPage.locator(".calculation-example form h4").screenshot();
+        // Warm the compositor using the viewport. A discarded element capture
+        // can wait indefinitely for stability in a background renderer.
         await reviewPage.screenshot();
         await reviewPage.waitForTimeout(100);
         await reviewPage.screenshot({

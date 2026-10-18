@@ -1,4 +1,4 @@
-import { ComparisonLinks } from "./Comparisons";
+import { ComparisonLinks } from "./ComparisonLinks";
 import { useEffect, useRef, useState } from "react";
 import { atlasEntries as topics } from "./courseCatalog";
 import { names, colors, chapterStories } from "./atlas";

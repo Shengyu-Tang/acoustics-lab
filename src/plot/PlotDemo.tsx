@@ -97,9 +97,6 @@ export default function PlotDemo() {
       <Header />
       <main className="plot-demo">
         <h1>绘图组件演示</h1>
-        <p>
-          统一的坐标、线型、图例与数据提示。每张图可导出当前数据、PNG 和可直接运行的 MATLAB 脚本。
-        </p>
         {[
           base,
           logs(true, false),

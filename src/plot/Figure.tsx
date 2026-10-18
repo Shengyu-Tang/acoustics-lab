@@ -15,7 +15,7 @@ function polarCenter(panel: Panel, { L, T, AW, AH }: Layout) {
   return [half ? L + (AW - AH / 2) / 2 : L + AW / 2, T + AH / 2];
 }
 /** A small, real data preview: axis text would be unreadable at catalog size. */
-export function ThumbnailAxes({ panel }: { panel: Panel }) {
+export function ThumbnailAxes({ panel, fieldImage }: { panel: Panel; fieldImage?: string }) {
   const p = {
     ...panel,
     xlim: axisTicks(panel.xlim, panel.xscale === "log").limits,
@@ -24,7 +24,11 @@ export function ThumbnailAxes({ panel }: { panel: Panel }) {
   return (
     <g>
       <rect width="100" height="50" fill="white" />
+      {p.field && fieldImage && (
+        <image href={fieldImage} x="2" y="2" width="96" height="46" preserveAspectRatio="none" />
+      )}
       {p.field &&
+        !fieldImage &&
         p.field.z.flatMap((row, j) =>
           row.map((z, i) => (
             <rect
@@ -260,6 +264,7 @@ export function Axes({
     lines: textLines(s.name, Math.max(55, legendW - 28)),
   }));
   const legendH = legendEntries.reduce((sum, s) => sum + s.lines.length * 16, 8);
+  const legendBelow = p.insetLegend && W < 480;
   const titleLines = textLines(p.title, W - 30),
     noteLines = p.responseNote ? textLines(p.responseNote, W - 30) : [];
   // Frequency readouts live above the plotting rectangle. Tight amplitude
@@ -277,6 +282,7 @@ export function Axes({
         (!p.insetLegend && p.legend !== false && legendSeries.length ? legendH + 6 : 0) +
         (yt.exponent || (p.rightLabel && rt.exponent) ? 18 : 0);
   let AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
+  if (legendBelow) AH -= legendH + 28;
   if (p.equalAspect) {
     AW = Math.min(AW, (AH * (p.xlim[1] - p.xlim[0])) / (p.ylim[1] - p.ylim[0]));
     AH = (AW * (p.ylim[1] - p.ylim[0])) / (p.xlim[1] - p.xlim[0]);
@@ -368,9 +374,11 @@ export function Axes({
         }).length,
       0,
     );
-  const legend = p.insetLegend
-    ? corners.sort((a, b) => score(a) - score(b))[0]
-    : [L + AW - legendW, legendTop];
+  const legend = legendBelow
+    ? [L + (AW - legendW) / 2, T + AH + 62]
+    : p.insetLegend
+      ? corners.sort((a, b) => score(a) - score(b))[0]
+      : [L + AW - legendW, legendTop];
   return (
     <g fontFamily="Arial, Helvetica, Microsoft YaHei, sans-serif" fontSize="11" fill="#1a1a1a">
       <defs>
@@ -640,7 +648,12 @@ export function Axes({
         ))}
       {!polar && (
         <>
-          <text x={L + AW / 2} y={H - 22} fontSize="12" textAnchor="middle">
+          <text
+            x={L + AW / 2}
+            y={legendBelow ? T + AH + 44 : H - 22}
+            fontSize="12"
+            textAnchor="middle"
+          >
             <ScriptText text={p.xlabel} svg />
           </text>
           <text

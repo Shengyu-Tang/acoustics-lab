@@ -3,7 +3,6 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import Home from "./Home";
 import Footer from "./Footer";
 import catalog from "./content/homeCatalog.json";
-import projects from "./projects.json";
 import "./style.css";
 import "./redesign.css";
 const Lab = lazy(() => import("./Lab")),
@@ -12,6 +11,7 @@ const Lab = lazy(() => import("./Lab")),
   About = lazy(() => import("./About")),
   Calendar = lazy(() => import("./Calendar")),
   MindMap = lazy(() => import("./MindMap")),
+  Feedback = lazy(() => import("./Feedback")),
   PlotDemo = lazy(() => import("./plot/PlotDemo"));
 function App() {
   const [hash, setHash] = useState(location.hash);
@@ -25,6 +25,7 @@ function App() {
   }, []);
   const route = hash.split("?")[0];
   useEffect(() => {
+    if (route === "#/cases") return; // The case route owns its selected task title.
     const names: Record<string, string> = {
       "#/plot-demo": "绘图组件演示",
       "#/compare": "对照实验",
@@ -32,6 +33,7 @@ function App() {
       "#/about": "教师主页",
       "#/calendar": "教学日历",
       "#/map": "课程知识导图",
+      "#/feedback": "建议与反馈",
     };
     const topic =
       route === "#/lab"
@@ -39,14 +41,7 @@ function App() {
             (t) => t.id === new URLSearchParams(hash.split("?")[1]).get("topic"),
           ) ?? catalog.topics[0])
         : null;
-    const title = topic
-      ? `${topic.id} ${topic.title}`
-      : route === "#/cases"
-        ? (
-            projects.find((p) => p.id === new URLSearchParams(hash.split("?")[1]).get("project")) ??
-            projects[0]
-          ).title
-        : names[route];
+    const title = topic ? `${topic.id} ${topic.title}` : names[route];
     document.title = `${title ? title + " · " : ""}声学基础 · 中国海洋大学`;
   }, [hash, route]);
   return (
@@ -68,6 +63,8 @@ function App() {
           <About />
         ) : route === "#/calendar" ? (
           <Calendar />
+        ) : route === "#/feedback" ? (
+          <Feedback />
         ) : route === "#/map" ? (
           <MindMap />
         ) : route === "#/lab" ? (

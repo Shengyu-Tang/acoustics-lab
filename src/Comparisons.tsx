@@ -85,19 +85,6 @@ function readKind(): ComparisonKind {
   const id = new URLSearchParams(location.hash.split("?")[1]).get("experiment");
   return comparisonCatalog.find((x) => x.id === id)?.id || "layer";
 }
-export function ComparisonLinks({ models }: { models: string[] }) {
-  const entries = comparisonCatalog.filter((x) => x.models.some((m) => models.includes(m)));
-  return entries.length ? (
-    <aside className="comparison-links">
-      <strong>进一步比较</strong>
-      {entries.map((x) => (
-        <a key={x.id} href={"#/compare?experiment=" + x.id}>
-          {x.title}
-        </a>
-      ))}
-    </aside>
-  ) : null;
-}
 function metrics(kind: ComparisonKind, v: Settings): [string, string][] {
   if (kind === "layer") {
     const a = layer(v);
@@ -177,7 +164,6 @@ export default function Comparisons() {
       <Header />
       <main className="comparison-page">
         <h1>对照实验</h1>
-        <p className="lead">先预测，再保存一组参数；改变条件，用曲线和声场检验你的判断。</p>
         <nav className="comparison-switch" aria-label="选择对照实验">
           {comparisonCatalog.map((x) => (
             <a

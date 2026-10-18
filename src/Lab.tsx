@@ -5,16 +5,39 @@ import { models, defaults, type Values } from "./physics";
 import Formula from "./Formula";
 import Simulation from "./Simulation";
 import EngineeringCase from "./EngineeringCase";
-import { ComparisonLinks } from "./Comparisons";
+import { ComparisonLinks } from "./ComparisonLinks";
 import Parameter from "./Parameter";
 import SampleLecture from "./SampleLecture";
 import P1Lecture from "./P1Lecture";
-import { p1Lectures } from "./content/p1Registry";
+import type { P1Lecture as Lecture } from "./content/p1";
 import lecture124 from "./content/lectures/1.2.4";
 import lecture125 from "./content/lectures/1.2.5";
 import { chapters } from "./catalog";
 const BeatsLab = lazy(() => import("./BeatsLab"));
 const Scene3D = lazy(() => import("./Scene3D"));
+const lectureModules = import.meta.glob<{ default: Lecture }>([
+  "./content/lectures/*.ts",
+  "!./content/lectures/1.2.4.ts",
+  "!./content/lectures/1.2.5.ts",
+]);
+const lectureRoutes = Object.fromEntries(
+  Object.entries(lectureModules).map(([file, load]) => [
+    file.split("/").at(-1)!.slice(0, -3),
+    lazy(async () => {
+      const { default: lecture } = await load();
+      return {
+        default: () => (
+          <>
+            <p className="mooc-source">
+              对应慕课：{lecture.moocSource} · {lecture.classNumber}
+            </p>
+            <P1Lecture lecture={lecture} />
+          </>
+        ),
+      };
+    }),
+  ]),
+);
 export const sections = [
   ["key-points", "本讲要点"],
   ["principle", "原理"],
@@ -156,7 +179,7 @@ export default function Lab() {
   const q = new URLSearchParams(location.hash.split("?")[1]),
     topic = topics.find((t) => t.id === q.get("topic")) ?? topics[0];
   const lecture = topic.id === "1.2.4" ? lecture124 : topic.id === "1.2.5" ? lecture125 : null;
-  const p1 = p1Lectures.find((l) => l.id === topic.id);
+  const LectureRoute = lectureRoutes[topic.id];
   const [open, setOpen] = useState(false),
     index = topics.findIndex((t) => t.id === topic.id);
   return (
@@ -191,12 +214,16 @@ export default function Lab() {
           <h1>
             {topic.id} {topic.title}
           </h1>
-          <p className="mooc-source">
-            对应慕课：{lecture?.moocSource ?? p1?.moocSource ?? topic.source}
-            {lecture || p1 ? ` · ${(lecture ?? p1)!.classNumber}` : ""}
-          </p>
-          {p1 ? (
-            <P1Lecture key={topic.id} lecture={p1} />
+          {!LectureRoute && (
+            <p className="mooc-source">
+              对应慕课：{lecture?.moocSource ?? topic.source}
+              {lecture ? ` · ${lecture.classNumber}` : ""}
+            </p>
+          )}
+          {LectureRoute ? (
+            <Suspense fallback={<p role="status">正在载入本讲…</p>}>
+              <LectureRoute />
+            </Suspense>
           ) : lecture ? (
             <SampleLecture key={topic.id} lecture={lecture} />
           ) : (

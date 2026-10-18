@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import Header from "./Header";
-import KnowledgeGraph from "./KnowledgeGraph";
+const KnowledgeGraph = lazy(() => import("./KnowledgeGraph"));
 import CourseTree from "./CourseTree";
 export default function MindMap() {
   const [view, setView] = useState("tree");
@@ -12,14 +12,14 @@ export default function MindMap() {
         <div className="atlas-switch" role="group" aria-label="导图展示方式">
           <button aria-pressed={view === "tree"} onClick={() => setView("tree")}>
             <b>课程思维导图</b>
-            <span>课程 → 章节 → 知识点 · 全部展开</span>
           </button>
           <button aria-pressed={view === "graph"} onClick={() => setView("graph")}>
             <b>知识图谱</b>
-            <span>学习递进 × 物理联系 · 三维探索</span>
           </button>
         </div>
-        {view === "tree" ? <CourseTree /> : <KnowledgeGraph />}
+        <Suspense fallback={<p role="status">正在载入知识图谱…</p>}>
+          {view === "tree" ? <CourseTree /> : <KnowledgeGraph />}
+        </Suspense>
       </main>
     </>
   );

@@ -1,4 +1,4 @@
-import { ComparisonLinks } from "./Comparisons";
+import { ComparisonLinks } from "./ComparisonLinks";
 import { useEffect, useRef, useState } from "react";
 import Formula from "./Formula";
 import { atlasEntries as topics, atlasSummary } from "./courseCatalog";
@@ -248,7 +248,7 @@ export default function KnowledgeGraph() {
         occupied.push(box);
         ctx.fillStyle = "#ffffffed";
         ctx.beginPath();
-        ctx.roundRect(box.x, box.y, box.w, box.h, 5);
+        ctx.rect(box.x, box.y, box.w, box.h);
         ctx.fill();
         ctx.fillStyle = active
           ? "#1f5fa8"
@@ -473,7 +473,7 @@ export default function KnowledgeGraph() {
       <div className="graph-content">
         <div className="map-title">
           <div>
-            <h1>在知识宇宙中，发现联系。</h1>
+            <h2>知识之间的联系</h2>
           </div>
           <button className="secondary" onClick={() => setList(!list)} aria-expanded={list}>
             知识点与项目索引

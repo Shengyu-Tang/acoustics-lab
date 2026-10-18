@@ -5,95 +5,66 @@ export default function About() {
     <>
       <Header />
       <main className="about">
-        <div className="profile">
-          <div className="profile-portrait">
-            <img
-              src={portrait}
-              alt="唐胜雨在湖边长椅上的生活照"
-              width="768"
-              height="1024"
-              fetchPriority="high"
-            />
-          </div>
+        <h1>教师主页</h1>
+        <section className="teacher-profile">
+          <img src={portrait} alt="唐胜雨在湖边长椅上的生活照" width="390" height="520" />
           <div>
-            <h1>唐胜雨</h1>
-            <p className="lead">中国海洋大学 · 信息学部电子工程学院</p>
+            <h2>唐胜雨</h2>
+            <p>中国海洋大学信息学部电子工程学院，《声学基础》任课教师。</p>
             <p>
-              《声学基础》任课教师。以振动、传播、辐射、散射、接收与吸收为主线，将数学模型与声学工程应用联系起来。
+              课程以振动、传播、辐射、散射、接收与吸收为主线，将数学模型与声学工程应用联系起来。
             </p>
-            <a className="primary" href="#/lab">
-              进入声学交互实验室
-            </a>
+            <p>
+              <a href="mailto:tangshengyu@ouc.edu.cn">tangshengyu@ouc.edu.cn</a>
+            </p>
           </div>
-        </div>
-        <section className="contact-card">
-          <h2>课程联系与反馈</h2>
-          <p>课程建议、实验反馈或学习中的疑问，欢迎邮件交流。</p>
-          <a href="mailto:tangshengyu@ouc.edu.cn">tangshengyu@ouc.edu.cn</a>
         </section>
-        <div className="about-grid">
-          <section className="paper">
-            <h2>声学基础</h2>
-            <p>Fundamentals of Acoustics</p>
-            <div className="facts">
-              <span>
-                <b>3</b> 学分
-              </span>
-              <span>
-                <b>48</b> 学时
-              </span>
-              <span>
-                <b>24</b> 次课
-              </span>
+        <section>
+          <h2>课程信息</h2>
+          <dl className="course-facts">
+            <div>
+              <dt>学分与学时</dt>
+              <dd>3 学分，48 学时，24 次课</dd>
             </div>
-            <p>
-              面向电子信息工程专业学生，先修高等数学、大学物理与数学物理方法。为声学测量、电声技术、环境声学和水声信号处理等后续学习建立基础。
-            </p>
-            <p>课程考核：平时成绩 30%，期末闭卷考试 70%。</p>
-          </section>
-          <section className="paper" aria-labelledby="learning-benefits">
-            <h2 id="learning-benefits">
-              从听见声音，
-              <br />
-              到用声音解决问题
-            </h2>
-            <p>
-              降噪耳机、水下通信、声呐成像……这些技术背后的规律，你也可以理解和验证。学完这门课，你将开始拥有四种用得上的本领：
-            </p>
-            <ol>
-              <li>
-                <strong>看懂身边的科技</strong>
-                <p>
-                  解释耳机怎样降噪、房间为什么有回声、设备为何在某个频率振得特别厉害。把日常体验，变成你能讲清楚的物理问题。
-                </p>
-              </li>
-              <li>
-                <strong>给设计选择算一笔账</strong>
-                <p>
-                  频率选多高、声源做多大、怎样减少反射？用模型和计算比较方案，初步判断改变一个参数会带来什么收益与代价。
-                </p>
-              </li>
-              <li>
-                <strong>走近海洋探测的技术世界</strong>
-                <p>
-                  理解水下设备怎样用声音通信、定位和寻找目标。把波长、波束和回声联系起来，为学习水声信号处理、电声技术等专业课程铺路。
-                </p>
-              </li>
-              <li>
-                <strong>练出能带进项目的分析能力</strong>
-                <p>
-                  从真实问题中提取关键因素，先预测、再调参数验证，最后用数据解释结果。为课程设计、科研入门和后续工程实践积累方法。
-                </p>
-              </li>
-            </ol>
-            <p>
-              <strong>现在就能开始：</strong>调整两路声音的相位，看看它们怎样相互抵消。
-            </p>
-            <a className="primary" href="#/lab?topic=3.S1">
-              亲手试一次主动降噪
-            </a>
-          </section>
-        </div>
+            <div>
+              <dt>面向专业</dt>
+              <dd>电子信息工程</dd>
+            </div>
+            <div>
+              <dt>先修课程</dt>
+              <dd>高等数学、大学物理、数学物理方法</dd>
+            </div>
+            <div>
+              <dt>课程考核</dt>
+              <dd>平时成绩 30%，期末闭卷考试 70%</dd>
+            </div>
+          </dl>
+        </section>
+        <section>
+          <h2>学习要求</h2>
+          <ol>
+            <li>写清模型假设、边界条件与量纲，用计算解释声学现象。</li>
+            <li>比较频率、尺寸和材料参数对振动与声场的影响。</li>
+            <li>根据设计指标选择方案，并说明理想模型的适用范围。</li>
+          </ol>
+        </section>
+        <section>
+          <h2>课程资源</h2>
+          <ul>
+            <li>
+              <a href="#/">课程章节</a>
+            </li>
+            <li>
+              <a href="#/calendar">教学日历</a>
+            </li>
+            <li>
+              <a href="#/cases">综合工程案例</a>
+            </li>
+            <li>
+              <a href="#/feedback">建议与反馈</a>
+            </li>
+          </ul>
+        </section>
       </main>
     </>
   );

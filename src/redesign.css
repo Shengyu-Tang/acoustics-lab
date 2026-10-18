@@ -1058,3 +1058,404 @@ sup {
     display: none;
   }
 }
+
+/* P6: compact course pages, plain separators and consistent touch controls. */
+.about,
+.feedback-page,
+.calendar-page {
+  max-width: 1100px;
+}
+.about > section,
+.feedback-page > section {
+  border-top: 1px solid #d9d9d9;
+  margin-top: 24px;
+  padding-top: 4px;
+}
+.teacher-profile {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 28px;
+  padding: 20px 0;
+}
+.teacher-profile img {
+  display: block;
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+}
+.teacher-profile h2 {
+  margin-top: 0;
+}
+.course-facts {
+  margin: 0;
+}
+.course-facts > div {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  border-bottom: 1px solid #d9d9d9;
+  padding: 9px 0;
+}
+.course-facts dd {
+  margin: 0;
+}
+.catalog-group {
+  padding: 3px 0;
+}
+.catalog-group summary {
+  padding: 6px 0;
+  min-height: 32px;
+}
+.course-catalog > tbody > tr > th {
+  width: 170px;
+}
+.course-catalog li a {
+  min-height: 44px;
+}
+.site-header nav a {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+}
+.figure-tools button {
+  min-height: 32px;
+  padding: 4px 2px;
+}
+.compact-parameter input[type="range"],
+input[type="range"] {
+  min-height: 32px;
+}
+summary {
+  min-height: 32px;
+}
+.calendar-page .semester-heading {
+  display: block;
+}
+.calendar-page .semester-heading > span {
+  font-size: 14px;
+  color: #555;
+}
+.calendar-page .semester-heading i,
+.month-days button i {
+  display: none;
+}
+.month h3,
+.month h3 b {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.calendar-page .month-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+.calendar-page .month {
+  border-top: 1px solid #d9d9d9;
+}
+.calendar-page .week-block {
+  grid-template-columns: 75px minmax(0, 1fr);
+}
+.calendar-page .calendar-item {
+  background: white;
+  border-radius: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+.calendar-page .calendar-item.lesson-picked {
+  background: white;
+  border-left: 3px solid #1f5fa8;
+  padding-left: 10px;
+}
+.calendar-page .calendar-item > div {
+  color: #555;
+  font-size: 14px;
+}
+.calendar-page .calendar-item a {
+  display: inline-block;
+  min-height: 32px;
+  padding: 3px 0;
+}
+.calendar-page .calendar-item details ul {
+  padding-left: 20px;
+}
+.comparison-page {
+  max-width: 1100px;
+  padding: 30px 24px;
+}
+.comparison-page .paper {
+  padding: 0;
+  border-radius: 0;
+  border: 0;
+}
+.comparison-switch {
+  gap: 8px 24px;
+  margin: 16px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+.comparison-switch a {
+  border: 0;
+  border-radius: 0;
+  padding: 8px 0;
+  min-height: 32px;
+  background: none;
+}
+.comparison-switch a[aria-current] {
+  border-bottom: 2px solid #1f5fa8;
+}
+.comparison-actions {
+  gap: 8px;
+  margin: 16px 0;
+}
+.comparison-controls {
+  padding: 0 0 0 16px;
+  border-left: 1px solid #d9d9d9;
+  border-radius: 0;
+}
+.comparison-controls label {
+  margin: 12px 0;
+  font-size: 14px;
+}
+.comparison-controls input[type="number"],
+.comparison-controls select {
+  padding: 4px 8px;
+}
+.comparison-controls input[type="range"] {
+  accent-color: #1f5fa8;
+}
+.comparison-visual,
+.comparison-plots figure {
+  border-radius: 0;
+  border: 0;
+}
+.comparison-visual-toolbar {
+  padding: 8px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+.comparison-visual-toolbar button {
+  min-height: 32px;
+  padding: 4px 8px;
+  color: #1f5fa8;
+}
+.comparison-table {
+  min-width: 0;
+  table-layout: fixed;
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 8px;
+  overflow-wrap: anywhere;
+}
+.comparison-question {
+  border-radius: 0;
+  background: white;
+  border-top: 1px solid #d9d9d9;
+  padding: 12px 0;
+}
+.comparison-links {
+  border: 0;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 10px 0;
+}
+.comparison-links a {
+  display: inline-block;
+  min-height: 32px;
+  padding: 4px 0;
+}
+.map-page {
+  max-width: 1200px;
+}
+.atlas-switch {
+  display: flex;
+  gap: 24px;
+  margin: 16px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+.atlas-switch button {
+  flex: none;
+  padding: 8px 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+.atlas-switch b {
+  font-size: 16px;
+  margin: 0;
+}
+.atlas-switch button[aria-pressed="true"] {
+  border-bottom: 2px solid #1f5fa8;
+}
+.tree-toolbar {
+  padding: 8px 0;
+  border-radius: 0;
+}
+.tree-toolbar button,
+.chapter-shortcuts button {
+  padding: 5px 8px;
+  min-height: 32px;
+}
+.tree-toolbar input {
+  min-height: 32px;
+  padding: 4px 8px;
+}
+.tree-viewport,
+.atlas-scene {
+  border-radius: 0;
+}
+.chapter-shortcuts {
+  gap: 6px;
+}
+.map-title {
+  padding: 0;
+  margin: 12px 0;
+  align-items: center;
+}
+.map-title h2 {
+  font-size: 20px;
+  margin: 0;
+}
+.scene-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.scene-tools button {
+  min-height: 32px;
+  padding: 4px 8px;
+}
+.space-inspector,
+.map-results,
+.sphere-tooltip {
+  border-radius: 0;
+  box-shadow: none;
+}
+.feedback-page li a,
+.about li a {
+  display: inline-block;
+  padding: 4px 0;
+  min-height: 32px;
+}
+@media (max-width: 760px) {
+  .teacher-profile {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 16px;
+  }
+  .teacher-profile img {
+    width: 100px;
+    height: 134px;
+  }
+  .course-facts > div {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+  .course-catalog > tbody > tr > th {
+    width: 85px;
+  }
+  .course-catalog td {
+    min-width: 0;
+  }
+  .catalog-group summary {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+  .calendar-page .month-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .month-days .day,
+  .month-days button {
+    min-height: 32px;
+  }
+  .calendar-page .week-block {
+    display: block;
+  }
+  .calendar-page .calendar-item {
+    grid-template-columns: 1fr;
+  }
+  .calendar-page .calendar-item > * {
+    grid-column: 1;
+  }
+  .calendar-page .calendar-item > div {
+    grid-row: auto;
+  }
+  .comparison-page {
+    padding: 24px 16px;
+  }
+  .comparison-workbench {
+    display: block;
+  }
+  .comparison-controls {
+    border: 0;
+    border-top: 1px solid #d9d9d9;
+    padding: 8px 0;
+  }
+  .comparison-plots {
+    grid-template-columns: 1fr;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 6px 3px;
+    font-size: 12px;
+  }
+  .comparison-canvas {
+    height: 280px;
+  }
+  .atlas-switch {
+    gap: 20px;
+  }
+  .atlas-switch b {
+    font-size: 15px;
+  }
+  .map-title {
+    display: block;
+  }
+  .map-title button {
+    margin-top: 8px;
+  }
+  .scene-tools {
+    position: static;
+    padding: 8px;
+  }
+  .atlas-scene {
+    height: auto;
+    min-height: 460px;
+  }
+  .atlas-scene canvas {
+    height: 400px;
+  }
+}
+
+main a:not(svg a) {
+  display: inline-block;
+  min-height: 32px;
+}
+.course-catalog li a {
+  display: flex;
+}
+.p2-choice {
+  min-height: 32px;
+}
+
+button {
+  min-width: 32px;
+}
+label:has(input[type="checkbox"]),
+label:has(input[type="radio"]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+}
+
+.site-header a,
+.site-header .brand,
+.site-footer a,
+.page-toc a {
+  min-height: 32px;
+  min-width: 32px;
+}
+.site-footer a,
+.page-toc a {
+  display: inline-block;
+}
+main a:not(svg a) {
+  min-width: 32px;
+}

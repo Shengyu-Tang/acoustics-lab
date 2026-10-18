@@ -19,7 +19,7 @@ export default function Header() {
         <a href="#/cases">综合案例</a>
         <a href="#/calendar">教学日历</a>
         <a href="#/about">教师主页</a>
-        <a href="mailto:tangshengyu@ouc.edu.cn">反馈</a>
+        <a href="#/feedback">反馈</a>
       </nav>
     </header>
   );

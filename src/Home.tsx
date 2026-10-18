@@ -44,7 +44,7 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {chapters.slice(1).map((chapter, i) => (
+              {chapters.slice(1, 8).map((chapter, i) => (
                 <tr key={chapter}>
                   <th scope="row">
                     {i < 7 ? `第 ${i + 1} 章` : "拓展"}
@@ -52,20 +52,52 @@ export default function Home() {
                     {chapter}
                   </th>
                   <td>
-                    <ul>
-                      {topics
-                        .filter((t) => t.chapter === i + 1)
-                        .map((t) => (
-                          <li key={t.id}>
-                            <a href={`#/lab?topic=${t.id}`}>
-                              <Thumbnail id={t.id} />
-                              <span>
-                                {t.id}　{t.title}
-                              </span>
-                            </a>
-                          </li>
-                        ))}
-                    </ul>
+                    {i === 2 ? (
+                      Array.from({ length: 10 }, (_, n) => `3.${n + 1}`).map((group) => (
+                        <details className="catalog-group" key={group}>
+                          <summary>
+                            {group}　
+                            {topics
+                              .find((t) => t.id.startsWith(group + "."))
+                              ?.title.replace(/（.*$/, "")}
+                          </summary>
+                          <ul>
+                            {topics
+                              .filter(
+                                (t) =>
+                                  t.chapter === 3 &&
+                                  t.id.startsWith(group + ".") &&
+                                  completed.includes(t.id),
+                              )
+                              .map((t) => (
+                                <li key={t.id}>
+                                  <a href={`#/lab?topic=${t.id}`}>
+                                    <Thumbnail id={t.id} />
+                                    <span>
+                                      {t.id}　{t.title}
+                                    </span>
+                                  </a>
+                                </li>
+                              ))}
+                          </ul>
+                        </details>
+                      ))
+                    ) : (
+                      <ul>
+                        {topics
+                          .filter((t) => t.chapter === i + 1 && completed.includes(t.id))
+                          .map((t) => (
+                            <li key={t.id}>
+                              <a href={`#/lab?topic=${t.id}`}>
+                                <Thumbnail id={t.id} />
+                                <span>
+                                  {t.id}　{t.title}
+                                </span>
+                              </a>
+                            </li>
+                          ))}
+                      </ul>
+                    )}
                   </td>
                 </tr>
               ))}
