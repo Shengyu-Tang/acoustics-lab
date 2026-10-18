@@ -8,11 +8,10 @@ import {
   graph,
   curve,
   points,
-  circle,
   substitution,
   answer,
 } from "../p4";
-import { imagePanel } from "../../plot/p4Fields";
+import { imagePanel, fieldBoundary } from "../../plot/p4Fields";
 import * as phy from "../../physics/chapter4";
 const f = parameter("f", "频率", "f", "Hz", 200, 1500, 100),
   a = parameter("a", "积分圆半径", "a", "m", 0.3, 1, 0.05),
@@ -34,11 +33,7 @@ const cache = new Map<string, ReturnType<typeof imagePanel>>();
 function field(p: Record<string, number>) {
   const key = JSON.stringify(p);
   if (cache.has(key)) return structuredClone(cache.get(key)!);
-  const boundary = circle(p).series!.map((s) => ({
-    ...s,
-    mx: "a*cos(linspace(0,2*pi,181))",
-    my: "a*sin(linspace(0,2*pi,181))",
-  }));
+  const boundary = fieldBoundary(p);
   const q = imagePanel(
     p,
     0,
@@ -138,28 +133,32 @@ export default makeLecture("4.4.2", {
       graph(
         p,
         0,
-        "闭合边界外推场与源的真实外场对照",
+        "闭合边界外推场（0.8a–1.2a 留空）与真实外场",
         "径向距离 r (m)",
         "归一化声压幅值",
         [0, 3],
         [0, 0.5],
         [
           curve(
-            "外推积分（圆内为零）",
-            (x) =>
-              Math.abs(x - p.a) < 0.04
-                ? 0
-                : phy.magnitude(phy.helmholtz(x, 0, p.a, p.f, p.c, p.N, true)),
-            [0, 3],
-            "linspace(0,3,401)",
-            "abs(p4Helm(x,zeros(size(x)),a,f,c,N,1)).*(abs(x-a)>.04)",
+            "圆内积分应为零",
+            (x) => phy.magnitude(phy.helmholtz(x, 0, p.a, p.f, p.c, p.N, true)),
+            [0, 0.8 * p.a],
+            "linspace(0,.8*a,401)",
+            "abs(p4Helm(x,zeros(size(x)),a,f,c,N,1))",
+          ),
+          curve(
+            "圆外重建（边界附近不显示）",
+            (x) => phy.magnitude(phy.helmholtz(x, 0, p.a, p.f, p.c, p.N, true)),
+            [1.2 * p.a, 3],
+            "linspace(1.2*a,3,401)",
+            "abs(p4Helm(x,zeros(size(x)),a,f,c,N,1))",
           ),
           curve(
             "解析外场",
-            (x) => (x > p.a + 0.04 ? phy.magnitude(phy.green2(phy.kWave(p.f, p.c), x)) : 0),
-            [0, 3],
-            "linspace(0,3,401)",
-            "abs(p4Green(k,max(x,a+.04))).*(x>a+.04)",
+            (x) => phy.magnitude(phy.green2(phy.kWave(p.f, p.c), x)),
+            [1.2 * p.a, 3],
+            "linspace(1.2*a,3,401)",
+            "abs(p4Green(k,x))",
             "--",
           ),
           points("外推接收位置", [[p.r, asks[1].calc(p)]], "r", "pressure", {

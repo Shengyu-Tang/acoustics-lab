@@ -68,11 +68,15 @@ export default makeLecture("4.3", {
       imagePanel(
         p,
         0,
-        "四分之一周期的偶极声场（近源颜色饱和）",
+        "偶极声压幅值（对数刻度，参考 1 Pa）",
         [-0.5, 0.5],
         [-0.5, 0.5],
-        (x, y) => -phy.dipolePressure(x, y, p.d, p.Q, p.f, p.rho, p.c).im,
-        "-imag(p4Dipole(XX,YY,d,Q,f,rho,c))",
+        (x, y) =>
+          20 *
+          Math.log10(
+            Math.max(1e-3, phy.magnitude(phy.dipolePressure(x, y, p.d, p.Q, p.f, p.rho, p.c))),
+          ),
+        "20*log10(max(1e-3,abs(p4Dipole(XX,YY,d,Q,f,rho,c))))",
         "",
         [
           points(
@@ -86,12 +90,9 @@ export default makeLecture("4.3", {
             { marker: "o", style: "none", geometry: { key: "d", axis: "x" } },
           ),
         ],
-        [
-          -p.rho * p.f * p.Q * phy.kWave(p.f, p.c) * p.d,
-          p.rho * p.f * p.Q * phy.kWave(p.f, p.c) * p.d,
-        ],
-        "声压 (Pa)",
-        "[-1 1]*rho*f*Q*k*d",
+        [-60, 40],
+        "声压幅值 (dB，参考 1 Pa)",
+        "[-60 40]",
       ),
     ]),
     comparison(
