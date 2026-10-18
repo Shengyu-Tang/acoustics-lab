@@ -66,29 +66,31 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
                 />{" "}
                 叠画 Qₘ = 1.7 / 5 / 10（此时各曲线用 Qₘ 换算 Rₘ）
               </label>
-              <div className="preset-buttons">
-                {[1.7, 5, 10].map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => {
-                      setCompare(false);
-                      setP({ ...p, Rm: (c.omega0 * p.M) / q });
-                    }}
-                  >
-                    Qₘ = {q}
-                  </button>
-                ))}
-              </div>
             </>
           )}
-          <button
-            onClick={() => {
-              setP({ ...instrument, Rm: 400 });
-              setCompare(false);
-            }}
-          >
-            恢复默认参数
-          </button>
+          <div className="parameter-actions">
+            {first &&
+              [1.7, 5, 10].map((q) => (
+                <button
+                  key={q}
+                  onClick={() => {
+                    setCompare(false);
+                    setP({ ...p, Rm: (c.omega0 * p.M) / q });
+                  }}
+                >
+                  Qₘ = {q}
+                </button>
+              ))}
+            <button
+              className="text-button"
+              onClick={() => {
+                setP({ ...instrument, Rm: 400 });
+                setCompare(false);
+              }}
+            >
+              恢复默认参数
+            </button>
+          </div>
         </fieldset>
         <table className="readouts">
           <caption>当前力阻 Rₘ 对应的关键读数{compare ? "（叠画曲线的 Qₘ 见图例）" : ""}</caption>

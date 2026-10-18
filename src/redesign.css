@@ -29,7 +29,7 @@ h1 {
 }
 h2 {
   font-size: 22px;
-  margin: 30px 0 12px;
+  margin: 20px 0 12px;
 }
 h3 {
   font-size: 19px;
@@ -55,6 +55,7 @@ button,
   background: white;
   color: #1f5fa8;
   padding: 5px 10px;
+  min-height: 32px;
   box-shadow: none;
   font-size: 14px;
   line-height: 1.5;
@@ -70,16 +71,21 @@ button:disabled {
   border-color: #d9d9d9;
   cursor: default;
 }
-input,
+input:not([type="range"]),
 textarea,
 select {
   border: 1px solid #999;
   border-radius: 4px;
   background: white;
   color: #1a1a1a;
-  padding: 4px 6px;
+  padding: 4px 8px;
+  font-size: 14px;
   min-width: 0;
   max-width: 100%;
+}
+input:not([type="range"]):not([type="checkbox"]),
+select {
+  height: 32px;
 }
 input[type="range"],
 input[type="checkbox"] {
@@ -186,7 +192,7 @@ thead th {
 }
 .lecture-body > section {
   border-top: 1px solid #d9d9d9;
-  margin-top: 26px;
+  margin-top: 20px;
   scroll-margin-top: 16px;
 }
 .lecture-body h1 {
@@ -207,8 +213,9 @@ thead th {
   border-right: 1px solid #d9d9d9;
 }
 .chapter-tree summary {
-  padding: 10px 0;
+  padding: 6px 0;
   cursor: pointer;
+  font-size: 14px;
   font-weight: 600;
 }
 .chapter-tree ol li a {
@@ -228,7 +235,7 @@ thead th {
 }
 .catalog-search input {
   width: 100%;
-  margin: 6px 0 12px;
+  margin: 4px 0 8px;
 }
 .page-toc {
   position: sticky;
@@ -256,12 +263,24 @@ thead th {
 .figure-tools {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 6px;
-  flex-wrap: wrap;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #555;
 }
 .figure-tools button {
+  border: 0;
+  background: none;
+  color: #555;
+  border-radius: 0;
   font-size: 12px;
-  padding: 3px 7px;
+  padding: 2px 0;
+  min-height: 0;
+}
+.figure-tools button:hover {
+  color: var(--primary);
+  text-decoration: underline;
 }
 figcaption {
   font-size: 14px;
@@ -275,8 +294,9 @@ figcaption {
   padding: 14px;
   border: 1px solid #d9d9d9;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: max-content 100px 55px minmax(60px, 1fr);
+  column-gap: 6px;
+  row-gap: 8px;
   min-width: 0;
 }
 .parameter-panel legend {
@@ -284,14 +304,24 @@ figcaption {
 }
 .compact-parameter {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 100px auto;
+  grid-column: 1/-1;
+  grid-template-columns: subgrid;
+  margin: 0;
   gap: 6px;
   align-items: center;
   font-size: 13px;
 }
+.compact-parameter > span:first-child {
+  max-width: 190px;
+}
+.parameter-panel > label:not(.compact-parameter),
+.catalog-search,
+.student-answer {
+  margin: 0;
+}
 .compact-parameter input[type="range"] {
-  grid-column: 1/-1;
   width: 100%;
+  min-width: 0;
   height: 18px;
   padding: 0;
 }
@@ -299,6 +329,7 @@ figcaption {
   width: 100%;
 }
 .parameter-panel > label:not(.compact-parameter),
+.parameter-actions,
 .preset-buttons {
   grid-column: 1/-1;
 }
@@ -322,6 +353,7 @@ figcaption {
 .math-text .katex-display {
   width: max-content;
   min-width: 100%;
+  margin: 0.5em 0;
 }
 .formula-line {
   display: flex;
@@ -338,7 +370,7 @@ figcaption {
   font-size: 14px;
 }
 .numbered-formula {
-  margin: 20px 0;
+  margin: 14px 0;
 }
 .numbered-formula p {
   color: #555;
@@ -353,7 +385,7 @@ summary {
   color: #1f5fa8;
 }
 .calculation-example input[type="number"] {
-  width: 115px;
+  width: 120px;
 }
 .student-answer {
   display: grid;
@@ -368,12 +400,38 @@ summary {
   grid-column: 2/-1;
   color: #1f5fa8;
 }
-.calculation-example form button {
-  margin-top: 12px;
+.calculation-example th,
+.calculation-example td {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.example-actions,
+.parameter-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.parameter-actions {
+  margin-top: 4px;
+  gap: 6px;
+}
+.parameter-actions > button:not(.text-button) {
+  padding: 5px 6px;
+}
+.text-button {
+  border-color: transparent;
+  background: none;
+  padding: 5px 0;
+}
+.text-button:hover {
+  background: none;
+  text-decoration: underline;
 }
 .example-hints,
 .reference-solution {
-  margin: 20px 0;
+  margin: 12px 0;
 }
 .solution-content section {
   margin-top: 20px;
@@ -400,10 +458,31 @@ summary {
 }
 .site-footer {
   border-top: 1px solid #d9d9d9;
-  padding: 20px 24px;
+  padding: 14px 24px;
   color: #555;
-  text-align: center;
   font-size: 13px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.email-placeholder {
+  display: inline-block;
+  width: 4em;
+}
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 13px;
+  color: #555;
+  margin: 0 0 10px;
+}
+.breadcrumbs a {
+  color: #555;
+}
+.chapter-tree details {
+  padding: 4px 0;
 }
 .plot-demo {
   max-width: 1000px;
@@ -675,7 +754,7 @@ summary {
     max-width: 60px;
   }
   .course-catalog > tbody > tr > th {
-    width: 95px;
+    width: 120px;
     font-size: 14px;
   }
   .course-catalog th,
@@ -692,12 +771,10 @@ summary {
     align-items: start;
   }
   .parameter-panel {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 132px) 88px 36px minmax(32px, 1fr);
     padding: 10px;
   }
-  .compact-parameter {
-    grid-template-columns: minmax(0, 1fr) 100px 45px;
-  }
+
   .student-answer {
     grid-template-columns: minmax(0, 1fr) 110px 35px;
   }
@@ -717,7 +794,7 @@ summary {
     font-size: 12px;
   }
   .calculation-example input[type="number"] {
-    width: 100%;
+    width: 120px;
     min-width: 65px;
   }
   .calculation-example td:nth-child(3) {
@@ -735,14 +812,7 @@ summary {
   .matlab-figure {
     margin: 16px 0;
   }
-  .figure-tools {
-    justify-content: flex-start;
-    gap: 4px;
-  }
-  .figure-tools button {
-    font-size: 11px;
-    padding: 4px;
-  }
+
   .lesson-pagination {
     flex-direction: column;
   }
@@ -770,6 +840,7 @@ summary {
   .lecture-body {
     max-width: none;
   }
+  body.printing-example .lecture-body > .breadcrumbs,
   body.printing-example .lecture-body > h1,
   body.printing-example .lecture-body > .mooc-source,
   body.printing-example .lecture-body > section:not(#examples),
@@ -800,6 +871,6 @@ summary {
 }
 .parameter-panel select {
   max-width: 100%;
-  font: inherit;
-  padding: 4px;
+  font-size: 14px;
+  padding: 4px 8px;
 }

@@ -242,21 +242,24 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
               </select>
             </label>
           )}
-          {(l.controls === "pluck" || l.controls === "string-boundary") && (
-            <div className="preset-buttons">
-              <button onClick={() => setP({ ...p, T: 70, mu: 0.0004, L: 0.65 })}>吉他弦</button>
-              <button onClick={() => setP({ ...p, T: 180, mu: 0.002, L: 1.2 })}>古筝弦</button>
-            </div>
-          )}
-          <button
-            onClick={() => {
-              setP({ ...l.defaults });
-              setT(0);
-              setPlaying(false);
-            }}
-          >
-            恢复默认参数
-          </button>
+          <div className="parameter-actions">
+            {(l.controls === "pluck" || l.controls === "string-boundary") && (
+              <>
+                <button onClick={() => setP({ ...p, T: 70, mu: 0.0004, L: 0.65 })}>吉他弦</button>
+                <button onClick={() => setP({ ...p, T: 180, mu: 0.002, L: 1.2 })}>古筝弦</button>
+              </>
+            )}
+            <button
+              className="text-button"
+              onClick={() => {
+                setP({ ...l.defaults });
+                setT(0);
+                setPlaying(false);
+              }}
+            >
+              恢复默认参数
+            </button>
+          </div>
         </fieldset>
         <table className="readouts">
           <caption>当前参数关键读数</caption>

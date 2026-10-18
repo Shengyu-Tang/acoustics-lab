@@ -160,11 +160,11 @@ export default function CourseTree() {
                           y={y}
                           width="520"
                           height="38"
-                          rx="10"
-                          fill="#1a1a1a"
+                          rx="4"
+                          fill="#ffffff"
                           stroke={color}
                         />
-                        <text x={tx + 13} y={y + 25} fill="#214655" fontSize="17">
+                        <text x={tx + 13} y={y + 25} fill="#1a1a1a" fontSize="17">
                           {t.isProject ? "项目" : t.id} · {t.title}
                         </text>
                         <title>{t.focus || t.title}</title>
@@ -178,8 +178,8 @@ export default function CourseTree() {
                     y={g.y - 29}
                     width="220"
                     height="58"
-                    rx="17"
-                    fill="#153d4c"
+                    rx="4"
+                    fill="#f3f6fa"
                     stroke={color}
                     strokeWidth="3"
                   />

@@ -119,7 +119,6 @@ export default function Home() {
           </p>
         </section>
       </main>
-      <footer className="site-footer">声学基础 · 中国海洋大学</footer>
     </>
   );
 }

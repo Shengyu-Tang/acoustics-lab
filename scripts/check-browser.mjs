@@ -22,6 +22,18 @@ const server = spawn(
 );
 let context;
 const errors = [];
+// Include decoded thumbnails in full-page captures, including images below the fold.
+async function readyForScreenshot(page) {
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await Promise.all(
+      [...document.images].map((img) => {
+        img.loading = "eager";
+        return img.decode();
+      }),
+    );
+  });
+}
 const runDirectory = path.resolve(`outputs/browser-run-${Date.now()}`);
 fs.mkdirSync(runDirectory, { recursive: true });
 try {
@@ -61,7 +73,7 @@ try {
     for (const [name, hash, title] of pages) {
       await page.goto("http://127.0.0.1:4174/" + hash);
       await page.getByRole("heading", { name: title, exact: true }).waitFor();
-      await page.evaluate(() => document.fonts.ready);
+      await readyForScreenshot(page);
       await page.waitForTimeout(150);
       const dims = await page.evaluate(() => ({
         viewport: innerWidth,
@@ -333,6 +345,7 @@ try {
       await page.goto("http://127.0.0.1:4174/#/lab?topic=" + t.id);
       await page.getByRole("heading", { name: t.id + " " + t.title, exact: true }).waitFor();
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, t.id);
+      assert.equal(await page.title(), `${t.id} ${t.title} · 声学基础 · 中国海洋大学`);
       if (i % 20 === 0) console.log(`PASS: retained lecture ${i + 1}/${topics.length} at ${width}`);
       const l = p1.find((l) => l.id === t.id);
       if (!l) continue;
@@ -380,6 +393,9 @@ try {
         }),
       );
       assert.deepEqual(hiddenCurves, [], `${l.id}: legend covers a curve at ${width}`);
+      // Capture the initial lecture, before exercise and parameter mutations.
+      fs.mkdirSync("screenshots/p1", { recursive: true });
+      await page.screenshot({ path: `screenshots/p1/${l.id}-${width}.png`, fullPage: true });
       const e = l.examples[0];
       assert.equal(
         await page.locator(".matlab-figure").count(),
@@ -463,8 +479,6 @@ try {
           "Dragging string changes the deflection",
         );
       }
-      fs.mkdirSync("screenshots/p1", { recursive: true });
-      await page.screenshot({ path: `screenshots/p1/${l.id}-${width}.png`, fullPage: true });
     }
   }
   for (const width of [1440, 390]) {
@@ -485,6 +499,106 @@ try {
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, hash);
     }
   }
+  // Review exact viewport screenshots in addition to the full lecture captures.
+  const polish = [];
+  fs.mkdirSync("screenshots/polish", { recursive: true });
+  for (const [size, width, height] of [
+    ["desktop", 1440, 900],
+    ["mobile", 390, 844],
+  ]) {
+    await page.setViewportSize({ width, height });
+    for (const id of ["home", "1.1.1", "1.2.4", "2.2"]) {
+      await page.goto("http://127.0.0.1:4174/" + (id === "home" ? "#/" : `#/lab?topic=${id}`));
+      await page
+        .getByRole("heading", {
+          name: id === "home" ? "声学基础" : `${id} ${topics.find((t) => t.id === id).title}`,
+          exact: true,
+        })
+        .waitFor();
+      await readyForScreenshot(page);
+      const title = id === "home" ? "" : `${id} ${topics.find((t) => t.id === id).title} · `;
+      assert.equal(await page.title(), title + "声学基础 · 中国海洋大学");
+      assert.equal(await page.locator(".site-footer").count(), 1);
+      assert.ok((await page.locator(".site-footer").textContent()).includes("© 2026 中国海洋大学"));
+      assert.equal(await page.locator(".email-placeholder").textContent(), "");
+      const metrics = await page.evaluate(() => {
+        const box = (el) => el.getBoundingClientRect().toJSON();
+        return {
+          id: location.hash,
+          width: innerWidth,
+          scrollWidth: document.documentElement.scrollWidth,
+          fields: [...document.querySelectorAll(".compact-parameter")].map((el) => {
+            const [label, number, unit, slider] = el.children;
+            const style = getComputedStyle(number);
+            return {
+              label: box(label),
+              number: box(number),
+              unit: box(unit),
+              slider: box(slider),
+              height: style.height,
+              fontSize: style.fontSize,
+              padding: style.padding,
+            };
+          }),
+          actions: [...document.querySelectorAll(".example-actions button")].map(box),
+          presets: [...document.querySelectorAll(".parameter-actions button")].map(box),
+          tools: [...document.querySelectorAll(".figure-tools button")].map((el) => {
+            const style = getComputedStyle(el);
+            return {
+              fontSize: style.fontSize,
+              color: style.color,
+              border: style.borderTopWidth,
+              text: el.textContent,
+            };
+          }),
+          given: [...document.querySelectorAll(".calculation-example tbody input")].map(box),
+          searchHeight: document.querySelector(".catalog-search input")
+            ? getComputedStyle(document.querySelector(".catalog-search input")).height
+            : null,
+        };
+      });
+      assert.equal(metrics.scrollWidth, width);
+      if (id !== "home") {
+        assert.equal(await page.locator(".breadcrumbs [aria-current=page]").textContent(), id);
+        assert.equal(metrics.searchHeight, "32px");
+        for (const f of metrics.fields) {
+          assert.equal(f.height, "32px");
+          assert.equal(f.fontSize, "14px");
+          assert.equal(f.padding, "4px 8px");
+          assert.ok(f.number.left >= f.label.right && f.number.left - f.label.right <= 8);
+          assert.ok(f.unit.left >= f.number.right && f.slider.left >= f.unit.right);
+          assert.ok(
+            Math.abs(f.number.top + f.number.height / 2 - (f.slider.top + f.slider.height / 2)) < 2,
+          );
+        }
+        assert.equal(metrics.actions.length, 3);
+        assert.ok(metrics.actions.every((b) => Math.abs(b.top - metrics.actions[0].top) < 2));
+        assert.ok(metrics.presets.every((b) => Math.abs(b.top - metrics.presets[0].top) < 2));
+        for (const t of metrics.tools) {
+          assert.equal(t.fontSize, "12px");
+          assert.equal(t.color, "rgb(85, 85, 85)");
+          assert.equal(t.border, "0px");
+        }
+        for (const f of metrics.given) {
+          assert.equal(f.height, 32);
+          assert.ok(f.width <= 120);
+          if (width === 1440) assert.equal(f.width, 120);
+        }
+      }
+      await page.screenshot({ path: `screenshots/polish/${id}-${size}.png` });
+      if (id !== "home") {
+        await page
+          .locator(".parameter-panel")
+          .screenshot({ path: `outputs/${id}-parameters-${size}.png` });
+        await page
+          .locator(".calculation-example")
+          .screenshot({ path: `outputs/${id}-example-${size}.png` });
+      }
+      polish.push({ id, size, ...metrics });
+      console.log(`PASS: polish layout, title and screenshot ${id} ${size}`);
+    }
+  }
+  fs.writeFileSync("outputs/polish-report.json", JSON.stringify(polish, null, 2));
   assert.deepEqual(errors, [], "Browser console errors");
   fs.writeFileSync(
     "outputs/browser-report.json",
@@ -508,6 +622,9 @@ try {
           "distinct power/bandwidth exercise grading, hints and reactive solution",
           "160×80 smoothly interpolated legacy field",
           "completed-lecture thumbnails only",
+          "all lecture document titles",
+          "polish control dimensions, inline actions, breadcrumbs, export links and shared footer",
+          "eight default-state viewport screenshots",
         ],
       },
       null,

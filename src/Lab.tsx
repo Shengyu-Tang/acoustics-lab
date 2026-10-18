@@ -108,7 +108,11 @@ function LegacyLecture({ topic }: { topic: (typeof topics)[number] }) {
               onChange={(n) => setV({ ...v, [p.key]: n })}
             />
           ))}
-          <button onClick={() => setV(defaults(model))}>恢复默认参数</button>
+          <div className="parameter-actions">
+            <button className="text-button" onClick={() => setV(defaults(model))}>
+              恢复默认参数
+            </button>
+          </div>
         </fieldset>
         {topic.model === "undamped" && (
           <Suspense fallback={<p>载入拍现象演示…</p>}>
@@ -175,6 +179,15 @@ export default function Lab() {
           <ChapterTree id={topic.id} onChoose={() => setOpen(false)} />
         </aside>
         <main className="lecture-body">
+          <nav className="breadcrumbs" aria-label="面包屑">
+            <a href="#/">课程章节</a>
+            <span aria-hidden="true">›</span>
+            <a href={`#/lab?topic=${topics.find((t) => t.chapter === topic.chapter)!.id}`}>
+              第 {topic.chapter} 章 {chapters[topic.chapter]}
+            </a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">{topic.id}</span>
+          </nav>
           <h1>
             {topic.id} {topic.title}
           </h1>
@@ -220,7 +233,6 @@ export default function Lab() {
           ))}
         </aside>
       </div>
-      <footer className="site-footer">声学基础 · 中国海洋大学 · 唐胜雨</footer>
     </>
   );
 }

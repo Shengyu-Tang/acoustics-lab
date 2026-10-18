@@ -586,6 +586,7 @@ export default function Figure({
     <figure ref={host} className="matlab-figure" style={{ maxWidth: cols === 1 ? 640 : undefined }}>
       <div className="figure-tools" aria-label="图形导出">
         <button
+          aria-label="导出 PNG"
           onClick={async () => {
             try {
               await png(svg.current!, name + ".png");
@@ -595,17 +596,23 @@ export default function Figure({
             }
           }}
         >
-          导出 PNG
+          PNG
         </button>
-        <button onClick={() => download(csv(panels), name + ".csv", "text/csv;charset=utf-8")}>
-          导出数据 CSV
-        </button>
+        <span aria-hidden="true">·</span>
         <button
+          aria-label="导出数据 CSV"
+          onClick={() => download(csv(panels), name + ".csv", "text/csv;charset=utf-8")}
+        >
+          CSV
+        </button>
+        <span aria-hidden="true">·</span>
+        <button
+          aria-label="导出 MATLAB 代码"
           onClick={() =>
             download(matlab(panels, rows, cols, caption), name + ".m", "text/plain;charset=utf-8")
           }
         >
-          导出 MATLAB 代码
+          MATLAB
         </button>
       </div>
       <svg

@@ -114,13 +114,28 @@ export default function ExampleWorksheet({
             )}
           </label>
         ))}
-        <button type="submit">提交答案</button>
+        <div className="example-actions">
+          <button type="submit">提交答案</button>
+          <button
+            type="button"
+            aria-label="提示 1：选择公式"
+            aria-expanded={hint >= 1}
+            onClick={() => setHint(Math.max(1, hint))}
+          >
+            提示 1
+          </button>
+          <button
+            type="button"
+            aria-label="提示 2：代入步骤"
+            aria-expanded={hint >= 2}
+            onClick={() => setHint(2)}
+          >
+            提示 2
+          </button>
+        </div>
         <div role="status">{submitted ? "判分已更新，请查看每一问的反馈。" : ""}</div>
       </form>
       <div className="example-hints">
-        <button disabled={hint === 2} onClick={() => setHint(Math.min(2, hint + 1))}>
-          {hint === 0 ? "提示 1：选择公式" : hint === 1 ? "提示 2：代入步骤" : "已显示两级提示"}
-        </button>
         {example.hints.slice(0, hint).map((h) => (
           <p key={h}>{h}</p>
         ))}
