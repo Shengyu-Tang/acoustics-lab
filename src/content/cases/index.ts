@@ -1,3 +1,4 @@
+import grin_lens from "./grin-lens";
 import duct from "./duct";
 import transport from "./transport";
 import measurement from "./measurement";
@@ -6,4 +7,4 @@ import ultrasound from "./ultrasound";
 import industry from "./industry";
 import building from "./building";
 import ocean from "./ocean";
-export const engineeringCases = [duct, transport, measurement, music, ultrasound, industry, building, ocean];
+export const engineeringCases = [grin_lens, duct, transport, measurement, music, ultrasound, industry, building, ocean];

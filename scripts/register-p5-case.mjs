@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import { build, stop } from "esbuild";
 const id = process.argv[2];
+const symbol = id.replaceAll("-", "_");
 await build({
   entryPoints: ["src/content/cases/" + id + ".ts"],
   bundle: true,
@@ -23,8 +24,8 @@ Object.assign(
 );
 fs.writeFileSync("src/projects.json", JSON.stringify(projects, null, 2) + "\n");
 let index = fs.readFileSync("src/content/cases/index.ts", "utf8");
-if (!index.includes(`import ${id} `)) {
-  index = `import ${id} from "./${id}";\n` + index;
-  index = index.replace(/engineeringCases = \[/, `engineeringCases = [${id}, `);
+if (!index.includes(`import ${symbol} `)) {
+  index = `import ${symbol} from "./${id}";\n` + index;
+  index = index.replace(/engineeringCases = \[/, `engineeringCases = [${symbol}, `);
 }
 fs.writeFileSync("src/content/cases/index.ts", index);
