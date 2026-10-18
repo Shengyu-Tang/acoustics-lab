@@ -9,7 +9,15 @@ process.env.TEMP = path.resolve("outputs/browser-tmp");
 process.env.TMP = process.env.TEMP;
 const server = spawn(
   process.execPath,
-  ["node_modules/vite/bin/vite.js", "preview", "--host", "127.0.0.1", "--port", "4174"],
+  [
+    "node_modules/vite/bin/vite.js",
+    "preview",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "4174",
+    "--strictPort",
+  ],
   { windowsHide: true, stdio: "ignore" },
 );
 let context;
@@ -18,6 +26,7 @@ const runDirectory = path.resolve(`outputs/browser-run-${Date.now()}`);
 fs.mkdirSync(runDirectory, { recursive: true });
 try {
   for (let i = 0; i < 40; i++) {
+    if (server.exitCode !== null) throw new Error("Preview server failed to start on port 4174");
     try {
       if ((await fetch("http://127.0.0.1:4174/")).ok) break;
     } catch {}
@@ -62,7 +71,87 @@ try {
       measurements.push({ name, size, ...dims });
       assert.equal(dims.scroll, width, `${name} ${size}: horizontal overflow`);
       assert.equal(dims.header, 56);
+      if (name === "home") assert.equal(await page.locator(".lecture-thumbnail").count(), 2);
+      if (name.startsWith("lecture")) {
+        const plotMetrics = await page.locator(".matlab-figure svg").evaluateAll((svgs) =>
+          svgs.map((svg) => ({
+            width: svg.getBoundingClientRect().width,
+            units: svg.viewBox.baseVal.width,
+            font: getComputedStyle(svg.querySelector("text")).fontSize,
+            labels: Array.from(svg.querySelectorAll("[data-annotation-label]")).map((t) => ({
+              box: t.getBoundingClientRect().toJSON(),
+              transform: t.getAttribute("transform"),
+            })),
+          })),
+        );
+        for (const plot of plotMetrics) {
+          assert.ok(Math.abs(plot.width - plot.units) < 0.1, "SVG units must be screen pixels");
+          assert.equal(plot.font, "12px");
+          for (let i = 0; i < plot.labels.length; i++) {
+            const a = plot.labels[i];
+            assert.equal(a.transform, null, "horizontal annotation");
+            for (const b of plot.labels.slice(i + 1)) {
+              const overlapX =
+                Math.min(a.box.right, b.box.right) - Math.max(a.box.left, b.box.left);
+              const overlapY =
+                Math.min(a.box.bottom, b.box.bottom) - Math.max(a.box.top, b.box.top);
+              assert.ok(overlapX <= 0 || overlapY <= 0, "annotation labels overlap");
+            }
+          }
+        }
+        assert.ok(plotMetrics[1].width <= 640);
+        if (size === "mobile") {
+          const formulas = await page.locator(".formula-line").evaluateAll((lines) =>
+            lines.map((line) => {
+              const math = line.querySelector(".math-text"),
+                number = line.querySelector(":scope > span");
+              math.scrollLeft = math.scrollWidth;
+              const result = {
+                overflow: getComputedStyle(math).overflowX,
+                bottom: math.getBoundingClientRect().bottom,
+                numberTop: number.getBoundingClientRect().top,
+                scrollable: math.scrollWidth <= math.clientWidth || math.scrollLeft > 0,
+              };
+              math.scrollLeft = 0;
+              return result;
+            }),
+          );
+          assert.ok(
+            formulas.every((f) => f.overflow === "auto" && f.numberTop >= f.bottom && f.scrollable),
+          );
+        }
+        if (name === "lecture-1.2.4") {
+          assert.equal(
+            await page
+              .locator(".readouts tr")
+              .filter({ hasText: "f₀ 处 Xₘ" })
+              .locator("td")
+              .nth(1)
+              .textContent(),
+            "0",
+          );
+        } else {
+          assert.equal(
+            await page
+              .getByRole("heading", { name: "例题 B　振动台的带宽测量与输入功率", exact: true })
+              .count(),
+            1,
+          );
+          const transforms = await page
+            .locator(".matlab-figure")
+            .first()
+            .locator("svg > g")
+            .evaluateAll((groups) => groups.map((g) => g.getAttribute("transform")));
+          assert.equal(transforms.length, 3);
+          assert.ok(transforms.every((t) => t.startsWith("translate(0 ")));
+        }
+      }
       await page.screenshot({ path: `${shots}/${name}-${size}.png`, fullPage: true });
+      if (name.startsWith("lecture")) {
+        const figures = page.locator(".matlab-figure");
+        for (let i = 1; i < (await figures.count()); i++)
+          await figures.nth(i).screenshot({ path: `outputs/${name}-figure-${i + 1}-${size}.png` });
+      }
       if (name === "lecture-1.2.4") {
         const graph = page.locator(".matlab-figure").first();
         await graph.screenshot({ path: `outputs/plot-${size}.png` });
@@ -140,6 +229,49 @@ try {
   await page.evaluate(() => window.dispatchEvent(new Event("afterprint")));
   assert.equal(await page.locator(".reference-solution").getAttribute("open"), null);
   await page.emulateMedia({ media: "screen" });
+  await page.goto("http://127.0.0.1:4174/#/lab?topic=1.2.5");
+  await page.locator(".student-answer input").first().waitFor();
+  const bandwidthAnswers = [
+    Math.sqrt(395000 / 10) / (2 * Math.PI) / (100 / 3 - 30),
+    2 * Math.PI * 10 * (100 / 3 - 30),
+    0.5 * 2 * Math.PI * 10 * (100 / 3 - 30) * 0.2 ** 2,
+    2 * Math.PI * 10 * (100 / 3 - 30) * 0.2,
+  ];
+  for (const [i, value] of bandwidthAnswers.entries())
+    await page.locator(".student-answer input").nth(i).fill(String(value));
+  await page.getByRole("button", { name: "提交答案", exact: true }).click();
+  assert.deepEqual(
+    await page.locator(".student-answer output").allTextContents(),
+    Array(4).fill("正确"),
+  );
+  await page.getByRole("button", { name: "提示 1：选择公式" }).click();
+  await page.getByRole("button", { name: "提示 2：代入步骤" }).click();
+  await page.locator(".reference-solution summary").click();
+  const powerBefore = await page.locator(".solution-content").textContent();
+  await page.getByRole("spinbutton", { name: "例题目标振速峰值", exact: true }).fill("0.4");
+  assert.notEqual(await page.locator(".solution-content").textContent(), powerBefore);
+  const bandwidthDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "导出 MATLAB 计算脚本", exact: true }).click();
+  await (await bandwidthDownload).saveAs("outputs/downloads/bandwidth-B.m");
+  assert.ok(fs.readFileSync("outputs/downloads/bandwidth-B.m", "utf8").includes("vm=0.4"));
+  await page.goto("http://127.0.0.1:4174/#/lab?topic=3.10.5");
+  await page.locator(".matlab-figure image").first().waitFor();
+  const raster = await page
+    .locator(".matlab-figure image")
+    .first()
+    .evaluate(async (image) => {
+      const bitmap = new Image();
+      bitmap.src = image.getAttribute("href");
+      await bitmap.decode();
+      return {
+        width: bitmap.naturalWidth,
+        height: bitmap.naturalHeight,
+        rendering: getComputedStyle(image).imageRendering,
+      };
+    });
+  assert.ok(raster.width >= 160 && raster.height >= 80);
+  assert.equal(raster.rendering, "auto");
+  await page.screenshot({ path: "outputs/field-3.10.5.png", fullPage: true });
   await page.close();
   page = await context.newPage();
   await page.setViewportSize({ width: 1440, height: 900 });
@@ -195,6 +327,11 @@ try {
           "PNG/CSV/MATLAB downloads",
           "print",
           "all lecture routes",
+          "fixed screen font sizes and nonoverlapping horizontal annotations",
+          "mobile formula scrolling and separate equation numbers",
+          "distinct power/bandwidth exercise grading, hints and reactive solution",
+          "160×80 smoothly interpolated legacy field",
+          "completed-lecture thumbnails only",
         ],
       },
       null,
