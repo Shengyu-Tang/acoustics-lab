@@ -213,7 +213,7 @@ export function modelsFor(
     }
     case "2.3-1":
       setup =
-        "c=sqrt(E*1e9/rho); phase=cos(pi*c/L*tView); a=sigma*phase; b=(sigma+gradient*.2*L)*phase; stressScale=6; left=arrowPoints([.4*L 0],[.4*L-.22*a/stressScale 0],1); right=arrowPoints([.6*L 0],[.6*L+.22*b/stressScale 0],1); force=arrowPoints([.5*L .025],[.5*L+1.2*(b-a) .025],.04);";
+        "c=sqrt(E*1e9/rho); phase=cos(pi*c/L*tView); a=sigma*phase; b=(sigma+gradient*.2*L)*phase; stressScale=6; left=arrowPoints([.4*L 0],[.4*L-.22*a/stressScale 0],.04); right=arrowPoints([.6*L 0],[.6*L+.22*b/stressScale 0],.04); force=arrowPoints([.5*L 0],[.5*L+1.2*(b-a) 0],.04);";
       curves = [
         [
           xyz("[0 L L 0 0]", "sqrt(S)/2*[-1 -1 1 1 -1]"),

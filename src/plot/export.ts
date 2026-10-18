@@ -403,7 +403,11 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       p.legend !== false &&
       (p.field?.categories?.length || plotSeries.some((s) => s.legend !== false))
     )
-      out.push("lgd.Location='northoutside';");
+      out.push(p.insetLegend ? "lgd.Location='best';" : "lgd.Location='northoutside';");
+    if (p.blackAxes)
+      out.push(
+        "set(gca,'XColor','k'); ax=gca; for qa_axis=1:numel(ax.YAxis), ax.YAxis(qa_axis).Color='k'; end",
+      );
     if (p.xtickLabels)
       out.push(
         `xticks(${vector(p.xtickLabels.map((t) => t.value))});xticklabels({${p.xtickLabels.map((t) => tex(t.label)).join(",")}});`,

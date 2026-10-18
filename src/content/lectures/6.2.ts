@@ -126,15 +126,15 @@ const completedLecture = makeLecture("6.2", {
             "相同体积速度：交换前后接收声压完全重合",
             "时间 t (s)",
             "接收声压 (Pa)",
-            [0, 0.004],
+            [0, 0.0004],
             [-1, 1],
             [
               curve(
                 "A 发 B 收",
                 (t) =>
                   q.re * Math.cos(2 * Math.PI * p.f * t) - q.im * Math.sin(2 * Math.PI * p.f * t),
-                [0, 0.004],
-                "linspace(0,.004,1601)",
+                [0, 0.0004],
+                "linspace(0,.0004,1601)",
                 "real(Pab*exp(1i*w*x))",
                 "-",
                 1601,
@@ -143,14 +143,15 @@ const completedLecture = makeLecture("6.2", {
                 "B 发 A 收",
                 (t) =>
                   q.re * Math.cos(2 * Math.PI * p.f * t) - q.im * Math.sin(2 * Math.PI * p.f * t),
-                [0, 0.004],
-                "linspace(0,.004,1601)",
+                [0, 0.0004],
+                "linspace(0,.0004,1601)",
                 "real(Pba*exp(1i*w*x))",
                 "--",
                 1601,
               ),
             ],
             setup,
+            { blackAxes: true, exactXLimits: true },
           ),
         ];
       },

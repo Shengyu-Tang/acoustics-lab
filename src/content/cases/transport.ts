@@ -154,6 +154,8 @@ export default problem({
       setup,
       {
         answerKey: "approaching",
+        insetLegend: true,
+        blackAxes: true,
         rightLabel: "含背景声压级 (dB)",
         annotations: [xmark(0, "最近通过位置")],
       },

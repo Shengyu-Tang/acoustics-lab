@@ -1,0 +1,465 @@
+{
+  "runtimeValidated": true,
+  "jobs": [
+    {
+      "name": "1.1.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_1_1_1_E1_set0.m",
+      "expectedFile": "outputs/P6/fig_1_1_1_E1_set0-web.json",
+      "parameters": {
+        "M": 2,
+        "D": 800,
+        "Rm": 0,
+        "x0": 0.005,
+        "v0": 0.08
+      },
+      "sha256": "2587772047b49f8449503a47c0aa8884a62f74ef6d1f553c8521344e9b35c2b3"
+    },
+    {
+      "name": "1.1.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_1_1_1_E1_set1.m",
+      "expectedFile": "outputs/P6/fig_1_1_1_E1_set1-web.json",
+      "parameters": {
+        "M": 2.3000000000000003,
+        "D": 900,
+        "Rm": 0,
+        "x0": 0.006000000000000002,
+        "v0": 0.09000000000000008
+      },
+      "sha256": "84201f17db081e693313bc5e6a25c68e34144b77f2912e1029902a4e317b95ba"
+    },
+    {
+      "name": "1.1.4-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_1_1_4_E1_set0.m",
+      "expectedFile": "outputs/P6/fig_1_1_4_E1_set0-web.json",
+      "parameters": {
+        "M": 2,
+        "D": 3200,
+        "Qm": 8,
+        "x0": 0.006,
+        "v0": 0
+      },
+      "sha256": "d7aebdb80ccc32d19671fc0c714c1a2726d3e9498447db5820a287f55851b8c0"
+    },
+    {
+      "name": "1.1.4-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_1_1_4_E1_set1.m",
+      "expectedFile": "outputs/P6/fig_1_1_4_E1_set1-web.json",
+      "parameters": {
+        "M": 2.3000000000000003,
+        "D": 3600,
+        "Qm": 9,
+        "x0": 0.006,
+        "v0": 0
+      },
+      "sha256": "4bd86d3430be911046567900e14708aa217a1e0ec4fece9dea78077d17e0c8e0"
+    },
+    {
+      "name": "2.3-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_2_3_E1_set0.m",
+      "expectedFile": "outputs/P6/fig_2_3_E1_set0-web.json",
+      "parameters": {
+        "E": 200,
+        "rho": 7850,
+        "L": 1,
+        "S": 0.0001,
+        "tipMass": 0.785,
+        "sigma": 1,
+        "gradient": 0.4,
+        "boundary": 2,
+        "material": 0
+      },
+      "sha256": "2310f09a54da7316cc7585dd1ff92c79cd5d2ecf829be5e80e0a883d0ac44e21"
+    },
+    {
+      "name": "2.3-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_2_3_E1_set1.m",
+      "expectedFile": "outputs/P6/fig_2_3_E1_set1-web.json",
+      "parameters": {
+        "E": 226,
+        "rho": 8870,
+        "L": 1.1300000000000001,
+        "S": 0.00011,
+        "tipMass": 0.89,
+        "sigma": 1,
+        "gradient": 0.4,
+        "boundary": 2,
+        "material": 0
+      },
+      "sha256": "19ed4488492c0b363e988994d5321657c6e7faadc5c7a078a63b9d213ee03ce2"
+    },
+    {
+      "name": "3.10.1-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_3_10_1_E1_set0.m",
+      "expectedFile": "outputs/P6/fig_3_10_1_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 1
+      },
+      "sha256": "0992e8e68cfb9289afe7f8419ac03e24cab5df9b3ce49abc4fbca8f5d59fc47a"
+    },
+    {
+      "name": "3.10.1-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_3_10_1_E1_set1.m",
+      "expectedFile": "outputs/P6/fig_3_10_1_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1000,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.56,
+        "mode": 1
+      },
+      "sha256": "c2d732a096e9b6737f045d90cb6a20d30a4e5956fe97fda79509120ba07dd533"
+    },
+    {
+      "name": "3.10.3-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_3_10_3_E1_set0.m",
+      "expectedFile": "outputs/P6/fig_3_10_3_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 500,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "sha256": "39c06810a4cd6dc46646835891fd1e74169e855cb0cf55da04a75c87a7e053d6"
+    },
+    {
+      "name": "3.10.3-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_3_10_3_E1_set1.m",
+      "expectedFile": "outputs/P6/fig_3_10_3_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 388,
+        "c2": 343,
+        "f": 570,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.56,
+        "mode": 2
+      },
+      "sha256": "5f3839069712b78425563383d018ec3dc844b0568935a594c4802d2f20afcb3f"
+    },
+    {
+      "name": "3.10.4-E1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_3_10_4_E1_set0.m",
+      "expectedFile": "outputs/P6/fig_3_10_4_E1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1200,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "sha256": "4c7c130379f290d40339858340acefd973c9dc41fd4dd7791560d8443adf0af7"
+    },
+    {
+      "name": "3.10.4-E1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_3_10_4_E1_set1.m",
+      "expectedFile": "outputs/P6/fig_3_10_4_E1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 343,
+        "c2": 343,
+        "f": 1360,
+        "pa": 1,
+        "Z1": 1500000,
+        "Z2": 415,
+        "theta": 30,
+        "h": 0.5,
+        "mode": 2
+      },
+      "sha256": "a5f0fc21a3eddcbd9b28caff6d079d2cd2a1ea97b61debb5600149526dec4024"
+    },
+    {
+      "name": "ocean",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_ocean_set0.m",
+      "expectedFile": "outputs/P6/fig_ocean_set0-web.json",
+      "parameters": {
+        "rho": 1025,
+        "c": 1500,
+        "f": 50000,
+        "a": 0.05,
+        "low": 30000,
+        "high": 50000,
+        "r": 1000,
+        "beamLimit": 22,
+        "lossLimit": 80
+      },
+      "sha256": "adca311fc254773c2611d8aed9f021369484e7dad2180ff83731a9f2e3d7c0b6"
+    },
+    {
+      "name": "ocean",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_ocean_set1.m",
+      "expectedFile": "outputs/P6/fig_ocean_set1-web.json",
+      "parameters": {
+        "rho": 1025,
+        "c": 1550,
+        "f": 50000,
+        "a": 0.056,
+        "low": 33900,
+        "high": 56500,
+        "r": 1130,
+        "beamLimit": 25,
+        "lossLimit": 90
+      },
+      "sha256": "106c56dea14f363cdf1221669325dd9edd44651f90d5dd199a3f80ca3c03db56"
+    },
+    {
+      "name": "building",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_building_set0.m",
+      "expectedFile": "outputs/P6/fig_building_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "d": 0.05,
+        "sigma": 10000,
+        "minimum": 0.6,
+        "maximum": 0.15
+      },
+      "sha256": "fa9146d1bf8c0383d31d9975dada25a726299b8473f6fdb04e79e4f4df4ad6b2"
+    },
+    {
+      "name": "building",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_building_set1.m",
+      "expectedFile": "outputs/P6/fig_building_set1-web.json",
+      "parameters": {
+        "rho": 1.3,
+        "c": 350,
+        "f": 1000,
+        "d": 0.05600000000000001,
+        "sigma": 11300,
+        "minimum": 0.68,
+        "maximum": 0.131
+      },
+      "sha256": "9d4d767a0261912408fef95764286ffc9249d6c943fa569b3644c8d9db1006a7"
+    },
+    {
+      "name": "transport",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_transport_set0.m",
+      "expectedFile": "outputs/P6/fig_transport_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 800,
+        "v": 20,
+        "d": 30,
+        "xobs": 50,
+        "r0": 10,
+        "L0": 90,
+        "background": 60,
+        "limit": 75,
+        "proposed": 80
+      },
+      "sha256": "2168759e61cee6a5b080d0b50884d123f448b538de2f862d19ee8a58ee56b6b2"
+    },
+    {
+      "name": "transport",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_transport_set1.m",
+      "expectedFile": "outputs/P6/fig_transport_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 350,
+        "f": 900,
+        "v": 23,
+        "d": 34,
+        "xobs": 56,
+        "r0": 10,
+        "L0": 100,
+        "background": 65,
+        "limit": 85,
+        "proposed": 90
+      },
+      "sha256": "6f0c38bf197760d507bd92e27fd3f31a712bbc384ac96c860e8499d129d2c5f2"
+    },
+    {
+      "name": "2.3-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_2_3_1_set0.m",
+      "expectedFile": "outputs/P6/fig_2_3_1_set0-web.json",
+      "parameters": {
+        "E": 200,
+        "rho": 7850,
+        "L": 1,
+        "S": 0.0001,
+        "tipMass": 0.785,
+        "sigma": 1,
+        "gradient": 0.4,
+        "boundary": 2,
+        "material": 0
+      },
+      "sha256": "f5c8533fd9e5bb35daeac7951c653d0698211cfc6fae2602f6b5004810405ce7"
+    },
+    {
+      "name": "2.3-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_2_3_1_set1.m",
+      "expectedFile": "outputs/P6/fig_2_3_1_set1-web.json",
+      "parameters": {
+        "E": 226,
+        "rho": 8870,
+        "L": 1.1300000000000001,
+        "S": 0.00011,
+        "tipMass": 0.89,
+        "sigma": 1.1,
+        "gradient": 0.5,
+        "boundary": 2,
+        "material": 0
+      },
+      "sha256": "8db70c977058e3b39f763640aaa119733e22683baf6f2404c16573465f931d05"
+    },
+    {
+      "name": "3.3.2-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_3_3_2_1_set0.m",
+      "expectedFile": "outputs/P6/fig_3_3_2_1_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "pa": 1,
+        "wLeft": 0.004,
+        "wRight": 0.003,
+        "L": 0.6,
+        "S": 0.25,
+        "left": 0.012,
+        "right": 0.008
+      },
+      "sha256": "b20055549375865aad8a810596019f249a026fcd620e476d8db98d0f685600c5"
+    },
+    {
+      "name": "3.3.2-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_3_3_2_1_set1.m",
+      "expectedFile": "outputs/P6/fig_3_3_2_1_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "pa": 1,
+        "wLeft": 0.005000000000000001,
+        "wRight": 0.002999999999999999,
+        "L": 0.68,
+        "S": 0.28200000000000003,
+        "left": 0.012,
+        "right": 0.008
+      },
+      "sha256": "a05f2bc9d6da23f03a16e3875771f528bc3b3860c42c0aa60a4be45761c11800"
+    },
+    {
+      "name": "3.3.2-2",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_3_3_2_2_set0.m",
+      "expectedFile": "outputs/P6/fig_3_3_2_2_set0-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "pa": 1,
+        "wLeft": 0.004,
+        "wRight": 0.003,
+        "L": 0.6,
+        "S": 0.25,
+        "left": 0.012,
+        "right": 0.008
+      },
+      "sha256": "1f4488dd1819f5f37f8792f0034f1d7734ded79536729bbf4f16655dfc7848a8"
+    },
+    {
+      "name": "3.3.2-2",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_3_3_2_2_set1.m",
+      "expectedFile": "outputs/P6/fig_3_3_2_2_set1-web.json",
+      "parameters": {
+        "rho": 1.21,
+        "c": 343,
+        "f": 1000,
+        "pa": 1,
+        "wLeft": 0.005000000000000001,
+        "wRight": 0.002999999999999999,
+        "L": 0.68,
+        "S": 0.28200000000000003,
+        "left": 0.012,
+        "right": 0.008
+      },
+      "sha256": "a3e1c6a3c494823ee268ce48b7de5899453d343cd3839430f8e6e3e016163c94"
+    },
+    {
+      "name": "6.2-1",
+      "set": 0,
+      "file": "specs/redesign/matlab-check/P6/fig_6_2_1_set0.m",
+      "expectedFile": "outputs/P6/fig_6_2_1_set0-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 10000,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3,
+        "yB": 2,
+        "Q": 0.00001
+      },
+      "sha256": "b8e173d99ec5d72d8baaed10b7e70bf886a82421166931c3869d1b5c0be4b3ac"
+    },
+    {
+      "name": "6.2-1",
+      "set": 1,
+      "file": "specs/redesign/matlab-check/P6/fig_6_2_1_set1.m",
+      "expectedFile": "outputs/P6/fig_6_2_1_set1-web.json",
+      "parameters": {
+        "rho": 1000,
+        "c": 1500,
+        "f": 8700,
+        "a": 0.05,
+        "v": 0.01,
+        "xB": 3.4000000000000004,
+        "yB": 2.3,
+        "Q": 0.000011
+      },
+      "sha256": "437f324000f98b3f5ca43002b0743521def57fba954e29e3a42b610433800597"
+    }
+  ]
+}

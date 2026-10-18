@@ -274,7 +274,7 @@ export function Axes({
     p.kind === "polar"
       ? legendTop + (p.legend !== false && legendSeries.length ? legendH + 26 : 18)
       : legendTop +
-        (p.legend !== false && legendSeries.length ? legendH + 6 : 0) +
+        (!p.insetLegend && p.legend !== false && legendSeries.length ? legendH + 6 : 0) +
         (yt.exponent || (p.rightLabel && rt.exponent) ? 18 : 0);
   let AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
   if (p.equalAspect) {
@@ -350,7 +350,27 @@ export function Axes({
       return canvas.toDataURL();
     }, [field]),
     limits = field ? fieldLimits(field) : ([0, 1] as [number, number]);
-  const legend = [L + AW - legendW, legendTop];
+  // Selected dense diagrams use the corner containing the least data.
+  const corners = [
+    [L + 6, T + 6],
+    [L + AW - legendW - 6, T + 6],
+    [L + 6, T + AH - legendH - 6],
+    [L + AW - legendW - 6, T + AH - legendH - 6],
+  ];
+  const score = ([x, y]: number[]) =>
+    (p.series ?? []).reduce(
+      (n, s) =>
+        n +
+        s.points.filter(([px, py]) => {
+          const xx = L + xs(px) * AW,
+            yy = T + (1 - scale(s.axis === "right" ? (p.rightLim ?? p.ylim) : p.ylim)(py)) * AH;
+          return xx >= x - 4 && xx <= x + legendW + 4 && yy >= y - 4 && yy <= y + legendH + 4;
+        }).length,
+      0,
+    );
+  const legend = p.insetLegend
+    ? corners.sort((a, b) => score(a) - score(b))[0]
+    : [L + AW - legendW, legendTop];
   return (
     <g fontFamily="Arial, Helvetica, Microsoft YaHei, sans-serif" fontSize="11" fill="#1a1a1a">
       <defs>
@@ -640,11 +660,11 @@ export function Axes({
         <text
           key="right-axis-label"
           data-axis-label="right"
-          x={W - 15}
+          x={p.insetLegend ? L + AW + 54 : W - 15}
           y={T + AH / 2}
           fontSize="12"
           textAnchor="middle"
-          transform={`rotate(-90 ${W - 15} ${T + AH / 2})`}
+          transform={`rotate(-90 ${p.insetLegend ? L + AW + 54 : W - 15} ${T + AH / 2})`}
         >
           <ScriptText text={p.rightLabel} svg />
         </text>

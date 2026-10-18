@@ -17,7 +17,7 @@ const wLeft = parameter("wLeft", "左面瞬时能流密度", "W入", "W/m²", -0
   wRight = parameter("wRight", "右面瞬时能流密度", "W出", "W/m²", -0.02, 0.02, 0.001),
   L = parameter("L", "体元长度", "dx", "m", 0.01, 1, 0.01),
   S = parameter("S", "截面积", "S", "m²", 0.001, 1, 0.001);
-const p = { ...defaults, wLeft: 0.004, wRight: 0.003, L: 0.1, S: 0.01, left: 0.012, right: 0.008 };
+const p = { ...defaults, wLeft: 0.004, wRight: 0.003, L: 0.6, S: 0.25, left: 0.012, right: 0.008 };
 const completedLecture = p2Lecture("3.3.2", {
   defaults: p,
   parameters: [wLeft, wRight, L, S],
@@ -96,7 +96,7 @@ const completedLecture = p2Lecture("3.3.2", {
     example(
       "例题　风道微元的瞬时能量积累",
       "一个长 0.1 m、截面积 0.01 m² 的风道体元，在某瞬间左、右面的声能流密度分别为 0.004 和 0.003 $\\mathrm{W/m^2}$。求净流入声功率和能量密度变化率。",
-      p,
+      { ...p, L: 0.1, S: 0.01 },
       [wLeft, wRight, L, S],
       [
         ask(
