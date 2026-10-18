@@ -1,0 +1,1966 @@
+[
+  {
+    "name": "1.1.1-E1",
+    "set": 0,
+    "filename": "fig_1_1_1_E1_set0",
+    "parameters": {
+      "M": 2,
+      "D": 800,
+      "Rm": 0,
+      "x0": 0.005,
+      "v0": 0.08
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "answers": [
+      3.183098861837907,
+      0.006403124237432849
+    ],
+    "exit": 0,
+    "seconds": 17.509
+  },
+  {
+    "name": "1.1.1-1",
+    "set": 1,
+    "filename": "fig_1_1_1_1_set1",
+    "parameters": {
+      "M": 2.4,
+      "D": 680,
+      "Rm": 0,
+      "x0": 0.004,
+      "v0": 0.096
+    },
+    "valuesCompared": 9654,
+    "maxNormalizedError": 0,
+    "readouts": [
+      2.6789768895355546,
+      0.3732768296382604,
+      0.006966136578012909,
+      -0.9591618739181986
+    ],
+    "exit": 0,
+    "seconds": 23.978
+  },
+  {
+    "name": "1.1.1-E1",
+    "set": 1,
+    "filename": "fig_1_1_1_E1_set1",
+    "parameters": {
+      "M": 2.4,
+      "D": 680,
+      "Rm": 0,
+      "x0": 0.004,
+      "v0": 0.096
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 8.673617379884035e-19,
+    "answers": [
+      2.6789768895355546,
+      0.006966136578012909
+    ],
+    "exit": 0,
+    "seconds": 17.507
+  },
+  {
+    "name": "1.1.1-1",
+    "set": 0,
+    "filename": "fig_1_1_1_1_set0",
+    "parameters": {
+      "M": 2,
+      "D": 800,
+      "Rm": 0,
+      "x0": 0.005,
+      "v0": 0.08
+    },
+    "valuesCompared": 9654,
+    "maxNormalizedError": 0,
+    "readouts": [
+      3.183098861837907,
+      0.3141592653589793,
+      0.006403124237432849,
+      -0.6747409422235527
+    ],
+    "exit": 0,
+    "seconds": 24.527
+  },
+  {
+    "name": "1.1.2-1",
+    "set": 0,
+    "filename": "fig_1_1_2_1_set0",
+    "parameters": {
+      "M": 1.5,
+      "D": 1350,
+      "A": 0.004
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.12,
+      3.6,
+      0.0108
+    ],
+    "exit": 0,
+    "seconds": 17.674
+  },
+  {
+    "name": "1.1.2-1",
+    "set": 1,
+    "filename": "fig_1_1_2_1_set1",
+    "parameters": {
+      "M": 1.7999999999999998,
+      "D": 1147.5,
+      "A": 0.0048
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.12119405926034495,
+      3.060000000000001,
+      0.013219199999999997
+    ],
+    "exit": 0,
+    "seconds": 15.999
+  },
+  {
+    "name": "1.1.2-2",
+    "set": 0,
+    "filename": "fig_1_1_2_2_set0",
+    "parameters": {
+      "M": 1.5,
+      "D": 1350,
+      "A": 0.004
+    },
+    "valuesCompared": 24,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.12,
+      3.6,
+      0.0108
+    ],
+    "exit": 0,
+    "seconds": 26.016
+  },
+  {
+    "name": "1.1.2-2",
+    "set": 1,
+    "filename": "fig_1_1_2_2_set1",
+    "parameters": {
+      "M": 1.7999999999999998,
+      "D": 1147.5,
+      "A": 0.0048
+    },
+    "valuesCompared": 24,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.12119405926034495,
+      3.060000000000001,
+      0.013219199999999997
+    ],
+    "exit": 0,
+    "seconds": 27.069
+  },
+  {
+    "name": "1.1.2-3",
+    "set": 0,
+    "filename": "fig_1_1_2_3_set0",
+    "parameters": {
+      "M": 1.5,
+      "D": 1350,
+      "A": 0.004
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.12,
+      3.6,
+      0.0108
+    ],
+    "exit": 0,
+    "seconds": 24.696
+  },
+  {
+    "name": "1.1.2-3",
+    "set": 1,
+    "filename": "fig_1_1_2_3_set1",
+    "parameters": {
+      "M": 1.7999999999999998,
+      "D": 1147.5,
+      "A": 0.0048
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      0.12119405926034495,
+      3.060000000000001,
+      0.013219199999999997
+    ],
+    "exit": 0,
+    "seconds": 29.228
+  },
+  {
+    "name": "1.1.2-E1",
+    "set": 1,
+    "filename": "fig_1_1_2_E1_set1",
+    "parameters": {
+      "M": 1.7999999999999998,
+      "D": 1147.5,
+      "A": 0.0048
+    },
+    "valuesCompared": 6404,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.12119405926034495,
+      3.0599999999999996,
+      0.013219199999999999
+    ],
+    "exit": 0,
+    "seconds": 26.215
+  },
+  {
+    "name": "1.1.2-E1",
+    "set": 0,
+    "filename": "fig_1_1_2_E1_set0",
+    "parameters": {
+      "M": 1.5,
+      "D": 1350,
+      "A": 0.004
+    },
+    "valuesCompared": 6404,
+    "maxNormalizedError": 2.2196555139495321e-16,
+    "answers": [
+      0.12,
+      3.6,
+      0.010799999999999999
+    ],
+    "exit": 0,
+    "seconds": 28.75
+  },
+  {
+    "name": "2.3-1",
+    "set": 0,
+    "filename": "fig_2_3_1_set0",
+    "parameters": {
+      "E": 200,
+      "rho": 7850,
+      "L": 1,
+      "S": 0.0001,
+      "tipMass": 0.785,
+      "sigma": 1,
+      "gradient": 0.4,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 40,
+    "maxNormalizedError": 0,
+    "readouts": [
+      5047.544651250688,
+      100,
+      108,
+      50.955414012738856,
+      691.1418322461324,
+      2751.942094183473,
+      5171.349945012285
+    ],
+    "exit": 0,
+    "seconds": 23.785
+  },
+  {
+    "name": "2.3-2",
+    "set": 0,
+    "filename": "fig_2_3_2_set0",
+    "parameters": {
+      "E": 200,
+      "rho": 7850,
+      "L": 1,
+      "S": 0.0001,
+      "tipMass": 0.785,
+      "sigma": 1,
+      "gradient": 0.4,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 10,
+    "maxNormalizedError": 0,
+    "readouts": [
+      5047.544651250688,
+      100,
+      108,
+      50.955414012738856,
+      691.1418322461324,
+      2751.942094183473,
+      5171.349945012285
+    ],
+    "exit": 0,
+    "seconds": 21.996
+  },
+  {
+    "name": "2.3-2",
+    "set": 1,
+    "filename": "fig_2_3_2_set1",
+    "parameters": {
+      "E": 180,
+      "rho": 8242.5,
+      "L": 0.9,
+      "S": 0.00011000000000000002,
+      "tipMass": 0.942,
+      "sigma": 1.1,
+      "gradient": 0.32000000000000006,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 10,
+    "maxNormalizedError": 0,
+    "readouts": [
+      4673.11829262732,
+      121.00000000000001,
+      127.33600000000004,
+      38.82317258113437,
+      673.953813916894,
+      2802.824054240827,
+      5303.233881082255
+    ],
+    "exit": 0,
+    "seconds": 22.973
+  },
+  {
+    "name": "2.3-1",
+    "set": 1,
+    "filename": "fig_2_3_1_set1",
+    "parameters": {
+      "E": 180,
+      "rho": 8242.5,
+      "L": 0.9,
+      "S": 0.00011000000000000002,
+      "tipMass": 0.942,
+      "sigma": 1.1,
+      "gradient": 0.32000000000000006,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 40,
+    "maxNormalizedError": 0,
+    "readouts": [
+      4673.11829262732,
+      121.00000000000001,
+      127.33600000000004,
+      38.82317258113437,
+      673.953813916894,
+      2802.824054240827,
+      5303.233881082255
+    ],
+    "exit": 0,
+    "seconds": 25.409
+  },
+  {
+    "name": "2.3-3",
+    "set": 0,
+    "filename": "fig_2_3_3_set0",
+    "parameters": {
+      "E": 200,
+      "rho": 7850,
+      "L": 1,
+      "S": 0.0001,
+      "tipMass": 0.785,
+      "sigma": 1,
+      "gradient": 0.4,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 16046,
+    "maxNormalizedError": 0,
+    "readouts": [
+      5047.544651250688,
+      100,
+      108,
+      50.955414012738856,
+      691.1418322461324,
+      2751.942094183473,
+      5171.349945012285
+    ],
+    "exit": 0,
+    "seconds": 20.885
+  },
+  {
+    "name": "2.3-3",
+    "set": 1,
+    "filename": "fig_2_3_3_set1",
+    "parameters": {
+      "E": 180,
+      "rho": 8242.5,
+      "L": 0.9,
+      "S": 0.00011000000000000002,
+      "tipMass": 0.942,
+      "sigma": 1.1,
+      "gradient": 0.32000000000000006,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 16046,
+    "maxNormalizedError": 0,
+    "readouts": [
+      4673.11829262732,
+      121.00000000000001,
+      127.33600000000004,
+      38.82317258113437,
+      673.953813916894,
+      2802.824054240827,
+      5303.233881082255
+    ],
+    "exit": 0,
+    "seconds": 20.602
+  },
+  {
+    "name": "2.3-E1",
+    "set": 0,
+    "filename": "fig_2_3_E1_set0",
+    "parameters": {
+      "E": 200,
+      "rho": 7850,
+      "L": 1,
+      "S": 0.0001,
+      "tipMass": 0.785,
+      "sigma": 1,
+      "gradient": 0.4,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      5047.544651250688,
+      0.8603335890193797,
+      691.1418322461324
+    ],
+    "exit": 0,
+    "seconds": 21.08
+  },
+  {
+    "name": "2.3-E1",
+    "set": 1,
+    "filename": "fig_2_3_E1_set1",
+    "parameters": {
+      "E": 180,
+      "rho": 8242.5,
+      "L": 0.9,
+      "S": 0.00011000000000000002,
+      "tipMass": 0.942,
+      "sigma": 1.1,
+      "gradient": 0.32000000000000006,
+      "boundary": 2,
+      "material": 0
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      4673.11829262732,
+      0.8155408856653528,
+      673.953813916894
+    ],
+    "exit": 0,
+    "seconds": 22.325
+  },
+  {
+    "name": "2.4-1",
+    "set": 0,
+    "filename": "fig_2_4_1_set0",
+    "parameters": {
+      "E": 200,
+      "rho": 7850,
+      "L": 1,
+      "S": 0.0001,
+      "F0": 10,
+      "measured": 2500
+    },
+    "valuesCompared": 2430,
+    "maxNormalizedError": 0,
+    "readouts": [
+      5047.544651250688,
+      2523.772325625344,
+      1261.886162812672,
+      0.5
+    ],
+    "exit": 0,
+    "seconds": 21.635
+  },
+  {
+    "name": "2.4-1",
+    "set": 1,
+    "filename": "fig_2_4_1_set1",
+    "parameters": {
+      "E": 180,
+      "rho": 8242.5,
+      "L": 0.9,
+      "S": 0.00011000000000000002,
+      "F0": 11,
+      "measured": 2750
+    },
+    "valuesCompared": 2430,
+    "maxNormalizedError": 0,
+    "readouts": [
+      4673.11829262732,
+      2596.1768292374004,
+      1298.0884146187002,
+      0.45
+    ],
+    "exit": 0,
+    "seconds": 20.958
+  },
+  {
+    "name": "2.4-2",
+    "set": 0,
+    "filename": "fig_2_4_2_set0",
+    "parameters": {
+      "E": 200,
+      "rho": 7850,
+      "L": 1,
+      "S": 0.0001,
+      "F0": 10,
+      "measured": 2500
+    },
+    "valuesCompared": 12020,
+    "maxNormalizedError": 0,
+    "readouts": [
+      5047.544651250688,
+      2523.772325625344,
+      1261.886162812672,
+      0.5
+    ],
+    "exit": 0,
+    "seconds": 22.592
+  },
+  {
+    "name": "2.4-2",
+    "set": 1,
+    "filename": "fig_2_4_2_set1",
+    "parameters": {
+      "E": 180,
+      "rho": 8242.5,
+      "L": 0.9,
+      "S": 0.00011000000000000002,
+      "F0": 11,
+      "measured": 2750
+    },
+    "valuesCompared": 12020,
+    "maxNormalizedError": 8.4874399175483e-12,
+    "readouts": [
+      4673.11829262732,
+      2596.1768292374004,
+      1298.0884146187002,
+      0.45
+    ],
+    "exit": 0,
+    "seconds": 22.809
+  },
+  {
+    "name": "2.4-E1",
+    "set": 0,
+    "filename": "fig_2_4_E1_set0",
+    "parameters": {
+      "E": 200,
+      "rho": 7850,
+      "L": 1,
+      "S": 0.0001,
+      "F0": 10,
+      "measured": 2500
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      5000,
+      196.25
+    ],
+    "exit": 0,
+    "seconds": 23.973
+  },
+  {
+    "name": "2.4-E1",
+    "set": 1,
+    "filename": "fig_2_4_E1_set1",
+    "parameters": {
+      "E": 180,
+      "rho": 8242.5,
+      "L": 0.9,
+      "S": 0.00011000000000000002,
+      "F0": 11,
+      "measured": 2750
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      4950,
+      201.96185625
+    ],
+    "exit": 0,
+    "seconds": 22.916
+  },
+  {
+    "name": "1.1.3-1",
+    "set": 0,
+    "filename": "fig_1_1_3_1_set0",
+    "parameters": {
+      "M": 5,
+      "D": 2000,
+      "zeta": 1.5,
+      "x0": 0.005,
+      "v0": -0.3
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      30,
+      -7.639320225002103,
+      -52.3606797749979,
+      0.13090169943749475
+    ],
+    "exit": 0,
+    "seconds": 22.249
+  },
+  {
+    "name": "1.1.3-1",
+    "set": 1,
+    "filename": "fig_1_1_3_1_set1",
+    "parameters": {
+      "M": 6,
+      "D": 1700,
+      "zeta": 1.6500000000000001,
+      "x0": 0.004,
+      "v0": -0.36
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      27.773638580495714,
+      -5.68197348556304,
+      -49.86530367542839,
+      0.17599518944268847
+    ],
+    "exit": 0,
+    "seconds": 24.437
+  },
+  {
+    "name": "1.1.3-2",
+    "set": 0,
+    "filename": "fig_1_1_3_2_set0",
+    "parameters": {
+      "M": 5,
+      "D": 2000,
+      "zeta": 1.5,
+      "x0": 0.005,
+      "v0": -0.3
+    },
+    "valuesCompared": 3210,
+    "maxNormalizedError": 0,
+    "readouts": [
+      30,
+      -7.639320225002103,
+      -52.3606797749979,
+      0.13090169943749475
+    ],
+    "exit": 0,
+    "seconds": 23.18
+  },
+  {
+    "name": "1.1.3-2",
+    "set": 1,
+    "filename": "fig_1_1_3_2_set1",
+    "parameters": {
+      "M": 6,
+      "D": 1700,
+      "zeta": 1.6500000000000001,
+      "x0": 0.004,
+      "v0": -0.36
+    },
+    "valuesCompared": 3210,
+    "maxNormalizedError": 0,
+    "readouts": [
+      27.773638580495714,
+      -5.68197348556304,
+      -49.86530367542839,
+      0.17599518944268847
+    ],
+    "exit": 0,
+    "seconds": 22.542
+  },
+  {
+    "name": "1.1.3-E1",
+    "set": 0,
+    "filename": "fig_1_1_3_E1_set0",
+    "parameters": {
+      "M": 5,
+      "D": 2000,
+      "zeta": 1.5,
+      "x0": 0.005,
+      "v0": -0.3
+    },
+    "valuesCompared": 6404,
+    "maxNormalizedError": 0,
+    "answers": [
+      300,
+      7.639320225002103
+    ],
+    "exit": 0,
+    "seconds": 17.471
+  },
+  {
+    "name": "1.1.3-E1",
+    "set": 1,
+    "filename": "fig_1_1_3_E1_set1",
+    "parameters": {
+      "M": 6,
+      "D": 1700,
+      "zeta": 1.6500000000000001,
+      "x0": 0.004,
+      "v0": -0.36
+    },
+    "valuesCompared": 6404,
+    "maxNormalizedError": 0,
+    "answers": [
+      333.2836629659486,
+      5.68197348556304
+    ],
+    "exit": 0,
+    "seconds": 18.97
+  },
+  {
+    "name": "1.1.4-1",
+    "set": 0,
+    "filename": "fig_1_1_4_1_set0",
+    "parameters": {
+      "M": 2,
+      "D": 3200,
+      "Qm": 8,
+      "x0": 0.006,
+      "v0": 0
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 8.673617379884035e-19,
+    "readouts": [
+      39.92179855667828,
+      40,
+      0.1955036083042927,
+      0.07869366529490326,
+      0.4
+    ],
+    "exit": 0,
+    "seconds": 24.868
+  },
+  {
+    "name": "1.1.4-1",
+    "set": 1,
+    "filename": "fig_1_1_4_1_set1",
+    "parameters": {
+      "M": 2.4,
+      "D": 2720,
+      "Qm": 8.8,
+      "x0": 0.0048000000000000004,
+      "v0": 0
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 8.673617379884035e-19,
+    "readouts": [
+      33.610632049648515,
+      33.66501646120693,
+      0.16154577444239537,
+      0.09347020457541935,
+      0.522797902691684
+    ],
+    "exit": 0,
+    "seconds": 24.876
+  },
+  {
+    "name": "1.1.4-2",
+    "set": 0,
+    "filename": "fig_1_1_4_2_set0",
+    "parameters": {
+      "M": 2,
+      "D": 3200,
+      "Qm": 8,
+      "x0": 0.006,
+      "v0": 0
+    },
+    "valuesCompared": 3202,
+    "maxNormalizedError": 2.0816681711721685e-17,
+    "readouts": [
+      39.92179855667828,
+      40,
+      0.1955036083042927,
+      0.07869366529490326,
+      0.4
+    ],
+    "exit": 0,
+    "seconds": 16.135
+  },
+  {
+    "name": "1.1.4-2",
+    "set": 1,
+    "filename": "fig_1_1_4_2_set1",
+    "parameters": {
+      "M": 2.4,
+      "D": 2720,
+      "Qm": 8.8,
+      "x0": 0.0048000000000000004,
+      "v0": 0
+    },
+    "valuesCompared": 3202,
+    "maxNormalizedError": 6.938893903907228e-18,
+    "readouts": [
+      33.610632049648515,
+      33.66501646120693,
+      0.16154577444239537,
+      0.09347020457541935,
+      0.522797902691684
+    ],
+    "exit": 0,
+    "seconds": 17.018
+  },
+  {
+    "name": "1.1.4-E1",
+    "set": 0,
+    "filename": "fig_1_1_4_E1_set0",
+    "parameters": {
+      "M": 2,
+      "D": 3200,
+      "Qm": 8,
+      "x0": 0.006,
+      "v0": 0
+    },
+    "valuesCompared": 3206,
+    "maxNormalizedError": 0,
+    "answers": [
+      6.353751577414242,
+      0.4,
+      0.39346832647451635
+    ],
+    "exit": 0,
+    "seconds": 25.512
+  },
+  {
+    "name": "1.1.4-E1",
+    "set": 1,
+    "filename": "fig_1_1_4_E1_set1",
+    "parameters": {
+      "M": 2.4,
+      "D": 2720,
+      "Qm": 8.8,
+      "x0": 0.0048000000000000004,
+      "v0": 0
+    },
+    "valuesCompared": 3206,
+    "maxNormalizedError": 0,
+    "answers": [
+      5.349298231144443,
+      0.522797902691684,
+      0.35757681541634906
+    ],
+    "exit": 0,
+    "seconds": 24.115
+  },
+  {
+    "name": "1.1.5-1",
+    "set": 0,
+    "filename": "fig_1_1_5_1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "input": 2,
+      "value": 5
+    },
+    "valuesCompared": 19218,
+    "maxNormalizedError": 1.1102230246251565e-16,
+    "readouts": [
+      397.4921382870358,
+      19.87460691435179,
+      5,
+      0.05031546054266276,
+      0.6314838833996552,
+      4.9749371855331
+    ],
+    "exit": 0,
+    "seconds": 25.084
+  },
+  {
+    "name": "1.1.5-1",
+    "set": 1,
+    "filename": "fig_1_1_5_1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "input": 2,
+      "value": 5
+    },
+    "valuesCompared": 19218,
+    "maxNormalizedError": 1.1102230246251565e-16,
+    "readouts": [
+      401.447381359002,
+      16.72697422329175,
+      5,
+      0.059783675556068804,
+      0.6314838833996553,
+      4.9749371855331
+    ],
+    "exit": 0,
+    "seconds": 24.071
+  },
+  {
+    "name": "1.1.5-E1",
+    "set": 0,
+    "filename": "fig_1_1_5_E1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "input": 2,
+      "value": 5,
+      "Qm": 5
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      397.4921382870358,
+      19.87460691435179,
+      0.05031546054266276
+    ],
+    "exit": 0,
+    "seconds": 24.691
+  },
+  {
+    "name": "1.1.5-E1",
+    "set": 1,
+    "filename": "fig_1_1_5_E1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "input": 2,
+      "value": 5,
+      "Qm": 5.5
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      364.95216487182,
+      15.2063402029925,
+      0.06576204311167569
+    ],
+    "exit": 0,
+    "seconds": 26.045
+  },
+  {
+    "name": "1.2.1-1",
+    "set": 0,
+    "filename": "fig_1_2_1_1_set0",
+    "parameters": {
+      "M": 5,
+      "D": 2000,
+      "F0": 2,
+      "Rm": 0,
+      "x0": 0,
+      "v0": 0,
+      "ratio": 0.92,
+      "tObs": 1
+    },
+    "valuesCompared": 20384,
+    "maxNormalizedError": 0,
+    "readouts": [
+      3.183098861837907,
+      2.9284509528908744,
+      3.926990816987243
+    ],
+    "exit": 0,
+    "seconds": 27.143
+  },
+  {
+    "name": "1.2.1-1",
+    "set": 1,
+    "filename": "fig_1_2_1_1_set1",
+    "parameters": {
+      "M": 6,
+      "D": 1700,
+      "F0": 2.2,
+      "Rm": 0,
+      "x0": 0,
+      "v0": 0,
+      "ratio": 0.92,
+      "tObs": 1.2
+    },
+    "valuesCompared": 21440,
+    "maxNormalizedError": 0,
+    "readouts": [
+      2.678976889535554,
+      2.4646587383727097,
+      4.665960370478258
+    ],
+    "exit": 0,
+    "seconds": 30.96
+  },
+  {
+    "name": "1.2.1-2",
+    "set": 0,
+    "filename": "fig_1_2_1_2_set0",
+    "parameters": {
+      "M": 5,
+      "D": 2000,
+      "F0": 2,
+      "Rm": 0,
+      "x0": 0,
+      "v0": 0,
+      "ratio": 0.92,
+      "tObs": 1
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      3.183098861837907,
+      2.9284509528908744,
+      3.926990816987243
+    ],
+    "exit": 0,
+    "seconds": 25.114
+  },
+  {
+    "name": "1.2.1-2",
+    "set": 1,
+    "filename": "fig_1_2_1_2_set1",
+    "parameters": {
+      "M": 6,
+      "D": 1700,
+      "F0": 2.2,
+      "Rm": 0,
+      "x0": 0,
+      "v0": 0,
+      "ratio": 0.92,
+      "tObs": 1.2
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      2.678976889535554,
+      2.4646587383727097,
+      4.665960370478258
+    ],
+    "exit": 0,
+    "seconds": 22.824
+  },
+  {
+    "name": "1.2.1-E1",
+    "set": 0,
+    "filename": "fig_1_2_1_E1_set0",
+    "parameters": {
+      "M": 5,
+      "D": 2000,
+      "F0": 2,
+      "Rm": 0,
+      "x0": 0,
+      "v0": 0,
+      "ratio": 0.92,
+      "tObs": 1
+    },
+    "valuesCompared": 6406,
+    "maxNormalizedError": 3.924811864397526e-17,
+    "answers": [
+      3.926990816987243,
+      0.01
+    ],
+    "exit": 0,
+    "seconds": 25.624
+  },
+  {
+    "name": "1.2.1-E1",
+    "set": 1,
+    "filename": "fig_1_2_1_E1_set1",
+    "parameters": {
+      "M": 6,
+      "D": 1700,
+      "F0": 2.2,
+      "Rm": 0,
+      "x0": 0,
+      "v0": 0,
+      "ratio": 0.92,
+      "tObs": 1.2
+    },
+    "valuesCompared": 6406,
+    "maxNormalizedError": 2.2551405187698492e-17,
+    "answers": [
+      4.665960370478258,
+      0.0130699475672921
+    ],
+    "exit": 0,
+    "seconds": 25.665
+  },
+  {
+    "name": "1.2.2-1",
+    "set": 0,
+    "filename": "fig_1_2_2_1_set0",
+    "parameters": {
+      "M": 4,
+      "D": 10000,
+      "Qm": 5,
+      "F0": 10,
+      "ratio": 0.8,
+      "x0": 0,
+      "v0": 0
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      7.917858446492745,
+      6.366197723675814,
+      0.0025383654128340477,
+      6.916163983665854e-7
+    ],
+    "exit": 0,
+    "seconds": 24.543
+  },
+  {
+    "name": "1.2.2-1",
+    "set": 1,
+    "filename": "fig_1_2_2_1_set1",
+    "parameters": {
+      "M": 4.8,
+      "D": 8500,
+      "Qm": 5.5,
+      "F0": 11,
+      "ratio": 0.8,
+      "x0": 0,
+      "v0": 0
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      6.669709424698403,
+      5.357953779071108,
+      0.003332997442677433,
+      8.417934261406845e-7
+    ],
+    "exit": 0,
+    "seconds": 24.43
+  },
+  {
+    "name": "1.2.2-E1",
+    "set": 0,
+    "filename": "fig_1_2_2_E1_set0",
+    "parameters": {
+      "M": 4,
+      "D": 10000,
+      "Qm": 5,
+      "F0": 10,
+      "ratio": 0.8,
+      "x0": 0,
+      "v0": 0
+    },
+    "valuesCompared": 6406,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.0025383654128340477,
+      7.917858446492745
+    ],
+    "exit": 0,
+    "seconds": 25.837
+  },
+  {
+    "name": "1.2.2-E1",
+    "set": 1,
+    "filename": "fig_1_2_2_E1_set1",
+    "parameters": {
+      "M": 4.8,
+      "D": 8500,
+      "Qm": 5.5,
+      "F0": 11,
+      "ratio": 0.8,
+      "x0": 0,
+      "v0": 0
+    },
+    "valuesCompared": 6406,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.003332997442677433,
+      6.669709424698403
+    ],
+    "exit": 0,
+    "seconds": 24.324
+  },
+  {
+    "name": "1.2.3-1",
+    "set": 0,
+    "filename": "fig_1_2_3_1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Qm": 10,
+      "F0": 50,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 8,
+      "gapCycles": 12
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      9.937303457175895,
+      0.30146329801277444,
+      0.31614136240563284,
+      9.535711990320793,
+      91.89974078420569
+    ],
+    "exit": 0,
+    "seconds": 23.816
+  },
+  {
+    "name": "1.2.3-1",
+    "set": 1,
+    "filename": "fig_1_2_3_1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Qm": 11,
+      "F0": 55.00000000000001,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 10,
+      "gapCycles": 10.8
+    },
+    "valuesCompared": 9606,
+    "maxNormalizedError": 0,
+    "readouts": [
+      7.60317010149625,
+      0.39401094984899154,
+      0.41319510304939117,
+      10.489283189352873,
+      94.25013219251241
+    ],
+    "exit": 0,
+    "seconds": 23.438
+  },
+  {
+    "name": "1.2.3-2",
+    "set": 0,
+    "filename": "fig_1_2_3_2_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Qm": 10,
+      "F0": 50,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 8,
+      "gapCycles": 12
+    },
+    "valuesCompared": 6404,
+    "maxNormalizedError": 0,
+    "readouts": [
+      9.937303457175895,
+      0.30146329801277444,
+      0.31614136240563284,
+      9.535711990320793,
+      91.89974078420569
+    ],
+    "exit": 0,
+    "seconds": 27.915
+  },
+  {
+    "name": "1.2.3-2",
+    "set": 1,
+    "filename": "fig_1_2_3_2_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Qm": 11,
+      "F0": 55.00000000000001,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 10,
+      "gapCycles": 10.8
+    },
+    "valuesCompared": 6404,
+    "maxNormalizedError": 0,
+    "readouts": [
+      7.60317010149625,
+      0.39401094984899154,
+      0.41319510304939117,
+      10.489283189352873,
+      94.25013219251241
+    ],
+    "exit": 0,
+    "seconds": 27.133
+  },
+  {
+    "name": "1.2.3-3",
+    "set": 0,
+    "filename": "fig_1_2_3_3_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Qm": 10,
+      "F0": 50,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 8,
+      "gapCycles": 12
+    },
+    "valuesCompared": 48012,
+    "maxNormalizedError": 0,
+    "readouts": [
+      9.937303457175895,
+      0.30146329801277444,
+      0.31614136240563284,
+      9.535711990320793,
+      91.89974078420569
+    ],
+    "exit": 0,
+    "seconds": 26.653
+  },
+  {
+    "name": "1.2.3-3",
+    "set": 1,
+    "filename": "fig_1_2_3_3_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Qm": 11,
+      "F0": 55.00000000000001,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 10,
+      "gapCycles": 10.8
+    },
+    "valuesCompared": 48012,
+    "maxNormalizedError": 0,
+    "readouts": [
+      7.60317010149625,
+      0.39401094984899154,
+      0.41319510304939117,
+      10.489283189352873,
+      94.25013219251241
+    ],
+    "exit": 0,
+    "seconds": 26.78
+  },
+  {
+    "name": "1.2.3-E1",
+    "set": 0,
+    "filename": "fig_1_2_3_E1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Qm": 10,
+      "F0": 50,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 8,
+      "gapCycles": 12
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.30146329801277444,
+      0.9189974078420569
+    ],
+    "exit": 0,
+    "seconds": 25.564
+  },
+  {
+    "name": "1.2.3-E1",
+    "set": 1,
+    "filename": "fig_1_2_3_E1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Qm": 11,
+      "F0": 55.00000000000001,
+      "ratio": 0.96,
+      "x0": 0,
+      "v0": 0,
+      "pulseCycles": 10,
+      "gapCycles": 10.8
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      0.39401094984899154,
+      0.9425013219251243
+    ],
+    "exit": 0,
+    "seconds": 23.515
+  },
+  {
+    "name": "2.1-1",
+    "set": 1,
+    "filename": "fig_2_1_1_set1",
+    "parameters": {
+      "T": 84,
+      "mu": 0.00044000000000000007,
+      "L": 0.5850000000000001,
+      "height": 0.012,
+      "F0": 0.05500000000000001,
+      "boundary": 0
+    },
+    "valuesCompared": 874,
+    "maxNormalizedError": 1.734723475976807e-18,
+    "readouts": [
+      436.9314487526515,
+      -1.6724410036462867,
+      -1.6724410036462862,
+      -3.344882007292573,
+      0.06444292622748293
+    ],
+    "exit": 0,
+    "seconds": 24.026
+  },
+  {
+    "name": "2.1-1",
+    "set": 0,
+    "filename": "fig_2_1_1_set0",
+    "parameters": {
+      "T": 70,
+      "mu": 0.0004,
+      "L": 0.65,
+      "height": 0.015,
+      "F0": 0.05,
+      "boundary": 0
+    },
+    "valuesCompared": 874,
+    "maxNormalizedError": 0,
+    "readouts": [
+      418.33001326703777,
+      -1.5678308999080255,
+      -1.567830899908025,
+      -3.1356617998160505,
+      0.0724982920059183
+    ],
+    "exit": 0,
+    "seconds": 25.774
+  },
+  {
+    "name": "2.1-2",
+    "set": 0,
+    "filename": "fig_2_1_2_set0",
+    "parameters": {
+      "T": 70,
+      "mu": 0.0004,
+      "L": 0.65,
+      "height": 0.015,
+      "F0": 0.05,
+      "boundary": 0
+    },
+    "valuesCompared": 806,
+    "maxNormalizedError": 0,
+    "readouts": [
+      418.33001326703777,
+      -1.5678308999080255,
+      -1.567830899908025,
+      -3.1356617998160505,
+      0.0724982920059183
+    ],
+    "exit": 0,
+    "seconds": 22.439
+  },
+  {
+    "name": "2.1-2",
+    "set": 1,
+    "filename": "fig_2_1_2_set1",
+    "parameters": {
+      "T": 84,
+      "mu": 0.00044000000000000007,
+      "L": 0.5850000000000001,
+      "height": 0.012,
+      "F0": 0.05500000000000001,
+      "boundary": 0
+    },
+    "valuesCompared": 806,
+    "maxNormalizedError": 0,
+    "readouts": [
+      436.9314487526515,
+      -1.6724410036462867,
+      -1.6724410036462862,
+      -3.344882007292573,
+      0.06444292622748293
+    ],
+    "exit": 0,
+    "seconds": 22.375
+  },
+  {
+    "name": "2.1-E1",
+    "set": 1,
+    "filename": "fig_2_1_E1_set1",
+    "parameters": {
+      "T": 84,
+      "mu": 0.00044000000000000007,
+      "L": 0.5850000000000001,
+      "height": 0.012,
+      "F0": 0.05500000000000001,
+      "boundary": 0
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      436.9314487526515,
+      0.0013388827965349107
+    ],
+    "exit": 0,
+    "seconds": 26.036
+  },
+  {
+    "name": "2.1-E1",
+    "set": 0,
+    "filename": "fig_2_1_E1_set0",
+    "parameters": {
+      "T": 70,
+      "mu": 0.0004,
+      "L": 0.65,
+      "height": 0.015,
+      "F0": 0.05,
+      "boundary": 0
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      418.33001326703777,
+      0.0015537971921347118
+    ],
+    "exit": 0,
+    "seconds": 24.827
+  },
+  {
+    "name": "2.2-1",
+    "set": 0,
+    "filename": "fig_2_2_1_set0",
+    "parameters": {
+      "T": 70,
+      "mu": 0.0004,
+      "L": 0.65,
+      "height": 0.004,
+      "pluck": 0.3,
+      "F0": 0.05,
+      "target": 440
+    },
+    "valuesCompared": 4866,
+    "maxNormalizedError": 0,
+    "readouts": [
+      321.7923178977214,
+      965.376953693164,
+      160.8961589488607,
+      0.0009177349708741266
+    ],
+    "exit": 0,
+    "seconds": 25.767
+  },
+  {
+    "name": "2.2-1",
+    "set": 1,
+    "filename": "fig_2_2_1_set1",
+    "parameters": {
+      "T": 84,
+      "mu": 0.00044000000000000007,
+      "L": 0.5850000000000001,
+      "height": 0.0032,
+      "pluck": 0.33,
+      "F0": 0.05500000000000001,
+      "target": 462
+    },
+    "valuesCompared": 4866,
+    "maxNormalizedError": 0,
+    "readouts": [
+      373.44568269457386,
+      1120.3370480837216,
+      186.72284134728693,
+      0.0006425214296208532
+    ],
+    "exit": 0,
+    "seconds": 23.456
+  },
+  {
+    "name": "2.2-2",
+    "set": 0,
+    "filename": "fig_2_2_2_set0",
+    "parameters": {
+      "T": 70,
+      "mu": 0.0004,
+      "L": 0.65,
+      "height": 0.004,
+      "pluck": 0.3,
+      "F0": 0.05,
+      "target": 440
+    },
+    "valuesCompared": 3234,
+    "maxNormalizedError": 2.168404344971009e-18,
+    "readouts": [
+      321.7923178977214,
+      965.376953693164,
+      160.8961589488607,
+      0.0009177349708741266
+    ],
+    "exit": 0,
+    "seconds": 26.19
+  },
+  {
+    "name": "2.2-2",
+    "set": 1,
+    "filename": "fig_2_2_2_set1",
+    "parameters": {
+      "T": 84,
+      "mu": 0.00044000000000000007,
+      "L": 0.5850000000000001,
+      "height": 0.0032,
+      "pluck": 0.33,
+      "F0": 0.05500000000000001,
+      "target": 462
+    },
+    "valuesCompared": 3234,
+    "maxNormalizedError": 1.3010426069826053e-18,
+    "readouts": [
+      373.44568269457386,
+      1120.3370480837216,
+      186.72284134728693,
+      0.0006425214296208532
+    ],
+    "exit": 0,
+    "seconds": 26.556
+  },
+  {
+    "name": "2.2-3",
+    "set": 0,
+    "filename": "fig_2_2_3_set0",
+    "parameters": {
+      "T": 70,
+      "mu": 0.0004,
+      "L": 0.65,
+      "height": 0.004,
+      "pluck": 0.3,
+      "F0": 0.05,
+      "target": 440
+    },
+    "valuesCompared": 12020,
+    "maxNormalizedError": 1.884775444152273e-10,
+    "readouts": [
+      321.7923178977214,
+      965.376953693164,
+      160.8961589488607,
+      0.0009177349708741266
+    ],
+    "exit": 0,
+    "seconds": 24.536
+  },
+  {
+    "name": "2.2-3",
+    "set": 1,
+    "filename": "fig_2_2_3_set1",
+    "parameters": {
+      "T": 84,
+      "mu": 0.00044000000000000007,
+      "L": 0.5850000000000001,
+      "height": 0.0032,
+      "pluck": 0.33,
+      "F0": 0.05500000000000001,
+      "target": 462
+    },
+    "valuesCompared": 12020,
+    "maxNormalizedError": 1.1308674066450796e-10,
+    "readouts": [
+      373.44568269457386,
+      1120.3370480837216,
+      186.72284134728693,
+      0.0006425214296208532
+    ],
+    "exit": 0,
+    "seconds": 23.362
+  },
+  {
+    "name": "2.2-E1",
+    "set": 1,
+    "filename": "fig_2_2_E1_set1",
+    "parameters": {
+      "T": 84,
+      "mu": 0.00044000000000000007,
+      "L": 0.5850000000000001,
+      "height": 0.0032,
+      "pluck": 0.33,
+      "F0": 0.05500000000000001,
+      "target": 462
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      373.44568269457386,
+      128.56073630400005
+    ],
+    "exit": 0,
+    "seconds": 24.551
+  },
+  {
+    "name": "2.2-E1",
+    "set": 0,
+    "filename": "fig_2_2_E1_set0",
+    "parameters": {
+      "T": 70,
+      "mu": 0.0004,
+      "L": 0.65,
+      "height": 0.004,
+      "pluck": 0.3,
+      "F0": 0.05,
+      "target": 440
+    },
+    "valuesCompared": 3204,
+    "maxNormalizedError": 0,
+    "answers": [
+      321.7923178977214,
+      130.8736
+    ],
+    "exit": 0,
+    "seconds": 24.434
+  },
+  {
+    "name": "1.2.4-1",
+    "set": 1,
+    "filename": "fig_1_2_4_1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Rm": 459.99999999999994,
+      "F0": 55.00000000000001,
+      "n": 1995,
+      "limit": 0.9
+    },
+    "valuesCompared": 14412,
+    "maxNormalizedError": 4.294103403747548e-16,
+    "exit": 0,
+    "seconds": 35.049
+  },
+  {
+    "name": "1.2.4-1",
+    "set": 0,
+    "filename": "fig_1_2_4_1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Rm": 400,
+      "F0": 50,
+      "n": 1900,
+      "limit": 1
+    },
+    "valuesCompared": 14412,
+    "maxNormalizedError": 4.0128127032657866e-16,
+    "exit": 0,
+    "seconds": 29.417
+  },
+  {
+    "name": "1.2.4-2",
+    "set": 0,
+    "filename": "fig_1_2_4_2_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Rm": 400,
+      "F0": 50,
+      "n": 1900,
+      "limit": 1
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 2.5217190823369386e-16,
+    "exit": 0,
+    "seconds": 24.276
+  },
+  {
+    "name": "1.2.4-1-overlay",
+    "set": 0,
+    "filename": "fig_1_2_4_1_overlay_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Rm": 400,
+      "F0": 50,
+      "n": 1900,
+      "limit": 1
+    },
+    "valuesCompared": 43236,
+    "maxNormalizedError": 4.689868375658498e-16,
+    "exit": 0,
+    "seconds": 32.756
+  },
+  {
+    "name": "1.2.4-2",
+    "set": 1,
+    "filename": "fig_1_2_4_2_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Rm": 459.99999999999994,
+      "F0": 55.00000000000001,
+      "n": 1995,
+      "limit": 0.9
+    },
+    "valuesCompared": 2406,
+    "maxNormalizedError": 2.441896551728058e-16,
+    "exit": 0,
+    "seconds": 23.946
+  },
+  {
+    "name": "1.2.4-1-overlay",
+    "set": 1,
+    "filename": "fig_1_2_4_1_overlay_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Rm": 459.99999999999994,
+      "F0": 55.00000000000001,
+      "n": 1995,
+      "limit": 0.9
+    },
+    "valuesCompared": 43236,
+    "maxNormalizedError": 4.70993877741568e-16,
+    "exit": 0,
+    "seconds": 35.114
+  },
+  {
+    "name": "1.2.5-1",
+    "set": 0,
+    "filename": "fig_1_2_5_1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Rm": 400,
+      "F0": 50,
+      "n": 1900,
+      "limit": 1
+    },
+    "valuesCompared": 2808,
+    "maxNormalizedError": 6.390395490908823e-16,
+    "exit": 0,
+    "seconds": 20.769
+  },
+  {
+    "name": "1.2.5-1",
+    "set": 1,
+    "filename": "fig_1_2_5_1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Rm": 459.99999999999994,
+      "F0": 55.00000000000001,
+      "n": 1995,
+      "limit": 0.9
+    },
+    "valuesCompared": 2808,
+    "maxNormalizedError": 7.851393992430647e-16,
+    "exit": 0,
+    "seconds": 20.533
+  },
+  {
+    "name": "1.2.5-2",
+    "set": 0,
+    "filename": "fig_1_2_5_2_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Rm": 400,
+      "F0": 50,
+      "n": 1900,
+      "limit": 1
+    },
+    "valuesCompared": 3618,
+    "maxNormalizedError": 4.164704787717444e-16,
+    "exit": 0,
+    "seconds": 20.104
+  },
+  {
+    "name": "1.2.5-2",
+    "set": 1,
+    "filename": "fig_1_2_5_2_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Rm": 459.99999999999994,
+      "F0": 55.00000000000001,
+      "n": 1995,
+      "limit": 0.9
+    },
+    "valuesCompared": 3618,
+    "maxNormalizedError": 4.1534688924127344e-16,
+    "exit": 0,
+    "seconds": 18.595
+  },
+  {
+    "name": "A-1",
+    "set": 0,
+    "filename": "fig_A_1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "Rm": 80,
+      "F0": 50,
+      "n": 1900,
+      "limit": 1
+    },
+    "valuesCompared": 8018,
+    "maxNormalizedError": 3.719848350621559e-16,
+    "answers": [
+      31.63141932427449,
+      24.843258642939738,
+      1.2732395447351628,
+      3.1364177549030656,
+      251.2582839309485
+    ],
+    "exit": 0,
+    "seconds": 24.656
+  },
+  {
+    "name": "A-1",
+    "set": 1,
+    "filename": "fig_A_1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "Rm": 92,
+      "F0": 55.00000000000001,
+      "n": 1995,
+      "limit": 0.9
+    },
+    "valuesCompared": 8018,
+    "maxNormalizedError": 4.485979670612569e-16,
+    "answers": [
+      26.62180630607599,
+      21.817792465163155,
+      1.2201878970378641,
+      0.29103572289542196,
+      0
+    ],
+    "exit": 0,
+    "seconds": 25.944
+  },
+  {
+    "name": "B-1",
+    "set": 1,
+    "filename": "fig_B_1_set1",
+    "parameters": {
+      "M": 12,
+      "D": 335750,
+      "f1": 29.4,
+      "f2": 33.9966,
+      "velocity": 0.24
+    },
+    "valuesCompared": 2810,
+    "maxNormalizedError": 9.607209118515956e-16,
+    "exit": 0,
+    "seconds": 28.183
+  },
+  {
+    "name": "B-1",
+    "set": 0,
+    "filename": "fig_B_1_set0",
+    "parameters": {
+      "M": 10,
+      "D": 395000,
+      "f1": 30,
+      "f2": 33.33,
+      "velocity": 0.2
+    },
+    "valuesCompared": 2810,
+    "maxNormalizedError": 8.620733637932137e-16,
+    "exit": 0,
+    "seconds": 26.247
+  }
+]
