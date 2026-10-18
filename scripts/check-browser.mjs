@@ -34,6 +34,44 @@ async function readyForScreenshot(page) {
     );
   });
 }
+async function checkCaseIndex(page) {
+  await page.evaluate(() => document.fonts.ready);
+  const items = await page.locator(".case-index li").evaluateAll((nodes) =>
+    nodes.map((el, i) => {
+      const range = document.createRange();
+      range.selectNodeContents(el.querySelector("a"));
+      const box = el.getBoundingClientRect().toJSON();
+      const marker = document.createElement("canvas").getContext("2d");
+      marker.font = getComputedStyle(el, "::marker").font;
+      // List-item DOMRects exclude the outside number marker, which is exactly
+      // where a long title in the preceding CSS column used to collide.
+      box.left -= marker.measureText(`${i + 1}. `).width + 4;
+      box.right = Math.max(box.right, range.getBoundingClientRect().right) + 4;
+      return {
+        text: el.textContent,
+        box,
+        textBox: range.getBoundingClientRect().toJSON(),
+      };
+    }),
+  );
+  assert.equal(items.length, 9, "complete case index");
+  const disjoint = (a, b) =>
+    a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top;
+  for (const [i, a] of items.entries()) {
+    assert.ok(
+      a.textBox.left >= a.box.left - 1 && a.textBox.right <= a.box.right + 1,
+      `${a.text}: case index text escapes its item box and can overlap adjacent numbering`,
+    );
+    assert.ok(
+      a.textBox.left >= 0 && a.textBox.right <= page.viewportSize().width,
+      `${a.text}: case index text fits viewport`,
+    );
+    for (const b of items.slice(i + 1)) {
+      assert.ok(disjoint(a.box, b.box), `${a.text} / ${b.text}: case index item boxes overlap`);
+      assert.ok(disjoint(a.textBox, b.textBox), `${a.text} / ${b.text}: case index text overlaps`);
+    }
+  }
+}
 async function checkParameterLayout(page) {
   await page.evaluate(() => document.fonts.ready);
   const fields = await page.locator(".compact-parameter").evaluateAll((rows) =>
@@ -144,6 +182,23 @@ try {
   page.on("console", (m) => {
     if (m.type() === "error") errors.push(m.text());
   });
+  fs.mkdirSync("outputs/browser-screenshots/p5-review", { recursive: true });
+  for (const width of [1440, 1024, 769, 768, 640, 390, 320]) {
+    await page.setViewportSize({ width, height: width > 640 ? 900 : 844 });
+    await page.goto("http://127.0.0.1:4174/#/cases");
+    await page.locator(".case-index li").last().waitFor();
+    await readyForScreenshot(page);
+    await page.screenshot({
+      path: `outputs/browser-screenshots/p5-review/case-index-${width}.png`,
+    });
+    await checkCaseIndex(page);
+  }
+  if (process.argv.includes("--case-index-only")) {
+    console.log("PASS: case index item and text boxes at seven viewport widths");
+    await context.close();
+    server.kill();
+    process.exit(0);
+  }
   const shots = "outputs/browser-screenshots/p0";
   fs.mkdirSync(shots, { recursive: true });
   const pages = [
