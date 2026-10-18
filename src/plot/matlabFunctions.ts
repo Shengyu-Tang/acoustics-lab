@@ -52,6 +52,11 @@ for i=0:1
  end
 end
 end
+function f=frequencyGrid(finish,M,D,R,N)
+w=sqrt(D/M);z=R/(2*sqrt(M*D));s=sqrt(max(0,1-2*z*z));peaks=w/(2*pi);
+if s>0,peaks=[w/(2*pi)*s w/(2*pi) w/(2*pi)/s];end
+f=sort([linspace(0,finish,N) peaks(peaks>=0 & peaks<=finish)]);
+end
 function y=frequencyResponse(f,M,D,R,F,component)
 w=2*pi*f; X=w*M-D./w;
 X(f>0 & abs(X)<=8*eps.*max(abs(w*M),abs(D./w)))=0;

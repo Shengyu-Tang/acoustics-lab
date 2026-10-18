@@ -2,6 +2,7 @@
 export const COLORS = ["#0072BD", "#D95319", "#EDB120", "#7E2F8E", "#77AC30", "#4DBEEE", "#A2142F"];
 export type Point = [number, number];
 export type MatlabModel = {
+  textLabels?: { x: string; y: string }[];
   parameters: { key: string; value: number; comment: string }[];
   setup: string;
   series: { x: string; y: string }[];
@@ -16,6 +17,7 @@ export type MatlabModel = {
   field?: { x: string; y: string; z: string };
 };
 export type Series = {
+  evaluate?: (x: number) => number;
   geometry?: { key: string; axis: "x" | "y" };
   kind?: "line" | "bar" | "barh";
   name: string;
@@ -35,6 +37,8 @@ export type Field = {
   limits?: [number, number];
 };
 export type Panel = {
+  responseNote?: string;
+  observationWindow?: boolean;
   textLabels?: { x: number; y: number; text: string }[];
   matlabModel?: MatlabModel;
   integerX?: boolean;

@@ -162,26 +162,31 @@ export default lecture(
         title: "常见材料的纵波声速比较",
         rows: 1,
         cols: 1,
-        plot: () => [
+        plot: (p) => [
           {
             ...panel(
               "材料演示参数的纵波速度",
               "材料（可用预设选取）",
               "细棒纵波速度 c (m/s)",
-              [0, 6],
-              [0, 6500],
+              [0, 7],
+              [0, 18000],
               [
                 {
                   name: "纵波速度",
                   kind: "bar",
-                  points: materials.map((m, i) => [i + 1, rodSpeed(m.E * 1e9, m.rho)]),
+                  points: [
+                    ...materials.map(
+                      (m, i) => [i + 1, rodSpeed(m.E * 1e9, m.rho)] as [number, number],
+                    ),
+                    [6, rodSpeed(p.E * 1e9, p.rho)],
+                  ],
                 },
               ],
             ),
             legend: false,
-            xtickLabels: Array.from({ length: 7 }, (_, i) => ({
+            xtickLabels: Array.from({ length: 8 }, (_, i) => ({
               value: i,
-              label: i === 0 || i === 6 ? "" : materials[i - 1].name,
+              label: i === 0 || i === 7 ? "" : i === 6 ? "Current" : materials[i - 1].name,
             })),
           },
         ],

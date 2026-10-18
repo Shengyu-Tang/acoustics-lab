@@ -254,13 +254,18 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           );
         });
     } else out.push(`rlim(${vector(p.ylim)});`);
-    p.textLabels?.forEach((s) =>
+    p.textLabels?.forEach((s, i) =>
       out.push(
-        `text(${s.x},${s.y},${tex(s.text)},'HorizontalAlignment','center','Interpreter','tex');`,
+        `text(${m?.textLabels?.[i]?.x ?? s.x},${m?.textLabels?.[i]?.y ?? s.y},${tex(s.text)},'HorizontalAlignment','center','Interpreter','tex');`,
       ),
     );
     out.push(
-      `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
+      p.responseNote && m
+        ? `title({${m.title ?? tex(p.title)},sprintf('max |y| = %.4g',max(abs([${plotSeries
+            .map((s, i) => (s.axis === "right" ? "" : `model_y{${k + 1},${i + 1}}`))
+            .filter(Boolean)
+            .join(" ")}]),[],'omitnan'))},'Interpreter','tex','FontSize',12);`
+        : `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
       p.kind === "polar"
         ? "grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');",

@@ -64,7 +64,7 @@ export default lecture(
             y = (x: number) => h * Math.sin((Math.PI * x) / p.L);
           return [
             panel(
-              "微元张力与横向合力（箭头示意）",
+              `微元受力（箭头示意）；c = ${fmt(stringSpeed(p.T, p.mu))} m/s`,
               "位置 x (m)",
               "横向位移 y (m)",
               [0, 1.5],
@@ -97,7 +97,7 @@ export default lecture(
       },
       {
         number: "2.1-2",
-        title: "四种边界条件与对应弦形",
+        title: "四种边界条件与弦形（实线：所选边界；虚线：力激励参考）",
         rows: 1,
         cols: 1,
         plot: (p, t) => {
@@ -130,7 +130,7 @@ export default lecture(
                 [
                   { name: "弦形", geometry: { key: "L", axis: "x" }, points: sample(y, 0, p.L) },
                   {
-                    name: "Force boundary comparison",
+                    name: "力激励参考",
                     style: "--",
                     points: sample(
                       (x) => {
@@ -146,6 +146,7 @@ export default lecture(
                   },
                   {
                     name: "端点",
+                    legend: false,
                     points: [
                       [0, 0],
                       [p.L, y(p.L)],
@@ -155,7 +156,7 @@ export default lecture(
                   },
                 ],
               ),
-              legend: false,
+              legend: true,
             },
           ];
         },

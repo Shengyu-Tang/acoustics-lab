@@ -43,8 +43,10 @@ export default p2Lecture("3.5.1", {
   ],
   figures: [
     figure("3.5.1-1", "受约束的波数与传播、倏逝二维场", (p, t) => {
-      const xs = Array.from({ length: 161 }, (_, i) => (2 * i) / 160),
-        ys = Array.from({ length: 81 }, (_, i) => (2 * i) / 80);
+      const nx = Math.max(161, Math.ceil(((8 * p.f) / p.c) * Math.max(1, p.ratio)) + 1),
+        ny = Math.max(81, Math.ceil((8 * p.f) / p.c) + 1),
+        xs = Array.from({ length: nx }, (_, i) => (2 * i) / (nx - 1)),
+        ys = Array.from({ length: ny }, (_, i) => (2 * i) / (ny - 1));
       return [
         graph(
           p,
@@ -55,7 +57,7 @@ export default p2Lecture("3.5.1", {
           [0, 2],
           [0, 2],
           [],
-          "[XX,YY]=meshgrid(linspace(0,2,161),linspace(0,2,81));qr=sqrt(max(0,1-ratio^2));qa=sqrt(max(0,ratio^2-1));Pfield=exp(-k*qa*YY).*cos(tau-k*(ratio*XX+qr*YY));",
+          "nx=max(161,ceil(8*f/c*max(1,ratio))+1);ny=max(81,ceil(8*f/c)+1);[XX,YY]=meshgrid(linspace(0,2,nx),linspace(0,2,ny));qr=sqrt(max(0,1-ratio^2));qa=sqrt(max(0,ratio^2-1));Pfield=exp(-k*qa*YY).*cos(tau-k*(ratio*XX+qr*YY));",
           {
             legend: false,
             field: {
@@ -72,7 +74,7 @@ export default p2Lecture("3.5.1", {
             },
           },
           {
-            field: { x: "linspace(0,2,161)", y: "linspace(0,2,81)", z: "Pfield" },
+            field: { x: "linspace(0,2,nx)", y: "linspace(0,2,ny)", z: "Pfield" },
             title: "sprintf('k_x/k = %.3g；大于1时为法向指数衰减',ratio)",
           },
         ),

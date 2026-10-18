@@ -193,7 +193,7 @@ export function Axes({
     L = 62,
     AW = W - L - (p.kind === "polar" ? 130 : p.field || p.rightLabel ? 88 : 24);
   const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
-  const T = p.kind === "polar" ? 52 : 36;
+  const T = p.kind === "polar" ? 52 : p.responseNote ? 52 : 36;
   const AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
   const layout = { W, H, L, T, AW, AH };
   const id = useId().replaceAll(":", ""),
@@ -287,6 +287,11 @@ export function Axes({
       <text x={L + AW / 2} y="17" fontSize="12" fontWeight="bold" textAnchor="middle">
         <ScriptText text={p.title} svg />
       </text>
+      {p.responseNote && (
+        <text x={L + AW / 2} y="34" textAnchor="middle" fontSize="12">
+          <ScriptText text={p.responseNote} svg />
+        </text>
+      )}
       {!polar ? (
         <>
           {xt.values.map((x) => (
@@ -588,6 +593,11 @@ export function Axes({
         y={T}
         width={AW}
         height={AH}
+        data-plot-area="true"
+        data-x-min={p.xlim[0]}
+        data-x-max={p.xlim[1]}
+        data-y-min={p.ylim[0]}
+        data-y-max={p.ylim[1]}
         fill="transparent"
         onPointerMove={hover}
         onPointerLeave={() => setTip(null)}
@@ -710,6 +720,11 @@ export default function Figure({
       <figcaption>
         <MathProse text={caption} />
       </figcaption>
+      {panels.some((p) => p.observationWindow) && (
+        <p className="figure-independence">
+          固定观察窗，窗外事件不显示；纵轴覆盖滑块范围，峰值见图内标注。
+        </p>
+      )}
       {error && <p role="alert">{error}</p>}
     </figure>
   );

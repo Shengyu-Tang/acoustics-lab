@@ -47,6 +47,9 @@ export default lecture(
     figures: [
       {
         number: "2.4-1",
+        independentOf: ["S", "F0"],
+        dimensionlessComparison:
+          "Mode-shape comparison with unit amplitude; free modes are independent of section area and driving force.",
         title: "两端自由细棒前三阶位移振型",
         rows: 3,
         cols: 1,

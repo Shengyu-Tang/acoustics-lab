@@ -35,6 +35,18 @@ function Example({ example: e, id }: { example: Lecture["examples"][number]; id:
     />
   );
 }
+function plotPosition(host: HTMLDivElement, clientX: number, clientY: number, index = 0) {
+  const area = host.querySelectorAll<SVGRectElement>("[data-plot-area]")[index];
+  const r = area.getBoundingClientRect();
+  return {
+    x:
+      Number(area.dataset.xMin) +
+      ((clientX - r.left) / r.width) * (Number(area.dataset.xMax) - Number(area.dataset.xMin)),
+    y:
+      Number(area.dataset.yMax) -
+      ((clientY - r.top) / r.height) * (Number(area.dataset.yMax) - Number(area.dataset.yMin)),
+  };
+}
 export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
   const [p, setP] = useState({ ...l.defaults }),
     [t, setT] = useState(0),
@@ -229,38 +241,29 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
                     ? (event) => {
                         if ((event.target as HTMLElement).closest("button")) return;
                         event.preventDefault();
-                        const r = event.currentTarget.querySelector("svg")!.getBoundingClientRect();
-                        const start = r.width >= 600 ? r.width / 2 : 0,
-                          width = r.width >= 600 ? r.width / 2 : r.width;
-                        setParameter(
-                          "obs",
-                          Math.max(
-                            0,
-                            Math.min(
-                              2,
-                              (2 * (event.clientX - r.left - start - 66)) / (width - 104),
-                            ),
-                          ),
+                        const point = plotPosition(
+                          event.currentTarget,
+                          event.clientX,
+                          event.clientY,
+                          1,
                         );
+                        setParameter("obs", Math.max(0, Math.min(2, point.x)));
                         event.currentTarget.setPointerCapture(event.pointerId);
                       }
                     : l.interactive?.sketch && p.shape === 2 && index === 0
                       ? (event) => {
                           if ((event.target as HTMLElement).closest("button")) return;
                           event.preventDefault();
-                          const svg = event.currentTarget.querySelector("svg")!;
-                          const r = svg.getBoundingClientRect();
+                          const point = plotPosition(
+                            event.currentTarget,
+                            event.clientX,
+                            event.clientY,
+                          );
                           const i = Math.max(
                             0,
-                            Math.min(
-                              8,
-                              Math.round(((event.clientX - r.left - 66) / (r.width - 104)) * 8),
-                            ),
+                            Math.min(8, Math.round(((point.x * p.f) / p.c) * 4)),
                           );
-                          const value = Math.max(
-                            -1,
-                            Math.min(1, 1 - (2 * (event.clientY - r.top - 42)) / (r.height - 100)),
-                          );
+                          const value = Math.max(-1, Math.min(1, point.y));
                           setPlaying(false);
                           setT(0);
                           setP((p) => ({ ...p, [`h${i}`]: value }));
@@ -289,42 +292,29 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
                   l.id === "3.4.2" && index === 0
                     ? (event) => {
                         if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
-                        const r = event.currentTarget.querySelector("svg")!.getBoundingClientRect();
-                        const start = r.width >= 600 ? r.width / 2 : 0,
-                          width = r.width >= 600 ? r.width / 2 : r.width;
-                        setParameter(
-                          "obs",
-                          Math.max(
-                            0,
-                            Math.min(
-                              2,
-                              (2 * (event.clientX - r.left - start - 66)) / (width - 104),
-                            ),
-                          ),
+                        const point = plotPosition(
+                          event.currentTarget,
+                          event.clientX,
+                          event.clientY,
+                          1,
                         );
+                        setParameter("obs", Math.max(0, Math.min(2, point.x)));
                       }
                     : l.interactive?.sketch && p.shape === 2 && index === 0
                       ? (event) => {
                           if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
-                          const r = event.currentTarget
-                            .querySelector("svg")!
-                            .getBoundingClientRect();
+                          const point = plotPosition(
+                            event.currentTarget,
+                            event.clientX,
+                            event.clientY,
+                          );
                           const i = Math.max(
                             0,
-                            Math.min(
-                              8,
-                              Math.round(((event.clientX - r.left - 66) / (r.width - 104)) * 8),
-                            ),
+                            Math.min(8, Math.round(((point.x * p.f) / p.c) * 4)),
                           );
                           setP((p) => ({
                             ...p,
-                            [`h${i}`]: Math.max(
-                              -1,
-                              Math.min(
-                                1,
-                                1 - (2 * (event.clientY - r.top - 42)) / (r.height - 100),
-                              ),
-                            ),
+                            [`h${i}`]: Math.max(-1, Math.min(1, point.y)),
                           }));
                         }
                       : l.id === "2.1" && index === 0

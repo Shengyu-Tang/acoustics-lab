@@ -17,15 +17,23 @@ function frequencyPanelsData(p: Oscillator, compare: boolean): Panel[] {
     ? [1.7, 5, 10].map((Q) => ({ name: `Qₘ = ${Q}`, p: { ...p, Rm: (c.omega0 * p.M) / Q } }))
     : [{ name: "当前参数", p }];
   const data = (key: "x" | "v" | "a" | "px" | "pv" | "pa") =>
-    variants.map(({ p, name }) => ({
-      name,
-      points: sample(
-        (f) => response(p, f)[key] * (key.startsWith("p") ? 180 / Math.PI : 1),
-        0,
-        xmax,
-        1201,
-      ),
-    }));
+    variants.map(({ p, name }) => {
+      const c = characteristics(p),
+        fs = [
+          ...sample((x) => x, 0, xmax, 1201).map(([x]) => x),
+          ...[c.fx, c.fv, c.fa].filter((f): f is number => f !== null && f >= 0 && f <= xmax),
+        ].sort((a, b) => a - b);
+      return {
+        name,
+        points: fs.map(
+          (f) =>
+            [f, response(p, f)[key] * (key.startsWith("p") ? 180 / Math.PI : 1)] as [
+              number,
+              number,
+            ],
+        ),
+      };
+    });
   const amplitudes = (["x", "v", "a"] as const).map((key, i) => {
     const series = data(key),
       peak = [c.fx, c.fv, c.fa][i];
@@ -98,15 +106,12 @@ function impedancePanelData(p: Oscillator): Panel {
       style: (["-", "--", ":"] as const)[i],
       points: sample((f) => response(p, f)[key], min, max),
     })),
-    annotations: [
-      { axis: "x", value: c.f0, label: "f₀：Xₘ = 0" },
-      { axis: "y", value: 0, label: "零电抗", labelPosition: "below-left" },
-    ],
+    annotations: [{ axis: "x", value: c.f0, label: "f₀：Xₘ = 0" }],
   };
 }
 function instantaneousPanelsData(p: Oscillator): Panel[] {
   const c = characteristics(p),
-    duration = 6,
+    duration = 0.1,
     bound = ((p.F0 * p.F0) / p.Rm) * 1.1;
   return [0.8, 1, 1.2].map((r) => {
     const f = c.f0 * r,

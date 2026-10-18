@@ -130,8 +130,10 @@ export default p2Lecture("3.5.2", {
         "Unit-direction comparison k/|k|; the physical field is shown below.",
     },
     figure("3.5.2-2", "二至四列不同方向的平面波叠加", (p, t) => {
-      const xs = Array.from({ length: 161 }, (_, i) => -1 + (2 * i) / 160),
-        ys = Array.from({ length: 81 }, (_, i) => -1 + (2 * i) / 80);
+      const nx = Math.max(161, Math.ceil((8 * p.f) / p.c) + 1),
+        ny = Math.max(81, Math.ceil((8 * p.f) / p.c) + 1),
+        xs = Array.from({ length: nx }, (_, i) => -1 + (2 * i) / (nx - 1)),
+        ys = Array.from({ length: ny }, (_, i) => -1 + (2 * i) / (ny - 1));
       const z = ys.map((y) =>
         xs.map((x) =>
           Array.from({ length: p.wavecount }, (_, i) => {
@@ -152,12 +154,12 @@ export default p2Lecture("3.5.2", {
           [-1, 1],
           [-1, 1],
           [],
-          "[XX,YY]=meshgrid(linspace(-1,1,161),linspace(-1,1,81));AA=[a1 a2 a3 a4];Pfield=zeros(size(XX));for jj=1:wavecount,Pfield=Pfield+cos(tau-k*(XX*cosd(AA(jj))+YY*sind(AA(jj))));end;",
+          "nx=max(161,ceil(8*f/c)+1);ny=max(81,ceil(8*f/c)+1);[XX,YY]=meshgrid(linspace(-1,1,nx),linspace(-1,1,ny));AA=[a1 a2 a3 a4];Pfield=zeros(size(XX));for jj=1:wavecount,Pfield=Pfield+cos(tau-k*(XX*cosd(AA(jj))+YY*sind(AA(jj))));end;",
           {
             legend: false,
             field: { x: xs, y: ys, z, limits: [-4, 4], map: "RdBu", label: "合成归一化声压（—）" },
           },
-          { field: { x: "linspace(-1,1,161)", y: "linspace(-1,1,81)", z: "Pfield" } },
+          { field: { x: "linspace(-1,1,nx)", y: "linspace(-1,1,ny)", z: "Pfield" } },
         ),
       ];
     }),

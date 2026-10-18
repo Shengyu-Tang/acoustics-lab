@@ -81,7 +81,17 @@ export function controlVolume(p: Values, t: number, energy = false) {
         label: energy ? "能量变化（归一化示意）" : "密度变化（归一化示意）",
       },
     },
-    { field: { x: "[.35 .9]*L", y: "[.3 .95]*sqrt(S)", z: "tanh(rate*tView*100)*ones(2)" } },
+    {
+      textLabels: [
+        ...vertices.map(([v]) => ({
+          x: `L*${v[0] / p.L}`,
+          y: `sqrt(S)*${v[1] / Math.sqrt(p.S)}+.06`,
+        })),
+        { x: "-.2", y: ".85*sqrt(S)" },
+        { x: "L+.2", y: ".85*sqrt(S)" },
+      ],
+      field: { x: "[.35 .9]*L", y: "[.3 .95]*sqrt(S)", z: "tanh(rate*tView*100)*ones(2)" },
+    },
   );
   return panel;
 }

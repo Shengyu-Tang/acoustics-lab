@@ -67,7 +67,7 @@ export default p2Lecture("3.4.2", {
               { axis: "x", value: 1 / p.f, label: "T" },
             ],
           },
-          { ylim: "[-1.7 1.7]*pa" },
+          { annotations: ["0", "1/f"], ylim: "[-1.7 1.7]*pa" },
         ),
         graph(
           p,
@@ -100,7 +100,7 @@ export default p2Lecture("3.4.2", {
               { axis: "x", value: p.c / p.f, label: "λ" },
             ],
           },
-          { ylim: "[-1.7 1.7]*pa" },
+          { annotations: ["0", "c/f"], ylim: "[-1.7 1.7]*pa" },
         ),
       ],
       1,

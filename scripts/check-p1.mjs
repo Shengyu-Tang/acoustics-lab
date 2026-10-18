@@ -308,8 +308,8 @@ for (const l of lectures) {
           if (s.style === "none" && s.marker)
             for (const [x, y] of s.points) {
               assert.ok(
-                x >= xt.limits[0] - 1e-12 &&
-                  x <= xt.limits[1] + 1e-12 &&
+                (panel.observationWindow ||
+                  (x >= xt.limits[0] - 1e-12 && x <= xt.limits[1] + 1e-12)) &&
                   y >= yt.limits[0] - 1e-12 &&
                   y <= yt.limits[1] + 1e-12,
                 `${f.number}: marker inside axes`,

@@ -29,9 +29,7 @@ export function modelsFor(
   const end = (k: number) => String(panels[k].xlim[1]);
   switch (id) {
     case "1.1.1-1":
-      setup =
-        common +
-        "pos=1+freeResponse(tView,M,D,0,x0,v0)/max(.001,hypot(x0,v0/w0))*.3; finish=niceEnd(3*T0);";
+      setup = common + "pos=1+freeResponse(tView,M,D,0,x0,v0); finish=niceEnd(3*T0);";
       curves = [
         [
           xyz("[.1 .1]", "[-.5 .5]"),
@@ -226,7 +224,7 @@ export function modelsFor(
       break;
     case "2.3-2":
       setup = "materialE=[200 70 100 65 3]*1e9; materialRho=[7850 2700 8500 2500 1180];";
-      curves = [[xyz("1:5", "sqrt(materialE./materialRho)")]];
+      curves = [[xyz("1:6", "[sqrt(materialE./materialRho) sqrt(E*1e9/rho)]")]];
       break;
     case "2.3-3":
       setup =
@@ -260,6 +258,8 @@ export function modelsFor(
     result.forEach(
       (p, i) => (p.matlabModel!.title = `sprintf('第 ${i + 1} 阶：%.4g Hz',${i + 1}*c/(2*L))`),
     );
+  if (id === "2.1-1")
+    result[0].matlabModel!.title = "sprintf('String element forces; c = %.4g m/s',c)";
   if (id.startsWith("2."))
     result.forEach((panel) => {
       panel.matlabModel!.xlim = `[${panel.xlim.join(" ")}]`;
@@ -348,7 +348,9 @@ function frequencyModels(
     setup += "finish=400;";
     const rs = compare ? ["w0*M/1.7", "w0*M/5", "w0*M/10"] : ["Rm"];
     curves = [0, 1, 2, 3, 4, 5].map((i) =>
-      rs.map((r) => curve(grid("finish", 1201), `frequencyResponse(x,M,D,${r},F0,${i + 1})`)),
+      rs.map((r) =>
+        curve(`frequencyGrid(finish,M,D,${r},1201)`, `frequencyResponse(x,M,D,${r},F0,${i + 1})`),
+      ),
     );
     annotations = [0, 1, 2].map((i) =>
       i === 1
@@ -373,7 +375,7 @@ function frequencyModels(
     if (id === "B-1") curves[0].push(xyz("f0", "F0^2/(2*Rm)"));
     annotations = [["f0", "f1", "f2", "F0^2/(4*Rm)"]];
   } else if (id === "1.2.5-2") {
-    setup += "finish=6;";
+    setup += "finish=.1;";
     curves = [0.8, 1, 1.2].map((r) => [
       time("finish", `instantPower(x,${r}*f0,M,D,Rm,F0)`, 601),
       xyz("[0 finish]", `frequencyResponse(${r}*f0,M,D,Rm,F0,10)*[1 1]`),
@@ -395,6 +397,10 @@ function frequencyModels(
   } else throw new Error(`Missing MATLAB model ${id}`);
   if (id === "B-1") setup = "Rm=2*pi*M*(f2-f1);F0=Rm*velocity;" + setup;
   const result = attach(panels, p, defs, setup, curves, annotations);
+  if (id === "B-1") {
+    result[0].matlabModel!.xlim = `[${panels[0].xlim.join(" ")}]`;
+    result[0].matlabModel!.ylim = `[${panels[0].ylim.join(" ")}]`;
+  }
   if (id === "1.2.4-1")
     result.slice(0, 3).forEach((panel, i) => {
       panel.matlabModel!.annotationLabels = panel.matlabModel!.annotations?.map(
@@ -443,7 +449,8 @@ function frequencyModels(
     );
   if (id === "1.2.5-1" || id === "B-1") {
     result[0].matlabModel!.bands = [{ from: "f1", to: "f2" }];
-    result[0].matlabModel!.ylim = "[0 1.7*F0^2/(2*Rm)]";
+    result[0].matlabModel!.ylim =
+      id === "B-1" ? `[${panels[0].ylim.join(" ")}]` : "[0 1.7*F0^2/(2*Rm)]";
   }
   if (id === "1.2.4-2") {
     result[0].matlabModel!.ylim = "[-max(7*w0*M,Rm*1.15) max(7*w0*M,Rm*1.15)]";

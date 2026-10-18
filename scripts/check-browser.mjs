@@ -144,7 +144,7 @@ try {
   page.on("console", (m) => {
     if (m.type() === "error") errors.push(m.text());
   });
-  const shots = "screenshots/p0";
+  const shots = "outputs/browser-screenshots/p0";
   fs.mkdirSync(shots, { recursive: true });
   const pages = [
     ["home", "#/", "声学基础"],
@@ -511,8 +511,11 @@ try {
       );
       assert.deepEqual(hiddenCurves, [], `${l.id}: legend covers a curve at ${width}`);
       // Capture the initial lecture, before exercise and parameter mutations.
-      fs.mkdirSync("screenshots/p1", { recursive: true });
-      await page.screenshot({ path: `screenshots/p1/${l.id}-${width}.png`, fullPage: true });
+      fs.mkdirSync("outputs/browser-screenshots/p1", { recursive: true });
+      await page.screenshot({
+        path: `outputs/browser-screenshots/p1/${l.id}-${width}.png`,
+        fullPage: true,
+      });
       const e = l.examples[0];
       assert.equal(
         await page.locator(".matlab-figure").count(),
@@ -663,7 +666,7 @@ try {
   }
   // Review exact viewport screenshots in addition to the full lecture captures.
   const polish = [];
-  fs.mkdirSync("screenshots/polish", { recursive: true });
+  fs.mkdirSync("outputs/browser-screenshots/polish", { recursive: true });
   for (const [size, width, height] of [
     ["desktop", 1440, 900],
     ["mobile", 390, 844],
@@ -748,7 +751,7 @@ try {
           if (width === 1440) assert.equal(f.width, 120);
         }
       }
-      await page.screenshot({ path: `screenshots/polish/${id}-${size}.png` });
+      await page.screenshot({ path: `outputs/browser-screenshots/polish/${id}-${size}.png` });
       if (id !== "home") {
         await page
           .locator(".parameter-panel")
@@ -789,7 +792,7 @@ try {
   context.setDefaultTimeout(90000);
   page = await context.newPage();
   // Fresh, exact-size review captures of the requested sections.
-  fs.mkdirSync("screenshots/design-review", { recursive: true });
+  fs.mkdirSync("outputs/browser-screenshots/design-review", { recursive: true });
   for (const [size, width, height] of [
     ["desktop", 1440, 900],
     ["mobile", 390, 844],
@@ -830,7 +833,7 @@ try {
         await reviewPage.screenshot();
         await reviewPage.waitForTimeout(100);
         await reviewPage.screenshot({
-          path: `screenshots/design-review/${id}-${section}-${size}.png`,
+          path: `outputs/browser-screenshots/design-review/${id}-${section}-${size}.png`,
         });
       } finally {
         await reviewPage.close();

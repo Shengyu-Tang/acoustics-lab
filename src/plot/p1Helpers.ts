@@ -18,7 +18,7 @@ export const line = (
   end: number,
   style: Series["style"] = "-",
   n = 1601,
-): Series => ({ name, points: sample(fn, 0, end, n), style });
+): Series => ({ name, evaluate: fn, points: sample(fn, 0, end, n), style });
 export function working(p: Panel, x: number, y: number): Panel {
   return {
     ...p,

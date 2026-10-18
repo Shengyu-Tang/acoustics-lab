@@ -5,9 +5,14 @@ import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { build, stop } from "esbuild";
 import { pathToFileURL } from "node:url";
+const review = process.argv.includes("--review-sliders");
 const p2 = process.argv.includes("--batch=P2");
 const root = process.cwd(),
-  out = path.resolve(`specs/redesign/matlab-check/${p2 ? "P2" : "P1-fix"}`),
+  out = path.resolve(
+    review
+      ? `outputs/slider-matlab/${p2 ? "P2" : "P1"}`
+      : `specs/redesign/matlab-check/${p2 ? "P2" : "P1-fix"}`,
+  ),
   work = path.resolve(`outputs/matlab-models${p2 ? "-P2" : ""}`);
 for (const dir of [out, work, path.join(work, "tmp"), path.join(work, "prefs")])
   fs.mkdirSync(dir, { recursive: true });
@@ -111,6 +116,7 @@ const variant = (p) =>
               A: 1.2,
               zeta: 1.1,
               Qm: 1.1,
+              value: 1.25,
               T: 1.2,
               mu: 1.1,
               L: 0.9,
@@ -141,12 +147,21 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
   const code = all.matlab(base, rows, cols, name);
   for (const set of [0, 1]) {
     const p = set ? variant(defaults) : defaults;
+    if (review && set && "L" in p)
+      p.L =
+        name.startsWith("2.1") || name.startsWith("2.2")
+          ? 1.5
+          : name.startsWith("2.")
+            ? 2
+            : name.startsWith("3.1.4")
+              ? 0.5
+              : 1;
     const expected = plot(p);
     assert.ok(
       expected.every((p) => p.matlabModel),
       name,
     );
-    let script = p2 ? "set(groot,'defaultFigureVisible','off');\n" + code : code;
+    let script = p2 || review ? "set(groot,'defaultFigureVisible','off');\n" + code : code;
     if (set)
       for (const { key } of parameters)
         if (key in p)
@@ -178,22 +193,25 @@ for (const [key, l] of Object.entries(all).filter(([k]) => /^l\d+$/.test(k))) {
   for (const f of l.figures)
     add(
       f.number,
-      l.defaults,
+      review && l.parameters.some((d) => d.key === "L")
+        ? { ...l.defaults, L: l.parameters.find((d) => d.key === "L").min }
+        : l.defaults,
       (p) => f.plot(p, 0),
       f.rows,
       f.cols,
       undefined,
       (p) => l.readouts(p).map((r) => r[1]),
     );
-  for (const [i, e] of l.examples.entries())
-    add(
-      `${l.id}-E${i + 1}`,
-      e.defaults,
-      (p) => [e.plot(p)],
-      1,
-      1,
-      (p) => e.asks.map((a) => a.calc(p)),
-    );
+  if (!review)
+    for (const [i, e] of l.examples.entries())
+      add(
+        `${l.id}-E${i + 1}`,
+        e.defaults,
+        (p) => [e.plot(p)],
+        1,
+        1,
+        (p) => e.asks.map((a) => a.calc(p)),
+      );
 }
 if (!p2) {
   const p0 = { ...all.instrument, Rm: 400 };
@@ -202,14 +220,15 @@ if (!p2) {
   add("1.2.4-2", p0, (p) => [all.impedancePanel(p)]);
   add("1.2.5-1", p0, (p) => [all.powerPanel(p)]);
   add("1.2.5-2", p0, (p) => all.instantaneousPanels(p), 3, 1);
-  add(
-    "A-1",
-    all.example.defaults,
-    (p) => [all.instrumentPanel(p)],
-    1,
-    1,
-    (p) => all.example.asks.map((a) => all.example.solve(p)[a.key]),
-  );
+  if (!review)
+    add(
+      "A-1",
+      all.example.defaults,
+      (p) => [all.instrumentPanel(p)],
+      1,
+      1,
+      (p) => all.example.asks.map((a) => all.example.solve(p)[a.key]),
+    );
   add("B-1", all.bandwidthExample.defaults, (p) => {
     const s = all.bandwidthExample.solve(p),
       panel = all.powerPanel({ ...p, Rm: s.Rm, F0: s.force });

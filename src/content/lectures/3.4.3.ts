@@ -25,7 +25,7 @@ export default p2Lecture("3.4.3", {
     {
       number: "3.4.3-1",
       tex: String.raw`u(x,t)=\frac{p_a}{\rho_0c_0}\cos(\omega t-kx),\quad p/u=\rho_0c_0`,
-      meaning: "图中把振速乘特性阻抗后再归一化，以便在同一纵轴比较波形。",
+      meaning: "声压以 Pa、振速以 m/s 表示，分别使用固定的左右纵轴；空间和时间轴使用 m 和 s。",
     },
     {
       number: "3.4.3-2",

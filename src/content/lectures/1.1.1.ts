@@ -63,7 +63,7 @@ export default lecture(
         plot: (p, t) => {
           const c = decay(p),
             A = Math.max(0.001, Math.hypot(p.x0, p.v0 / c.w0)),
-            pos = 1 + (freeMotion(p, t) / A) * 0.3;
+            pos = 1 + freeMotion(p, t);
           return [
             panel(
               "弹簧振子示意（慢放）",

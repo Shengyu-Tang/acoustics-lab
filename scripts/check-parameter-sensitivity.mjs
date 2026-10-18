@@ -24,7 +24,7 @@ export const lectures = files
       ? l
       : {
           ...l,
-          defaults: mod.instrument,
+          defaults: { ...mod.instrument, Rm: 400 },
           parameters: l.figures[0].parameters,
           figures: l.figures.map((f) => ({ ...f, plot: (p) => f.plot(p, false) })),
         },
