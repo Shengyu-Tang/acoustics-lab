@@ -8,6 +8,7 @@ export type Series = {
   style?: "-" | "--" | ":" | "-." | "none";
   marker?: "o" | "s" | "^" | "x";
   axis?: "left" | "right";
+  legend?: boolean;
 };
 export type Field = {
   x: number[];

@@ -71,7 +71,11 @@ try {
       measurements.push({ name, size, ...dims });
       assert.equal(dims.scroll, width, `${name} ${size}: horizontal overflow`);
       assert.equal(dims.header, 56);
-      if (name === "home") assert.equal(await page.locator(".lecture-thumbnail").count(), 2);
+      if (name === "home")
+        assert.equal(
+          await page.locator(".lecture-thumbnail").count(),
+          fs.readdirSync("src/content/lectures").filter((f) => f.endsWith(".ts")).length,
+        );
       if (name.startsWith("lecture")) {
         const plotMetrics = await page.locator(".matlab-figure svg").evaluateAll((svgs) =>
           svgs.map((svg) => ({
@@ -319,11 +323,63 @@ try {
   });
   // Every retained lecture and auxiliary route still mounts in the new application.
   const topics = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
-  for (const [i, t] of topics.entries()) {
-    await page.goto("http://127.0.0.1:4174/#/lab?topic=" + t.id);
-    await page.getByRole("heading", { name: t.id + " " + t.title, exact: true }).waitFor();
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), 1440, t.id);
-    if (i % 20 === 0) console.log(`PASS: retained lecture ${i + 1}/${topics.length}`);
+  const p1Module = await import("../outputs/p1-check.mjs");
+  const p1 = Object.entries(p1Module)
+    .filter(([key]) => /^l\d+$/.test(key))
+    .map(([, l]) => l);
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: width === 1440 ? 900 : 844 });
+    for (const [i, t] of topics.entries()) {
+      await page.goto("http://127.0.0.1:4174/#/lab?topic=" + t.id);
+      await page.getByRole("heading", { name: t.id + " " + t.title, exact: true }).waitFor();
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, t.id);
+      if (i % 20 === 0) console.log(`PASS: retained lecture ${i + 1}/${topics.length} at ${width}`);
+      const l = p1.find((l) => l.id === t.id);
+      if (!l) continue;
+      const e = l.examples[0];
+      assert.equal(
+        await page.locator(".matlab-figure").count(),
+        l.figures.length + l.examples.length,
+      );
+      for (const [j, a] of e.asks.entries())
+        await page
+          .locator(".student-answer input")
+          .nth(j)
+          .fill(String(a.calc(e.defaults)));
+      await page.getByRole("button", { name: "提交答案", exact: true }).click();
+      assert.deepEqual(
+        await page.locator(".student-answer output").allTextContents(),
+        Array(e.asks.length).fill("正确"),
+      );
+      await page.getByRole("button", { name: "提示 1：选择公式", exact: true }).click();
+      await page.getByRole("button", { name: "提示 2：代入步骤", exact: true }).click();
+      await page.locator(".reference-solution summary").click();
+      const before = await page.locator(".solution-content").textContent();
+      const d = e.given[0],
+        value = e.defaults[d.key] === d.max ? d.min : d.max;
+      const input = page.getByRole("spinbutton", { name: `例题${d.name}`, exact: true });
+      await input.fill(String(value));
+      await input.blur();
+      assert.notEqual(
+        await page.locator(".solution-content").textContent(),
+        before,
+        `${l.id}: reactive solution`,
+      );
+      if (l.animation) {
+        const svg = page.locator(".matlab-figure svg"),
+          before = await svg.evaluateAll((nodes) => nodes.map((n) => n.innerHTML).join(""));
+        await page.getByRole("button", { name: "单步", exact: true }).click();
+        assert.ok(
+          (await svg.evaluateAll((nodes) => nodes.map((n) => n.innerHTML).join(""))) !== before,
+          `${l.id}: single step updates`,
+        );
+        await page.getByRole("button", { name: "播放", exact: true }).click();
+        await page.waitForTimeout(150);
+        await page.getByRole("button", { name: "暂停", exact: true }).click();
+      }
+      fs.mkdirSync("screenshots/p1", { recursive: true });
+      await page.screenshot({ path: `screenshots/p1/${l.id}-${width}.png`, fullPage: true });
+    }
   }
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: width === 1440 ? 900 : 844 });

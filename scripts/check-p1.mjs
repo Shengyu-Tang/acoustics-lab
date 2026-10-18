@@ -40,6 +40,18 @@ for (const x0 of [-0.01, 0, 0.01]) {
   near(all.freeMotion(u, T), x0);
 }
 near(all.freeMotion(p, c.Td), p.x0 * Math.exp(-c.logDecrement));
+for (let i = 0; i < 1000; i++) {
+  const t = i / 999,
+    A = 0.004,
+    w = 30,
+    M = 1.5,
+    D = 1350;
+  const x = A * Math.cos(w * t),
+    v = -w * A * Math.sin(w * t),
+    a = -w * w * x;
+  near(Math.abs(a), Math.abs((D / M) * x));
+  near(0.5 * M * v * v + 0.5 * D * x * x, 0.5 * D * A * A);
+}
 for (const Rm of [0, 4, 80, 120]) {
   const u = { ...p, Rm },
     dt = 0.0001;
@@ -47,7 +59,10 @@ for (const Rm of [0, 4, 80, 120]) {
   const max = Math.max(...numeric.map(([t, x]) => Math.abs(x - all.freeMotion(u, t))));
   assert.ok(max < 1e-8, `RK4/free solution ${Rm}: ${max}`);
 }
-const references = { "1.1.1": [3.183098861837907, 0.006403124237432849] };
+const references = {
+  "1.1.1": [3.183098861837907, 0.006403124237432849],
+  "1.1.2": [0.12, 3.6, 0.0108],
+};
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);
 for (const l of lectures) {

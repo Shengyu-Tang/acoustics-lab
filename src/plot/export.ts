@@ -107,7 +107,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         ? `, 'MarkerIndices',${vector(s.points.map((_, i) => i + 1).filter((_, i) => i % Math.max(1, Math.floor(s.points.length / 18)) === 0))}`
         : "";
       out.push(
-        `${fn}(x,y,'LineStyle',${quote(s.style ?? "-")},'Marker',${quote(s.marker ?? "none")}${markerIndices},'Color',${vector(rgb)},'LineWidth',1.5,'DisplayName',${tex(s.name)});`,
+        `${fn}(x,y,'LineStyle',${quote(s.style ?? "-")},'Marker',${quote(s.marker ?? "none")}${markerIndices},'Color',${vector(rgb)},'LineWidth',1.5,'DisplayName',${tex(s.name)}${s.legend === false ? ",'HandleVisibility','off'" : ""});`,
       );
     });
     if (p.kind !== "polar") {

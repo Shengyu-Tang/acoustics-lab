@@ -2,9 +2,11 @@ import topics from "./topics.json";
 import calendar from "./calendar.json";
 import Header from "./Header";
 import { chapters } from "./catalog";
-import { p1Lectures } from "./content/p1Registry";
+const completed = Object.keys(import.meta.glob("./content/lectures/*.ts")).map((path) =>
+  path.split("/").at(-1)!.replace(".ts", ""),
+);
 function Thumbnail({ id }: { id: string }) {
-  if (id !== "1.2.4" && id !== "1.2.5" && !p1Lectures.some((l) => l.id === id)) return null;
+  if (!completed.includes(id)) return null;
   return (
     <img
       className="lecture-thumbnail"

@@ -18,7 +18,10 @@ for (const dir of [
   fs.mkdirSync(dir, { recursive: true });
 process.env.TEMP = process.env.TMP = path.join(work, "tmp");
 process.env.MATLAB_PREFDIR = path.join(work, "prefs");
-fs.writeFileSync(path.join(work,"startup.m"), "% Batch QA: isolated startup; no desktop integration.\n");
+fs.writeFileSync(
+  path.join(work, "startup.m"),
+  "% Batch QA: isolated startup; no desktop integration.\n",
+);
 const selected = process.argv.find((a) => a.startsWith("--lecture="))?.split("=")[1];
 const topics = fs
   .readdirSync("src/content/lectures")
@@ -107,16 +110,19 @@ if (!process.argv.includes("--render-only")) {
   } finally {
     server.kill();
     // Edge can retain a download handle after a persistent context closes.
-    await Promise.race([context?.close(), new Promise(resolve=>setTimeout(resolve,5000))]);
+    await Promise.race([context?.close(), new Promise((resolve) => setTimeout(resolve, 5000))]);
   }
 }
-
 
 if (!process.argv.includes("--export-only")) {
   const matlab = process.env.MATLAB_EXE ?? "C:\\Program Files\\MATLAB\\R2024b\\bin\\matlab.exe";
   const mq = (s) => "'" + s.replaceAll("\\", "/").replaceAll("'", "''") + "'";
   const results = [];
-  for (const name of names) {
+  for (const name of names.filter(
+    (n) =>
+      !process.argv.some((a) => a.startsWith("--figure=")) ||
+      n === process.argv.find((a) => a.startsWith("--figure=")).split("=")[1],
+  )) {
     fs.rmSync(path.join(out, name + ".png"), { force: true });
     // Figure numbers contain dots/hyphens and are not MATLAB identifiers; evaluate their UTF-8 source.
     const command = `eval(fileread(${mq(path.join(out, name + ".m"))})); drawnow; exportgraphics(gcf,${mq(path.join(out, name + ".png"))},'Resolution',150); close all;`;
@@ -148,7 +154,10 @@ if (!process.argv.includes("--export-only")) {
     });
     fs.writeFileSync(path.join(work, name + ".log"), result.log);
     results.push(result);
-    fs.writeFileSync(path.join(work, `results-${selected??"all"}.json`), JSON.stringify(results, null, 2));
+    fs.writeFileSync(
+      path.join(work, `results-${selected ?? "all"}.json`),
+      JSON.stringify(results, null, 2),
+    );
     console.log(
       `${name}: MATLAB exit ${result.code}${result.log ? "\n" + result.log : " (no messages)"}`,
     );

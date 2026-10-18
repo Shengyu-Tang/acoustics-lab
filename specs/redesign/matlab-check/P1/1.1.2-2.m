@@ -1,0 +1,33 @@
+% 图 1.1.2-2　复平面旋转矢量与实轴投影
+% Exported current data; SI units unless an axis specifies otherwise.
+set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
+set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
+figure('Color','w','Position',[80 80 640 340]);
+subplot(1,1,1);
+hold on;
+x=[0 1];
+y=[0 0];
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','x/A');
+x=[0 6.123233995736766e-17];
+y=[0 1];
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','v/(\omega _{0}A)');
+x=[0 -1];
+y=[0 1.2246467991473532e-16];
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','a/(\omega _{0}^{2}A)');
+x=[1 1];
+y=[0 0];
+plot(x,y,'LineStyle',':','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','实轴投影','HandleVisibility','off');
+x=[6.123233995736766e-17 6.123233995736766e-17];
+y=[1 0];
+plot(x,y,'LineStyle',':','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','实轴投影','HandleVisibility','off');
+x=[-1 -1];
+y=[1.2246467991473532e-16 0];
+plot(x,y,'LineStyle',':','Marker','none','Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','实轴投影','HandleVisibility','off');
+set(gca,'XScale','linear','YScale','linear');
+xlim([-1.5 1.5]); ylim([-1.5 1.5]);
+xticks([-1.5 -1 -0.5 0 0.5 1 1.5]); yticks([-1.5 -1 -0.5 0 0.5 1 1.5]);
+set(gca,'XMinorTick','off','YMinorTick','off');
+xlabel('实部 / 各自幅值 (—)','Interpreter','tex'); ylabel('虚部 / 各自幅值 (—)','Interpreter','tex');
+title('归一化旋转矢量（实轴投影为瞬时值）','Interpreter','tex','FontSize',12);
+box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
+lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');

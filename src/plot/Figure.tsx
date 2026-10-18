@@ -172,11 +172,14 @@ export function Axes({
       return canvas.toDataURL();
     }, [field]),
     limits = field ? fieldLimits(field) : ([0, 1] as [number, number]);
+  const legendSeries = (p.series ?? [])
+    .map((s, i) => ({ ...s, color: s.color ?? COLORS[i % COLORS.length] }))
+    .filter((s) => s.legend !== false);
   const legendW = Math.min(
     AW - 14,
-    Math.max(100, ...(p.series?.map((s) => textWidth(s.name) + 34) ?? [])),
+    Math.max(100, ...legendSeries.map((s) => textWidth(s.name) + 34)),
   );
-  const legendH = (p.series?.length ?? 0) * 16 + 8;
+  const legendH = legendSeries.length * 16 + 8;
   const legend =
     p.kind === "polar"
       ? [L + AW / 2 + AH / 2 + 22, T]
@@ -435,16 +438,16 @@ export function Axes({
           {p.rightLabel}
         </text>
       )}
-      {p.legend !== false && !!p.series?.length && (
+      {p.legend !== false && !!legendSeries.length && (
         <g transform={`translate(${legend[0]} ${legend[1]})`}>
           <rect
             width={legendW}
-            height={p.series.length * 16 + 8}
+            height={legendSeries.length * 16 + 8}
             fill="white"
             stroke="black"
             strokeWidth=".5"
           />
-          {p.series.map((s, i) => (
+          {legendSeries.map((s, i) => (
             <g key={i} transform={`translate(5 ${14 + i * 16})`}>
               {s.style !== "none" && (
                 <path
