@@ -4,6 +4,7 @@ import type { P1Lecture, Values, P1Example, Ask } from "./p1";
 import type { Panel, Series, MatlabModel } from "../plot/types";
 import { sample } from "../plot/types";
 import { parameter } from "./p1";
+import { answerTitle } from "../plot/answerTitle";
 export { parameter, fmt } from "./p1";
 export const defaults = { rho: 1.21, c: 343, f: 1000, pa: 1 };
 export const params = {
@@ -165,7 +166,7 @@ export function example(
         "\n" +
         asks.map((a) => `${a.key}=${a.matlab};`).join("\n") +
         `\nworksheet_answers=[${asks.map((a) => a.key).join(" ")}];`;
-      return panel;
+      return answerTitle(panel, asks, p);
     },
   };
 }

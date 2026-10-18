@@ -279,6 +279,11 @@ for (const l of lectures) {
       near(all.rodFrequency(1, Math.sqrt(e.E / 7850), L, "free-free"), f);
     }
   const e = l.examples[0];
+  assert.ok(/\d/.test(e.plot(e.defaults).title), l.id + " numeric example title");
+  assert.ok(
+    !/例题答案|工作点/.test(e.plot(e.defaults).title),
+    l.id + " concrete requested quantity",
+  );
   assert.equal(e.hints.length, 2);
   assert.ok(references[l.id], `Independent reference values missing: ${l.id}`);
   e.asks.forEach((a, i) => near(a.calc(e.defaults), references[l.id][i], 0.0049));

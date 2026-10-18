@@ -24,7 +24,7 @@ function Example({ example: e, id }: { example: Lecture["examples"][number]; id:
       judgment={e.judgment(p)}
       note="采用 SI 单位，内部计算不对中间结果取整。"
       panel={plot}
-      caption={`图 ${id}　例题工作点`}
+      caption={`图 ${id}　${plot.title}`}
       exportScript={() =>
         download(
           matlab([plot], 1, 1, e.title),

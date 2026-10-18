@@ -394,6 +394,15 @@ function frequencyModels(
     result[0].matlabModel!.parameters = result[0].matlabModel!.parameters.filter(
       (p) => p.key !== "Rm" && p.key !== "F0",
     );
+  if (id === "A-1") {
+    result[0].title = `支架位移幅值 = ${Number(((1000 * p.F0) / Math.hypot(p.Rm, ((2 * Math.PI * p.n) / 60) * p.M - p.D / ((2 * Math.PI * p.n) / 60)) / ((2 * Math.PI * p.n) / 60)).toPrecision(4))} mm`;
+    result[0].matlabModel!.title =
+      "sprintf('支架位移幅值 = %.4g mm',1000*frequencyResponse(n/60,M,D,Rm,F0,1))";
+  }
+  if (id === "B-1") {
+    result[0].title = `平均输入功率 = ${Number(((p.Rm * p.velocity ** 2) / 2).toPrecision(4))} W`;
+    result[0].matlabModel!.title = "sprintf('平均输入功率 = %.4g W',Rm*velocity^2/2)";
+  }
   if (id.startsWith("1.2.4"))
     result.forEach(
       (panel) =>

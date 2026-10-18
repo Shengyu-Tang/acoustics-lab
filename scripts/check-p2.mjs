@@ -161,6 +161,11 @@ for (const l of lectures) {
     formulaNumbers.add(f.number);
   }
   const e = l.examples[0];
+  assert.ok(/\d/.test(e.plot(e.defaults).title), l.id + " numeric example title");
+  assert.ok(
+    !/例题答案|工作点/.test(e.plot(e.defaults).title),
+    l.id + " concrete requested quantity",
+  );
   for (const p of [l.defaults, e.defaults])
     assert.ok(!("x" in p || "y" in p), `${l.id}: MATLAB plot temporaries must not shadow inputs`);
   assert.equal(e.hints.length, 2);

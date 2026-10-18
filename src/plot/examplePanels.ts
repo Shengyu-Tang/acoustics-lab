@@ -4,6 +4,7 @@ import { loadedRodRoots, rodSpeed } from "../physics/chapter2";
 import { panel, line, extent, working } from "./p1Helpers";
 import { attach } from "./matlabModels";
 import type { Panel } from "./types";
+import { answerTitle } from "./answerTitle";
 
 /** Each worksheet shows the requested design or inferred quantity, not a generic lab redraw. */
 export function examplePanel(id: string, p: Values, original: Panel, e: P1Example): Panel {
@@ -303,5 +304,5 @@ export function examplePanel(id: string, p: Values, original: Panel, e: P1Exampl
   if (id === "2.1")
     modeled.matlabModel!.annotationLabels = ["sprintf('单程时间 L/c = %.4g s',L/sqrt(T/mu))"];
   if (id === "2.3") modeled.matlabModel!.title = "sprintf('本题带质量钢棒：c = %.4g m/s',speed)";
-  return modeled;
+  return answerTitle(modeled, e.asks, p);
 }

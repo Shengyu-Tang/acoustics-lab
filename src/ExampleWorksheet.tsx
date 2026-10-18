@@ -185,7 +185,11 @@ export default function ExampleWorksheet({
           </p>
         </div>
       </details>
-      <Figure panels={[panel]} caption={caption} name={example.id} />
+      <Figure
+        panels={[panel]}
+        caption={`${caption.split("　")[0]}　${panel.title}`}
+        name={example.id}
+      />
       <div className="example-export">
         <button
           onClick={(event) => {
