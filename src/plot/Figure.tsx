@@ -57,7 +57,7 @@ export function Line({
     .join(" ");
   const color = series.color ?? COLORS[index % COLORS.length];
   return (
-    <g fill="none" stroke={color} strokeWidth="1.5">
+    <g data-plot-series="true" fill="none" stroke={color} strokeWidth="1.5">
       {series.style !== "none" && <path d={d} strokeDasharray={DASH[series.style ?? "-"]} />}
       {series.marker &&
         series.points
@@ -289,27 +289,41 @@ export function Axes({
             );
           })}
           {labels.map((a, i) => (
-            <text
-              key={i}
-              x={a.x}
-              y={T + 15 + a.lane * 17}
-              data-annotation-label="true"
-              stroke="white"
-              strokeWidth="3"
-              paintOrder="stroke"
-              strokeLinejoin="round"
-            >
-              {a.text}
-            </text>
+            <g key={i}>
+              {p.annotationHeader && (
+                <rect
+                  x={a.x - 3}
+                  y={T + 3 + a.lane * 17}
+                  width={textWidth(a.text) + 6}
+                  height={16}
+                  fill="white"
+                />
+              )}
+              <text
+                key={i}
+                x={a.x}
+                y={T + 15 + a.lane * 17}
+                data-annotation-label="true"
+                stroke="white"
+                strokeWidth="3"
+                paintOrder="stroke"
+                strokeLinejoin="round"
+              >
+                {a.text}
+              </text>
+            </g>
           ))}
           {p.annotations
             ?.filter((a) => a.axis === "y")
             .map((a, i) => (
               <text
                 key={`y${i}`}
-                x={L + AW - 5}
-                y={Math.max(T + 13, T + (1 - ys(a.value)) * AH - 5)}
-                textAnchor="end"
+                x={a.labelPosition === "below-left" ? L + 5 : L + AW - 5}
+                y={Math.max(
+                  T + 13,
+                  T + (1 - ys(a.value)) * AH + (a.labelPosition === "below-left" ? 16 : -5),
+                )}
+                textAnchor={a.labelPosition === "below-left" ? "start" : "end"}
                 data-annotation-label="true"
                 stroke="white"
                 strokeWidth="3"

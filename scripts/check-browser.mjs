@@ -79,9 +79,25 @@ try {
             units: svg.viewBox.baseVal.width,
             font: getComputedStyle(svg.querySelector("text")).fontSize,
             labels: Array.from(svg.querySelectorAll("[data-annotation-label]")).map((t) => ({
+              text: t.textContent,
               box: t.getBoundingClientRect().toJSON(),
               transform: t.getAttribute("transform"),
             })),
+            // Sample rendered paths in screen coordinates so a label crossing a curve
+            // fails even when labels do not overlap one another.
+            curvePoints: Array.from(svg.querySelectorAll("[data-plot-series] path")).flatMap(
+              (p) => {
+                const length = p.getTotalLength(),
+                  matrix = p.getScreenCTM();
+                return Array.from({ length: Math.ceil(length) + 1 }, (_, i) => {
+                  const point = p.getPointAtLength(Math.min(i, length)).matrixTransform(matrix);
+                  return [point.x, point.y];
+                });
+              },
+            ),
+            markers: Array.from(
+              svg.querySelectorAll("[data-plot-series] circle, [data-plot-series] rect"),
+            ).map((m) => m.getBoundingClientRect().toJSON()),
           })),
         );
         for (const plot of plotMetrics) {
@@ -90,6 +106,22 @@ try {
           for (let i = 0; i < plot.labels.length; i++) {
             const a = plot.labels[i];
             assert.equal(a.transform, null, "horizontal annotation");
+            for (const [x, y] of plot.curvePoints)
+              assert.ok(
+                x < a.box.left - 2 ||
+                  x > a.box.right + 2 ||
+                  y < a.box.top - 2 ||
+                  y > a.box.bottom + 2,
+                `${a.text}: annotation crosses a curve`,
+              );
+            for (const marker of plot.markers)
+              assert.ok(
+                marker.right < a.box.left - 2 ||
+                  marker.left > a.box.right + 2 ||
+                  marker.bottom < a.box.top - 2 ||
+                  marker.top > a.box.bottom + 2,
+                `${a.text}: annotation overlaps a marker`,
+              );
             for (const b of plot.labels.slice(i + 1)) {
               const overlapX =
                 Math.min(a.box.right, b.box.right) - Math.max(a.box.left, b.box.left);

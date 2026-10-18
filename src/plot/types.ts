@@ -31,7 +31,14 @@ export type Panel = {
   series?: Series[];
   field?: Field;
   legend?: boolean;
-  annotations?: { axis: "x" | "y"; value: number; label: string; labelY?: number }[];
+  annotationHeader?: boolean;
+  annotations?: {
+    axis: "x" | "y";
+    value: number;
+    label: string;
+    labelY?: number;
+    labelPosition?: "below-left";
+  }[];
   bands?: { from: number; to: number; label: string }[];
 };
 export const sample = (fn: (x: number) => number, min: number, max: number, n = 401): Point[] =>

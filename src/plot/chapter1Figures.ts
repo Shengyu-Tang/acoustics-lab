@@ -98,7 +98,7 @@ export function impedancePanel(p: Oscillator): Panel {
     })),
     annotations: [
       { axis: "x", value: c.f0, label: "f₀：Xₘ = 0" },
-      { axis: "y", value: 0, label: "零电抗" },
+      { axis: "y", value: 0, label: "零电抗", labelPosition: "below-left" },
     ],
   };
 }
@@ -145,9 +145,11 @@ export function powerPanel(p: Oscillator): Panel {
     xlabel: "频率 f (Hz)",
     ylabel: "W̄ (W)",
     xlim: [0, xmax],
-    ylim: [0, peak * 1.15],
+    // Reserve a clear strip for frequency readouts, including narrow/mobile axes.
+    ylim: [0, peak * 1.7],
+    annotationHeader: true,
     series: [{ name: "平均机械功率", points: fs.map((f) => [f, response(p, f).power]) }],
-    bands: [{ from: c.f1, to: c.f2, label: "Δf" }],
+    bands: [{ from: c.f1, to: c.f2, label: `Δf = ${(c.f2 - c.f1).toPrecision(4)} Hz` }],
     annotations: [
       { axis: "x", value: c.f0, label: `f₀ = ${c.f0.toPrecision(4)} Hz` },
       { axis: "x", value: c.f1, label: `f₁ = ${c.f1.toPrecision(4)} Hz` },

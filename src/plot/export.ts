@@ -130,6 +130,10 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           : (value - p.xlim[0]) / (p.xlim[1] - p.xlim[0]);
       const labels = labelLanes(p, 0, 440, xs);
       p.annotations?.forEach((a) => {
+        if (p.annotationHeader && a.axis === "x") {
+          out.push(`xline(${a.value},'--','HandleVisibility','off');`);
+          return;
+        }
         const lane = labels.find((l) => l.text === a.label)?.lane ?? 0;
         const label = lane
           ? `{${Array(lane * 2)
@@ -139,15 +143,22 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         out.push(
           a.axis === "x"
             ? `xline(${a.value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');`
-            : `yline(${a.value},'--',${tex(a.label)},'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');`,
+            : `yline(${a.value},'--',${tex(a.label)},'Interpreter','tex','LabelVerticalAlignment','${a.labelPosition === "below-left" ? "bottom" : "top"}','LabelHorizontalAlignment','${a.labelPosition === "below-left" ? "left" : "right"}','HandleVisibility','off');`,
         );
       });
-      p.bands?.forEach((b) => {
-        const lane = labels.find((l) => l.text === b.label)?.lane ?? 0;
-        out.push(
-          `text(${xs((b.from + b.to) / 2)},${0.97 - lane * 0.065},${tex(b.label)},'Units','normalized','HorizontalAlignment','center','VerticalAlignment','top','Interpreter','tex','Clipping','on');`,
+      if (p.annotationHeader) {
+        labels.forEach((label) =>
+          out.push(
+            `text(${label.x / 440},${0.97 - label.lane * 0.065},${tex(label.text)},'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');`,
+          ),
         );
-      });
+      } else
+        p.bands?.forEach((b) => {
+          const lane = labels.find((l) => l.text === b.label)?.lane ?? 0;
+          out.push(
+            `text(${xs((b.from + b.to) / 2)},${0.97 - lane * 0.065},${tex(b.label)},'Units','normalized','HorizontalAlignment','center','VerticalAlignment','top','Interpreter','tex','Clipping','on');`,
+          );
+        });
     } else out.push(`rlim(${vector(p.ylim)});`);
     out.push(
       `title(${tex(p.title)},'Interpreter','tex','FontSize',12);`,
@@ -155,10 +166,15 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         ? "grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');",
     );
-    if (p.legend !== false && p.series?.length)
+    if (p.legend !== false && p.series?.length) {
       out.push(
-        `legend('show','Location','${p.kind === "polar" ? "northeastoutside" : "best"}','Color','w','Box','on','Interpreter','tex');`,
+        `lgd=legend('show','Location','${p.kind === "polar" ? "northeastoutside" : "best"}','Color','w','Box','on','Interpreter','tex');`,
       );
+      if (p.annotationHeader)
+        out.push(
+          "drawnow; lgd.Units='normalized'; axpos=get(gca,'Position'); lp=lgd.Position; lp(2)=min(lp(2),axpos(2)+0.83*axpos(4)-lp(4)); lgd.Position=lp;",
+        );
+    }
   });
   return out.join("\n") + "\n";
 }

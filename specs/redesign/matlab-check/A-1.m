@@ -25,4 +25,4 @@ yline(1,'--','限值 1 mm','Interpreter','tex','LabelVerticalAlignment','top','L
 text(0.5416666666666666,0.97,'泵转频 25–40 Hz','Units','normalized','HorizontalAlignment','center','VerticalAlignment','top','Interpreter','tex','Clipping','on');
 title('仪器支架：原设计与 R_{m} = 400 kg/s 方案','Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
-legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
+lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');

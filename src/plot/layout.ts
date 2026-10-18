@@ -4,6 +4,28 @@ export const textWidth = (text: string) =>
 
 /** Place vertical-line labels to their right, and band labels at their center, inside the axes. */
 export function labelLanes(panel: Panel, left: number, width: number, xs: (n: number) => number) {
+  if (panel.annotationHeader) {
+    // A legend-style readout decouples close frequency labels from their lines.
+    const texts = [
+      ...(panel.annotations ?? [])
+        .filter((a) => a.axis === "x")
+        .sort((a, b) => a.value - b.value)
+        .map((a) => a.label),
+      ...(panel.bands ?? []).map((b) => b.label),
+    ];
+    let x = left + 8,
+      lane = 0;
+    return texts.map((text) => {
+      const size = textWidth(text);
+      if (x + size > left + width - 8 && x > left + 8) {
+        x = left + 8;
+        lane++;
+      }
+      const label = { text, x, lane };
+      x += size + 16;
+      return label;
+    });
+  }
   const labels = [
     ...(panel.bands ?? []).map((b) => ({
       text: b.label,
@@ -91,8 +113,11 @@ export function bestLegend(
     }
     for (const a of panel.annotations ?? []) {
       if (a.axis !== "y") continue;
-      const ay = xy(panel.xlim[1], a.value, false)[1] - 18;
-      if (x + boxW > left + width - textWidth(a.label) - 5 && y < ay + 14 && y + boxH > ay)
+      const ay =
+        xy(panel.xlim[1], a.value, false)[1] + (a.labelPosition === "below-left" ? 5 : -18);
+      const ax =
+        a.labelPosition === "below-left" ? left + 5 : left + width - textWidth(a.label) - 5;
+      if (x < ax + textWidth(a.label) && x + boxW > ax && y < ay + 14 && y + boxH > ay)
         score += width * height;
     }
     return score;
