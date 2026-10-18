@@ -1,5 +1,5 @@
 {
-  "status": "MATLAB startup blocked; full two-set verification pending",
+  "status": "PASS: MATLAB R2024b two-set runtime, numeric comparison and PNG review complete.",
   "lectures": 35,
   "axisFailures": [],
   "axisMeasurements": [
@@ -11682,6 +11682,18 @@
     ]
   },
   "matlab": {
+    "status": "passed",
+    "runtimeValidated": true,
+    "fullValidationComplete": true,
+    "matlab": "R2024b",
+    "oneProcessPerScript": true,
+    "timeoutSeconds": 300,
+    "scripts": 128,
+    "pngs": 128,
+    "maxNormalizedError": 4.1122298686313496e-10,
+    "report": "MATLAB-backlog-validation.json"
+  },
+  "historicalMatlab": {
     "status": "blocked",
     "standaloneProbe": "matlab.exe -batch disp(ready) never enters statement, including fresh in-repo preferences",
     "fullValidationComplete": false,

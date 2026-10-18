@@ -60,7 +60,7 @@ export type Panel = {
   ylabel: string;
   rightLabel?: string;
   xlim: [number, number];
-  /** Retain a strictly positive physical lower bound (e.g. outside a point source). */
+  /** Retain the current physical parameter domain without expanding its limits. */
   exactXLimits?: boolean;
   ylim: [number, number];
   rightLim?: [number, number];

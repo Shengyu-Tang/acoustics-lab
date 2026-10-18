@@ -1,21 +1,21 @@
 set(groot,'defaultFigureVisible','off');
 % 3.8.4-1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1.27; % 静态密度 (kg/m³)
-c = 360; % 介质声速 (m/s)
-c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 1050; % 频率 (Hz)
-pa = 1.05; % 球面波幅度常数 (Pa·m)
-Z1 = 1500000; % Z1（见网页参数表；SI 单位或无量纲选择）
-Z2 = 415; % Z2（见网页参数表；SI 单位或无量纲选择）
-theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
-obs = 1; % obs（见网页参数表；SI 单位或无量纲选择）
+rho = 1.331; % 静态密度 (kg/m³)
+c = 336.14; % 介质声速 (m/s)
+c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 1080; % 频率 (Hz)
+pa = 1.1; % 球面波幅度常数 (Pa·m)
+Z1 = 1650000.0000000002; % Z1（见网页参数表；SI 单位或无量纲选择）
+Z2 = 435.75; % Z2（见网页参数表；SI 单位或无量纲选择）
+theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
+obs = 1.1; % obs（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
-model_x={}; model_y={};
+model_x=cell(9,2); model_y=model_x;
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 1920 1020]);
+figure('Color','w','Position',[80 80 1920 1560]);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
 power=2*pi*pa^2/(rho*c);
@@ -38,8 +38,9 @@ qa_left=[]; qa_right=[]; qa_time=tView;
 x=linspace(0,.002,1601); y=pa/0.02729507274026005*cos(w*x-k*0.02729507274026005);
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-60 60],0,0));
+lgd.Location='northoutside';
 model_limits{1}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -63,8 +64,9 @@ qa_left=[]; qa_right=[]; qa_time=tView;
 x=linspace(0,.002,1601); y=pa/(Z*0.02729507274026005)*(cos(w*x-k*0.02729507274026005)+sin(w*x-k*0.02729507274026005)/(k*0.02729507274026005));
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-0.3 0.3],0,0));
+lgd.Location='northoutside';
 model_limits{2}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -81,8 +83,8 @@ y=pa^2/(2*Z*0.0007450209958960874)*ones(size(x));
 model_x{3,2}=x; model_y{3,2}=y;
 plot(x,y,'LineStyle','--','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','时间平均声强');
 set(gca,'XScale','linear','YScale','linear');
-xlim([0 0.002]); ylim([-4 6]);
-xticks([0 0.0005 0.001 0.0015 0.002]); yticks([-4 -2 0 2 4 6]);
+xlim([0 0.002]); ylim([-5 7.5]);
+xticks([0 0.0005 0.001 0.0015 0.002]); yticks([-5 -2.5 0 2.5 5 7.5]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('时间 t (s)','Interpreter','tex'); ylabel('声能流密度 (W/m^{2})','Interpreter','tex');
 title('距离 0.0273 m：声能流与声强','Interpreter','tex','FontSize',12);
@@ -94,8 +96,9 @@ qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_le
 x=linspace(0,.002,1601); y=pa^2/(2*Z*0.0007450209958960874)*ones(size(x));
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-5 7.5],0,0));
+lgd.Location='northoutside';
 model_limits{3}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -119,8 +122,9 @@ qa_left=[]; qa_right=[]; qa_time=tView;
 x=linspace(0,.002,1601); y=pa/0.1091802909610402*cos(w*x-k*0.1091802909610402);
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-15 15],0,0));
+lgd.Location='northoutside';
 model_limits{4}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -144,8 +148,9 @@ qa_left=[]; qa_right=[]; qa_time=tView;
 x=linspace(0,.002,1601); y=pa/(Z*0.1091802909610402)*(cos(w*x-k*0.1091802909610402)+sin(w*x-k*0.1091802909610402)/(k*0.1091802909610402));
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-0.03 0.03],0,0));
+lgd.Location='northoutside';
 model_limits{5}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -162,8 +167,8 @@ y=pa^2/(2*Z*0.011920335934337398)*ones(size(x));
 model_x{6,2}=x; model_y{6,2}=y;
 plot(x,y,'LineStyle','--','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','时间平均声强');
 set(gca,'XScale','linear','YScale','linear');
-xlim([0 0.002]); ylim([-0.05 0.25]);
-xticks([0 0.0005 0.001 0.0015 0.002]); yticks([-0.05 0 0.05 0.1 0.15 0.2 0.25]);
+xlim([0 0.002]); ylim([-0.1 0.3]);
+xticks([0 0.0005 0.001 0.0015 0.002]); yticks([-0.1 0 0.1 0.2 0.3]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('时间 t (s)','Interpreter','tex'); ylabel('声能流密度 (W/m^{2})','Interpreter','tex');
 title('距离 0.109 m：声能流与声强','Interpreter','tex','FontSize',12);
@@ -175,8 +180,9 @@ qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_le
 x=linspace(0,.002,1601); y=pa^2/(2*Z*0.011920335934337398)*ones(size(x));
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-0.1 0.3],0,0));
+lgd.Location='northoutside';
 model_limits{6}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -200,8 +206,9 @@ qa_left=[]; qa_right=[]; qa_time=tView;
 x=linspace(0,.002,1601); y=pa/0.545901454805201*cos(w*x-k*0.545901454805201);
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-3 3],0,0));
+lgd.Location='northoutside';
 model_limits{7}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -225,8 +232,9 @@ qa_left=[]; qa_right=[]; qa_time=tView;
 x=linspace(0,.002,1601); y=pa/(Z*0.545901454805201)*(cos(w*x-k*0.545901454805201)+sin(w*x-k*0.545901454805201)/(k*0.545901454805201));
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-0.006 0.006],0,0));
+lgd.Location='northoutside';
 model_limits{8}=struct('x',xlim,'y',ylim);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;
 intensity=pa^2/(2*rho*c*obs^2);
@@ -256,9 +264,12 @@ qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_le
 x=linspace(0,.002,1601); y=pa^2/(2*Z*0.29800839835843496)*ones(size(x));
 qa_xl=[0 0.002]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0 0.002]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=[0 0.002]; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-0.0025 0.01],0,0));
+lgd.Location='northoutside';
 model_limits{9}=struct('x',xlim,'y',ylim);
+
+qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_4_1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_4_1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -475,4 +486,12 @@ if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
 if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
 else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
 lim=p2NiceLimits(lo,hi);
+end
+function lim=qaAmplitudeLimits(values,fallback,bars,logarithmic)
+if isempty(values),lim=fallback;else,lim=currentAmplitudeLimits(values,bars,logarithmic);end
+end
+function lim=qaAxisLimits(domain,logarithmic)
+if logarithmic,lim=[10^floor(log10(domain(1))) 10^ceil(log10(domain(2)))];
+elseif isequal(domain,[0 90]) || isequal(domain,[0 180]) || isequal(domain,[0 360]) || isequal(domain,[-90 90]),lim=domain;
+else,lim=p2NiceLimits(domain(1),domain(2));end
 end

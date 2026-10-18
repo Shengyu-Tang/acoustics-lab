@@ -13,11 +13,11 @@ res = 2; % 归一化声阻 (—)
 react = 1; % 归一化声抗 (—)
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
-model_x={}; model_y={};
+model_x=cell(1,2); model_y=model_x;
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaR=(res-1+1i*react)/(res+1+1i*react);;qaDomain=[-1.5*pa 1.5*pa];
+figure('Color','w','Position',[80 80 640 520]);
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaR=(res-1+1i*react)/(res+1+1i*react);;qaDomain=qaAxisLimits([-1.5*pa 1.5*pa],0);
 reflect=abs((res-1+1i*react)/(res+1+1i*react));
 standingRatio=(1+abs((res-1+1i*react)/(res+1+1i*react)))/(1-abs((res-1+1i*react)/(res+1+1i*react)));
 worksheet_answers=[reflect standingRatio];
@@ -46,9 +46,12 @@ qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_lef
 x=linspace(qaDomain(1),qaDomain(2),401); y=x/Z;
 qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=qaDomain; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[-0.006 0.006],0,0));
+lgd.Location='northoutside';
 model_limits{1}=struct('x',xlim,'y',ylim);
+
+qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_7_1_E1_set0.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_7_1_E1_set0.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -265,4 +268,12 @@ if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
 if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
 else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
 lim=p2NiceLimits(lo,hi);
+end
+function lim=qaAmplitudeLimits(values,fallback,bars,logarithmic)
+if isempty(values),lim=fallback;else,lim=currentAmplitudeLimits(values,bars,logarithmic);end
+end
+function lim=qaAxisLimits(domain,logarithmic)
+if logarithmic,lim=[10^floor(log10(domain(1))) 10^ceil(log10(domain(2)))];
+elseif isequal(domain,[0 90]) || isequal(domain,[0 180]) || isequal(domain,[0 360]) || isequal(domain,[-90 90]),lim=domain;
+else,lim=p2NiceLimits(domain(1),domain(2));end
 end

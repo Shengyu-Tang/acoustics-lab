@@ -1,0 +1,50 @@
+[
+  {
+    "name": "4.4.3-1",
+    "set": 0,
+    "filename": "fig_4_4_3_1_set0",
+    "sha256": "44e11b82408bbd43fa40d2131e31303d7ec2cd9f08e73c554890d28052d8268e",
+    "png": "specs/redesign/matlab-check/P4-half-polar/fig_4_4_3_1_set0.png",
+    "parameters": {
+      "rho": 1000,
+      "c": 1500,
+      "f": 50000,
+      "a": 0.05,
+      "v": 0.01
+    },
+    "valuesCompared": 810,
+    "maxNormalizedError": 3.0029756459271084e-11,
+    "readouts": [
+      0.03,
+      10.471975511965978,
+      21.46304029204735,
+      17.758095771889487
+    ],
+    "exit": 0,
+    "seconds": 13.931
+  },
+  {
+    "name": "4.4.3-1",
+    "set": 1,
+    "filename": "fig_4_4_3_1_set1",
+    "sha256": "5825b0efb9c63fe44571a061fd13cf393546c720a180259d3beae8e4cf2ceb3a",
+    "png": "specs/redesign/matlab-check/P4-half-polar/fig_4_4_3_1_set1.png",
+    "parameters": {
+      "rho": 1000,
+      "c": 1500,
+      "f": 56000,
+      "a": 0.056,
+      "v": 0.01
+    },
+    "valuesCompared": 810,
+    "maxNormalizedError": 9.15250097932585e-11,
+    "readouts": [
+      0.026785714285714284,
+      13.136046082210122,
+      16.959401237460693,
+      14.13587519240894
+    ],
+    "exit": 0,
+    "seconds": 20.617
+  }
+]

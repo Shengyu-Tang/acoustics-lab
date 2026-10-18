@@ -1,21 +1,21 @@
 set(groot,'defaultFigureVisible','off');
 % 3.6.5-E1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1000; % 静态密度 (kg/m³)
-c = 1500; % 介质声速 (m/s)
-c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 1000; % 频率 (Hz)
-pa = 1; % 声压峰值 (Pa)
-Z1 = 1575000; % 入射介质阻抗 (Pa·s/m)
-Z2 = 440; % 透射介质阻抗 (Pa·s/m)
-theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
+rho = 1100; % 静态密度 (kg/m³)
+c = 1470; % 介质声速 (m/s)
+c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 1080; % 频率 (Hz)
+pa = 1.1; % 声压峰值 (Pa)
+Z1 = 1650000.0000000002; % 入射介质阻抗 (Pa·s/m)
+Z2 = 435.75; % 透射介质阻抗 (Pa·s/m)
+theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
-model_x={}; model_y={};
+model_x=cell(1,2); model_y=model_x;
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;Rp=(Z2-Z1)/(Z2+Z1);Dp=1+Rp;;qaDomain=[.5 3.5];
+figure('Color','w','Position',[80 80 640 520]);
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;Rp=(Z2-Z1)/(Z2+Z1);Dp=1+Rp;;qaDomain=qaAxisLimits([.5 3.5],0);
 reflection=(Z2-Z1)/(Z2+Z1);
 transmission=2*Z2/(Z1+Z2);
 energy=4*Z1*Z2/(Z1+Z2)^2;
@@ -30,26 +30,31 @@ bar(x,y,0.7,'FaceColor',[0 0.4470588235294118 0.7411764705882353],'EdgeColor','k
 x=3;
 y=4*Z1*Z2/(Z1+Z2)^2;
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','透射损失 = 29.52 dB');
+plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','透射损失 = 29.76 dB；声强透射系数 = 0.001056');
 set(gca,'XScale','linear','YScale','log');
-xlim([0.5 3.5]); ylim([0.001 10]);
-xticks([1 2 3]); yticks([0.001 0.01 0.1 1 10]);
+xlim([0.5 3.5]); ylim([0.0001 10]);
+xticks([1 2 3]); yticks([0.0001 0.001 0.01 0.1 1 10]);
 xticks([1 2 3]); xticklabels({'入射','反射','透射'});
 set(gca,'XMinorTick','off','YMinorTick','on');
 xlabel('能量通道','Interpreter','tex'); ylabel('相对入射功率','Interpreter','tex');
-yline(4*Z1*Z2/(Z1+Z2)^2,'--',sprintf('声强透射系数  = %.4g',4*Z1*Z2/(Z1+Z2)^2),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
-title({sprintf('声强透射系数 = %s',answerNumber(energy)),'r_{p} = -0.9994；t_{p} = 5.586\times 10^{-4}'},'Interpreter','tex','FontSize',12);
+yline(4*Z1*Z2/(Z1+Z2)^2,'--','','Interpreter','tex','LabelVerticalAlignment','bottom','LabelHorizontalAlignment','right','HandleVisibility','off');
+title({sprintf('声强透射系数 = %s',answerNumber(energy)),'r_{p} = -0.9995；t_{p} = 5.28\times 10^{-4}'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 qa_left=[]; qa_right=[]; qa_time=tView;
 x=[1 2 3]; y=[1 Rp^2 4*Z1*Z2/(Z1+Z2)^2];
 qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=3; y=4*Z1*Z2/(Z1+Z2)^2;
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,1,1));
-xl=xlim; xticks(ceil(xl(1)):floor(xl(2)));
+qa_domain=qaDomain; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[0.0001 10],1,1));
+xticks([1 2 3]);
+lgd.Location='northoutside';
 xticks([1 2 3]);xticklabels({'入射','反射','透射'});
 model_limits{1}=struct('x',xlim,'y',ylim);
+
+qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_5_E1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_5_E1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -266,4 +271,12 @@ if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
 if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
 else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
 lim=p2NiceLimits(lo,hi);
+end
+function lim=qaAmplitudeLimits(values,fallback,bars,logarithmic)
+if isempty(values),lim=fallback;else,lim=currentAmplitudeLimits(values,bars,logarithmic);end
+end
+function lim=qaAxisLimits(domain,logarithmic)
+if logarithmic,lim=[10^floor(log10(domain(1))) 10^ceil(log10(domain(2)))];
+elseif isequal(domain,[0 90]) || isequal(domain,[0 180]) || isequal(domain,[0 360]) || isequal(domain,[-90 90]),lim=domain;
+else,lim=p2NiceLimits(domain(1),domain(2));end
 end

@@ -8,10 +8,10 @@ a = 0.056; % 活塞半径 (m)
 v = 0.01; % v（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
-model_x={}; model_y={};
+model_x=cell(1,3); model_y=model_x;
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 640 340]);
+figure('Color','w','Position',[80 80 640 520]);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;ka=k*a;half=asind(1.616339948310703/ka);null=asind(3.831705970207513/ka);
 wavelength=c/f;
 size=k*a;
@@ -28,15 +28,17 @@ polarplot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.74
 x=[-half half]*pi/180;
 y=(40+20*log10(1/sqrt(2)))*[1 1];
 model_x{1,2}=x; model_y{1,2}=y;
-polarplot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1 2],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','半功率半角 7.07°');
+polarplot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1 2],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName',sprintf('半功率半角 %.3g°',half));
 x=null*pi/180*[1 1];
 y=[0 40];
 model_x{1,3}=x; model_y{1,3}=y;
-polarplot(x,y,'LineStyle','--','Marker','none','Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','第一零点半角 17.0°');
+polarplot(x,y,'LineStyle','--','Marker','none','Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName',sprintf('第一零点半角 %.3g°',null));
 rlim([0 40]);
+thetalim([-90 90]); thetaticks([-90 -60 -30 0 30 60 90]);
 title('活塞前半空间的相对声压级','Interpreter','tex','FontSize',12);
 grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);
 lgd=legend('show','Location','northeastoutside','Color','w','Box','on','Interpreter','tex');
+lgd.Location='northoutside';
 rticks([10 20 30 40]);rticklabels({'−30 dB','−20 dB','−10 dB','0 dB'});
 model_limits{1}=struct('x',thetalim,'y',rlim);
 
@@ -255,6 +257,14 @@ if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
 if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
 else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
 lim=p2NiceLimits(lo,hi);
+end
+function lim=qaAmplitudeLimits(values,fallback,bars,logarithmic)
+if isempty(values),lim=fallback;else,lim=currentAmplitudeLimits(values,bars,logarithmic);end
+end
+function lim=qaAxisLimits(domain,logarithmic)
+if logarithmic,lim=[10^floor(log10(domain(1))) 10^ceil(log10(domain(2)))];
+elseif isequal(domain,[0 90]) || isequal(domain,[0 180]) || isequal(domain,[0 360]) || isequal(domain,[-90 90]),lim=domain;
+else,lim=p2NiceLimits(domain(1),domain(2));end
 end
 
 

@@ -30,6 +30,10 @@ export function toTex(text: string): string {
     ₚ: "p",
     ₛ: "s",
     ₜ: "t",
+    ᵢ: "i",
+    ᵣ: "r",
+    ᵧ: "y",
+    ⱼ: "j",
     "₊": "+",
     "₋": "-",
     "₌": "=",
@@ -58,7 +62,7 @@ export function toTex(text: string): string {
   return text
     .replace(/⁻π/g, "^{-\\pi}")
     .replace(/([A-Za-z])\u0304/g, "\\bar{$1}")
-    .replace(/[\u2080-\u209c]+/g, (s) => "_{" + [...s].map((c) => subs[c] ?? c).join("") + "}")
+    .replace(/[\u2080-\u209cᵢᵣᵧⱼ]+/g, (s) => "_{" + [...s].map((c) => subs[c] ?? c).join("") + "}")
     .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ]+/g, (s) => "^{" + [...s].map((c) => supers[c]).join("") + "}")
     .replace(/Δ/g, "\\Delta{}")
     .replace(/∇/g, "\\nabla ")
@@ -254,11 +258,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           return;
         }
         const lane = labels.find((l) => l.text === a.label)?.lane ?? 0;
-        const dynamicLabel =
-          m?.annotationLabels?.[ai] ??
-          (m?.annotations?.[ai] && !a.label.startsWith("Qₘ=")
-            ? dynamicText(a.label, value)
-            : tex(a.label));
+        const dynamicLabel = a.label
+          ? (m?.annotationLabels?.[ai] ??
+            (m?.annotations?.[ai] && !a.label.startsWith("Qₘ=")
+              ? dynamicText(a.label, value)
+              : tex(a.label)))
+          : "''";
         const label = lane
           ? `{${Array(lane * 2)
               .fill("' '")
@@ -266,8 +271,8 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           : dynamicLabel;
         out.push(
           a.axis === "x"
-            ? `xline(${value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');`
-            : `yline(${value},'--',${dynamicLabel},'Interpreter','tex','LabelVerticalAlignment','${a.labelPosition === "below-left" ? "bottom" : "top"}','LabelHorizontalAlignment','${a.labelPosition === "below-left" ? "left" : "right"}','HandleVisibility','off');`,
+            ? `xline(${value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','${xs(a.value) < 0.2 ? "right" : "left"}','HandleVisibility','off');`
+            : `yline(${value},'--',${dynamicLabel},'Interpreter','tex','LabelVerticalAlignment','${a.labelPosition === "below-left" || a.value < (p.ylim[0] + p.ylim[1]) / 2 ? "bottom" : "top"}','LabelHorizontalAlignment','${a.labelPosition === "below-left" ? "left" : "right"}','HandleVisibility','off');`,
         );
       });
       if (p.annotationHeader) {

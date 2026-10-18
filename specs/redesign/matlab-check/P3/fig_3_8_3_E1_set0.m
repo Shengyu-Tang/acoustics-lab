@@ -12,10 +12,10 @@ theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
 obs = 0.05; % 观察距离 (m)
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
-model_x={}; model_y={};
+model_x=cell(1,3); model_y=model_x;
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 640 340]);
+figure('Color','w','Position',[80 80 640 520]);
 w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;;qaDomain=obs*[.5 5];
 pressureSpeed=c;
 velocitySpeed=c*(1+(c/(2*pi*f*obs))^2);
@@ -35,11 +35,11 @@ y=c*(1+1/(k*obs)^2);
 model_x{1,3}=x; model_y{1,3}=y;
 plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','振速观测点');
 set(gca,'XScale','linear','YScale','linear');
-xlim([0 0.25]); ylim([0 2500]);
+xlim([0.025 0.25]); ylim([0 2500]);
 xticks([0 0.05 0.1 0.15 0.2 0.25]); yticks([0 500 1000 1500 2000 2500]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('距点源 r (m)','Interpreter','tex'); ylabel('局部相速度 (m/s)','Interpreter','tex');
-xline(obs,'--',sprintf('比较位置（相速度不表示能量超声速） = %.4g',obs),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
+xline(obs,'--',sprintf('比较位置（相速度不表示能量超声速） = %.4g',obs),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
 title({sprintf('振速相速度 = %s m/s',answerNumber(velocitySpeed)),'球面波声压和振速相位面的径向速度'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
@@ -48,10 +48,15 @@ x=linspace(qaDomain(1),qaDomain(2),401); y=c*ones(size(x));
 qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 x=linspace(qaDomain(1),qaDomain(2),401); y=c*(1+1./(k*x).^2);
 qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=obs; y=c*(1+1/(k*obs)^2);
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,0,0));
+qa_domain=qaDomain; xlim(qa_domain); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[0 2500],0,0));
+lgd.Location='northoutside';
 model_limits{1}=struct('x',xlim,'y',ylim);
+
+qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_3_E1_set0.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_3_E1_set0.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -268,4 +273,12 @@ if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
 if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
 else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
 lim=p2NiceLimits(lo,hi);
+end
+function lim=qaAmplitudeLimits(values,fallback,bars,logarithmic)
+if isempty(values),lim=fallback;else,lim=currentAmplitudeLimits(values,bars,logarithmic);end
+end
+function lim=qaAxisLimits(domain,logarithmic)
+if logarithmic,lim=[10^floor(log10(domain(1))) 10^ceil(log10(domain(2)))];
+elseif isequal(domain,[0 90]) || isequal(domain,[0 180]) || isequal(domain,[0 360]) || isequal(domain,[-90 90]),lim=domain;
+else,lim=p2NiceLimits(domain(1),domain(2));end
 end

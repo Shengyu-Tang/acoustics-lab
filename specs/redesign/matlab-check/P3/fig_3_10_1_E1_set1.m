@@ -1,23 +1,23 @@
 set(groot,'defaultFigureVisible','off');
 % 3.10.1-E1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1000; % 静态密度 (kg/m³)
-c = 343; % 介质声速 (m/s)
-c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 1000; % 频率 (Hz)
-pa = 1; % 声压峰值 (Pa)
-Z1 = 1500000; % Z1（见网页参数表；SI 单位或无量纲选择）
-Z2 = 415; % Z2（见网页参数表；SI 单位或无量纲选择）
-theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
-h = 0.53; % 波导层厚 (m)
+rho = 1100; % 静态密度 (kg/m³)
+c = 336.14; % 介质声速 (m/s)
+c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 1080; % 频率 (Hz)
+pa = 1.1; % 声压峰值 (Pa)
+Z1 = 1650000.0000000002; % Z1（见网页参数表；SI 单位或无量纲选择）
+Z2 = 435.75; % Z2（见网页参数表；SI 单位或无量纲选择）
+theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
+h = 0.525; % 波导层厚 (m)
 mode = 1; % mode（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
-model_x={}; model_y={};
+model_x=cell(1,2); model_y=model_x;
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;;qaDomain=[-.5 max(5,mode+2)+.5];
+figure('Color','w','Position',[80 80 640 520]);
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;;qaDomain=qaAxisLimits([-.5 max(5,mode+2)+.5],0);
 cutoff=mode*c/(2*h);
 crossNumber=mode*pi/h;
 worksheet_answers=[cutoff crossNumber];
@@ -30,25 +30,30 @@ bar(x,y,0.7,'FaceColor',[0 0.4470588235294118 0.7411764705882353],'EdgeColor','k
 x=mode;
 y=mode*c/(2*h);
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','本阶横向波数 = 5.928 rad/m');
+plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','本阶横向波数 = 5.984 rad/m');
 set(gca,'XScale','linear','YScale','linear');
 xlim([-2 6]); ylim([0 2000]);
 xticks([-2 0 2 4 6]); yticks([0 500 1000 1500 2000]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('横向模态阶数 n','Interpreter','tex'); ylabel('截止频率 f_{n} (Hz)','Interpreter','tex');
-yline(f,'--',sprintf('本题频率  = %.4g',f),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
+yline(f,'--','','Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
 xline(mode,'--',sprintf('本题阶数 = %.4g',mode),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
-title({sprintf('本阶截止频率 = %s Hz',answerNumber(cutoff)),'刚性层波导各横向阶数的截止频率阶梯'},'Interpreter','tex','FontSize',12);
+title({sprintf('本阶截止频率 = %s Hz',answerNumber(cutoff)),'本题频率 = 1080 Hz'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 qa_left=[]; qa_right=[]; qa_time=tView;
 x=0:max(5,mode+2); y=x*c/(2*h);
 qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=mode; y=mode*c/(2*h);
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim(currentAmplitudeLimits(qa_left,1,0));
-xl=xlim; xticks(ceil(xl(1)):floor(xl(2)));
+qa_domain=qaDomain; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(qaAmplitudeLimits(qa_left,[0 2000],1,0));
+xticks([-2 0 2 4 6]);
+lgd.Location='northoutside';
 model_limits{1}=struct('x',xlim,'y',ylim);
+
+qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_10_1_E1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_10_1_E1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -265,4 +270,12 @@ if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
 if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
 else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
 lim=p2NiceLimits(lo,hi);
+end
+function lim=qaAmplitudeLimits(values,fallback,bars,logarithmic)
+if isempty(values),lim=fallback;else,lim=currentAmplitudeLimits(values,bars,logarithmic);end
+end
+function lim=qaAxisLimits(domain,logarithmic)
+if logarithmic,lim=[10^floor(log10(domain(1))) 10^ceil(log10(domain(2)))];
+elseif isequal(domain,[0 90]) || isequal(domain,[0 180]) || isequal(domain,[0 360]) || isequal(domain,[-90 90]),lim=domain;
+else,lim=p2NiceLimits(domain(1),domain(2));end
 end

@@ -27,7 +27,7 @@ function positionAxes(id: string, panels: Panel[]): Panel[] {
   return panels.map((original, i) => {
     const p = { ...original },
       lim = limits?.[i];
-    if (lim) p.xlim = lim.xlim;
+    if (lim && !p.exactXLimits) p.xlim = lim.xlim;
     if (lim && geometryY(p)) p.ylim = lim.ylim;
     if (id.startsWith("1.") && p.xlabel.startsWith("时间")) {
       p.observationWindow = true;
@@ -76,7 +76,9 @@ export function fixedFigureAxes(
     if (p.matlabModel)
       result.matlabModel = {
         ...p.matlabModel,
-        xlim: `[${axisTicks(p.xlim, p.xscale === "log").limits.join(" ")}]`,
+        xlim: p.exactXLimits
+          ? p.matlabModel.xlim
+          : `[${axisTicks(p.xlim, p.xscale === "log").limits.join(" ")}]`,
         ylim: p.unboundedY
           ? p.matlabModel.ylim
           : amplitude

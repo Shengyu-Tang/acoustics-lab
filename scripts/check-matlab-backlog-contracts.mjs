@@ -1,6 +1,25 @@
 import assert from "node:assert/strict";
 import { models } from "./review-p3-models.mjs";
-const { lectures } = await models();
+const { lectures, matlab } = await models();
+const transmission = lectures.find((l) => l.id === "3.6.5").examples[0];
+const transmissionSource = matlab([transmission.plot(transmission.defaults)], 1, 1, "QA");
+assert.match(
+  transmissionSource,
+  /yline\([^\n]+,'--','','Interpreter'/,
+  "a deliberately empty annotation stays empty in MATLAB",
+);
+const densityLecture = lectures.find((l) => l.id === "3.1.6");
+for (const span of [0.0001, 0.5, 0.6]) {
+  const p = { ...densityLecture.defaults, span };
+  for (const panel of densityLecture.figures[0].plot(p, 0)) {
+    assert.ok(panel.exactXLimits, "density state domain follows the selected span");
+    for (const series of panel.series.filter((s) => s.style !== "none")) {
+      assert.equal(series.points[0][0], panel.xlim[0]);
+      assert.equal(series.points.at(-1)[0], panel.xlim[1]);
+      assert.ok(series.points.every((pt) => pt.every(Number.isFinite)));
+    }
+  }
+}
 let checked = 0;
 const mismatches = [];
 for (const l of lectures) {

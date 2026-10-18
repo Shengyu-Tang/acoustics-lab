@@ -123,6 +123,10 @@ for (const text of [
 assert.equal(render(h(all.ScriptText, { text: "x_{lim}" })), "x<sub>lim</sub>");
 assert.equal(render(h(all.ScriptText, { text: "e⁻π" })), "e<sup>-π</sup>");
 assert.equal(
+  render(h(all.ScriptText, { text: "kᵧ uᵣ pᵢ Hⱼ" })),
+  "k<sub>y</sub> u<sub>r</sub> p<sub>i</sub> H<sub>j</sub>",
+);
+assert.equal(
   render(h(all.ScriptText, { text: "Rₘ F₀ Qₘ bₙ f₁ f₂" })),
   "R<sub>m</sub> F<sub>0</sub> Q<sub>m</sub> b<sub>n</sub> f<sub>1</sub> f<sub>2</sub>",
 );
@@ -153,7 +157,16 @@ assert.ok(
   "MATLAB toTex still consumes original Unicode labels",
 );
 const acousticTex = all.matlab(
-  [{ title: "Eₖ Eₚ", xlabel: "pₐ", ylabel: "u_r", xlim: [0, 1], ylim: [0, 1], series: [] }],
+  [
+    {
+      title: "Eₖ Eₚ kᵧ uᵣ pᵢ Hⱼ",
+      xlabel: "pₐ",
+      ylabel: "u_r",
+      xlim: [0, 1],
+      ylim: [0, 1],
+      series: [],
+    },
+  ],
   1,
   1,
   "P2 notation",
@@ -162,6 +175,13 @@ assert.ok(
   acousticTex.includes("E_{k}") && acousticTex.includes("E_{p}") && acousticTex.includes("p_{a}"),
 );
 assert.ok(!/[\u2080-\u209c]/.test(acousticTex), "all P2 MATLAB subscripts become TeX");
+assert.ok(!/[ᵢᵣᵧⱼ]/.test(acousticTex), "modifier-block subscripts become portable TeX");
+assert.ok(
+  acousticTex.includes("k_{y}") &&
+    acousticTex.includes("u_{r}") &&
+    acousticTex.includes("p_{i}") &&
+    acousticTex.includes("H_{j}"),
+);
 const nabla = all.matlab(
   [{ title: "∇²p", xlabel: "x", ylabel: "p", xlim: [0, 1], ylim: [0, 1], series: [] }],
   1,

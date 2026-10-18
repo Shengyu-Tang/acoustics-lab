@@ -186,7 +186,13 @@ export function e365(p: Values) {
         "[1 Rp^2 4*Z1*Z2/(Z1+Z2)^2]",
         { kind: "bar" },
       ),
-      dot(value("透射损失", loss, "dB"), 3, q.t, "3", "4*Z1*Z2/(Z1+Z2)^2"),
+      dot(
+        value("透射损失", loss, "dB") + "；" + value("声强透射系数", q.t),
+        3,
+        q.t,
+        "3",
+        "4*Z1*Z2/(Z1+Z2)^2",
+      ),
     ],
     "Rp=(Z2-Z1)/(Z2+Z1);Dp=1+Rp;",
     {
@@ -197,7 +203,7 @@ export function e365(p: Values) {
         { value: 2, label: "反射" },
         { value: 3, label: "透射" },
       ],
-      annotations: [ymark(q.t, value("声强透射系数", q.t))],
+      annotations: [ymark(q.t, "")],
       responseNote: value("rₚ", q.R) + "；" + value("tₚ", q.D),
     },
     { annotations: ["4*Z1*Z2/(Z1+Z2)^2"] },
@@ -820,7 +826,8 @@ export function e3101(p: Values) {
     "",
     {
       integerX: true,
-      annotations: [ymark(p.f, value("本题频率", p.f, "Hz")), xmark(p.mode, "本题阶数")],
+      annotations: [ymark(p.f, ""), xmark(p.mode, "本题阶数")],
+      responseNote: value("本题频率", p.f, "Hz"),
     },
     { annotations: ["f", "mode"] },
   );

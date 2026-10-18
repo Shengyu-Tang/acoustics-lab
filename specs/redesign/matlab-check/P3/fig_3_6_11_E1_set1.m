@@ -1,24 +1,24 @@
 set(groot,'defaultFigureVisible','off');
 % 3.6.11-E1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1000; % 静态密度 (kg/m³)
-c = 1500; % 介质声速 (m/s)
-c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 1000; % 频率 (Hz)
-pa = 1; % 声压峰值 (Pa)
-Z1 = 1500000; % Z1（见网页参数表；SI 单位或无量纲选择）
-Z2 = 415; % Z2（见网页参数表；SI 单位或无量纲选择）
-theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
-radius = 34.1; % 围墙半径 (m)
-source = 0.99; % 声源径向比例 (—)
-launch = 84; % 出射方向角 (°)
+rho = 1100; % 静态密度 (kg/m³)
+c = 1470; % 介质声速 (m/s)
+c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 1080; % 频率 (Hz)
+pa = 1.1; % 声压峰值 (Pa)
+Z1 = 1650000.0000000002; % Z1（见网页参数表；SI 单位或无量纲选择）
+Z2 = 435.75; % Z2（见网页参数表；SI 单位或无量纲选择）
+theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
+radius = 34.125; % 围墙半径 (m)
+source = 0.9309999999999999; % 声源径向比例 (—)
+launch = 76; % 出射方向角 (°)
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
-model_x={}; model_y={};
+model_x=cell(1,5); model_y=model_x;
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaRays=p3Rays(radius,source,launch);;qaDomain=[-radius radius];
+figure('Color','w','Position',[80 80 640 520]);
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaRays=p3Rays(radius,source,launch);;qaDomain=qaAxisLimits([-radius radius],0);
 circumference=2*pi*radius;
 chord=-radius*source*cosd(launch)+sqrt(radius^2-(radius*source*sind(launch))^2);
 worksheet_answers=[circumference chord];
@@ -27,11 +27,11 @@ hold on;
 x=radius*cos(linspace(0,2*pi,401));
 y=radius*sin(linspace(0,2*pi,401));
 model_x{1,1}=x; model_y{1,1}=y;
-plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','围墙周长 = 214.3 m');
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','围墙周长 = 214.4 m');
 x=qaRays(1:2,1)';
 y=qaRays(1:2,2)';
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','-','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','首次传播距离 = 2.437 m');
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','首次传播距离 = 6.951 m');
 x=qaRays(2:6,1)';
 y=qaRays(2:6,2)';
 model_x{1,3}=x; model_y{1,3}=y;
@@ -53,10 +53,14 @@ title({sprintf('围墙周长 = %s m',answerNumber(circumference)),'圆形围墙�
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
+qa_domain=qaDomain; xlim(qaAxisLimits(qa_domain,0)); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim([-radius radius]);
 daspect([1 1 1]);
+lgd.Location='northeastoutside';
+lgd.Location='northoutside';
 model_limits{1}=struct('x',xlim,'y',ylim);
+
+qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_11_E1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_11_E1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -273,4 +277,12 @@ if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
 if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
 else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
 lim=p2NiceLimits(lo,hi);
+end
+function lim=qaAmplitudeLimits(values,fallback,bars,logarithmic)
+if isempty(values),lim=fallback;else,lim=currentAmplitudeLimits(values,bars,logarithmic);end
+end
+function lim=qaAxisLimits(domain,logarithmic)
+if logarithmic,lim=[10^floor(log10(domain(1))) 10^ceil(log10(domain(2)))];
+elseif isequal(domain,[0 90]) || isequal(domain,[0 180]) || isequal(domain,[0 360]) || isequal(domain,[-90 90]),lim=domain;
+else,lim=p2NiceLimits(domain(1),domain(2));end
 end

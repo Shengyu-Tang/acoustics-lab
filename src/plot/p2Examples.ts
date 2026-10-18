@@ -107,7 +107,7 @@ export function e314(p: Values) {
     "[0 L]",
     [
       line(
-        "沿程质量流率",
+        value("沿程质量流率；∂ρ/∂t", rate, "kg/(m³·s)"),
         (x) => p.rho * p.S * (p.left + ((p.right - p.left) * x) / p.L),
         range,
         "rho*S*(left+(right-left)*x/L)",
@@ -129,15 +129,8 @@ export function e314(p: Values) {
           value("净流入", p.rho * p.S * (p.left - p.right), "kg/s"),
         ),
       ],
-      textLabels: [
-        {
-          x: p.L / 2,
-          y: (p.rho * p.S * (p.left + p.right)) / 2,
-          text: value("∂ρ/∂t", rate, "kg/(m³·s)"),
-        },
-      ],
     },
-    { annotations: ["rho*S*(left-right)"], textLabels: [{ x: "L/2", y: "rho*S*(left+right)/2" }] },
+    { annotations: ["rho*S*(left-right)"] },
   );
 }
 export function e315(p: Values) {
@@ -446,7 +439,7 @@ export function e341(p: Values) {
     "[0 2*c/f]",
     [
       line(
-        "合成声压包络",
+        value("合成包络；净声强", net, "W/m²"),
         (x) =>
           Math.sqrt(p.pa ** 2 + p.B ** 2 + 2 * p.pa * p.B * Math.cos((4 * pi * p.f * x) / p.c)),
         range,
@@ -464,9 +457,8 @@ export function e341(p: Values) {
     "",
     {
       annotations: [ymark(p.pa + p.B, value("最大包络", p.pa + p.B, "Pa"))],
-      textLabels: [{ x: p.c / p.f, y: -p.pa * 0.7, text: value("净声强", net, "W/m²") }],
     },
-    { annotations: ["pa+B"], textLabels: [{ x: "c/f", y: "-.7*pa" }] },
+    { annotations: ["pa+B"] },
   );
 }
 export function e342(p: Values) {

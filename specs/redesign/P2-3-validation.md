@@ -1,6 +1,6 @@
 # P2 第三轮实现与验收记录
 
-网页实现及 Node、浏览器验收已完成。**最终验收尚未完成：MATLAB 独立进程启动挂起，全量两组参数复验仍待完成。** 不以旧轮次的 MATLAB 结果代替本轮结果。
+网页、Node、浏览器及 MATLAB R2024b 运行验收均已完成。本轮 128 个独立参数组脚本全部通过网页公式和轴限比对，并保存、查看全部 PNG；详见 [运行补验总报告](MATLAB-backlog-validation.md)。
 
 ## 先测试，后修复
 
@@ -40,7 +40,7 @@
 
 机器可读结果见 [P2-3-validation.json](P2-3-validation.json)。原始默认/端点图及对照图保存在本仓库的 `outputs/slider-check/`、`outputs/P2-3-visual-review/`。
 
-## MATLAB 尚未完成
+## MATLAB 早期启动故障（历史记录，已由运行补验取代）
 
 初期有部分独立脚本运行成功，已查看其 PNG（包括 1.1.3、1.2.2、2.3）。随后主机内存耗尽并出现 MATLAB Java 分配失败；内存恢复后，新 MATLAB 进程仍停在启动阶段。单独执行 `-batch "disp('QA_PROBE_READY')"` 也没有进入语句。仓库内全新偏好目录、全新应用数据目录、显式指定已有许可证、软件 OpenGL 的探测均未恢复启动。Windows CIM/WMI 查询也同时挂起，但尚不能据此确定因果关系。
 
@@ -48,7 +48,7 @@
 
 已生成本轮全部 128 个两参数组图形脚本，保存在 `outputs/matlab-P2-3/P1/`、`outputs/matlab-P2-3/P2/`。另用 R2024b 的 `mlint.exe -id` 静态分析这 128 个脚本及两个重试脚本；仅报告 `NASGU`、`NOSEMI`、`AGROW`、`DEFNU`、`ALIGN`、`NBRAK2`、`CAXIS` 等建议，没有语法诊断。这不能替代 MATLAB 运行及数值比对。
 
-MATLAB 启动恢复后执行以下两条命令，逐脚本各启动一个 R2024b `-batch` 进程，完成每幅图的两组参数数值与轴限比对，再逐张查看新生成 PNG：
+当时记录的待执行命令如下；现已按每脚本 300 秒超时完成两组参数运行及 PNG 复查：
 
 ```powershell
 node scripts/check-matlab-models.mjs --figures-only --out=specs/redesign/matlab-check/P2-3/P1
@@ -57,4 +57,4 @@ node scripts/check-matlab-models.mjs --batch=P2 --figures-only --out=specs/redes
 
 启动诊断参考 MathWorks 的 [启动问题排查说明](https://www.mathworks.com/help/matlab/matlab_env/resolve-startup-issues.html)。本轮仅采用了可在仓库内隔离的诊断方法。
 
-全程保持 `redesign/p3-ch3b`，没有推送、修改历史或操作 stash；相邻教学资料目录只读。
+原轮次保持 `redesign/p3-ch3b`；本次补验保持 `redesign/p5-cases`。没有推送、修改历史或操作 stash；相邻教学资料目录只读。

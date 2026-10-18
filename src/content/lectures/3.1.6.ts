@@ -1,5 +1,4 @@
 import { e316 } from "../../plot/p2Examples";
-import { axisTicks } from "../../plot/ticks";
 import {
   p2Lecture,
   defaults,
@@ -73,7 +72,7 @@ export default p2Lecture("3.1.6", {
               points("平衡点", [[0, 0]], "0", "0", { style: "none", marker: "o" }),
             ],
             "rr=[-span span]*rho;",
-            {},
+            { exactXLimits: true },
             { xlim: "rr", ylim: "[-1.8 1.8]*P0*gamma*span" },
           ),
           graph(
@@ -108,7 +107,7 @@ export default p2Lecture("3.1.6", {
               ),
             ],
             "",
-            {},
+            { exactXLimits: true },
             {
               xlim: "[0 span]",
               ylim: "[0 max(.0001,150*abs(((1+span)^gamma-1-gamma*span)/((1+span)^gamma-1)))]",

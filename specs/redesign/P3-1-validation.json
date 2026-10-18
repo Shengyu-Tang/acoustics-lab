@@ -65,9 +65,29 @@
       "CAXIS": 34
     },
     "syntaxDiagnostics": [],
-    "runtimeValidated": false
+    "runtimeValidated": true,
+    "note": "Historical mlint counts; all current regenerated scripts also passed runtime parsing and numerical validation."
   },
   "matlabRuntime": {
+    "status": "passed",
+    "runtimeValidated": true,
+    "fullValidationComplete": true,
+    "matlab": "R2024b",
+    "oneProcessPerScript": true,
+    "timeoutSeconds": 300,
+    "scripts": 246,
+    "pngs": 246,
+    "maxNormalizedError": 1.5307506150049397e-10,
+    "report": "MATLAB-backlog-validation.json"
+  },
+  "visualReview": {
+    "desktopFigures": 123,
+    "mobileFigures": 123,
+    "examplesIncluded": 48,
+    "boards": "outputs/P3-1/boards",
+    "notes": "Scientific-axis multipliers and wrapped scientific tokens corrected during visual review; requested figures re-inspected."
+  },
+  "historicalMatlabRuntime": {
     "attempts": 1,
     "timeoutSeconds": 300,
     "elapsedSeconds": 300.523,
@@ -78,12 +98,5 @@
       "signal": null
     },
     "runtimeValidated": false
-  },
-  "visualReview": {
-    "desktopFigures": 123,
-    "mobileFigures": 123,
-    "examplesIncluded": 48,
-    "boards": "outputs/P3-1/boards",
-    "notes": "Scientific-axis multipliers and wrapped scientific tokens corrected during visual review; requested figures re-inspected."
   }
 }

@@ -25,9 +25,7 @@ const root = process.cwd(),
         ? `outputs/slider-matlab/${p2 ? "P2" : "P1"}`
         : `specs/redesign/matlab-check/${p3 ? "P3" : p2 ? "P2" : "P1-fix"}`),
   ),
-  work = path.resolve(
-    `outputs/matlab-models${manifest ? "-manifest" : p3 ? "-P3" : p2 ? "-P2" : ""}`,
-  );
+  work = path.resolve("outputs/matlab-models-qa", path.relative(root, out).replace(/[^\w-]/g, "_"));
 assert.ok(
   !path.relative(root, out).startsWith("..") && !path.isAbsolute(path.relative(root, out)),
   "MATLAB output stays inside clone",

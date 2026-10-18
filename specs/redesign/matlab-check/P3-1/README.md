@@ -1,13 +1,15 @@
 # MATLAB evidence for review P3-1
 
-`manifest.json` identifies the current 246 regenerated scripts (two parameter sets for all 75 simulation figures and 48 examples) in the P2/P3 folders, with parameters and SHA-256 hashes. Parameter variants respect control bounds and steps. `syntax-check.json` and `mlint.log` record a successful R2024b Code Analyzer pass; diagnostics are advisory only.
+All 246 scripts (two distinct parameter sets for 75 simulation figures and 48 examples) passed MATLAB R2024b runtime, curve/field/readout/answer comparisons with the web formulas, and visual PNG review.
 
-`runtime-attempt.json` records the one authorized startup attempt. It timed out after 300 seconds without reaching the first line of the batch script. MATLAB runtime, numerical export comparisons, and new MATLAB PNG review therefore remain **pending**. Existing runtime reports and PNGs in older evidence directories describe earlier revisions and do not validate these regenerated scripts.
+`manifest.json` now points to the validated scripts in this folder and preserves their original P2/P3 paths and hashes as `originalFile` / `originalSha256`. `results.json` records current script and PNG hashes, errors, timings and visual coverage. Keeping this cohort separate preserves its parameter pairs independently of the standard P3 batch.
 
-Reproduction:
+`runtime-attempt.json`, `mlint.log` and `syntax-check.json` are historical evidence from before runtime recovery; the failed startup attempt is superseded by the complete runtime report.
+
+Reproduce from the repository root:
 
 ```powershell
-node scripts/regenerate-p3-review-matlab.mjs
+node scripts/check-matlab-models.mjs --manifest=specs/redesign/matlab-check/P3-1/manifest.json --out=specs/redesign/matlab-check/P3-1 --workers=2 --timeout-ms=300000
 ```
 
-When MATLAB startup is working, the existing `scripts/check-matlab-models.mjs --batch=P2` and `--batch=P3` workflows can prepare and run independent-script numerical/PNG checks. The startup probe was not retried in this task.
+See [full backlog results](../../MATLAB-backlog-validation.json).

@@ -1,5 +1,5 @@
 {
-  "status": "Implementation and local web checks complete; MATLAB runtime/PNG acceptance blocked.",
+  "status": "PASS: MATLAB R2024b two-set runtime, numeric comparison and PNG review complete.",
   "lectures": 27,
   "figures": 41,
   "examples": 27,
@@ -13,9 +13,16 @@
   "defaultScreenshots": 27,
   "desktopMobilePngs": 300,
   "matlab": {
+    "status": "passed",
+    "runtimeValidated": true,
+    "fullValidationComplete": true,
+    "matlab": "R2024b",
+    "oneProcessPerScript": true,
+    "timeoutSeconds": 300,
     "scripts": 136,
-    "pngs": 0,
-    "complete": false
+    "pngs": 136,
+    "maxNormalizedError": 1.776428076752368e-10,
+    "report": "MATLAB-backlog-validation.json"
   },
   "performance": {
     "baseline": {
@@ -1133,5 +1140,10 @@
       ],
       "questionCount": 8
     }
-  ]
+  ],
+  "historicalMatlab": {
+    "scripts": 136,
+    "pngs": 0,
+    "complete": false
+  }
 }
