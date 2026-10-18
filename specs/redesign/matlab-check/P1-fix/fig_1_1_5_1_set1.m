@@ -197,4 +197,3 @@ for s=candidates
 end
 finish=str2double(sprintf('%.13g',ceil(hi/step-1e-10)*step));
 end
-

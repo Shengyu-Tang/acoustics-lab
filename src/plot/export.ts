@@ -256,7 +256,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       out.push(`lgd.Location='${m?.legendLocation ?? "northeast"}';`);
   });
   if (model) out.push(MATLAB_FUNCTIONS);
-  return out.join("\n") + "\n";
+  return out.join("\n").trimEnd() + "\n";
 }
 export function csv(panels: Panel[]) {
   const q = (s: unknown) => '"' + String(s).replaceAll('"', '""') + '"';
