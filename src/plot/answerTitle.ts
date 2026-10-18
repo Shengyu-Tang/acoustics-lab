@@ -12,7 +12,8 @@ export function answerTitle(panel: Panel, asks: Ask[], p: Values): Panel {
     ) ?? asks[0];
   const label = a.text.replace(/^\(\d+\)\s*/, "");
   const unit = a.unit === "—" ? "" : ` ${a.unit}`;
+  panel.responseNote ??= panel.title;
   panel.title = `${label} = ${fmt(a.calc(p))}${unit}`;
-  panel.matlabModel!.title = `sprintf('${label.replaceAll("'", "''")} = %.4g${unit.replaceAll("%", "%%")}',${a.key})`;
+  panel.matlabModel!.title = `sprintf('${label.replaceAll("'", "''")} = %s${unit.replaceAll("%", "%%")}',answerNumber(${a.key}))`;
   return panel;
 }

@@ -111,7 +111,10 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         ? original
         : { ...original, xlim: xt.limits, ylim: yt.limits, rightLim: rt.limits };
     const modelHeader = Boolean(
-      m && !original.annotationHeader && original.annotations?.some((a) => a.axis === "x"),
+      m &&
+      !original.annotationHeader &&
+      !m.setup.includes("k=w/c; Z=rho*c;") &&
+      original.annotations?.some((a) => a.axis === "x"),
     );
     if (modelHeader) p.annotationHeader = true;
     // A zero-energy log panel has no visible browser series; retain its formula
@@ -136,11 +139,17 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       );
       out.push(
         `% ${f.map ?? "parula"}, identical 64 colors to browser`,
-        `colormap(gca,[${(f.categories ? f.categories.map(c => c.color.match(/[a-f0-9]{2}/gi)!.map(h => parseInt(h,16))) : colorTable(f.map))
+        `colormap(gca,[${(f.categories
+          ? f.categories.map((c) => c.color.match(/[a-f0-9]{2}/gi)!.map((h) => parseInt(h, 16)))
+          : colorTable(f.map)
+        )
           .map((rgb) => rgb.join(" "))
           .join(";")}]/255);`,
       );
-      if (f.categories) f.categories.forEach(c => out.push(`patch(NaN,NaN,${quote(c.color)},'DisplayName',${tex(c.label)});`));
+      if (f.categories)
+        f.categories.forEach((c) =>
+          out.push(`patch(NaN,NaN,${quote(c.color)},'DisplayName',${tex(c.label)});`),
+        );
       else out.push(`cb=colorbar; ylabel(cb,${tex(f.label)},'Interpreter','tex');`);
     }
     p.bands?.forEach((b) => {
@@ -221,12 +230,11 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           (m?.annotations?.[ai] && !a.label.startsWith("Qₘ=")
             ? dynamicText(a.label, value)
             : tex(a.label));
-        const label =
-          lane && !m
-            ? `{${Array(lane * 2)
-                .fill("' '")
-                .join(";")};${tex(a.label)}}`
-            : dynamicLabel;
+        const label = lane
+          ? `{${Array(lane * 2)
+              .fill("' '")
+              .join(";")};${dynamicLabel}}`
+          : dynamicLabel;
         out.push(
           a.axis === "x"
             ? `xline(${value},'--',${label},'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');`
@@ -265,16 +273,16 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       p.unboundedY
         ? `title({${m?.title ?? tex(p.title)},${tex(p.responseNote ?? "解析极点处发散，超出纵轴部分省略")}},'Interpreter','tex','FontSize',12);`
         : p.responseNote && m
-          ? `title({${m.title ?? tex(p.title)},sprintf('max |y| = %.4g',max(abs([${plotSeries
-              .map((s, i) => (s.axis === "right" ? "" : `model_y{${k + 1},${i + 1}}`))
-              .filter(Boolean)
-              .join(" ")}]),[],'omitnan'))},'Interpreter','tex','FontSize',12);`
+          ? `title({${m.title ?? tex(p.title)},${tex(p.responseNote)}},'Interpreter','tex','FontSize',12);`
           : `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
       p.kind === "polar"
         ? "grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');",
     );
-    if (p.legend !== false && (p.field?.categories?.length || plotSeries.some((s) => s.legend !== false))) {
+    if (
+      p.legend !== false &&
+      (p.field?.categories?.length || plotSeries.some((s) => s.legend !== false))
+    ) {
       out.push(
         `lgd=legend('show','Location','${p.kind === "polar" ? "northeastoutside" : "best"}','Color','w','Box','on','Interpreter','tex');`,
       );
