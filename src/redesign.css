@@ -319,11 +319,19 @@ figcaption {
 .math-text .katex {
   font-size: 1.05em;
 }
+.math-text .katex-display {
+  width: max-content;
+  min-width: 100%;
+}
 .formula-line {
   display: flex;
   align-items: center;
   gap: 12px;
   justify-content: space-between;
+}
+.formula-line > .math-text {
+  flex: 1;
+  overflow-x: auto;
 }
 .formula-line > span {
   white-space: nowrap;
@@ -716,9 +724,12 @@ summary {
   }
   .formula-line {
     gap: 5px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
   }
   .formula-line > span {
     font-size: 12px;
+    justify-self: end;
   }
   .matlab-figure {
     margin: 16px 0;

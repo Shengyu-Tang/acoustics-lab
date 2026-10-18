@@ -1,5 +1,7 @@
 import { COLORS, type Panel, fieldLimits } from "./types";
 import { colorTable } from "./colormaps";
+import { axisTicks } from "./ticks";
+import { labelLanes } from "./layout";
 const quote = (s: string) => "'" + s.replaceAll("'", "''").replace(/[\r\n]/g, " ") + "'";
 const vector = (ns: number[]) =>
   "[" + ns.map((n) => (Number.isFinite(n) ? String(n) : "NaN")).join(" ") + "]";
@@ -9,7 +11,14 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     "% Exported current data; SI units unless an axis specifies otherwise.",
     "figure('Color','w');",
   ];
-  panels.forEach((p, k) => {
+  panels.forEach((original, k) => {
+    const xt = axisTicks(original.xlim, original.xscale === "log"),
+      yt = axisTicks(original.ylim, original.yscale === "log"),
+      rt = axisTicks(original.rightLim ?? original.ylim, original.yscale === "log");
+    const p =
+      original.kind === "polar"
+        ? original
+        : { ...original, xlim: xt.limits, ylim: yt.limits, rightLim: rt.limits };
     out.push(`subplot(${rows},${cols},${k + 1});`);
     if (p.kind === "polar")
       out.push("pos=get(gca,'Position'); delete(gca); polaraxes('Position',pos);");
@@ -17,7 +26,8 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     if (p.field) {
       const f = p.field;
       out.push(
-        `imagesc(${vector(f.x)},${vector(f.y)},[${f.z.map((r) => r.join(" ")).join(";\n")}]);`,
+        `im=imagesc(${vector(f.x)},${vector(f.y)},[${f.z.map((r) => r.join(" ")).join(";\n")}]);`,
+        "if isprop(im,'Interpolation'), im.Interpolation='bilinear'; end",
         "set(gca,'YDir','normal');",
         `caxis(${vector(fieldLimits(f))});`,
       );
@@ -54,28 +64,37 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       if (p.rightLabel)
         out.push(
           "yyaxis right;",
-          `ylim(${vector(p.rightLim ?? p.ylim)}); ylabel(${quote(p.rightLabel)});`,
+          `ylim(${vector(p.rightLim ?? p.ylim)}); yticks(${vector(rt.values)}); ylabel(${quote(p.rightLabel)});`,
           "yyaxis left;",
         );
       out.push(
         `set(gca,'XScale',${quote(p.xscale ?? "linear")},'YScale',${quote(p.yscale ?? "linear")});`,
         `xlim(${vector(p.xlim)}); ylim(${vector(p.ylim)});`,
+        `xticks(${vector(xt.values)}); yticks(${vector(yt.values)});`,
+        `set(gca,'XMinorTick',${quote(p.xscale === "log" ? "on" : "off")},'YMinorTick',${quote(p.yscale === "log" ? "on" : "off")});`,
         `xlabel(${quote(p.xlabel)}); ylabel(${quote(p.ylabel)});`,
       );
       p.annotations?.forEach((a) =>
-        out.push(`${a.axis}line(${a.value},'--',${quote(a.label)},'HandleVisibility','off');`),
+        out.push(`${a.axis}line(${a.value},'--','HandleVisibility','off');`),
+      );
+      const xs = (value: number) =>
+        p.xscale === "log"
+          ? Math.log10(value / p.xlim[0]) / Math.log10(p.xlim[1] / p.xlim[0])
+          : (value - p.xlim[0]) / (p.xlim[1] - p.xlim[0]);
+      labelLanes(p, 0, 536, xs).forEach((a) =>
+        out.push(
+          `text(${a.x / 536},${1.04 + a.lane * 0.06},${quote(a.text)},'Units','normalized','FontSize',11,'Interpreter','none','Clipping','off');`,
+        ),
       );
     } else out.push(`rlim(${vector(p.ylim)});`);
     out.push(
-      `title(${quote(p.title)},'Interpreter','none');`,
+      `title(${quote(p.title)},'Interpreter','none','FontSize',12);`,
       p.kind === "polar"
         ? "grid on; set(gca,'FontName','Arial','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Arial','FontSize',11,'TickDir','in');",
     );
     if (p.legend !== false && p.series?.length)
-      out.push(
-        "legend('show','Location','northeast','Color','w','Box','on','Interpreter','none');",
-      );
+      out.push("legend('show','Location','best','Color','w','Box','on','Interpreter','none');");
   });
   return out.join("\n") + "\n";
 }

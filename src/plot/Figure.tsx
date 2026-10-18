@@ -1,30 +1,20 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { COLORS, fieldColor, fieldLimits, type Panel, type Series } from "./types";
 import { csv, download, matlab, png } from "./export";
 export * from "./types";
 export { csv, matlab } from "./export";
 const DASH = { "-": "", "--": "6 4", ":": "1 3", "-.": "6 3 1 3" };
-const W = 400,
-  H = 300,
-  L = 66,
-  T = 35,
-  AW = 275,
-  AH = 205;
+import { axisTicks, tickLabel, superscript } from "./ticks";
+import { labelLanes, bestLegend, textWidth } from "./layout";
+type Layout = { W: number; H: number; L: number; T: number; AW: number; AH: number };
+const defaultLayout: Layout = { W: 640, H: 400, L: 64, T: 35, AW: 536, AH: 300 };
 const number = (n: number) =>
   n === 0
     ? "0"
     : Math.abs(n) < 0.01 || Math.abs(n) >= 10000
       ? n.toExponential(1)
       : Number(n.toPrecision(4)).toString();
-export function ticks(lim: [number, number], log = false) {
-  if (log) {
-    const a = [];
-    for (let e = Math.ceil(Math.log10(lim[0])); e <= Math.floor(Math.log10(lim[1])); e++)
-      a.push(10 ** e);
-    return a.length ? a : lim;
-  }
-  return Array.from({ length: 5 }, (_, i) => lim[0] + ((lim[1] - lim[0]) * i) / 4);
-}
+export const ticks = (lim: [number, number], log = false) => axisTicks(lim, log).values;
 function scale(lim: [number, number], log = false) {
   return (v: number) =>
     log
@@ -35,11 +25,14 @@ export function Line({
   series,
   panel,
   index = 0,
+  layout = defaultLayout,
 }: {
   series: Series;
   panel: Panel;
   index?: number;
+  layout?: Layout;
 }) {
+  const { L, T, AW, AH } = layout;
   const xs = scale(panel.xlim, panel.xscale === "log"),
     ys = scale(
       series.axis === "right" ? (panel.rightLim ?? panel.ylim) : panel.ylim,
@@ -90,7 +83,30 @@ export function Line({
     </g>
   );
 }
-export function Axes({ panel: p }: { panel: Panel }) {
+export function Axes({
+  panel,
+  width = 640,
+  height = 400,
+}: {
+  panel: Panel;
+  width?: number;
+  height?: number;
+}) {
+  const xt = axisTicks(panel.xlim, panel.xscale === "log"),
+    yt = axisTicks(panel.ylim, panel.yscale === "log"),
+    rt = axisTicks(panel.rightLim ?? panel.ylim, panel.yscale === "log");
+  const p =
+    panel.kind === "polar"
+      ? panel
+      : { ...panel, xlim: xt.limits, ylim: yt.limits, rightLim: rt.limits };
+  const W = width,
+    H = height,
+    L = 62,
+    AW = W - L - (p.field || p.rightLabel ? 88 : 24);
+  const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
+  const T = 36 + (labels.length ? 16 * (1 + Math.max(...labels.map((a) => a.lane))) : 0);
+  const AH = H - T - 66;
+  const layout = { W, H, L, T, AW, AH };
   const id = useId().replaceAll(":", ""),
     xs = scale(p.xlim, p.xscale === "log"),
     ys = scale(p.ylim, p.yscale === "log");
@@ -117,7 +133,11 @@ export function Axes({ panel: p }: { panel: Panel }) {
         const dist = (px - point.x) ** 2 + (py - point.y) ** 2;
         if (dist < best) {
           best = dist;
-          found = { x: px, y: py, text: `${s.name} | X: ${number(x)}  Y: ${number(y)}` };
+          found = {
+            x: px,
+            y: py,
+            text: `${s.name} | X: ${number(x)}  Y: ${number(y)}`,
+          };
         }
       }),
     );
@@ -136,7 +156,31 @@ export function Axes({ panel: p }: { panel: Panel }) {
     setTip(found);
   }
   const field = p.field,
+    raster = useMemo(() => {
+      if (!field || typeof document === "undefined") return undefined;
+      const canvas = document.createElement("canvas");
+      canvas.width = field.x.length;
+      canvas.height = field.y.length;
+      const ctx = canvas.getContext("2d")!;
+      const limits = fieldLimits(field);
+      field.z.forEach((row, j) =>
+        row.forEach((z, i) => {
+          ctx.fillStyle = fieldColor(z, limits, field.map);
+          ctx.fillRect(i, field.y.length - 1 - j, 1, 1);
+        }),
+      );
+      return canvas.toDataURL();
+    }, [field]),
     limits = field ? fieldLimits(field) : ([0, 1] as [number, number]);
+  const legendW = Math.min(
+    AW - 14,
+    Math.max(100, ...(p.series?.map((s) => textWidth(s.name) + 34) ?? [])),
+  );
+  const legendH = (p.series?.length ?? 0) * 16 + 8;
+  const legend = bestLegend(p, L, T, AW, AH, legendW, legendH, (x, y, right) => [
+    L + xs(x) * AW,
+    T + (1 - scale(right ? (p.rightLim ?? p.ylim) : p.ylim, p.yscale === "log")(y)) * AH,
+  ]);
   return (
     <g fontFamily="Arial, Helvetica, Microsoft YaHei, sans-serif" fontSize="11" fill="#1a1a1a">
       <defs>
@@ -150,23 +194,48 @@ export function Axes({ panel: p }: { panel: Panel }) {
       </text>
       {!polar ? (
         <>
-          {ticks(p.xlim, p.xscale === "log").map((x) => (
+          {xt.values.map((x) => (
             <g key={x}>
               <path d={`M${L + xs(x) * AW} ${T}v${AH}`} stroke="#e5e5e5" />
               <path d={`M${L + xs(x) * AW} ${T}v5m0 ${AH - 5}v-5`} stroke="black" />
               <text x={L + xs(x) * AW} y={T + AH + 17} textAnchor="middle">
-                {number(x)}
+                {tickLabel(x, xt, p.xscale === "log")}
               </text>
             </g>
           ))}
-          {ticks(p.ylim, p.yscale === "log").map((y) => (
+          {yt.values.map((y) => (
             <g key={y}>
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h${AW}`} stroke="#e5e5e5" />
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h5m${AW - 5} 0h-5`} stroke="black" />
               <text x={L - 8} y={T + (1 - ys(y)) * AH + 4} textAnchor="end">
-                {number(y)}
+                {tickLabel(y, yt, p.yscale === "log")}
               </text>
             </g>
+          ))}
+          {xt.minor.map((x) => (
+            <path key={`xm${x}`} d={`M${L + xs(x) * AW} ${T}v3m0 ${AH - 3}v-3`} stroke="black" />
+          ))}
+          {yt.minor.map((y) => (
+            <path
+              key={`ym${y}`}
+              d={`M${L} ${T + (1 - ys(y)) * AH}h3m${AW - 3} 0h-3`}
+              stroke="black"
+            />
+          ))}
+          {!!xt.exponent && (
+            <text x={L + AW} y={T + AH + 32} textAnchor="end">
+              ×10{superscript(xt.exponent)}
+            </text>
+          )}
+          {!!yt.exponent && (
+            <text x={L} y={T - 6}>
+              ×10{superscript(yt.exponent)}
+            </text>
+          )}
+          {labels.map((a, i) => (
+            <text key={i} x={a.x} y={30 + a.lane * 16} data-annotation-label="true">
+              {a.text}
+            </text>
           ))}
           <g clipPath={`url(#${id})`}>
             {p.bands?.map((b, i) => (
@@ -178,30 +247,29 @@ export function Axes({ panel: p }: { panel: Panel }) {
                   height={AH}
                   fill="#eee"
                 />
-                <text x={L + xs(b.from) * AW + 3} y={T + AH - 8}>
-                  {b.label}
-                </text>
               </g>
             ))}
-            {field &&
-              field.z.map((row, j) =>
-                row.map((z, i) => {
-                  const dx = (p.xlim[1] - p.xlim[0]) / field.x.length,
-                    dy = (p.ylim[1] - p.ylim[0]) / field.y.length;
-                  return (
-                    <rect
-                      key={`${i}-${j}`}
-                      x={L + xs(field.x[i] - dx / 2) * AW}
-                      y={T + (1 - ys(field.y[j] + dy / 2)) * AH}
-                      width={AW / field.x.length + 0.5}
-                      height={AH / field.y.length + 0.5}
-                      fill={fieldColor(z, limits, field.map)}
-                    />
-                  );
-                }),
-              )}
+            {field && raster && (
+              <image
+                href={raster}
+                x={L + xs(field.x[0] - (field.x[1] - field.x[0]) / 2) * AW}
+                y={T + (1 - ys(field.y.at(-1)! + (field.y[1] - field.y[0]) / 2)) * AH}
+                width={
+                  (xs(field.x.at(-1)! + (field.x[1] - field.x[0]) / 2) -
+                    xs(field.x[0] - (field.x[1] - field.x[0]) / 2)) *
+                  AW
+                }
+                height={
+                  (ys(field.y.at(-1)! + (field.y[1] - field.y[0]) / 2) -
+                    ys(field.y[0] - (field.y[1] - field.y[0]) / 2)) *
+                  AH
+                }
+                preserveAspectRatio="none"
+                style={{ imageRendering: "auto" }}
+              />
+            )}
             {p.series?.map((s, i) => (
-              <Line key={i} series={s} panel={p} index={i} />
+              <Line key={i} series={s} panel={p} index={i} layout={layout} />
             ))}
           </g>
           <rect x={L} y={T} width={AW} height={AH} stroke="black" strokeWidth=".75" fill="none" />
@@ -213,20 +281,10 @@ export function Axes({ panel: p }: { panel: Panel }) {
                 {a.axis === "x" && x >= L && x <= L + AW ? (
                   <>
                     <path d={`M${x} ${T}v${AH}`} stroke="#555" strokeDasharray="5 4" />
-                    <text
-                      x={x + 4}
-                      y={T + AH * (a.labelY ?? 0.5)}
-                      transform={`rotate(-90 ${x + 4} ${T + AH * (a.labelY ?? 0.5)})`}
-                    >
-                      {a.label}
-                    </text>
                   </>
                 ) : a.axis === "y" && y >= T && y <= T + AH ? (
                   <>
                     <path d={`M${L} ${y}h${AW}`} stroke="#555" strokeDasharray="5 4" />
-                    <text x={L + 4} y={y - 5}>
-                      {a.label}
-                    </text>
                   </>
                 ) : null}
               </g>
@@ -265,7 +323,7 @@ export function Axes({ panel: p }: { panel: Panel }) {
             </g>
           ))}
           {p.series?.map((s, i) => (
-            <Line key={i} series={s} panel={p} index={i} />
+            <Line key={i} series={s} panel={p} index={i} layout={layout} />
           ))}
         </>
       )}
@@ -297,10 +355,15 @@ export function Axes({ panel: p }: { panel: Panel }) {
           </text>
         </>
       )}
+      {p.rightLabel && !!rt.exponent && (
+        <text x={L + AW} y={T - 6} textAnchor="end">
+          ×10{superscript(rt.exponent)}
+        </text>
+      )}
       {p.rightLabel &&
-        ticks(p.rightLim ?? p.ylim).map((y) => (
+        rt.values.map((y) => (
           <text key={y} x={L + AW + 6} y={T + (1 - scale(p.rightLim ?? p.ylim)(y)) * AH + 4}>
-            {number(y)}
+            {tickLabel(y, rt, p.yscale === "log")}
           </text>
         ))}
       <text x={L + AW / 2} y={H - 22} fontSize="12" textAnchor="middle">
@@ -327,9 +390,9 @@ export function Axes({ panel: p }: { panel: Panel }) {
         </text>
       )}
       {p.legend !== false && !!p.series?.length && (
-        <g transform={`translate(${L + AW - 132} ${T + 8})`}>
+        <g transform={`translate(${legend[0]} ${legend[1]})`}>
           <rect
-            width="125"
+            width={legendW}
             height={p.series.length * 16 + 8}
             fill="white"
             stroke="black"
@@ -393,17 +456,22 @@ export default function Figure({
 }) {
   const host = useRef<HTMLElement>(null),
     svg = useRef<SVGSVGElement>(null),
-    [narrow, setNarrow] = useState(false),
+    [width, setWidth] = useState(640),
     [error, setError] = useState("");
   useEffect(() => {
-    const observer = new ResizeObserver(([e]) => setNarrow(e.contentRect.width < 600));
+    const observer = new ResizeObserver(([e]) => {
+      // Hidden comparison tabs report zero; retain their last usable layout.
+      if (e.contentRect.width > 0) setWidth(e.contentRect.width);
+    });
     observer.observe(host.current!);
     return () => observer.disconnect();
   }, []);
-  const columns = narrow ? 1 : cols,
-    nrows = Math.max(Math.ceil(panels.length / columns), narrow ? 1 : rows);
+  const columns = width < 600 ? 1 : cols,
+    nrows = Math.max(Math.ceil(panels.length / columns), columns === cols ? rows : 1),
+    W = width / columns,
+    H = panels.length === 1 ? (width >= 600 ? 400 : 340) : 310;
   return (
-    <figure ref={host} className="matlab-figure">
+    <figure ref={host} className="matlab-figure" style={{ maxWidth: cols === 1 ? 640 : undefined }}>
       <div className="figure-tools" aria-label="图形导出">
         <button
           onClick={async () => {
@@ -438,7 +506,7 @@ export default function Figure({
       >
         {panels.map((p, i) => (
           <g key={i} transform={`translate(${(i % columns) * W} ${Math.floor(i / columns) * H})`}>
-            <Axes panel={p} />
+            <Axes panel={p} width={W} height={H} />
           </g>
         ))}
       </svg>
