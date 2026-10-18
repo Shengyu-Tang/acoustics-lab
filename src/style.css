@@ -1971,11 +1971,6 @@ a.secondary {
   column-gap: 16px;
   align-items: start;
 }
-.calendar-note {
-  color: #555;
-  font-size: 13px;
-  line-height: 1.7;
-}
 .calendar-item > div {
   grid-column: 1;
   grid-row: 1;

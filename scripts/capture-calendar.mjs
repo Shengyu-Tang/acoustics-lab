@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { chromium } from "playwright";
 
 const out = "specs/redesign/screenshots/calendar-review";
@@ -23,7 +23,7 @@ const server = spawn(
   ],
   { windowsHide: true, stdio: "ignore" },
 );
-let context;
+let browserServer, context;
 const errors = [],
   report = [];
 try {
@@ -38,11 +38,12 @@ try {
     await new Promise((resolve) => setTimeout(resolve, 250));
   }
   assert.ok(ready, "Preview server ready");
-  context = await chromium.launchPersistentContext(path.join(work, "profile"), {
+  browserServer = await chromium.launchServer({
     channel: "msedge",
     headless: true,
-    reducedMotion: "reduce",
   });
+  const browser = await chromium.connect(browserServer.wsEndpoint());
+  context = await browser.newContext({ reducedMotion: "reduce" });
   const page = await context.newPage();
   page.on("pageerror", (error) => errors.push(error.message));
   for (const width of [1440, 390]) {
@@ -51,13 +52,31 @@ try {
     await page.locator(".calendar-item").first().waitFor();
     await page.evaluate(() => document.fonts.ready);
     assert.equal(await page.locator(".calendar-item").count(), 24);
+    await page.locator("details").evaluateAll((items) => items.forEach((el) => (el.open = true)));
+    assert.doesNotMatch(await page.locator(".calendar-page").innerText(), /慕课|达成证据|支撑\s*C/);
+    for (const lesson of await page.locator(".calendar-item").all()) {
+      assert.ok((await lesson.locator("details ul li").count()) >= 3, "Visible lesson goals");
+      for (const link of await lesson.locator("details a").all())
+        assert.match(await link.getAttribute("href"), /^#\/lab\?topic=\d+\.\d+(?:\.\d+)?$/);
+    }
     const metrics = await page.evaluate(() => ({
       width: innerWidth,
       scrollWidth: document.documentElement.scrollWidth,
-      note: document.querySelector(".calendar-note").textContent,
+      goals: [...document.querySelectorAll(".calendar-item details ul")].map(
+        (el) => el.children.length,
+      ),
+      noteCount: document.querySelectorAll(".calendar-note").length,
     }));
     assert.equal(metrics.scrollWidth, width, "No horizontal overflow");
+    assert.equal(metrics.noteCount, 0, "Planning note removed");
+    await page
+      .locator("details")
+      .evaluateAll((items) => items.forEach((el, i) => (el.open = i === 5)));
     await page.screenshot({ path: `${out}/calendar-${width}.png` });
+    const sixth = page.locator(".calendar-item").nth(5);
+    await sixth.scrollIntoViewIfNeeded();
+    await page.screenshot({ path: `${out}/calendar-sixth-${width}.png` });
+    await sixth.screenshot({ path: `${out}/lesson-6-${width}.png` });
     await page
       .locator(".week-lessons")
       .first()
@@ -67,7 +86,7 @@ try {
       await lesson.locator("summary").click();
       await lesson.screenshot({ path: `${out}/lesson-${number}-${width}.png` });
       const activity = lesson.locator("ul").first().locator("li").last();
-      assert.equal(await activity.locator("a").count(), 0, "Non-MOOC activity has no link");
+      assert.equal(await activity.locator("a").count(), 0, "Classroom activity has no link");
     }
     const lastWeek = page.locator(".week-lessons").last();
     await lastWeek
@@ -87,7 +106,19 @@ try {
     if (width === 1440) {
       for (const id of ["1.1.2", "7.3"]) {
         await page.goto(url + "#/calendar");
-        await page.locator(`.calendar-item a[href="#/lab?topic=${id}"]`).first().click();
+        await page.locator(`.calendar-item > ul a[href="#/lab?topic=${id}"]`).first().click();
+        await page.locator("#key-points").waitFor();
+        assert.ok((await page.locator("h1").innerText()).includes(id));
+      }
+      // Exercise a range endpoint and a lecture expanded from a subsection reference.
+      for (const [number, id] of [
+        [6, "3.1.8"],
+        [7, "3.3.1"],
+      ]) {
+        await page.goto(url + "#/calendar");
+        const lesson = page.locator(".calendar-item").nth(number - 1);
+        await lesson.locator("summary").click();
+        await lesson.locator(`details a[href="#/lab?topic=${id}"]`).click();
         await page.locator("#key-points").waitFor();
         assert.ok((await page.locator("h1").innerText()).includes(id));
       }
@@ -98,6 +129,28 @@ try {
   assert.deepEqual(errors, []);
   fs.writeFileSync(`${out}/metrics.json`, JSON.stringify(report, null, 2) + "\n");
 } finally {
-  await context?.close();
   server.kill();
+  // Edge shutdown through Windows taskkill can hang when WMI is unavailable.
+  // Clean up only this run's browser tree using the repo's Toolhelp helper.
+  const browserProcess = browserServer?.process();
+  if (browserProcess?.exitCode === null) {
+    const closed = new Promise((resolve) => browserProcess.once("close", resolve));
+    const cleanup = spawnSync(
+      "powershell",
+      [
+        "-NoProfile",
+        "-File",
+        "scripts/stop-process-tree.ps1",
+        "-RootPid",
+        String(browserProcess.pid),
+      ],
+      { windowsHide: true, encoding: "utf8", timeout: 15000 },
+    );
+    if (cleanup.error) throw cleanup.error;
+    assert.equal(cleanup.status, 0, cleanup.stderr);
+    // Crash-reporting helpers can retain inherited pipes after Edge has exited.
+    for (const stream of browserProcess.stdio) stream?.destroy?.();
+    await closed;
+  }
+  await browserServer?.close();
 }
