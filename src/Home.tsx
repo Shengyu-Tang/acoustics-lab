@@ -2,14 +2,15 @@ import topics from "./topics.json";
 import calendar from "./calendar.json";
 import Header from "./Header";
 import { chapters } from "./catalog";
-function Thumbnail({ model, id }: { model: string; id: string }) {
+function Thumbnail({ id }: { id: string }) {
+  if (id !== "1.2.4" && id !== "1.2.5") return null;
   return (
     <img
       className="lecture-thumbnail"
       width="68"
       height="34"
       loading="lazy"
-      src={`${import.meta.env.BASE_URL}thumbnails/${id === "1.2.4" || id === "1.2.5" ? id : model}.svg`}
+      src={`${import.meta.env.BASE_URL}thumbnails/${id}.svg`}
       alt=""
     />
   );
@@ -68,7 +69,7 @@ export default function Home() {
                         .map((t) => (
                           <li key={t.id}>
                             <a href={`#/lab?topic=${t.id}`}>
-                              <Thumbnail model={t.model} id={t.id} />
+                              <Thumbnail id={t.id} />
                               <span>
                                 {t.id}　{t.title}
                               </span>

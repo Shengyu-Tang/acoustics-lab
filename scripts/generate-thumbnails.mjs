@@ -4,7 +4,7 @@ fs.mkdirSync("outputs", { recursive: true });
 await build({
   stdin: {
     contents:
-      "export {createElement} from 'react';export {renderToStaticMarkup} from 'react-dom/server';export {Axes} from './src/plot/Figure';export {legacyPanels} from './src/plot/legacyPanels';export {frequencyPanels,powerPanel} from './src/plot/chapter1Figures';export {models,defaults} from './src/physics';export {instrument} from './src/physics/chapter1';",
+      "export {createElement} from 'react';export {renderToStaticMarkup} from 'react-dom/server';export {Axes} from './src/plot/Figure';export {frequencyPanels,powerPanel} from './src/plot/chapter1Figures';export {instrument} from './src/physics/chapter1';",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -17,17 +17,12 @@ const {
   createElement: h,
   renderToStaticMarkup,
   Axes,
-  legacyPanels,
   frequencyPanels,
   powerPanel,
-  models,
-  defaults,
   instrument,
 } = await import("../outputs/thumbnail-generator.mjs");
 fs.mkdirSync("public/thumbnails", { recursive: true });
-const panels = Object.fromEntries(
-  Object.entries(models).map(([kind, m]) => [kind, legacyPanels(kind, defaults(m), 0.15)[0]]),
-);
+const panels = {};
 panels["1.2.4"] = frequencyPanels({ ...instrument, Rm: 400 }, false)[0];
 panels["1.2.5"] = powerPanel({ ...instrument, Rm: 400 });
 for (const [name, original] of Object.entries(panels)) {
@@ -58,7 +53,7 @@ for (const [name, original] of Object.entries(panels)) {
     renderToStaticMarkup(
       h(
         "svg",
-        { xmlns: "http://www.w3.org/2000/svg", viewBox: "55 26 300 225" },
+        { xmlns: "http://www.w3.org/2000/svg", viewBox: "62 36 554 298" },
         h(Axes, { panel: p }),
       ),
     ),

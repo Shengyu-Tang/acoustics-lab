@@ -18,8 +18,8 @@ export function legacyPanels(kind: string, v: Values, time: number): Panel[] {
     points: sample(fn, min, max, 601),
   });
   const field = (xmax: number, ymax: number, fn: (x: number, y: number) => number): Panel => {
-    const x = Array.from({ length: 64 }, (_, i) => ((i + 0.5) * xmax) / 64),
-      y = Array.from({ length: 32 }, (_, i) => ((i + 0.5) * ymax) / 32);
+    const x = Array.from({ length: 160 }, (_, i) => ((i + 0.5) * xmax) / 160),
+      y = Array.from({ length: 80 }, (_, i) => ((i + 0.5) * ymax) / 80);
     return {
       ...base,
       xlim: [0, xmax],
