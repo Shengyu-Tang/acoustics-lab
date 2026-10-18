@@ -98,7 +98,7 @@ export function grade(answer: number, expected: number, tolerance = 0.02) {
   return answer > expected ? "偏大" : "偏小";
 }
 
-export const bandwidthExperiment = { M: 10, D: 395000, f1: 30, f2: 100 / 3, velocity: 0.2 };
+export const bandwidthExperiment = { M: 10, D: 395000, f1: 30, f2: 33.33, velocity: 0.2 };
 export function bandwidthSolution(p: typeof bandwidthExperiment) {
   if (p.f1 <= 0 || p.f2 <= p.f1) throw new RangeError("半功率频率须满足 0 < f₁ < f₂");
   const f0 = Math.sqrt(p.D / p.M) / (2 * Math.PI),

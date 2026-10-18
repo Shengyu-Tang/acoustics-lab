@@ -31,7 +31,7 @@ export function NumberField({
       min={min}
       max={max}
       step={step}
-      value={draft ?? value}
+      value={draft ?? Number(value.toPrecision(4))}
       onChange={(e) => {
         setDraft(e.target.value);
         const n = Number(e.target.value);

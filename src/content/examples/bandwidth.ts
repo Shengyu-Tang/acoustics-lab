@@ -38,7 +38,7 @@ export const bandwidthExample = {
     },
   ] as const,
   asks: [
-    { key: "Qm", text: "(1) 品质因数 Qₘ", unit: "1" },
+    { key: "Qm", text: "(1) 品质因数 Qₘ", unit: "—" },
     { key: "Rm", text: "(2) 识别力阻 Rₘ", unit: "kg/s" },
     { key: "power", text: "(3) 维持目标振速的平均机械输入功率", unit: "W" },
     { key: "force", text: "(4) 谐振处所需激励力峰值 F₀", unit: "N" },

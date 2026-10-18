@@ -16,7 +16,8 @@ const lecture: Lecture = {
     {
       number: "1.2-1",
       tex: String.raw`Z_m=\frac{\tilde F}{\tilde v}=R_m+j\left(\omega M-\frac D\omega\right)=R_m+jX_m`,
-      meaning: "机械阻耗散能量，机械电抗表示惯性与弹性对储能的共同作用。时间因子采用 e^{jωt}。",
+      meaning:
+        "机械阻耗散能量，机械电抗表示惯性与弹性对储能的共同作用。时间因子采用 $e^{j\\omega t}$。",
     },
     {
       number: "1.2-2",

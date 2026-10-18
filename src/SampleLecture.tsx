@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Lecture } from "./content/types";
 import { characteristics, instrument, response } from "./physics/chapter1";
 import Parameter from "./Parameter";
-import MathText from "./Math";
+import MathText, { MathProse } from "./Math";
 import Figure from "./plot/Figure";
 import InstrumentExample from "./InstrumentExample";
 import BandwidthExample from "./BandwidthExample";
@@ -31,7 +31,9 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
               <MathText tex={f.tex} />
               <span>({f.number})</span>
             </div>
-            <p>{f.meaning}</p>
+            <p>
+              <MathProse text={f.meaning} />
+            </p>
           </div>
         ))}
       </section>
@@ -101,7 +103,7 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
             {(first
               ? [
                   ["固有频率 f₀", c.f0, "Hz"],
-                  ["品质因数 Qₘ", c.Qm, "1"],
+                  ["品质因数 Qₘ", c.Qm, "—"],
                   ["位移共振 fx", c.fx, "Hz"],
                   ["速度共振 fv", c.fv, "Hz"],
                   ["加速度共振 fa", c.fa, "Hz"],
@@ -139,7 +141,7 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
         />
         <p>
           {first
-            ? "机械电抗在 f₀ 处过零。相频曲线以激励力为相位基准；阻抗图从 0.15f₀ 开始以避开零频弹抗奇点。"
+            ? "机械电抗在 f₀ 处过零。相频曲线以激励力为相位基准；阻抗图从 0.001f₀ 开始以避开零频弹抗奇点。"
             : "三种激励频率分别为 0.8f₀、f₀、1.2f₀，图中使用同一时间轴和功率轴。灰色频带标出 Δf，虚线标出峰值及半功率点。"}
         </p>
       </section>

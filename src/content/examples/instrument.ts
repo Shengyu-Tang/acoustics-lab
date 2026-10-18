@@ -30,7 +30,7 @@ export const example = {
   ] as const,
   asks: [
     { key: "f0", text: "(1) 固有频率 f₀", unit: "Hz" },
-    { key: "Qm", text: "(2a) 品质因数 Qₘ", unit: "1" },
+    { key: "Qm", text: "(2a) 品质因数 Qₘ", unit: "—" },
     { key: "bandwidth", text: "(2b) 半功率带宽 Δf", unit: "Hz" },
     { key: "xMm", text: "(3) 当前转速的位移幅值 xₘ", unit: "mm" },
     { key: "minimumRm", text: "(4) 满足位移上限的力阻阈值（实际取值应更大）", unit: "kg/s" },
