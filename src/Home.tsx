@@ -22,7 +22,7 @@ export default function Home() {
       <main className="course-home">
         <h1>声学基础</h1>
         <p className="course-introduction">
-          本课程从集中参数振动出发，学习声波的传播、辐射、散射、接收与吸收。各讲按教材编号组织，配有慕课课件索引、原理说明、交互演示和思考题。
+          本课程从集中参数振动出发，学习声波的传播、辐射、散射、接收与吸收。各讲按教材编号组织，配有课程讲次索引、原理说明、交互演示和思考题。
         </p>
         <section>
           <h2>课程导引</h2>
@@ -56,7 +56,7 @@ export default function Home() {
                       Array.from({ length: 10 }, (_, n) => `3.${n + 1}`).map((group) => (
                         <details className="catalog-group" key={group}>
                           <summary>
-                            {group}　
+                            {group}{" "}
                             {topics
                               .find((t) => t.id.startsWith(group + "."))
                               ?.title.replace(/（.*$/, "")}
@@ -74,7 +74,7 @@ export default function Home() {
                                   <a href={`#/lab?topic=${t.id}`}>
                                     <Thumbnail id={t.id} />
                                     <span>
-                                      {t.id}　{t.title}
+                                      {t.id} {t.title}
                                     </span>
                                   </a>
                                 </li>
@@ -91,7 +91,7 @@ export default function Home() {
                               <a href={`#/lab?topic=${t.id}`}>
                                 <Thumbnail id={t.id} />
                                 <span>
-                                  {t.id}　{t.title}
+                                  {t.id} {t.title}
                                 </span>
                               </a>
                             </li>

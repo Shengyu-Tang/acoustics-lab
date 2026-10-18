@@ -216,7 +216,8 @@ export default function Lab() {
           </h1>
           {!LectureRoute && (
             <p className="mooc-source">
-              对应慕课：{lecture?.moocSource ?? topic.source}
+              {lecture ? "对应慕课：" : "内容来源："}
+              {lecture?.moocSource ?? topic.source}
               {lecture ? ` · ${lecture.classNumber}` : ""}
             </p>
           )}
