@@ -128,7 +128,26 @@ for (const l of lectures) {
           }),
         );
       }
-      if (!checked) failures.push(`${l.id} -- ${d.key}: missing geometric series contract`);
+      if (!checked) {
+        // A physical response can encode a size through its frequency scale or
+        // pressure, without adding an otherwise meaningless geometry panel.
+        const physicalData = (p) =>
+          l.figures.flatMap((f) =>
+            f.independentOf?.includes(d.key)
+              ? []
+              : f
+                  .plot(p, 0)
+                  .filter((q) => !q.schematic && !/示意坐标/.test(q.ylabel))
+                  .flatMap((q) => numbers({ ...q, series: q.series?.filter((s) => !s.geometry) })),
+          );
+        if (
+          !changed(
+            physicalData({ ...l.defaults, [d.key]: d.min }),
+            physicalData({ ...l.defaults, [d.key]: d.max }),
+          )
+        )
+          failures.push(`${l.id} -- ${d.key}: missing physical size dependence`);
+      }
     }
   }
 }

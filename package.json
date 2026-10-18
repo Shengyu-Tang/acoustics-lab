@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1 --port 5174",
     "build": "tsc --noEmit && vite build && node scripts/inline-build.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4174",
-    "test": "node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs && node scripts/check-p0.mjs && node --experimental-strip-types scripts/check-ticks.mjs && node scripts/check-p1.mjs && node scripts/check-p2.mjs && node scripts/check-p3.mjs && node scripts/check-notation.mjs && node scripts/check-parameter-sensitivity.mjs && node scripts/check-fixed-axes.mjs && node scripts/check-calendar.mjs && node scripts/check-categorical-fields.mjs && node scripts/check-p3-review.mjs && node scripts/check-matlab-backlog-contracts.mjs && node scripts/check-p4.mjs",
+    "test": "node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs && node scripts/check-p0.mjs && node --experimental-strip-types scripts/check-ticks.mjs && node scripts/check-p1.mjs && node scripts/check-p2.mjs && node scripts/check-p3.mjs && node scripts/check-notation.mjs && node scripts/check-parameter-sensitivity.mjs && node scripts/check-fixed-axes.mjs && node scripts/check-calendar.mjs && node scripts/check-categorical-fields.mjs && node scripts/check-p3-review.mjs && node scripts/check-matlab-backlog-contracts.mjs && node scripts/check-p4.mjs && node scripts/check-p4-review.mjs",
     "format": "prettier --write src scripts",
     "format:check": "prettier --check src scripts"
   },
