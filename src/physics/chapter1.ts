@@ -93,7 +93,7 @@ export function instrumentSolution(p: typeof instrument) {
 export function grade(answer: number, expected: number, tolerance = 0.02) {
   if (!Number.isFinite(answer)) return "请输入有限数值";
   if (Math.abs(answer - expected) <= Math.abs(expected) * tolerance) return "正确";
-  if (answer <= 0 || Math.max(Math.abs(answer / expected), Math.abs(expected / answer)) >= 10)
+  if (expected !== 0 && Math.max(Math.abs(answer / expected), Math.abs(expected / answer)) >= 10)
     return "量级错误";
   return answer > expected ? "偏大" : "偏小";
 }

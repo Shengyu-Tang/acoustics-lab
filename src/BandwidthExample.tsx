@@ -1,23 +1,13 @@
 import { useState } from "react";
 import { bandwidthExample as example } from "./content/examples/bandwidth";
 import ExampleWorksheet from "./ExampleWorksheet";
-import { powerPanel } from "./plot/chapter1Figures";
+import { bandwidthPanel } from "./plot/bandwidthPanel";
 import { download, matlab } from "./plot/export";
-import { modelsFor } from "./plot/matlabModels";
 const fmt = (n: number) => Number(n.toPrecision(4)).toString();
 export default function BandwidthExample() {
   const [p, setP] = useState(example.defaults),
     s = example.solve(p);
-  const panel = powerPanel({ M: p.M, D: p.D, Rm: s.Rm, F0: s.force });
-  panel.series!.push({
-    name: "目标振速工作点",
-    points: [[s.f0, s.power]],
-    marker: "o",
-    style: "none",
-  });
-  const model = modelsFor("B-1", { ...p, Rm: s.Rm, F0: s.force }, [panel], [...example.given])[0]
-    .matlabModel!;
-  panel.matlabModel = model;
+  const panel = bandwidthPanel(p);
   const steps = [
     {
       tex: String.raw`f_0=\frac{1}{2\pi}\sqrt{D/M},\quad\Delta f=f_2-f_1,\quad Q_m=\frac{f_0}{\Delta f}`,
