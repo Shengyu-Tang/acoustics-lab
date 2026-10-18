@@ -1,3 +1,4 @@
+import { e352 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { waveVector } from "../../physics/chapter3";
@@ -126,8 +126,7 @@ export default p2Lecture("3.5.2", {
         ];
       }),
       independentOf: ["f", "c", "wavecount", "a1", "a2", "a3", "a4"],
-      dimensionlessComparison:
-        "单位方向比较：采用 $\\mathbf{k}/|\\mathbf{k}|$；下图展示实际声场。",
+      dimensionlessComparison: "单位方向比较：采用 $\\mathbf{k}/|\\mathbf{k}|$；下图展示实际声场。",
     },
     figure("3.5.2-2", "二至四列不同方向的平面波叠加", (p, t) => {
       const nx = Math.max(161, Math.ceil((8 * p.f) / p.c) + 1),
@@ -203,15 +202,7 @@ export default p2Lecture("3.5.2", {
         ),
       ],
       () => "线阵相邻传感器的相位差取决于轴向投影，应同时明确角度定义与坐标轴。",
-      (p) =>
-        answerCurve(
-          p,
-          "f",
-          "频率",
-          "Hz",
-          (q) => waveVector((2 * Math.PI * q.f) / q.c, q.azimuth, q.elevation)[0],
-          "2*pi*x/c*cosd(elevation)*cosd(azimuth)",
-        ),
+      (p) => e352(p),
     ),
   ],
   answers: [

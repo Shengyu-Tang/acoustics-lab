@@ -1,3 +1,4 @@
+import { e345 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { pulse } from "../../physics/chapter3";
@@ -158,7 +158,7 @@ export default p2Lecture("3.4.5", {
         ),
       ],
       () => "接收门从首达时间前开启，并覆盖脉冲持续时间及系统时延。",
-      (p) => answerCurve(p, "L", "接收距离", "m", (q) => (1000 * q.L) / q.c, "1000*x/c"),
+      (p) => e345(p),
     ),
   ],
   answers: [

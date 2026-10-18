@@ -1,3 +1,4 @@
+import { e331 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -7,7 +8,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { acousticEnergy, planeQuantities } from "../../physics/chapter3";
@@ -121,15 +121,7 @@ export default p2Lecture("3.3.1", {
         ),
       ],
       () => "储能与净传能是不同量，驻波也可储能而平均声强为零。",
-      (p) =>
-        answerCurve(
-          p,
-          "pa",
-          "声压峰值",
-          "Pa",
-          (q) => q.pa ** 2 / (2 * q.rho * q.c ** 2),
-          "x.^2/(2*rho*c^2)",
-        ),
+      (p) => e331(p),
     ),
   ],
   answers: ["称声动能，来自介质质点的局部运动。", "称声势能，来自介质压缩和膨胀所储存的弹性能。"],

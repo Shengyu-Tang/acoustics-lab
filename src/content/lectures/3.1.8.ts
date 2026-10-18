@@ -1,3 +1,4 @@
+import { e318 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -7,7 +8,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const p = { ...defaults };
@@ -145,15 +145,7 @@ export default p2Lecture("3.1.8", {
         ),
       ],
       () => "微小位移在较高频率下仍可有明显加速度；传感器需匹配频带与量程。",
-      (p) =>
-        answerCurve(
-          p,
-          "pa",
-          "声压峰值",
-          "Pa",
-          (q) => (2 * Math.PI * q.f * q.pa) / (q.rho * q.c),
-          "k*x/rho",
-        ),
+      (p) => e318(p),
     ),
   ],
   answers: [

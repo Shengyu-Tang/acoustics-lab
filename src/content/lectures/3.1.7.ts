@@ -1,3 +1,4 @@
+import { e317 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { gasSpeed, liquidSpeed } from "../../physics/chapter3";
@@ -151,15 +151,7 @@ export default p2Lecture("3.1.7", {
         ),
       ],
       () => "两种介质须分别标定声速；空气测距还需补偿温度变化。",
-      (p) =>
-        answerCurve(
-          p,
-          "bulk",
-          "水体积模量",
-          "GPa",
-          (q) => liquidSpeed(q.bulk * 1e9, q.waterRho),
-          "sqrt(x*1e9/waterRho)",
-        ),
+      (p) => e317(p),
     ),
   ],
   answers: [

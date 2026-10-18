@@ -1,3 +1,4 @@
+import { e312 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { planeQuantities, pressureFromLevel } from "../../physics/chapter3";
@@ -166,7 +166,7 @@ export default p2Lecture("3.1.2", {
         ),
       ],
       () => "位移远小于毫米，声速不能用这个局部振速代替。",
-      (p) => answerCurve(p, "pa", "声压峰值", "Pa", (q) => q.pa / (q.rho * q.c), "x/(rho*c)"),
+      (p) => e312(p),
     ),
   ],
   answers: [

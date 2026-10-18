@@ -1,3 +1,4 @@
+import { e315 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -7,7 +8,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const p = { ...defaults };
@@ -129,15 +129,7 @@ export default p2Lecture("3.1.5", {
         ),
       ],
       () => "二阶项远小于一阶项，本地连续性关系可作线性近似。",
-      (p) =>
-        answerCurve(
-          p,
-          "pa",
-          "声压峰值",
-          "Pa",
-          (q) => (2 * Math.PI * q.f * q.pa) / q.c ** 2,
-          "w*x/c^2",
-        ),
+      (p) => e315(p),
     ),
   ],
   answers: [

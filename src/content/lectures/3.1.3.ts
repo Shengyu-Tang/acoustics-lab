@@ -1,3 +1,4 @@
+import { e313 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -9,7 +10,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const p = {
@@ -204,8 +204,7 @@ export default p2Lecture("3.1.3", {
         2,
       ),
       independentOf: ["pa", "rho", "c"],
-      dimensionlessComparison:
-        "模型假设的无量纲比较；小振幅近似的物理适用范围另图展示。",
+      dimensionlessComparison: "模型假设的无量纲比较；小振幅近似的物理适用范围另图展示。",
     },
     figure("3.1.3-2", "三定律到波动方程的推导路线", (p) => [
       graph(
@@ -279,8 +278,7 @@ export default p2Lecture("3.1.3", {
         p.pa / (p.rho * p.c ** 2) < 0.01
           ? "局部扰动比例很小，线性近似适用；长距离累积非线性与耗散仍需另外检查。"
           : "扰动不够小，应重新检查线性近似。",
-      (p) =>
-        answerCurve(p, "pa", "声压峰值", "Pa", (q) => q.pa / (q.rho * q.c * q.c), "x/(rho*c^2)"),
+      (p) => e313(p),
     ),
   ],
   answers: [

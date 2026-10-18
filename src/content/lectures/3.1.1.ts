@@ -1,3 +1,4 @@
+import { e311 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -10,7 +11,6 @@ import {
   vector,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const p = { ...defaults, mode: 0, L: 10, xi: 0.0004 };
@@ -150,7 +150,7 @@ export default p2Lecture("3.1.1", {
         ),
       ],
       (p) => `采样窗口应覆盖传播时间 ${((1000 * p.L) / p.c).toPrecision(4)} ms，并计入触发余量。`,
-      (p) => answerCurve(p, "L", "距离 L", "m", (q) => (1000 * q.L) / q.c, "1000*x/c"),
+      (p) => e311(p),
     ),
   ],
   answers: [

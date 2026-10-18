@@ -1,3 +1,4 @@
+import { e314 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -9,7 +10,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { densityRate } from "../../physics/chapter3";
@@ -129,15 +129,7 @@ export default p2Lecture("3.1.4", {
         p.left > p.right
           ? "该瞬间净流入，密度增加；长期不能把流速差保持不变而仍称小扰动。"
           : "该瞬间密度不增加，符号与收支方向一致。",
-      (p) =>
-        answerCurve(
-          p,
-          "left",
-          "左面流速",
-          "m/s",
-          (q) => densityRate(q.rho, q.left, q.right, q.L),
-          "rho*(x-right)/L",
-        ),
+      (p) => e314(p),
     ),
   ],
   answers: [

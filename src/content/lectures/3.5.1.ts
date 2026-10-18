@@ -1,3 +1,4 @@
+import { e351 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -7,7 +8,6 @@ import {
   graph,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { helmholtzField, helmholtzY } from "../../physics/chapter3";
@@ -120,15 +120,7 @@ export default p2Lecture("3.5.1", {
         ),
       ],
       () => "该分量沿界面传播而向法向衰减，需在靠近界面处采集空间细节。",
-      (p) =>
-        answerCurve(
-          p,
-          "depth",
-          "法向距离",
-          "m",
-          (q) => Math.exp(((-2 * Math.PI * q.f) / q.c) * Math.sqrt(q.ratio ** 2 - 1) * q.depth),
-          "exp(-k*sqrt(ratio^2-1)*x)",
-        ),
+      (p) => e351(p),
     ),
   ],
   answers: [

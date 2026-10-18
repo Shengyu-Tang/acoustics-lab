@@ -1,3 +1,4 @@
+import { e316 } from "../../plot/p2Examples";
 import { axisTicks } from "../../plot/ticks";
 import {
   p2Lecture,
@@ -9,7 +10,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const P0 = parameter("P0", "静态压强", "P₀", "Pa", 80000, 150000, 100),
@@ -158,7 +158,7 @@ export default p2Lecture("3.1.6", {
         ),
       ],
       () => "压缩量小，切线近似有效；应保持静态密度、压强与温度一致。",
-      (p) => answerCurve(p, "s", "压缩量", "—", (q) => q.gamma * q.P0 * q.s, "gamma*P0*x/rho"),
+      (p) => e316(p),
     ),
   ],
   answers: [

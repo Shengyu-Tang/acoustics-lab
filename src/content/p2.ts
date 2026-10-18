@@ -156,13 +156,8 @@ export function example(
     ],
     plot: (p) => {
       const panel = plot(p);
-      const marker = panel.series?.find((s) => s.marker === "o")?.points[0]?.[1];
-      const answer = asks.find(
-        (a) =>
-          marker !== undefined &&
-          Math.abs(a.calc(p) - marker) < 1e-10 * Math.max(1, Math.abs(marker)),
-      );
-      if (answer) panel.ylabel = `${answer.text.replace(/^\(\d+\)\s*/, "")} (${answer.unit})`;
+      // Markers can represent geometry or observations; preserve the plot's
+      // explicit physical axis definition instead of inferring it from an answer.
       panel.matlabModel!.parameters.forEach((q) => {
         const d = given.find((d) => d.key === q.key);
         if (d) q.comment = `${d.name} (${d.unit})`;
@@ -174,45 +169,6 @@ export function example(
       return answerTitle(panel, asks, p);
     },
   };
-}
-export function answerCurve(
-  p: Values,
-  key: string,
-  label: string,
-  unit: string,
-  fn: (p: Values) => number,
-  expr: string,
-): Panel {
-  const end = p[key] * 2,
-    low = Math.min(0, end),
-    high = end === 0 ? 0.02 : Math.max(0, end),
-    value = fn(p),
-    samples = sample((x) => fn({ ...p, [key]: x }), low, high, 401).map((v) => v[1]);
-  return graph(
-    p,
-    0,
-    "例题答案与当前工作点",
-    `${label} (${unit})`,
-    "计算结果（见题目单位）",
-    [low, high],
-    [Math.min(0, ...samples), Math.max(1e-12, ...samples) * 1.3],
-    [
-      curve(
-        "参考解",
-        (x) => fn({ ...p, [key]: x }),
-        [low, high],
-        "linspace(qaRange(1),qaRange(2),401)",
-        expr,
-      ),
-      points("本题答案", [[p[key], value]], key, expr.replace(/\bx\b/g, key), {
-        style: "none",
-        marker: "o",
-      }),
-    ],
-    `qaRange=[min(0,2*${key}) max(0,2*${key})];if qaRange(1)==qaRange(2),qaRange(2)=.02;end;`,
-    {},
-    { xlim: "qaRange", ylim: "[min(0,min(model_y{1,1})) max(1e-12,max(model_y{1,1}))*1.3]" },
-  );
 }
 export const engineering = (text: string, project = "hall", title = "交通枢纽语音清晰度") => ({
   text,

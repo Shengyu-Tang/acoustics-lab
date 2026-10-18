@@ -1,3 +1,4 @@
+import { e342 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -9,7 +10,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const obs = parameter("obs", "观察点位置", "x₁", "m", 0, 2, 0.01),
@@ -142,7 +142,7 @@ export default p2Lecture("3.4.2", {
         ),
       ],
       () => "时域记录需覆盖多个周期，空间测点间距应结合波长选择。",
-      (p) => answerCurve(p, "c", "声速", "m/s", (q) => q.c / q.f, "x/f"),
+      (p) => e342(p),
     ),
   ],
   answers: [

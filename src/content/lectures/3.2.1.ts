@@ -1,3 +1,4 @@
+import { e321 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -9,7 +10,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const p = { ...defaults, step: 0, boundary: 0, L: 2 };
@@ -200,7 +200,7 @@ export default p2Lecture("3.2.1", {
         p.L < p.c / (2 * p.f)
           ? "间距小于半波长，沿此方向采样可避免单频空间混叠。"
           : "间距达到或超过半波长，应检查空间混叠。",
-      (p) => answerCurve(p, "L", "传感器间距", "m", (q) => (2 * Math.PI * q.f * q.L) / q.c, "k*x"),
+      (p) => e321(p),
     ),
   ],
   answers: [

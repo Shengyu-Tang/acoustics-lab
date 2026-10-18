@@ -1,3 +1,4 @@
+import { e332 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { controlVolume, controlVolumeDetail } from "../../plot/p2Diagrams";
@@ -121,15 +121,7 @@ export default p2Lecture("3.3.2", {
         p.wLeft > p.wRight
           ? "该瞬间能量增加；若为无耗散稳态，时间平均净流入应为零。"
           : "该瞬间无正积累；应核对两个表面的正方向。",
-      (p) =>
-        answerCurve(
-          p,
-          "wLeft",
-          "左面能流密度",
-          "W/m²",
-          (q) => (q.wLeft - q.wRight) / q.L,
-          "(x-wRight)/L",
-        ),
+      (p) => e332(p),
     ),
   ],
   answers: [

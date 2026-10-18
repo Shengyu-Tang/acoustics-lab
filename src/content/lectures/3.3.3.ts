@@ -1,3 +1,4 @@
+import { e333 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { meanIntensity, powerLevel } from "../../physics/chapter3";
@@ -148,15 +148,7 @@ export default p2Lecture("3.3.3", {
         ),
       ],
       () => "必须测出相位才能确定有功声强，不能仅相乘两个幅值。",
-      (p) =>
-        answerCurve(
-          p,
-          "pa",
-          "声压峰值",
-          "Pa",
-          (q) => meanIntensity(q.pa, q.ua, (q.phase * Math.PI) / 180),
-          "x*ua*cos(phase*pi/180)/2",
-        ),
+      (p) => e333(p),
     ),
   ],
   answers: [

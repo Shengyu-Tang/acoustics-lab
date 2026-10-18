@@ -1,3 +1,4 @@
+import { e344 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const p = { ...defaults };
@@ -175,15 +175,7 @@ export default p2Lecture("3.4.4", {
         ),
       ],
       () => "该估算限于行波；有明显反射时需要先分离双向波或直接测声强。",
-      (p) =>
-        answerCurve(
-          p,
-          "pa",
-          "声压峰值",
-          "Pa",
-          (q) => q.pa ** 2 / (2 * q.rho * q.c),
-          "x.^2/(2*rho*c)",
-        ),
+      (p) => e344(p),
     ),
   ],
   answers: [

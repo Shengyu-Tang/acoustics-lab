@@ -1,3 +1,4 @@
+import { e322 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -7,7 +8,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { potential } from "../../physics/chapter3";
@@ -136,15 +136,7 @@ export default p2Lecture("3.2.2", {
         ),
       ],
       () => "求导时保留相位；若改成球面波，还需要近场的半径导数项。",
-      (p) =>
-        answerCurve(
-          p,
-          "pa",
-          "声压峰值",
-          "Pa",
-          (q) => q.pa / (q.rho * 2 * Math.PI * q.f),
-          "x/(rho*w)",
-        ),
+      (p) => e322(p),
     ),
   ],
   answers: [

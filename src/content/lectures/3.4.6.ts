@@ -1,3 +1,4 @@
+import { e346 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -9,7 +10,6 @@ import {
   points,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 import { pressureLevel, powerLevel, sumLevels } from "../../physics/chapter3";
@@ -168,15 +168,7 @@ export default p2Lecture("3.4.6", {
         ),
       ],
       () => "相同独立声源数翻倍增加约 3 dB；相干时结果取决于相位，不能沿用此结论。",
-      (p) =>
-        answerCurve(
-          p,
-          "n",
-          "声源数（连续延拓）",
-          "—",
-          (q) => (q.n === 0 ? 0 : 20e-6 * 10 ** (q.sourceLevel / 20) * Math.sqrt(q.n)),
-          "20e-6*10^(sourceLevel/20)*sqrt(x)",
-        ),
+      (p) => e346(p),
     ),
   ],
   answers: [

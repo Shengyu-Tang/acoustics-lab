@@ -1,3 +1,4 @@
+import { e341 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -8,7 +9,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const B = parameter("B", "反向波声压峰值", "B", "Pa", 0, 10, 0.01);
@@ -134,15 +134,7 @@ export default p2Lecture("3.4.1", {
         ),
       ],
       () => "净能量由两列行波声强之差决定，驻波起伏不能单独表示净传能。",
-      (p) =>
-        answerCurve(
-          p,
-          "pa",
-          "正向波峰值 A",
-          "Pa",
-          (q) => (q.pa ** 2 - q.B ** 2) / (2 * q.rho * q.c),
-          "(x.^2-B^2)/(2*rho*c)",
-        ),
+      (p) => e341(p),
     ),
   ],
   answers: [

@@ -1,3 +1,4 @@
+import { e343 } from "../../plot/p2Examples";
 import {
   p2Lecture,
   defaults,
@@ -7,7 +8,6 @@ import {
   curve,
   example,
   ask,
-  answerCurve,
   engineering,
 } from "../p2";
 const p = { ...defaults };
@@ -152,7 +152,7 @@ export default p2Lecture("3.4.3", {
         ),
       ],
       () => "局部振速很小，等相位面仍按介质声速传播；校准还须确认无明显反向波。",
-      (p) => answerCurve(p, "pa", "声压峰值", "Pa", (q) => q.pa / (q.rho * q.c), "x/(rho*c)"),
+      (p) => e343(p),
     ),
   ],
   answers: [
