@@ -436,6 +436,7 @@ try {
     await page.screenshot({ path: "outputs/browser-failure.png" }).catch(() => {});
   throw error;
 } finally {
-  await context?.close();
   server.kill();
+  await Promise.race([context?.close(), new Promise((resolve) => setTimeout(resolve, 5000))]);
 }
+process.exit(process.exitCode ?? 0);

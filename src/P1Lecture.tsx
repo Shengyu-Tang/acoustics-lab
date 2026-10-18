@@ -119,14 +119,24 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
         ))}
         <fieldset className="parameter-panel">
           <legend>图形参数（SI 单位，作用于本讲全部图）</legend>
-          {l.parameters.map((d) => (
-            <Parameter
-              key={d.key}
-              definition={d}
-              value={p[d.key]}
-              onChange={(v) => setParameter(d.key, v)}
-            />
-          ))}
+          {l.parameters.map((original) => {
+            const d =
+              l.controls === "damping" && original.key === "value"
+                ? {
+                    ...original,
+                    symbol: ["Rₘ", "δ", "Qₘ"][p.input],
+                    unit: ["kg/s", "s⁻¹", "—"][p.input],
+                  }
+                : original;
+            return (
+              <Parameter
+                key={d.key}
+                definition={d}
+                value={p[d.key]}
+                onChange={(v) => setParameter(d.key, v)}
+              />
+            );
+          })}
           {l.controls === "damping" && (
             <label>
               阻尼输入方式

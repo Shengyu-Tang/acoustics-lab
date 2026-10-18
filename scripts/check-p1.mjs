@@ -40,6 +40,16 @@ for (const x0 of [-0.01, 0, 0.01]) {
   near(all.freeMotion(u, T), x0);
 }
 near(all.freeMotion(p, c.Td), p.x0 * Math.exp(-c.logDecrement));
+for (const Q of [1.7, 5, 10, 30]) {
+  const w = 40,
+    delta = w / (2 * Q),
+    T0 = (2 * Math.PI) / w,
+    Td = (2 * Math.PI) / Math.sqrt(w * w - delta * delta),
+    tp = Math.PI / delta;
+  near(Math.exp(-delta * tp), Math.exp(-Math.PI));
+  near(tp / T0, Q);
+  assert.ok(Math.abs(Math.round(tp / Td) - Math.round(Q)) <= 1);
+}
 for (let i = 0; i < 1000; i++) {
   const t = i / 999,
     A = 0.004,
@@ -84,6 +94,7 @@ const references = {
   "1.1.2": [0.12, 3.6, 0.0108],
   "1.1.3": [300, 7.639320225002102],
   "1.1.4": [6.353751267, 0.4, 0.39346886],
+  "1.1.5": [397.4921383, 19.87460691, 0.05031546054],
 };
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);
