@@ -319,6 +319,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
               )}]; model_values=model_values(isfinite(model_values)); if ~isempty(model_values), if strcmp(get(gca,'YScale'),'log'), positive=model_values(model_values>0); if ~isempty(positive),ylim([min(positive)*.5 max(positive)*2]);end; else, lo=min(0,min(model_values)); hi=max(0,max(model_values)); pad=max((hi-lo)*${modelHeader ? String(0.3 + 0.2 * (p.annotations?.filter((a) => a.axis === "x").length ?? 0)) : p.legend === false || p.series?.every((s) => s.kind === "bar") ? ".08" : ".4"},1e-12); ylim([lo-pad hi+pad]);end;end;`,
         ...(p.integerX ? ["xl=xlim; xticks(ceil(xl(1)):floor(xl(2)));"] : []),
       );
+    if (p.equalAspect) out.push("daspect([1 1 1]);");
     // Model headers occupy the left of the reserved top strip; keep the legend
     // in its clear right-hand area rather than letting MATLAB cover readouts.
     if (modelHeader && p.legend !== false && plotSeries.some((s) => s.legend !== false))

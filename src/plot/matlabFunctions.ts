@@ -137,11 +137,59 @@ end
 function lim=p2NiceLimits(lo,hi)
 raw=(hi-lo)/5;decade=10^floor(log10(raw));steps=[1 2 2.5 5 10]*decade;
 counts=ceil(hi./steps-1e-10)-floor(lo./steps+1e-10)+1;
-scores=abs(counts-6)+100*(counts<4 | counts>8);[~,ii]=min(scores);st=steps(ii);
+scores=abs(counts-6)+100*(counts<4 | counts>8);[score,ii]=min(scores);exact=abs(lo./steps-round(lo./steps))<1e-9 & abs(hi./steps-round(hi./steps))<1e-9;jj=find(scores==score & exact,1);if ~isempty(jj),ii=jj;end;st=steps(ii);
 lim=[floor(lo/st+1e-10)*st ceil(hi/st-1e-10)*st];
 end
 function L=p2SourceLevel(n,L1)
 L=L1+10*log10(max(n,eps));L(n<=0)=NaN;
+end
+function [R,D,ct]=p3Oblique(Z1,Z2,c1,c2,theta)
+theta=min(theta,89.999999);st=c2/c1*sind(theta);ct=conj(sqrt(complex(1-st.^2)));
+R=(Z2*cosd(theta)-Z1*ct)./(Z2*cosd(theta)+Z1*ct);D=1+R;
+end
+function [th0,thc]=p3Angles(Z1,Z2,c1,c2)
+q=c2/c1;s2=(Z1^2-Z2^2)/(Z1^2*q^2-Z2^2);th0=NaN;thc=NaN;
+if q>1,thc=asind(1/q);end
+if s2>=0&&s2<1&&s2*q*q<1,th0=asind(sqrt(s2));end
+end
+function c=p3Critical(c1,c2)
+if c2>c1,c=asind(c1/c2);else,c=NaN;end
+end
+function t=p3Refraction(c1,c2,theta)
+s=c2/c1*sind(theta);if s<=1,t=asind(s);else,t=NaN;end
+end
+function a=p3ModeAngle(mode,c,h,f)
+if f>mode*c/(2*h),a=asind(mode*c/(2*h*f));else,a=NaN;end
+end
+function b=p3Brewster(Z1,Z2,c1,c2)
+[b,~]=p3Angles(Z1,Z2,c1,c2);
+end
+function t=p3Power(Z1,Z2,c1,c2,theta)
+[R,D,ct]=p3Oblique(Z1,Z2,c1,c2,theta);t=Z1/Z2*abs(D).^2.*real(ct)./cosd(min(theta,89.999999));
+end
+function y=p3Source(x,source,offset,width,a1,a2,a3)
+if source==0,y=ones(size(x));elseif source==1,y=exp(-((x-offset)/width).^2);else,y=1+a1*cos(pi*x)+a2*cos(2*pi*x)+a3*cos(3*pi*x);end
+end
+function co=p3Coefficients(source,offset,width,a1,a2,a3)
+if source==0,co=[1 0 0 0 0 0];elseif source==2,co=[1 a1 a2 a3 0 0];else
+x=linspace(0,1,401);v=p3Source(x,source,offset,width,a1,a2,a3);co=zeros(1,6);
+for nn=0:5,co(nn+1)=trapz(x,v.*cos(nn*pi*x))*(1+(nn>0));end
+end
+end
+function v=p3GuideSpeed(f,n,h,c,group)
+fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=NaN;
+end
+function d=p3Depth(theta,c1,c2,f)
+s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function R=p3Boundary(boundary)
+Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);
+end
+function pts=p3Rays(radius,source,launch)
+v=[cosd(launch) sind(launch)];pt=[radius*source 0];pts=pt;
+for ii=1:16
+ d=dot(pt,v);L=-d+sqrt(max(0,d^2+radius^2-dot(pt,pt)));pt=pt+L*v;pt=radius*pt/norm(pt);pts=[pts;pt];v=v-2*dot(v,pt/radius)*pt/radius;v=v/norm(v);
+end
 end
 function lim=currentAmplitudeLimits(values,bars,logarithmic)
 values=values(isfinite(values));

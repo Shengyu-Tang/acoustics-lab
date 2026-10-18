@@ -54,6 +54,7 @@ export type P1Lecture = {
   boundaryEquations?: string[];
   materials?: { name: string; E: number; rho: number }[];
   interactive?: {
+    presets?: { name: string; values: Values }[];
     selectors?: { key: string; label: string; options: string[] }[];
     toggles?: { key: string; label: string }[];
     steps?: { tex: string; text: string }[];

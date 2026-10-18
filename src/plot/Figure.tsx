@@ -189,8 +189,8 @@ export function Axes({
       ? panel
       : { ...panel, xlim: xt.limits, ylim: yt.limits, rightLim: rt.limits };
   const W = width,
-    H = height,
-    L = 62,
+    H = height;
+  let L = 62,
     AW = W - L - (p.kind === "polar" ? 130 : p.field || p.rightLabel ? 88 : 24);
   const labels = p.kind === "polar" ? [] : labelLanes(p, L, AW, scale(p.xlim, p.xscale === "log"));
   const legendSeries = (p.series ?? [])
@@ -211,6 +211,10 @@ export function Axes({
       ? 52
       : legendTop + (p.legend !== false && legendSeries.length ? legendH + 6 : 0);
   const AH = p.kind === "polar" ? Math.min(AW, H - T - 66) : H - T - 66;
+  if (p.equalAspect) {
+    AW = Math.min(AW, (AH * (p.xlim[1] - p.xlim[0])) / (p.ylim[1] - p.ylim[0]));
+    L = (W - AW) / 2;
+  }
   const layout = { W, H, L, T, AW, AH };
   const id = useId().replaceAll(":", ""),
     xs = scale(p.xlim, p.xscale === "log"),

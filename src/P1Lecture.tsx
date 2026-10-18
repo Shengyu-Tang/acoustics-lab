@@ -94,6 +94,21 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
       </section>
       <section id="simulation">
         <h2>仿真</h2>
+        {l.interactive?.presets && (
+          <div className="parameter-actions">
+            {l.interactive.presets.map((preset) => (
+              <button
+                key={preset.name}
+                onClick={() => {
+                  setP((p) => ({ ...p, ...preset.values }));
+                  setT(0);
+                }}
+              >
+                {preset.name}
+              </button>
+            ))}
+          </div>
+        )}
         {l.interactive?.levels && (
           <fieldset className="parameter-panel">
             <legend>声级双向换算（修改任一侧，另一侧重算）</legend>

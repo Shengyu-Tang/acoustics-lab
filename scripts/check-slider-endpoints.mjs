@@ -92,6 +92,10 @@ try {
         }
         if (id === "2.1" && i === 4)
           await page.getByRole("combobox", { name: "右端边界条件", exact: true }).selectOption("1");
+        if (id === "3.10.2" && i >= 6)
+          await page
+            .getByRole("combobox", { name: "源分布", exact: true })
+            .selectOption(i < 8 ? "1" : "2");
         const slider = sliders.nth(i);
         await slider.scrollIntoViewIfNeeded();
         const label = await slider.getAttribute("aria-label");

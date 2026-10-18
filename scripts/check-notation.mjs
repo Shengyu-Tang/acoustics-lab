@@ -36,7 +36,7 @@ function checkFigureText(text, name) {
     .replace(/\\[A-Za-z]+/g, "")
     .replace(/\$[^$]*\$/g, "")
     .replace(
-      /\b(?:Pa|MPa|GPa|Hz|kHz|kg|mm|cm|rad|dB|Re|Im|sin|cos|tan|log|ln|lg|exp|max|min|rms|dx|dz|dt|kL|Mq|rho)\b/g,
+      /\b(?:Pa|MPa|GPa|Hz|kHz|kg|mm|cm|rad|dB|Re|Im|sin|cos|tan|log|ln|lg|exp|max|min|rms|dx|dz|dt|kr|kL|Mq|rho)\b/g,
       "",
     )
     .replace(/ρSL|ABCDEFGH/g, "")

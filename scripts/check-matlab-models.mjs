@@ -6,7 +6,8 @@ import { spawn } from "node:child_process";
 import { build, stop } from "esbuild";
 import { pathToFileURL } from "node:url";
 const review = process.argv.includes("--review-sliders");
-const p2 = process.argv.includes("--batch=P2");
+const p3 = process.argv.includes("--batch=P3");
+const p2 = process.argv.includes("--batch=P2") || p3;
 const figuresOnly = process.argv.includes("--figures-only");
 const selected = process.argv.find((a) => a.startsWith("--filter="))?.slice(9);
 const customOut = process.argv.find((a) => a.startsWith("--out="))?.slice(6);
@@ -19,9 +20,9 @@ const root = process.cwd(),
     customOut ??
       (review
         ? `outputs/slider-matlab/${p2 ? "P2" : "P1"}`
-        : `specs/redesign/matlab-check/${p2 ? "P2" : "P1-fix"}`),
+        : `specs/redesign/matlab-check/${p3 ? "P3" : p2 ? "P2" : "P1-fix"}`),
   ),
-  work = path.resolve(`outputs/matlab-models${p2 ? "-P2" : ""}`);
+  work = path.resolve(`outputs/matlab-models${p3 ? "-P3" : p2 ? "-P2" : ""}`);
 assert.ok(
   !path.relative(root, out).startsWith("..") && !path.isAbsolute(path.relative(root, out)),
   "MATLAB output stays inside clone",
@@ -37,7 +38,11 @@ await build({
       fs
         .readdirSync("src/content/lectures")
         .filter((f) =>
-          p2 ? f.startsWith("3.") : !f.startsWith("3.") && !["1.2.4.ts", "1.2.5.ts"].includes(f),
+          p3
+            ? /^3\.(6|7|8|9|10)\./.test(f)
+            : p2
+              ? /^3\.[1-5]\./.test(f)
+              : !f.startsWith("3.") && !["1.2.4.ts", "1.2.5.ts"].includes(f),
         )
         .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
         .join("\n") +
@@ -112,47 +117,69 @@ const variantP2 = (p) =>
     ]),
   );
 const variant = (p) =>
-  p2
-    ? variantP2(p)
-    : Object.fromEntries(
-        Object.entries(p).map(([k, v]) => [
-          k,
-          v *
-            ({
-              M: 1.2,
-              D: 0.85,
-              Rm: 1.15,
-              F0: 1.1,
-              x0: 0.8,
-              v0: 1.2,
-              A: 1.2,
-              zeta: 1.1,
-              Qm: 1.1,
-              value: 1.25,
-              T: 1.2,
-              mu: 1.1,
-              L: 0.9,
-              height: 0.8,
-              pluck: 1.1,
-              E: 0.9,
-              rho: 1.05,
-              S: 1.1,
-              tipMass: 1.2,
-              sigma: 1.1,
-              gradient: 0.8,
-              target: 1.05,
-              measured: 1.1,
-              tObs: 1.2,
-              n: 1.05,
-              limit: 0.9,
-              pulseCycles: 1.25,
-              gapCycles: 0.9,
-              f1: 0.98,
-              f2: 1.02,
-              velocity: 1.2,
-            }[k] ?? 1),
+  p3
+    ? Object.fromEntries(
+        Object.entries(p).map(([key, value]) => [
+          key,
+          { mode: 1, boundary: 1, scenario: 1, sourceType: 1 }[key] ??
+            value *
+              ({
+                c: 0.98,
+                c2: 1.02,
+                f: 1.08,
+                theta: 0.95,
+                res: 1.1,
+                react: 0.9,
+                Z1: 1.1,
+                Z2: 1.05,
+                h: 1.05,
+                source: 0.98,
+                launch: 0.95,
+                radius: 1.05,
+              }[key] ?? 1.1),
         ]),
-      );
+      )
+    : p2
+      ? variantP2(p)
+      : Object.fromEntries(
+          Object.entries(p).map(([k, v]) => [
+            k,
+            v *
+              ({
+                M: 1.2,
+                D: 0.85,
+                Rm: 1.15,
+                F0: 1.1,
+                x0: 0.8,
+                v0: 1.2,
+                A: 1.2,
+                zeta: 1.1,
+                Qm: 1.1,
+                value: 1.25,
+                T: 1.2,
+                mu: 1.1,
+                L: 0.9,
+                height: 0.8,
+                pluck: 1.1,
+                E: 0.9,
+                rho: 1.05,
+                S: 1.1,
+                tipMass: 1.2,
+                sigma: 1.1,
+                gradient: 0.8,
+                target: 1.05,
+                measured: 1.1,
+                tObs: 1.2,
+                n: 1.05,
+                limit: 0.9,
+                pulseCycles: 1.25,
+                gapCycles: 0.9,
+                f1: 0.98,
+                f2: 1.02,
+                velocity: 1.2,
+              }[k] ?? 1),
+          ]),
+        );
 function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
   if (figuresOnly && (name.includes("-E") || ["A-1", "B-1"].includes(name))) return;
   if (selected && !selected.split(",").some((id) => name.includes(id))) return;
@@ -314,7 +341,14 @@ async function runJob(job, slot) {
   const result = await new Promise((resolve, reject) => {
     const child = spawn(
       "C:\\Program Files\\MATLAB\\R2024b\\bin\\matlab.exe",
-      ["-singleCompThread", "-sd", work, "-batch", `run('${mq(script)}')`],
+      [
+        "-singleCompThread",
+        ...(process.argv.includes("--no-jvm") ? ["-nojvm"] : []),
+        "-sd",
+        work,
+        "-batch",
+        `run('${mq(script)}')`,
+      ],
       {
         cwd: work,
         windowsHide: true,
@@ -440,8 +474,13 @@ async function runJob(job, slot) {
   console.log(`PASS ${job.filename}: ${count} values, max error ${maxError.toExponential(2)}`);
 }
 const failures = [];
+const workers = Number(process.argv.find((a) => a.startsWith("--workers="))?.slice(10) ?? 2);
+assert.ok(
+  Number.isInteger(workers) && workers >= 1 && workers <= 2,
+  "one or two independent MATLAB workers",
+);
 await Promise.all(
-  Array.from({ length: 2 }, async (_, slot) => {
+  Array.from({ length: workers }, async (_, slot) => {
     while (pending.length) {
       const job = pending.shift();
       try {
@@ -470,7 +509,7 @@ else if (selected || changedOnly) {
     JSON.stringify([...merged.values()], null, 2) + "\n",
   );
 }
-if (p2 && !failures.length) {
+if (p2 && !failures.length && !selected && !changedOnly && !figuresOnly) {
   const complete = JSON.parse(fs.readFileSync(path.join(out, "results.json"), "utf8"));
   for (const job of jobs) {
     const result = complete.find((r) => r.filename === job.filename);

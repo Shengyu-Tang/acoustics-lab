@@ -4,6 +4,14 @@ import { labelLanes, bestLegend, textWidth } from "../src/plot/layout.ts";
 
 for (const [limits, expected] of [
   [
+    [-5, 5],
+    [-5, -2.5, 0, 2.5, 5],
+  ],
+  [
+    [0, 90],
+    [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
+  ],
+  [
     [0, 79.08],
     [0, 20, 40, 60, 80],
   ],

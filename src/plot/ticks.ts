@@ -30,6 +30,16 @@ export function axisTicks(input: [number, number], log = false): AxisTicks {
     }
     return { limits: [10 ** first, 10 ** last], values, minor, exponent: 0, step: 0 };
   }
+  // Incidence angles end at grazing (90 degrees). Retain that physical endpoint
+  // rather than adding an empty, unphysical 90–100 degree strip.
+  if (lo === 0 && hi === 90)
+    return {
+      limits: [0, 90],
+      values: Array.from({ length: 10 }, (_, i) => 10 * i),
+      minor: [],
+      exponent: 0,
+      step: 10,
+    };
   const raw = (hi - lo) / 5,
     decade = 10 ** Math.floor(Math.log10(raw));
   const candidates = [1, 2, 2.5, 5, 10].map((m) => m * decade);
@@ -37,9 +47,14 @@ export function axisTicks(input: [number, number], log = false): AxisTicks {
     (best, s) => {
       const count = Math.ceil(hi / s - 1e-10) - Math.floor(lo / s + 1e-10) + 1;
       const score = Math.abs(count - 6) + (count < 4 || count > 8 ? 100 : 0);
-      return score < best.score ? { step: s, score } : best;
+      const exact =
+        Math.abs(lo / s - Math.round(lo / s)) < 1e-9 &&
+        Math.abs(hi / s - Math.round(hi / s)) < 1e-9;
+      return score < best.score || (score === best.score && exact && !best.exact)
+        ? { step: s, score, exact }
+        : best;
     },
-    { step: candidates[0], score: Infinity },
+    { step: candidates[0], score: Infinity, exact: false },
   ).step;
   const start = Math.floor(lo / step + 1e-10),
     end = Math.ceil(hi / step - 1e-10);

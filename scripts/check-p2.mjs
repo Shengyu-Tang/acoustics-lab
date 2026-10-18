@@ -1,7 +1,7 @@
 ﻿import fs from "node:fs";
 import assert from "node:assert/strict";
 import { build, stop } from "esbuild";
-const files = fs.readdirSync("src/content/lectures").filter((f) => f.startsWith("3."));
+const files = fs.readdirSync("src/content/lectures").filter((f) => /^3\.[1-5]\./.test(f));
 fs.mkdirSync("outputs", { recursive: true });
 await build({
   stdin: {

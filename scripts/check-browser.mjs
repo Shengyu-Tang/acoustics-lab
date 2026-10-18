@@ -393,7 +393,7 @@ try {
   await page.getByRole("button", { name: "导出 MATLAB 计算脚本", exact: true }).click();
   await (await bandwidthDownload).saveAs("outputs/downloads/bandwidth-B.m");
   assert.ok(fs.readFileSync("outputs/downloads/bandwidth-B.m", "utf8").includes("velocity = 0.4;"));
-  await page.goto("http://127.0.0.1:4174/#/lab?topic=3.10.5");
+  await page.goto("http://127.0.0.1:4174/#/lab?topic=3.10.4");
   await page.locator(".matlab-figure image").first().waitFor();
   const raster = await page
     .locator(".matlab-figure image")
@@ -410,7 +410,7 @@ try {
     });
   assert.ok(raster.width >= 160 && raster.height >= 80);
   assert.equal(raster.rendering, "auto");
-  await page.screenshot({ path: "outputs/field-3.10.5.png", fullPage: true });
+  await page.screenshot({ path: "outputs/field-3.10.4.png", fullPage: true });
   await page.close();
   page = await context.newPage();
   await page.setViewportSize({ width: 1440, height: 900 });
