@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, parameter, fmt, type Values } from "../p1";
 import { rodSpeed, loadedRodRoots } from "../../physics/chapter2";
 import { panel, extent, working, segment, arrow } from "../../plot/p1Helpers";
@@ -60,7 +61,7 @@ const graph = (p: Values): Panel => {
     responseNote: "方程含极点；显示交点附近，超出部分省略。",
   };
 };
-export default lecture(
+const completedLecture = lecture(
   "2.3",
   [
     "均匀指材料参数和截面沿棒长不变；细棒指截面最大线度远小于纵波波长。该近似使同一截面纵向振动状态相同，并可忽略横向振动和其他应力分量。",
@@ -275,3 +276,5 @@ export default lecture(
     },
   },
 );
+
+export default completeExamples(completedLecture);

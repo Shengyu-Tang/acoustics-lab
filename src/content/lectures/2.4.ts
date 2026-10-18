@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, parameter, fmt } from "../p1";
 import { rodSpeed, rodFrequency, youngFromFrequency } from "../../physics/chapter2";
 import { panel, line, extent, working, endSeries } from "../../plot/p1Helpers";
@@ -9,7 +10,7 @@ const E = parameter("E", "杨氏模量", "E", "GPa", 1, 250, 1),
   force = parameter("F0", "端点激励力幅值", "F₀", "N", 1, 100, 1),
   measured = parameter("measured", "实测自由棒基频", "f₁", "Hz", 500, 10000, 10);
 const defaults = { E: 200, rho: 7850, L: 1, S: 0.0001, F0: 10, measured: 2500 };
-export default lecture(
+const completedLecture = lecture(
   "2.4",
   [
     "撤去持续激励后，初始扰动激发各简正振型。两端自由细棒的非零固有频率 $f_n = nc/(2L)$，位移振型为 $\\cos(n\\pi z/L)$；$n=0$ 是刚体平移而非振动基频。",
@@ -48,8 +49,7 @@ export default lecture(
       {
         number: "2.4-1",
         independentOf: ["S", "F0"],
-        dimensionlessComparison:
-          "单位幅值的振型比较：自由模态与截面积、激励力无关。",
+        dimensionlessComparison: "单位幅值的振型比较：自由模态与截面积、激励力无关。",
         title: "两端自由细棒前三阶位移振型",
         rows: 3,
         cols: 1,
@@ -194,3 +194,5 @@ export default lecture(
     },
   },
 );
+
+export default completeExamples(completedLecture);

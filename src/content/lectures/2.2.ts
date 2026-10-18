@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, parameter, fmt } from "../p1";
 import {
   stringSpeed,
@@ -12,7 +13,7 @@ const tension = parameter("T", "张力", "T", "N", 20, 300, 1),
   density = parameter("mu", "线密度", "ρ_l", "kg/m", 0.0001, 0.005, 0.0001),
   length = parameter("L", "有效弦长", "L", "m", 0.3, 1.5, 0.01);
 const defaults = { T: 70, mu: 0.0004, L: 0.65, height: 0.004, pluck: 0.3, F0: 0.05, target: 440 };
-export default lecture(
+const completedLecture = lecture(
   "2.2",
   [
     "自由振动是撤去持续外力后，由初始位移和速度激发的振动，可分解为各阶简正振动。",
@@ -285,3 +286,5 @@ export default lecture(
     },
   },
 );
+
+export default completeExamples(completedLecture);

@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { lecture, parameter, fmt, type Values } from "../p1";
 import { stringSpeed, stringElement } from "../../physics/chapter2";
 import { panel, line, extent, working, arrow, segment } from "../../plot/p1Helpers";
@@ -6,7 +7,7 @@ const tension = parameter("T", "张力", "T", "N", 20, 300, 1),
   density = parameter("mu", "线密度", "ρ_l", "kg/m", 0.0001, 0.005, 0.0001),
   length = parameter("L", "弦长", "L", "m", 0.3, 1.5, 0.01);
 const defaults = { T: 70, mu: 0.0004, L: 0.65, height: 0.015, F0: 0.05, boundary: 0 };
-export default lecture(
+const completedLecture = lecture(
   "2.1",
   [
     "小振幅保证弦斜率远小于 1，$\\sin\\theta \\approx \\tan\\theta \\approx \\partial y/\\partial x$、$\\cos\\theta \\approx 1$，张力近似不变且运动主要为横向；超出此条件时横纵向耦合及非线性张力变化不可忽略。",
@@ -230,3 +231,5 @@ export default lecture(
     },
   },
 );
+
+export default completeExamples(completedLecture);
