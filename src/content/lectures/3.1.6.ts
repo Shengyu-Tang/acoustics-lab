@@ -14,9 +14,9 @@ import {
 } from "../p2";
 const P0 = parameter("P0", "静态压强", "P₀", "Pa", 80000, 150000, 100),
   gamma = parameter("gamma", "比热比", "γ", "—", 1.1, 1.67, 0.01),
-  span = parameter("span", "密度比放大范围", "ε", "—", 0.0001, 0.2, 0.0001),
+  span = parameter("span", "密度比观察范围", "ε", "—", 0.0001, 0.6, 0.0001),
   rho = parameter("rho", "静态密度", "ρ₀", "kg/m³", 0.5, 2, 0.01);
-const p = { ...defaults, P0: 101325, gamma: 1.4, span: 0.05, s: 0.001 };
+const p = { ...defaults, P0: 101325, gamma: 1.4, span: 0.5, s: 0.001 };
 const s = parameter("s", "压缩量", "s", "—", 0.00001, 0.05, 0.00001);
 export default p2Lecture("3.1.6", {
   defaults: p,

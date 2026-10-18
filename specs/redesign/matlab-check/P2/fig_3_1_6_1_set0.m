@@ -7,7 +7,7 @@ f = 1000; % 频率 (Hz)
 pa = 1; % 声压峰值 (Pa)
 P0 = 101325; % 静态压强 (Pa)
 gamma = 1.4; % 比热比 (—)
-span = 0.05; % 密度比放大范围 (—)
+span = 0.5; % 密度比观察范围 (—)
 s = 0.001; % s（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
@@ -32,8 +32,8 @@ y=0;
 model_x{1,3}=x; model_y{1,3}=y;
 plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','平衡点');
 set(gca,'XScale','linear','YScale','linear');
-xlim([-0.06 0.06]); ylim([-15000 15000]);
-xticks([-0.06 -0.04 -0.02 0 0.02 0.04 0.06]); yticks([-15000 -10000 -5000 0 5000 10000 15000]);
+xlim([-0.6 0.6]); ylim([-150000 150000]);
+xticks([-0.6 -0.4 -0.2 0 0.2 0.4 0.6]); yticks([-150000 -100000 -50000 0 50000 100000 150000]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('压缩量 ρ′/ρ_{0}（—）','Interpreter','tex'); ylabel('声压 p (Pa)','Interpreter','tex');
 title('平衡点附近：绝热曲线与切线','Interpreter','tex','FontSize',12);
@@ -51,8 +51,8 @@ y=100*abs(((1+x).^gamma-1-gamma*x)./max(eps,(1+x).^gamma-1));
 model_x{2,1}=x; model_y{2,1}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','误差');
 set(gca,'XScale','linear','YScale','linear');
-xlim([0 0.05]); ylim([0 1.5]);
-xticks([0 0.01 0.02 0.03 0.04 0.05]); yticks([0 0.25 0.5 0.75 1 1.25 1.5]);
+xlim([0 0.5]); ylim([0 15]);
+xticks([0 0.1 0.2 0.3 0.4 0.5]); yticks([0 2.5 5 7.5 10 12.5 15]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('压缩量 ρ′/ρ_{0}（—）','Interpreter','tex'); ylabel('相对误差 (%)','Interpreter','tex');
 title('线性化相对声压误差','Interpreter','tex','FontSize',12);
