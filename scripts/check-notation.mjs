@@ -30,6 +30,19 @@ const { renderToStaticMarkup: render } = await import("react-dom/server");
 const lectures = files.map((_, i) => all[`l${i}`]);
 let strings = 0;
 const issues = [];
+function checkFigureText(text, name) {
+  // Units, TeX commands, variable symbols and standard math operators are allowed.
+  const plain = text
+    .replace(/\\[A-Za-z]+/g, "")
+    .replace(/\$[^$]*\$/g, "")
+    .replace(
+      /\b(?:Pa|MPa|GPa|Hz|kHz|kg|mm|cm|rad|dB|Re|Im|sin|cos|tan|log|ln|lg|exp|max|min|rms|dx|dz|dt|kL|Mq|rho)\b/g,
+      "",
+    )
+    .replace(/ρSL|ABCDEFGH/g, "")
+    .replace(/[_][A-Za-z]+/g, "");
+  if (/[A-Za-z]{2,}/.test(plain)) issues.push(`${name}: English figure text: ${text}`);
+}
 function checkText(text, name) {
   const html = render(h(all.MathProse, { text }));
   assert.ok(!/[\u2080-\u209c]/.test(html), `${name}: unconverted subscript ${text}`);
@@ -55,7 +68,21 @@ for (const l of lectures) {
   checkText(l.engineering.text, `${l.id} engineering`);
   for (const f of l.figures) {
     checkText(f.title, `${l.id} caption`);
+    checkFigureText(f.title, `${f.number} caption`);
     for (const panel of f.plot(p, l.defaults ? 0 : false)) {
+      [
+        panel.title,
+        panel.xlabel,
+        panel.ylabel,
+        panel.rightLabel,
+        panel.field?.label,
+        ...(panel.series ?? []).map((s) => s.name),
+        ...(panel.textLabels ?? []).map((s) => s.text),
+        ...(panel.xtickLabels ?? []).map((s) => s.label),
+        ...(panel.ytickLabels ?? []).map((s) => s.label),
+      ]
+        .filter(Boolean)
+        .forEach((text) => checkFigureText(text, f.number));
       const svg = render(h("svg", null, h(all.Axes, { panel })));
       assert.ok(!/(?:NaN|Infinity)/.test(svg), `${f.number}: finite SVG attributes`);
       assert.ok(

@@ -1,0 +1,1809 @@
+{
+  "sourceCommit": "5142669",
+  "testedHead": "47870c8",
+  "sourceUnchangedSinceReference": true,
+  "failures": [
+    "1.1.1-1[2] default left: line occupancy 0.43% < 40%",
+    "1.1.1-1[2] M=0.1 left: line occupancy 0.34% < 40%",
+    "1.1.1-1[2] M=50 left: line occupancy 1.30% < 40%",
+    "1.1.1-1[2] D=100 left: line occupancy 0.82% < 40%",
+    "1.1.1-1[2] D=1000000 left: line occupancy 0.33% < 40%",
+    "1.1.1-1[2] x0=-0.02 left: line occupancy 1.36% < 40%",
+    "1.1.1-1[2] x0=0.02 left: line occupancy 1.36% < 40%",
+    "1.1.1-1[2] v0=-1 left: line occupancy 3.35% < 40%",
+    "1.1.1-1[2] v0=1 left: line occupancy 3.35% < 40%",
+    "1.1.2-1[1] default left: line occupancy 10.00% < 40%",
+    "1.1.2-1[2] default left: line occupancy 0.08% < 40%",
+    "1.1.2-1[3] default left: line occupancy 0.00% < 40%",
+    "1.1.2-1[1] M=0.1 left: line occupancy 10.00% < 40%",
+    "1.1.2-1[2] M=0.1 left: line occupancy 0.31% < 40%",
+    "1.1.2-1[3] M=0.1 left: line occupancy 0.01% < 40%",
+    "1.1.2-1[1] M=50 left: line occupancy 9.28% < 40%",
+    "1.1.2-1[2] M=50 left: line occupancy 0.01% < 40%",
+    "1.1.2-1[3] M=50 left: line occupancy 0.00% < 40%",
+    "1.1.2-1[1] D=100 left: line occupancy 10.00% < 40%",
+    "1.1.2-1[2] D=100 left: line occupancy 0.02% < 40%",
+    "1.1.2-1[3] D=100 left: line occupancy 0.00% < 40%",
+    "1.1.2-1[1] D=1000000 left: line occupancy 10.00% < 40%",
+    "1.1.2-1[2] D=1000000 left: line occupancy 2.18% < 40%",
+    "1.1.2-1[3] D=1000000 left: line occupancy 0.67% < 40%",
+    "1.1.2-1[1] A=0.001 left: line occupancy 2.50% < 40%",
+    "1.1.2-1[2] A=0.001 left: line occupancy 0.02% < 40%",
+    "1.1.2-1[3] A=0.001 left: line occupancy 0.00% < 40%",
+    "1.1.2-1[2] A=0.02 left: line occupancy 0.40% < 40%",
+    "1.1.2-1[3] A=0.02 left: line occupancy 0.00% < 40%",
+    "1.1.2-3[1] default left: line occupancy 0.00% < 40%",
+    "1.1.2-3[1] M=0.1 left: line occupancy 0.00% < 40%",
+    "1.1.2-3[1] M=50 left: line occupancy 0.00% < 40%",
+    "1.1.2-3[1] D=100 left: line occupancy 0.00% < 40%",
+    "1.1.2-3[1] D=1000000 left: line occupancy 2.00% < 40%",
+    "1.1.2-3[1] A=0.001 left: line occupancy 0.00% < 40%",
+    "1.1.2-3[1] A=0.02 left: line occupancy 0.07% < 40%",
+    "1.1.3-1[1] default left: line occupancy 0.67% < 40%",
+    "1.1.3-1[1] M=0.1 left: line occupancy 0.63% < 40%",
+    "1.1.3-1[1] M=50 left: line occupancy 2.75% < 40%",
+    "1.1.3-1[1] D=100 left: line occupancy 4.10% < 40%",
+    "1.1.3-1[1] D=1000000 left: line occupancy 0.63% < 40%",
+    "1.1.3-1[1] zeta=1.05 left: line occupancy 0.92% < 40%",
+    "1.1.3-1[1] zeta=2 left: line occupancy 0.63% < 40%",
+    "1.1.3-1[1] x0=-0.02 left: line occupancy 3.30% < 40%",
+    "1.1.3-1[1] x0=0.02 left: line occupancy 2.50% < 40%",
+    "1.1.3-1[1] v0=-1 left: line occupancy 2.93% < 40%",
+    "1.1.3-1[1] v0=1 left: line occupancy 3.96% < 40%",
+    "1.1.4-1[1] default left: line occupancy 0.30% < 40%",
+    "1.1.4-1[1] M=0.1 left: line occupancy 0.30% < 40%",
+    "1.1.4-1[1] M=50 left: line occupancy 0.30% < 40%",
+    "1.1.4-1[1] D=100 left: line occupancy 0.30% < 40%",
+    "1.1.4-1[1] D=1000000 left: line occupancy 0.30% < 40%",
+    "1.1.4-1[1] Qm=2 left: line occupancy 0.31% < 40%",
+    "1.1.4-1[1] Qm=30 left: line occupancy 0.30% < 40%",
+    "1.1.4-1[1] x0=-0.02 left: line occupancy 1.00% < 40%",
+    "1.1.4-1[1] x0=0.02 left: line occupancy 1.00% < 40%",
+    "1.1.4-1[1] v0=-1 left: line occupancy 1.27% < 40%",
+    "1.1.4-1[1] v0=1 left: line occupancy 1.31% < 40%",
+    "1.1.5-1[1] default left: line occupancy 37.11% < 40%",
+    "1.1.5-1[1] M=0.1 left: line occupancy 37.00% < 40%",
+    "1.1.5-1[1] M=50 left: line occupancy 37.11% < 40%",
+    "1.1.5-1[1] D=100 left: line occupancy 15.12% < 40%",
+    "1.1.5-1[1] D=1000000 left: line occupancy 37.11% < 40%",
+    "1.1.5-1[1] value=0.55 left: line occupancy 37.11% < 40%",
+    "1.1.5-1[1] value=10000 left: line occupancy 40.00% < 40%",
+    "1.2.1-1[1] default left: line occupancy 0.50% < 40%",
+    "1.2.1-1[2] default left: line occupancy 0.00% < 40%",
+    "1.2.1-1[1] M=0.1 left: line occupancy 0.50% < 40%",
+    "1.2.1-1[2] M=0.1 left: line occupancy 0.00% < 40%",
+    "1.2.1-1[1] M=50 left: line occupancy 0.50% < 40%",
+    "1.2.1-1[2] M=50 left: line occupancy 0.00% < 40%",
+    "1.2.1-1[1] D=100 left: line occupancy 0.50% < 40%",
+    "1.2.1-1[2] D=100 left: line occupancy 0.06% < 40%",
+    "1.2.1-1[1] D=1000000 left: line occupancy 0.50% < 40%",
+    "1.2.1-1[2] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.1-1[1] F0=1 left: line occupancy 0.25% < 40%",
+    "1.2.1-1[2] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.1-1[2] F0=200 left: line occupancy 0.33% < 40%",
+    "1.2.1-1[1] ratio=0.5 left: line occupancy 0.50% < 40%",
+    "1.2.1-1[2] ratio=0.5 left: line occupancy 0.00% < 40%",
+    "1.2.1-1[1] ratio=1.5 left: line occupancy 0.50% < 40%",
+    "1.2.1-1[2] ratio=1.5 left: line occupancy 0.00% < 40%",
+    "1.2.1-2[1] default left: line occupancy 0.02% < 40%",
+    "1.2.1-2[1] M=0.1 left: line occupancy 0.14% < 40%",
+    "1.2.1-2[1] M=50 left: line occupancy 0.01% < 40%",
+    "1.2.1-2[1] D=100 left: line occupancy 0.09% < 40%",
+    "1.2.1-2[1] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.1-2[1] F0=1 left: line occupancy 0.01% < 40%",
+    "1.2.1-2[1] F0=200 left: line occupancy 2.00% < 40%",
+    "1.2.1-2[1] ratio=0.5 left: line occupancy 0.02% < 40%",
+    "1.2.1-2[1] ratio=1.5 left: line occupancy 0.02% < 40%",
+    "1.2.2-1[1] default left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] default left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] default left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] M=0.1 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] M=0.1 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] M=0.1 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] M=50 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] M=50 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] M=50 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] D=100 left: line occupancy 0.21% < 40%",
+    "1.2.2-1[2] D=100 left: line occupancy 0.25% < 40%",
+    "1.2.2-1[3] D=100 left: line occupancy 0.16% < 40%",
+    "1.2.2-1[1] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] Qm=1.7 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] Qm=1.7 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] Qm=1.7 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] Qm=20 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] Qm=20 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] Qm=20 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] F0=200 left: line occupancy 0.04% < 40%",
+    "1.2.2-1[2] F0=200 left: line occupancy 0.05% < 40%",
+    "1.2.2-1[3] F0=200 left: line occupancy 0.06% < 40%",
+    "1.2.2-1[1] ratio=0.5 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] ratio=0.5 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] ratio=0.5 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[1] ratio=1.5 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[2] ratio=1.5 left: line occupancy 0.00% < 40%",
+    "1.2.2-1[3] ratio=1.5 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] default left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] M=0.1 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] M=50 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] D=100 left: line occupancy 0.59% < 40%",
+    "1.2.3-1[1] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] Qm=5 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] Qm=20 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] F0=200 left: line occupancy 0.01% < 40%",
+    "1.2.3-1[1] ratio=0.85 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] ratio=1.15 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] pulseCycles=2 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] pulseCycles=20 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] gapCycles=4 left: line occupancy 0.00% < 40%",
+    "1.2.3-1[1] gapCycles=30 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] default left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] M=0.1 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] M=50 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] D=100 left: line occupancy 2.02% < 40%",
+    "1.2.3-2[1] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] Qm=5 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] Qm=20 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] F0=200 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] ratio=0.85 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] ratio=1.15 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] pulseCycles=2 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] pulseCycles=20 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] gapCycles=4 left: line occupancy 0.00% < 40%",
+    "1.2.3-2[1] gapCycles=30 left: line occupancy 0.00% < 40%",
+    "1.2.3-3[1] D=100 left: line occupancy 28.75% < 40%",
+    "1.2.3-3[2] D=100 left: line occupancy 27.23% < 40%",
+    "1.2.3-3[3] D=100 left: line occupancy 26.27% < 40%",
+    "1.2.3-3[3] pulseCycles=2 left: line occupancy 36.78% < 40%",
+    "1.2.4-1[1] default left: line occupancy 0.00% < 40%",
+    "1.2.4-1[2] default left: line occupancy 0.05% < 40%",
+    "1.2.4-1[3] default left: line occupancy 0.01% < 40%",
+    "1.2.4-1[1] M=1 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[2] M=1 left: line occupancy 0.05% < 40%",
+    "1.2.4-1[3] M=1 left: line occupancy 0.03% < 40%",
+    "1.2.4-1[1] M=100 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[2] M=100 left: line occupancy 0.05% < 40%",
+    "1.2.4-1[3] M=100 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[1] D=1000 left: line occupancy 0.06% < 40%",
+    "1.2.4-1[2] D=1000 left: line occupancy 0.05% < 40%",
+    "1.2.4-1[3] D=1000 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[1] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[2] D=1000000 left: line occupancy 0.05% < 40%",
+    "1.2.4-1[3] D=1000000 left: line occupancy 0.02% < 40%",
+    "1.2.4-1[1] Rm=1 left: line occupancy 0.31% < 40%",
+    "1.2.4-1[2] Rm=1 left: line occupancy 20.00% < 40%",
+    "1.2.4-1[3] Rm=1 left: line occupancy 3.97% < 40%",
+    "1.2.4-1[1] Rm=2000 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[2] Rm=2000 left: line occupancy 0.01% < 40%",
+    "1.2.4-1[3] Rm=2000 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[1] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[2] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[3] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[1] F0=200 left: line occupancy 0.00% < 40%",
+    "1.2.4-1[2] F0=200 left: line occupancy 0.20% < 40%",
+    "1.2.4-1[3] F0=200 left: line occupancy 0.04% < 40%",
+    "1.2.5-1[1] default left: line occupancy 0.00% < 40%",
+    "1.2.5-1[2] default left: line occupancy 0.01% < 40%",
+    "1.2.5-1[3] default left: line occupancy 0.00% < 40%",
+    "1.2.5-1[1] M=1 left: line occupancy 0.01% < 40%",
+    "1.2.5-1[2] M=1 left: line occupancy 0.01% < 40%",
+    "1.2.5-1[3] M=1 left: line occupancy 0.01% < 40%",
+    "1.2.5-1[1] M=100 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[2] M=100 left: line occupancy 0.01% < 40%",
+    "1.2.5-1[3] M=100 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[1] D=1000 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[2] D=1000 left: line occupancy 0.01% < 40%",
+    "1.2.5-1[3] D=1000 left: line occupancy 0.01% < 40%",
+    "1.2.5-1[1] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[2] D=1000000 left: line occupancy 0.01% < 40%",
+    "1.2.5-1[3] D=1000000 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[1] Rm=1 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[2] Rm=1 left: line occupancy 3.12% < 40%",
+    "1.2.5-1[3] Rm=1 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[1] Rm=2000 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[2] Rm=2000 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[3] Rm=2000 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[1] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[2] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[3] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.5-1[1] F0=200 left: line occupancy 0.05% < 40%",
+    "1.2.5-1[2] F0=200 left: line occupancy 0.12% < 40%",
+    "1.2.5-1[3] F0=200 left: line occupancy 0.06% < 40%",
+    "1.2.5-2[1] default left: line occupancy 0.01% < 40%",
+    "1.2.5-2[1] M=1 left: line occupancy 0.01% < 40%",
+    "1.2.5-2[1] M=100 left: line occupancy 0.01% < 40%",
+    "1.2.5-2[1] D=1000 left: line occupancy 0.01% < 40%",
+    "1.2.5-2[1] D=1000000 left: line occupancy 0.01% < 40%",
+    "1.2.5-2[1] Rm=1 left: line occupancy 3.13% < 40%",
+    "1.2.5-2[1] Rm=2000 left: line occupancy 0.00% < 40%",
+    "1.2.5-2[1] F0=1 left: line occupancy 0.00% < 40%",
+    "1.2.5-2[1] F0=200 left: line occupancy 0.13% < 40%",
+    "2.1-1[1] default left: line occupancy 15.00% < 40%",
+    "2.1-1[1] T=20 left: line occupancy 15.00% < 40%",
+    "2.1-1[1] T=300 left: line occupancy 15.00% < 40%",
+    "2.1-1[1] mu=0.0001 left: line occupancy 15.00% < 40%",
+    "2.1-1[1] mu=0.005 left: line occupancy 15.00% < 40%",
+    "2.1-1[1] L=0.3 left: line occupancy 15.00% < 40%",
+    "2.1-1[1] L=1.5 left: line occupancy 15.00% < 40%",
+    "2.1-1[1] height=-0.02 left: line occupancy 20.00% < 40%",
+    "2.1-1[1] height=0.02 left: line occupancy 20.00% < 40%",
+    "2.1-1[1] F0=0.01 left: line occupancy 15.00% < 40%",
+    "2.1-1[1] F0=0.2 left: line occupancy 15.00% < 40%",
+    "2.1-2[1] default left: line occupancy 37.50% < 40%",
+    "2.1-2[1] T=20 left: line occupancy 37.50% < 40%",
+    "2.1-2[1] T=300 left: line occupancy 37.50% < 40%",
+    "2.1-2[1] mu=0.0001 left: line occupancy 37.50% < 40%",
+    "2.1-2[1] mu=0.005 left: line occupancy 37.50% < 40%",
+    "2.1-2[1] L=0.3 left: line occupancy 37.50% < 40%",
+    "2.1-2[1] L=1.5 left: line occupancy 37.50% < 40%",
+    "2.1-2[1] F0=0.01 left: line occupancy 37.50% < 40%",
+    "2.1-2[1] F0=0.2 left: line occupancy 37.50% < 40%",
+    "2.2-1[1] default left: line occupancy 26.67% < 40%",
+    "2.2-1[2] default left: line occupancy 26.67% < 40%",
+    "2.2-1[3] default left: line occupancy 26.67% < 40%",
+    "2.2-1[4] default left: line occupancy 26.67% < 40%",
+    "2.2-1[5] default left: line occupancy 26.67% < 40%",
+    "2.2-1[6] default left: line occupancy 26.67% < 40%",
+    "2.2-1[1] T=20 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] T=20 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] T=20 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] T=20 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] T=20 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] T=20 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] T=300 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] T=300 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] T=300 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] T=300 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] T=300 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] T=300 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] mu=0.0001 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] mu=0.0001 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] mu=0.0001 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] mu=0.0001 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] mu=0.0001 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] mu=0.0001 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] mu=0.005 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] mu=0.005 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] mu=0.005 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] mu=0.005 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] mu=0.005 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] mu=0.005 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] L=0.3 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] L=0.3 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] L=0.3 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] L=0.3 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] L=0.3 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] L=0.3 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] L=1.5 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] L=1.5 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] L=1.5 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] L=1.5 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] L=1.5 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] L=1.5 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] height=0.001 left: line occupancy 6.67% < 40%",
+    "2.2-1[2] height=0.001 left: line occupancy 6.67% < 40%",
+    "2.2-1[3] height=0.001 left: line occupancy 6.67% < 40%",
+    "2.2-1[4] height=0.001 left: line occupancy 6.67% < 40%",
+    "2.2-1[5] height=0.001 left: line occupancy 6.67% < 40%",
+    "2.2-1[6] height=0.001 left: line occupancy 6.67% < 40%",
+    "2.2-1[1] pluck=0.1 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] pluck=0.1 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] pluck=0.1 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] pluck=0.1 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] pluck=0.1 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] pluck=0.1 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] pluck=0.9 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] pluck=0.9 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] pluck=0.9 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] pluck=0.9 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] pluck=0.9 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] pluck=0.9 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] F0=0.01 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] F0=0.01 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] F0=0.01 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] F0=0.01 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] F0=0.01 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] F0=0.01 left: line occupancy 26.67% < 40%",
+    "2.2-1[1] F0=0.2 left: line occupancy 26.67% < 40%",
+    "2.2-1[2] F0=0.2 left: line occupancy 26.67% < 40%",
+    "2.2-1[3] F0=0.2 left: line occupancy 26.67% < 40%",
+    "2.2-1[4] F0=0.2 left: line occupancy 26.67% < 40%",
+    "2.2-1[5] F0=0.2 left: line occupancy 26.67% < 40%",
+    "2.2-1[6] F0=0.2 left: line occupancy 26.67% < 40%",
+    "2.2-2[1] default left: line occupancy 16.00% < 40%",
+    "2.2-2[2] default left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] default left: line occupancy 19.41% < 40%",
+    "2.2-2[1] T=20 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] T=20 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] T=20 left: line occupancy 19.41% < 40%",
+    "2.2-2[1] T=300 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] T=300 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] T=300 left: line occupancy 19.41% < 40%",
+    "2.2-2[1] mu=0.0001 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] mu=0.0001 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] mu=0.0001 left: line occupancy 19.41% < 40%",
+    "2.2-2[1] mu=0.005 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] mu=0.005 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] mu=0.005 left: line occupancy 19.41% < 40%",
+    "2.2-2[1] L=0.3 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] L=0.3 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] L=0.3 left: line occupancy 19.41% < 40%",
+    "2.2-2[1] L=1.5 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] L=1.5 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] L=1.5 left: line occupancy 19.41% < 40%",
+    "2.2-2[1] height=0.001 left: line occupancy 4.00% < 40%",
+    "2.2-2[2] height=0.001 left: bars clipped or axis does not start at zero (-0.000038598546149462005…0.0007806719948270115, -0.015,0.015)",
+    "2.2-2[3] height=0.001 left: line occupancy 4.85% < 40%",
+    "2.2-2[2] height=0.01 left: bars clipped or axis does not start at zero (-0.00038598546149462006…0.007806719948270114, -0.015,0.015)",
+    "2.2-2[1] pluck=0.1 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] pluck=0.1 left: bars clipped or axis does not start at zero (-0.00003676240585789105…0.0027831082342815385, -0.015,0.015)",
+    "2.2-2[3] pluck=0.1 left: line occupancy 19.64% < 40%",
+    "2.2-2[1] pluck=0.9 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] pluck=0.9 left: bars clipped or axis does not start at zero (-0.0013234466108840788…0.00278310823428154, -0.015,0.015)",
+    "2.2-2[3] pluck=0.9 left: line occupancy 19.64% < 40%",
+    "2.2-2[1] F0=0.01 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] F0=0.01 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] F0=0.01 left: line occupancy 19.41% < 40%",
+    "2.2-2[1] F0=0.2 left: line occupancy 16.00% < 40%",
+    "2.2-2[2] F0=0.2 left: bars clipped or axis does not start at zero (-0.00015439418459784802…0.003122687979308046, -0.015,0.015)",
+    "2.2-2[3] F0=0.2 left: line occupancy 19.41% < 40%",
+    "2.4-2[1] L=0.2 left: line occupancy 20.26% < 40%",
+    "2.4-2[1] S=0.001 left: line occupancy 10.13% < 40%",
+    "2.4-2[1] F0=1 left: line occupancy 10.13% < 40%",
+    "3.1.1-1[2] default left: line occupancy 26.66% < 40%",
+    "3.1.1-1[2] f=20 left: line occupancy 1.37% < 40%",
+    "3.1.1-1[2] f=20000 left: line occupancy 25.97% < 40%",
+    "3.1.1-1[2] c=200 left: line occupancy 26.67% < 40%",
+    "3.1.1-1[2] c=6000 left: line occupancy 26.67% < 40%",
+    "3.1.1-1[2] xi=0.00001 left: line occupancy 0.67% < 40%",
+    "3.1.2-1[1] default left: bars clipped or axis does not start at zero (9.428090415798518e-7…0.0034074971986838972, 1e-11,1000)",
+    "3.1.2-1[2] default left: bars clipped or axis does not start at zero (1.5005271935916571e-10…5.423200227423285e-7, 1e-16,10)",
+    "3.1.2-1[1] level=20 left: bars clipped or axis does not start at zero (1.8856180831641267e-10…6.81499439738378e-7, 1e-11,1000)",
+    "3.1.2-1[2] level=20 left: bars clipped or axis does not start at zero (3.001054387190354e-14…1.0846400454872014e-10, 1e-16,10)",
+    "3.1.2-1[1] level=180 left: bars clipped or axis does not start at zero (0.01885618083164127…68.14994397383781, 1e-11,1000)",
+    "3.1.2-1[2] level=180 left: bars clipped or axis does not start at zero (0.0000030010543871903543…0.010846400454872014, 1e-16,10)",
+    "3.1.2-1[1] f=20 left: bars clipped or axis does not start at zero (9.428090415798518e-7…0.0034074971986838972, 1e-11,1000)",
+    "3.1.2-1[2] f=20 left: bars clipped or axis does not start at zero (7.502635967958286e-9…0.000027116001137116425, 1e-16,10)",
+    "3.1.2-1[1] f=20000 left: bars clipped or axis does not start at zero (9.428090415798518e-7…0.0034074971986838972, 1e-11,1000)",
+    "3.1.2-1[2] f=20000 left: bars clipped or axis does not start at zero (7.502635967958285e-12…2.7116001137116423e-8, 1e-16,10)",
+    "3.1.3-3[1] default left: line occupancy 11.24% < 40%",
+    "3.1.3-3[1] pa=0.01 left: line occupancy 11.24% < 40%",
+    "3.1.3-3[1] pa=200 left: line occupancy 11.24% < 40%",
+    "3.1.3-3[1] rho=0.5 left: line occupancy 27.20% < 40%",
+    "3.1.3-3[1] rho=8000 left: line occupancy 0.00% < 40%",
+    "3.1.3-3[1] c=200 left: line occupancy 33.06% < 40%",
+    "3.1.3-3[1] c=6000 left: line occupancy 0.04% < 40%",
+    "3.1.3-3[1] distortion=0 left: line occupancy 11.24% < 40%",
+    "3.1.3-3[1] distortion=0.45 left: line occupancy 11.24% < 40%",
+    "3.1.4-2[1] default left: line occupancy 7.26% < 40%",
+    "3.1.4-2[1] left=-0.03 left: line occupancy 27.83% < 40%",
+    "3.1.4-2[1] left=0.03 left: line occupancy 18.15% < 40%",
+    "3.1.4-2[1] right=0.03 left: line occupancy 29.04% < 40%",
+    "3.1.4-2[1] L=0.01 left: line occupancy 7.26% < 40%",
+    "3.1.4-2[1] L=0.5 left: line occupancy 7.26% < 40%",
+    "3.1.4-2[1] S=0.001 left: line occupancy 0.73% < 40%",
+    "3.1.4-2[1] rho=0.5 left: line occupancy 3.00% < 40%",
+    "3.1.5-1[1] default left: line occupancy 0.00% < 40%",
+    "3.1.5-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.1.5-1[1] pa=200 left: line occupancy 0.71% < 40%",
+    "3.1.5-1[1] f=20 left: line occupancy 0.00% < 40%",
+    "3.1.5-1[1] f=20000 left: line occupancy 0.07% < 40%",
+    "3.1.5-1[1] rho=0.5 left: line occupancy 0.00% < 40%",
+    "3.1.5-1[1] rho=8000 left: line occupancy 0.00% < 40%",
+    "3.1.5-1[1] c=200 left: line occupancy 0.01% < 40%",
+    "3.1.5-1[1] c=6000 left: line occupancy 0.00% < 40%",
+    "3.1.6-1[1] default left: line occupancy 24.73% < 40%",
+    "3.1.6-1[2] default left: line occupancy 33.56% < 40%",
+    "3.1.6-1[1] P0=80000 left: line occupancy 19.52% < 40%",
+    "3.1.6-1[2] P0=80000 left: line occupancy 33.56% < 40%",
+    "3.1.6-1[1] P0=150000 left: line occupancy 36.60% < 40%",
+    "3.1.6-1[2] P0=150000 left: line occupancy 33.56% < 40%",
+    "3.1.6-1[1] gamma=1.1 left: line occupancy 18.78% < 40%",
+    "3.1.6-1[2] gamma=1.1 left: line occupancy 8.59% < 40%",
+    "3.1.6-1[1] gamma=1.67 left: line occupancy 30.45% < 40%",
+    "3.1.6-1[1] rho=0.5 left: line occupancy 24.73% < 40%",
+    "3.1.6-1[2] rho=0.5 left: line occupancy 33.56% < 40%",
+    "3.1.6-1[1] rho=2 left: line occupancy 24.73% < 40%",
+    "3.1.6-1[2] rho=2 left: line occupancy 33.56% < 40%",
+    "3.1.6-1[1] span=0.0001 left: line occupancy 0.00% < 40%",
+    "3.1.6-1[2] span=0.0001 left: line occupancy 0.01% < 40%",
+    "3.1.6-1[1] span=0.6 left: line occupancy 29.91% < 40%",
+    "3.1.6-1[2] span=0.6 left: line occupancy 39.07% < 40%",
+    "3.1.7-1[1] default right: line occupancy 15.15% < 40%",
+    "3.1.7-1[1] T=-30 right: line occupancy 15.15% < 40%",
+    "3.1.7-1[1] T=50 right: line occupancy 15.15% < 40%",
+    "3.1.7-1[1] gamma=1.1 left: line occupancy 26.25% < 40%",
+    "3.1.7-1[1] gamma=1.1 right: line occupancy 15.15% < 40%",
+    "3.1.7-1[1] gamma=1.67 right: line occupancy 15.15% < 40%",
+    "3.1.7-1[1] P0=50000 right: line occupancy 7.48% < 40%",
+    "3.1.7-1[1] P0=200000 right: line occupancy 29.90% < 40%",
+    "3.1.8-1[1] default left: line occupancy 0.25% < 40%",
+    "3.1.8-1[1] default right: line occupancy 0.01% < 40%",
+    "3.1.8-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.1.8-1[1] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.1.8-1[1] pa=200 right: line occupancy 1.22% < 40%",
+    "3.1.8-1[1] f=20 left: line occupancy 0.25% < 40%",
+    "3.1.8-1[1] f=20 right: line occupancy 0.00% < 40%",
+    "3.1.8-1[1] f=20000 left: line occupancy 0.25% < 40%",
+    "3.1.8-1[1] f=20000 right: line occupancy 0.12% < 40%",
+    "3.1.8-1[1] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.1.8-1[1] rho=0.5 right: line occupancy 0.01% < 40%",
+    "3.1.8-1[1] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.1.8-1[1] rho=8000 right: line occupancy 0.01% < 40%",
+    "3.1.8-1[1] c=200 left: line occupancy 0.25% < 40%",
+    "3.1.8-1[1] c=200 right: line occupancy 0.01% < 40%",
+    "3.1.8-1[1] c=6000 left: line occupancy 0.25% < 40%",
+    "3.1.8-1[1] c=6000 right: line occupancy 0.00% < 40%",
+    "3.2.1-1[1] default left: line occupancy 0.00% < 40%",
+    "3.2.1-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.2.1-1[1] pa=200 left: line occupancy 0.04% < 40%",
+    "3.2.1-1[1] f=20 left: line occupancy 0.00% < 40%",
+    "3.2.1-1[1] f=20000 left: line occupancy 0.09% < 40%",
+    "3.2.1-1[1] c=200 left: line occupancy 0.00% < 40%",
+    "3.2.1-1[1] c=6000 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[1] default left: line occupancy 0.00% < 40%",
+    "3.2.2-1[2] default left: line occupancy 0.25% < 40%",
+    "3.2.2-1[3] default left: line occupancy 0.06% < 40%",
+    "3.2.2-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[2] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[3] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[1] pa=200 left: line occupancy 0.44% < 40%",
+    "3.2.2-1[3] pa=200 left: line occupancy 12.05% < 40%",
+    "3.2.2-1[1] f=20 left: line occupancy 0.11% < 40%",
+    "3.2.2-1[2] f=20 left: line occupancy 0.25% < 40%",
+    "3.2.2-1[3] f=20 left: line occupancy 0.06% < 40%",
+    "3.2.2-1[1] f=20000 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[2] f=20000 left: line occupancy 0.25% < 40%",
+    "3.2.2-1[3] f=20000 left: line occupancy 0.06% < 40%",
+    "3.2.2-1[1] rho=0.5 left: line occupancy 0.01% < 40%",
+    "3.2.2-1[2] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.2.2-1[3] rho=0.5 left: line occupancy 0.15% < 40%",
+    "3.2.2-1[1] rho=8000 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[2] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.2.2-1[3] rho=8000 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[1] c=200 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[2] c=200 left: line occupancy 0.25% < 40%",
+    "3.2.2-1[3] c=200 left: line occupancy 0.10% < 40%",
+    "3.2.2-1[1] c=6000 left: line occupancy 0.00% < 40%",
+    "3.2.2-1[2] c=6000 left: line occupancy 0.25% < 40%",
+    "3.2.2-1[3] c=6000 left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] default left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] pa=200 left: line occupancy 9.37% < 40%",
+    "3.3.1-1[1] rho=0.5 left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] rho=8000 left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] c=200 left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] c=6000 left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] f=20 left: line occupancy 0.00% < 40%",
+    "3.3.1-1[1] f=20000 left: line occupancy 0.00% < 40%",
+    "3.3.2-2[1] default left: line occupancy 20.00% < 40%",
+    "3.3.2-2[1] L=0.01 left: line occupancy 20.00% < 40%",
+    "3.3.2-2[1] L=1 left: line occupancy 20.00% < 40%",
+    "3.3.2-2[1] S=0.001 left: line occupancy 2.00% < 40%",
+    "3.3.3-1[1] default left: line occupancy 0.33% < 40%",
+    "3.3.3-1[1] default right: line occupancy 6.67% < 40%",
+    "3.3.3-1[2] default left: line occupancy 0.02% < 40%",
+    "3.3.3-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.3.3-1[1] pa=0.01 right: line occupancy 6.67% < 40%",
+    "3.3.3-1[2] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.3.3-1[1] pa=200 right: line occupancy 6.67% < 40%",
+    "3.3.3-1[2] pa=200 left: line occupancy 3.20% < 40%",
+    "3.3.3-1[1] ua=0.00001 left: line occupancy 0.33% < 40%",
+    "3.3.3-1[1] ua=0.00001 right: line occupancy 0.03% < 40%",
+    "3.3.3-1[2] ua=0.00001 left: line occupancy 0.00% < 40%",
+    "3.3.3-1[1] ua=0.02 left: line occupancy 0.33% < 40%",
+    "3.3.3-1[2] ua=0.02 left: line occupancy 0.16% < 40%",
+    "3.3.3-1[1] phase=0 left: line occupancy 0.33% < 40%",
+    "3.3.3-1[1] phase=0 right: line occupancy 6.67% < 40%",
+    "3.3.3-1[2] phase=0 left: line occupancy 0.02% < 40%",
+    "3.3.3-1[1] phase=90 left: line occupancy 0.33% < 40%",
+    "3.3.3-1[1] phase=90 right: line occupancy 6.67% < 40%",
+    "3.3.3-1[2] phase=90 left: line occupancy 0.02% < 40%",
+    "3.3.3-1[1] f=20 left: line occupancy 0.01% < 40%",
+    "3.3.3-1[1] f=20 right: line occupancy 0.32% < 40%",
+    "3.3.3-1[2] f=20 left: line occupancy 0.01% < 40%",
+    "3.3.3-1[1] f=20000 left: line occupancy 0.33% < 40%",
+    "3.3.3-1[1] f=20000 right: line occupancy 6.63% < 40%",
+    "3.3.3-1[2] f=20000 left: line occupancy 0.01% < 40%",
+    "3.4.1-1[1] default left: line occupancy 0.35% < 40%",
+    "3.4.1-1[1] pa=0.01 left: line occupancy 0.10% < 40%",
+    "3.4.1-1[1] B=0 left: line occupancy 0.25% < 40%",
+    "3.4.1-1[1] B=10 left: line occupancy 2.75% < 40%",
+    "3.4.1-1[1] f=20 left: line occupancy 0.35% < 40%",
+    "3.4.1-1[1] f=20000 left: line occupancy 0.35% < 40%",
+    "3.4.1-1[1] rho=0.5 left: line occupancy 0.35% < 40%",
+    "3.4.1-1[1] rho=8000 left: line occupancy 0.35% < 40%",
+    "3.4.1-1[1] c=200 left: line occupancy 0.35% < 40%",
+    "3.4.1-1[1] c=6000 left: line occupancy 0.35% < 40%",
+    "3.4.1-2[1] default left: line occupancy 0.11% < 40%",
+    "3.4.1-2[1] pa=0.01 left: line occupancy 0.03% < 40%",
+    "3.4.1-2[1] pa=200 left: line occupancy 16.10% < 40%",
+    "3.4.1-2[1] B=0 left: line occupancy 0.08% < 40%",
+    "3.4.1-2[1] B=10 left: line occupancy 0.88% < 40%",
+    "3.4.1-2[1] f=20 left: line occupancy 0.08% < 40%",
+    "3.4.1-2[1] f=20000 left: line occupancy 0.11% < 40%",
+    "3.4.1-2[1] rho=0.5 left: line occupancy 0.27% < 40%",
+    "3.4.1-2[1] rho=8000 left: line occupancy 0.00% < 40%",
+    "3.4.1-2[1] c=200 left: line occupancy 0.19% < 40%",
+    "3.4.1-2[1] c=6000 left: line occupancy 0.01% < 40%",
+    "3.4.2-1[1] default left: line occupancy 0.25% < 40%",
+    "3.4.2-1[2] default left: line occupancy 0.25% < 40%",
+    "3.4.2-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.2-1[2] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.2-1[1] f=20 left: line occupancy 0.00% < 40%",
+    "3.4.2-1[2] f=20 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[1] f=20000 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[2] f=20000 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[1] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[2] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[1] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[2] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[1] obs=0 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[2] obs=0 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[1] obs=2 left: line occupancy 0.25% < 40%",
+    "3.4.2-1[2] obs=2 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] default left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] default right: line occupancy 0.12% < 40%",
+    "3.4.3-1[2] default left: line occupancy 0.25% < 40%",
+    "3.4.3-1[2] default right: line occupancy 0.12% < 40%",
+    "3.4.3-1[3] default left: line occupancy 0.25% < 40%",
+    "3.4.3-1[3] default right: line occupancy 0.12% < 40%",
+    "3.4.3-1[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.3-1[1] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.4.3-1[2] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.3-1[2] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.4.3-1[3] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.3-1[3] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.4.3-1[1] pa=200 right: line occupancy 24.09% < 40%",
+    "3.4.3-1[2] pa=200 right: line occupancy 24.09% < 40%",
+    "3.4.3-1[3] pa=200 right: line occupancy 24.09% < 40%",
+    "3.4.3-1[1] f=20 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] f=20 right: line occupancy 0.12% < 40%",
+    "3.4.3-1[2] f=20 left: line occupancy 0.24% < 40%",
+    "3.4.3-1[2] f=20 right: line occupancy 0.11% < 40%",
+    "3.4.3-1[3] f=20 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[3] f=20 right: line occupancy 0.12% < 40%",
+    "3.4.3-1[1] f=20000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] f=20000 right: line occupancy 0.12% < 40%",
+    "3.4.3-1[2] f=20000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[2] f=20000 right: line occupancy 0.12% < 40%",
+    "3.4.3-1[3] f=20000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[3] f=20000 right: line occupancy 0.12% < 40%",
+    "3.4.3-1[1] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] rho=0.5 right: line occupancy 0.29% < 40%",
+    "3.4.3-1[2] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[2] rho=0.5 right: line occupancy 0.29% < 40%",
+    "3.4.3-1[3] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[3] rho=0.5 right: line occupancy 0.29% < 40%",
+    "3.4.3-1[1] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] rho=8000 right: line occupancy 0.00% < 40%",
+    "3.4.3-1[2] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[2] rho=8000 right: line occupancy 0.00% < 40%",
+    "3.4.3-1[3] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[3] rho=8000 right: line occupancy 0.00% < 40%",
+    "3.4.3-1[1] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] c=200 right: line occupancy 0.21% < 40%",
+    "3.4.3-1[2] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[2] c=200 right: line occupancy 0.21% < 40%",
+    "3.4.3-1[3] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[3] c=200 right: line occupancy 0.21% < 40%",
+    "3.4.3-1[1] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[1] c=6000 right: line occupancy 0.01% < 40%",
+    "3.4.3-1[2] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[2] c=6000 right: line occupancy 0.01% < 40%",
+    "3.4.3-1[3] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.3-1[3] c=6000 right: line occupancy 0.01% < 40%",
+    "3.4.3-2[1] default left: line occupancy 0.25% < 40%",
+    "3.4.3-2[1] default right: line occupancy 0.12% < 40%",
+    "3.4.3-2[2] default left: line occupancy 0.25% < 40%",
+    "3.4.3-2[2] default right: line occupancy 0.12% < 40%",
+    "3.4.3-2[3] default left: line occupancy 0.25% < 40%",
+    "3.4.3-2[3] default right: line occupancy 0.12% < 40%",
+    "3.4.3-2[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.3-2[1] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[2] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.3-2[2] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[3] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.3-2[3] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[1] pa=200 right: line occupancy 24.09% < 40%",
+    "3.4.3-2[2] pa=200 right: line occupancy 24.09% < 40%",
+    "3.4.3-2[3] pa=200 right: line occupancy 24.09% < 40%",
+    "3.4.3-2[1] f=20 left: line occupancy 0.00% < 40%",
+    "3.4.3-2[1] f=20 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[2] f=20 left: line occupancy 0.00% < 40%",
+    "3.4.3-2[2] f=20 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[3] f=20 left: line occupancy 0.00% < 40%",
+    "3.4.3-2[3] f=20 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[1] f=20000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[1] f=20000 right: line occupancy 0.12% < 40%",
+    "3.4.3-2[2] f=20000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[2] f=20000 right: line occupancy 0.12% < 40%",
+    "3.4.3-2[3] f=20000 left: line occupancy 0.24% < 40%",
+    "3.4.3-2[3] f=20000 right: line occupancy 0.12% < 40%",
+    "3.4.3-2[1] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[1] rho=0.5 right: line occupancy 0.29% < 40%",
+    "3.4.3-2[2] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[2] rho=0.5 right: line occupancy 0.29% < 40%",
+    "3.4.3-2[3] rho=0.5 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[3] rho=0.5 right: line occupancy 0.29% < 40%",
+    "3.4.3-2[1] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[1] rho=8000 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[2] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[2] rho=8000 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[3] rho=8000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[3] rho=8000 right: line occupancy 0.00% < 40%",
+    "3.4.3-2[1] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[1] c=200 right: line occupancy 0.21% < 40%",
+    "3.4.3-2[2] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[2] c=200 right: line occupancy 0.21% < 40%",
+    "3.4.3-2[3] c=200 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[3] c=200 right: line occupancy 0.21% < 40%",
+    "3.4.3-2[1] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[1] c=6000 right: line occupancy 0.01% < 40%",
+    "3.4.3-2[2] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[2] c=6000 right: line occupancy 0.01% < 40%",
+    "3.4.3-2[3] c=6000 left: line occupancy 0.25% < 40%",
+    "3.4.3-2[3] c=6000 right: line occupancy 0.01% < 40%",
+    "3.4.4-1[1] default left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] pa=0.01 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] pa=200 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] rho=0.5 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] rho=8000 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] c=200 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] c=6000 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] f=20 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-1[1] f=20000 left: bars clipped or axis does not start at zero (415.03…39250000, 100,100000000)",
+    "3.4.4-2[1] default left: line occupancy 0.33% < 40%",
+    "3.4.4-2[1] default right: line occupancy 0.08% < 40%",
+    "3.4.4-2[2] default left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] pa=0.01 right: line occupancy 0.00% < 40%",
+    "3.4.4-2[2] pa=0.01 left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] pa=200 right: line occupancy 16.06% < 40%",
+    "3.4.4-2[2] pa=200 left: line occupancy 12.05% < 40%",
+    "3.4.4-2[1] rho=0.5 left: line occupancy 0.33% < 40%",
+    "3.4.4-2[1] rho=0.5 right: line occupancy 0.19% < 40%",
+    "3.4.4-2[2] rho=0.5 left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] rho=8000 left: line occupancy 0.33% < 40%",
+    "3.4.4-2[1] rho=8000 right: line occupancy 0.00% < 40%",
+    "3.4.4-2[2] rho=8000 left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] c=200 left: line occupancy 0.33% < 40%",
+    "3.4.4-2[1] c=200 right: line occupancy 0.14% < 40%",
+    "3.4.4-2[2] c=200 left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] c=6000 left: line occupancy 0.33% < 40%",
+    "3.4.4-2[1] c=6000 right: line occupancy 0.00% < 40%",
+    "3.4.4-2[2] c=6000 left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] f=20 left: line occupancy 0.33% < 40%",
+    "3.4.4-2[1] f=20 right: line occupancy 0.08% < 40%",
+    "3.4.4-2[2] f=20 left: line occupancy 0.00% < 40%",
+    "3.4.4-2[1] f=20000 left: line occupancy 0.33% < 40%",
+    "3.4.4-2[1] f=20000 right: line occupancy 0.08% < 40%",
+    "3.4.4-2[2] f=20000 left: line occupancy 0.00% < 40%",
+    "3.4.5-1[1] default left: line occupancy 33.32% < 40%",
+    "3.4.5-1[2] default left: line occupancy 0.12% < 40%",
+    "3.4.5-1[1] pa=0.01 left: line occupancy 33.32% < 40%",
+    "3.4.5-1[2] pa=0.01 left: line occupancy 0.04% < 40%",
+    "3.4.5-1[1] pa=200 left: line occupancy 33.32% < 40%",
+    "3.4.5-1[2] pa=200 left: line occupancy 24.96% < 40%",
+    "3.4.5-1[1] B=0 left: line occupancy 33.32% < 40%",
+    "3.4.5-1[2] B=0 left: line occupancy 0.12% < 40%",
+    "3.4.5-1[1] B=2 left: line occupancy 33.32% < 40%",
+    "3.4.5-1[2] B=2 left: line occupancy 0.25% < 40%",
+    "3.4.5-1[1] f=20 left: line occupancy 0.00% < 40%",
+    "3.4.5-1[2] f=20 left: line occupancy 0.00% < 40%",
+    "3.4.5-1[1] f=20000 left: line occupancy 33.24% < 40%",
+    "3.4.5-1[2] f=20000 left: line occupancy 0.12% < 40%",
+    "3.4.5-1[1] c=200 left: line occupancy 33.33% < 40%",
+    "3.4.5-1[2] c=200 left: line occupancy 0.12% < 40%",
+    "3.4.5-1[1] c=6000 left: line occupancy 0.24% < 40%",
+    "3.4.5-1[2] c=6000 left: line occupancy 0.13% < 40%",
+    "3.4.6-2[1] default left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] n=1 left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] n=20 left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] sourceLevel=20 left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] sourceLevel=140 left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] rho=0.5 left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] rho=8000 left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] c=200 left: line occupancy 13.01% < 40%",
+    "3.4.6-2[1] c=6000 left: line occupancy 13.01% < 40%",
+    "3.1.4-1: default control volume occupies <40% vertically",
+    "3.3.2-1: default control volume occupies <40% vertically"
+  ],
+  "measurements": [
+    {
+      "figure": "1.1.1-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.5,
+      "limits": [
+        -1,
+        1
+      ]
+    },
+    {
+      "figure": "1.1.1-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.004268749172996827,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "1.1.2-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.09999997659116508,
+      "limits": [
+        -0.04,
+        0.04
+      ]
+    },
+    {
+      "figure": "1.1.2-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0007999996394438408,
+      "limits": [
+        -150,
+        150
+      ]
+    },
+    {
+      "figure": "1.1.2-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000008999997893204858,
+      "limits": [
+        -400000,
+        400000
+      ]
+    },
+    {
+      "figure": "1.1.2-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "1.1.2-3",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000026999999999999996,
+      "limits": [
+        0,
+        400
+      ]
+    },
+    {
+      "figure": "1.1.3-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.006722426300454076,
+      "limits": [
+        -0.4,
+        0.4
+      ]
+    },
+    {
+      "figure": "1.1.3-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "1.1.4-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.003005876597208718,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "1.1.5-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.37108882520305,
+      "limits": [
+        -2,
+        3
+      ]
+    },
+    {
+      "figure": "1.2.1-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.004999998754114024,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "1.2.1-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000032552080870674885,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "1.2.1-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0002,
+      "limits": [
+        -200,
+        200
+      ]
+    },
+    {
+      "figure": "1.2.2-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000021231301936491696,
+      "limits": [
+        -100,
+        100
+      ]
+    },
+    {
+      "figure": "1.2.2-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000025383643452426507,
+      "limits": [
+        -100,
+        100
+      ]
+    },
+    {
+      "figure": "1.2.2-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.00003084514161585976,
+      "limits": [
+        -100,
+        100
+      ]
+    },
+    {
+      "figure": "1.2.3-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.00001265376306810681,
+      "limits": [
+        -100,
+        100
+      ]
+    },
+    {
+      "figure": "1.2.3-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000010567449775261835,
+      "limits": [
+        -100,
+        100
+      ]
+    },
+    {
+      "figure": "1.2.3-3",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.4999949130107596,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "1.2.3-3",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.49828109884853977,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "1.2.3-3",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.480146805339314,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "1.2.4-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000007891946512427595,
+      "limits": [
+        0,
+        80
+      ]
+    },
+    {
+      "figure": "1.2.4-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0005,
+      "limits": [
+        0,
+        250
+      ]
+    },
+    {
+      "figure": "1.2.4-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0000998800431412743,
+      "limits": [
+        0,
+        250000
+      ]
+    },
+    {
+      "figure": "1.2.4-1",
+      "panel": 4,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.8954122473814853,
+      "limits": [
+        -200,
+        0
+      ]
+    },
+    {
+      "figure": "1.2.4-1",
+      "panel": 5,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.8954122473814853,
+      "limits": [
+        -100,
+        100
+      ]
+    },
+    {
+      "figure": "1.2.4-1",
+      "panel": 6,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.8954122473814853,
+      "limits": [
+        0,
+        200
+      ]
+    },
+    {
+      "figure": "1.2.4-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 1,
+      "limits": [
+        -75000,
+        75000
+      ]
+    },
+    {
+      "figure": "1.2.5-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.00003189607230244316,
+      "limits": [
+        -20000,
+        60000
+      ]
+    },
+    {
+      "figure": "1.2.5-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0000781247720342474,
+      "limits": [
+        -20000,
+        60000
+      ]
+    },
+    {
+      "figure": "1.2.5-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.00003758619030422845,
+      "limits": [
+        -20000,
+        60000
+      ]
+    },
+    {
+      "figure": "1.2.5-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000078125,
+      "limits": [
+        0,
+        40000
+      ]
+    },
+    {
+      "figure": "2.1-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.15,
+      "limits": [
+        -0.1,
+        0.1
+      ]
+    },
+    {
+      "figure": "2.1-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.375,
+      "limits": [
+        -0.04,
+        0.04
+      ]
+    },
+    {
+      "figure": "2.2-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.26666666666666666,
+      "limits": [
+        -0.015,
+        0.015
+      ]
+    },
+    {
+      "figure": "2.2-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.26666666666666666,
+      "limits": [
+        -0.015,
+        0.015
+      ]
+    },
+    {
+      "figure": "2.2-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.26666666666666666,
+      "limits": [
+        -0.015,
+        0.015
+      ]
+    },
+    {
+      "figure": "2.2-1",
+      "panel": 4,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.26666666666666666,
+      "limits": [
+        -0.015,
+        0.015
+      ]
+    },
+    {
+      "figure": "2.2-1",
+      "panel": 5,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.26666666666666666,
+      "limits": [
+        -0.015,
+        0.015
+      ]
+    },
+    {
+      "figure": "2.2-1",
+      "panel": 6,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.26666666666666666,
+      "limits": [
+        -0.015,
+        0.015
+      ]
+    },
+    {
+      "figure": "2.2-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.16,
+      "limits": [
+        -0.005,
+        0.02
+      ]
+    },
+    {
+      "figure": "2.2-2",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.10923607213019647,
+      "limits": [
+        -0.015,
+        0.015
+      ]
+    },
+    {
+      "figure": "2.2-2",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.19413557174519147,
+      "limits": [
+        -0.02,
+        0.02
+      ]
+    },
+    {
+      "figure": "2.2-3",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.9999999792265206,
+      "limits": [
+        0,
+        0.125
+      ]
+    },
+    {
+      "figure": "2.3-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.1752268751617292,
+      "limits": [
+        0,
+        20000
+      ]
+    },
+    {
+      "figure": "2.3-3",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 1,
+      "limits": [
+        -100,
+        500
+      ]
+    },
+    {
+      "figure": "2.4-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "2.4-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "2.4-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "2.4-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.9999999999886497,
+      "limits": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "figure": "3.1.1-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.26664918972148477,
+      "limits": [
+        -0.0015,
+        0.0015
+      ]
+    },
+    {
+      "figure": "3.1.3-3",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.11239483970002097,
+      "limits": [
+        0,
+        0.0125
+      ]
+    },
+    {
+      "figure": "3.1.3-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "3.1.3-1",
+      "panel": 4,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "3.1.3-1",
+      "panel": 5,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.666666666666667,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "3.1.3-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.5,
+      "limits": [
+        0,
+        4
+      ]
+    },
+    {
+      "figure": "3.1.4-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0726,
+      "limits": [
+        -0.001,
+        0.001
+      ]
+    },
+    {
+      "figure": "3.1.5-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.00003560412927255132,
+      "limits": [
+        -1500,
+        1500
+      ]
+    },
+    {
+      "figure": "3.1.6-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.24725301739328134,
+      "limits": [
+        -300000,
+        300000
+      ]
+    },
+    {
+      "figure": "3.1.6-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.33564705449158816,
+      "limits": [
+        0,
+        25
+      ]
+    },
+    {
+      "figure": "3.1.7-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.42880085131619533,
+      "limits": [
+        200,
+        450
+      ]
+    },
+    {
+      "figure": "3.1.7-1",
+      "panel": 1,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.15148253668843137,
+      "limits": [
+        0,
+        3
+      ]
+    },
+    {
+      "figure": "3.1.8-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0025,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.1.8-1",
+      "panel": 1,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.00006106108170242552,
+      "limits": [
+        -300000,
+        300000
+      ]
+    },
+    {
+      "figure": "3.2.1-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000002237026502366259,
+      "limits": [
+        -150000000,
+        150000000
+      ]
+    },
+    {
+      "figure": "3.2.2-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.000021922168469958037,
+      "limits": [
+        -6,
+        6
+      ]
+    },
+    {
+      "figure": "3.2.2-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0025,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.2.2-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0006023660940173,
+      "limits": [
+        -4,
+        4
+      ]
+    },
+    {
+      "figure": "3.3.1-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0000023415591604171043,
+      "limits": [
+        0,
+        3
+      ]
+    },
+    {
+      "figure": "3.3.2-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.2,
+      "limits": [
+        -0.0001,
+        0.0001
+      ]
+    },
+    {
+      "figure": "3.3.3-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0033333333333333335,
+      "limits": [
+        -300,
+        300
+      ]
+    },
+    {
+      "figure": "3.3.3-1",
+      "panel": 1,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.06666301129103415,
+      "limits": [
+        -0.03,
+        0.03
+      ]
+    },
+    {
+      "figure": "3.3.3-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.00015996490935597533,
+      "limits": [
+        -5,
+        7.5
+      ]
+    },
+    {
+      "figure": "3.4.1-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0034999999999999996,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.1-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0011244049179025969,
+      "limits": [
+        -3,
+        3
+      ]
+    },
+    {
+      "figure": "3.4.2-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.002499936201733776,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.2-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0025,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.3-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0025,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.3-1",
+      "panel": 1,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.0012047321880346,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "3.4.3-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.002499995805488512,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.3-1",
+      "panel": 2,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.001204730166729399,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "3.4.3-1",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.002499998951371908,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.3-1",
+      "panel": 3,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.001204731682708194,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "3.4.3-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0025,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.3-2",
+      "panel": 1,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.0012047321880346,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "3.4.3-2",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.002499936201733776,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.3-2",
+      "panel": 2,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.0012047014441046557,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "3.4.3-2",
+      "panel": 3,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0024997448101912786,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.3-2",
+      "panel": 3,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.00120460921388395,
+      "limits": [
+        -2,
+        2
+      ]
+    },
+    {
+      "figure": "3.4.4-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0033333333333333335,
+      "limits": [
+        -300,
+        300
+      ]
+    },
+    {
+      "figure": "3.4.4-2",
+      "panel": 1,
+      "state": "default",
+      "side": "right",
+      "occupancy": 0.0008031547920230667,
+      "limits": [
+        -3,
+        3
+      ]
+    },
+    {
+      "figure": "3.4.4-2",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0000030118304700865,
+      "limits": [
+        0,
+        800
+      ]
+    },
+    {
+      "figure": "3.4.5-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.3332074332673794,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    },
+    {
+      "figure": "3.4.5-1",
+      "panel": 2,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.0012482286076167437,
+      "limits": [
+        -400,
+        400
+      ]
+    },
+    {
+      "figure": "3.4.6-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.6666666666666666,
+      "limits": [
+        0,
+        6
+      ]
+    },
+    {
+      "figure": "3.4.6-2",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.13010299956639812,
+      "limits": [
+        0,
+        200
+      ]
+    },
+    {
+      "figure": "3.4.6-3",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.4666666666666667,
+      "limits": [
+        -100,
+        200
+      ]
+    },
+    {
+      "figure": "3.5.2-1",
+      "panel": 1,
+      "state": "default",
+      "side": "left",
+      "occupancy": 0.656463980086976,
+      "limits": [
+        -1.5,
+        1.5
+      ]
+    }
+  ]
+}

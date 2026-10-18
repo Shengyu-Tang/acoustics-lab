@@ -7,7 +7,8 @@ await build({
     contents:
       files
         .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
-        .join("\n") + "export {instrument} from './src/physics/chapter1';",
+        .join("\n") +
+      "export {instrument} from './src/physics/chapter1';export {axisTicks} from './src/plot/ticks';",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -30,9 +31,12 @@ export const lectures = files
         },
   );
 // Compare actual ordinates/abscissae, fields and numeric annotations. Axis bounds,
-// titles, MATLAB source and readout tables cannot conceal an invariant drawing.
+// Amplitude sliders may preserve curve pixels after rescaling: visible tick
+// values and readouts are part of the sensitivity contract too.
 function numbers(p) {
   return [
+    ...p.ylim,
+    ...(p.rightLim ?? []),
     ...(p.series ?? []).flatMap((s) => s.points.flat()),
     ...(p.field ? [...p.field.x, ...p.field.y, ...p.field.z.flat()] : []),
     ...(p.annotations ?? []).map((a) => a.value),
