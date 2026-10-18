@@ -8,6 +8,7 @@ export function EngineeringWorksheet({ problem: e }: { problem: EngineeringProbl
   const [p, setP] = useState({ ...e.defaults });
   const solution = Object.fromEntries(e.asks.map((a) => [a.key, a.calc(p)]));
   const panel = e.plot(p);
+  const additionalPanels = e.additionalPlots?.(p) ?? [];
   return (
     <ExampleWorksheet
       example={e}
@@ -22,9 +23,14 @@ export function EngineeringWorksheet({ problem: e }: { problem: EngineeringProbl
       judgment={e.judgment(p)}
       note={e.assumptions}
       panel={panel}
+      additionalPanels={additionalPanels}
       caption={`图 ${e.id}-1　${panel.title}`}
       exportScript={() =>
-        download(matlab([panel], 1, 1, e.title), `design_${e.id}.m`, "text/plain;charset=utf-8")
+        download(
+          matlab([panel, ...additionalPanels], 1 + additionalPanels.length, 1, e.title),
+          `design_${e.id}.m`,
+          "text/plain;charset=utf-8",
+        )
       }
     />
   );

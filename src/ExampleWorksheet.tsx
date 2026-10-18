@@ -32,6 +32,7 @@ export default function ExampleWorksheet({
   judgment,
   note,
   panel,
+  additionalPanels = [],
   caption,
   exportScript,
 }: {
@@ -43,6 +44,7 @@ export default function ExampleWorksheet({
   judgment: string;
   note: string;
   panel: Panel;
+  additionalPanels?: Panel[];
   caption: string;
   exportScript: () => void;
 }) {
@@ -190,6 +192,14 @@ export default function ExampleWorksheet({
         caption={`${caption.split("　")[0]}　${panel.title}`}
         name={example.id}
       />
+      {additionalPanels.map((q, i) => (
+        <Figure
+          key={i}
+          panels={[q]}
+          caption={`图 ${example.id}-${i + 2}　${q.title}`}
+          name={`${example.id}-${i + 2}`}
+        />
+      ))}
       <div className="example-export">
         <button
           onClick={(event) => {

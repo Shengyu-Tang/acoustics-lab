@@ -4,6 +4,7 @@ import { physical, line, dot, xmark, ymark, value } from "../../plot/physicalExa
 export { parameter, ask, fmt, physical, line, dot, xmark, ymark, value };
 export type { Values, Ask };
 export type EngineeringProblem = P1Example & {
+  additionalPlots?: (p: Values) => import("../../plot/types").Panel[];
   id: string;
   lectures: string[];
   criterion: string;
