@@ -162,7 +162,7 @@ const panels = [
 ];
 for (const [input, expected] of [
   ["Qₘ xₘ f₀ f₁ f₂ Rₘ Xₘ |Zₘ|", "Q_{m} x_{m} f_{0} f_{1} f_{2} R_{m} X_{m} |Z_{m}|"],
-  ["Δf W̄ (m/s²)", "\\Delta f \\bar{W} (m/s^{2})"],
+  ["Δf W̄ (m/s²)", "\\Delta{}f \\bar{W} (m/s^{2})"],
   ["中文：当前工作点", "中文：当前工作点"],
   ["ω θ π ×10⁻³", "\\omega  \\theta  \\pi  \\times 10^{-3}"],
 ])

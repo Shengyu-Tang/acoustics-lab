@@ -56,6 +56,25 @@ export function Line({
     })
     .join(" ");
   const color = series.color ?? COLORS[index % COLORS.length];
+  if (series.kind === "bar")
+    return (
+      <g data-plot-series="true" fill={color} stroke="black" strokeWidth="0.5">
+        {series.points.map(([x, y], i) => {
+          const [px, py] = xy([x, y]),
+            base = xy([x, 0])[1],
+            barWidth = (AW * 0.7) / (panel.xlim[1] - panel.xlim[0]);
+          return (
+            <rect
+              key={i}
+              x={px - barWidth / 2}
+              y={Math.min(py, base)}
+              width={barWidth}
+              height={Math.abs(base - py)}
+            />
+          );
+        })}
+      </g>
+    );
   return (
     <g data-plot-series="true" fill="none" stroke={color} strokeWidth="1.5">
       {series.style !== "none" && <path d={d} strokeDasharray={DASH[series.style ?? "-"]} />}

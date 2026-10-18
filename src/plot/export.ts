@@ -36,7 +36,7 @@ export function toTex(text: string): string {
     .replace(/([A-Za-z])\u0304/g, "\\bar{$1}")
     .replace(/[₀-₉ₘₙₓ]+/g, (s) => "_{" + [...s].map((c) => subs[c]).join("") + "}")
     .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, (s) => "^{" + [...s].map((c) => supers[c]).join("") + "}")
-    .replace(/Δ/g, "\\Delta ")
+    .replace(/Δ/g, "\\Delta{}")
     .replace(/ω/g, "\\omega ")
     .replace(/θ/g, "\\theta ")
     .replace(/π/g, "\\pi ")
@@ -103,6 +103,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         `y=${vector(s.points.map((v) => v[1]))};`,
       );
       const fn = p.kind === "polar" ? "polarplot" : "plot";
+      if (s.kind === "bar") {
+        out.push(
+          `bar(x,y,0.7,'FaceColor',${vector(rgb)},'EdgeColor','k','DisplayName',${tex(s.name)});`,
+        );
+        return;
+      }
       const markerIndices = s.marker
         ? `, 'MarkerIndices',${vector(s.points.map((_, i) => i + 1).filter((_, i) => i % Math.max(1, Math.floor(s.points.length / 18)) === 0))}`
         : "";

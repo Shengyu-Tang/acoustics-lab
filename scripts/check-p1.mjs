@@ -148,8 +148,41 @@ const references = {
   "1.2.2": [0.002538365414, 7.917858446],
   "1.2.3": [0.3014561, 0.9189974078],
   2.1: [418.3300133, 0.00155379719],
+  2.2: [321.7923179, 130.8736],
 };
 near(all.stringSpeed(70, 0.0004), 418.330013267, 1e-10);
+for (const alpha of [0.1, 0.3, 0.5, 0.9])
+  for (let n = 1; n <= 12; n++) {
+    const h = 0.004,
+      N = 20000;
+    let integral = 0;
+    for (let i = 0; i < N; i++) {
+      const r = (i + 0.5) / N,
+        y = r < alpha ? (h * r) / alpha : (h * (1 - r)) / (1 - alpha);
+      integral += (2 * y * Math.sin(n * Math.PI * r)) / N;
+    }
+    assert.ok(
+      Math.abs(integral - all.pluckCoefficient(n, h, alpha)) < h * 1e-6,
+      "Fourier coefficient / numerical quadrature",
+    );
+    if (alpha === 0.5 && n % 2 === 0)
+      assert.ok(Math.abs(all.pluckCoefficient(n, h, alpha)) < 1e-16);
+  }
+for (let i = 0; i <= 20; i++) {
+  const x = (i * 0.65) / 20,
+    t = i * 0.00013,
+    c = 418.330013267,
+    L = 0.65,
+    h = 0.004,
+    a = 0.3;
+  const standing = all.pluckWave(x, t, c, L, h, a),
+    left = all.pluckWave(x, t, c, L, h, a, 12, 1),
+    right = all.pluckWave(x, t, c, L, h, a, 12, -1);
+  assert.ok(
+    Math.abs(standing - left - right) < 1e-14,
+    "Two traveling waves sum to the standing wave",
+  );
+}
 for (const T of [20, 70, 180, 300])
   for (const mu of [0.0001, 0.0004, 0.005])
     for (const L of [0.3, 0.65, 1.5]) {
@@ -219,7 +252,12 @@ for (const l of lectures) {
             ),
             `${f.number} ${s.name}`,
           );
-          if (s.points.length > 100 && s.style !== "none" && panel.xlabel.includes("时间")) {
+          if (
+            s.points.length > 100 &&
+            s.style !== "none" &&
+            s.kind !== "bar" &&
+            !panel.xlabel.includes("实部")
+          ) {
             const xs = s.points.map((p) => p[0]);
             near(Math.min(...xs), xt.limits[0], 0.01);
             near(Math.max(...xs), xt.limits[1], 0.01);
