@@ -105,6 +105,7 @@ try {
     reducedMotion: "reduce",
     downloadsPath: path.join(runDirectory, "downloads"),
   });
+  context.setDefaultTimeout(90000);
   let page = await context.newPage();
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => {
@@ -563,6 +564,7 @@ try {
         (p) => `#/cases?project=${p.id}`,
       ),
     ]) {
+      console.log(`Checking route ${hash} at ${width}`);
       await page.goto("http://127.0.0.1:4174/" + hash);
       await page.locator("header").waitFor();
       await page.waitForTimeout(200);
@@ -670,6 +672,32 @@ try {
     }
   }
   fs.writeFileSync("outputs/polish-report.json", JSON.stringify(polish, null, 2));
+  // Long route sweeps can exhaust Edge's renderer process. Keep the completed
+  // route assertions, and isolate the final exact-size review captures.
+  assert.deepEqual(errors, [], "route sweep console errors");
+  fs.writeFileSync(
+    "outputs/browser-routes-passed.json",
+    JSON.stringify(
+      {
+        lectures: topics.length,
+        viewports: [
+          [1440, 900],
+          [390, 844],
+        ],
+        errors,
+      },
+      null,
+      2,
+    ),
+  );
+  await Promise.race([context.close(), new Promise((r) => setTimeout(r, 5000))]);
+  context = await chromium.launchPersistentContext(path.join(runDirectory, "review-profile"), {
+    channel: "msedge",
+    headless: true,
+    reducedMotion: "reduce",
+  });
+  context.setDefaultTimeout(90000);
+  page = await context.newPage();
   // Fresh, exact-size review captures of the requested sections.
   fs.mkdirSync("screenshots/design-review", { recursive: true });
   for (const [size, width, height] of [

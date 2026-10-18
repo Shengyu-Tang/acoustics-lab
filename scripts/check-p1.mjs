@@ -3,7 +3,7 @@ import fs from "node:fs";
 import { build } from "esbuild";
 const files = fs
   .readdirSync("src/content/lectures")
-  .filter((f) => !["1.2.4.ts", "1.2.5.ts"].includes(f));
+  .filter((f) => !f.startsWith("3.") && !["1.2.4.ts", "1.2.5.ts"].includes(f));
 fs.mkdirSync("outputs", { recursive: true });
 await build({
   stdin: {

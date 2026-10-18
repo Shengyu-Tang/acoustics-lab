@@ -20,6 +20,19 @@ export function ThumbnailAxes({ panel }: { panel: Panel }) {
   return (
     <g>
       <rect width="100" height="50" fill="white" />
+      {p.field &&
+        p.field.z.flatMap((row, j) =>
+          row.map((z, i) => (
+            <rect
+              key={`${j}-${i}`}
+              x={2 + (96 * i) / p.field!.x.length}
+              y={2 + (46 * (p.field!.y.length - 1 - j)) / p.field!.y.length}
+              width={96 / p.field!.x.length + 0.1}
+              height={46 / p.field!.y.length + 0.1}
+              fill={fieldColor(z, fieldLimits(p.field!), p.field!.map)}
+            />
+          )),
+        )}
       {p.series?.map((series, index) => (
         <Line
           key={index}
@@ -84,17 +97,41 @@ export function Line({
     })
     .join(" ");
   const color = series.color ?? COLORS[index % COLORS.length];
+  if (series.kind === "barh")
+    return (
+      <g data-plot-series="true" fill={color} stroke="black" strokeWidth=".5">
+        {series.points.map(([x, y], i) => {
+          const [px, py] = xy([x, y]),
+            [base] = xy([panel.xlim[0], y]),
+            h = (AH * 0.7) / (panel.ylim[1] - panel.ylim[0]);
+          return (
+            <rect
+              key={i}
+              x={Math.min(base, px)}
+              y={py - h / 2}
+              width={Math.abs(px - base)}
+              height={h}
+            />
+          );
+        })}
+      </g>
+    );
   if (series.kind === "bar")
     return (
       <g data-plot-series="true" fill={color} stroke="black" strokeWidth="0.5">
         {series.points.map(([x, y], i) => {
-          const [px, py] = xy([x, y]),
-            base = xy([x, 0])[1],
-            barWidth = (AW * 0.7) / (panel.xlim[1] - panel.xlim[0]);
+          const [, py] = xy([x, y]),
+            base = xy([x, panel.yscale === "log" ? panel.ylim[0] : 0])[1],
+            left = xy([
+              panel.xscale === "log" ? Math.max(panel.xlim[0], x - 0.35) : x - 0.35,
+              y,
+            ])[0],
+            right = xy([x + 0.35, y])[0],
+            barWidth = right - left;
           return (
             <rect
               key={i}
-              x={px - barWidth / 2}
+              x={left}
               y={Math.min(py, base)}
               width={barWidth}
               height={Math.abs(base - py)}
@@ -140,7 +177,11 @@ export function Axes({
   height?: number;
 }) {
   const xtBase = axisTicks(panel.xlim, panel.xscale === "log"),
-    xt = panel.integerX ? { ...xtBase, values: xtBase.values.filter(Number.isInteger) } : xtBase,
+    xt = panel.xtickLabels
+      ? { ...xtBase, values: panel.xtickLabels.map((t) => t.value) }
+      : panel.integerX
+        ? { ...xtBase, values: xtBase.values.filter(Number.isInteger) }
+        : xtBase,
     yt = axisTicks(panel.ylim, panel.yscale === "log"),
     rt = axisTicks(panel.rightLim ?? panel.ylim, panel.yscale === "log");
   const p =
@@ -263,12 +304,18 @@ export function Axes({
               </text>
             </g>
           ))}
-          {yt.values.map((y) => (
+          {(p.ytickLabels?.map((t) => t.value) ?? yt.values).map((y) => (
             <g key={y}>
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h${AW}`} stroke="#e5e5e5" />
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h5m${AW - 5} 0h-5`} stroke="black" />
               <text x={L - 8} y={T + (1 - ys(y)) * AH + 4} textAnchor="end">
-                <ScriptText text={tickLabel(y, yt, p.yscale === "log")} svg />
+                <ScriptText
+                  text={
+                    p.ytickLabels?.find((t) => t.value === y)?.label ??
+                    tickLabel(y, yt, p.yscale === "log")
+                  }
+                  svg
+                />
               </text>
             </g>
           ))}
@@ -546,6 +593,17 @@ export function Axes({
         onPointerLeave={() => setTip(null)}
         aria-label="移动指针查看数据"
       />
+      {p.textLabels?.map((s, i) => (
+        <text
+          key={i}
+          x={L + xs(s.x) * AW}
+          y={T + (1 - ys(s.y)) * AH}
+          textAnchor="middle"
+          pointerEvents="none"
+        >
+          <ScriptText text={s.text} svg />
+        </text>
+      ))}
       {tip && (
         <g pointerEvents="none">
           <circle cx={tip.x} cy={tip.y} r="3" fill="black" />

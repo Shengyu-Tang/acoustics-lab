@@ -19,6 +19,21 @@ export function toTex(text: string): string {
     ₘ: "m",
     ₙ: "n",
     ₓ: "x",
+    ₐ: "a",
+    ₑ: "e",
+    ₒ: "o",
+    ₔ: "ə",
+    ₕ: "h",
+    ₖ: "k",
+    ₗ: "l",
+    ₚ: "p",
+    ₛ: "s",
+    ₜ: "t",
+    "₊": "+",
+    "₋": "-",
+    "₌": "=",
+    "₍": "(",
+    "₎": ")",
   };
   const supers: Record<string, string> = {
     "⁰": "0",
@@ -32,12 +47,20 @@ export function toTex(text: string): string {
     "⁸": "8",
     "⁹": "9",
     "⁻": "-",
+    "⁺": "+",
+    "⁼": "=",
+    "⁽": "(",
+    "⁾": ")",
+    ⁿ: "n",
+    ⁱ: "i",
   };
   return text
+    .replace(/⁻π/g, "^{-\\pi}")
     .replace(/([A-Za-z])\u0304/g, "\\bar{$1}")
-    .replace(/[₀-₉ₘₙₓ]+/g, (s) => "_{" + [...s].map((c) => subs[c]).join("") + "}")
-    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, (s) => "^{" + [...s].map((c) => supers[c]).join("") + "}")
+    .replace(/[\u2080-\u209c]+/g, (s) => "_{" + [...s].map((c) => subs[c] ?? c).join("") + "}")
+    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ]+/g, (s) => "^{" + [...s].map((c) => supers[c]).join("") + "}")
     .replace(/Δ/g, "\\Delta{}")
+    .replace(/∇/g, "\\nabla ")
     .replace(/ω/g, "\\omega ")
     .replace(/θ/g, "\\theta ")
     .replace(/π/g, "\\pi ")
@@ -103,7 +126,9 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     if (p.field) {
       const f = p.field;
       out.push(
-        `im=imagesc(${vector(f.x)},${vector(f.y)},[${f.z.map((r) => r.join(" ")).join(";\n")}]);`,
+        `field_x=${m?.field?.x ?? vector(f.x)}; field_y=${m?.field?.y ?? vector(f.y)}; field_z=${m?.field?.z ?? `[${f.z.map((r) => r.join(" ")).join(";\n")}]`};`,
+        `im=imagesc(field_x,field_y,field_z);`,
+        ...(m ? [`model_fields{${k + 1}}=struct('x',field_x,'y',field_y,'z',field_z);`] : []),
         "if isprop(im,'Interpolation'), im.Interpolation='bilinear'; end",
         "set(gca,'YDir','normal');",
         `caxis(${vector(fieldLimits(f))});`,
@@ -132,6 +157,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         ...(m ? [`model_x{${k + 1},${i + 1}}=x; model_y{${k + 1},${i + 1}}=y;`] : []),
       );
       const fn = p.kind === "polar" ? "polarplot" : "plot";
+      if (s.kind === "barh") {
+        out.push(
+          `barh(y,x,0.7,'FaceColor',${vector(rgb)},'EdgeColor','k','DisplayName',${tex(s.name)});`,
+        );
+        return;
+      }
       if (s.kind === "bar") {
         out.push(
           `bar(x,y,0.7,'FaceColor',${vector(rgb)},'EdgeColor','k','DisplayName',${tex(s.name)});`,
@@ -159,6 +190,11 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         ...(p.xtickLabels
           ? [
               `xticks(${vector(p.xtickLabels.map((t) => t.value))}); xticklabels({${p.xtickLabels.map((t) => tex(t.label)).join(",")}});`,
+            ]
+          : []),
+        ...(p.ytickLabels
+          ? [
+              `yticks(${vector(p.ytickLabels.map((t) => t.value))}); yticklabels({${p.ytickLabels.map((t) => tex(t.label)).join(",")}});`,
             ]
           : []),
         `set(gca,'XMinorTick',${quote(p.xscale === "log" ? "on" : "off")},'YMinorTick',${quote(p.yscale === "log" ? "on" : "off")});`,
@@ -218,6 +254,11 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           );
         });
     } else out.push(`rlim(${vector(p.ylim)});`);
+    p.textLabels?.forEach((s) =>
+      out.push(
+        `text(${s.x},${s.y},${tex(s.text)},'HorizontalAlignment','center','Interpreter','tex');`,
+      ),
+    );
     out.push(
       `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
       p.kind === "polar"
@@ -254,6 +295,16 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     // in its clear right-hand area rather than letting MATLAB cover readouts.
     if (modelHeader && p.legend !== false && plotSeries.some((s) => s.legend !== false))
       out.push(`lgd.Location='${m?.legendLocation ?? "northeast"}';`);
+    else if (m?.legendLocation && p.legend !== false && plotSeries.some((s) => s.legend !== false))
+      out.push(`lgd.Location='${m.legendLocation}';`);
+    if (p.xtickLabels)
+      out.push(
+        `xticks(${vector(p.xtickLabels.map((t) => t.value))});xticklabels({${p.xtickLabels.map((t) => tex(t.label)).join(",")}});`,
+      );
+    if (p.ytickLabels)
+      out.push(
+        `yticks(${vector(p.ytickLabels.map((t) => t.value))});yticklabels({${p.ytickLabels.map((t) => tex(t.label)).join(",")}});`,
+      );
   });
   if (model) out.push(MATLAB_FUNCTIONS);
   return out.join("\n").trimEnd() + "\n";

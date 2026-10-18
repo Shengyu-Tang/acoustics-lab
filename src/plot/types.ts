@@ -12,10 +12,11 @@ export type MatlabModel = {
   ylim?: string;
   rightLim?: string;
   title?: string;
-  legendLocation?: "northeast" | "southeast";
+  legendLocation?: "northeast" | "southeast" | "northeastoutside";
+  field?: { x: string; y: string; z: string };
 };
 export type Series = {
-  kind?: "line" | "bar";
+  kind?: "line" | "bar" | "barh";
   name: string;
   points: Point[];
   color?: string;
@@ -33,6 +34,7 @@ export type Field = {
   limits?: [number, number];
 };
 export type Panel = {
+  textLabels?: { x: number; y: number; text: string }[];
   matlabModel?: MatlabModel;
   integerX?: boolean;
   title: string;
@@ -44,6 +46,7 @@ export type Panel = {
   rightLim?: [number, number];
   xscale?: "linear" | "log";
   xtickLabels?: { value: number; label: string }[];
+  ytickLabels?: { value: number; label: string }[];
   yscale?: "linear" | "log";
   kind?: "cartesian" | "polar";
   series?: Series[];

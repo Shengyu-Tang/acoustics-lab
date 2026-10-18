@@ -5,9 +5,10 @@ import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { build, stop } from "esbuild";
 import { pathToFileURL } from "node:url";
+const p2 = process.argv.includes("--batch=P2");
 const root = process.cwd(),
-  out = path.resolve("specs/redesign/matlab-check/P1-fix"),
-  work = path.resolve("outputs/matlab-models");
+  out = path.resolve(`specs/redesign/matlab-check/${p2 ? "P2" : "P1-fix"}`),
+  work = path.resolve(`outputs/matlab-models${p2 ? "-P2" : ""}`);
 for (const dir of [out, work, path.join(work, "tmp"), path.join(work, "prefs")])
   fs.mkdirSync(dir, { recursive: true });
 process.env.TEMP = process.env.TMP = path.join(work, "tmp");
@@ -18,7 +19,9 @@ await build({
     contents:
       fs
         .readdirSync("src/content/lectures")
-        .filter((f) => !["1.2.4.ts", "1.2.5.ts"].includes(f))
+        .filter((f) =>
+          p2 ? f.startsWith("3.") : !f.startsWith("3.") && !["1.2.4.ts", "1.2.5.ts"].includes(f),
+        )
         .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
         .join("\n") +
       "\nexport * from './src/plot/chapter1Figures';export {matlab} from './src/plot/export';export {modelsFor} from './src/plot/matlabModels';export * from './src/physics/chapter1';export {example} from './src/content/examples/instrument';export {bandwidthExample} from './src/content/examples/bandwidth';",
@@ -32,45 +35,106 @@ await build({
 stop();
 const all = await import(pathToFileURL(path.join(work, "bundle.mjs")));
 const jobs = [];
-const variant = (p) =>
+const variantP2 = (p) =>
   Object.fromEntries(
     Object.entries(p).map(([k, v]) => [
       k,
-      v *
-        ({
-          M: 1.2,
-          D: 0.85,
-          Rm: 1.15,
-          F0: 1.1,
-          x0: 0.8,
-          v0: 1.2,
-          A: 1.2,
-          zeta: 1.1,
-          Qm: 1.1,
-          T: 1.2,
-          mu: 1.1,
-          L: 0.9,
-          height: 0.8,
-          pluck: 1.1,
-          E: 0.9,
-          rho: 1.05,
-          S: 1.1,
-          tipMass: 1.2,
-          sigma: 1.1,
-          gradient: 0.8,
-          target: 1.05,
-          measured: 1.1,
-          tObs: 1.2,
-          n: 1.05,
-          limit: 0.9,
-          pulseCycles: 1.25,
-          gapCycles: 0.9,
-          f1: 0.98,
-          f2: 1.02,
-          velocity: 1.2,
-        }[k] ?? 1),
+      {
+        medium: 1,
+        mode: 1,
+        standing: 1,
+        spherical: 1,
+        shape: 2,
+        boundary: 2,
+        ratio: 1.25,
+        azimuth: -35,
+        elevation: 45,
+        wavecount: 4,
+        phase: 60,
+        ideal: 0,
+        continuous: 0,
+        compressible: 0,
+        uniform: 0,
+        small: 0,
+        left: 0,
+        wLeft: -0.004,
+      }[k] ??
+        v *
+          ({
+            rho: 1.05,
+            c: 0.98,
+            f: 1.2,
+            pa: 1.1,
+            xi: 0.8,
+            L: 1.1,
+            S: 1.1,
+            left: 1.2,
+            right: 0.9,
+            wLeft: 1.2,
+            wRight: 0.9,
+            span: 0.5,
+            T: 1.2,
+            gamma: 1.05,
+            P0: 1.1,
+            level: 1.02,
+            bulk: 1.1,
+            waterRho: 1.01,
+            depth: 1.2,
+            B: 1.1,
+            obs: 1.2,
+            n: 1.5,
+            sourceLevel: 1.05,
+            pRms: 1.2,
+            intensity: 1.2,
+            power: 1.2,
+            a1: 1.1,
+            a2: 0.9,
+            a3: 0.8,
+            a4: 1.2,
+          }[k] ?? (k.startsWith("h") ? 0.8 : 1)),
     ]),
   );
+const variant = (p) =>
+  p2
+    ? variantP2(p)
+    : Object.fromEntries(
+        Object.entries(p).map(([k, v]) => [
+          k,
+          v *
+            ({
+              M: 1.2,
+              D: 0.85,
+              Rm: 1.15,
+              F0: 1.1,
+              x0: 0.8,
+              v0: 1.2,
+              A: 1.2,
+              zeta: 1.1,
+              Qm: 1.1,
+              T: 1.2,
+              mu: 1.1,
+              L: 0.9,
+              height: 0.8,
+              pluck: 1.1,
+              E: 0.9,
+              rho: 1.05,
+              S: 1.1,
+              tipMass: 1.2,
+              sigma: 1.1,
+              gradient: 0.8,
+              target: 1.05,
+              measured: 1.1,
+              tObs: 1.2,
+              n: 1.05,
+              limit: 0.9,
+              pulseCycles: 1.25,
+              gapCycles: 0.9,
+              f1: 0.98,
+              f2: 1.02,
+              velocity: 1.2,
+            }[k] ?? 1),
+        ]),
+      );
 function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
   const base = plot(defaults),
     parameters = base[0].matlabModel.parameters;
@@ -82,7 +146,7 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
       expected.every((p) => p.matlabModel),
       name,
     );
-    let script = code;
+    let script = p2 ? "set(groot,'defaultFigureVisible','off');\n" + code : code;
     if (set)
       for (const { key } of parameters)
         if (key in p)
@@ -91,7 +155,7 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
     const filename = `fig_${name.replace(/[^\w]/g, "_")}_set${set}`;
     const resultPath = path.join(out, filename + ".json"),
       pngPath = path.join(out, filename + ".png");
-    const write = `\nqa=struct('x',{model_x(:)'},'y',{model_y(:)'}); if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; fid=fopen('${mq(resultPath)}','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'${mq(pngPath)}','Resolution',120); close all;\n`;
+    const write = `\nqa=struct('x',{model_x(:)'},'y',{model_y(:)'}); if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('${mq(resultPath)}','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'${mq(pngPath)}','Resolution',120); close all;\n`;
     const point = script.indexOf("\nfunction ");
     script = script.slice(0, point) + write + script.slice(point);
     const scriptPath = path.join(out, filename + ".m");
@@ -102,7 +166,8 @@ function add(name, defaults, plot, rows = 1, cols = 1, answers, readouts) {
       set,
       filename,
       parameters: p,
-      expected: expected.map((p) => p.series.map((s) => s.points)),
+      expected: expected.map((p) => (p.series ?? []).map((s) => s.points)),
+      expectedFields: expected.map((p) => p.field ?? null),
       changed,
       answers: answers?.(p),
       readouts: readouts?.(p),
@@ -130,39 +195,44 @@ for (const [key, l] of Object.entries(all).filter(([k]) => /^l\d+$/.test(k))) {
       (p) => e.asks.map((a) => a.calc(p)),
     );
 }
-const p0 = { ...all.instrument, Rm: 400 };
-add("1.2.4-1", p0, (p) => all.frequencyPanels(p, false), 2, 3);
-add("1.2.4-1-overlay", p0, (p) => all.frequencyPanels(p, true), 2, 3);
-add("1.2.4-2", p0, (p) => [all.impedancePanel(p)]);
-add("1.2.5-1", p0, (p) => [all.powerPanel(p)]);
-add("1.2.5-2", p0, (p) => all.instantaneousPanels(p), 3, 1);
-add(
-  "A-1",
-  all.example.defaults,
-  (p) => [all.instrumentPanel(p)],
-  1,
-  1,
-  (p) => all.example.asks.map((a) => all.example.solve(p)[a.key]),
-);
-add("B-1", all.bandwidthExample.defaults, (p) => {
-  const s = all.bandwidthExample.solve(p),
-    panel = all.powerPanel({ ...p, Rm: s.Rm, F0: s.force });
-  panel.series.push({
-    name: "目标振速工作点",
-    points: [[s.f0, s.power]],
-    marker: "o",
-    style: "none",
+if (!p2) {
+  const p0 = { ...all.instrument, Rm: 400 };
+  add("1.2.4-1", p0, (p) => all.frequencyPanels(p, false), 2, 3);
+  add("1.2.4-1-overlay", p0, (p) => all.frequencyPanels(p, true), 2, 3);
+  add("1.2.4-2", p0, (p) => [all.impedancePanel(p)]);
+  add("1.2.5-1", p0, (p) => [all.powerPanel(p)]);
+  add("1.2.5-2", p0, (p) => all.instantaneousPanels(p), 3, 1);
+  add(
+    "A-1",
+    all.example.defaults,
+    (p) => [all.instrumentPanel(p)],
+    1,
+    1,
+    (p) => all.example.asks.map((a) => all.example.solve(p)[a.key]),
+  );
+  add("B-1", all.bandwidthExample.defaults, (p) => {
+    const s = all.bandwidthExample.solve(p),
+      panel = all.powerPanel({ ...p, Rm: s.Rm, F0: s.force });
+    panel.series.push({
+      name: "目标振速工作点",
+      points: [[s.f0, s.power]],
+      marker: "o",
+      style: "none",
+    });
+    const modeled = all.modelsFor("B-1", { ...p, Rm: s.Rm, F0: s.force }, [panel]);
+    return modeled;
   });
-  const modeled = all.modelsFor("B-1", { ...p, Rm: s.Rm, F0: s.force }, [panel]);
-  return modeled;
-});
+}
 fs.writeFileSync(path.join(work, "expected.json"), JSON.stringify(jobs));
 if (process.argv.includes("--prepare-only")) {
   console.log(`Prepared ${jobs.length} scripts.`);
   process.exit(0);
 }
 const selected = process.argv.find((a) => a.startsWith("--filter="))?.slice(9);
-const results = [];
+const resultFile = path.join(out, "results.json");
+const resume = process.argv.includes("--resume");
+const results =
+  resume && fs.existsSync(resultFile) ? JSON.parse(fs.readFileSync(resultFile, "utf8")) : [];
 function mq(s) {
   return s.replaceAll("\\", "/").replaceAll("'", "''");
 }
@@ -177,16 +247,24 @@ function near(actual, expected, label) {
   return error;
 }
 const changedOnly = process.argv.includes("--changed-only");
-const pending = jobs.filter((j) =>
-  changedOnly ? j.changed : !selected || selected.split(",").some((name) => j.name.includes(name)),
+const pending = jobs.filter(
+  (j) =>
+    (changedOnly
+      ? j.changed
+      : !selected || selected.split(",").some((name) => j.name.includes(name))) &&
+    (!resume || !results.some((r) => r.filename === j.filename) || j.changed),
 );
-async function runJob(job) {
+async function runJob(job, slot) {
   const script = path.join(out, job.filename + ".m"),
     json = path.join(out, job.filename + ".json");
   fs.rmSync(json, { force: true });
   const start = Date.now();
-  const prefs = path.join(work, "prefs", job.filename),
+  const prefs = path.join(work, "prefs", p2 ? `worker${slot}` : job.filename),
     tmp = path.join(work, "tmp", job.filename);
+  if (p2 && !fs.existsSync(prefs)) {
+    const seed = path.join(work, "prefs", "fig_3_1_1_1_set0");
+    if (fs.existsSync(seed)) fs.cpSync(seed, prefs, { recursive: true });
+  }
   fs.mkdirSync(prefs, { recursive: true });
   fs.mkdirSync(tmp, { recursive: true });
   const result = await new Promise((resolve, reject) => {
@@ -203,7 +281,16 @@ async function runJob(job) {
     child.stdout.on("data", (b) => chunks.push(b));
     child.stderr.on("data", (b) => chunks.push(b));
     child.on("error", reject);
-    child.on("close", (code) => resolve({ code, log: Buffer.concat(chunks).toString("utf8") }));
+    child.on("close", (code) => {
+      const bytes = Buffer.concat(chunks);
+      let log;
+      try {
+        log = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+      } catch {
+        log = new TextDecoder("gb18030").decode(bytes);
+      }
+      resolve({ code, log });
+    });
   });
   fs.writeFileSync(path.join(out, job.filename + ".log"), result.log);
   assert.equal(result.code, 0, job.filename + "\n" + result.log);
@@ -232,6 +319,22 @@ async function runJob(job) {
       }
     }),
   );
+  if (job.expectedFields.some(Boolean)) {
+    const fields = cells(data.fields);
+    job.expectedFields.forEach((f, k) => {
+      if (!f) return;
+      const a = fields[k];
+      assert.ok(a, job.filename + " field");
+      a.x.forEach((v, i) => near(v, f.x[i], "field x"));
+      a.y.forEach((v, i) => near(v, f.y[i], "field y"));
+      a.z.forEach((row, j) =>
+        row.forEach((v, i) => {
+          maxError = Math.max(maxError, near(v, f.z[j][i], job.filename + " field z"));
+          count++;
+        }),
+      );
+    });
+  }
   if (job.answers)
     cells(data.answers).forEach((v, i) => near(v, job.answers[i], job.filename + " answer " + i));
   if (job.readouts) {
@@ -240,6 +343,8 @@ async function runJob(job) {
       near(v, job.readouts[i], job.filename + " readout " + i),
     );
   }
+  const previousIndex = results.findIndex((r) => r.filename === job.filename);
+  if (previousIndex >= 0) results.splice(previousIndex, 1);
   results.push({
     name: job.name,
     set: job.set,
@@ -260,11 +365,11 @@ async function runJob(job) {
 }
 const failures = [];
 await Promise.all(
-  Array.from({ length: 4 }, async () => {
+  Array.from({ length: 4 }, async (_, slot) => {
     while (pending.length) {
       const job = pending.shift();
       try {
-        await runJob(job);
+        await runJob(job, slot);
       } catch (e) {
         failures.push({ name: job.filename, error: String(e) });
         console.error("FAIL " + job.filename + ": " + e);
@@ -284,5 +389,29 @@ else if (selected || changedOnly) {
   fs.writeFileSync(
     path.join(out, "results.json"),
     JSON.stringify([...merged.values()], null, 2) + "\n",
+  );
+}
+if (p2 && !failures.length) {
+  const complete = JSON.parse(fs.readFileSync(path.join(out, "results.json"), "utf8"));
+  for (const job of jobs) {
+    const result = complete.find((r) => r.filename === job.filename);
+    assert.ok(result, `Missing MATLAB result ${job.filename}`);
+    assert.deepEqual(result.parameters, job.parameters, `Stale MATLAB parameters ${job.filename}`);
+    if (!job.answers) continue;
+    const actual = JSON.parse(
+      fs.readFileSync(path.join(out, job.filename + ".json"), "utf8"),
+    ).answers;
+    const errors = job.answers.map(
+      (v, i) => Math.abs(actual[i] - v) / Math.max(Math.abs(v), 1e-300),
+    );
+    assert.ok(
+      errors.every((e) => e < 0.0049),
+      `${job.filename}: relative example error <0.5%`,
+    );
+    result.maxAnswerRelativeError = Math.max(...errors);
+  }
+  fs.writeFileSync(path.join(out, "results.json"), JSON.stringify(complete, null, 2) + "\n");
+  console.log(
+    `PASS P2: ${jobs.length} current parameter sets; all worked answers agree within 0.5% relative error.`,
   );
 }

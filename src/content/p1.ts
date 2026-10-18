@@ -50,6 +50,14 @@ export type P1Lecture = {
   controls?: "damping" | "string-boundary" | "rod-boundary" | "materials" | "pluck";
   boundaryEquations?: string[];
   materials?: { name: string; E: number; rho: number }[];
+  interactive?: {
+    selectors?: { key: string; label: string; options: string[] }[];
+    toggles?: { key: string; label: string }[];
+    steps?: { tex: string; text: string }[];
+    links?: { text: string; href: string }[];
+    sketch?: boolean;
+    levels?: boolean;
+  };
 };
 export function lecture(
   id: string,

@@ -57,6 +57,7 @@ for (const l of lectures) {
     checkText(f.title, `${l.id} caption`);
     for (const panel of f.plot(p, l.defaults ? 0 : false)) {
       const svg = render(h("svg", null, h(all.Axes, { panel })));
+      assert.ok(!/(?:NaN|Infinity)/.test(svg), `${f.number}: finite SVG attributes`);
       assert.ok(
         !/[\u2080-\u209c⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ]/.test(svg),
         `${f.number}: rendered SVG script glyph`,
@@ -113,6 +114,23 @@ assert.ok(
   tex.includes("Q_{m}") && tex.includes("f_{0}") && tex.includes("x_{m}"),
   "MATLAB toTex still consumes original Unicode labels",
 );
+const acousticTex = all.matlab(
+  [{ title: "Eₖ Eₚ", xlabel: "pₐ", ylabel: "u_r", xlim: [0, 1], ylim: [0, 1], series: [] }],
+  1,
+  1,
+  "P2 notation",
+);
+assert.ok(
+  acousticTex.includes("E_{k}") && acousticTex.includes("E_{p}") && acousticTex.includes("p_{a}"),
+);
+assert.ok(!/[\u2080-\u209c]/.test(acousticTex), "all P2 MATLAB subscripts become TeX");
+const nabla = all.matlab(
+  [{ title: "∇²p", xlabel: "x", ylabel: "p", xlim: [0, 1], ylim: [0, 1], series: [] }],
+  1,
+  1,
+  "gradient notation",
+);
+assert.ok(nabla.includes("\\nabla "));
 assert.deepEqual(issues, [], "unmarked prose math");
 console.log(
   `PASS: ${lectures.length} lectures, ${strings} prose strings, HTML/SVG scripts and MATLAB toTex compatibility`,

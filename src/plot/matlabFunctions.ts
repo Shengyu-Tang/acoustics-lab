@@ -126,4 +126,13 @@ for s=candidates
 end
 finish=str2double(sprintf('%.13g',ceil(hi/step-1e-10)*step));
 end
+function lim=p2NiceLimits(lo,hi)
+raw=(hi-lo)/5;decade=10^floor(log10(raw));steps=[1 2 2.5 5 10]*decade;
+counts=ceil(hi./steps-1e-10)-floor(lo./steps+1e-10)+1;
+scores=abs(counts-6)+100*(counts<4 | counts>8);[~,ii]=min(scores);st=steps(ii);
+lim=[floor(lo/st+1e-10)*st ceil(hi/st-1e-10)*st];
+end
+function L=p2SourceLevel(n,L1)
+L=L1+10*log10(max(n,eps));L(n<=0)=NaN;
+end
 `;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { P1Lecture as Lecture, Values } from "./content/p1";
 import { fmt } from "./content/p1";
-import Parameter from "./Parameter";
+import Parameter, { NumberField } from "./Parameter";
 import MathText, { MathProse } from "./Math";
 import Figure from "./plot/Figure";
 import { download, matlab } from "./plot/export";
@@ -82,6 +82,104 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
       </section>
       <section id="simulation">
         <h2>仿真</h2>
+        {l.interactive?.levels && (
+          <fieldset className="parameter-panel">
+            <legend>声级双向换算（修改任一侧，另一侧重算）</legend>
+            {[
+              {
+                key: "pRms",
+                name: "声压有效值",
+                unit: "Pa",
+                factor: 20,
+                ref: p.medium ? 1e-6 : 20e-6,
+              },
+              { key: "intensity", name: "声强", unit: "W/m²", factor: 10, ref: 1e-12 },
+              { key: "power", name: "声功率", unit: "W", factor: 10, ref: 1e-12 },
+            ].map((s) => (
+              <label key={s.key} className="p2-converter">
+                {s.name}
+                <NumberField
+                  label={`${s.name}线性值`}
+                  value={p[s.key]}
+                  min={1e-15}
+                  max={1e9}
+                  step={1e-6}
+                  onChange={(v) => setParameter(s.key, v)}
+                />
+                <span>
+                  <MathProse text={s.unit} />
+                </span>
+                <NumberField
+                  label={`${s.name}级`}
+                  value={s.factor * Math.log10(p[s.key] / s.ref)}
+                  min={-100}
+                  max={300}
+                  step={0.1}
+                  onChange={(v) => setParameter(s.key, s.ref * 10 ** (v / s.factor))}
+                />
+                dB
+              </label>
+            ))}
+          </fieldset>
+        )}
+        {l.interactive?.selectors?.map((s) => (
+          <label key={s.key} className="p2-choice">
+            {s.label}{" "}
+            <select
+              aria-label={s.label}
+              value={p[s.key]}
+              onChange={(e) => setParameter(s.key, Number(e.target.value))}
+            >
+              {s.options.map((text, i) => (
+                <option key={text} value={i}>
+                  {text}
+                </option>
+              ))}
+            </select>
+          </label>
+        ))}
+        {l.interactive?.toggles?.map((s) => (
+          <label key={s.key} className="p2-choice">
+            <input
+              type="checkbox"
+              checked={Boolean(p[s.key])}
+              onChange={(e) => setParameter(s.key, Number(e.target.checked))}
+            />
+            {s.label}
+          </label>
+        ))}
+        {l.interactive?.steps && (
+          <div className="p2-derivation">
+            <button
+              onClick={() =>
+                setParameter("step", Math.min(l.interactive!.steps!.length - 1, (p.step ?? 0) + 1))
+              }
+            >
+              下一步
+            </button>{" "}
+            <button onClick={() => setParameter("step", 0)}>从头推导</button>
+            {l.interactive.steps.slice(0, (p.step ?? 0) + 1).map((s, i) => (
+              <div key={i} aria-current={i === p.step ? "step" : undefined}>
+                <MathText tex={s.tex} />
+                <p>
+                  <MathProse text={s.text} />
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+        {l.interactive?.links && (
+          <nav className="p2-route" aria-label="推导路线">
+            {l.interactive.links.map((s) => (
+              <a key={s.href} href={s.href}>
+                {s.text}
+              </a>
+            ))}
+          </nav>
+        )}
+        {l.interactive?.sketch && (
+          <p>选择“手绘”后，在第一张图中拖动绘制初始波形；九个采样点之间作线性插值，再点击播放。</p>
+        )}
         {l.animation && (
           <div className="animation-controls">
             <button onClick={() => setPlaying(!playing)}>{playing ? "暂停" : "播放"}</button>
@@ -119,38 +217,132 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
             {l.figures.map((f, index) => (
               <div
                 key={f.number}
-                style={{ touchAction: l.id === "2.1" && index === 0 ? "none" : undefined }}
+                style={{
+                  userSelect: l.interactive?.sketch || l.id === "3.4.2" ? "none" : undefined,
+                  touchAction:
+                    (l.id === "2.1" || l.id === "3.4.2" || l.interactive?.sketch) && index === 0
+                      ? "none"
+                      : undefined,
+                }}
                 onPointerDown={
-                  l.id === "2.1" && index === 0
+                  l.id === "3.4.2" && index === 0
                     ? (event) => {
                         if ((event.target as HTMLElement).closest("button")) return;
-                        setPlaying(false);
-                        event.currentTarget.setPointerCapture(event.pointerId);
-                        const box = event.currentTarget.getBoundingClientRect();
+                        event.preventDefault();
+                        const r = event.currentTarget.querySelector("svg")!.getBoundingClientRect();
+                        const start = r.width >= 600 ? r.width / 2 : 0,
+                          width = r.width >= 600 ? r.width / 2 : r.width;
                         setParameter(
-                          "height",
+                          "obs",
                           Math.max(
-                            -0.02,
-                            Math.min(0.02, (0.5 - (event.clientY - box.top) / box.height) * 0.08),
+                            0,
+                            Math.min(
+                              2,
+                              (2 * (event.clientX - r.left - start - 66)) / (width - 104),
+                            ),
                           ),
                         );
+                        event.currentTarget.setPointerCapture(event.pointerId);
                       }
-                    : undefined
+                    : l.interactive?.sketch && p.shape === 2 && index === 0
+                      ? (event) => {
+                          if ((event.target as HTMLElement).closest("button")) return;
+                          event.preventDefault();
+                          const svg = event.currentTarget.querySelector("svg")!;
+                          const r = svg.getBoundingClientRect();
+                          const i = Math.max(
+                            0,
+                            Math.min(
+                              8,
+                              Math.round(((event.clientX - r.left - 66) / (r.width - 104)) * 8),
+                            ),
+                          );
+                          const value = Math.max(
+                            -1,
+                            Math.min(1, 1 - (2 * (event.clientY - r.top - 42)) / (r.height - 100)),
+                          );
+                          setPlaying(false);
+                          setT(0);
+                          setP((p) => ({ ...p, [`h${i}`]: value }));
+                          event.currentTarget.setPointerCapture(event.pointerId);
+                        }
+                      : l.id === "2.1" && index === 0
+                        ? (event) => {
+                            if ((event.target as HTMLElement).closest("button")) return;
+                            setPlaying(false);
+                            event.currentTarget.setPointerCapture(event.pointerId);
+                            const box = event.currentTarget.getBoundingClientRect();
+                            setParameter(
+                              "height",
+                              Math.max(
+                                -0.02,
+                                Math.min(
+                                  0.02,
+                                  (0.5 - (event.clientY - box.top) / box.height) * 0.08,
+                                ),
+                              ),
+                            );
+                          }
+                        : undefined
                 }
                 onPointerMove={
-                  l.id === "2.1" && index === 0
+                  l.id === "3.4.2" && index === 0
                     ? (event) => {
                         if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
-                        const box = event.currentTarget.getBoundingClientRect();
+                        const r = event.currentTarget.querySelector("svg")!.getBoundingClientRect();
+                        const start = r.width >= 600 ? r.width / 2 : 0,
+                          width = r.width >= 600 ? r.width / 2 : r.width;
                         setParameter(
-                          "height",
+                          "obs",
                           Math.max(
-                            -0.02,
-                            Math.min(0.02, (0.5 - (event.clientY - box.top) / box.height) * 0.08),
+                            0,
+                            Math.min(
+                              2,
+                              (2 * (event.clientX - r.left - start - 66)) / (width - 104),
+                            ),
                           ),
                         );
                       }
-                    : undefined
+                    : l.interactive?.sketch && p.shape === 2 && index === 0
+                      ? (event) => {
+                          if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+                          const r = event.currentTarget
+                            .querySelector("svg")!
+                            .getBoundingClientRect();
+                          const i = Math.max(
+                            0,
+                            Math.min(
+                              8,
+                              Math.round(((event.clientX - r.left - 66) / (r.width - 104)) * 8),
+                            ),
+                          );
+                          setP((p) => ({
+                            ...p,
+                            [`h${i}`]: Math.max(
+                              -1,
+                              Math.min(
+                                1,
+                                1 - (2 * (event.clientY - r.top - 42)) / (r.height - 100),
+                              ),
+                            ),
+                          }));
+                        }
+                      : l.id === "2.1" && index === 0
+                        ? (event) => {
+                            if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+                            const box = event.currentTarget.getBoundingClientRect();
+                            setParameter(
+                              "height",
+                              Math.max(
+                                -0.02,
+                                Math.min(
+                                  0.02,
+                                  (0.5 - (event.clientY - box.top) / box.height) * 0.08,
+                                ),
+                              ),
+                            );
+                          }
+                        : undefined
                 }
                 onPointerUp={(event) => {
                   if (event.currentTarget.hasPointerCapture(event.pointerId))

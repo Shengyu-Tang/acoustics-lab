@@ -8,6 +8,7 @@ export type ParameterDefinition = {
   min: number;
   max: number;
   step: number;
+  integer?: boolean;
 };
 export function NumberField({
   value,
@@ -66,7 +67,7 @@ export default function Parameter({
       </span>
       <NumberField
         value={value}
-        onChange={onChange}
+        onChange={(v) => onChange(d.integer ? Math.round(v) : v)}
         min={d.min}
         max={d.max}
         step={d.step}

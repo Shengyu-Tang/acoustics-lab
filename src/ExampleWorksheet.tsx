@@ -5,6 +5,7 @@ import MathText, { MathProse } from "./Math";
 import Figure from "./plot/Figure";
 import type { Panel } from "./plot/types";
 type Given = {
+  integer?: boolean;
   key: string;
   symbol: string;
   name: string;
@@ -78,7 +79,7 @@ export default function ExampleWorksheet({
                   label={`例题${d.name}`}
                   value={p[d.key]}
                   onChange={(n) => {
-                    setParameter(d.key, n);
+                    setParameter(d.key, d.integer ? Math.round(n) : n);
                     setSubmitted(false);
                   }}
                   min={d.min}

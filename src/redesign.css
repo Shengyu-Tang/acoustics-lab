@@ -958,3 +958,37 @@ sup {
     overflow: visible;
   }
 }
+.p2-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 14px 8px 0;
+  font-size: 14px;
+}
+.p2-converter {
+  display: grid;
+  grid-template-columns: 62px 80px 40px 72px 24px;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  margin: 6px 0;
+}
+.p2-converter input[type="number"] {
+  width: 100%;
+  min-width: 0;
+}
+.p2-route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 8px 0;
+}
+.p2-derivation {
+  border-left: 2px solid #d9d9d9;
+  padding-left: 12px;
+  margin: 12px 0;
+}
+.p2-derivation [aria-current="step"] {
+  border-left: 2px solid #1f5fa8;
+  padding-left: 8px;
+}
