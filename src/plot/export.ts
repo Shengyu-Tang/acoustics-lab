@@ -160,7 +160,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       if (p.annotationHeader) {
         labels.forEach((label) =>
           out.push(
-            `text(${label.x / 440},${0.97 - label.lane * 0.065},${tex(label.text)},'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');`,
+            `text(${label.x / 440},${0.97 - label.lane * 0.12},${tex(label.text)},'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');`,
           ),
         );
       } else

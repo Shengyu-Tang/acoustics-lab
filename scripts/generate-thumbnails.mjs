@@ -1,6 +1,25 @@
 import fs from "node:fs";
 import { build } from "esbuild";
+import { format, resolveConfig } from "prettier";
 fs.mkdirSync("outputs", { recursive: true });
+const topics = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
+fs.writeFileSync(
+  "src/content/homeCatalog.json",
+  await format(
+    JSON.stringify(
+      {
+        topics: topics.map(({ id, title, chapter }) => ({ id, title, chapter })),
+        completed: fs
+          .readdirSync("src/content/lectures")
+          .filter((f) => f.endsWith(".ts"))
+          .map((f) => f.slice(0, -3)),
+      },
+      null,
+      2,
+    ),
+    { ...(await resolveConfig("src/content/homeCatalog.json")), parser: "json" },
+  ),
+);
 const files = fs
   .readdirSync("src/content/lectures")
   .filter((f) => !["1.2.4.ts", "1.2.5.ts"].includes(f));
@@ -11,7 +30,7 @@ await build({
   stdin: {
     contents:
       imports +
-      "export {createElement} from 'react';export {renderToStaticMarkup} from 'react-dom/server';export {Axes} from './src/plot/Figure';export {frequencyPanels,powerPanel} from './src/plot/chapter1Figures';export {instrument} from './src/physics/chapter1';",
+      "export {createElement} from 'react';export {renderToStaticMarkup} from 'react-dom/server';export {ThumbnailAxes as Axes} from './src/plot/Figure';export {frequencyPanels,powerPanel} from './src/plot/chapter1Figures';export {instrument} from './src/physics/chapter1';",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -46,7 +65,10 @@ for (const [name, original] of Object.entries(panels)) {
     bands: [],
     series: original.series?.map((s) => ({
       ...s,
-      points: s.points.filter((_, i) => i % Math.max(1, Math.floor(s.points.length / 90)) === 0),
+      points: s.points.filter(
+        (_, i) =>
+          i === s.points.length - 1 || i % Math.max(1, Math.floor(s.points.length / 60)) === 0,
+      ),
     })),
   };
   if (p.field) {
@@ -63,7 +85,7 @@ for (const [name, original] of Object.entries(panels)) {
     renderToStaticMarkup(
       h(
         "svg",
-        { xmlns: "http://www.w3.org/2000/svg", viewBox: "62 36 554 298" },
+        { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 50" },
         h(Axes, { panel: p }),
       ),
     ),

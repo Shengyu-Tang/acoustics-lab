@@ -7,30 +7,34 @@ const motion = (p: Values) => ({ ...p, Rm: Math.sqrt(p.M * p.D) / p.Qm });
 const info = (p: Values) => {
   const c = decay(motion(p)),
     B = (p.v0 + c.delta * p.x0) / c.wd,
-    A = Math.max(1e-6, Math.hypot(p.x0, B));
+    A = Math.hypot(p.x0, B);
   let z = (Math.atan2(B, p.x0) + Math.PI / 2) / c.wd;
   if (z < 0) z += Math.PI / c.wd;
   return { ...c, A, z, end: extent(Math.min(6 / c.delta, 12 * c.Td)) };
 };
 const curves = (p: Values) => {
-  const c = info(p);
+  const c = info(p),
+    bound = Math.max(1e-6, c.A);
   return {
     ...panel(
       "欠阻尼自由振动及包络",
       "时间 t (s)",
       "位移 x (m)",
       [0, c.end],
-      [-1.6 * c.A, 2.2 * c.A],
+      [-1.6 * bound, 2.2 * bound],
       [
         line("解析位移", (t) => freeMotion(motion(p), t), c.end),
         line("正包络", (t) => c.A * Math.exp(-c.delta * t), c.end, "--"),
         line("负包络", (t) => -c.A * Math.exp(-c.delta * t), c.end, "--"),
       ],
     ),
-    annotations: [
-      { axis: "x" as const, value: c.z, label: "过零1" },
-      { axis: "x" as const, value: c.z + c.Td / 2, label: `间隔 ${fmt(c.Td / 2)} s` },
-    ],
+    annotations:
+      c.A === 0
+        ? []
+        : [
+            { axis: "x" as const, value: c.z, label: "过零1" },
+            { axis: "x" as const, value: c.z + c.Td / 2, label: `间隔 ${fmt(c.Td / 2)} s` },
+          ],
   };
 };
 export default lecture(
@@ -76,6 +80,20 @@ export default lecture(
         plot: (p) => {
           const c = info(p),
             E = (p.D * c.A * c.A) / 2;
+          if (E === 0)
+            return [
+              {
+                ...panel(
+                  "零初始能量：对数坐标不显示 0",
+                  "时间 t (s)",
+                  "平均能量 E (J)",
+                  [0, c.end],
+                  [1e-12, 1e-6],
+                  [],
+                ),
+                yscale: "log" as const,
+              },
+            ];
           return [
             {
               ...panel(

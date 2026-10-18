@@ -8,6 +8,30 @@ import { axisTicks, tickLabel, superscript } from "./ticks";
 import { labelLanes, bestLegend, textWidth } from "./layout";
 type Layout = { W: number; H: number; L: number; T: number; AW: number; AH: number };
 const defaultLayout: Layout = { W: 640, H: 400, L: 64, T: 35, AW: 536, AH: 300 };
+/** A small, real data preview: axis text would be unreadable at catalog size. */
+export function ThumbnailAxes({ panel }: { panel: Panel }) {
+  const p = {
+    ...panel,
+    xlim: axisTicks(panel.xlim, panel.xscale === "log").limits,
+    ylim: axisTicks(panel.ylim, panel.yscale === "log").limits,
+  };
+  return (
+    <g>
+      <rect width="100" height="50" fill="white" />
+      {p.series?.map((series, index) => (
+        <Line
+          key={index}
+          panel={p}
+          series={series}
+          index={index}
+          precision={0}
+          layout={{ W: 100, H: 50, L: 2, T: 2, AW: 96, AH: 46 }}
+        />
+      ))}
+      <rect x="2" y="2" width="96" height="46" fill="none" stroke="black" strokeWidth="0.75" />
+    </g>
+  );
+}
 const number = (n: number) =>
   n === 0
     ? "0"
@@ -26,11 +50,13 @@ export function Line({
   panel,
   index = 0,
   layout = defaultLayout,
+  precision = 3,
 }: {
   series: Series;
   panel: Panel;
   index?: number;
   layout?: Layout;
+  precision?: number;
 }) {
   const { L, T, AW, AH } = layout;
   const xs = scale(panel.xlim, panel.xscale === "log"),
@@ -52,7 +78,7 @@ export function Line({
       }
       const cmd = active ? "L" : "M";
       active = true;
-      return `${cmd}${x.toFixed(3)},${y.toFixed(3)}`;
+      return `${cmd}${x.toFixed(precision)},${y.toFixed(precision)}`;
     })
     .join(" ");
   const color = series.color ?? COLORS[index % COLORS.length];
@@ -459,7 +485,7 @@ export function Axes({
         </text>
       )}
       {p.legend !== false && !!legendSeries.length && (
-        <g transform={`translate(${legend[0]} ${legend[1]})`}>
+        <g data-plot-legend="true" transform={`translate(${legend[0]} ${legend[1]})`}>
           <rect
             width={legendW}
             height={legendSeries.length * 16 + 8}
@@ -555,7 +581,7 @@ export default function Figure({
   const columns = width < 600 ? 1 : cols,
     nrows = Math.max(Math.ceil(panels.length / columns), columns === cols ? rows : 1),
     W = width / columns,
-    H = panels.length === 1 ? (width >= 600 ? 400 : 340) : 310;
+    H = panels.length === 1 ? 400 : 310;
   return (
     <figure ref={host} className="matlab-figure" style={{ maxWidth: cols === 1 ? 640 : undefined }}>
       <div className="figure-tools" aria-label="图形导出">

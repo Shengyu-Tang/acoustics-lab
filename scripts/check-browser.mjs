@@ -336,6 +336,50 @@ try {
       if (i % 20 === 0) console.log(`PASS: retained lecture ${i + 1}/${topics.length} at ${width}`);
       const l = p1.find((l) => l.id === t.id);
       if (!l) continue;
+      await page.waitForTimeout(50);
+      const hiddenCurves = await page.locator(".matlab-figure svg").evaluateAll((svgs) =>
+        svgs.flatMap((svg) => {
+          const hidden = [];
+          for (const legend of svg.querySelectorAll("[data-plot-legend] > rect")) {
+            const box = legend.getBoundingClientRect();
+            for (const curve of svg.querySelectorAll("[data-plot-series] path")) {
+              const matrix = curve.getScreenCTM();
+              let previous = null;
+              for (const match of curve
+                .getAttribute("d")
+                .matchAll(/([ML])(-?[\d.e+]+),(-?[\d.e+]+)/g)) {
+                const point = new DOMPoint(Number(match[2]), Number(match[3])).matrixTransform(
+                  matrix,
+                );
+                if (match[1] === "L" && previous) {
+                  let enter = 0,
+                    leave = 1;
+                  for (const [a, b, lo, hi] of [
+                    [previous.x, point.x, box.left - 1, box.right + 1],
+                    [previous.y, point.y, box.top - 1, box.bottom + 1],
+                  ]) {
+                    const delta = b - a;
+                    if (delta === 0) {
+                      if (a < lo || a > hi) leave = -1;
+                    } else {
+                      const ends = [(lo - a) / delta, (hi - a) / delta].sort((a, b) => a - b);
+                      enter = Math.max(enter, ends[0]);
+                      leave = Math.min(leave, ends[1]);
+                    }
+                  }
+                  if (leave >= enter) {
+                    hidden.push(svg.querySelector("text")?.textContent);
+                    break;
+                  }
+                }
+                previous = point;
+              }
+            }
+          }
+          return hidden;
+        }),
+      );
+      assert.deepEqual(hiddenCurves, [], `${l.id}: legend covers a curve at ${width}`);
       const e = l.examples[0];
       assert.equal(
         await page.locator(".matlab-figure").count(),
@@ -383,6 +427,25 @@ try {
           await select.selectOption(String(boundary));
         await select.selectOption("0");
       }
+      if (l.materials) {
+        const select = page.getByRole("combobox", { name: "材料预设", exact: true });
+        for (let i = 0; i < l.materials.length; i++) {
+          await select.selectOption(String(i));
+          assert.equal(
+            Number(
+              await page
+                .getByRole("spinbutton", { name: "杨氏模量数值", exact: true })
+                .inputValue(),
+            ),
+            l.materials[i].E,
+          );
+        }
+        await select.selectOption("0");
+      }
+      if (l.controls === "damping") {
+        const select = page.getByRole("combobox", { name: "阻尼输入方式", exact: true });
+        for (const mode of ["0", "1", "2"]) await select.selectOption(mode);
+      }
       if (l.id === "2.1") {
         const graph = page.locator(".matlab-figure").first(),
           box = await graph.boundingBox();
@@ -412,7 +475,9 @@ try {
       "#/about",
       "#/map",
       "#/compare",
-      "#/cases?project=grin-lens",
+      ...JSON.parse(fs.readFileSync("src/projects.json", "utf8")).map(
+        (p) => `#/cases?project=${p.id}`,
+      ),
     ]) {
       await page.goto("http://127.0.0.1:4174/" + hash);
       await page.locator("header").waitFor();

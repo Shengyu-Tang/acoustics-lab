@@ -1,10 +1,8 @@
-import topics from "./topics.json";
+import catalog from "./content/homeCatalog.json";
 import calendar from "./calendar.json";
 import Header from "./Header";
 import { chapters } from "./catalog";
-const completed = Object.keys(import.meta.glob("./content/lectures/*.ts")).map((path) =>
-  path.split("/").at(-1)!.replace(".ts", ""),
-);
+const { topics, completed } = catalog;
 function Thumbnail({ id }: { id: string }) {
   if (!completed.includes(id)) return null;
   return (

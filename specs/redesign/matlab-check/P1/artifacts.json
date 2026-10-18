@@ -1,0 +1,505 @@
+{
+  "matlabExecutable": "C:/Program Files/MATLAB/R2024b/bin/matlab.exe",
+  "processPolicy": "One matlab -batch process per script; exit results observed during export.",
+  "visualReview": "REVIEW.md",
+  "scriptHashEncoding": "UTF-8 with LF line endings",
+  "lectureFigures": 25,
+  "exampleFigures": 12,
+  "calculationScripts": 12,
+  "p0RegressionFigures": 2,
+  "records": [
+    {
+      "name": "1.1.1-1",
+      "width": 1642,
+      "height": 520,
+      "scriptSha256": "2cd1d41f24c2baeebba3e4de4ad2741c563f0e2ee9fb98f8d272548fe8826792",
+      "pngSha256": "eb40a55a7ffbdfd981ef7382eafcc2e39b2dbefd0bc70134484e22b3c6a917d9"
+    },
+    {
+      "name": "1.1.1-E1",
+      "width": 894,
+      "height": 520,
+      "scriptSha256": "de2e2ce95152b761c7e6ada08c88b62cb692a27025de238abfa2b64289ed2f25",
+      "pngSha256": "581c32d650154769148421170ef2ace613200db333c0e6bef0e560d079367eea"
+    },
+    {
+      "name": "1.1.1-E1-calculation",
+      "width": 894,
+      "height": 520,
+      "scriptSha256": "8978db6c393b74079d435cccedfde175c29a0d49ea70ee8d7b388a42bee8c4b4",
+      "pngSha256": "545a4cb09486e2948bc0ba6e9b317d32536af22abf5b498d838be56bc532eeca",
+      "answers": {
+        "f0": {
+          "matlab": 3.183098862,
+          "reference": 3.183098861837907
+        },
+        "amplitude": {
+          "matlab": 0.006403124237,
+          "reference": 0.006403124237432849
+        }
+      }
+    },
+    {
+      "name": "1.1.2-1",
+      "width": 886,
+      "height": 1390,
+      "scriptSha256": "e0d046762bc2db79f7032ceba96caf0fa99cc3a065a314508ef0e09d06aad250",
+      "pngSha256": "c3b7f7ab3094b012d1f149ecc68eb7a5ccb05cfe9aa6b8616aeb46c7a1811917"
+    },
+    {
+      "name": "1.1.2-2",
+      "width": 879,
+      "height": 520,
+      "scriptSha256": "d0d33669992e111c699f3ca1c83aa5b2ca3558210dfe67cc8d1bc9fc5c70660c",
+      "pngSha256": "2f09af355f37c32fb3c13cb671f0a0b7173f7d784fe09dbd0aa958cd3446caf6"
+    },
+    {
+      "name": "1.1.2-3",
+      "width": 897,
+      "height": 520,
+      "scriptSha256": "d15887c9cfb48deb5221074a33c533dfdd610f41d2296ce9a56347a105f42aab",
+      "pngSha256": "eb7b3c9d6d59561498bffd044c2e4ba2649fc445cff90d8ae83d6ea568d2d58d"
+    },
+    {
+      "name": "1.1.2-E1",
+      "width": 897,
+      "height": 520,
+      "scriptSha256": "15d5437d72fd3fd11a2adaa31005ec11afd9e78f856eef64fc40be495926675a",
+      "pngSha256": "4972856d6ce0f1c87570ab34572c83219fe53e8498b8d210c538b2b832586873"
+    },
+    {
+      "name": "1.1.2-E1-calculation",
+      "width": 897,
+      "height": 520,
+      "scriptSha256": "ca52f912bc5288f19e8d931306e64c181ab0f2ae6b9e1e753264c8ce675635b0",
+      "pngSha256": "7a2558e224d103f04f7fc00bb006fe0efaa54f8df2b860365f130fda549e28a7",
+      "answers": {
+        "vmax": {
+          "matlab": 0.12,
+          "reference": 0.12
+        },
+        "amax": {
+          "matlab": 3.6,
+          "reference": 3.6
+        },
+        "energy": {
+          "matlab": 0.0108,
+          "reference": 0.010799999999999999
+        }
+      }
+    },
+    {
+      "name": "2.3-1",
+      "width": 880,
+      "height": 520,
+      "scriptSha256": "158f51432927f547969bf30e4200ebc7ad4e8e442bd5f5570c0a2ada703f39f0",
+      "pngSha256": "2e768cfe9ebec97084ec5e4e9417ba1bdeab5eada4b05af329265f442304b3c8"
+    },
+    {
+      "name": "2.3-2",
+      "width": 876,
+      "height": 520,
+      "scriptSha256": "669253073aa7b9377227200fd3cd5c3d02b7c24d930212d9384e14f774db07fc",
+      "pngSha256": "e666ed4f6110d60c877ea70a6dc7990aa6414a457a4a3d4d59128191635d9420"
+    },
+    {
+      "name": "2.3-3",
+      "width": 865,
+      "height": 522,
+      "scriptSha256": "b4c4073d4e1a1e1ba9147bebb6dab8ca458831072b1e96616f41620b86df20b0",
+      "pngSha256": "4c4147e0537106f0e289813fedf1c34da7cd83797ad04bf8180859f801e3cff7"
+    },
+    {
+      "name": "2.3-E1",
+      "width": 865,
+      "height": 522,
+      "scriptSha256": "b3ff882918c3ed04e6cb3cebc3d4f5b0386ae336a8bd3e9a76e270d3450a2477",
+      "pngSha256": "945444271130b0479b907b23305409c863dcb260a4d4183b06d39d95bc050c66"
+    },
+    {
+      "name": "2.3-E1-calculation",
+      "width": 865,
+      "height": 522,
+      "scriptSha256": "b5ec4253154d87283c2dea525b43023e19d3435d792f15df47b75ce742d150ec",
+      "pngSha256": "7017713218bb36f617c494068fcdf75c00a9e8c83582201fe41af512eebf0c61",
+      "answers": {
+        "speed": {
+          "matlab": 5047.544651,
+          "reference": 5047.544651250688
+        },
+        "q1": {
+          "matlab": 0.860333589,
+          "reference": 0.8603335890193797
+        },
+        "frequency": {
+          "matlab": 691.1418322,
+          "reference": 691.1418322461324
+        }
+      }
+    },
+    {
+      "name": "2.4-1",
+      "width": 873,
+      "height": 1390,
+      "scriptSha256": "983bddffe87ba1a1197130e2d3e32108c5e2cdd050a3af7f1f2d21c3dbcbdf08",
+      "pngSha256": "f7751c378de4f181232f6436970cdd30cb71ba61404a1f4dab8f267439705972"
+    },
+    {
+      "name": "2.4-2",
+      "width": 862,
+      "height": 520,
+      "scriptSha256": "8e690b891c910c13ef85f35b482700b7617202e95210a70f96fc9a42e3206c67",
+      "pngSha256": "033c8051911ffd038f3fcf0bcc7ea0a982a572dbe2f00d72eb0d5906223a8aa8"
+    },
+    {
+      "name": "2.4-E1",
+      "width": 902,
+      "height": 516,
+      "scriptSha256": "5e460b17145044e81990219a3744b20948d12dbe75093a08923aaf1e07a7851b",
+      "pngSha256": "921f9af69e2843ba89f608cc4cf18d30c32c564dce38d6232f86083ba559d8ee"
+    },
+    {
+      "name": "2.4-E1-calculation",
+      "width": 902,
+      "height": 516,
+      "scriptSha256": "efbed700c9864f6a077071f5defc47ec23e11b4aedc6c03996f63a80cdeb7059",
+      "pngSha256": "e40e8200b1cda81b6fcfe557f539fefb14134443b0af738f2031b8a06a9b4c75",
+      "answers": {
+        "measuredSpeed": {
+          "matlab": 5000,
+          "reference": 5000
+        },
+        "modulus": {
+          "matlab": 196.25,
+          "reference": 196.25
+        }
+      }
+    },
+    {
+      "name": "1.1.3-1",
+      "width": 893,
+      "height": 520,
+      "scriptSha256": "1352dd7857d268e2b4c5e1a0416e335cedd89242f04aaae725a1c13bffce8a31",
+      "pngSha256": "2a3dd87f3f80fbb0ea0a10f5d03754a2f2038be2c97b299ab915e220fcc01dce"
+    },
+    {
+      "name": "1.1.3-2",
+      "width": 882,
+      "height": 517,
+      "scriptSha256": "1cb17f5c4249bfc841ff4bd0beef34670ec66ede21e445729b5ee15e397cb489",
+      "pngSha256": "bc3a04f6b062d2c8fbfd6983d6f994b6d642291b1a7b5319b0f2de597933d83f"
+    },
+    {
+      "name": "1.1.3-E1",
+      "width": 893,
+      "height": 520,
+      "scriptSha256": "018e6ad3ed5ccf35dab4e432db98f058a4ec8d7f8d4cefa5a425bd2e31d4d495",
+      "pngSha256": "2d9f6a07d095ae631f8db78bd720b1ffa48cb6089258152d5fceeab951c955bb"
+    },
+    {
+      "name": "1.1.3-E1-calculation",
+      "width": 893,
+      "height": 520,
+      "scriptSha256": "2e855554abb7508d7acfb7ab82cd99367669894adc57d689bdb90679f072ee0c",
+      "pngSha256": "cb33aacac0565a2108b470c95b2761b6c00d0c9b2c0d23656a9490dcf3a817dc",
+      "answers": {
+        "resistance": {
+          "matlab": 300,
+          "reference": 300
+        },
+        "slowRate": {
+          "matlab": 7.639320225,
+          "reference": 7.639320225002103
+        }
+      }
+    },
+    {
+      "name": "1.1.4-1",
+      "width": 898,
+      "height": 520,
+      "scriptSha256": "49bbd354136efa09a2fbd45d7474527f22b8b71d8ff4249670a2d0e599d534c3",
+      "pngSha256": "84710bf05885817c7f403cca5c09bdbbcc9ae6f0d271b2fce517987e36a0f4eb"
+    },
+    {
+      "name": "1.1.4-2",
+      "width": 875,
+      "height": 520,
+      "scriptSha256": "5e2d1a21073f17f87773d837a6711ece5f93e24551012c3f3f2dea0a0fd0287f",
+      "pngSha256": "053800a68d82a9884da7ca7d215a7525c46cfb50de1b17c3b941066d024a726c"
+    },
+    {
+      "name": "1.1.4-E1",
+      "width": 898,
+      "height": 520,
+      "scriptSha256": "81cc50949f20bf7d11b376307288c2973be130c2ec666c6c2adbfafcf0315f75",
+      "pngSha256": "714f2ce3babd513186b81e9d4bd83db320f04ad87f5caa4d2784167483682c94"
+    },
+    {
+      "name": "1.1.4-E1-calculation",
+      "width": 898,
+      "height": 520,
+      "scriptSha256": "ee809e8466d81e855d1e5687149e40293c591cc343be1a910b738731936cf992",
+      "pngSha256": "a8ec53f9c43d19278f698bde46e1053e849991896899ab666d3de2b4c56f86e6",
+      "answers": {
+        "fd": {
+          "matlab": 6.353751577,
+          "reference": 6.353751577414242
+        },
+        "tau": {
+          "matlab": 0.4,
+          "reference": 0.4
+        },
+        "decrement": {
+          "matlab": 0.3934683265,
+          "reference": 0.39346832647451635
+        }
+      }
+    },
+    {
+      "name": "1.1.5-1",
+      "width": 872,
+      "height": 520,
+      "scriptSha256": "a2d820c6eff7b2d7d133c2ce2798034ca854359c1c3d1058cf7e0ac68d84ff4c",
+      "pngSha256": "4fe44182213a84b3906e1951b0535b0c3afe98b8cd5c6751f6227561b0768453"
+    },
+    {
+      "name": "1.1.5-E1",
+      "width": 881,
+      "height": 520,
+      "scriptSha256": "0ce02c2e61b80f20adabec66912fb5cd3b6f508d75acad2ad4aacf56a488d6c5",
+      "pngSha256": "dafdcdbf8dac216567331ddd592a0b26c2b3fe373cc2adbb5d781b79514094f3"
+    },
+    {
+      "name": "1.1.5-E1-calculation",
+      "width": 881,
+      "height": 520,
+      "scriptSha256": "cb29af044814951e425ffb1a15436993cd3adb416ad5a030997a5694e7acfb9e",
+      "pngSha256": "30824879c4d790745e008d54d8b739bb5362e74e76c351575cef71df68a50c96",
+      "answers": {
+        "resistance": {
+          "matlab": 397.4921383,
+          "reference": 397.4921382870358
+        },
+        "delta": {
+          "matlab": 19.87460691,
+          "reference": 19.87460691435179
+        },
+        "tau": {
+          "matlab": 0.05031546054,
+          "reference": 0.05031546054266276
+        }
+      }
+    },
+    {
+      "name": "1.2.1-1",
+      "width": 884,
+      "height": 986,
+      "scriptSha256": "ccd0189ed22c07d6d026bc473e22f30b1a4509a7ec87e309957cb29e7747827a",
+      "pngSha256": "14283a2b65f814b16b0f1ad2d93b37d8a5bf167f4b3171ae45d3a8f9a704e606"
+    },
+    {
+      "name": "1.2.1-2",
+      "width": 898,
+      "height": 520,
+      "scriptSha256": "3929a61141f488ca7f2fba187ad6e7ceb059107bffee54ad381586302adbbe7d",
+      "pngSha256": "854538dbb321b1fc63b567970b1beb1574f6df8f330928993fdd12c671bd8863"
+    },
+    {
+      "name": "1.2.1-E1",
+      "width": 892,
+      "height": 520,
+      "scriptSha256": "9c621969ff59b1a141fb8c7d24bc74c93216beb42462be6ff502d897084ecbcc",
+      "pngSha256": "8ba501f3773560770b16dca5e0f895916ce3ebccea20244d802ac397b5a6a060"
+    },
+    {
+      "name": "1.2.1-E1-calculation",
+      "width": 892,
+      "height": 520,
+      "scriptSha256": "c1b035b9f2ff2f17919e30591bb7dbb90b2f7f0ac1ff8998cbe609b0056f39d3",
+      "pngSha256": "37eb97c5b2970199305c26838da84fb1cf88a7a0c397596e8c360bf61863d36b",
+      "answers": {
+        "beatPeriod": {
+          "matlab": 3.926990817,
+          "reference": 3.926990816987243
+        },
+        "resonantEnvelope": {
+          "matlab": 0.01,
+          "reference": 0.01
+        }
+      }
+    },
+    {
+      "name": "1.2.2-1",
+      "width": 860,
+      "height": 1391,
+      "scriptSha256": "27c492e2831905656f422299aa8eeee15e734cc319e9c2a8d83b8b4c209c1626",
+      "pngSha256": "8c087ce4136b4be6145a9df50833172b3ee91476e0d9b69fb61fdb5da6fa06e2"
+    },
+    {
+      "name": "1.2.2-E1",
+      "width": 879,
+      "height": 520,
+      "scriptSha256": "27bf62716a59c64f375301c9fb517297be3a681039fd0a801da042ff1a5b3674",
+      "pngSha256": "d6207b23616b7c468378c1edaa65b8dfcd121e62e01a56c5320addb60e623663"
+    },
+    {
+      "name": "1.2.2-E1-calculation",
+      "width": 879,
+      "height": 520,
+      "scriptSha256": "d869f123ea1207e18471e1ff3eed1095b8aae1e2f2c0d9a9f8e02d7fe9a49c76",
+      "pngSha256": "20e8968c6b473a17610393733a111068fdedf765caa5a3336c8668299ac2244e",
+      "answers": {
+        "amplitude": {
+          "matlab": 0.002538365413,
+          "reference": 0.0025383654128340477
+        },
+        "transientFrequency": {
+          "matlab": 7.917858446,
+          "reference": 7.917858446492745
+        }
+      }
+    },
+    {
+      "name": "1.2.3-1",
+      "width": 861,
+      "height": 520,
+      "scriptSha256": "109ddd749bca3128418267672f18ff1f33026acb05986fcae89390e1e17e4338",
+      "pngSha256": "3566ba1e7bdf4cd495e9166ac634e07829553af45e0136906b13c564acb23f14"
+    },
+    {
+      "name": "1.2.3-2",
+      "width": 861,
+      "height": 521,
+      "scriptSha256": "f16430c34a241376d31a97fbddabfb6042742982c689564338017d0e558dedef",
+      "pngSha256": "212a50d6529bef09c3a4e05e4a55dd4dd6b1050b1491e7139fe3c0dba93b80ed"
+    },
+    {
+      "name": "1.2.3-3",
+      "width": 860,
+      "height": 1395,
+      "scriptSha256": "03233b8860c80ce74730ac73a75bd167403185df20917756f0fa9665bbcf8ac9",
+      "pngSha256": "d0f9c65463616bd9a056b7a81966e2990e83d2a5311e018dfe6b9955fe7487b1"
+    },
+    {
+      "name": "1.2.3-E1",
+      "width": 861,
+      "height": 520,
+      "scriptSha256": "741ad6e4c274b54ec01a56a44e93d1e67bfac80d98be07515029a263d5a97419",
+      "pngSha256": "0da2736d3b24ed07409583e080028cc6cd021175b808277b1738f7425aa35ef2"
+    },
+    {
+      "name": "1.2.3-E1-calculation",
+      "width": 861,
+      "height": 520,
+      "scriptSha256": "aceae62ac0a37798874cfef8206a64d438d0d8bf5a918989844d3ea0e5e430a7",
+      "pngSha256": "453e02a1cda1b2b2fe2ae9757290a2825fd37ab75b2121064a207a67eb4704e2",
+      "answers": {
+        "time95": {
+          "matlab": 0.301463298,
+          "reference": 0.30146329801277444
+        },
+        "riseFraction": {
+          "matlab": 0.9189974078,
+          "reference": 0.9189974078420569
+        }
+      }
+    },
+    {
+      "name": "2.1-1",
+      "width": 880,
+      "height": 520,
+      "scriptSha256": "39e0349ecff00133bb6d4fba3049cc39a22117cdd94588b3f2d31f5c57f2664c",
+      "pngSha256": "9a51c58688a569d3ecf527d50265d0da99e98871647e2b85f0ae3b9236be4966"
+    },
+    {
+      "name": "2.1-2",
+      "width": 886,
+      "height": 520,
+      "scriptSha256": "735359c4d6e1d0ceda5998aeb77214bfbd8f5a418858b467fd5ce0eb5f931c29",
+      "pngSha256": "cd77d97211114db79c72cd3720283bc3647cde8b944dc11f16b72f09821aa111"
+    },
+    {
+      "name": "2.1-E1",
+      "width": 895,
+      "height": 520,
+      "scriptSha256": "1d154994c811527177d205cb5bcb99de2f413c4411888a77dee5252dee782137",
+      "pngSha256": "75276c48f09d0fca86dbc583b48d1efbc772bce6b6e587b7374b1b6d35924278"
+    },
+    {
+      "name": "2.1-E1-calculation",
+      "width": 895,
+      "height": 520,
+      "scriptSha256": "7f1dd0b3af1378c2a1e409963cbfb9a446a9ed5e5d0cb9ce6469fd04b422811c",
+      "pngSha256": "0438125a64ae5fd05c6d45ed797a252361c5168d5fef29b764f9afbe27942230",
+      "answers": {
+        "speed": {
+          "matlab": 418.3300133,
+          "reference": 418.33001326703777
+        },
+        "travelTime": {
+          "matlab": 0.001553797192,
+          "reference": 0.0015537971921347118
+        }
+      }
+    },
+    {
+      "name": "2.2-1",
+      "width": 1648,
+      "height": 1390,
+      "scriptSha256": "fb4385099e46188c4735cfed8f7fd63827fa4f8757582d3416552d381864ef90",
+      "pngSha256": "b6b4d29638d3d8155497bf7374b373f31848d05a9cac16786025c93cb56b9261"
+    },
+    {
+      "name": "2.2-2",
+      "width": 904,
+      "height": 1390,
+      "scriptSha256": "bf9117817ec982f59dbd1bd9abfb11fde317e6b548dd4becb34d20b2248ff46d",
+      "pngSha256": "45d1456ccccfa427e087c9c213ff335389e16c8a866cc7a3051a0aedb3f1a606"
+    },
+    {
+      "name": "2.2-3",
+      "width": 862,
+      "height": 520,
+      "scriptSha256": "d4144b01d79dcf1c67e89b183ac9ae6152eb3a80d30dbaf7ef00324724d8bfc9",
+      "pngSha256": "647822d1ea1e2f5a9aa9d129e86d93f2ad6d3a987b894454cb6e2bc182745554"
+    },
+    {
+      "name": "2.2-E1",
+      "width": 906,
+      "height": 520,
+      "scriptSha256": "f08fd23c0b9dd4730833eef21ef91e60c35337a5bce9027932c264cb3cd23aa5",
+      "pngSha256": "fc322ba4f92ab0cf47cf33b9101ef133b7dec48321a751a653fe245dceabb5bc"
+    },
+    {
+      "name": "2.2-E1-calculation",
+      "width": 906,
+      "height": 520,
+      "scriptSha256": "a3eb809b2dc1433768c8d28fbdf6b68c3496bd66113c972f8f71999d289068f5",
+      "pngSha256": "5aea6321137a72a9b78e8d5f0f5e83e6bf10a6b0160036c49a9742057cf75264",
+      "answers": {
+        "fundamental": {
+          "matlab": 321.7923179,
+          "reference": 321.7923178977214
+        },
+        "targetTension": {
+          "matlab": 130.8736,
+          "reference": 130.8736
+        }
+      }
+    },
+    {
+      "name": "1.2.5-2",
+      "width": 851,
+      "height": 520,
+      "scriptSha256": "e61b1d2e6c8ef4c2aed5fa02aa8167468d41be69bb0bf0d6bdcc7bb759dca88d",
+      "pngSha256": "fdda6782847c95b2f0409c3a344cf59f7679022b6c2a3d932c9ba4a8fd419bec"
+    },
+    {
+      "name": "B-1",
+      "width": 851,
+      "height": 520,
+      "scriptSha256": "dac4a0d9206a2eee969ebf90f64859ef5a300b0a82167afd4271307b568f1565",
+      "pngSha256": "e6e3ab629e953e20c85d907ad69a914f93efd7d765a6b6804340ae7872e3423b"
+    }
+  ]
+}

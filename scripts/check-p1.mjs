@@ -197,6 +197,30 @@ for (const T of [20, 70, 180, 300])
       assert.ok(e.netY < 0);
     }
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
+const dampedLecture = lectures.find((l) => l.id === "1.1.4");
+if (dampedLecture) {
+  const zero = { ...dampedLecture.defaults, x0: 0, v0: 0 };
+  const displacement = dampedLecture.figures[0].plot(zero, 0)[0],
+    energy = dampedLecture.figures[1].plot(zero, 0)[0];
+  assert.ok(displacement.series.every((s) => s.points.every(([, y]) => y === 0)));
+  assert.equal(displacement.annotations.length, 0);
+  assert.equal(energy.series.length, 0);
+  assert.ok(energy.ylim[0] > 0 && energy.title.includes("0"));
+}
+const home = JSON.parse(fs.readFileSync("src/content/homeCatalog.json", "utf8"));
+assert.deepEqual(
+  home.topics,
+  source.map(({ id, title, chapter }) => ({ id, title, chapter })),
+  "Generated home catalog matches source",
+);
+assert.deepEqual(
+  [...home.completed].sort(),
+  fs
+    .readdirSync("src/content/lectures")
+    .filter((f) => f.endsWith(".ts"))
+    .map((f) => f.slice(0, -3))
+    .sort(),
+);
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);
 for (const l of lectures) {
   if (l.animation)

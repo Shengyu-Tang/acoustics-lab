@@ -15,11 +15,31 @@ export function labelLanes(panel: Panel, left: number, width: number, xs: (n: nu
     ];
     let x = left + 8,
       lane = 0;
+    const bands = (panel.bands ?? []).map((b) => ({
+      label: b.label,
+      from: left + xs(b.from) * width,
+      to: left + xs(b.to) * width,
+    }));
     return texts.map((text) => {
       const size = textWidth(text);
+      const band = bands.find((b) => b.label === text);
+      if (band)
+        return {
+          text,
+          x: Math.max(
+            left + 4,
+            Math.min(left + width - size - 4, (band.from + band.to - size) / 2),
+          ),
+          lane: lane + 1,
+        };
+      const skipBands = () => {
+        for (const b of bands) if (x < b.to + 8 && x + size > b.from - 8) x = b.to + 8;
+      };
+      skipBands();
       if (x + size > left + width - 8 && x > left + 8) {
         x = left + 8;
         lane++;
+        skipBands();
       }
       const label = { text, x, lane };
       x += size + 16;
@@ -73,6 +93,11 @@ export function bestLegend(
   boxH: number,
   xy: (x: number, y: number, right: boolean) => number[],
 ) {
+  const xsForLabels = (v: number) => (xy(v, panel.ylim[0], false)[0] - left) / width;
+  const labelsForLegend = labelLanes(panel, left, width, xsForLabels);
+  const afterLabels = labelsForLegend.length
+    ? (Math.max(...labelsForLegend.map((l) => l.lane)) + 1) * 17 + 4
+    : 1;
   const candidates = [
     [left + width - boxW - 7, top + 7],
     [left + 7, top + 7],
@@ -80,6 +105,8 @@ export function bestLegend(
     [left + 7, top + height - boxH - 7],
     [left + width - boxW - 7, top + (height - boxH) / 2],
     [left + 7, top + (height - boxH) / 2],
+    [left + width - boxW - 7, top + afterLabels],
+    [left + 7, top + afterLabels],
   ];
   const scores = candidates.map(([x, y]) => {
     let score = 0;
