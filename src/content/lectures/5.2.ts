@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import {
   makeLecture,
   parameter,
@@ -56,7 +57,7 @@ function cumulative(p: Record<string, number>) {
   }
   return out;
 }
-export default makeLecture("5.2", {
+const completedLecture = makeLecture("5.2", {
   defaults: p,
   parameters: [a, f],
   measurements: [
@@ -212,3 +213,5 @@ export default makeLecture("5.2", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);

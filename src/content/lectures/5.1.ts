@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import {
   makeLecture,
   parameter,
@@ -72,7 +73,7 @@ function field(p: Record<string, number>) {
   cache.set(key, q);
   return structuredClone(q);
 }
-export default makeLecture("5.1", {
+const completedLecture = makeLecture("5.1", {
   defaults: p,
   parameters: [a, f, pa],
   keyPoints: [
@@ -149,3 +150,5 @@ export default makeLecture("5.1", {
     "水下监听接收器选型",
   ),
 });
+
+export default completeExamples(completedLecture);
