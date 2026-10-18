@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import { imagePanel } from "../../plot/p4Fields";
 import {
   makeLecture,
@@ -66,7 +67,7 @@ function metrics(p: Record<string, number>) {
     inside = ys.map((v, i) => (v >= max / 2 ? i : -1)).filter((i) => i >= 0);
   return { frequency: fs[index], maximum: max, low: fs[inside[0]], high: fs[inside.at(-1)!] };
 }
-export default makeLecture("7.3", {
+const completedLecture = makeLecture("7.3", {
   defaults: p,
   parameters: [res, react, d, sigma, f],
   keyPoints: [
@@ -300,3 +301,5 @@ export default makeLecture("7.3", {
     "交通枢纽语音清晰度",
   ),
 });
+
+export default completeExamples(completedLecture);

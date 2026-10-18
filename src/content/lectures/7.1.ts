@@ -1,3 +1,4 @@
+import { completeExamples } from "../calculationSteps";
 import {
   makeLecture,
   parameter,
@@ -43,7 +44,7 @@ const asks = [
     substitution,
   ),
 ];
-export default makeLecture("7.1", {
+const completedLecture = makeLecture("7.1", {
   defaults: p,
   parameters: [alpha, f, pa],
   animation: true,
@@ -196,3 +197,5 @@ export default makeLecture("7.1", {
     "海底观测站主动声呐",
   ),
 });
+
+export default completeExamples(completedLecture);
