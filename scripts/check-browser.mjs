@@ -34,6 +34,39 @@ async function readyForScreenshot(page) {
     );
   });
 }
+async function checkParameterLayout(page) {
+  await page.evaluate(() => document.fonts.ready);
+  const fields = await page.locator(".compact-parameter").evaluateAll((rows) =>
+    rows.map((row) => {
+      const [label, number, unit, slider] = row.children;
+      const box = (el) => el.getBoundingClientRect().toJSON();
+      return {
+        text: label.textContent,
+        label: box(label),
+        lineHeight: parseFloat(getComputedStyle(label).lineHeight),
+        fits: label.scrollWidth <= label.clientWidth,
+        number: box(number),
+        unit: box(unit),
+        slider: box(slider),
+      };
+    }),
+  );
+  for (const f of fields) {
+    const name = `${page.url()} ${f.text}`;
+    assert.ok(f.label.height <= f.lineHeight + 1 && f.fits, `${name}: single visible label line`);
+    assert.ok(f.label.bottom <= f.number.top, `${name}: label above controls`);
+    assert.ok(Math.abs(f.label.left - f.number.left) < 1, `${name}: controls start below label`);
+    assert.ok(
+      f.unit.left >= f.number.right && f.slider.left >= f.unit.right,
+      `${name}: control order`,
+    );
+    for (const control of [f.unit, f.slider])
+      assert.ok(
+        Math.abs(f.number.top + f.number.height / 2 - control.top - control.height / 2) < 2,
+        `${name}: input, unit and slider share a row`,
+      );
+  }
+}
 async function checkNotationLayout(page) {
   const report = await page.evaluate(() => {
     const walker = document.createTreeWalker(
@@ -402,6 +435,7 @@ try {
       await page.getByRole("heading", { name: t.id + " " + t.title, exact: true }).waitFor();
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, t.id);
       assert.equal(await page.title(), `${t.id} ${t.title} · 声学基础 · 中国海洋大学`);
+      await checkParameterLayout(page);
       if (i % 20 === 0) console.log(`PASS: retained lecture ${i + 1}/${topics.length} at ${width}`);
       const l = p1.find((l) => l.id === t.id);
       if (!l) continue;
@@ -638,7 +672,7 @@ try {
           assert.equal(f.height, "32px");
           assert.equal(f.fontSize, "14px");
           assert.equal(f.padding, "4px 8px");
-          assert.ok(f.number.left >= f.label.right && f.number.left - f.label.right <= 8);
+          assert.ok(f.label.bottom <= f.number.top);
           assert.ok(f.unit.left >= f.number.right && f.slider.left >= f.unit.right);
           assert.ok(
             Math.abs(f.number.top + f.number.height / 2 - (f.slider.top + f.slider.height / 2)) < 2,

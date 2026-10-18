@@ -294,7 +294,7 @@ figcaption {
   padding: 14px;
   border: 1px solid #d9d9d9;
   display: grid;
-  grid-template-columns: max-content 100px 55px minmax(60px, 1fr);
+  grid-template-columns: 100px 55px minmax(60px, 1fr);
   column-gap: 6px;
   row-gap: 8px;
   min-width: 0;
@@ -312,7 +312,8 @@ figcaption {
   font-size: 13px;
 }
 .compact-parameter > span:first-child {
-  max-width: 190px;
+  grid-column: 1/-1;
+  white-space: nowrap;
 }
 .parameter-panel > label:not(.compact-parameter),
 .catalog-search,
@@ -778,7 +779,7 @@ summary {
     align-items: start;
   }
   .parameter-panel {
-    grid-template-columns: minmax(0, 132px) 88px 36px minmax(32px, 1fr);
+    grid-template-columns: 88px 36px minmax(32px, 1fr);
     padding: 10px;
   }
 
@@ -914,7 +915,7 @@ sup {
     overflow-y: auto;
   }
   .simulation-sidebar .parameter-panel {
-    grid-template-columns: minmax(65px, 1fr) 88px 42px minmax(32px, 1fr);
+    grid-template-columns: 88px 42px minmax(32px, 1fr);
     gap: 6px 4px;
     padding: 10px;
     margin-top: 20px;
@@ -926,9 +927,6 @@ sup {
   .simulation-sidebar .readouts th,
   .simulation-sidebar .readouts td {
     padding: 5px 4px;
-  }
-  .simulation-sidebar .compact-parameter > span:first-child {
-    overflow-wrap: anywhere;
   }
   .simulation-sidebar .parameter-actions {
     gap: 4px;
