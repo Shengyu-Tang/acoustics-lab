@@ -1,9 +1,16 @@
 import fs from "node:fs";
 import { build } from "esbuild";
 fs.mkdirSync("outputs", { recursive: true });
+const files = fs
+  .readdirSync("src/content/lectures")
+  .filter((f) => !["1.2.4.ts", "1.2.5.ts"].includes(f));
+const imports = files
+  .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
+  .join("");
 await build({
   stdin: {
     contents:
+      imports +
       "export {createElement} from 'react';export {renderToStaticMarkup} from 'react-dom/server';export {Axes} from './src/plot/Figure';export {frequencyPanels,powerPanel} from './src/plot/chapter1Figures';export {instrument} from './src/physics/chapter1';",
     resolveDir: process.cwd(),
   },
@@ -23,6 +30,9 @@ const {
 } = await import("../outputs/thumbnail-generator.mjs");
 fs.mkdirSync("public/thumbnails", { recursive: true });
 const panels = {};
+const lectures = await import("../outputs/thumbnail-generator.mjs");
+for (const [key, l] of Object.entries(lectures))
+  if (/^l\d+$/.test(key)) panels[l.id] = l.figures[0].plot(l.defaults, 0)[0];
 panels["1.2.4"] = frequencyPanels({ ...instrument, Rm: 400 }, false)[0];
 panels["1.2.5"] = powerPanel({ ...instrument, Rm: 400 });
 for (const [name, original] of Object.entries(panels)) {

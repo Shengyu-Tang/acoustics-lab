@@ -2,8 +2,9 @@ import topics from "./topics.json";
 import calendar from "./calendar.json";
 import Header from "./Header";
 import { chapters } from "./catalog";
+import { p1Lectures } from "./content/p1Registry";
 function Thumbnail({ id }: { id: string }) {
-  if (id !== "1.2.4" && id !== "1.2.5") return null;
+  if (id !== "1.2.4" && id !== "1.2.5" && !p1Lectures.some((l) => l.id === id)) return null;
   return (
     <img
       className="lecture-thumbnail"

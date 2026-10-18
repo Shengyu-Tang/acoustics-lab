@@ -8,6 +8,8 @@ import EngineeringCase from "./EngineeringCase";
 import { ComparisonLinks } from "./Comparisons";
 import Parameter from "./Parameter";
 import SampleLecture from "./SampleLecture";
+import P1Lecture from "./P1Lecture";
+import { p1Lectures } from "./content/p1Registry";
 import lecture124 from "./content/lectures/1.2.4";
 import lecture125 from "./content/lectures/1.2.5";
 import { chapters } from "./catalog";
@@ -150,6 +152,7 @@ export default function Lab() {
   const q = new URLSearchParams(location.hash.split("?")[1]),
     topic = topics.find((t) => t.id === q.get("topic")) ?? topics[0];
   const lecture = topic.id === "1.2.4" ? lecture124 : topic.id === "1.2.5" ? lecture125 : null;
+  const p1 = p1Lectures.find((l) => l.id === topic.id);
   const [open, setOpen] = useState(false),
     index = topics.findIndex((t) => t.id === topic.id);
   return (
@@ -176,10 +179,12 @@ export default function Lab() {
             {topic.id} {topic.title}
           </h1>
           <p className="mooc-source">
-            对应慕课：{lecture?.moocSource ?? topic.source}
-            {lecture ? ` · ${lecture.classNumber}` : ""}
+            对应慕课：{lecture?.moocSource ?? p1?.moocSource ?? topic.source}
+            {lecture || p1 ? ` · ${(lecture ?? p1)!.classNumber}` : ""}
           </p>
-          {lecture ? (
+          {p1 ? (
+            <P1Lecture key={topic.id} lecture={p1} />
+          ) : lecture ? (
             <SampleLecture key={topic.id} lecture={lecture} />
           ) : (
             <LegacyLecture key={topic.id} topic={topic} />
