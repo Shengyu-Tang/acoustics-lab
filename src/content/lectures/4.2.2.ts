@@ -8,7 +8,6 @@ import {
   graph,
   curve,
   points,
-  circle,
   substitution,
   answer,
   log,
@@ -110,10 +109,9 @@ export default makeLecture("4.2.2", {
             setup,
             { xscale: "log" },
           ),
-          circle(p),
         ];
       },
-      2,
+      1,
       1,
     ),
     figure("4.2.2-2", "固定表面振速时辐射功率的低频平方律与高频极限", (p) => [

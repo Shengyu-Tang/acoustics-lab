@@ -43,6 +43,7 @@ export type Field = {
   limits?: [number, number];
 };
 export type Panel = {
+  schematic?: "force-voltage";
   /** Fixed coordinate plane, including dimensionless impedance contours. */
   coordinateY?: boolean;
   answerKey?: string;

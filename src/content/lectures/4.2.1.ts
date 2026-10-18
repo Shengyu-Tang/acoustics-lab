@@ -1,3 +1,4 @@
+import { fieldBoundary } from "../../plot/p4Fields";
 import {
   makeLecture,
   parameter,
@@ -8,7 +9,6 @@ import {
   graph,
   curve,
   points,
-  circle,
   substitution,
   answer,
   log,
@@ -53,11 +53,7 @@ function field(p: Record<string, number>, t: number) {
     "示意坐标 y (m)",
     [-0.5, 0.5],
     [-0.5, 0.5],
-    circle(p).series!.map((s) => ({
-      ...s,
-      mx: "a*cos(linspace(0,2*pi,181))",
-      my: "a*sin(linspace(0,2*pi,181))",
-    })),
+    fieldBoundary(p),
     setup +
       "[XX,YY]=meshgrid(linspace(-.5,.5,161),linspace(-.5,.5,81));RR=hypot(XX,YY);ZZ=real(p4SphereP(max(a,RR),a,f,rho,c,v)*exp(1i*w*tView));ZZ(RR<a*(1+1e-12))=0;",
     {

@@ -8,11 +8,10 @@ import {
   graph,
   curve,
   points,
-  circle,
   substitution,
   answer,
 } from "../p4";
-import { imagePanel } from "../../plot/p4Fields";
+import { imagePanel, fieldBoundary } from "../../plot/p4Fields";
 import * as phy from "../../physics/chapter4";
 const f = parameter("f", "频率", "f", "Hz", 1000, 10000, 100),
   a = parameter("a", "软圆柱半径", "a", "m", 0.02, 0.08, 0.001),
@@ -47,11 +46,7 @@ const cache = new Map<string, ReturnType<typeof imagePanel>>();
 function field(p: Record<string, number>) {
   const key = JSON.stringify(p);
   if (cache.has(key)) return structuredClone(cache.get(key)!);
-  const boundary = circle(p).series!.map((s) => ({
-    ...s,
-    mx: "a*cos(linspace(0,2*pi,181))",
-    my: "a*sin(linspace(0,2*pi,181))",
-  }));
+  const boundary = fieldBoundary(p);
   const q = imagePanel(
     p,
     0,

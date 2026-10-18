@@ -8,11 +8,10 @@ import {
   graph,
   curve,
   points,
-  circle,
   substitution,
   answer,
 } from "../p4";
-import { imagePanel } from "../../plot/p4Fields";
+import { imagePanel, fieldBoundary } from "../../plot/p4Fields";
 import * as phy from "../../physics/chapter4";
 const f = parameter("f", "频率", "f", "Hz", 1000, 10000, 100),
   a = parameter("a", "圆柱半径", "a", "m", 0.02, 0.08, 0.001),
@@ -45,11 +44,7 @@ function field(p: Record<string, number>) {
   const xs = Array.from({ length: 161 }, (_, i) => -0.3 + (0.6 * i) / 160),
     ys = Array.from({ length: 81 }, (_, i) => -0.3 + (0.6 * i) / 80),
     states = ys.map((y) => xs.map((x) => phy.cylinderField(x, y, p.a, p.f, p.c)));
-  const boundary = circle(p).series!.map((s) => ({
-    ...s,
-    mx: "a*cos(linspace(0,2*pi,181))",
-    my: "a*sin(linspace(0,2*pi,181))",
-  }));
+  const boundary = fieldBoundary(p);
   const q = (["incident", "scattered", "total"] as const).map((part, index) =>
     imagePanel(
       p,

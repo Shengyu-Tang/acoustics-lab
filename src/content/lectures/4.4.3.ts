@@ -8,7 +8,6 @@ import {
   graph,
   curve,
   points,
-  circle,
   substitution,
   answer,
 } from "../p4";
@@ -160,9 +159,8 @@ export default makeLecture("4.4.3", {
           ],
           setup,
         ),
-        circle(p, "活塞辐射面真实孔径", 0.08),
       ],
-      2,
+      1,
       1,
     ),
   ],

@@ -1,3 +1,4 @@
+import { imagePanel } from "../../plot/p4Fields";
 import {
   makeLecture,
   parameter,
@@ -191,14 +192,15 @@ export default makeLecture("7.3", {
       "7.3-3",
       "水声尖劈的阻抗过渡结构（定性示意）",
       (p) => [
-        graph(
+        imagePanel(
           p,
           0,
-          "渐变尖劈：从尖端进入并逐步增大材料占比",
-          "结构深度 x (m)",
-          "示意坐标 y (m)",
+          "渐变尖劈与定性阻抗分布（介质参考值为 1）",
           [0, 0.15],
           [-0.03, 0.03],
+          (x, y) => (x <= p.d && Math.abs(y) <= (0.025 * x) / p.d ? 1 + 9 * (x / p.d) ** 2 : 1),
+          "1+9*(XX/d).^2.*(XX<=d & abs(YY)<=.025*XX/d)",
+          setup,
           [
             points(
               "吸声尖劈外形",
@@ -213,8 +215,9 @@ export default makeLecture("7.3", {
               { geometry: { key: "d", axis: "x" } },
             ),
           ],
-          setup,
-          { equalAspect: true },
+          [1, 10],
+          "定性归一化等效阻抗",
+          "[1 10]",
         ),
         graph(
           p,

@@ -8,7 +8,10 @@ export { comparison, lin, log } from "./p3";
 const independent: Record<string, [string[], string]> = {
   "4.2.2-1": [["v"], "归一化阻抗不含表面振速；振速对绝对辐射功率的影响见下一图。"],
   "4.3-3": [["Q"], "两种辐射功率均正比于单源强度平方，取比值后强度消去；绝对声场见第一图。"],
-  "4.4.3-2": [["f"], "此图比较通用贝塞尔核与实际孔径；频率影响通过上一图的尺寸参数体现。"],
+  "4.4.3-2": [
+    ["f", "a"],
+    "此图是自变量 ka sinθ 的通用贝塞尔核，不依赖单独的频率或半径；实际孔径与频率对方向性的影响见上一图。",
+  ],
   "5.3-1": [["pa"], "方向函数已按最大散射幅值归一化，入射幅值消去；绝对总场见下一图。"],
   "6.2-2": [
     ["xB", "yB", "Q"],
@@ -84,32 +87,6 @@ export const substitution = (p: Values) =>
       return `${k}：$${number}${units[k] ? "\\,\\mathrm{" + units[k] + "}" : ""}$`;
     })
     .join("；");
-export function circle(p: Values, title = "振源表面的物理尺寸", maximum = 0.1): Panel {
-  const q = graph(
-    p,
-    0,
-    title,
-    "位置 x (m)",
-    "示意坐标 y (m)",
-    [-maximum, maximum],
-    [-maximum, maximum],
-    [
-      points(
-        "球面截线",
-        Array.from({ length: 181 }, (_, i) => [
-          p.a * Math.cos((i * Math.PI) / 90),
-          p.a * Math.sin((i * Math.PI) / 90),
-        ]),
-        "a*cos(linspace(0,2*pi,181))",
-        "a*sin(linspace(0,2*pi,181))",
-        { geometry: { key: "a", axis: "x" } },
-      ),
-    ],
-    "",
-    { equalAspect: true },
-  );
-  return q;
-}
 /** The figure author chooses the answer explicitly; no coordinate guessing. */
 export function answer(panel: Panel, key: Ask["key"]) {
   if (!geometryY(panel) && !panel.equalAspect && !panel.field && panel.kind !== "polar") {

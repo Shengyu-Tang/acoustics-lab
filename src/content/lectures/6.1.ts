@@ -8,7 +8,6 @@ import {
   graph,
   curve,
   points,
-  circle,
   substitution,
   answer,
   log,
@@ -105,9 +104,8 @@ export default makeLecture("6.1", {
           ],
           setup,
         ),
-        circle(p, "圆球接收器的实际半径", 0.05),
       ],
-      2,
+      1,
       1,
     ),
     figure("6.1-2", "压力系数频率响应导致宽带接收波形畸变", (p) => [

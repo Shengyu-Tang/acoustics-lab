@@ -1,6 +1,21 @@
 import type { Values } from "../content/p1";
-import { graph, type Curve } from "../content/p2";
+import { graph, points, type Curve } from "../content/p2";
 import type { Panel } from "./types";
+/** A physical boundary overlaid on a computed field, never a separate panel. */
+export function fieldBoundary(p: Values): Curve[] {
+  return [
+    points(
+      "物理边界",
+      Array.from({ length: 181 }, (_, i) => [
+        p.a * Math.cos((i * Math.PI) / 90),
+        p.a * Math.sin((i * Math.PI) / 90),
+      ]),
+      "a*cos(linspace(0,2*pi,181))",
+      "a*sin(linspace(0,2*pi,181))",
+      { geometry: { key: "a", axis: "x" } },
+    ),
+  ];
+}
 export function imagePanel(
   p: Values,
   t: number,

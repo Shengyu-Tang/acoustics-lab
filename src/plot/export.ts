@@ -210,6 +210,17 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         `${fn}(x,y,'LineStyle',${quote(s.style ?? "-")},'Marker',${quote(s.marker ?? "none")}${markerIndices},'Color',${vector(rgb)},'LineWidth',1.5,'DisplayName',${displayName}${s.legend === false ? ",'HandleVisibility','off'" : ""});`,
       );
     });
+    if (p.schematic) {
+      out.push(`xlim(${vector(p.xlim)}); ylim(${vector(p.ylim)}); daspect([1 1 1]); axis off;`);
+      p.textLabels?.forEach((s) =>
+        out.push(
+          `text(${s.x},${s.y},${tex(s.text)},'HorizontalAlignment','center','Interpreter','tex');`,
+        ),
+      );
+      out.push(`title(${tex(p.title)},'Interpreter','tex');`);
+      out.push(`model_limits{${k + 1}}=struct('x',xlim,'y',ylim);`);
+      return;
+    }
     if (p.kind !== "polar") {
       if (p.rightLabel)
         out.push(

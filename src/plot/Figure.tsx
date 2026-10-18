@@ -172,6 +172,39 @@ export function Line({
     </g>
   );
 }
+function SchematicAxes({ panel, width, height }: { panel: Panel; width: number; height: number }) {
+  const AW = width - 32,
+    AH = AW / 3;
+  const layout = { W: width, H: height, L: 16, T: (height - AH) / 2, AW, AH };
+  return (
+    <g
+      data-schematic={panel.schematic}
+      fontFamily="Arial, Microsoft YaHei, sans-serif"
+      fontSize="12"
+      fill="#1a1a1a"
+    >
+      <rect width={width} height={height} fill="white" />
+      {textLines(panel.title, width - 30).map((t, i) => (
+        <text key={i} x={width / 2} y={18 + i * 16} textAnchor="middle" fontWeight="bold">
+          {t}
+        </text>
+      ))}
+      {panel.series?.map((s, i) => (
+        <Line key={i} panel={panel} series={s} layout={layout} />
+      ))}
+      {panel.textLabels?.map((t, i) => (
+        <text
+          key={i}
+          x={16 + (t.x / 12) * AW}
+          y={layout.T + (1 - t.y / 4) * AH}
+          textAnchor="middle"
+        >
+          <ScriptText text={t.text} svg />
+        </text>
+      ))}
+    </g>
+  );
+}
 export function Axes({
   panel,
   width = 640,
@@ -795,12 +828,16 @@ export default function Figure({
           <g key={i} transform={`translate(${(i % columns) * W} ${Math.floor(i / columns) * H})`}>
             {/* A new axis schema gets a new SVG subtree. A former colorbar or
                 yyaxis label must never be reused as a different axis label. */}
-            <Axes
-              key={`${name}:${i}:${p.kind}:${p.xlabel}:${p.ylabel}:${p.rightLabel ?? ""}:${p.field?.categories ? "categories" : (p.field?.label ?? "")}`}
-              panel={p}
-              width={W}
-              height={H}
-            />
+            {p.schematic ? (
+              <SchematicAxes panel={p} width={W} height={H} />
+            ) : (
+              <Axes
+                key={`${name}:${i}:${p.kind}:${p.xlabel}:${p.ylabel}:${p.rightLabel ?? ""}:${p.field?.categories ? "categories" : (p.field?.label ?? "")}`}
+                panel={p}
+                width={W}
+                height={H}
+              />
+            )}
           </g>
         ))}
       </svg>
