@@ -40,9 +40,9 @@ const curves = (p: Values) => {
 export default lecture(
   "1.1.4",
   [
-    "不是周期函数。虽然过零间隔相等，但每个周期振幅减少，不能满足 x(t+T)=x(t)。",
-    "振幅按 A₀e^(−δt) 指数衰减，振幅时间常数为 1/δ。",
-    "欠阻尼振动频率 ω₀′ = √(ω₀²−δ²)，比无阻尼固有频率低；阻尼很小时两者近似相等。",
+    "不是周期函数。虽然过零间隔相等，但每个周期振幅减少，不能满足 $x(t+T)=x(t)$。",
+    "振幅按 $A_0e^{-\\delta t}$ 指数衰减，振幅时间常数为 $1/\\delta$。",
+    "欠阻尼振动频率 $\\omega_0^{\\prime} = \\sqrt{\\omega_0^2-\\delta^2}$，比无阻尼固有频率低；阻尼很小时两者近似相等。",
   ],
   {
     defaults,
@@ -50,13 +50,13 @@ export default lecture(
     keyPoints: [
       "小阻尼自由振动是振幅指数衰减的准简谐振动，过零间隔相等但不严格周期。",
       "阻尼固有角频率 ω₀′ 小于 ω₀。",
-      "平均能量在弱阻尼近似下按 e^(−2δt) 衰减，速度是振幅衰减速度的两倍。",
+      "平均能量在弱阻尼近似下按 $e^{-2\\delta t}$ 衰减，速度是振幅衰减速度的两倍。",
     ],
     formulas: [
       {
         number: "1.1-10",
         tex: String.raw`\omega_0'=\sqrt{\omega_0^2-\delta^2},\quad x=e^{-\delta t}\left[x_0\cos\omega_0't+\frac{v_0+\delta x_0}{\omega_0'}\sin\omega_0't\right]`,
-        meaning: "适用于 δ < ω₀；在参数面板中用 Qₘ 保证小阻尼条件。",
+        meaning: "适用于 $\\delta < \\omega_0$；在参数面板中用 Qₘ 保证小阻尼条件。",
       },
       {
         number: "1.1-11",
@@ -158,7 +158,7 @@ export default lecture(
         ],
         hints: [
           "先由 Qₘ 求 δ，再计算阻尼频率和周期。",
-          "相邻同向峰的包络比是 e^(δT_d)，取自然对数得 δT_d。",
+          "相邻同向峰的包络比是 $e^{\\delta T_d}$，取自然对数得 $\\delta T_d$。",
         ],
         judgment: (p) =>
           `振幅每 ${fmt(info(p).tau)} s 降到 1/e；频率降低约 ${fmt((1 - info(p).wd / info(p).w0) * 100)}%，测量时应区分 ω₀ 与 ω₀′。`,

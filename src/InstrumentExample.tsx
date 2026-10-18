@@ -26,7 +26,7 @@ export default function InstrumentExample() {
     },
     {
       tex: String.raw`R_{m,\min}=\sqrt{\max\!\left[0,\left(\frac{F_0}{\omega x_{\rm lim}}\right)^2-X_m^2\right]}`,
-      sub: `Rm,min = √max{0, [${p.F0} N ÷ (${fmt(2 * Math.PI * s.f)} rad/s × ${p.limit / 1000} m)]² − (${fmt(s.reactance)} kg/s)²}`,
+      sub: `R_{m,min} = √max{0, [${p.F0} N ÷ (${fmt(2 * Math.PI * s.f)} rad/s × ${p.limit / 1000} m)]² − (${fmt(s.reactance)} kg/s)²}`,
       value: `力阻应大于 ${fmt(s.minimumRm)} kg/s；取 400 kg/s 时 xₘ = ${fmt(s.improvedMm)} mm。${s.minimumRm === 0 ? "该工作频率已在位移上限以下，正力阻即可。" : "等于阈值仅恰好达到上限，严格小于要求留出裕量。"}`,
     },
   ];
@@ -45,7 +45,7 @@ export default function InstrumentExample() {
       solution={s}
       steps={steps}
       judgment={judgment}
-      note="这里反解当前工作点的精确力阻阈值；接近谐振时可用 Rₘ ≈ F₀/(ωx限) 估算。线性、单自由度、黏性阻尼模型忽略船体多模态耦合。"
+      note="这里反解当前工作点的精确力阻阈值；接近谐振时可用 $R_m \\approx F_0/(\\omega x_{\\rm lim})$ 估算。线性、单自由度、黏性阻尼模型忽略船体多模态耦合。"
       panel={panel}
       caption="图 A-1　仪器支架位移幅频曲线、泵转频范围与当前工作点"
       exportScript={exportScript}

@@ -34,6 +34,60 @@ async function readyForScreenshot(page) {
     );
   });
 }
+async function checkNotationLayout(page) {
+  const report = await page.evaluate(() => {
+    const walker = document.createTreeWalker(
+      document.querySelector(".lecture-content") ?? document.querySelector("main"),
+      NodeFilter.SHOW_TEXT,
+    );
+    const bad = [];
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (
+        !node.parentElement.closest("script, style, option") &&
+        /[\u2080-\u209c]/.test(node.textContent)
+      )
+        bad.push(node.textContent);
+    }
+    return {
+      bad,
+      rows: [...document.querySelectorAll(".student-answer")].map((row) => {
+        const [label, input, unit] = row.children;
+        const box = (el) => el.getBoundingClientRect().toJSON();
+        return { label: box(label), input: box(input), unit: box(unit) };
+      }),
+      scripts: [...document.querySelectorAll("svg tspan[baseline-shift]")].map((t) => ({
+        size: parseFloat(getComputedStyle(t).fontSize),
+        parentSize: parseFloat(getComputedStyle(t.parentElement).fontSize),
+      })),
+      plots: [...document.querySelectorAll(".matlab-figure svg")].map((s) => ({
+        width: s.getBoundingClientRect().width,
+        units: s.viewBox.baseVal.width,
+      })),
+    };
+  });
+  assert.deepEqual(report.bad, [], "rendered Unicode subscript glyphs");
+  for (const { width, units } of report.plots)
+    assert.ok(Math.abs(width - units) < 1, "plot uses screen-pixel coordinates on the first frame");
+  assert.ok(
+    report.rows.every((r) => Math.abs(r.input.left - report.rows[0].input.left) < 1),
+    "answer inputs share one column",
+  );
+  for (const { label, input, unit } of report.rows) {
+    assert.equal(input.width, 120, "answer width");
+    assert.ok(
+      input.left - label.right >= 0 && input.left - label.right <= 8,
+      "answer follows label",
+    );
+    assert.ok(unit.left - input.right >= 0 && unit.left - input.right <= 8, "unit follows answer");
+    assert.ok(
+      Math.abs(label.top + label.height / 2 - input.top - input.height / 2) < 2,
+      "label and answer share a row",
+    );
+  }
+  for (const { size, parentSize } of report.scripts)
+    assert.ok(Math.abs(size / parentSize - 0.75) < 0.01, "SVG script is 75% of its parent");
+}
 const runDirectory = path.resolve(`outputs/browser-run-${Date.now()}`);
 fs.mkdirSync(runDirectory, { recursive: true });
 try {
@@ -89,6 +143,7 @@ try {
           fs.readdirSync("src/content/lectures").filter((f) => f.endsWith(".ts")).length,
         );
       if (name.startsWith("lecture")) {
+        await checkNotationLayout(page);
         const plotMetrics = await page.locator(".matlab-figure svg").evaluateAll((svgs) =>
           svgs.map((svg) => ({
             width: svg.getBoundingClientRect().width,
@@ -172,7 +227,7 @@ try {
           assert.equal(
             await page
               .locator(".readouts tr")
-              .filter({ hasText: "f₀ 处 Xₘ" })
+              .filter({ hasText: "f0 处 Xm" })
               .locator("td")
               .nth(1)
               .textContent(),
@@ -229,7 +284,7 @@ try {
   assert.equal(
     await graph
       .locator("text")
-      .filter({ hasText: /^Qₘ = (1\.7|5|10)$/ })
+      .filter({ hasText: /^Qm = (1\.7|5|10)$/ })
       .count(),
     9,
   );
@@ -350,6 +405,7 @@ try {
       const l = p1.find((l) => l.id === t.id);
       if (!l) continue;
       await page.waitForTimeout(50);
+      await checkNotationLayout(page);
       const hiddenCurves = await page.locator(".matlab-figure svg").evaluateAll((svgs) =>
         svgs.flatMap((svg) => {
           const hidden = [];
@@ -414,6 +470,7 @@ try {
       await page.getByRole("button", { name: "提示 1：选择公式", exact: true }).click();
       await page.getByRole("button", { name: "提示 2：代入步骤", exact: true }).click();
       await page.locator(".reference-solution summary").click();
+      await checkNotationLayout(page);
       const before = await page.locator(".solution-content").textContent();
       const d = e.given[0],
         value = e.defaults[d.key] === d.max ? d.min : d.max;
@@ -599,6 +656,55 @@ try {
     }
   }
   fs.writeFileSync("outputs/polish-report.json", JSON.stringify(polish, null, 2));
+  // Fresh, exact-size review captures of the requested sections.
+  fs.mkdirSync("screenshots/design-review", { recursive: true });
+  for (const [size, width, height] of [
+    ["desktop", 1440, 900],
+    ["mobile", 390, 844],
+  ]) {
+    await page.setViewportSize({ width, height });
+    for (const [id, section] of [
+      ["1.2.4", "examples"],
+      ["1.1.4", "examples"],
+      ["2.2", "principle"],
+    ]) {
+      const reviewPage = await context.newPage();
+      reviewPage.on("pageerror", (e) => errors.push(e.message));
+      reviewPage.on("console", (m) => {
+        if (m.type() === "error") errors.push(m.text());
+      });
+      try {
+        await reviewPage.setViewportSize({ width, height });
+        await reviewPage.goto(`http://127.0.0.1:4174/#/lab?topic=${id}`);
+        await reviewPage
+          .getByRole("heading", {
+            name: `${id} ${topics.find((t) => t.id === id).title}`,
+            exact: true,
+          })
+          .waitFor();
+        await readyForScreenshot(reviewPage);
+        await checkNotationLayout(reviewPage);
+        const target = section === "examples" ? ".calculation-example form" : "#principle";
+        await reviewPage
+          .locator(target)
+          .evaluate(
+            (el, offset) => window.scrollTo(0, scrollY + el.getBoundingClientRect().top - offset),
+            section === "examples" ? (width === 390 ? 350 : 460) : 80,
+          );
+        await reviewPage.waitForTimeout(400);
+        // Warm the headless compositor before recording the review frame.
+        if (section === "examples")
+          await reviewPage.locator(".calculation-example form h4").screenshot();
+        await reviewPage.screenshot();
+        await reviewPage.waitForTimeout(100);
+        await reviewPage.screenshot({
+          path: `screenshots/design-review/${id}-${section}-${size}.png`,
+        });
+      } finally {
+        await reviewPage.close();
+      }
+    }
+  }
   assert.deepEqual(errors, [], "Browser console errors");
   fs.writeFileSync(
     "outputs/browser-report.json",

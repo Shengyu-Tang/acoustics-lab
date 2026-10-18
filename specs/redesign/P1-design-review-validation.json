@@ -1,0 +1,399 @@
+{
+  "date": "2026-10-17",
+  "branch": "redesign/p1-ch1-2",
+  "baseCommit": "7e03046",
+  "scope": "Design review fixes across P0/P1 chapters 1–2 and the home page",
+  "fixes": [
+    "HTML labels use sub/sup and SVG text uses 75% baseline-shift tspans; original chart/export strings remain intact.",
+    "Answer rows share compact label/input/unit columns with fixed 120px inputs on both viewport sizes.",
+    "Inline KaTeX covers authored mathematical prose, key points, captions, questions, answers and hints.",
+    "Allowed displacement uses x with a lim subscript.",
+    "Equation (1.1-1) writes C_M=1/D.",
+    "Plots measure their containers before their first paint so SVG text retains screen-pixel sizing."
+  ],
+  "checks": [
+    {
+      "command": "npm ci",
+      "exitCode": 0,
+      "log": "outputs/design-review-npm-ci.log",
+      "sha256": "7ac5ce928b69f3cc4e8e3b973ec2aeda4ef008a7cfad75b59a1fc4376b10f492"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "log": "outputs/design-review-tests.log",
+      "sha256": "e0505a53843de5a8e3da7bc78436091d991c104b914690d9b0d853925716d4b5"
+    },
+    {
+      "command": "node scripts/check-animations.mjs",
+      "exitCode": 0,
+      "log": "outputs/design-review-animations.log",
+      "sha256": "3640736590f4799bd77b6cea6524f157a816a1e0956eaa5de8ea3c24d6b5ec08"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "log": "outputs/design-review-build.log",
+      "sha256": "666a65b5ae7b958646edc27f27d70081a0fad5c1ce8edb8de48be14d99299510"
+    },
+    {
+      "command": "node scripts/check-browser.mjs",
+      "exitCode": 0,
+      "log": "outputs/design-review-browser.log",
+      "sha256": "283a6a8926d98ad1d769267a7eb3bcabfa6ecd98c87f53e9bcea4cdbe21e5d4a"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "log": "outputs/design-review-format.log",
+      "sha256": "d12b3b2a365a497b978c3e17caa601fb9d200fd609838367114c9c7154a8d71d"
+    }
+  ],
+  "notation": {
+    "completedLectures": 14,
+    "proseStrings": 247,
+    "homeTeachingWeeks": 24,
+    "unicodeSubscripts": "converted in rendered labels",
+    "svgScriptSize": "75%",
+    "sourceLabelsRetainedForMatlab": true
+  },
+  "browser": {
+    "lectureRoutes": 82,
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "errors": [],
+    "checks": [
+      "parameters",
+      "bounds",
+      "Q overlay",
+      "grading",
+      "two hints",
+      "reactive solution",
+      "PNG/CSV/MATLAB downloads",
+      "print",
+      "all lecture routes",
+      "fixed screen font sizes and nonoverlapping horizontal annotations",
+      "mobile formula scrolling and separate equation numbers",
+      "distinct power/bandwidth exercise grading, hints and reactive solution",
+      "160×80 smoothly interpolated legacy field",
+      "completed-lecture thumbnails only",
+      "all lecture document titles",
+      "polish control dimensions, inline actions, breadcrumbs, export links and shared footer",
+      "eight default-state viewport screenshots"
+    ]
+  },
+  "matlab": {
+    "exporterChanged": false,
+    "plotDataChanged": false,
+    "batchExecutionRerun": false,
+    "existingArtifactPairsVerified": 51,
+    "exerciseReferencesVerified": 12,
+    "verificationCommand": "node scripts/verify-matlab-check-p1.mjs"
+  },
+  "visualReview": {
+    "requestedViews": [
+      "screenshots/design-review/1.1.4-examples-desktop.png",
+      "screenshots/design-review/1.1.4-examples-mobile.png",
+      "screenshots/design-review/1.2.4-examples-desktop.png",
+      "screenshots/design-review/1.2.4-examples-mobile.png",
+      "screenshots/design-review/2.2-principle-desktop.png",
+      "screenshots/design-review/2.2-principle-mobile.png"
+    ],
+    "visuallyReviewed": true,
+    "findings": "Legible script glyphs; compact aligned answers; x_lim in the givens table; no raw prose math or horizontal overflow in the reviewed views.",
+    "iterations": [
+      "Shared answer grid to align different unit widths",
+      "Inherited subgrid gaps to preserve exact 120px inputs",
+      "Natural label widths on mobile",
+      "Container measurement before the first SVG paint",
+      "Fresh tabs, exact lecture-title waits and heading/compositor warm-up before final captures"
+    ],
+    "captureNote": "Final 1.1.4 frames use Edge --disable-gpu and a heading warm-up capture to avoid a headless compositor text omission; all six requested views were opened and visually reviewed."
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/design-review/1.1.4-examples-desktop.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "cbf95ea759b346a0cdc806a594d78e5e9f1b1a8cfe621be8af3492cc8513e4fb"
+    },
+    {
+      "file": "screenshots/design-review/1.1.4-examples-mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "14efc37dbc5a0769d0272ba3f4c8964591ae5fa9fb438b8faf1d798a6c03e6c4"
+    },
+    {
+      "file": "screenshots/design-review/1.2.4-examples-desktop.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "c12d1d587621dc1850e46acd8b8ad0d9a330a7edca3e8185dbbcb9f89fd66686"
+    },
+    {
+      "file": "screenshots/design-review/1.2.4-examples-mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "73bf33fb65daec92e8bef2e91a13f91695c0e0ebc6c1781c2ebb6ad0464fc75c"
+    },
+    {
+      "file": "screenshots/design-review/2.2-principle-desktop.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "7cdb17468bdf7bb16d214041a38f71a80d692688818dc292cf92a34d189c7ea3"
+    },
+    {
+      "file": "screenshots/design-review/2.2-principle-mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "3ce384a6fc6c07f5da41335b8d7ffd6d8b3f46673bdf827c8825a01b8cdebb68"
+    },
+    {
+      "file": "screenshots/p0/home-desktop.png",
+      "width": 1440,
+      "height": 4077,
+      "sha256": "8e4d5c587cc9f2c2132c909ff42aabf294de541fd2b62fb8eac2a1cf3ccb7dcf"
+    },
+    {
+      "file": "screenshots/p0/home-mobile.png",
+      "width": 390,
+      "height": 4868,
+      "sha256": "a7401c7297a1c332ae13813e3f66a8886b4e56cf1e2c6837079d3f0067d28167"
+    },
+    {
+      "file": "screenshots/p0/lecture-1.2.4-desktop.png",
+      "width": 1440,
+      "height": 5175,
+      "sha256": "fa90a83afa54f5b947cb264ab271633a2736efa1d1686157ba2c7f5b793685dd"
+    },
+    {
+      "file": "screenshots/p0/lecture-1.2.4-mobile.png",
+      "width": 390,
+      "height": 7106,
+      "sha256": "e2759a0007a5c63ab1a9803f5d49567869efbe74b7850bcae426043940df7146"
+    },
+    {
+      "file": "screenshots/p0/lecture-1.2.5-desktop.png",
+      "width": 1440,
+      "height": 5177,
+      "sha256": "c283503f10a5b769a3f6fbf19f41911ce5f6eebd0130791b78671e786ea92228"
+    },
+    {
+      "file": "screenshots/p0/lecture-1.2.5-mobile.png",
+      "width": 390,
+      "height": 5803,
+      "sha256": "90c61da917ff54b08c75c1dc5bc1f5ee3dbfab1788f005e1ddcccbe662221dea"
+    },
+    {
+      "file": "screenshots/p0/plot-demo-desktop.png",
+      "width": 1440,
+      "height": 5547,
+      "sha256": "3e46cecdadef6825fb5ab290ba931b62a4ca1a8377f8e292d9fe2c1303ee44d6"
+    },
+    {
+      "file": "screenshots/p0/plot-demo-mobile.png",
+      "width": 390,
+      "height": 6221,
+      "sha256": "b3e276fb0bf235b48473b035d837a295e19d2dac971cfc25c67522eb04301342"
+    },
+    {
+      "file": "screenshots/p1/1.1.1-1440.png",
+      "width": 1440,
+      "height": 3754,
+      "sha256": "bb00f845d8dd12354da44523cb4a6c12b4ed84721a8d936a497fc19d660f61eb"
+    },
+    {
+      "file": "screenshots/p1/1.1.1-390.png",
+      "width": 390,
+      "height": 4499,
+      "sha256": "db1d118b81975c785dc79088a70e3f1c89a15a4ee7da6e8c930859443d320503"
+    },
+    {
+      "file": "screenshots/p1/1.1.2-1440.png",
+      "width": 1440,
+      "height": 5232,
+      "sha256": "70d8c70ff61e842e08184fca21aa9c3c5615064a9cbdbd60e5f050a1c73d1a92"
+    },
+    {
+      "file": "screenshots/p1/1.1.2-390.png",
+      "width": 390,
+      "height": 5684,
+      "sha256": "1e8b9aa7faa5e30cdb054bfd7da7be1ca8537a4c73bad697edd8394f996bcc25"
+    },
+    {
+      "file": "screenshots/p1/1.1.3-1440.png",
+      "width": 1440,
+      "height": 4153,
+      "sha256": "26dafa4bee5541ae7d8f670370ce7dc88558d2f1c6e1bc5e6124daca1420ed79"
+    },
+    {
+      "file": "screenshots/p1/1.1.3-390.png",
+      "width": 390,
+      "height": 4554,
+      "sha256": "8531244b49b097ef60751891e8022d4c12b224c1f2a01f69b5d8b64a32477ba7"
+    },
+    {
+      "file": "screenshots/p1/1.1.4-1440.png",
+      "width": 1440,
+      "height": 4253,
+      "sha256": "2a2445b72aa18d06c22aec226333199370a0a53e5a347a697c7a86f4067e78c7"
+    },
+    {
+      "file": "screenshots/p1/1.1.4-390.png",
+      "width": 390,
+      "height": 4587,
+      "sha256": "d5dd12425cb0b1afa2245d854b76d91b5a1bb081c91275303fd9156edefc119f"
+    },
+    {
+      "file": "screenshots/p1/1.1.5-1440.png",
+      "width": 1440,
+      "height": 3866,
+      "sha256": "0508b8c6599dea4758ad978c84baee1fb374f5306b6e4e022d72b814b962dba9"
+    },
+    {
+      "file": "screenshots/p1/1.1.5-390.png",
+      "width": 390,
+      "height": 4282,
+      "sha256": "d9131e3d5e992058dbdc093220fe80d900e34e0e4786e6096aa5a099cb1ad147"
+    },
+    {
+      "file": "screenshots/p1/1.2.1-1440.png",
+      "width": 1440,
+      "height": 4517,
+      "sha256": "7b29a6c66af82e4d3c5f099014589fce632dadc0bbee625d93c43109930ed92f"
+    },
+    {
+      "file": "screenshots/p1/1.2.1-390.png",
+      "width": 390,
+      "height": 4907,
+      "sha256": "00fe6929fea86161fa454cad42c005f4e689d39e363770078883ffeaa2f46b73"
+    },
+    {
+      "file": "screenshots/p1/1.2.2-1440.png",
+      "width": 1440,
+      "height": 4366,
+      "sha256": "d267cb34758ea12627401924c5085e6a05a4293185dd877488887567d441a972"
+    },
+    {
+      "file": "screenshots/p1/1.2.2-390.png",
+      "width": 390,
+      "height": 4792,
+      "sha256": "c5b119a35c00953e88f37c03623778dc45783e7de790e760e08b697430beb92e"
+    },
+    {
+      "file": "screenshots/p1/1.2.3-1440.png",
+      "width": 1440,
+      "height": 5493,
+      "sha256": "a09ba4ec664874ee7fc75874dbf72c0837a9646a587c79e05dc3b94345a38582"
+    },
+    {
+      "file": "screenshots/p1/1.2.3-390.png",
+      "width": 390,
+      "height": 5998,
+      "sha256": "91813579648b8dbbb44d50eed2d2a7d97a4f32a6874b55f65b0132531912015c"
+    },
+    {
+      "file": "screenshots/p1/2.1-1440.png",
+      "width": 1440,
+      "height": 4392,
+      "sha256": "2cb1d2f9c2518774f1e592812c41c40b34f5e46141ace50515269f48b018fc94"
+    },
+    {
+      "file": "screenshots/p1/2.1-390.png",
+      "width": 390,
+      "height": 4930,
+      "sha256": "8df02fa34c2d96d54e6a079992df41061d98e405a3156028fa4f49af8cb35524"
+    },
+    {
+      "file": "screenshots/p1/2.2-1440.png",
+      "width": 1440,
+      "height": 6097,
+      "sha256": "23d1207e622f14fcc92127b69759e433936cee083b596cce056ff31bab6a3b0e"
+    },
+    {
+      "file": "screenshots/p1/2.2-390.png",
+      "width": 390,
+      "height": 7527,
+      "sha256": "b0c417aa878742025b97a718d347786321a9b7065d9c2f3e0ca2363215a54e7c"
+    },
+    {
+      "file": "screenshots/p1/2.3-1440.png",
+      "width": 1440,
+      "height": 5212,
+      "sha256": "339bc7e9bf00eb94c34b60a0a7802d38f88aef531ea7a4e6cb85b358e7f49c32"
+    },
+    {
+      "file": "screenshots/p1/2.3-390.png",
+      "width": 390,
+      "height": 5770,
+      "sha256": "a93714d89f11dcb786b757636dbab026e48dbdb8355a834997de4b7ce1dac368"
+    },
+    {
+      "file": "screenshots/p1/2.4-1440.png",
+      "width": 1440,
+      "height": 4804,
+      "sha256": "10e3734470caea3722d6ed8a4c079658313ece7d8357bad8f155ccf4f5ea9335"
+    },
+    {
+      "file": "screenshots/p1/2.4-390.png",
+      "width": 390,
+      "height": 5339,
+      "sha256": "8c88dbf507456dcbedc005b73b31107b6f874c743112d71192010922ef3ac74e"
+    },
+    {
+      "file": "screenshots/polish/1.1.1-desktop.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "4cde966259fcbc4700835e6ed6e3147cb0c2290fa61299e5ed12bfad179448a2"
+    },
+    {
+      "file": "screenshots/polish/1.1.1-mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "35e4bb0d958fd7cb75bb3578228ebee33af0f8f70d91eca2130ba1d813cb66f3"
+    },
+    {
+      "file": "screenshots/polish/1.2.4-desktop.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "7b1b73c3ff4b4ab0c29b74c591d845fca77f08ff0c7a37d66684e8d45ada9bae"
+    },
+    {
+      "file": "screenshots/polish/1.2.4-mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "5614790260a29e36728d46e98354e844570cd979d93d4c26db87d2633fc0d9ac"
+    },
+    {
+      "file": "screenshots/polish/2.2-desktop.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "67ea07fad49e169361fe6885916f9daa079d489bc3ea9d5ead494acdca1b2f5e"
+    },
+    {
+      "file": "screenshots/polish/2.2-mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "cac231647b4839cdef44ae54c9a76f5f88bce4eafeb058cc393c34c3ed9024d0"
+    },
+    {
+      "file": "screenshots/polish/home-desktop.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "fdf38bda8f1d32baec389be65ab784fb0fde08432d302aaec291271e6604a2d1"
+    },
+    {
+      "file": "screenshots/polish/home-mobile.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "98cb27e8b254db9f575e0526e2995949a82df8369c00d3f1556ef538fb8debe6"
+    }
+  ]
+}

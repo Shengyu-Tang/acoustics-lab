@@ -33,8 +33,8 @@ const plots = (p: Values) => {
 export default lecture(
   "1.2.2",
   [
-    "暂态分量的包络按 e^(−δt) 衰减，振动频率为阻尼固有频率；长时间后暂态分量趋于零。",
-    "质量块受弹性恢复力 −Dx、黏滞阻力 −Rₘv 和外加谐和力 F₀cosωt。以静平衡位置计位移时重力与静态弹簧力抵消。",
+    "暂态分量的包络按 $e^{-\\delta t}$ 衰减，振动频率为阻尼固有频率；长时间后暂态分量趋于零。",
+    "质量块受弹性恢复力 $-Dx$、黏滞阻力 $-R_mv$ 和外加谐和力 $F_0\\cos\\omega t$。以静平衡位置计位移时重力与静态弹簧力抵消。",
   ],
   {
     defaults,
@@ -59,7 +59,7 @@ export default lecture(
       {
         number: "1.2-13",
         tex: String.raw`x_{\rm tr}=e^{-\delta t}\left[-C\cos\omega_0't+\frac{-\omega S-\delta C}{\omega_0'}\sin\omega_0't\right]`,
-        meaning: "暂态初值恰好抵消稳态在 t = 0 的位移与速度，以满足总响应零初值。",
+        meaning: "暂态初值恰好抵消稳态在 $t = 0$ 的位移与速度，以满足总响应零初值。",
       },
     ],
     figures: [
@@ -110,7 +110,7 @@ export default lecture(
         ],
         hints: [
           "稳态幅值由动态刚度的模决定；暂态频率由阻尼固有角频率决定。",
-          "将 ω = rω₀、Rₘ = Mω₀/Qₘ 代入动态刚度，可整理为题中的无量纲表达式。",
+          "将 $\\omega = r\\omega_0$、$R_m = M\\omega_0/Q_m$ 代入动态刚度，可整理为题中的无量纲表达式。",
         ],
         judgment: (p) =>
           `稳态幅值为 ${fmt(info(p).amplitude * 1000)} mm；测量前需等待暂态充分衰减，不能把初始合成峰值当作稳态幅值。`,

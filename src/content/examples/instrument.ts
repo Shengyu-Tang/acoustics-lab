@@ -20,7 +20,7 @@ export const example = {
     { key: "n", symbol: "n", name: "泵转速", unit: "r/min", min: 1500, max: 2400, step: 1 },
     {
       key: "limit",
-      symbol: "x限",
+      symbol: "x_{lim}",
       name: "允许位移幅值（严格小于）",
       unit: "mm",
       min: 0.1,
@@ -38,7 +38,7 @@ export const example = {
   solve: instrumentSolution,
   defaults: instrument,
   hints: [
-    "用 ω₀ = √(D/M)、Qₘ = ω₀M/Rₘ，再用机械阻抗计算振速和位移。",
-    "先将转速除以 60 得 f，再算 ω = 2πf。用 xₘ = F₀ / [ω√(Rₘ² + Xₘ²)]；将 xₘ 换成允许值，反解 Rₘ。",
+    "用 $\\omega_0 = \\sqrt{D/M}$、$Q_m = \\omega_0M/R_m$，再用机械阻抗计算振速和位移。",
+    "先将转速除以 60 得 f，再算 $\\omega = 2\\pi f$。用 $x_m = F_0/[\\omega\\sqrt{R_m^2+X_m^2}]$；将 xₘ 换成允许值，反解 Rₘ。",
   ],
 };

@@ -30,8 +30,8 @@ export default lecture(
   "1.2.1",
   [
     "调音时频率相近的两个音叉或乐器产生时强时弱的响度；机械系统也可能由相近转频激起拍。",
-    "拍周期为 2π/|ω−ω₀| = 1/|f−f₀|，这里指振幅绝对值相邻极大的间隔。",
-    "谐和力是随时间按单一正弦或余弦规律变化的力，例如 F₀cosωt。",
+    "拍周期为 $2\\pi/|\\omega-\\omega_0| = 1/|f-f_0|$，这里指振幅绝对值相邻极大的间隔。",
+    "谐和力是随时间按单一正弦或余弦规律变化的力，例如 $F_0\\cos\\omega t$。",
   ],
   {
     defaults,
@@ -45,7 +45,7 @@ export default lecture(
       {
         number: "1.2-8",
         tex: String.raw`M\ddot x+Dx=F_0\cos\omega t,\quad x(0)=\dot x(0)=0`,
-        meaning: "本讲忽略阻尼，激励力从 t = 0 接入。",
+        meaning: "本讲忽略阻尼，激励力从 $t = 0$ 接入。",
       },
       {
         number: "1.2-9",
@@ -154,7 +154,7 @@ export default lecture(
         ],
         hints: [
           "拍周期由两频率之差决定；精确共振需使用极限公式。",
-          "ω₀ = √(D/M)，Δω = |1−r|ω₀；线性增长包络为 F₀t/(2Mω₀)。",
+          "$\\omega_0 = \\sqrt{D/M}$，$\\Delta\\omega = |1-r|\\omega_0$；线性增长包络为 $F_0t/(2M\\omega_0)$。",
         ],
         judgment: (p) =>
           `共振下 ${p.tObs} s 的包络约 ${fmt(((p.F0 * p.tObs) / (2 * Math.sqrt(p.M * p.D))) * 1000)} mm；无阻尼模型没有稳定的有限共振幅值。`,

@@ -44,7 +44,7 @@ export const bandwidthExample = {
     { key: "force", text: "(4) 谐振处所需激励力峰值 F₀", unit: "N" },
   ] as const,
   hints: [
-    "由 M、D 求 f₀；恒力扫频的半功率带宽为 Δf = f₂ − f₁ = f₀/Qₘ = Rₘ/(2πM)。",
-    "先算 Qₘ = f₀/Δf 与 Rₘ = 2πMΔf。振速给的是峰值，用 W̄ = Rₘvₘ²/2；在 f₀ 处 Xₘ = 0，故 F₀ = Rₘvₘ。",
+    "由 M、D 求 f₀；恒力扫频的半功率带宽为 $\\Delta f = f_2-f_1 = f_0/Q_m = R_m/(2\\pi M)$。",
+    "先算 $Q_m = f_0/\\Delta f$ 与 $R_m = 2\\pi M\\Delta f$。振速给的是峰值，用 $\\overline W = R_mv_m^2/2$；在 f₀ 处 $X_m = 0$，故 $F_0 = R_mv_m$。",
   ],
 };

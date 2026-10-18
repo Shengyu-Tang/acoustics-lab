@@ -10,7 +10,7 @@ const lecture: Lecture = {
     "瞬时输入功率是实数外力与实数振速的乘积，可能在一个周期内改变符号。",
     "稳态时平均输入功率等于阻尼耗散的平均功率。",
     "谐振：稳态时外力始终对系统做正功，谐振频率等于系统固有频率 f₀；机械平均功率与振速在此处达到最大值（瞬时功率在过零点为零）。",
-    "半功率点定义带宽，Δf = f₀/Qm；品质因数越高，带宽越窄。",
+    "半功率点定义带宽，$\\Delta f = f_0/Q_m$；品质因数越高，带宽越窄。",
   ],
   formulas: [
     {
@@ -21,12 +21,13 @@ const lecture: Lecture = {
     {
       number: "1.2-6",
       tex: String.raw`\overline W=\frac12F_0v_m\cos\varphi_v=\frac12R_mv_m^2=\frac{F_0^2R_m}{2[R_m^2+(\omega M-D/\omega)^2]}`,
-      meaning: "周期内储能的净变化为零，平均输入恰好补偿阻尼耗散；峰值 Wmax = F₀²/(2Rm)。",
+      meaning: "周期内储能的净变化为零，平均输入恰好补偿阻尼耗散；峰值 $W_{max} = F_0^2/(2R_m)$。",
     },
     {
       number: "1.2-7",
       tex: String.raw`\omega_{1,2}=\sqrt{\omega_0^2+\delta^2}\mp\delta,\quad\delta=\frac{R_m}{2M},\quad\Delta f=f_2-f_1=\frac{R_m}{2\pi M}=\frac{f_0}{Q_m}`,
-      meaning: "半功率点满足 |Xm| = Rm。带宽关系是该黏性阻尼模型的精确结果；f₀ 是两点的几何平均。",
+      meaning:
+        "半功率点满足 $|X_m| = R_m$。带宽关系是该黏性阻尼模型的精确结果；f₀ 是两点的几何平均。",
     },
   ],
   figures: [
@@ -54,7 +55,7 @@ const lecture: Lecture = {
     {
       text: "1、谐振频率与系统固有频率的关系？",
       answer:
-        "机械谐振条件为 Xm = ωM − D/ω = 0，所以谐振频率等于无阻尼固有频率 f₀ = √(D/M)/(2π)，不等于欠阻尼自由振动的频率。",
+        "机械谐振条件为 $X_m = \\omega M - D/\\omega = 0$，所以谐振频率等于无阻尼固有频率 $f_0 = \\sqrt{D/M}/(2\\pi)$，不等于欠阻尼自由振动的频率。",
     },
     {
       text: "2、谐振频率与共振频率的关系？",
@@ -64,7 +65,7 @@ const lecture: Lecture = {
     {
       text: "3、半功率点带宽和机械品质因数的关系？",
       answer:
-        "先找最大平均功率及其频率 f₀，再找功率降到峰值一半时的 f₁、f₂，计算 Qm = f₀/(f₂−f₁)。半功率对应振速幅值为峰值的 1/√2。",
+        "先找最大平均功率及其频率 f₀，再找功率降到峰值一半时的 f₁、f₂，计算 $Q_m = f_0/(f_2-f_1)$。半功率对应振速幅值为峰值的 $1/\\sqrt{2}$。",
     },
   ],
   engineering: {

@@ -37,7 +37,7 @@ export default lecture(
     parameters: [...mechanics, zeta, ...initial],
     keyPoints: [
       "黏滞阻力与速度成正比，方向与速度相反。",
-      "阻尼使特征根移入左半平面；δ > ω₀ 时两个根都是负实数。",
+      "阻尼使特征根移入左半平面；$\\delta > \\omega_0$ 时两个根都是负实数。",
       "大阻尼响应是两个指数衰减项之和，系统不发生往复振动；三类初始条件可导致单调或先增后减的运动。",
     ],
     formulas: [
@@ -49,7 +49,7 @@ export default lecture(
       {
         number: "1.1-8",
         tex: String.raw`s_{1,2}=-\delta\pm\sqrt{\delta^2-\omega_0^2}`,
-        meaning: "根轨迹图采用 s/ω₀ 归一化，同时展示欠阻尼、临界阻尼与过阻尼区域。",
+        meaning: "根轨迹图采用 $s/\\omega_0$ 归一化，同时展示欠阻尼、临界阻尼与过阻尼区域。",
       },
       {
         number: "1.1-9",
@@ -143,7 +143,7 @@ export default lecture(
         ],
         hints: [
           "先用阻尼比求力阻；再求两个特征根。",
-          "δ = ζω₀；绝对值较小的负实根控制长时间回位。",
+          "$\\delta = \\zeta\\omega_0$；绝对值较小的负实根控制长时间回位。",
         ],
         judgment: (p) =>
           `阻尼比 ${p.zeta} > 1，响应不持续振荡；慢时间常数为 ${fmt(-1 / roots(p).s1)} s，增大阻尼也可能拖慢回位。`,

@@ -1,6 +1,7 @@
 import catalog from "./content/homeCatalog.json";
 import calendar from "./calendar.json";
 import Header from "./Header";
+import ScriptText from "./ScriptText";
 import { chapters } from "./catalog";
 const { topics, completed } = catalog;
 function Thumbnail({ id }: { id: string }) {
@@ -93,7 +94,9 @@ export default function Home() {
                   {l.date} · 第 {l.week} 周
                 </h3>
                 <p>{l.title}</p>
-                <p>{l.goals.join("；")}</p>
+                <p>
+                  <ScriptText text={l.goals.join("；")} />
+                </p>
                 <p>
                   {l.experiments.map((id) => (
                     <a key={id} href={`#/lab?topic=${id}`}>

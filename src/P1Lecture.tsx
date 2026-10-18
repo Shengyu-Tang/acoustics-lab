@@ -65,7 +65,9 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
         <h2>本讲要点</h2>
         <ul>
           {l.keyPoints.map((s) => (
-            <li key={s}>{s}</li>
+            <li key={s}>
+              <MathProse text={s} />
+            </li>
           ))}
         </ul>
       </section>
@@ -217,9 +219,9 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
                 value={p.input ?? 0}
                 onChange={(e) => setParameter("input", Number(e.target.value))}
               >
-                <option value="0">力阻 Rₘ</option>
-                <option value="1">阻尼系数 δ</option>
-                <option value="2">品质因数 Qₘ</option>
+                <option value="0">力阻</option>
+                <option value="1">阻尼系数</option>
+                <option value="2">品质因数</option>
               </select>
             </label>
           )}
@@ -273,9 +275,13 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
           <tbody>
             {l.readouts(p).map(([label, value, unit]) => (
               <tr key={label}>
-                <td>{label}</td>
+                <td>
+                  <MathProse text={String(label)} />
+                </td>
                 <td>{Number.isFinite(value) ? fmt(value) : "不适用"}</td>
-                <td>{unit}</td>
+                <td>
+                  <MathProse text={unit} />
+                </td>
               </tr>
             ))}
           </tbody>
@@ -291,14 +297,20 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
         <h2>思考题</h2>
         {l.questions.map((q) => (
           <details key={q.text}>
-            <summary>{q.text}</summary>
-            <p>{q.answer}</p>
+            <summary>
+              <MathProse text={q.text} />
+            </summary>
+            <p>
+              <MathProse text={q.answer} />
+            </p>
           </details>
         ))}
       </section>
       <section id="engineering">
         <h2>工程应用</h2>
-        <p>{l.engineering.text}</p>
+        <p>
+          <MathProse text={l.engineering.text} />
+        </p>
         <a href={l.engineering.href}>{l.engineering.title}</a>
       </section>
     </>

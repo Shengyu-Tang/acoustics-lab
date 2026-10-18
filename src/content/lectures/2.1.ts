@@ -9,7 +9,7 @@ const defaults = { T: 70, mu: 0.0004, L: 0.65, height: 0.015, F0: 0.05, boundary
 export default lecture(
   "2.1",
   [
-    "小振幅保证弦斜率远小于 1，sinθ ≈ tanθ ≈ ∂y/∂x、cosθ ≈ 1，张力近似不变且运动主要为横向；超出此条件时横纵向耦合及非线性张力变化不可忽略。",
+    "小振幅保证弦斜率远小于 1，$\\sin\\theta \\approx \\tan\\theta \\approx \\partial y/\\partial x$、$\\cos\\theta \\approx 1$，张力近似不变且运动主要为横向；超出此条件时横纵向耦合及非线性张力变化不可忽略。",
   ],
   {
     defaults,
@@ -32,7 +32,7 @@ export default lecture(
     keyPoints: [
       "张紧柔软弦在小振幅、张力近似恒定条件下作横向振动。",
       "微元两端张力的横向分量之差提供横向加速度，由此得到弦的横振动方程。",
-      "横波速度 c = √(T/ρ_l)，分离变量后系数由初值和边界确定。",
+      "横波速度 $c = \\sqrt{T/\\rho_l}$，分离变量后系数由初值和边界确定。",
       "固定、外力、位移、振速激励对应四种不同边界方程。",
     ],
     formulas: [
@@ -44,12 +44,12 @@ export default lecture(
       {
         number: "2.1-2",
         tex: String.raw`\partial_t^2 y=c^2\partial_x^2y,\quad c=\sqrt{T/\rho_l}`,
-        meaning: "ρ_l 是线密度（kg/m），不是体密度。",
+        meaning: "$\\rho_l$ 是线密度（kg/m），不是体密度。",
       },
       {
         number: "2.1-3",
         tex: String.raw`y(x,t)=\sum_k[A_k\cos kx+B_k\sin kx][C_k\cos\omega_kt+D_k\sin\omega_kt],\quad \omega_k=ck`,
-        meaning: "右端边界可切换；非固定边界的演示取 kL = π/3，避免共振奇点。",
+        meaning: "右端边界可切换；非固定边界的演示取 $kL = \\pi/3$，避免共振奇点。",
       },
     ],
     figures: [

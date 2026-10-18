@@ -1,0 +1,119 @@
+﻿import assert from "node:assert/strict";
+import fs from "node:fs";
+import { build } from "esbuild";
+const files = fs.readdirSync("src/content/lectures").filter((f) => f.endsWith(".ts"));
+fs.mkdirSync("outputs", { recursive: true });
+await build({
+  stdin: {
+    contents:
+      files
+        .map((f, i) => `export {default as l${i}} from './src/content/lectures/${f}';`)
+        .join("") +
+      "export {default as ScriptText} from './src/ScriptText'; export {MathProse} from './src/Math';" +
+      "export {default as Home} from './src/Home';" +
+      "export {default as P1Lecture} from './src/P1Lecture';export {default as SampleLecture} from './src/SampleLecture';" +
+      "export {example as instrument} from './src/content/examples/instrument';export {bandwidthExample as bandwidth} from './src/content/examples/bandwidth';" +
+      "export {Axes} from './src/plot/Figure';export {matlab} from './src/plot/export';",
+    resolveDir: process.cwd(),
+  },
+  bundle: true,
+  platform: "node",
+  format: "esm",
+  external: ["react", "react-dom"],
+  loader: { ".css": "empty" },
+  define: { "import.meta.env.BASE_URL": '"/"' },
+  outfile: "outputs/notation-check.mjs",
+});
+const all = await import("../outputs/notation-check.mjs");
+const { createElement: h } = await import("react");
+const { renderToStaticMarkup: render } = await import("react-dom/server");
+const lectures = files.map((_, i) => all[`l${i}`]);
+let strings = 0;
+const issues = [];
+function checkText(text, name) {
+  const html = render(h(all.MathProse, { text }));
+  assert.ok(!/[\u2080-\u209c]/.test(html), `${name}: unconverted subscript ${text}`);
+  const plain = text
+    .replace(/\$[^$]+\$/g, "")
+    .replace(/\b(?:kg|rad|N|cm|m|r)(?:\/(?:s|min|m))?[²³]?(?=[\s，。；、（）(),]|$)/g, "");
+  if (/[$_^]|[A-Za-z\u0370-\u03ff][²³]|[A-Za-z\u0370-\u03ff][^\s，。；、]*\//.test(plain))
+    issues.push(`${name}: unmarked prose math ${text}`);
+  strings++;
+}
+for (const l of lectures) {
+  const p = l.defaults ?? all.instrument.defaults;
+  const html = render(h(l.defaults ? all.P1Lecture : all.SampleLecture, { lecture: l }));
+  const visible = html.replace(/\s(?:aria-label|value)="[^"]*"/g, "");
+  if (/[\u2080-\u209c]/.test(visible))
+    issues.push(`${l.id}: rendered subscript ${visible.match(/.{0,60}[\u2080-\u209c].{0,60}/g)}`);
+  l.keyPoints.forEach((text) => checkText(text, `${l.id} key point`));
+  l.formulas.forEach((f) => checkText(f.meaning, `${l.id} meaning`));
+  l.questions.forEach((q) => {
+    checkText(q.text, `${l.id} question`);
+    checkText(q.answer, `${l.id} answer`);
+  });
+  checkText(l.engineering.text, `${l.id} engineering`);
+  for (const f of l.figures) {
+    checkText(f.title, `${l.id} caption`);
+    for (const panel of f.plot(p, l.defaults ? 0 : false)) {
+      const svg = render(h("svg", null, h(all.Axes, { panel })));
+      assert.ok(
+        !/[\u2080-\u209c⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ]/.test(svg),
+        `${f.number}: rendered SVG script glyph`,
+      );
+    }
+  }
+  const examples = l.defaults ? l.examples : [l.id === "1.2.4" ? all.instrument : all.bandwidth];
+  for (const e of examples) {
+    checkText(e.background, `${l.id} background`);
+    e.hints.forEach((text) => checkText(text, `${l.id} hint`));
+  }
+}
+// All assigned characters in U+2080–U+209C, grouped scripts, and Unicode superscripts.
+for (const text of [
+  "Rₘ F₀ Qₘ xₘ bₙ f₁ f₂",
+  "x_{lim} f_target T_zz",
+  "s⁻¹ m/s² e⁻π",
+  "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₒₓₔₕₖₗₘₙₚₛₜ",
+]) {
+  const html = render(h(all.ScriptText, { text }));
+  const svg = render(h("text", null, h(all.ScriptText, { text, svg: true })));
+  assert.ok(!/[\u2080-\u209c⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ]/.test(html + svg));
+  assert.match(svg, /baseline-shift="(?:sub|super)" font-size="75%"/);
+}
+assert.equal(render(h(all.ScriptText, { text: "x_{lim}" })), "x<sub>lim</sub>");
+assert.equal(render(h(all.ScriptText, { text: "e⁻π" })), "e<sup>-π</sup>");
+assert.equal(
+  render(h(all.ScriptText, { text: "Rₘ F₀ Qₘ bₙ f₁ f₂" })),
+  "R<sub>m</sub> F<sub>0</sub> Q<sub>m</sub> b<sub>n</sub> f<sub>1</sub> f<sub>2</sub>",
+);
+// The home page renders a different week's goals throughout the semester.
+const RealDate = Date;
+try {
+  for (const week of JSON.parse(fs.readFileSync("src/calendar.json", "utf8"))) {
+    const [year, month, day] = week.date.split(".").map(Number);
+    globalThis.Date = class extends RealDate {
+      constructor(...args) {
+        super(...(args.length ? args : [year, month - 1, day, 12]));
+      }
+    };
+    const html = render(h(all.Home));
+    assert.ok(!/[\u2080-\u209c]/.test(html), `home goals for ${week.date}`);
+  }
+} finally {
+  globalThis.Date = RealDate;
+}
+const tex = all.matlab(
+  [{ title: "Qₘ", xlabel: "f₀", ylabel: "xₘ", xlim: [0, 1], ylim: [0, 1], series: [] }],
+  1,
+  1,
+  "scripts",
+);
+assert.ok(
+  tex.includes("Q_{m}") && tex.includes("f_{0}") && tex.includes("x_{m}"),
+  "MATLAB toTex still consumes original Unicode labels",
+);
+assert.deepEqual(issues, [], "unmarked prose math");
+console.log(
+  `PASS: ${lectures.length} lectures, ${strings} prose strings, HTML/SVG scripts and MATLAB toTex compatibility`,
+);

@@ -24,7 +24,8 @@ const lecture: Lecture = {
     {
       number: "1.2-2",
       tex: String.raw`v_m=\frac{F_0}{|Z_m|},\quad x_m=\frac{v_m}{\omega},\quad a_m=\omega v_m,\quad\varphi_v=-\arg Z_m,\quad\varphi_x=\varphi_v-\frac\pi2,\quad\varphi_a=\varphi_v+\frac\pi2`,
-      meaning: "相位均相对激励力 F₀ cos(ωt)；振速超前位移 π/2，加速度超前振速 π/2。",
+      meaning:
+        "相位均相对激励力 $F_0\\cos(\\omega t)$；振速超前位移 $\\pi/2$，加速度超前振速 $\\pi/2$。",
     },
     {
       number: "1.2-3",
@@ -34,7 +35,8 @@ const lecture: Lecture = {
     {
       number: "1.2-4",
       tex: String.raw`f_x=f_0\sqrt{1-2\zeta^2},\qquad f_v=f_0,\qquad f_a=\frac{f_0}{\sqrt{1-2\zeta^2}}`,
-      meaning: "位移与加速度的有限频率共振峰要求 ζ < 1/√2；阻尼更大时不应标出虚假的峰。",
+      meaning:
+        "位移与加速度的有限频率共振峰要求 $\\zeta < 1/\\sqrt{2}$；阻尼更大时不应标出虚假的峰。",
     },
   ],
   figures: [
@@ -62,12 +64,12 @@ const lecture: Lecture = {
     {
       text: "1、怎样求某响应的共振频率？",
       answer:
-        "写出稳态幅值关于 ω 的函数，对 ω 求导并令其为零，检查极值和端点。位移与加速度存在有限峰值需要 ζ < 1/√2；速度峰值始终在 f₀。",
+        "写出稳态幅值关于 ω 的函数，对 ω 求导并令其为零，检查极值和端点。位移与加速度存在有限峰值需要 $\\zeta < 1/\\sqrt{2}$；速度峰值始终在 f₀。",
     },
     {
       text: "2、为什么不同响应的共振频率不同。",
       answer:
-        "对 ζ < 1/√2，有 fx < f₀ = fv < fa，三式见 (1.2-4)。ζ → 0 时三者趋近 f₀。位移、速度、加速度的频率因子不同，所以峰值位置不同。",
+        "对 $\\zeta < 1/\\sqrt{2}$，有 $f_x < f_0 = f_v < f_a$，三式见 (1.2-4)。$\\zeta \\to 0$ 时三者趋近 f₀。位移、速度、加速度的频率因子不同，所以峰值位置不同。",
     },
     {
       text: "3、怎样测量振动系统的频响曲线？",

@@ -24,8 +24,8 @@ export default lecture(
   [
     "位移是时间的正弦或余弦函数；加速度与位移成正比并反向。",
     "相同。在线性小振幅模型下，改变初始位移的正负或初始速度只改变振幅和初相，不改变由质量与弹性系数决定的固有频率。",
-    "撤去外力后系统自由振动的频率称为固有频率，本模型中 f₀ = √(D/M)/(2π)。",
-    "变慢。附加质量使总质量 M 增大，弹性系数 D 不变，固有频率 f₀ = √(D/M)/(2π) 减小。",
+    "撤去外力后系统自由振动的频率称为固有频率，本模型中 $f_0 = \\sqrt{D/M}/(2\\pi)$。",
+    "变慢。附加质量使总质量 M 增大，弹性系数 D 不变，固有频率 $f_0 = \\sqrt{D/M}/(2\\pi)$ 减小。",
   ],
   {
     defaults,
@@ -33,14 +33,14 @@ export default lecture(
     animation: true,
     animationPeriod: (p) => decay(p).T,
     keyPoints: [
-      "用质量 M、弹性系数 D 和柔顺系数 C_M = 1/D 描述单自由度弹簧振子。",
+      "用质量 M、弹性系数 D 和柔顺系数 $C_M = 1/D$ 描述单自由度弹簧振子。",
       "胡克定律与牛顿定律给出自由振动方程；无阻尼自由振动是简谐振动。",
       "初始位移、初始速度确定振幅和初相；固有频率只由 M、D 决定。",
     ],
     formulas: [
       {
         number: "1.1-1",
-        tex: String.raw`F_s=-Dx,\quad C_M=D^{-1},\quad M\ddot x+Dx=0`,
+        tex: String.raw`F_s=-Dx,\quad C_M=1/D,\quad M\ddot x+Dx=0`,
         meaning: "位移从静平衡位置计量，重力已包含在静变形中。",
       },
       {
@@ -135,7 +135,7 @@ export default lecture(
         ],
         hints: [
           "先用 M、D 求固有角频率；用两项正交初始分量求振幅。",
-          "将毫米换为米，再计算 A² = x₀² + Mv₀²/D。",
+          "将毫米换为米，再计算 $A^2 = x_0^2 + Mv_0^2/D$。",
         ],
         judgment: (p) =>
           `最大单边行程 ${fmt(Math.hypot(p.x0, p.v0 / decay(p).w0) * 1000)} mm，安装间隙应留有余量。`,

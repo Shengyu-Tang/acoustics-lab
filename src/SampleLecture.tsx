@@ -19,7 +19,9 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
         <h2>本讲要点</h2>
         <ul>
           {l.keyPoints.map((t) => (
-            <li key={t}>{t}</li>
+            <li key={t}>
+              <MathProse text={t} />
+            </li>
           ))}
         </ul>
       </section>
@@ -64,7 +66,7 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
                   checked={compare}
                   onChange={(e) => setCompare(e.target.checked)}
                 />{" "}
-                叠画 Qₘ = 1.7 / 5 / 10（此时各曲线用 Qₘ 换算 Rₘ）
+                <MathProse text="叠画 $Q_m = 1.7, 5, 10$（此时各曲线用 $Q_m$ 换算 $R_m$）" />
               </label>
             </>
           )}
@@ -78,7 +80,7 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
                     setP({ ...p, Rm: (c.omega0 * p.M) / q });
                   }}
                 >
-                  Qₘ = {q}
+                  <MathProse text="Qₘ" /> = {q}
                 </button>
               ))}
             <button
@@ -93,7 +95,11 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
           </div>
         </fieldset>
         <table className="readouts">
-          <caption>当前力阻 Rₘ 对应的关键读数{compare ? "（叠画曲线的 Qₘ 见图例）" : ""}</caption>
+          <caption>
+            <MathProse
+              text={`当前力阻 Rₘ 对应的关键读数${compare ? "（叠画曲线的 Qₘ 见图例）" : ""}`}
+            />
+          </caption>
           <thead>
             <tr>
               <th>量</th>
@@ -106,9 +112,9 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
               ? [
                   ["固有频率 f₀", c.f0, "Hz"],
                   ["品质因数 Qₘ", c.Qm, "—"],
-                  ["位移共振 fx", c.fx, "Hz"],
-                  ["速度共振 fv", c.fv, "Hz"],
-                  ["加速度共振 fa", c.fa, "Hz"],
+                  ["位移共振 f_x", c.fx, "Hz"],
+                  ["速度共振 f_v", c.fv, "Hz"],
+                  ["加速度共振 f_a", c.fa, "Hz"],
                   ["f₀ 处 |Zₘ|", r.impedance, "kg/s"],
                   ["f₀ 处 Xₘ", r.reactance, "kg/s"],
                 ]
@@ -123,7 +129,9 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
                 ]
             ).map(([label, value, unit]) => (
               <tr key={String(label)}>
-                <td>{label}</td>
+                <td>
+                  <MathProse text={String(label)} />
+                </td>
                 <td>
                   {value === null
                     ? "无有限频率共振峰"
@@ -131,7 +139,9 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
                       ? Number(value.toPrecision(4)).toString()
                       : value}
                 </td>
-                <td>{unit}</td>
+                <td>
+                  <MathProse text={String(unit)} />
+                </td>
               </tr>
             ))}
           </tbody>
@@ -142,9 +152,13 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
           name={l.figures[1].number}
         />
         <p>
-          {first
-            ? "机械电抗在 f₀ 处过零。相频曲线以激励力为相位基准；阻抗图从 0.001f₀ 开始以避开零频弹抗奇点。"
-            : "三种激励频率分别为 0.8f₀、f₀、1.2f₀，图中使用同一时间轴和功率轴。灰色频带标出 Δf，虚线标出峰值及半功率点。"}
+          <MathProse
+            text={
+              first
+                ? "机械电抗在 $f_0$ 处过零。相频曲线以激励力为相位基准；阻抗图从 $0.001f_0$ 开始以避开零频弹抗奇点。"
+                : "三种激励频率分别为 $0.8f_0$、$f_0$、$1.2f_0$，图中使用同一时间轴和功率轴。灰色频带标出 $\\Delta f$，虚线标出峰值及半功率点。"
+            }
+          />
         </p>
       </section>
       <section id="examples">
@@ -155,14 +169,20 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
         <h2>思考题</h2>
         {l.questions.map((q) => (
           <details key={q.text}>
-            <summary>{q.text}</summary>
-            <p>{q.answer}</p>
+            <summary>
+              <MathProse text={q.text} />
+            </summary>
+            <p>
+              <MathProse text={q.answer} />
+            </p>
           </details>
         ))}
       </section>
       <section id="engineering">
         <h2>工程应用</h2>
-        <p>{l.engineering.text}</p>
+        <p>
+          <MathProse text={l.engineering.text} />
+        </p>
         <a href={l.engineering.href}>{l.engineering.title}</a>
       </section>
     </>

@@ -1,3 +1,4 @@
+import ScriptText from "./ScriptText";
 import { useState } from "react";
 export type ParameterDefinition = {
   key: string;
@@ -61,10 +62,19 @@ export default function Parameter({
   return (
     <label className="compact-parameter">
       <span>
-        {d.name} {d.symbol}
+        {d.name} <ScriptText text={d.symbol} />
       </span>
-      <NumberField value={value} onChange={onChange} {...d} label={`${d.name}数值`} />
-      <span>{d.unit}</span>
+      <NumberField
+        value={value}
+        onChange={onChange}
+        min={d.min}
+        max={d.max}
+        step={d.step}
+        label={`${d.name}数值`}
+      />
+      <span>
+        <ScriptText text={d.unit} />
+      </span>
       <input
         aria-label={`${d.name}滑块`}
         type="range"

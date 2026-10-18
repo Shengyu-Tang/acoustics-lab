@@ -59,8 +59,8 @@ export default lecture(
     ],
     keyPoints: [
       "过渡过程由暂态与稳态叠加构成，共振附近出现逐渐消失的拍。",
-      "共振建立包络在弱阻尼下近似为 1−e^(−δt)。",
-      "过渡时间：课件约定 τ₀ = QₘT₀ = π/δ（包络达到约 95.68%）；精确达到 95% 的时间为 ln20/δ，Qₘ 越大建立越慢。",
+      "共振建立包络在弱阻尼下近似为 $1-e^{-\\delta t}$。",
+      "过渡时间：课件约定 $\\tau_0 = Q_mT_0 = \\pi/\\delta$（包络达到约 95.68%）；精确达到 95% 的时间为 $\\ln20/\\delta$，Qₘ 越大建立越慢。",
       "矩形脉冲的填充正弦激励会因建立和余振而畸变，需同时选择脉冲宽度与间隔。",
     ],
     formulas: [
@@ -73,7 +73,7 @@ export default lecture(
         number: "1.2-15",
         tex: String.raw`\tau_{95}=\frac{\ln20}{\delta}=\frac{2Q_m\ln20}{\omega_0},\quad \frac{\tau_{95}}{T_0}=\frac{Q_m\ln20}{\pi}`,
         meaning:
-          "按本批任务使用精确 95% 包络定义。课件第 9–10 页用 τ₀ = π/δ = QₘT₀，对应 95.68%，属于略宽松的近似时间约定。",
+          "按本批任务使用精确 95% 包络定义。课件第 9–10 页用 $\\tau_0 = \\pi/\\delta = Q_mT_0$，对应 95.68%，属于略宽松的近似时间约定。",
       },
       {
         number: "1.2-16",
@@ -187,7 +187,7 @@ export default lecture(
         ],
         hints: [
           "达到 95% 意味着剩余指数项等于 0.05。",
-          "脉宽 t_on = N_on T₀，因此 δt_on = πN_on/Qₘ。",
+          "脉宽 $t_{on} = N_{on}T_0$，因此 $\\delta t_{on} = \\pi N_{on}/Q_m$。",
         ],
         judgment: (p) =>
           `当前脉宽的近似建立比例为 ${fmt((1 - Math.exp((-Math.PI * p.pulseCycles) / p.Qm)) * 100)}%；${p.pulseCycles >= (p.Qm * Math.log(20)) / Math.PI ? "达到" : "未达到"} 95% 要求。还需留足余振衰减间隔。`,

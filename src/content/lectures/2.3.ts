@@ -86,7 +86,7 @@ export default lecture(
     ],
     keyPoints: [
       "均匀细棒近似要求材料、截面均匀，截面最大线度远小于纵波波长。",
-      "由截面应力差与胡克定律得到一维纵振动方程，波速为 √(E/ρ)。",
+      "由截面应力差与胡克定律得到一维纵振动方程，波速为 $\\sqrt{E/\\rho}$。",
       "形式解还需要初始位移、初始速度与边界条件才能确定。",
       "固定、自由、质量负载与力激励对应不同的端点条件；图解采用左端固定、右端质量负载。",
     ],
@@ -94,19 +94,19 @@ export default lecture(
       {
         number: "2.3-1",
         tex: String.raw`\rho S\,dz\,\partial_t^2\zeta=S[\sigma(z+dz)-\sigma(z)],\quad \sigma=E\partial_z\zeta`,
-        meaning: "课件应力符号 T_zz 在此图中写作 σ，避免与弦张力混淆；纵向位移使用课件的 ζ。",
+        meaning: "课件应力符号 $T_{zz}$ 在此图中写作 σ，避免与弦张力混淆；纵向位移使用课件的 ζ。",
       },
       {
         number: "2.3-2",
         tex: String.raw`\partial_t^2\zeta=c^2\partial_z^2\zeta,\quad c=\sqrt{E/\rho},\quad \zeta(z,t)=\sum_k[A_k\cos kz+B_k\sin kz][C_k\cos\omega_kt+D_k\sin\omega_kt]`,
         meaning:
-          "相应初值是 ζ(z,0) = f(z)、∂tζ(z,0) = g(z)。材料预设是演示用近似参数，可编辑，不作为材料检验证书。",
+          "相应初值是 $\\zeta(z,0) = f(z)$、$\\partial_t\\zeta(z,0) = g(z)$。材料预设是演示用近似参数，可编辑，不作为材料检验证书。",
       },
       {
         number: "2.3-3",
         tex: String.raw`\zeta(0,t)=0,\quad ES\partial_z\zeta(L,t)=-M\partial_t^2\zeta(L,t)\ \Longrightarrow\ \tan q=\frac{\rho SL}{Mq},\quad q=kL`,
         meaning:
-          "频率方程图固定采用右端质量负载，边界选择器展示四类边界方程；交点 qₙ 对应 fₙ = qₙc/(2πL)。",
+          "频率方程图固定采用右端质量负载，边界选择器展示四类边界方程；交点 qₙ 对应 $f_n = q_nc/(2\\pi L)$。",
       },
     ],
     figures: [
@@ -236,7 +236,7 @@ export default lecture(
         ],
         hints: [
           "先求细棒波速；端点质量改变了频率方程，不能直接用四分之一波长公式。",
-          "在 0 < q < π/2 解 q tan q = ρSL/M，再将 q 换成频率。",
+          "在 0 < q < $\\pi/2$ 解 $q\\tan q = \\rho SL/M$，再将 q 换成频率。",
         ],
         judgment: (p) =>
           `负载使第一阶频率低于无端部质量的 ${fmt(rodSpeed(p.E * 1e9, p.rho) / (4 * p.L))} Hz；安装传感器的质量不应忽略。`,

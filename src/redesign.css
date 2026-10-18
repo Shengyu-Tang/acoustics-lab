@@ -387,17 +387,24 @@ summary {
 .calculation-example input[type="number"] {
   width: 120px;
 }
+.student-answers {
+  display: grid;
+  grid-template-columns: fit-content(240px) 120px max-content minmax(0, 1fr);
+  column-gap: 8px;
+}
 .student-answer {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 120px 50px;
-  gap: 8px;
+  grid-template-columns: subgrid;
+  grid-column: 1/-1;
+  row-gap: 8px;
+  column-gap: inherit;
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid #d9d9d9;
   font-size: 14px;
 }
 .student-answer output {
-  grid-column: 2/-1;
+  grid-column: 2/4;
   color: #1f5fa8;
 }
 .calculation-example th,
@@ -775,17 +782,12 @@ summary {
     padding: 10px;
   }
 
-  .student-answer {
-    grid-template-columns: minmax(0, 1fr) 110px 35px;
-  }
-  .student-answer > span:first-child {
-    grid-column: 1/-1;
-  }
-  .student-answer input {
-    grid-column: 1;
+  .student-answers {
+    grid-template-columns: minmax(0, max-content) 120px max-content minmax(0, 1fr);
+    column-gap: 6px;
   }
   .student-answer output {
-    grid-column: 3;
+    grid-column: 1/-1;
     font-size: 12px;
   }
   .calculation-example th,
@@ -873,4 +875,11 @@ summary {
   max-width: 100%;
   font-size: 14px;
   padding: 4px 8px;
+}
+
+/* Script glyphs inherit the UI font, with layout supplied by HTML. */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
 }

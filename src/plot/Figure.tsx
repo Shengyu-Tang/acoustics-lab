@@ -1,4 +1,6 @@
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import ScriptText from "../ScriptText";
+import { MathProse } from "../MathProse";
+import { useLayoutEffect, useId, useMemo, useRef, useState } from "react";
 import { COLORS, fieldColor, fieldLimits, type Panel, type Series } from "./types";
 import { csv, download, matlab, png } from "./export";
 export * from "./types";
@@ -241,7 +243,7 @@ export function Axes({
       </defs>
       <rect width={W} height={H} fill="white" />
       <text x={L + AW / 2} y="17" fontSize="12" fontWeight="bold" textAnchor="middle">
-        {p.title}
+        <ScriptText text={p.title} svg />
       </text>
       {!polar ? (
         <>
@@ -250,8 +252,13 @@ export function Axes({
               <path d={`M${L + xs(x) * AW} ${T}v${AH}`} stroke="#e5e5e5" />
               <path d={`M${L + xs(x) * AW} ${T}v5m0 ${AH - 5}v-5`} stroke="black" />
               <text x={L + xs(x) * AW} y={T + AH + 17} textAnchor="middle">
-                {p.xtickLabels?.find((t) => Math.abs(t.value - x) < 1e-10)?.label ??
-                  tickLabel(x, xt, p.xscale === "log")}
+                <ScriptText
+                  text={
+                    p.xtickLabels?.find((t) => Math.abs(t.value - x) < 1e-10)?.label ??
+                    tickLabel(x, xt, p.xscale === "log")
+                  }
+                  svg
+                />
               </text>
             </g>
           ))}
@@ -260,7 +267,7 @@ export function Axes({
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h${AW}`} stroke="#e5e5e5" />
               <path d={`M${L} ${T + (1 - ys(y)) * AH}h5m${AW - 5} 0h-5`} stroke="black" />
               <text x={L - 8} y={T + (1 - ys(y)) * AH + 4} textAnchor="end">
-                {tickLabel(y, yt, p.yscale === "log")}
+                <ScriptText text={tickLabel(y, yt, p.yscale === "log")} svg />
               </text>
             </g>
           ))}
@@ -276,12 +283,14 @@ export function Axes({
           ))}
           {!!xt.exponent && (
             <text x={L + AW} y={T + AH + 32} textAnchor="end">
-              ×10{superscript(xt.exponent)}
+              ×10
+              <ScriptText text={superscript(xt.exponent)} svg />
             </text>
           )}
           {!!yt.exponent && (
             <text x={L} y={T - 6}>
-              ×10{superscript(yt.exponent)}
+              ×10
+              <ScriptText text={superscript(yt.exponent)} svg />
             </text>
           )}
           <g clipPath={`url(#${id})`}>
@@ -358,7 +367,7 @@ export function Axes({
                 paintOrder="stroke"
                 strokeLinejoin="round"
               >
-                {a.text}
+                <ScriptText text={a.text} svg />
               </text>
             </g>
           ))}
@@ -378,7 +387,7 @@ export function Axes({
                 strokeWidth="3"
                 paintOrder="stroke"
               >
-                {a.label}
+                <ScriptText text={a.label} svg />
               </text>
             ))}
         </>
@@ -442,25 +451,26 @@ export function Axes({
             textAnchor="middle"
             transform={`rotate(-90 ${W - 2} ${T + AH / 2})`}
           >
-            {field.label}
+            <ScriptText text={field.label} svg />
           </text>
         </>
       )}
       {p.rightLabel && !!rt.exponent && (
         <text x={L + AW} y={T - 6} textAnchor="end">
-          ×10{superscript(rt.exponent)}
+          ×10
+          <ScriptText text={superscript(rt.exponent)} svg />
         </text>
       )}
       {p.rightLabel &&
         rt.values.map((y) => (
           <text key={y} x={L + AW + 6} y={T + (1 - scale(p.rightLim ?? p.ylim)(y)) * AH + 4}>
-            {tickLabel(y, rt, p.yscale === "log")}
+            <ScriptText text={tickLabel(y, rt, p.yscale === "log")} svg />
           </text>
         ))}
       {!polar && (
         <>
           <text x={L + AW / 2} y={H - 22} fontSize="12" textAnchor="middle">
-            {p.xlabel}
+            <ScriptText text={p.xlabel} svg />
           </text>
           <text
             x="15"
@@ -469,7 +479,7 @@ export function Axes({
             textAnchor="middle"
             transform={`rotate(-90 15 ${T + AH / 2})`}
           >
-            {p.ylabel}
+            <ScriptText text={p.ylabel} svg />
           </text>
         </>
       )}
@@ -481,7 +491,7 @@ export function Axes({
           textAnchor="middle"
           transform={`rotate(-90 ${W - 3} ${T + AH / 2})`}
         >
-          {p.rightLabel}
+          <ScriptText text={p.rightLabel} svg />
         </text>
       )}
       {p.legend !== false && !!legendSeries.length && (
@@ -518,7 +528,9 @@ export function Axes({
                   )}
                 </g>
               )}
-              <text x="21">{s.name}</text>
+              <text x="21">
+                <ScriptText text={s.name} svg />
+              </text>
             </g>
           ))}
         </g>
@@ -546,7 +558,7 @@ export function Axes({
             strokeWidth=".5"
           />
           <text x={L + 4} y={H - 4} fontSize="10">
-            {tip.text}
+            <ScriptText text={tip.text} svg />
           </text>
         </g>
       )}
@@ -570,12 +582,15 @@ export default function Figure({
     svg = useRef<SVGSVGElement>(null),
     [width, setWidth] = useState(640),
     [error, setError] = useState("");
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const element = host.current!;
+    // Measure before the first paint so mobile labels use screen-pixel sizes immediately.
+    if (element.clientWidth > 0) setWidth(element.clientWidth);
     const observer = new ResizeObserver(([e]) => {
       // Hidden comparison tabs report zero; retain their last usable layout.
       if (e.contentRect.width > 0) setWidth(e.contentRect.width);
     });
-    observer.observe(host.current!);
+    observer.observe(element);
     return () => observer.disconnect();
   }, []);
   const columns = width < 600 ? 1 : cols,
@@ -629,7 +644,9 @@ export default function Figure({
           </g>
         ))}
       </svg>
-      <figcaption>{caption}</figcaption>
+      <figcaption>
+        <MathProse text={caption} />
+      </figcaption>
       {error && <p role="alert">{error}</p>}
     </figure>
   );

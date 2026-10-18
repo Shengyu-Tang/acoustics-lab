@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1 --port 5174",
     "build": "tsc --noEmit && vite build && node scripts/inline-build.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4174",
-    "test": "node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs && node scripts/check-p0.mjs && node --experimental-strip-types scripts/check-ticks.mjs && node scripts/check-p1.mjs",
+    "test": "node --experimental-strip-types scripts/check-physics.mjs && node scripts/check-course.mjs && node scripts/check-p0.mjs && node --experimental-strip-types scripts/check-ticks.mjs && node scripts/check-p1.mjs && node scripts/check-notation.mjs",
     "format": "prettier --write src scripts",
     "format:check": "prettier --check src scripts"
   },

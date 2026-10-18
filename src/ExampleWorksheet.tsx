@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { grade } from "./physics/chapter1";
 import { NumberField } from "./Parameter";
-import MathText from "./Math";
+import MathText, { MathProse } from "./Math";
 import Figure from "./plot/Figure";
 import type { Panel } from "./plot/types";
 type Given = {
@@ -50,8 +50,12 @@ export default function ExampleWorksheet({
     [hint, setHint] = useState(0);
   return (
     <article className="calculation-example">
-      <h3>{example.title}</h3>
-      <p>{example.background}</p>
+      <h3>
+        <MathProse text={example.title} />
+      </h3>
+      <p>
+        <MathProse text={example.background} />
+      </p>
       <h4>已知条件（可修改）</h4>
       <table>
         <thead>
@@ -65,7 +69,9 @@ export default function ExampleWorksheet({
         <tbody>
           {example.given.map((d) => (
             <tr key={d.key}>
-              <td>{d.symbol}</td>
+              <td>
+                <MathProse text={d.symbol} />
+              </td>
               <td>{d.name}</td>
               <td>
                 <NumberField
@@ -75,10 +81,14 @@ export default function ExampleWorksheet({
                     setParameter(d.key, n);
                     setSubmitted(false);
                   }}
-                  {...d}
+                  min={d.min}
+                  max={d.max}
+                  step={d.step}
                 />
               </td>
-              <td>{d.unit}</td>
+              <td>
+                <MathProse text={d.unit} />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -91,29 +101,35 @@ export default function ExampleWorksheet({
       >
         <h4>求与学生作答</h4>
         <p>按相对误差 ±2% 判分，内部计算保留完整精度。</p>
-        {example.asks.map((a) => (
-          <label className="student-answer" key={a.key}>
-            <span>{a.text}</span>
-            <input
-              type="number"
-              step="any"
-              aria-label={a.text}
-              value={answers[a.key] ?? ""}
-              onChange={(e) => {
-                setAnswers({ ...answers, [a.key]: e.target.value });
-                setSubmitted(false);
-              }}
-            />
-            <span>{a.unit}</span>
-            {submitted && (
-              <output>
-                {answers[a.key]?.trim()
-                  ? grade(Number(answers[a.key]), Number(solution[a.key]))
-                  : "尚未作答"}
-              </output>
-            )}
-          </label>
-        ))}
+        <div className="student-answers">
+          {example.asks.map((a) => (
+            <label className="student-answer" key={a.key}>
+              <span>
+                <MathProse text={a.text} />
+              </span>
+              <input
+                type="number"
+                step="any"
+                aria-label={a.text}
+                value={answers[a.key] ?? ""}
+                onChange={(e) => {
+                  setAnswers({ ...answers, [a.key]: e.target.value });
+                  setSubmitted(false);
+                }}
+              />
+              <span>
+                <MathProse text={a.unit} />
+              </span>
+              {submitted && (
+                <output>
+                  {answers[a.key]?.trim()
+                    ? grade(Number(answers[a.key]), Number(solution[a.key]))
+                    : "尚未作答"}
+                </output>
+              )}
+            </label>
+          ))}
+        </div>
         <div className="example-actions">
           <button type="submit">提交答案</button>
           <button
@@ -137,7 +153,9 @@ export default function ExampleWorksheet({
       </form>
       <div className="example-hints">
         {example.hints.slice(0, hint).map((h) => (
-          <p key={h}>{h}</p>
+          <p key={h}>
+            <MathProse text={h} />
+          </p>
         ))}
       </div>
       <details className="reference-solution">
@@ -147,17 +165,23 @@ export default function ExampleWorksheet({
             <section key={i}>
               <h4>第 {i + 1} 步</h4>
               <MathText tex={step.tex} />
-              <p>{step.sub}</p>
               <p>
-                <strong>{step.value}</strong>
+                <MathProse text={step.sub} />
+              </p>
+              <p>
+                <strong>
+                  <MathProse text={step.value} />
+                </strong>
               </p>
             </section>
           ))}
           <p>
             <strong>工程判断：</strong>
-            {judgment}
+            <MathProse text={judgment} />
           </p>
-          <p>{note}</p>
+          <p>
+            <MathProse text={note} />
+          </p>
         </div>
       </details>
       <Figure panels={[panel]} caption={caption} name={example.id} />

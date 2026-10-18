@@ -17,7 +17,7 @@ export default lecture(
   [
     "自由振动是撤去持续外力后，由初始位移和速度激发的振动，可分解为各阶简正振动。",
     "稳态振动是持续谐和力驱动下，以外力频率振动的响应；理想无阻尼模型在共振点没有有限稳态幅值。",
-    "固有频率由波速、长度和边界条件共同决定。两端固定弦 fₙ = nc/(2L)，固定—自由端共振序列为 (2n−1)c/(4L)。",
+    "固有频率由波速、长度和边界条件共同决定。两端固定弦 $f_n = nc/(2L)$，固定—自由端共振序列为 $(2n-1)c/(4L)$。",
   ],
   {
     defaults,
@@ -42,7 +42,7 @@ export default lecture(
       {
         number: "2.2-1",
         tex: String.raw`y_n(x,t)=b_n\sin(n\pi x/L)\cos\omega_nt,\quad f_n=nc/(2L)`,
-        meaning: "波节位置为 x = jL/n，j = 0,…,n。",
+        meaning: "波节位置为 $x = jL/n,\\quad j = 0,\\ldots,n$。",
       },
       {
         number: "2.2-2",
@@ -239,7 +239,7 @@ export default lecture(
         ],
         hints: [
           "基频与张力平方根成正比；反解张力时应对频率项平方。",
-          "先求当前波速，再用 f₁ = c/(2L)；目标张力为 ρ_l(2Lf)²。",
+          "先求当前波速，再用 $f_1 = c/(2L)$；目标张力为 $\\rho_l(2Lf)^2$。",
         ],
         judgment: (p) =>
           `目标张力为 ${fmt(p.mu * (2 * p.L * p.target) ** 2)} N，约为当前的 ${fmt((p.mu * (2 * p.L * p.target) ** 2) / p.T)} 倍；实际调音还需核对弦的许用拉力。`,
