@@ -69,6 +69,24 @@ for (const Rm of [0, 4, 80, 120]) {
   const max = Math.max(...numeric.map(([t, x]) => Math.abs(x - all.freeMotion(u, t))));
   assert.ok(max < 1e-8, `RK4/free solution ${Rm}: ${max}`);
 }
+for (const Rm of [0, 4, 30])
+  for (const ratio of [0.92, 1, 1.2]) {
+    const u = { ...p, Rm, ratio, F0: 2, x0: 0, v0: 0 },
+      w = Math.sqrt(u.D / u.M),
+      dt = 0.0001;
+    const numeric = all.integrate(u, (t) => u.F0 * Math.cos(ratio * w * t), dt, 10000);
+    const scale = Math.max(...numeric.map(([, x]) => Math.abs(x)));
+    assert.ok(
+      Math.max(...numeric.map(([t, x]) => Math.abs(x - all.forcedMotion(u, t).total))) / scale <
+        0.001,
+      "Forced transient analytic/RK4 relative error <0.1%",
+    );
+  }
+const beating = { M: 5, D: 2000, Rm: 0, F0: 2, ratio: 0.92, x0: 0, v0: 0 };
+const beatPeriod = (2 * Math.PI) / 1.6;
+// Cancellation recurs at the beat-envelope zeros; the signal between them is nonzero.
+near(all.forcedMotion(beating, beatPeriod).total, 0, 0.0001);
+assert.ok(Math.abs(all.forcedMotion(beating, beatPeriod / 2 + 0.01).total) > 0.0001);
 for (const zeta of [1.01, 1.5, 2, 5]) {
   const u = { ...p, Rm: 2 * zeta * Math.sqrt(p.M * p.D) },
     w = Math.sqrt(u.D / u.M),
@@ -95,6 +113,7 @@ const references = {
   "1.1.3": [300, 7.639320225002102],
   "1.1.4": [6.353751267, 0.4, 0.39346886],
   "1.1.5": [397.4921383, 19.87460691, 0.05031546054],
+  "1.2.1": [3.926990817, 0.01],
 };
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);

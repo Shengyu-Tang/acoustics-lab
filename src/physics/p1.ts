@@ -34,7 +34,7 @@ export function decay(p: Motion) {
   };
 }
 /** Cosine excitation switched on at t=0; exact zero-initial-condition solution. */
-export function forcedMotion(p: Motion & { F0: number; ratio: number }, t: number) {
+export function forcedMotion(p: Motion, t: number) {
   const w0 = Math.sqrt(p.D / p.M),
     w = p.ratio * w0;
   if (p.Rm === 0) {
