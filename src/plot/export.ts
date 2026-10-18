@@ -3,6 +3,7 @@ import { colorTable } from "./colormaps";
 import { axisTicks } from "./ticks";
 import { labelLanes } from "./layout";
 import { MATLAB_FUNCTIONS } from "./matlabFunctions";
+import { P4_MATLAB } from "./p4MatlabFunctions";
 /** MATLAB's TeX interpreter does not support Unicode subscript glyphs. */
 export function toTex(text: string): string {
   const subs: Record<string, string> = {
@@ -347,6 +348,14 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     if (m) out.push(`model_limits{${k + 1}}=struct('x',xlim,'y',ylim);`);
   });
   if (model) out.push(MATLAB_FUNCTIONS);
+  if (
+    panels.some(
+      (p) =>
+        /p4[A-Z]/.test(p.matlabModel?.setup ?? "") ||
+        /p4[A-Z]/.test(JSON.stringify(p.matlabModel?.series)),
+    )
+  )
+    out.push(P4_MATLAB);
   return out.join("\n").trimEnd() + "\n";
 }
 export function csv(panels: Panel[]) {

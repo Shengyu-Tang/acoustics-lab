@@ -10,7 +10,7 @@ process.env.TEMP = process.env.TMP = path.join(out, "tmp");
 fs.mkdirSync(process.env.TEMP, { recursive: true });
 const ids = fs
   .readdirSync("src/content/lectures")
-  .filter((f) => /^[123]\./.test(f))
+  .filter((f) => /^[1-7]\./.test(f))
   .map((f) => f.slice(0, -3));
 const server = spawn(
   process.execPath,

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { build, stop } from "esbuild";
 fs.mkdirSync("outputs", { recursive: true });
-const files = fs.readdirSync("src/content/lectures").filter((f) => /^[123]\./.test(f));
+const files = fs.readdirSync("src/content/lectures").filter((f) => /^[1-7]\./.test(f));
 await build({
   stdin: {
     contents:

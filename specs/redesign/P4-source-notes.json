@@ -1,0 +1,294 @@
+{
+  "4.1": {
+    "source": "4.1 声波的辐射过程和辐射阻抗PPT.pdf",
+    "pages": 15,
+    "summary": [
+      [
+        15,
+        "总\n结\n声波的辐射\n1、辐射过程\n2、辐射阻抗\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是声波的辐射？",
+      "2、由于介质的什么特性，使得振动向远处传播形成声波场？",
+      "3、辐射声场的定解问题怎么表达？",
+      "4、什么是辐射阻抗？",
+      "5、辐射阻和辐射抗是“耗能”元件还是“储能”元件？",
+      "6、什么是辐射声功率？",
+      "7、怎么求辐射声功率？"
+    ],
+    "sha256": "cdcf64f25db68d15e916072e09bffbb4239af36a658bf322e92ddb7812e1701c",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.2.1": {
+    "source": "4.2.1 均匀脉动球源声辐射PPT.pdf",
+    "pages": 11,
+    "summary": [
+      [
+        11,
+        "总\n结\n均匀脉动球源声辐射\n1、频率越高，辐射声压越大\n2、半径越大，辐射声压越大\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是脉动球？",
+      "2、大球还是小球利于声辐射？"
+    ],
+    "sha256": "6ef2157a634f41a438b97b2c73c5dc3f957addf0d1ed90fe5f7e2dfaa157f71c",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.2.2": {
+    "source": "4.2.2 均匀脉动球源的辐射阻抗和辐射声功率PPT.pdf",
+    "pages": 15,
+    "summary": [
+      [
+        15,
+        "总\n结\n均匀脉动球源声辐射\n1、辐射阻抗\n2、辐射声功率\n"
+      ]
+    ],
+    "questions": [
+      "1、如何求均匀脉动球辐射阻抗？",
+      "2、如何求均匀脉动球辐射声功率？",
+      "3、声强和辐射声功率有什么关系？",
+      "4、均匀脉动球辐射声功率和辐射的声波频率具有什么关系？",
+      "5、均匀脉动球辐射声功率和球的大小具有什么关系？"
+    ],
+    "sha256": "998b53d54ebc79b90914b0266a394c6553fe68cfdd7d2ac48f95c045435f5643",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.2.3": {
+    "source": "4.2.3 点声源PPT.pdf",
+    "pages": 7,
+    "summary": [
+      [
+        7,
+        "总\n结\n点声源\n1、声源强度\n2、点声源满足的两个条件\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是点声源？",
+      "2、点声源辐射声场具有什么特点？",
+      "3、什么是声源强度？",
+      "4、如果知道点声源的声源强度，如何求速度势函数和声压函数？"
+    ],
+    "sha256": "879439f5e7ca2d1eb239f4c28a62ed16948288ba76b34302335b133240e08309",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.3": {
+    "source": "4.3 声偶极子PPT.pdf",
+    "pages": 17,
+    "summary": [
+      [
+        17,
+        "总\n结\n偶极子声辐射\n1、偶极子概念\n2、偶极子辐射声场特点\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是声偶极子？",
+      "2、声偶极子能看成点声源吗？",
+      "3、什么是指向性？",
+      "4、如何定义指向性函数？",
+      "5、声偶极子声场具有什么特点？"
+    ],
+    "sha256": "c559b391cd100cb99f3fd63c7f251917939c40956ab881e3486ec366e88d8b6f",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.4.1": {
+    "source": "4.4.1 亥姆霍兹(Helmholtz)积分公式（1）PPT.pdf",
+    "pages": 15,
+    "summary": [
+      [
+        15,
+        "总\n结\n亥姆霍兹积分公式（1）\n声源位于闭曲面外亥姆霍兹积分公式\nj\nj\ne\ne\n{\n(\n)\n(\n)\n(\n)}\n4 π\n(\n);\n0;\nsM\nsM\nkr\nkr\ns\ns\nsM\nsM\nS\nM\nM\nM\nr\nr\nd s\nn\nr\nr\nn\nr\nr\nV\nr\nV\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+    ],
+    "questions": [
+      "1、亥姆霍兹积分公式可以解决什么问题？",
+      "2、如何推导亥姆霍兹积分公式？",
+      "3、声源位于闭曲面外部，闭曲面外部还是内部的声场可用亥姆霍兹积分公式求解？"
+    ],
+    "sha256": "8b22d6bb56a206a34eb077e67b86764996e6347a84894510744ae89486e9757a",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.4.2": {
+    "source": "4.4.2 亥姆霍兹(Helmholtz)积分公式（2）PPT.pdf",
+    "pages": 14,
+    "summary": [
+      [
+        14,
+        "总\n结\n亥姆霍兹积分公式\n1、亥姆霍兹积分公式\n2、亥姆霍兹积分公式的意义\n"
+      ]
+    ],
+    "questions": [
+      "1、声源位于闭曲面内部，闭曲面外部还是内部的声场可用亥姆霍兹积分公式求解？"
+    ],
+    "sha256": "3f9e25bda133fa407290584889c4b45799aaff23fe0754c7097b7ea74cfb8d81",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.4.3": {
+    "source": "4.4.3 无限大刚性障板上辐射器的辐射声场PPT.pdf",
+    "pages": 14,
+    "summary": [
+      [
+        14,
+        "总\n结\n声源指向性的一般规律\n1、尺寸越大，指向性越尖锐\n2、频率越高，指向性越尖锐\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是瑞利公式？",
+      "2、无限大刚性障板上圆面活塞辐射器具有什么样的指向性？"
+    ],
+    "sha256": "bf4dc4caacb950a1372820249beee992f7c1ee0755433e57e812653efa44b853",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "4.4.4": {
+    "source": "4.4.4 声源的远近场PPT.pdf",
+    "pages": 13,
+    "summary": [
+      [
+        13,
+        "总\n结\n声源的远近场\n1、瑞利距离\n2、声源远近场特性\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是瑞利距离？",
+      "2、如何区分声源的近场区、过渡区和远场区？",
+      "3、声源的近场区、过渡区和远场区分别具有什么特点？",
+      "4、测量声源的指向性需要在近场区还是远场区？"
+    ],
+    "sha256": "66d53c86d8fee1380a3cd13ee5542601700f6972387ee1d973662dfbbb41e7ee",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "5.1": {
+    "source": "5.1 声波的散射过程和散射定解问题PPT.pdf",
+    "pages": 8,
+    "summary": [
+      [
+        8,
+        "散射波场的定解问题\n综上，得散射场的定解问题\n2\n2\n0\n0\n0\n( )\n( )\n0;\n;\n( )\n( )\n( )\n( )\n{\n( )\n}\n{\n( )}\nj\nj\n( ),\ns\ns\nn\ns\nn\ni\ns\ni\ns\ns\ns\np r\nk p r\nk\nc\nZ\ns\np r\nZ\ns\np r\np r\np r\nn\nn\np r\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n时间因子\n满足      远辐射条件\n\nt\n\nje\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是声波的散射过程？",
+      "2、声波的散射过程与声波的辐射过程有什么相同点和不同点？",
+      "3、声波的散射波场的定解问题是什么？"
+    ],
+    "sha256": "4f6f76d9c802e17807b4fc7f798cfdb5abd2fdd1a8b6e519b7c63fb99d24469c",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "5.2": {
+    "source": "5.2 平面波在刚性球面上的声散射PPT.pdf",
+    "pages": 10,
+    "summary": [
+      [
+        10,
+        "瑞利散射定律\n瑞利散射定律\n刚性微小粒子的散射功率正比于频率的4次方。\n"
+      ]
+    ],
+    "questions": [
+      "1、平面波在刚性球面上散射的定解问题是什么？",
+      "2、什么是瑞利散射定律？"
+    ],
+    "sha256": "33b9b46322a9305bfdfec883df73a3349f633a1562e09a87ab7b36c9ec2d3a56",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "5.3": {
+    "source": "5.3 平面波在绝对软无限长圆柱面上的声散射PPT.pdf",
+    "pages": 10,
+    "summary": [
+      [
+        10,
+        "散射声强\n散射场的散射声强为\n2\n2\n2\n1\n0\n0\n0\n0\n1\n( , )\n{\n}\n2\n2\n2\n( )\n( )\n2\ns\ne\ns\ns\nkr\nI r\nR\np u\np\na\na\nR\nI\nR\nc\nr\nr\n\n\n\n\n\n\n\n\n\n\n\n其中，                               为入射波声强\n2\n0\n0\n0 0\n(2\n)\nI\np\nc\n\n\n            为散射声强的方向性函数\n2\n( )\nR \n"
+      ]
+    ],
+    "questions": [
+      "1、平面波在绝对软无限长圆柱面上散射的定解问题是什么？"
+    ],
+    "sha256": "b3ed7a93beac54539d610cb102ddab8b5e106d97e53ec59458d6c0cd25e8c3cd",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "6.1": {
+    "source": "6.1 声波的接收PPT.pdf",
+    "pages": 11,
+    "summary": [
+      [
+        11,
+        "总\n     结\n1.接收过程与辐射过程的关系\n2.接收振速信号畸变的原因\n3.接收振速信号的控制方法\n"
+      ]
+    ],
+    "questions": [
+      "1、什么是声波的接收过程？它与声波的辐射过程有何区别？",
+      "2、接收器接收到的声场与入射波场有何不同？",
+      "3、接收器接收到的振速信号产生畸变的原因为何？",
+      "4、如何抑制接收器接收到的振速信号产生的畸变？"
+    ],
+    "sha256": "54b5d325f32f5cee9581bd39701cd6dd050db240bee79933d4224c0a2f336d48",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "6.2": {
+    "source": "6.2 声场互易原理PPT.pdf",
+    "pages": 13,
+    "summary": [
+      [
+        13,
+        "总\n结\n1.互易原理的物理意义\n2.接收器的接收指向性函数\n"
+      ]
+    ],
+    "questions": [
+      "1、声场互易原理的物理意义是什么？",
+      "2、接收器的接收指向性与辐射器的辐射指向性有何区别？",
+      "3、对于收发互易换能器，辐射指向性函数与接收指向性函数的关系为何？"
+    ],
+    "sha256": "aab1155c20df265a6e8ff99f0e506335626999c279a675aaeef1f7de57a8496c",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "7.1": {
+    "source": "7.1 介质的声吸收PPT.pdf",
+    "pages": 9,
+    "summary": [
+      [
+        9,
+        "总\n     结\n1.声波声衰减的原因\n2.介质的声吸收系数\n3.复波数的物理含义\n"
+      ]
+    ],
+    "questions": [
+      "1、声波在介质中传播过程中声衰减的原因有哪些？",
+      "2、介质的声吸收系数是如何定义的？",
+      "3、声波在介质中的复波数的物理含义是什么？"
+    ],
+    "sha256": "11a8fff9e7e95ee68b4c94b2ceb2310414c6ef9de24a02dab1b7a5fc1e45be3a",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "7.2": {
+    "source": "7.2 介质声吸收机理PPT.pdf",
+    "pages": 11,
+    "summary": [
+      [
+        11,
+        "总\n     结\n1.介质声吸收的机理\n2.古典声吸收系数与频率的关系\n"
+      ]
+    ],
+    "questions": [
+      "1、介质声吸收的机理有哪些？",
+      "2、古典声吸收理论认为声吸收系数与频率有什么关系？"
+    ],
+    "sha256": "3e463d46e6e1c878a7f843c862a15c798ab5abeb01073cb5ea43fa63355a148e",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  },
+  "7.3": {
+    "source": "7.3 吸声材料PPT.pdf",
+    "pages": 13,
+    "summary": [
+      [
+        13,
+        "总\n     结\n1.吸声材料（吸声结构）的吸声系数\n2.水声常用的吸声结构\n"
+      ]
+    ],
+    "questions": [
+      "1、吸声材料（吸声结构）的作用是什么？",
+      "2、描述吸声材料（吸声结构）吸声性能的指标有哪些？",
+      "3、水声中常用的吸声结构有哪些？"
+    ],
+    "sha256": "ad9f034e6f7baf9090215823bd6d7ca4a28c3869580dc7d236e7af26b7b744b3",
+    "questionSourceSha256": "2c6add4fc6b6698d6d0b119370e8d57acfa5e9aecef0f7ea34a554926393068c"
+  }
+}
