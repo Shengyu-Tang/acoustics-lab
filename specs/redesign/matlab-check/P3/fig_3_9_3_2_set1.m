@@ -1,17 +1,17 @@
 set(groot,'defaultFigureVisible','off');
 % 3.9.3-2
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1.331; % 静态密度 (kg/m³)
-c = 336.14; % 介质声速 (m/s)
-c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 1080; % 频率 (Hz)
-pa = 1.1; % 声压峰值 (Pa)
-Z1 = 1650000.0000000002; % Z1（见网页参数表；SI 单位或无量纲选择）
-Z2 = 435.75; % Z2（见网页参数表；SI 单位或无量纲选择）
-theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
-obs = 0.11000000000000001; % obs（见网页参数表；SI 单位或无量纲选择）
-level = 110.00000000000001; % 参考位置声压级 (dB)
-reference = 1.1; % 参考距离 (m)
+rho = 1.27; % 静态密度 (kg/m³)
+c = 360; % 介质声速 (m/s)
+c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 1050; % 频率 (Hz)
+pa = 1; % 声压峰值 (Pa)
+Z1 = 1500000; % Z1（见网页参数表；SI 单位或无量纲选择）
+Z2 = 415; % Z2（见网页参数表；SI 单位或无量纲选择）
+theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
+obs = 0.1; % obs（见网页参数表；SI 单位或无量纲选择）
+level = 105; % 参考位置声压级 (dB)
+reference = 1.05; % 参考距离 (m)
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
 model_x={}; model_y={};
@@ -37,8 +37,8 @@ y=level-20*log10(x/reference);
 model_x{1,3}=x; model_y{1,3}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','球面波');
 set(gca,'XScale','log','YScale','linear');
-xlim([1 100]); ylim([50 110]);
-xticks([1 10 100]); yticks([50 60 70 80 90 100 110]);
+xlim([1 100]); ylim([60 110]);
+xticks([1 10 100]); yticks([60 70 80 90 100 110]);
 set(gca,'XMinorTick','on','YMinorTick','off');
 xlabel('距离 r (m)','Interpreter','tex'); ylabel('声压级 (dB)','Interpreter','tex');
 title('几何扩展：平面、柱面与球面波的级随距离变化','Interpreter','tex','FontSize',12);
@@ -55,8 +55,6 @@ qa_xl=[1 100]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left
 xlim([1 100]); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim(currentAmplitudeLimits(qa_left,0,0));
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_9_3_2_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_9_3_2_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -239,6 +237,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);

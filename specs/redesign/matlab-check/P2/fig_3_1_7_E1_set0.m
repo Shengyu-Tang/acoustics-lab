@@ -16,34 +16,45 @@ model_x={}; model_y={};
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
 figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaRange=[min(0,2*bulk) max(0,2*bulk)];if qaRange(1)==qaRange(2),qaRange(2)=.02;end;
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;;qaDomain=[0 1];
 airSpeed=sqrt(gamma*287.05*(T+273.15));
 waterSpeed=sqrt(bulk*1e9/waterRho);
 worksheet_answers=[airSpeed waterSpeed];
 subplot(1,1,1);
 hold on;
-x=linspace(qaRange(1),qaRange(2),401);
-y=sqrt(x*1e9/waterRho);
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=sqrt(gamma*287.05*(T+273.15))*x;
 model_x{1,1}=x; model_y{1,1}=y;
-plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','参考解');
-x=bulk;
-y=sqrt(bulk*1e9/waterRho);
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','空气声速 = 343.2 m/s');
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=sqrt(bulk*1e9/waterRho)*x;
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','本题答案');
+plot(x,y,'LineStyle','--','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','水中声速 = 1500 m/s');
+x=1;
+y=sqrt(bulk*1e9/waterRho);
+model_x{1,3}=x; model_y{1,3}=y;
+plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','水中 1 s 波前');
 set(gca,'XScale','linear','YScale','linear');
-xlim([0 5]); ylim([0 3000]);
-xticks([0 1 2 3 4 5]); yticks([0 500 1000 1500 2000 2500 3000]);
+xlim([0 1]); ylim([0 2000]);
+xticks([0 0.2 0.4 0.6 0.8 1]); yticks([0 500 1000 1500 2000]);
 set(gca,'XMinorTick','off','YMinorTick','off');
-xlabel('水体积模量 (GPa)','Interpreter','tex'); ylabel('水声速 (m/s)','Interpreter','tex');
-title('例题答案与当前工作点','Interpreter','tex','FontSize',12);
+xlabel('传播时间 t (s)','Interpreter','tex'); ylabel('波前距离 (m)','Interpreter','tex');
+title({sprintf('水声速 = %s m/s',answerNumber(waterSpeed)),'空气和水中的波前经过相同传播时间'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
+qa_left=[]; qa_right=[]; qa_time=tView;
+x=linspace(qaDomain(1),qaDomain(2),401); y=sqrt(gamma*287.05*(T+273.15))*x;
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=sqrt(bulk*1e9/waterRho)*x;
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim(qaRange); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim([min(0,min(model_y{1,1})) max(1e-12,max(model_y{1,1}))*1.3]);
+xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim(currentAmplitudeLimits(qa_left,0,0));
+model_limits{1}=struct('x',xlim,'y',ylim);
 
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P2/fig_3_1_7_E1_set0.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P2/fig_3_1_7_E1_set0.png','Resolution',120); close all;
-
+function R=dampingResistance(M,D,input,value)
+if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
+end
 function y=freeResponse(t,M,D,R,x0,v0)
 w=sqrt(D/M); d=R/(2*M); q=d*d-w*w;
 if abs(q)<1e-10*w*w
@@ -92,6 +103,11 @@ for i=0:1
   y(active)=y(active)+sign*(C*cos(w*z)+S*sin(w*z)+freeResponse(z,M,D,R,-C,-w*S));
  end
 end
+end
+function f=frequencyGrid(finish,M,D,R,N)
+w=sqrt(D/M);z=R/(2*sqrt(M*D));s=sqrt(max(0,1-2*z*z));peaks=w/(2*pi);
+if s>0,peaks=[w/(2*pi)*s w/(2*pi) w/(2*pi)/s];end
+f=sort([linspace(0,finish,N) peaks(peaks>=0 & peaks<=finish)]);
 end
 function y=frequencyResponse(f,M,D,R,F,component)
 w=2*pi*f; X=w*M-D./w;
@@ -173,9 +189,82 @@ end
 function lim=p2NiceLimits(lo,hi)
 raw=(hi-lo)/5;decade=10^floor(log10(raw));steps=[1 2 2.5 5 10]*decade;
 counts=ceil(hi./steps-1e-10)-floor(lo./steps+1e-10)+1;
-scores=abs(counts-6)+100*(counts<4 | counts>8);[~,ii]=min(scores);st=steps(ii);
+scores=abs(counts-6)+100*(counts<4 | counts>8);[score,ii]=min(scores);exact=abs(lo./steps-round(lo./steps))<1e-9 & abs(hi./steps-round(hi./steps))<1e-9;jj=find(scores==score & exact,1);if ~isempty(jj),ii=jj;end;st=steps(ii);
 lim=[floor(lo/st+1e-10)*st ceil(hi/st-1e-10)*st];
 end
 function L=p2SourceLevel(n,L1)
 L=L1+10*log10(max(n,eps));L(n<=0)=NaN;
+end
+function [R,D,ct]=p3Oblique(Z1,Z2,c1,c2,theta)
+theta=min(theta,89.999999);st=c2/c1*sind(theta);ct=conj(sqrt(complex(1-st.^2)));
+R=(Z2*cosd(theta)-Z1*ct)./(Z2*cosd(theta)+Z1*ct);D=1+R;
+end
+function [th0,thc]=p3Angles(Z1,Z2,c1,c2)
+q=c2/c1;s2=(Z1^2-Z2^2)/(Z1^2*q^2-Z2^2);th0=NaN;thc=NaN;
+if q>1,thc=asind(1/q);end
+if s2>=0&&s2<1&&s2*q*q<1,th0=asind(sqrt(s2));end
+end
+function c=p3Critical(c1,c2)
+if c2>c1,c=asind(c1/c2);else,c=NaN;end
+end
+function t=p3Refraction(c1,c2,theta)
+s=c2/c1*sind(theta);if s<=1,t=asind(s);else,t=NaN;end
+end
+function a=p3ModeAngle(mode,c,h,f)
+if f>mode*c/(2*h),a=asind(mode*c/(2*h*f));else,a=NaN;end
+end
+function b=p3Brewster(Z1,Z2,c1,c2)
+[b,~]=p3Angles(Z1,Z2,c1,c2);
+end
+function t=p3Power(Z1,Z2,c1,c2,theta)
+[R,D,ct]=p3Oblique(Z1,Z2,c1,c2,theta);t=Z1/Z2*abs(D).^2.*real(ct)./cosd(min(theta,89.999999));
+end
+function y=p3Source(x,source,offset,width,a1,a2,a3)
+if source==0,y=ones(size(x));elseif source==1,y=exp(-((x-offset)/width).^2);else,y=1+a1*cos(pi*x)+a2*cos(2*pi*x)+a3*cos(3*pi*x);end
+end
+function co=p3Coefficients(source,offset,width,a1,a2,a3)
+if source==0,co=[1 0 0 0 0 0];elseif source==2,co=[1 a1 a2 a3 0 0];else
+x=linspace(0,1,401);v=p3Source(x,source,offset,width,a1,a2,a3);co=zeros(1,6);
+for nn=0:5,co(nn+1)=trapz(x,v.*cos(nn*pi*x))*(1+(nn>0));end
+end
+end
+function v=p3GuideSpeed(f,n,h,c,group)
+fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=NaN;
+end
+function d=p3Depth(theta,c1,c2,f)
+s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
+end
+function R=p3Boundary(boundary)
+Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);
+end
+function pts=p3Rays(radius,source,launch)
+v=[cosd(launch) sind(launch)];pt=[radius*source 0];pts=pt;
+for ii=1:16
+ d=dot(pt,v);L=-d+sqrt(max(0,d^2+radius^2-dot(pt,pt)));pt=pt+L*v;pt=radius*pt/norm(pt);pts=[pts;pt];v=v-2*dot(v,pt/radius)*pt/radius;v=v/norm(v);
+end
+end
+function lim=currentAmplitudeLimits(values,bars,logarithmic)
+values=values(isfinite(values));
+if logarithmic,values=values(values>0);end
+if isempty(values),if logarithmic,lim=[1e-6 1];else,lim=[0 1];end;return;end
+lo=min(values);hi=max(values);
+if logarithmic,lim=[10^floor(log10(lo*.9)) 10^ceil(log10(hi*1.1))];return;end
+if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
+if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
+else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
+lim=p2NiceLimits(lo,hi);
 end

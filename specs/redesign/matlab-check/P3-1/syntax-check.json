@@ -1,0 +1,17 @@
+{
+  "files": 246,
+  "tool": "MATLAB R2024b mlint.exe -id",
+  "exit": 0,
+  "counts": {
+    "NASGU": 1336,
+    "NBRAK2": 116,
+    "AGROW": 364,
+    "DEFNU": 7254,
+    "ALIGN": 246,
+    "ASGLU": 252,
+    "NOSEMI": 114,
+    "CAXIS": 34
+  },
+  "syntaxDiagnostics": [],
+  "runtimeValidated": false
+}

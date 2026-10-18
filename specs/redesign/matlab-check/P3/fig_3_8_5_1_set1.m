@@ -1,18 +1,18 @@
 set(groot,'defaultFigureVisible','off');
 % 3.8.5-1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1100; % 静态密度 (kg/m³)
-c = 1470; % 介质声速 (m/s)
-c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 1080; % 频率 (Hz)
-pa = 1.1; % 球面波幅度常数 (Pa·m)
-Z1 = 1650000.0000000002; % Z1（见网页参数表；SI 单位或无量纲选择）
-Z2 = 435.75; % Z2（见网页参数表；SI 单位或无量纲选择）
-theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
-depth = 1.1; % 声源深度 (m)
-distance = 3.3000000000000003; % 水平距离 (m)
+rho = 1000; % 静态密度 (kg/m³)
+c = 1575; % 介质声速 (m/s)
+c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 1050; % 频率 (Hz)
+pa = 1.05; % 球面波幅度常数 (Pa·m)
+Z1 = 1500000; % Z1（见网页参数表；SI 单位或无量纲选择）
+Z2 = 415; % Z2（见网页参数表；SI 单位或无量纲选择）
+theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
+depth = 1.05; % 声源深度 (m)
+distance = 3.15; % 水平距离 (m)
 boundary = 1; % 软硬界面 (—)
-receiverDepth = 2.2; % receiverDepth（见网页参数表；SI 单位或无量纲选择）
+receiverDepth = 2; % receiverDepth（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
 model_x={}; model_y={};
@@ -29,8 +29,9 @@ field_x=linspace(-5,5,161); field_y=linspace(-4,4,81); field_z=Pfield;
 im=imagesc(field_x,field_y,field_z);
 model_fields{1}=struct('x',field_x,'y',field_y,'z',field_z);
 if isprop(im,'Interpolation'), im.Interpolation='bilinear'; end
+set(im,'HandleVisibility','off');
 set(gca,'YDir','normal');
-caxis([-4 4]);
+caxis([-4.2 4.2]);
 % RdBu, identical 64 colors to browser
 colormap(gca,[33 102 172;40 107 174;47 111 177;53 116 179;60 120 182;67 125 184;74 130 186;81 134 189;87 139 191;94 143 193;101 148 196;108 153 198;115 157 201;121 162 203;128 166 205;135 171 208;142 176 210;148 180 212;155 185 215;162 189 217;169 194 220;176 199 222;182 203 224;189 208 227;196 212 229;203 217 232;210 222 234;216 226 236;223 231 239;230 235 241;237 240 243;244 245 246;246 243 244;244 236 237;242 229 231;239 222 224;237 215 218;235 208 211;233 201 205;231 194 198;228 187 192;226 180 185;224 173 179;222 166 173;220 159 166;217 151 160;215 144 153;213 137 147;211 130 140;209 123 134;206 116 127;204 109 121;202 102 114;200 95 108;198 88 101;196 81 95;193 74 88;191 66 82;189 59 75;187 52 69;185 45 62;182 38 56;180 31 49;178 24 43]/255);
 cb=colorbar; ylabel(cb,'声压 (Pa)','Interpreter','tex');
@@ -44,15 +45,13 @@ xticks([-5 -2.5 0 2.5 5]); yticks([-4 -2 0 2 4]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('水平位置 x (m)','Interpreter','tex'); ylabel('深度坐标 y (m)','Interpreter','tex');
 yline(0,'--','分界面；负深度为镜像构造区','Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
-title('软界面：反相虚源构成偶极子场','Interpreter','tex','FontSize',12);
+title('硬界面：同相虚源构成同性极子场','Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
 xlim([-5 5]); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim([-4 4]);
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_5_1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_5_1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -235,6 +234,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);

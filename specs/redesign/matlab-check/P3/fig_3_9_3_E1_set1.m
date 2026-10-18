@@ -1,54 +1,68 @@
 set(groot,'defaultFigureVisible','off');
 % 3.9.3-E1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1.331; % 静态密度 (kg/m³)
-c = 336.14; % 介质声速 (m/s)
-c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 1080; % 频率 (Hz)
-pa = 1.1; % 声压峰值 (Pa)
-Z1 = 1650000.0000000002; % Z1（见网页参数表；SI 单位或无量纲选择）
-Z2 = 435.75; % Z2（见网页参数表；SI 单位或无量纲选择）
-theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
-obs = 0.11000000000000001; % 观察距离 (m)
-level = 110.00000000000001; % level（见网页参数表；SI 单位或无量纲选择）
-reference = 1.1; % reference（见网页参数表；SI 单位或无量纲选择）
+rho = 1.27; % 静态密度 (kg/m³)
+c = 360; % 介质声速 (m/s)
+c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 1050; % 频率 (Hz)
+pa = 1; % 声压峰值 (Pa)
+Z1 = 1500000; % Z1（见网页参数表；SI 单位或无量纲选择）
+Z2 = 415; % Z2（见网页参数表；SI 单位或无量纲选择）
+theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
+obs = 0.11; % 观察距离 (m)
+level = 100; % level（见网页参数表；SI 单位或无量纲选择）
+reference = 1; % reference（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
 model_x={}; model_y={};
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
 figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaRange=sort([.9*obs 1.1*obs]);if obs==0,qaRange=[-.5 .5];end;qaRange=p2NiceLimits(qaRange(1),qaRange(2));
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;;qaDomain=obs*[.25 5];
 cylResistance=real(1i*rho*c*besselh(0,2,2*pi*f*obs/c)/besselh(1,2,2*pi*f*obs/c));
 cylReactance=imag(1i*rho*c*besselh(0,2,2*pi*f*obs/c)/besselh(1,2,2*pi*f*obs/c));
 worksheet_answers=[cylResistance cylReactance];
 subplot(1,1,1);
 hold on;
-x=linspace(qaRange(1),qaRange(2),401);
-y=imag(1i*rho*c*besselh(0,2,2*pi*f*x/c)/besselh(1,2,2*pi*f*x/c));
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=real(1i*Z*besselh(0,2,k*x)./besselh(1,2,k*x));
 model_x{1,1}=x; model_y{1,1}=y;
-plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','参考计算');
-x=obs;
-y=imag(1i*rho*c*besselh(0,2,2*pi*f*obs/c)/besselh(1,2,2*pi*f*obs/c));
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','柱面波波阻');
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=imag(1i*Z*besselh(0,2,k*x)./besselh(1,2,k*x));
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','本题数值');
+plot(x,y,'LineStyle','--','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','柱面波波抗');
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=abs(1i*Z*besselh(0,2,k*x)./besselh(1,2,k*x));
+model_x{1,3}=x; model_y{1,3}=y;
+plot(x,y,'LineStyle',':','Marker','none','Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','柱面波阻抗模值');
+x=obs;
+y=real(1i*Z*besselh(0,2,k*obs)/besselh(1,2,k*obs));
+model_x{1,4}=x; model_y{1,4}=y;
+plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.49411764705882355 0.1843137254901961 0.5568627450980392],'LineWidth',1.5,'DisplayName','观测波阻 = 423.4 Pa·s/m');
+x=obs;
+y=imag(1i*Z*besselh(0,2,k*obs)/besselh(1,2,k*obs));
+model_x{1,5}=x; model_y{1,5}=y;
+plot(x,y,'LineStyle','none','Marker','s', 'MarkerIndices',[1],'Color',[0.4666666666666667 0.6745098039215687 0.18823529411764706],'LineWidth',1.5,'DisplayName','观测波抗 = 98.4 Pa·s/m');
 set(gca,'XScale','linear','YScale','linear');
-xlim([0.09 0.11]); ylim([85 105]);
-xticks([0.09 0.095 0.1 0.105 0.11]); yticks([85 90 95 100 105]);
+xlim([0 0.6]); ylim([-100 500]);
+xticks([0 0.1 0.2 0.3 0.4 0.5 0.6]); yticks([-100 0 100 200 300 400 500]);
 set(gca,'XMinorTick','off','YMinorTick','off');
-xlabel('观察距离 (m)','Interpreter','tex'); ylabel('柱面波波抗 (Pa·s/m)','Interpreter','tex');
-title(sprintf('柱面波波抗 = %.4g Pa·s/m',cylReactance),'Interpreter','tex','FontSize',12);
+xlabel('距线声源 r (m)','Interpreter','tex'); ylabel('柱面波阻抗 (Pa·s/m)','Interpreter','tex');
+title({sprintf('柱面波波阻 = %s Pa·s/m',answerNumber(cylResistance)),'柱面波局部阻抗的实部、虚部与模值'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 qa_left=[]; qa_right=[]; qa_time=tView;
-x=linspace(qaRange(1),qaRange(2),401); y=imag(1i*rho*c*besselh(0,2,2*pi*f*x/c)/besselh(1,2,2*pi*f*x/c));
-qa_xl=[0.09 0.11]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=real(1i*Z*besselh(0,2,k*x)./besselh(1,2,k*x));
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=imag(1i*Z*besselh(0,2,k*x)./besselh(1,2,k*x));
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=abs(1i*Z*besselh(0,2,k*x)./besselh(1,2,k*x));
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0.09 0.11]); set(gca,'XTickMode','auto','YTickMode','auto');
+xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim(currentAmplitudeLimits(qa_left,0,0));
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_9_3_E1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_9_3_E1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -231,6 +245,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);

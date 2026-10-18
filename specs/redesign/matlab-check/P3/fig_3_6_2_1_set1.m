@@ -1,14 +1,14 @@
 set(groot,'defaultFigureVisible','off');
 % 3.6.2-1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1100; % 静态密度 (kg/m³)
-c = 1470; % 介质声速 (m/s)
-c2 = 349.86; % 透射介质声速 (m/s)
-f = 1080; % 频率 (Hz)
-pa = 1.1; % 声压峰值 (Pa)
-Z1 = 1650000.0000000002; % 入射介质阻抗 (Pa·s/m)
+rho = 1000; % 静态密度 (kg/m³)
+c = 1575; % 介质声速 (m/s)
+c2 = 360; % 透射介质声速 (m/s)
+f = 1050; % 频率 (Hz)
+pa = 1.05; % 声压峰值 (Pa)
+Z1 = 1575000; % 入射介质阻抗 (Pa·s/m)
 Z2 = 3150000; % 透射介质阻抗 (Pa·s/m)
-theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
+theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
 model_x={}; model_y={};
@@ -42,8 +42,7 @@ xlim([-3 3]); ylim([-2 2]);
 xticks([-3 -2 -1 0 1 2 3]); yticks([-2 -1 0 1 2]);
 set(gca,'XMinorTick','off','YMinorTick','off');
 xlabel('位置 x (m)','Interpreter','tex'); ylabel('声压 (Pa)','Interpreter','tex');
-xline(0,'--','HandleVisibility','off');
-text(0.01818181818181818,0.97,'界面','Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');
+xline(0,'--','界面','Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
 title('入射、反射、透射与合成声压','Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
@@ -69,10 +68,7 @@ lecture_readouts=[(Z2-Z1)/(Z2+Z1) 2*Z2/(Z1+Z2)];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
 xlim([-3 3]); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim(currentAmplitudeLimits(qa_left,0,0));
-lgd.Location='northeast';
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_2_1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_2_1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -255,6 +251,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);

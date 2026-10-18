@@ -16,37 +16,51 @@ model_x={}; model_y={};
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
 figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaRange=sort([.9*obs 1.1*obs]);if obs==0,qaRange=[-.5 .5];end;qaRange=p2NiceLimits(qaRange(1),qaRange(2));
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;;qaDomain=obs*[.1 5];
 resistance=rho*c*(2*pi*f*obs/c)^2/(1+(2*pi*f*obs/c)^2);
 reactance=rho*c*(2*pi*f*obs/c)/(1+(2*pi*f*obs/c)^2);
 worksheet_answers=[resistance reactance];
 subplot(1,1,1);
 hold on;
-x=linspace(qaRange(1),qaRange(2),401);
-y=rho*c*(2*pi*f*x/c)/(1+(2*pi*f*x/c)^2);
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=Z*(k*x).^2./(1+(k*x).^2);
 model_x{1,1}=x; model_y{1,1}=y;
-plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','参考计算');
-x=obs;
-y=rho*c*(2*pi*f*obs/c)/(1+(2*pi*f*obs/c)^2);
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','球面波波阻');
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=Z*k*x./(1+(k*x).^2);
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','本题数值');
+plot(x,y,'LineStyle','--','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','球面波波抗');
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=Z*ones(size(x));
+model_x{1,3}=x; model_y{1,3}=y;
+plot(x,y,'LineStyle',':','Marker','none','Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','平面波远场极限');
+x=obs;
+y=Z*(k*obs)^2/(1+(k*obs)^2);
+model_x{1,4}=x; model_y{1,4}=y;
+plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.49411764705882355 0.1843137254901961 0.5568627450980392],'LineWidth',1.5,'DisplayName','测点波阻 = 319.7 Pa·s/m');
+x=obs;
+y=Z*k*obs/(1+(k*obs)^2);
+model_x{1,5}=x; model_y{1,5}=y;
+plot(x,y,'LineStyle','none','Marker','s', 'MarkerIndices',[1],'Color',[0.4666666666666667 0.6745098039215687 0.18823529411764706],'LineWidth',1.5,'DisplayName','测点波抗 = 174.5 Pa·s/m');
 set(gca,'XScale','linear','YScale','linear');
-xlim([0.09 0.11]); ylim([160 190]);
-xticks([0.09 0.095 0.1 0.105 0.11]); yticks([160 165 170 175 180 185 190]);
+xlim([0 0.5]); ylim([-100 500]);
+xticks([0 0.1 0.2 0.3 0.4 0.5]); yticks([-100 0 100 200 300 400 500]);
 set(gca,'XMinorTick','off','YMinorTick','off');
-xlabel('观察距离 (m)','Interpreter','tex'); ylabel('球面波波抗 (Pa·s/m)','Interpreter','tex');
-title(sprintf('球面波波抗 = %.4g Pa·s/m',reactance),'Interpreter','tex','FontSize',12);
+xlabel('距球心 r (m)','Interpreter','tex'); ylabel('局部声阻抗 (Pa·s/m)','Interpreter','tex');
+title({sprintf('球面波波阻 = %s Pa·s/m',answerNumber(resistance)),'球面波从近场波抗向远场波阻过渡'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 qa_left=[]; qa_right=[]; qa_time=tView;
-x=linspace(qaRange(1),qaRange(2),401); y=rho*c*(2*pi*f*x/c)/(1+(2*pi*f*x/c)^2);
-qa_xl=[0.09 0.11]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=Z*(k*x).^2./(1+(k*x).^2);
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=Z*k*x./(1+(k*x).^2);
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=Z*ones(size(x));
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0.09 0.11]); set(gca,'XTickMode','auto','YTickMode','auto');
+xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim(currentAmplitudeLimits(qa_left,0,0));
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_2_E1_set0.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_8_2_E1_set0.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -229,6 +243,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);

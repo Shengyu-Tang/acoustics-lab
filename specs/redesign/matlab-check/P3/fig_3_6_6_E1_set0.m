@@ -15,37 +15,50 @@ model_x={}; model_y={};
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
 figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaRange=sort([.9*pa 1.1*pa]);if pa==0,qaRange=[-.5 .5];end;qaRange=p2NiceLimits(qaRange(1),qaRange(2));
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;;qaDomain=[0 c/f];
 nodeGap=c/(2*f);
 umax=2*pa/Z1;
 worksheet_answers=[nodeGap umax];
 subplot(1,1,1);
 hold on;
-x=linspace(qaRange(1),qaRange(2),401);
-y=2*x/Z1;
+yyaxis left;
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=2*pa/Z1*abs(cos(k*x));
 model_x{1,1}=x; model_y{1,1}=y;
-plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','参考计算');
-x=pa;
-y=2*pa/Z1;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','驻波振速包络');
+yyaxis right;
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=2*pa*abs(sin(k*x));
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','本题数值');
+plot(x,y,'LineStyle','--','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','驻波声压包络');
+yyaxis left;
+x=0;
+y=2*pa/Z1;
+model_x{1,3}=x; model_y{1,3}=y;
+plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.9294117647058824 0.6941176470588235 0.12549019607843137],'LineWidth',1.5,'DisplayName','界面振速峰值 = 1.333\times 10^{-6} m/s');
+yyaxis right;
+ylim([0 2.5]); yticks([0 0.5 1 1.5 2 2.5]); ylabel('声压幅值 (Pa)','Interpreter','tex');
+yyaxis left;
 set(gca,'XScale','linear','YScale','linear');
-xlim([0.9 1.1]); ylim([0.0000011 0.0000015]);
-xticks([0.9 0.95 1 1.05 1.1]); yticks([0.0000011 0.0000012 0.0000013 0.0000014 0.0000015]);
+xlim([0 1.5]); ylim([-5e-7 0.0000015]);
+xticks([0 0.25 0.5 0.75 1 1.25 1.5]); yticks([-5e-7 0 5e-7 0.000001 0.0000015]);
 set(gca,'XMinorTick','off','YMinorTick','off');
-xlabel('幅度系数 (Pa)','Interpreter','tex'); ylabel('界面振速峰值 (m/s)','Interpreter','tex');
-title(sprintf('界面振速峰值 = %.4g m/s',umax),'Interpreter','tex','FontSize',12);
+xlabel('距软界面 d (m)','Interpreter','tex'); ylabel('振速幅值 (m/s)','Interpreter','tex');
+xline(0,'--',sprintf('软界面声压波节 = %.4g',0),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
+xline(c/(2*f),'--',sprintf('相邻波节距离  = %.4g',c/(2*f)),'Interpreter','tex','LabelOrientation','horizontal','LabelVerticalAlignment','top','LabelHorizontalAlignment','left','HandleVisibility','off');
+title({sprintf('界面振速峰值 = %s m/s',answerNumber(umax)),'软界面处振速波腹与声压波节交错'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 qa_left=[]; qa_right=[]; qa_time=tView;
-x=linspace(qaRange(1),qaRange(2),401); y=2*x/Z1;
-qa_xl=[0.9 1.1]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=2*pa/Z1*abs(cos(k*x));
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=2*pa*abs(sin(k*x));
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_right=[qa_right qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([0.9 1.1]); set(gca,'XTickMode','auto','YTickMode','auto');
+yyaxis right; ylim(currentAmplitudeLimits(qa_right,0,0)); set(gca,'YTickMode','auto'); yyaxis left;
+xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim(currentAmplitudeLimits(qa_left,0,0));
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_6_E1_set0.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_6_6_E1_set0.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -228,6 +241,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);

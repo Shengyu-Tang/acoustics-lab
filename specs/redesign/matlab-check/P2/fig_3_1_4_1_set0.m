@@ -14,42 +14,43 @@ tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 model_x={}; model_y={};
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
-figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;aL=arrowPoints([.05 .65],[.05+left*15 .65],1);aR=arrowPoints([1.8 .65],[1.8+right*15 .65],1);rate=rho*(left-right)/L;
+figure('Color','w','Position',[80 80 1280 340]);
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;aL=arrowPoints([-.15 sqrt(S)/2],[-.15+left*15 sqrt(S)/2],1);aR=arrowPoints([L+.1 sqrt(S)/2],[L+.1+right*15 sqrt(S)/2],1);rate=rho*(left-right)/L;
 lecture_readouts=[rho*S*left rho*S*right S*L rho*(left-right)/L];
-subplot(1,1,1);
+subplot(1,2,1);
 hold on;
-field_x=[.75 1.3]; field_y=[.3 .95]; field_z=tanh(rate*tView*100)*ones(2);
+field_x=[.35 .9]*L; field_y=[.3 .95]*sqrt(S); field_z=tanh(rate*tView*100)*ones(2);
 im=imagesc(field_x,field_y,field_z);
 model_fields{1}=struct('x',field_x,'y',field_y,'z',field_z);
 if isprop(im,'Interpolation'), im.Interpolation='bilinear'; end
+set(im,'HandleVisibility','off');
 set(gca,'YDir','normal');
 caxis([-1 1]);
 % RdBu, identical 64 colors to browser
 colormap(gca,[33 102 172;40 107 174;47 111 177;53 116 179;60 120 182;67 125 184;74 130 186;81 134 189;87 139 191;94 143 193;101 148 196;108 153 198;115 157 201;121 162 203;128 166 205;135 171 208;142 176 210;148 180 212;155 185 215;162 189 217;169 194 220;176 199 222;182 203 224;189 208 227;196 212 229;203 217 232;210 222 234;216 226 236;223 231 239;230 235 241;237 240 243;244 245 246;246 243 244;244 236 237;242 229 231;239 222 224;237 215 218;235 208 211;233 201 205;231 194 198;228 187 192;226 180 185;224 173 179;222 166 173;220 159 166;217 151 160;215 144 153;213 137 147;211 130 140;209 123 134;206 116 127;204 109 121;202 102 114;200 95 108;198 88 101;196 81 95;193 74 88;191 66 82;189 59 75;187 52 69;185 45 62;182 38 56;180 31 49;178 24 43]/255);
 cb=colorbar; ylabel(cb,'密度变化（归一化示意）','Interpreter','tex');
-x=[0.4 0.4 0.7 0.7 0.4];
-y=[0 1 1.25 0.25 0];
+x=L*[0 0 0.29999999999999993 0.29999999999999993 0];
+y=sqrt(S)*[0 1 1.25 0.25 0];
 model_x{1,1}=x; model_y{1,1}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','控制体');
-x=[1.4 1.4 1.7 1.7 1.4];
-y=[0 1 1.25 0.25 0];
+x=L*[0.9999999999999999 0.9999999999999999 1.2999999999999996 1.2999999999999996 0.9999999999999999];
+y=sqrt(S)*[0 1 1.25 0.25 0];
 model_x{1,2}=x; model_y{1,2}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
-x=[0.4 1.4];
-y=[0 0];
+x=L*[0 0.9999999999999999];
+y=sqrt(S)*[0 0];
 model_x{1,3}=x; model_y{1,3}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
-x=[0.4 1.4];
-y=[1 1];
+x=L*[0 0.9999999999999999];
+y=sqrt(S)*[1 1];
 model_x{1,4}=x; model_y{1,4}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
-x=[0.7 1.7];
-y=[1.25 1.25];
+x=L*[0.29999999999999993 1.2999999999999996];
+y=sqrt(S)*[1.25 1.25];
 model_x{1,5}=x; model_y{1,5}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
-x=[0.7 1.7];
-y=[0.25 0.25];
+x=L*[0.29999999999999993 1.2999999999999996];
+y=sqrt(S)*[0.25 0.25];
 model_x{1,6}=x; model_y{1,6}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
 x=aL(:,1)';
@@ -61,28 +62,87 @@ y=aR(:,2)';
 model_x{1,8}=x; model_y{1,8}=y;
 plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','质量流 ρu出');
 set(gca,'XScale','linear','YScale','linear');
-xlim([-1 3]); ylim([-0.5 1.5]);
-xticks([-1 0 1 2 3]); yticks([-0.5 0 0.5 1 1.5]);
+xlim([-1 2]); ylim([-0.5 1.5]);
+xticks([-1 -0.5 0 0.5 1 1.5 2]); yticks([-0.5 0 0.5 1 1.5]);
 set(gca,'XMinorTick','off','YMinorTick','off');
-xlabel('x 与深度投影（示意）','Interpreter','tex'); ylabel('z 与深度投影（示意）','Interpreter','tex');
-text(0.4,0.06,'A','HorizontalAlignment','center','Interpreter','tex');
-text(0.4,1.06,'B','HorizontalAlignment','center','Interpreter','tex');
-text(0.7,1.31,'C','HorizontalAlignment','center','Interpreter','tex');
-text(0.7,0.31,'D','HorizontalAlignment','center','Interpreter','tex');
-text(1.4,0.06,'E','HorizontalAlignment','center','Interpreter','tex');
-text(1.4,1.06,'F','HorizontalAlignment','center','Interpreter','tex');
-text(1.7,1.31,'G','HorizontalAlignment','center','Interpreter','tex');
-text(1.7,0.31,'H','HorizontalAlignment','center','Interpreter','tex');
-text(0,0.85,'ρu入','HorizontalAlignment','center','Interpreter','tex');
-text(2.1,0.85,'ρu出','HorizontalAlignment','center','Interpreter','tex');
-title('六面体 ABCDEFGH：质量守恒','Interpreter','tex','FontSize',12);
+xlabel('水平位置与深度投影 (m)','Interpreter','tex'); ylabel('竖直位置与深度投影 (m)','Interpreter','tex');
+title('质量控制体：固定物理坐标','Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([-0.4 2.6]); set(gca,'XTickMode','auto','YTickMode','auto');
-ylim([-0.25 1.5]);
+xlim([-1 2]); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim([-0.5 1.5]);
+model_limits{1}=struct('x',xlim,'y',ylim);
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;aL=arrowPoints([-.15 sqrt(1)/2],[-.15+left*15 sqrt(1)/2],1);aR=arrowPoints([1+.1 sqrt(1)/2],[1+.1+right*15 sqrt(1)/2],1);rate=rho*(left-right)/1;rate=rho*(left-right)/L;
+lecture_readouts=[rho*S*left rho*S*right S*L rho*(left-right)/L];
+subplot(1,2,2);
+hold on;
+field_x=[.35 .9]*1; field_y=[.3 .95]*sqrt(1); field_z=tanh(rate*tView*100)*ones(2);
+im=imagesc(field_x,field_y,field_z);
+model_fields{2}=struct('x',field_x,'y',field_y,'z',field_z);
+if isprop(im,'Interpolation'), im.Interpolation='bilinear'; end
+set(im,'HandleVisibility','off');
+set(gca,'YDir','normal');
+caxis([-1 1]);
+% RdBu, identical 64 colors to browser
+colormap(gca,[33 102 172;40 107 174;47 111 177;53 116 179;60 120 182;67 125 184;74 130 186;81 134 189;87 139 191;94 143 193;101 148 196;108 153 198;115 157 201;121 162 203;128 166 205;135 171 208;142 176 210;148 180 212;155 185 215;162 189 217;169 194 220;176 199 222;182 203 224;189 208 227;196 212 229;203 217 232;210 222 234;216 226 236;223 231 239;230 235 241;237 240 243;244 245 246;246 243 244;244 236 237;242 229 231;239 222 224;237 215 218;235 208 211;233 201 205;231 194 198;228 187 192;226 180 185;224 173 179;222 166 173;220 159 166;217 151 160;215 144 153;213 137 147;211 130 140;209 123 134;206 116 127;204 109 121;202 102 114;200 95 108;198 88 101;196 81 95;193 74 88;191 66 82;189 59 75;187 52 69;185 45 62;182 38 56;180 31 49;178 24 43]/255);
+cb=colorbar; ylabel(cb,'密度变化（归一化示意）','Interpreter','tex');
+x=1*[0 0 0.29999999999999993 0.29999999999999993 0];
+y=sqrt(1)*[0 1 1.25 0.25 0];
+model_x{2,1}=x; model_y{2,1}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','控制体');
+x=1*[0.9999999999999999 0.9999999999999999 1.2999999999999998 1.2999999999999998 0.9999999999999999];
+y=sqrt(1)*[0 1 1.25 0.25 0];
+model_x{2,2}=x; model_y{2,2}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
+x=1*[0 0.9999999999999999];
+y=sqrt(1)*[0 0];
+model_x{2,3}=x; model_y{2,3}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
+x=1*[0 0.9999999999999999];
+y=sqrt(1)*[1 1];
+model_x{2,4}=x; model_y{2,4}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
+x=1*[0.29999999999999993 1.2999999999999998];
+y=sqrt(1)*[1.25 1.25];
+model_x{2,5}=x; model_y{2,5}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
+x=1*[0.29999999999999993 1.2999999999999998];
+y=sqrt(1)*[0.25 0.25];
+model_x{2,6}=x; model_y{2,6}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.4666666666666667 0.4666666666666667 0.4666666666666667],'LineWidth',1.5,'DisplayName','棱边','HandleVisibility','off');
+x=aL(:,1)';
+y=aL(:,2)';
+model_x{2,7}=x; model_y{2,7}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0.6352941176470588 0.0784313725490196 0.1843137254901961],'LineWidth',1.5,'DisplayName','质量流 ρu入');
+x=aR(:,1)';
+y=aR(:,2)';
+model_x{2,8}=x; model_y{2,8}=y;
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','质量流 ρu出');
+set(gca,'XScale','linear','YScale','linear');
+xlim([-1 2]); ylim([-0.5 1.5]);
+xticks([-1 -0.5 0 0.5 1 1.5 2]); yticks([-0.5 0 0.5 1 1.5]);
+set(gca,'XMinorTick','off','YMinorTick','off');
+xlabel('局部水平坐标 x/L（—）','Interpreter','tex'); ylabel('局部竖直坐标 z/√S（—）','Interpreter','tex');
+text(1*0,sqrt(1)*0+.06,'A','HorizontalAlignment','center','Interpreter','tex');
+text(1*0,sqrt(1)*1+.06,'B','HorizontalAlignment','center','Interpreter','tex');
+text(1*0.29999999999999993,sqrt(1)*1.25+.06,'C','HorizontalAlignment','center','Interpreter','tex');
+text(1*0.29999999999999993,sqrt(1)*0.25+.06,'D','HorizontalAlignment','center','Interpreter','tex');
+text(1*0.9999999999999999,sqrt(1)*0+.06,'E','HorizontalAlignment','center','Interpreter','tex');
+text(1*0.9999999999999999,sqrt(1)*1+.06,'F','HorizontalAlignment','center','Interpreter','tex');
+text(1*1.2999999999999998,sqrt(1)*1.25+.06,'G','HorizontalAlignment','center','Interpreter','tex');
+text(1*1.2999999999999998,sqrt(1)*0.25+.06,'H','HorizontalAlignment','center','Interpreter','tex');
+text(-.2,.85*sqrt(1),'ρu入','HorizontalAlignment','center','Interpreter','tex');
+text(1+.2,.85*sqrt(1),'ρu出','HorizontalAlignment','center','Interpreter','tex');
+title('质量收支：体元局部放大示意','Interpreter','tex','FontSize',12);
+box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
+% 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
+xlim([-1 2]); set(gca,'XTickMode','auto','YTickMode','auto');
+ylim([-0.5 1.5]);
+model_limits{2}=struct('x',xlim,'y',ylim);
 
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P2/fig_3_1_4_1_set0.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P2/fig_3_1_4_1_set0.png','Resolution',120); close all;
-
+function R=dampingResistance(M,D,input,value)
+if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
+end
 function y=freeResponse(t,M,D,R,x0,v0)
 w=sqrt(D/M); d=R/(2*M); q=d*d-w*w;
 if abs(q)<1e-10*w*w
@@ -131,6 +191,11 @@ for i=0:1
   y(active)=y(active)+sign*(C*cos(w*z)+S*sin(w*z)+freeResponse(z,M,D,R,-C,-w*S));
  end
 end
+end
+function f=frequencyGrid(finish,M,D,R,N)
+w=sqrt(D/M);z=R/(2*sqrt(M*D));s=sqrt(max(0,1-2*z*z));peaks=w/(2*pi);
+if s>0,peaks=[w/(2*pi)*s w/(2*pi) w/(2*pi)/s];end
+f=sort([linspace(0,finish,N) peaks(peaks>=0 & peaks<=finish)]);
 end
 function y=frequencyResponse(f,M,D,R,F,component)
 w=2*pi*f; X=w*M-D./w;
@@ -212,9 +277,82 @@ end
 function lim=p2NiceLimits(lo,hi)
 raw=(hi-lo)/5;decade=10^floor(log10(raw));steps=[1 2 2.5 5 10]*decade;
 counts=ceil(hi./steps-1e-10)-floor(lo./steps+1e-10)+1;
-scores=abs(counts-6)+100*(counts<4 | counts>8);[~,ii]=min(scores);st=steps(ii);
+scores=abs(counts-6)+100*(counts<4 | counts>8);[score,ii]=min(scores);exact=abs(lo./steps-round(lo./steps))<1e-9 & abs(hi./steps-round(hi./steps))<1e-9;jj=find(scores==score & exact,1);if ~isempty(jj),ii=jj;end;st=steps(ii);
 lim=[floor(lo/st+1e-10)*st ceil(hi/st-1e-10)*st];
 end
 function L=p2SourceLevel(n,L1)
 L=L1+10*log10(max(n,eps));L(n<=0)=NaN;
+end
+function [R,D,ct]=p3Oblique(Z1,Z2,c1,c2,theta)
+theta=min(theta,89.999999);st=c2/c1*sind(theta);ct=conj(sqrt(complex(1-st.^2)));
+R=(Z2*cosd(theta)-Z1*ct)./(Z2*cosd(theta)+Z1*ct);D=1+R;
+end
+function [th0,thc]=p3Angles(Z1,Z2,c1,c2)
+q=c2/c1;s2=(Z1^2-Z2^2)/(Z1^2*q^2-Z2^2);th0=NaN;thc=NaN;
+if q>1,thc=asind(1/q);end
+if s2>=0&&s2<1&&s2*q*q<1,th0=asind(sqrt(s2));end
+end
+function c=p3Critical(c1,c2)
+if c2>c1,c=asind(c1/c2);else,c=NaN;end
+end
+function t=p3Refraction(c1,c2,theta)
+s=c2/c1*sind(theta);if s<=1,t=asind(s);else,t=NaN;end
+end
+function a=p3ModeAngle(mode,c,h,f)
+if f>mode*c/(2*h),a=asind(mode*c/(2*h*f));else,a=NaN;end
+end
+function b=p3Brewster(Z1,Z2,c1,c2)
+[b,~]=p3Angles(Z1,Z2,c1,c2);
+end
+function t=p3Power(Z1,Z2,c1,c2,theta)
+[R,D,ct]=p3Oblique(Z1,Z2,c1,c2,theta);t=Z1/Z2*abs(D).^2.*real(ct)./cosd(min(theta,89.999999));
+end
+function y=p3Source(x,source,offset,width,a1,a2,a3)
+if source==0,y=ones(size(x));elseif source==1,y=exp(-((x-offset)/width).^2);else,y=1+a1*cos(pi*x)+a2*cos(2*pi*x)+a3*cos(3*pi*x);end
+end
+function co=p3Coefficients(source,offset,width,a1,a2,a3)
+if source==0,co=[1 0 0 0 0 0];elseif source==2,co=[1 a1 a2 a3 0 0];else
+x=linspace(0,1,401);v=p3Source(x,source,offset,width,a1,a2,a3);co=zeros(1,6);
+for nn=0:5,co(nn+1)=trapz(x,v.*cos(nn*pi*x))*(1+(nn>0));end
+end
+end
+function v=p3GuideSpeed(f,n,h,c,group)
+fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=NaN;
+end
+function d=p3Depth(theta,c1,c2,f)
+s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
+end
+function R=p3Boundary(boundary)
+Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);
+end
+function pts=p3Rays(radius,source,launch)
+v=[cosd(launch) sind(launch)];pt=[radius*source 0];pts=pt;
+for ii=1:16
+ d=dot(pt,v);L=-d+sqrt(max(0,d^2+radius^2-dot(pt,pt)));pt=pt+L*v;pt=radius*pt/norm(pt);pts=[pts;pt];v=v-2*dot(v,pt/radius)*pt/radius;v=v/norm(v);
+end
+end
+function lim=currentAmplitudeLimits(values,bars,logarithmic)
+values=values(isfinite(values));
+if logarithmic,values=values(values>0);end
+if isempty(values),if logarithmic,lim=[1e-6 1];else,lim=[0 1];end;return;end
+lo=min(values);hi=max(values);
+if logarithmic,lim=[10^floor(log10(lo*.9)) 10^ceil(log10(hi*1.1))];return;end
+if bars,if hi>0,lim=p2NiceLimits(0,hi*1.08);else,lim=[0 1];end;return;end
+if lo==hi,pad=abs(lo)*.15;if pad==0,pad=1;end;lo=lo-pad;hi=hi+pad;
+else,pad=(hi-lo)*.08;if lo~=0,lo=lo-pad;end;if hi~=0,hi=hi+pad;end;end
+lim=p2NiceLimits(lo,hi);
 end

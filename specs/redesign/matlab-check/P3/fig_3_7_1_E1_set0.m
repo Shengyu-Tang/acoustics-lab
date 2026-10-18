@@ -17,37 +17,38 @@ model_x={}; model_y={};
 set(groot,'defaultAxesFontName','Microsoft YaHei','defaultTextFontName','Microsoft YaHei');
 set(groot,'defaultTextInterpreter','tex','defaultLegendInterpreter','tex','defaultAxesTickLabelInterpreter','tex');
 figure('Color','w','Position',[80 80 640 340]);
-w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaRange=sort([.9*res 1.1*res]);if res==0,qaRange=[-.5 .5];end;qaRange=p2NiceLimits(qaRange(1),qaRange(2));
+w=2*pi*f; k=w/c; Z=rho*c; tau=w*tView;qaR=(res-1+1i*react)/(res+1+1i*react);;qaDomain=[-1.5*pa 1.5*pa];
 reflect=abs((res-1+1i*react)/(res+1+1i*react));
 standingRatio=(1+abs((res-1+1i*react)/(res+1+1i*react)))/(1-abs((res-1+1i*react)/(res+1+1i*react)));
 worksheet_answers=[reflect standingRatio];
 subplot(1,1,1);
 hold on;
-x=linspace(qaRange(1),qaRange(2),401);
-y=(1+abs((x-1+1i*react)/(x+1+1i*react)))/(1-abs((x-1+1i*react)/(x+1+1i*react)));
+x=pa*real((1+qaR)*exp(1i*linspace(0,2*pi,401)));
+y=pa/Z*real((1-qaR)*exp(1i*linspace(0,2*pi,401)));
 model_x{1,1}=x; model_y{1,1}=y;
-plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','参考计算');
-x=res;
-y=(1+abs((res-1+1i*react)/(res+1+1i*react)))/(1-abs((res-1+1i*react)/(res+1+1i*react)));
+plot(x,y,'LineStyle','-','Marker','none','Color',[0 0.4470588235294118 0.7411764705882353],'LineWidth',1.5,'DisplayName','反射模值 = 0.4472');
+x=linspace(qaDomain(1),qaDomain(2),401);
+y=x/Z;
 model_x{1,2}=x; model_y{1,2}=y;
-plot(x,y,'LineStyle','none','Marker','o', 'MarkerIndices',[1],'Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','本题数值');
+plot(x,y,'LineStyle','--','Marker','none','Color',[0.8509803921568627 0.3254901960784314 0.09803921568627451],'LineWidth',1.5,'DisplayName','纯行波参考');
 set(gca,'XScale','linear','YScale','linear');
-xlim([1.8 2.2]); ylim([2.4 2.8]);
-xticks([1.8 1.9 2 2.1 2.2]); yticks([2.4 2.5 2.6 2.7 2.8]);
+xlim([-1.5 1.5]); ylim([-0.006 0.006]);
+xticks([-1.5 -1 -0.5 0 0.5 1 1.5]); yticks([-0.006 -0.004 -0.002 0 0.002 0.004 0.006]);
 set(gca,'XMinorTick','off','YMinorTick','off');
-xlabel('归一化声阻 (—)','Interpreter','tex'); ylabel('驻波比 (—)','Interpreter','tex');
-title(sprintf('驻波比 = %.4g —',standingRatio),'Interpreter','tex','FontSize',12);
+xlabel('表面声压 p (Pa)','Interpreter','tex'); ylabel('表面法向振速 u (m/s)','Interpreter','tex');
+yline(0,'--',sprintf('驻波比  = %.4g',0),'Interpreter','tex','LabelVerticalAlignment','top','LabelHorizontalAlignment','right','HandleVisibility','off');
+title({sprintf('反射系数模值 = %s',answerNumber(reflect)),'复阻抗表面处压力—振速的椭圆轨迹'},'Interpreter','tex','FontSize',12);
 box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');
 lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 qa_left=[]; qa_right=[]; qa_time=tView;
-x=linspace(qaRange(1),qaRange(2),401); y=(1+abs((x-1+1i*react)/(x+1+1i*react)))/(1-abs((x-1+1i*react)/(x+1+1i*react)));
-qa_xl=[1.8 2.2]; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=pa*real((1+qaR)*exp(1i*linspace(0,2*pi,401))); y=pa/Z*real((1-qaR)*exp(1i*linspace(0,2*pi,401)));
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
+x=linspace(qaDomain(1),qaDomain(2),401); y=x/Z;
+qa_xl=qaDomain; qa_y=y(isfinite(y) & x>=qa_xl(1) & x<=qa_xl(2)); qa_left=[qa_left qa_y];
 % 依当前参数重定标；原有 TeX、字体、图例与标线样式保留。
-xlim([1.8 2.2]); set(gca,'XTickMode','auto','YTickMode','auto');
+xlim(qaDomain); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim(currentAmplitudeLimits(qa_left,0,0));
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_7_1_E1_set0.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_7_1_E1_set0.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -230,6 +231,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);

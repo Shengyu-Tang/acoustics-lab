@@ -1,16 +1,16 @@
 set(groot,'defaultFigureVisible','off');
 % 3.10.3-1
 % 参数块：修改后运行整个脚本即可重算；SI 单位（另注除外）。
-rho = 1100; % 静态密度 (kg/m³)
-c = 336.14; % 介质声速 (m/s)
-c2 = 349.86; % c2（见网页参数表；SI 单位或无量纲选择）
-f = 540; % 频率 (Hz)
-pa = 1.1; % 声压峰值 (Pa)
-Z1 = 1650000.0000000002; % Z1（见网页参数表；SI 单位或无量纲选择）
-Z2 = 435.75; % Z2（见网页参数表；SI 单位或无量纲选择）
-theta = 28.5; % theta（见网页参数表；SI 单位或无量纲选择）
-h = 0.525; % 波导层厚 (m)
-mode = 1; % 模式阶数 (—)
+rho = 1000; % 静态密度 (kg/m³)
+c = 360; % 介质声速 (m/s)
+c2 = 343; % c2（见网页参数表；SI 单位或无量纲选择）
+f = 530; % 频率 (Hz)
+pa = 1; % 声压峰值 (Pa)
+Z1 = 1500000; % Z1（见网页参数表；SI 单位或无量纲选择）
+Z2 = 415; % Z2（见网页参数表；SI 单位或无量纲选择）
+theta = 30; % theta（见网页参数表；SI 单位或无量纲选择）
+h = 0.53; % 波导层厚 (m)
+mode = 2; % 模式阶数 (—)
 tView = 0; % tView（见网页参数表；SI 单位或无量纲选择）
 % 以下为计算模型与绘图，可独立运行，无需网页。
 model_x={}; model_y={};
@@ -26,12 +26,14 @@ hold on;
 field_x=linspace(0,3000,161); field_y=linspace(0,5,81); field_z=Pfield;
 im=imagesc(field_x,field_y,field_z);
 model_fields{1}=struct('x',field_x,'y',field_y,'z',field_z);
-if isprop(im,'Interpolation'), im.Interpolation='bilinear'; end
+if isprop(im,'Interpolation'), im.Interpolation='nearest'; end
+set(im,'HandleVisibility','off');
 set(gca,'YDir','normal');
 caxis([0 1]);
 % parula, identical 64 colors to browser
-colormap(gca,[53 42 135;54 48 147;54 55 160;53 61 173;50 67 186;44 74 199;32 83 212;15 92 221;3 99 225;2 104 225;4 109 224;8 113 222;13 117 220;16 121 218;18 125 216;20 129 214;20 133 212;19 137 211;16 142 210;12 147 210;9 152 209;7 156 207;6 160 205;6 164 202;6 167 198;7 169 194;10 172 190;15 174 185;21 177 180;29 179 175;37 181 169;46 183 164;56 185 158;66 187 152;77 188 146;89 189 140;101 190 134;113 191 128;124 191 123;135 191 119;146 191 115;156 191 111;165 190 107;174 190 103;183 189 100;192 188 96;200 188 93;209 187 89;217 186 86;225 185 82;233 185 78;241 185 74;248 187 68;253 190 61;255 195 55;254 200 50;252 206 46;250 211 42;247 216 38;245 222 33;245 228 29;245 235 24;246 243 19;249 251 14]/255);
-cb=colorbar; ylabel(cb,'可传播为一，截止为零','Interpreter','tex');
+colormap(gca,[238 238 238;182 213 240]/255);
+patch(NaN,NaN,'#eeeeee','DisplayName','截止');
+patch(NaN,NaN,'#b6d5f0','DisplayName','可传播');
 x=(0:5)*c/(2*h);
 y=0:5;
 model_x{1,1}=x; model_y{1,1}=y;
@@ -52,8 +54,6 @@ lgd=legend('show','Location','best','Color','w','Box','on','Interpreter','tex');
 xlim([0 3000]); set(gca,'XTickMode','auto','YTickMode','auto');
 ylim([0 5]);
 model_limits{1}=struct('x',xlim,'y',ylim);
-
-qa=struct('x',{model_x(:)'},'y',{model_y(:)'}); qa.limits=model_limits; if exist('worksheet_answers','var'),qa.answers=worksheet_answers;end; if exist('lecture_readouts','var'),qa.readouts=lecture_readouts;end; if exist('model_fields','var'),qa.fields=model_fields;end; fid=fopen('E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_10_3_1_set1.json','w','n','UTF-8'); fprintf(fid,'%s',jsonencode(qa)); fclose(fid); drawnow; exportgraphics(gcf,'E:/tangsy-D/08教学任务/07-教学评估/2026年教学评估/acoustics-redesign/specs/redesign/matlab-check/P3/fig_3_10_3_1_set1.png','Resolution',120); close all;
 
 function R=dampingResistance(M,D,input,value)
 if input==0,R=value;elseif input==1,R=2*M*value;else,R=sqrt(M*D)/value;end
@@ -236,6 +236,20 @@ fc=n*c/(2*h);g=sqrt(max(0,1-(fc./f).^2));if group,v=g;else,v=1./g;end;v(f<=fc)=N
 end
 function d=p3Depth(theta,c1,c2,f)
 s=c2/c1*sind(theta);d=c2./(2*pi*f*sqrt(max(0,s.^2-1)));d(s<=1)=NaN;
+end
+function s=answerNumber(v)
+s=sprintf('%.4g',v);
+if isfinite(v) && v~=0 && (abs(v)<.001 || abs(v)>=10000)
+ e=floor(log10(abs(v)));a=str2double(sprintf('%.4g',v/10^e));
+ if abs(a)>=10,a=a/10;e=e+1;end
+ s=[sprintf('%.4g',a) char(92) 'times10^{' num2str(e) '}'];
+end
+end
+function y=p3Mask(y,mask)
+y(~mask)=NaN;
+end
+function y=p3FiniteSPL(amplitude)
+y=20*log10(amplitude/(sqrt(2)*1e-6));y(amplitude==0)=NaN;
 end
 function R=p3Boundary(boundary)
 Rs=[0 .6 -.6 1 -1];R=Rs(boundary+1);
