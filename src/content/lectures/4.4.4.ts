@@ -98,6 +98,23 @@ export default makeLecture("4.4.4", {
             .map((x, i) => ({ axis: "x" as const, value: x, label: "极大 " + (i + 2) })),
           ...minima.map((x, i) => ({ axis: "x" as const, value: x, label: "极小 " + (i + 1) })),
         ];
+        const expressions = [
+          "D0",
+          "Re",
+          ...maxima
+            .slice(1)
+            .map(
+              (_, i) =>
+                "(a^2-(((" +
+                String(i + 1) +
+                ")+.5)*lambda)^2)/(2*((" +
+                String(i + 1) +
+                ")+.5)*lambda)",
+            ),
+          ...minima.map(
+            (_, i) => "(a^2-(" + String(i + 1) + "*lambda)^2)/(2*" + String(i + 1) + "*lambda)",
+          ),
+        ];
         return [
           graph(
             p,
@@ -128,6 +145,7 @@ export default makeLecture("4.4.4", {
             setup,
             {
               xscale: "log",
+              staggeredAnnotations: true,
               annotations,
               bands: [
                 { from: 0.001, to: Re, label: "近场" },
@@ -136,24 +154,10 @@ export default makeLecture("4.4.4", {
               ],
             },
             {
-              annotations: [
-                "D0",
-                "Re",
-                ...maxima
-                  .slice(1)
-                  .map(
-                    (_, i) =>
-                      "(a^2-(((" +
-                      String(i + 1) +
-                      ")+.5)*lambda)^2)/(2*((" +
-                      String(i + 1) +
-                      ")+.5)*lambda)",
-                  ),
-                ...minima.map(
-                  (_, i) =>
-                    "(a^2-(" + String(i + 1) + "*lambda)^2)/(2*" + String(i + 1) + "*lambda)",
-                ),
-              ],
+              annotations: expressions,
+              annotationLabels: annotations.map(
+                (a, i) => `sprintf('${a.label} = %.4g m',${expressions[i]})`,
+              ),
               bands: [
                 { from: ".001", to: "Re" },
                 { from: "Re", to: "min(10,5*Re)" },

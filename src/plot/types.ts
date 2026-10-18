@@ -76,6 +76,8 @@ export type Panel = {
   field?: Field;
   legend?: boolean;
   annotationHeader?: boolean;
+  /** Give each MATLAB xline label its own lane, below the region captions. */
+  staggeredAnnotations?: boolean;
   annotations?: {
     axis: "x" | "y";
     value: number;

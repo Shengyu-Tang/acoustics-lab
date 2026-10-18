@@ -123,8 +123,8 @@ export function forceVoltageCircuit(p: Values) {
         { x: 4.92, y: 3.8, text: "1/D" },
         { x: 6.7, y: 3.8, text: "Rₘ" },
         { x: 9.4, y: 3.8, text: "Zᵣ" },
-        { x: 6.4, y: 1.4, text: "v ↔ i" },
-        { x: 6, y: 0.15, text: "F ↔ 电压；振速 v ↔ 电流 i" },
+        { x: 6.4, y: 1.4, text: "v 对应 i" },
+        { x: 6, y: 0.15, text: "F 对应电压；振速 v 对应电流 i" },
       ],
     },
   );

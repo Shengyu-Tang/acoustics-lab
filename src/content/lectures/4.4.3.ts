@@ -138,7 +138,7 @@ export default makeLecture("4.4.3", {
     }),
     figure(
       "4.4.3-2",
-      "活塞方向函数的贝塞尔核与辐射孔径",
+      "活塞方向函数的通用贝塞尔核",
       (p) => [
         graph(
           p,

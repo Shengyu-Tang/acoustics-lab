@@ -24,3 +24,7 @@ the warning that this is not a quantitative waterborne material model.
 actual computed physical response data or annotations instead of requiring
 an isolated geometry trace. Marked field boundaries still have their metre
 scaling tested directly.
+
+## MATLAB PNG follow-up
+
+Visual inspection found a B2 export-only collision: minimum and Rayleigh-distance labels shared a height. Added a MATLAB lane test **before** its fix; it failed with `duplicate MATLAB label lanes: 2,4,0,4` (exit 1). Each exported vertical-line label now has its own lane below the region captions. The circuit also initializes its sphere readouts before the common worksheet setup. The wedge field uses a shared floating-point boundary tolerance in JavaScript and MATLAB.

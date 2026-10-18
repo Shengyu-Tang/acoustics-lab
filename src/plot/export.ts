@@ -268,7 +268,9 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
           out.push(`xline(${value},'--','HandleVisibility','off');`);
           return;
         }
-        const lane = labels.find((l) => l.text === a.label)?.lane ?? 0;
+        const lane = p.staggeredAnnotations
+          ? ai + 1
+          : (labels.find((l) => l.text === a.label)?.lane ?? 0);
         const dynamicLabel = a.label
           ? (m?.annotationLabels?.[ai] ??
             (m?.annotations?.[ai] && !a.label.startsWith("Qₘ=")
@@ -303,7 +305,9 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
         });
       } else
         p.bands?.forEach((b) => {
-          const lane = labels.find((l) => l.text === b.label)?.lane ?? 0;
+          const lane = p.staggeredAnnotations
+            ? 0
+            : (labels.find((l) => l.text === b.label)?.lane ?? 0);
           out.push(
             `text(${xs((b.from + b.to) / 2)},${0.97 - lane * 0.065},${tex(b.label)},'Units','normalized','HorizontalAlignment','center','VerticalAlignment','top','Interpreter','tex','Clipping','on');`,
           );

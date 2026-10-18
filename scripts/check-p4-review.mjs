@@ -146,6 +146,19 @@ check("B2 annotation and region labels never overlap", () => {
             );
       }
 });
+check("B2 MATLAB xline labels use distinct vertical lanes", () => {
+  const l = lecture("4.4.4"),
+    p = l.figures[0].plot(l.defaults, 0)[0];
+  const lines = matlab([p], 1, 1, "axis")
+    .split("\n")
+    .filter((s) => s.startsWith("xline("));
+  const lanes = lines.map((s) => (s.match(/' '/g) ?? []).length);
+  assert.equal(new Set(lanes).size, lines.length, `duplicate MATLAB label lanes: ${lanes}`);
+  assert.ok(
+    lanes.every((n) => n > 0),
+    "region labels occupy the first lane",
+  );
+});
 check("B3 front hemisphere export", () => {
   const l = lecture("4.4.3"),
     p = l.figures[0].plot(l.defaults, 0)[0];
