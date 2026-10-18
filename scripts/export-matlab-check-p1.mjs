@@ -23,9 +23,13 @@ fs.writeFileSync(
   "% Batch QA: isolated startup; no desktop integration.\n",
 );
 const selected = process.argv.find((a) => a.startsWith("--lecture="))?.split("=")[1];
+const selectedFigures = process.argv
+  .find((a) => a.startsWith("--figure="))
+  ?.split("=")[1]
+  .split(",");
 const topics = fs
   .readdirSync("src/content/lectures")
-  .filter((f) => !["1.2.4.ts", "1.2.5.ts"].includes(f))
+  .filter((f) => !["1.2.4.ts", "1.2.5.ts"].includes(f) || f === selected + ".ts")
   .map((f) => f.replace(".ts", ""))
   .filter((id) => !selected || id === selected);
 let names = process.argv.includes("--render-only")
@@ -81,6 +85,7 @@ if (!process.argv.includes("--render-only")) {
       for (let index = 0; index < (await figures.count()); index++) {
         const caption = await figures.nth(index).locator("figcaption").textContent();
         const name = caption.match(/^图 ([^　]+)/)[1];
+        if (selectedFigures && !selectedFigures.includes(name)) continue;
         names.push(name);
         const figure = figures.filter({
           has: page.locator("figcaption", { hasText: `图 ${name}　` }),
@@ -99,9 +104,10 @@ if (!process.argv.includes("--render-only")) {
       const buttons = page.getByRole("button", { name: "导出 MATLAB 计算脚本", exact: true });
       await buttons.first().waitFor();
       for (let i = 0; i < (await buttons.count()); i++) {
+        const name = topic + "-E" + (i + 1) + "-calculation";
+        if (selectedFigures && !selectedFigures.includes(name)) continue;
         const event = page.waitForEvent("download");
         await buttons.nth(i).click();
-        const name = topic + "-E" + (i + 1) + "-calculation";
         await (await event).saveAs(path.join(out, name + ".m"));
         names.push(name);
       }
@@ -118,11 +124,7 @@ if (!process.argv.includes("--export-only")) {
   const matlab = process.env.MATLAB_EXE ?? "C:\\Program Files\\MATLAB\\R2024b\\bin\\matlab.exe";
   const mq = (s) => "'" + s.replaceAll("\\", "/").replaceAll("'", "''") + "'";
   const results = [];
-  for (const name of names.filter(
-    (n) =>
-      !process.argv.some((a) => a.startsWith("--figure=")) ||
-      n === process.argv.find((a) => a.startsWith("--figure=")).split("=")[1],
-  )) {
+  for (const name of names.filter((n) => !selectedFigures || selectedFigures.includes(n))) {
     fs.rmSync(path.join(out, name + ".png"), { force: true });
     // Figure numbers contain dots/hyphens and are not MATLAB identifiers; evaluate their UTF-8 source.
     const command = `eval(fileread(${mq(path.join(out, name + ".m"))})); drawnow; exportgraphics(gcf,${mq(path.join(out, name + ".png"))},'Resolution',150); close all;`;

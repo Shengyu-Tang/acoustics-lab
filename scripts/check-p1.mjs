@@ -98,6 +98,26 @@ assert.ok(
   Math.max(...tail) < Math.abs(initialTransient) * 0.002,
   "Transient is negligible after 8 time constants",
 );
+for (const Q of [1.7, 5, 10]) {
+  const u = { ...p, F0: 2, ratio: 1, Rm: Math.sqrt(p.M * p.D) / Q, x0: 0, v0: 0 };
+  const c = all.decay(u),
+    on = 8 * c.T,
+    gap = 12 * c.T,
+    dt = c.T / 1000;
+  near(1 - Math.exp(-c.delta * c.transition), 0.95);
+  const numeric = all.integrate(
+    u,
+    (t) => (t < 2 * (on + gap) && t % (on + gap) < on ? u.F0 * Math.sin(c.w0 * t) : 0),
+    dt,
+    40000,
+  );
+  const amplitude = (u.F0 * Q) / u.D;
+  assert.ok(
+    Math.max(...numeric.map(([t, x]) => Math.abs(x - all.pulseMotion(u, t, on, gap)))) / amplitude <
+      0.001,
+    "Switched pulse solution / independent RK4 <0.1%",
+  );
+}
 for (const zeta of [1.01, 1.5, 2, 5]) {
   const u = { ...p, Rm: 2 * zeta * Math.sqrt(p.M * p.D) },
     w = Math.sqrt(u.D / u.M),
@@ -126,6 +146,7 @@ const references = {
   "1.1.5": [397.4921383, 19.87460691, 0.05031546054],
   "1.2.1": [3.926990817, 0.01],
   "1.2.2": [0.002538365414, 7.917858446],
+  "1.2.3": [0.3014561, 0.9189974078],
 };
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);

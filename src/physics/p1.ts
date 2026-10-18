@@ -71,3 +71,27 @@ export function integrate(p: Motion, force: (t: number) => number, dt: number, c
   }
   return result;
 }
+/** Zero-state damped response to cos(ωt+phase), switched on at local t=0. */
+export function harmonicStep(p: Motion, t: number, phase: number) {
+  if (t < 0) return 0;
+  const w = Math.sqrt(p.D / p.M) * p.ratio,
+    a = p.D - p.M * w * w,
+    b = p.Rm * w,
+    den = a * a + b * b;
+  const C = (p.F0 * (a * Math.cos(phase) + b * Math.sin(phase))) / den;
+  const S = (p.F0 * (b * Math.cos(phase) - a * Math.sin(phase))) / den;
+  return C * Math.cos(w * t) + S * Math.sin(w * t) + freeMotion({ ...p, x0: -C, v0: -w * S }, t);
+}
+/** Two sine-filled rectangular bursts, with exact switch-on/off superposition. */
+export function pulseMotion(p: Motion, t: number, on: number, gap: number) {
+  const w = Math.sqrt(p.D / p.M) * p.ratio,
+    period = on + gap;
+  let x = 0;
+  for (let i = 0; i < 2; i++)
+    for (const [time, sign] of [
+      [i * period, 1],
+      [i * period + on, -1],
+    ])
+      x += sign * harmonicStep(p, t - time, w * time - Math.PI / 2);
+  return x;
+}
