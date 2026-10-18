@@ -87,6 +87,17 @@ const beatPeriod = (2 * Math.PI) / 1.6;
 // Cancellation recurs at the beat-envelope zeros; the signal between them is nonzero.
 near(all.forcedMotion(beating, beatPeriod).total, 0, 0.0001);
 assert.ok(Math.abs(all.forcedMotion(beating, beatPeriod / 2 + 0.01).total) > 0.0001);
+const damped = { ...beating, Rm: 40, ratio: 0.8 },
+  dampedDecay = all.decay(damped);
+const initialTransient = all.forcedMotion(damped, 0).transient;
+assert.equal(all.forcedMotion(damped, 0).total, 0);
+const tail = Array.from({ length: 501 }, (_, i) =>
+  Math.abs(all.forcedMotion(damped, (8 + i / 500) / dampedDecay.delta).transient),
+);
+assert.ok(
+  Math.max(...tail) < Math.abs(initialTransient) * 0.002,
+  "Transient is negligible after 8 time constants",
+);
 for (const zeta of [1.01, 1.5, 2, 5]) {
   const u = { ...p, Rm: 2 * zeta * Math.sqrt(p.M * p.D) },
     w = Math.sqrt(u.D / u.M),
@@ -114,10 +125,21 @@ const references = {
   "1.1.4": [6.353751267, 0.4, 0.39346886],
   "1.1.5": [397.4921383, 19.87460691, 0.05031546054],
   "1.2.1": [3.926990817, 0.01],
+  "1.2.2": [0.002538365414, 7.917858446],
 };
 const source = JSON.parse(fs.readFileSync("src/topics.json", "utf8"));
 const formulaNumbers = new Set(["1.2-1", "1.2-2", "1.2-3", "1.2-4", "1.2-5", "1.2-6", "1.2-7"]);
 for (const l of lectures) {
+  if (l.animation)
+    for (const f of l.figures) {
+      const at0 = f.plot(l.defaults, 0),
+        later = f.plot(l.defaults, (l.animationPeriod?.(l.defaults) ?? 1) / 4);
+      assert.deepEqual(
+        at0.map((p) => [p.xlim, p.ylim]),
+        later.map((p) => [p.xlim, p.ylim]),
+        `${l.id}: animation axes fixed`,
+      );
+    }
   assert.deepEqual(
     l.questions.map((q) => q.text),
     source.find((t) => t.id === l.id).questions,
