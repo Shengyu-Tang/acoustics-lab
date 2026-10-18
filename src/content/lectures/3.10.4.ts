@@ -45,7 +45,7 @@ const asks = [
     "inclination",
     "(2) 平面波与纵轴夹角",
     "°",
-    "\\sin\\theta_n=nc_0/(2hf)",
+    "\\theta_n=\\arcsin[nc_0/(2hf)]",
     "p3ModeAngle(mode,c,h,f)",
     (p) => phy.guideMode(p.mode, p.f, p.h, p.c).theta,
     (p) => [lectureFrequency].map((d) => `${d.symbol} = ${p[d.key]} ${d.unit}`).join("，"),

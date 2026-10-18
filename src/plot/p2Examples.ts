@@ -92,7 +92,11 @@ export function e313(p: Values) {
       },
     ],
     "",
-    { rightLabel: "局部声学马赫数 u/c" },
+    {
+      rightLabel: "局部声学马赫数 u/c",
+      annotations: [ymark(dr, value("密度逾量峰值", dr, "kg/m³"))],
+    },
+    { annotations: ["pa/c^2"] },
   );
 }
 export function e314(p: Values) {
@@ -163,7 +167,11 @@ export function e315(p: Values) {
       },
     ],
     "",
-    { rightLabel: "二阶密度变化率量级 (kg/(m³·s))" },
+    {
+      rightLabel: "二阶密度变化率量级 (kg/(m³·s))",
+      annotations: [ymark(a, value("一阶密度变化率幅值", a, "kg/(m³·s)"))],
+    },
+    { annotations: ["w*pa/c^2"] },
   );
 }
 export function e316(p: Values) {
@@ -244,7 +252,8 @@ export function e318(p: Values) {
       },
     ],
     "",
-    { rightLabel: "质点加速度 (m/s²)" },
+    { rightLabel: "质点加速度 (m/s²)", annotations: [ymark(a, value("压力梯度幅值", a, "Pa/m"))] },
+    { annotations: ["k*pa"] },
   );
 }
 export function e321(p: Values) {

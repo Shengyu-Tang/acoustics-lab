@@ -42,7 +42,7 @@ const asks = [
     "full",
     "(2) 全透射角",
     "°",
-    "\\sin^2\\theta_0=\\frac{Z_1^2-Z_2^2}{Z_1^2(c_2/c_1)^2-Z_2^2}",
+    "\\theta_0=\\arcsin\\sqrt{\\frac{Z_1^2-Z_2^2}{Z_1^2(c_2/c_1)^2-Z_2^2}}",
     "asind(sqrt((Z1^2-Z2^2)/(Z1^2*(c2/c)^2-Z2^2)))",
     (p) => phy.interfaceAngles(p.Z1, p.Z2, p.c, p.c2).brewster,
     (p) => [Z1].map((d) => `${d.symbol} = ${p[d.key]} ${d.unit}`).join("，"),

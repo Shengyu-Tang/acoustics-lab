@@ -326,6 +326,13 @@ export function e368(p: Values) {
       ),
     ],
     "[RR,DD,CT]=p3Oblique(Z1,Z2,c,c2,theta);qaSpan=2*c/f;if abs(sind(theta))>1e-9,qaSpan=2*c/(f*abs(sind(theta)));end;",
+    {
+      answerKey: "reflectAbs",
+      annotations: [
+        ymark(p.pa * phy.magnitude(q.R), value("反射声压幅值", p.pa * phy.magnitude(q.R), "Pa")),
+      ],
+    },
+    { annotations: ["pa*abs(RR)"] },
   );
 }
 export function e369(p: Values) {
