@@ -29,7 +29,7 @@ const lectureRoutes = Object.fromEntries(
         default: () => (
           <>
             <p className="mooc-source">
-              对应慕课：{lecture.moocSource} · {lecture.classNumber}
+              参考课件：{lecture.moocSource} · {lecture.classNumber}
             </p>
             <P1Lecture lecture={lecture} />
           </>
@@ -216,7 +216,7 @@ export default function Lab() {
           </h1>
           {!LectureRoute && (
             <p className="mooc-source">
-              {lecture ? "对应慕课：" : "内容来源："}
+              {lecture ? "参考课件：" : "内容来源："}
               {lecture?.moocSource ?? topic.source}
               {lecture ? ` · ${lecture.classNumber}` : ""}
             </p>
