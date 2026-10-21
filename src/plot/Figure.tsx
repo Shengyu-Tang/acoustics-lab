@@ -110,9 +110,11 @@ export function Line({
     return (
       <g data-plot-series="true" fill={color} stroke="black" strokeWidth=".5">
         {series.points.map(([x, y], i) => {
+          if ((panel.xscale === "log" && x <= 0) || (panel.yscale === "log" && y <= 0)) return null;
           const [px, py] = xy([x, y]),
             [base] = xy([panel.xlim[0], y]),
             h = (AH * 0.7) / (panel.ylim[1] - panel.ylim[0]);
+          if (![px, py, base, h].every(Number.isFinite)) return null;
           return (
             <rect
               key={i}
@@ -129,6 +131,7 @@ export function Line({
     return (
       <g data-plot-series="true" fill={color} stroke="black" strokeWidth="0.5">
         {series.points.map(([x, y], i) => {
+          if ((panel.xscale === "log" && x <= 0) || (panel.yscale === "log" && y <= 0)) return null;
           const [, py] = xy([x, y]),
             base = xy([x, panel.yscale === "log" ? panel.ylim[0] : 0])[1],
             left = xy([
@@ -137,6 +140,7 @@ export function Line({
             ])[0],
             right = xy([x + 0.35, y])[0],
             barWidth = right - left;
+          if (![py, base, left, right].every(Number.isFinite)) return null;
           return (
             <rect
               key={i}
