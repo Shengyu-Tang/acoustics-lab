@@ -80,15 +80,17 @@ export default function P1Lecture({ lecture: l }: { lecture: Lecture }) {
       </section>
       <section id="principle">
         <h2>原理</h2>
-        {l.formulas.map((f) => (
+        {l.formulas.map((f, i) => (
           <div className="numbered-formula" key={f.number}>
             <div className="formula-line">
               <MathText tex={f.tex} />
               <span>({f.number})</span>
             </div>
-            <p>
-              <MathProse text={f.meaning} />
-            </p>
+            {!l.formulas.slice(0, i).some((previous) => previous.meaning === f.meaning) && (
+              <p>
+                <MathProse text={f.meaning} />
+              </p>
+            )}
           </div>
         ))}
       </section>
