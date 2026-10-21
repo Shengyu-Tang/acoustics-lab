@@ -83,7 +83,7 @@ export function examplePanel(id: string, p: Values, original: Panel, e: P1Exampl
           "时间 t (s)",
           "归一化位移 x/x₀ (—)",
           [0, finish],
-          [0, 1.4],
+          [0, Math.max(1.4, C1 * 1.08)],
           [
             line(
               "本题设计 x(t)/x₀",
