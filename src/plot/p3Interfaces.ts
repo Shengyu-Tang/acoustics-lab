@@ -228,7 +228,15 @@ export function normalFigure(id: string, p: Values, t = 0): Panel[] {
           "--",
           1201,
         ),
-        curve("平均总能量密度", () => p.pa ** 2 / (p.Z1 * p.c), [0, 3], "linspace(0,3,1201)", "pa^2/(Z1*c)*ones(size(x))", ":", 1201),
+        curve(
+          "平均总能量密度",
+          () => p.pa ** 2 / (p.Z1 * p.c),
+          [0, 3],
+          "linspace(0,3,1201)",
+          "pa^2/(Z1*c)*ones(size(x))",
+          ":",
+          1201,
+        ),
       ],
       setup,
       {},
@@ -506,6 +514,10 @@ export function obliqueFigure(id: string, p: Values, t = 0): Panel[] {
           ),
         ],
         setup,
+        {
+          responseNote:
+            "仅 c₂ > c₁ 且入射角超过临界角时存在倏逝穿透深度；其余条件为传播波，不绘制深度曲线。",
+        },
       ),
     ];
   if (id === "3.6.11-1")

@@ -402,6 +402,7 @@ export function Axes({
       {noteLines.map((text, i) => (
         <text
           key={`note-${i}`}
+          data-response-note="true"
           x={W / 2}
           y={17 + (titleLines.length + i) * 16}
           textAnchor="middle"
