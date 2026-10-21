@@ -38,6 +38,9 @@ const lectureRoutes = Object.fromEntries(
     }),
   ]),
 );
+const lectureTopics = topics.filter(
+  (t) => lectureRoutes[t.id] || ["1.2.4", "1.2.5"].includes(t.id),
+);
 export const sections = [
   ["key-points", "本讲要点"],
   ["principle", "原理"],
@@ -59,7 +62,7 @@ export function ChapterTree({ id, onChoose }: { id: string; onChoose: () => void
           placeholder="编号或标题"
         />
       </label>
-      {chapters.slice(1).map((name, i) => (
+      {chapters.slice(1, 8).map((name, i) => (
         <details
           key={name}
           open={search ? true : topics.find((t) => t.id === id)?.chapter === i + 1}
@@ -68,7 +71,7 @@ export function ChapterTree({ id, onChoose }: { id: string; onChoose: () => void
             第 {i + 1} 章　{name}
           </summary>
           <ol>
-            {topics
+            {lectureTopics
               .filter((t) => t.chapter === i + 1 && `${t.id} ${t.title}`.includes(search))
               .map((t) => (
                 <li key={t.id}>
@@ -181,7 +184,7 @@ export default function Lab() {
   const lecture = topic.id === "1.2.4" ? lecture124 : topic.id === "1.2.5" ? lecture125 : null;
   const LectureRoute = lectureRoutes[topic.id];
   const [open, setOpen] = useState(false),
-    index = topics.findIndex((t) => t.id === topic.id);
+    index = lectureTopics.findIndex((t) => t.id === topic.id);
   return (
     <>
       <Header />
@@ -232,15 +235,15 @@ export default function Lab() {
           )}
           <div className="lesson-pagination">
             {index > 0 ? (
-              <a href={`#/lab?topic=${topics[index - 1].id}`}>
-                上一讲：{topics[index - 1].id} {topics[index - 1].title}
+              <a href={`#/lab?topic=${lectureTopics[index - 1].id}`}>
+                上一讲：{lectureTopics[index - 1].id} {lectureTopics[index - 1].title}
               </a>
             ) : (
               <span />
             )}
-            {index < topics.length - 1 && (
-              <a href={`#/lab?topic=${topics[index + 1].id}`}>
-                下一讲：{topics[index + 1].id} {topics[index + 1].title}
+            {index >= 0 && index < lectureTopics.length - 1 && (
+              <a href={`#/lab?topic=${lectureTopics[index + 1].id}`}>
+                下一讲：{lectureTopics[index + 1].id} {lectureTopics[index + 1].title}
               </a>
             )}
           </div>
