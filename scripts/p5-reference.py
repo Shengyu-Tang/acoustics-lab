@@ -16,7 +16,7 @@ def solve(id,p):
             return .11*q/(1+q)+44*q/(4100+q)+.000275*q+.003
         def loss(f):return 20*math.log10(p['r'])+ab(f)*p['r']/1000
         chosen=next((f for f in sorted([p['low'],p['high']]) if beam(f)<=p['beamLimit'] and loss(f)<=p['lossLimit']),0)
-        return [beam(p['low']),ab(p['high']),loss(p['high']),beam(p['high']),chosen]
+        return [beam(p['low']),ab(p['high']),loss(p['high']),beam(p['high']),chosen/1000]
     if id=='building':
         ab=lambda f,d:absorption(f,d,p['sigma'],p['rho'],p['c'])
         d=next((mm/1000 for mm in range(20,math.floor(p['maximum']*1000+1e-9)+1) if min(ab(f,mm/1000) for f in range(500,2001,10))>p['minimum']),0)

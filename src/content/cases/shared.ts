@@ -34,11 +34,43 @@ export function problem(data: EngineeringProblem): EngineeringProblem {
   };
 }
 function casePanel(q: Panel): Panel {
+  // Use readable engineering prefixes without changing the SI parameter block.
+  // MATLAB y expressions are evaluated against the displayed x coordinate, so
+  // convert that coordinate back to Hz inside each expression as well.
+  if (/频率.*\(Hz\)/.test(q.xlabel) && q.xlim[1] >= 1000) {
+    const factor = q.xlim[1] >= 1e6 ? 1e6 : 1000;
+    const m = q.matlabModel!;
+    q = {
+      ...q,
+      xlabel: q.xlabel.replace("(Hz)", factor === 1e6 ? "(MHz)" : "(kHz)"),
+      xlim: q.xlim.map((n) => n / factor) as [number, number],
+      series: q.series?.map((s) => ({ ...s, points: s.points.map(([x, y]) => [x / factor, y]) })),
+      annotations: q.annotations?.map((a) =>
+        a.axis === "x" ? { ...a, value: a.value / factor } : a,
+      ),
+      bands: q.bands?.map((b) => ({ ...b, from: b.from / factor, to: b.to / factor })),
+      textLabels: q.textLabels?.map((t) => ({ ...t, x: t.x / factor })),
+      matlabModel: {
+        ...m,
+        xlim: `(${m.xlim})/${factor}`,
+        series: m.series.map((s) => ({
+          x: `(${s.x})/${factor}`,
+          y: s.y.replace(/\bx\b/g, `(x*${factor})`),
+        })),
+        annotations: m.annotations?.map((v, i) =>
+          q.annotations?.[i].axis === "x" ? `(${v})/${factor}` : v,
+        ),
+        bands: m.bands?.map((b) => ({ from: `(${b.from})/${factor}`, to: `(${b.to})/${factor}` })),
+        textLabels: m.textLabels?.map((t) => ({ ...t, x: `(${t.x})/${factor}` })),
+      },
+    };
+  }
   let lane = 0;
   const ylim = q.coordinateY ? axisTicks(q.ylim).limits : q.ylim;
   return {
     ...q,
     ylim,
+    insetLegend: true,
     staggeredAnnotations: true,
     matlabModel: {
       ...q.matlabModel!,

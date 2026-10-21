@@ -79,10 +79,10 @@ export default problem({
     question(
       "selected",
       "(5) 选定频率（无可行方案填 0）",
-      "Hz",
+      "kHz",
       String.raw`f_* = \min\{f_i:\beta_i\leq\beta_{lim},TL_i\leq L_{lim}\}`,
-      "chosen",
-      select,
+      "chosen/1000",
+      (p) => select(p) / 1000,
       (p) =>
         `低频损失 ${fmt(spreadingLoss(p.r, p.low))} dB，高频损失 ${fmt(spreadingLoss(p.r, p.high))} dB；分别与 ${p.beamLimit}°、${p.lossLimit} dB 比较。`,
     ),
@@ -93,7 +93,7 @@ export default problem({
   ],
   judgment: (p) =>
     select(p)
-      ? `选择 ${fmt(select(p))} Hz；两项指标均满足。若用于回波探测，仍需将两倍传播损失、目标强度与噪声纳入完整预算。`
+      ? `选择 ${fmt(select(p) / 1000)} kHz；两项指标均满足。若用于回波探测，仍需将两倍传播损失、目标强度与噪声纳入完整预算。`
       : "两个频率均未通过双重指标，应增大孔径或重新分配传播预算。",
   plot: (p) => {
     const selected = select(p);

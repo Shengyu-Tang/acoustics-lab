@@ -5,8 +5,8 @@
       "case": "ocean",
       "figure": 1,
       "xlim": [
-        10000,
-        80000
+        10,
+        80
       ],
       "ylim": [
         0,
@@ -18,8 +18,8 @@
       "case": "building",
       "figure": 1,
       "xlim": [
-        500,
-        2000
+        0.5,
+        2
       ],
       "ylim": [
         0.4,
@@ -83,8 +83,8 @@
       "case": "measurement",
       "figure": 1,
       "xlim": [
-        100,
-        20000
+        0.1,
+        20
       ],
       "ylim": [
         -1,
@@ -122,8 +122,8 @@
       "case": "duct",
       "figure": 2,
       "xlim": [
-        200,
-        2000
+        0.2,
+        2
       ],
       "ylim": [
         0,
@@ -148,8 +148,8 @@
       "case": "grin-lens",
       "figure": 2,
       "xlim": [
-        30000,
-        100000
+        30,
+        100
       ],
       "ylim": [
         10,
