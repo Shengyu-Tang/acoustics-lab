@@ -37,7 +37,7 @@ export default function InstrumentExample() {
   }
   return (
     <ExampleWorksheet
-      example={example}
+      example={{ ...example, id: "1.2.4-E1" }}
       p={p}
       setParameter={(key, value) => setP({ ...p, [key]: value })}
       solution={s}
@@ -45,7 +45,7 @@ export default function InstrumentExample() {
       judgment={judgment}
       note="这里反解当前工作点的精确力阻阈值；接近谐振时可用 $R_m \\approx F_0/(\\omega x_{\\rm lim})$ 估算。线性、单自由度、黏性阻尼模型忽略船体多模态耦合。"
       panel={panel}
-      caption="图 A-1　仪器支架位移幅频曲线、泵转频范围与当前工作点"
+      caption="图 1.2.4-E1　仪器支架位移幅频曲线、泵转频范围与当前工作点"
       exportScript={exportScript}
     />
   );

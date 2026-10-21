@@ -36,7 +36,7 @@ export default function BandwidthExample() {
   }
   return (
     <ExampleWorksheet
-      example={example}
+      example={{ ...example, id: "1.2.5-E1" }}
       p={p}
       setParameter={(key, value) =>
         setP((old) => {
@@ -52,7 +52,7 @@ export default function BandwidthExample() {
       judgment={judgment}
       note="采用线性黏性阻尼单自由度模型，扫频时激励力幅值保持不变。图为识别模型在所需恒力下的功率曲线；半功率标线为模型值，测量不一致时不会强行把实测端点画在模型曲线上。"
       panel={panel}
-      caption="图 B-1　识别模型的平均输入功率、目标振速工作点与半功率带宽"
+      caption="图 1.2.5-E1　识别模型的平均输入功率、目标振速工作点与半功率带宽"
       exportScript={exportScript}
     />
   );
