@@ -1460,3 +1460,18 @@ label:has(input[type="radio"]) {
 main a:not(svg a) {
   min-width: 32px;
 }
+.number-field-error {
+  color: #a51d25;
+  font-size: 12px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.compact-parameter > .number-field-error,
+.p2-converter > .number-field-error,
+.comparison-controls .number-field-error {
+  grid-column: 1 / -1;
+  order: 1;
+}
+input[aria-invalid="true"] {
+  border-color: #a51d25;
+}

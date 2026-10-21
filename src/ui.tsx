@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useRef, type ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
+import { NumberField } from "./Parameter";
 const TabsContext = createContext({ value: "", onValueChange: (_s: string) => {} });
 export function Tabs({
   value,
@@ -101,49 +102,17 @@ export function NumericInput({
   id: string;
   "aria-label": string;
 }) {
-  const cancel = useRef(false);
-  const [draft, setDraft] = useState(String(value)),
-    [editing, setEditing] = useState(false);
   const snap = (n: number) =>
     Number(Math.min(max, Math.max(min, min + Math.round((n - min) / step) * step)).toFixed(9));
-  function commit() {
-    if (cancel.current) {
-      cancel.current = false;
-      setEditing(false);
-      return;
-    }
-    const n = Number(draft);
-    if (draft.trim() !== "" && Number.isFinite(n)) onValueChange(snap(n));
-    setEditing(false);
-  }
   return (
-    <input
-      {...props}
-      type="number"
+    <NumberField
+      id={props.id}
+      label={props["aria-label"]}
       min={min}
       max={max}
       step={step}
-      value={editing ? draft : value.toPrecision(2)}
-      onFocus={() => {
-        setDraft(String(Number(value.toFixed(9))));
-        setEditing(true);
-      }}
-      onChange={(e) => {
-        const raw = e.target.value;
-        setDraft(raw);
-        setEditing(true);
-        const n = Number(raw);
-        if (raw.trim() !== "" && Number.isFinite(n) && n >= min && n <= max) onValueChange(snap(n));
-      }}
-      onBlur={commit}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") e.currentTarget.blur();
-        if (e.key === "Escape") {
-          cancel.current = true;
-          setEditing(false);
-          e.currentTarget.blur();
-        }
-      }}
+      value={value}
+      onChange={(n) => onValueChange(snap(n))}
     />
   );
 }
