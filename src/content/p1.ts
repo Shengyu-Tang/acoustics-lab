@@ -5,6 +5,7 @@ import type { Panel } from "../plot/types";
 import { modelsFor } from "../plot/matlabModels";
 import { examplePanel } from "../plot/examplePanels";
 import { matlabReadouts } from "../plot/matlabReadouts";
+import { figureIndependence } from "./figureIndependence";
 export type Values = Record<string, number>;
 export type Ask = {
   key: string;
@@ -86,6 +87,7 @@ export function lecture(
     ...data,
     figures: data.figures.map((f) => ({
       ...f,
+      ...figureIndependence[f.number],
       matlabModel: modelsFor,
       plot: withFigureAxes(
         f.number,
@@ -131,7 +133,7 @@ export const fmt = (n: number) => {
     return String(rounded);
   const [mantissa, exponent] = rounded.toExponential().split("e");
   const digits = "⁰¹²³⁴⁵⁶⁷⁸⁹";
-  return `${mantissa}×10${String(Number(exponent)).replace(/[-\d]/g, c => c === "-" ? "⁻" : digits[Number(c)])}`;
+  return `${mantissa}×10${String(Number(exponent)).replace(/[-\d]/g, (c) => (c === "-" ? "⁻" : digits[Number(c)]))}`;
 };
 export const mechanics = [
   parameter("M", "质量", "M", "kg", 0.1, 50, 0.1),

@@ -52,6 +52,9 @@ const lecture: Lecture = {
     },
     {
       number: "1.2.4-2",
+      independentOf: ["F0"],
+      dimensionlessComparison:
+        "机械阻抗 Zₘ = Rₘ + j(ωM − D/ω) 只由系统参数和频率决定，与激励力幅值无关。",
       title: "机械阻抗的模、力阻与电抗",
       plot: (p) => [impedancePanel(p)],
       rows: 1,

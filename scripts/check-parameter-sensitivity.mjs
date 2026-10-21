@@ -91,15 +91,14 @@ for (const l of lectures) {
       ];
       for (const context of contexts)
         for (const t of times) {
-          const plotted = (p) => [
-            ...f.plot(p, t).flatMap((panel) => numbers(panel, amplitude)),
-            ...(amplitude ? (l.readouts?.(p) ?? []).map((r) => r[1]) : []),
-          ];
+          const plotted = (p) => [...f.plot(p, t).flatMap((panel) => numbers(panel, true))];
           const baseline = plotted(context);
           for (const v of values)
             if (changed(baseline, plotted({ ...context, [d.key]: v }))) sensitive = true;
         }
       lectureSensitive ||= sensitive;
+      if (!sensitive)
+        failures.push(`${l.id} -- ${d.key} -- ${f.number}: invariant figure without independentOf`);
     }
     if (!lectureSensitive)
       failures.push(`${l.id} -- ${d.key}: invariant plotted data in every figure`);

@@ -55,6 +55,11 @@ export default function SampleLecture({ lecture: l }: { lecture: Lecture }) {
               caption={`图 ${l.figures[1].number}　${l.figures[1].title}`}
               name={l.figures[1].number}
             />
+            {l.figures[1].dimensionlessComparison && (
+              <p className="figure-independence">
+                <MathProse text={l.figures[1].dimensionlessComparison} />
+              </p>
+            )}
           </div>
           <div className="simulation-sidebar">
             <fieldset className="parameter-panel">

@@ -9,6 +9,8 @@ export type Lecture = {
   keyPoints: string[];
   formulas: { number: string; tex: string; meaning: string }[];
   figures: {
+    independentOf?: string[];
+    dimensionlessComparison?: string;
     matlabModel?: typeof import("../plot/matlabModels").modelsFor;
     number: string;
     title: string;

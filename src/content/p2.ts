@@ -6,6 +6,7 @@ import type { Panel, Series, MatlabModel } from "../plot/types";
 import { sample } from "../plot/types";
 import { parameter } from "./p1";
 import { answerTitle } from "../plot/answerTitle";
+import { figureIndependence } from "./figureIndependence";
 export { parameter, fmt } from "./p1";
 export const defaults = { rho: 1.21, c: 343, f: 1000, pa: 1 };
 export const params = {
@@ -84,6 +85,7 @@ export function figure(
   return {
     number,
     title,
+    ...figureIndependence[number],
     plot,
     rows,
     cols,
