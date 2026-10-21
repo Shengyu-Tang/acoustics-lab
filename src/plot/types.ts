@@ -81,6 +81,8 @@ export type Panel = {
   field?: Field;
   legend?: boolean;
   annotationHeader?: boolean;
+  /** Worksheet guide-line explanations belong in the caption, not above the axes. */
+  annotationLabelsInCaption?: boolean;
   /** Give each MATLAB xline label its own lane, below the region captions. */
   staggeredAnnotations?: boolean;
   annotations?: {

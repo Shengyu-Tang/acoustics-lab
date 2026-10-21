@@ -51,6 +51,11 @@ export default function ExampleWorksheet({
   const [answers, setAnswers] = useState<Record<string, string>>({}),
     [submitted, setSubmitted] = useState(false),
     [hint, setHint] = useState(0);
+  const guideCaption = (q: Panel) =>
+    [
+      ...(q.annotations ?? []).filter((a) => a.axis === "x").map((a) => a.label),
+      ...(q.bands ?? []).map((b) => b.label),
+    ].join("；");
   return (
     <article className="calculation-example">
       <h3>
@@ -188,15 +193,15 @@ export default function ExampleWorksheet({
         </div>
       </details>
       <Figure
-        panels={[panel]}
-        caption={`${caption.split("　")[0]}　${panel.title}`}
+        panels={[{ ...panel, annotationHeader: false, annotationLabelsInCaption: true }]}
+        caption={`${caption.split("　")[0]}　${panel.title}${guideCaption(panel) ? `；${guideCaption(panel)}` : ""}`}
         name={example.id}
       />
       {additionalPanels.map((q, i) => (
         <Figure
           key={i}
-          panels={[q]}
-          caption={`图 ${example.id}-${i + 2}　${q.title}`}
+          panels={[{ ...q, annotationHeader: false, annotationLabelsInCaption: true }]}
+          caption={`图 ${example.id}-${i + 2}　${q.title}${guideCaption(q) ? `；${guideCaption(q)}` : ""}`}
           name={`${example.id}-${i + 2}`}
         />
       ))}

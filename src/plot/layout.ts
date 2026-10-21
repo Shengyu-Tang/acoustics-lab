@@ -15,6 +15,7 @@ export function textLines(text: string, width: number): string[] {
 
 /** Place vertical-line labels to their right, and band labels at their center, inside the axes. */
 export function labelLanes(panel: Panel, left: number, width: number, xs: (n: number) => number) {
+  if (panel.annotationLabelsInCaption) return [];
   if (panel.annotationHeader) {
     // A legend-style readout decouples close frequency labels from their lines.
     const texts = [
