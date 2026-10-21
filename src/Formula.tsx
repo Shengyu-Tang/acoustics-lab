@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import katex from "katex";
-import "katex/dist/katex.min.css";
+import "katex/dist/katex-swap.min.css";
 import equations from "./equations.json";
 export default function Formula({ kind }: { kind: string }) {
   const rows = useMemo(

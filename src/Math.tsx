@@ -1,5 +1,5 @@
 import katex from "katex";
-import "katex/dist/katex.min.css";
+import "katex/dist/katex-swap.min.css";
 export { MathProse } from "./MathProse";
 export default function MathText({ tex }: { tex: string }) {
   return (
