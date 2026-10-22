@@ -1,0 +1,4392 @@
+{
+  "validatedAt": "2026-10-22T00:38:06.072Z",
+  "branch": "fix/bug-audit-1",
+  "applicationFixCommit": "36be842",
+  "verificationCommit": "bb10417",
+  "fullyAccepted": false,
+  "reason": "Fresh MATLAB processes time out before the first batch command; two-set MATLAB validation remains incomplete.",
+  "checks": [
+    {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "log": "outputs/bug-audit-1/round2-npm-ci.log",
+      "sha256": "4d35791add0044eb6f3702d64a9d9ad783a2307745dd1aa4ded3820b0503f8e9"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "log": "outputs/bug-audit-1/round2-npm-test.log",
+      "sha256": "9fe40427869c94519c0538df991a0a708b7f24e6043d503ebbf7fda2e7abac4c"
+    },
+    {
+      "command": "node scripts/check-animations.mjs",
+      "exitCode": 0,
+      "log": "outputs/bug-audit-1/round2-animations.log",
+      "sha256": "3640736590f4799bd77b6cea6524f157a816a1e0956eaa5de8ea3c24d6b5ec08"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "log": "outputs/bug-audit-1/round2-build.log",
+      "sha256": "7a3e5ea001b4fac90a1e9288eb58ce72571a746f8248b2f63eb2f94d3acfc4bf"
+    },
+    {
+      "command": "node scripts/check-browser.mjs",
+      "exitCode": 0,
+      "log": "outputs/bug-audit-1/round2-browser-final.log",
+      "sha256": "07697bfe7295f02517cb847fb129651f17b1edcc35bda2eaee3e8fecabd4a974"
+    }
+  ],
+  "model": {
+    "lectures": 79,
+    "states": 879,
+    "worksheets": 88,
+    "answers": 2204,
+    "duplicateEngineeringLectures": [
+      "1.1.1",
+      "1.1.2",
+      "1.1.3",
+      "1.1.4",
+      "1.1.5",
+      "1.2.1",
+      "1.2.2",
+      "1.2.3",
+      "2.1",
+      "2.2",
+      "2.3",
+      "2.4",
+      "3.1.1",
+      "3.1.2",
+      "3.1.3",
+      "3.1.4",
+      "3.1.5",
+      "3.1.6",
+      "3.1.7",
+      "3.1.8",
+      "3.10.1",
+      "3.10.2",
+      "3.10.3",
+      "3.10.4",
+      "3.10.5",
+      "3.2.1",
+      "3.2.2",
+      "3.3.1",
+      "3.3.2",
+      "3.3.3",
+      "3.4.1",
+      "3.4.2",
+      "3.4.3",
+      "3.4.4",
+      "3.4.5",
+      "3.4.6",
+      "3.5.1",
+      "3.5.2",
+      "3.6.1",
+      "3.6.10",
+      "3.6.11",
+      "3.6.12",
+      "3.6.2",
+      "3.6.3",
+      "3.6.4",
+      "3.6.5",
+      "3.6.6",
+      "3.6.7",
+      "3.6.8",
+      "3.6.9",
+      "3.7.1",
+      "3.7.2",
+      "3.8.1",
+      "3.8.2",
+      "3.8.3",
+      "3.8.4",
+      "3.8.5",
+      "3.9.1",
+      "3.9.2",
+      "3.9.3",
+      "4.1",
+      "4.2.1",
+      "4.2.2",
+      "4.2.3",
+      "4.3",
+      "4.4.1",
+      "4.4.2",
+      "4.4.3",
+      "4.4.4",
+      "5.1",
+      "5.2",
+      "5.3",
+      "6.1",
+      "6.2",
+      "7.1",
+      "7.2",
+      "7.3"
+    ],
+    "failures": []
+  },
+  "browser": {
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "routes": {
+      "390": 102,
+      "1440": 102
+    },
+    "sliders": {
+      "390": 984,
+      "1440": 984
+    },
+    "numbers": {
+      "390": 672,
+      "1440": 672
+    },
+    "worksheets": {
+      "390": 88,
+      "1440": 88
+    },
+    "animations": {
+      "390": 38,
+      "1440": 38
+    },
+    "errors": [],
+    "failures": [],
+    "downloads": 320,
+    "matlabDownloads": 314
+  },
+  "reviewedFigures": [
+    {
+      "lecture": "1.1.2",
+      "number": "1.1.2-2",
+      "sensitiveTo": [
+        "M",
+        "D"
+      ],
+      "independentOf": [
+        "A"
+      ],
+      "reason": "相位比较：每个矢量均除以其自身幅值。"
+    },
+    {
+      "lecture": "3.1.3",
+      "number": "3.1.3-1",
+      "sensitiveTo": [
+        "distortion"
+      ],
+      "independentOf": [
+        "pa",
+        "rho",
+        "c"
+      ],
+      "reason": "模型假设的无量纲比较；小振幅近似的物理适用范围另图展示。"
+    },
+    {
+      "lecture": "3.1.3",
+      "number": "3.1.3-2",
+      "sensitiveTo": [],
+      "independentOf": [
+        "pa",
+        "rho",
+        "c",
+        "distortion"
+      ],
+      "reason": "本图展示三条物理定律的推导路线，几何路径由假设开关决定，不是数值波形。"
+    },
+    {
+      "lecture": "3.2.1",
+      "number": "3.2.1-2",
+      "sensitiveTo": [],
+      "independentOf": [
+        "pa",
+        "f",
+        "c"
+      ],
+      "reason": "本图是坐标系与拉普拉斯算符的几何示意，仅随坐标系选择改变。"
+    },
+    {
+      "lecture": "3.4.4",
+      "number": "3.4.4-1",
+      "sensitiveTo": [],
+      "independentOf": [
+        "pa",
+        "rho",
+        "c",
+        "f"
+      ],
+      "reason": "本图比较列出的固定示例材料值；当前介质参数用于后面的传播与能流图。"
+    },
+    {
+      "lecture": "3.4.6",
+      "number": "3.4.6-1",
+      "sensitiveTo": [],
+      "independentOf": [
+        "n",
+        "sourceLevel",
+        "rho",
+        "c"
+      ],
+      "reason": "本图列出固定空气声压级的示意量级，不是当前声源的计算结果。"
+    },
+    {
+      "lecture": "3.5.2",
+      "number": "3.5.2-2",
+      "sensitiveTo": [
+        "f",
+        "c",
+        "wavecount",
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "independentOf": [
+        "azimuth",
+        "elevation"
+      ],
+      "reason": "本图各平面波使用独立的方位角 φ₁…φ₄；单列波的方位角和俯仰角用于上一张三维图。"
+    },
+    {
+      "lecture": "3.6.11",
+      "number": "3.6.11-2",
+      "sensitiveTo": [],
+      "independentOf": [
+        "radius",
+        "source",
+        "launch"
+      ],
+      "reason": "此图用于单独比较对应物理关系；所列参数在本图公式中不出现，相关影响见其他图。"
+    },
+    {
+      "lecture": "3.9.1",
+      "number": "3.9.1-1",
+      "sensitiveTo": [
+        "argument"
+      ],
+      "independentOf": [],
+      "reason": ""
+    },
+    {
+      "lecture": "4.3",
+      "number": "4.3-2",
+      "sensitiveTo": [],
+      "independentOf": [
+        "f",
+        "d",
+        "Q"
+      ],
+      "reason": "本图单独比较小间距、远场极限的无量纲方向函数；尺度与频率对绝对声场和功率的影响见另两图。"
+    },
+    {
+      "lecture": "4.3",
+      "number": "4.3-3",
+      "sensitiveTo": [
+        "f",
+        "d"
+      ],
+      "independentOf": [
+        "Q"
+      ],
+      "reason": "两种辐射功率均正比于单源强度平方，取比值后强度消去；绝对声场见第一图。"
+    },
+    {
+      "lecture": "4.4.3",
+      "number": "4.4.3-2",
+      "sensitiveTo": [],
+      "independentOf": [
+        "f",
+        "a"
+      ],
+      "reason": "此图是自变量 ka sinθ 的通用贝塞尔核，不依赖单独的频率或半径；实际孔径与频率对方向性的影响见上一图。"
+    },
+    {
+      "lecture": "5.2",
+      "number": "5.2-1",
+      "sensitiveTo": [],
+      "independentOf": [
+        "a",
+        "f"
+      ],
+      "reason": "本图固定四组无量纲尺寸以比较方向函数；当前尺寸与绝对散射功率见下图及例题。"
+    },
+    {
+      "lecture": "6.2",
+      "number": "6.2-2",
+      "sensitiveTo": [
+        "f"
+      ],
+      "independentOf": [
+        "xB",
+        "yB",
+        "Q"
+      ],
+      "reason": "本图比较同一固定孔径的收发方向函数；两个点的位置与源强只影响上一图的传播信号。"
+    },
+    {
+      "lecture": "7.3",
+      "number": "7.3-1",
+      "sensitiveTo": [
+        "res",
+        "react"
+      ],
+      "independentOf": [
+        "d",
+        "sigma",
+        "f"
+      ],
+      "reason": "该等值线直接比较给定表面阻抗实虚部；材料厚度、流阻率和频率用于下一图的多孔层预测。"
+    }
+  ],
+  "firstMath": [
+    {
+      "id": "1.1.2",
+      "width": 1440,
+      "rows": 3,
+      "rendered": 3,
+      "visible": true,
+      "fontDisplay": [
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap"
+      ],
+      "pendingFonts": 20,
+      "heldFonts": 2
+    },
+    {
+      "id": "1.2.4",
+      "width": 1440,
+      "rows": 4,
+      "rendered": 4,
+      "visible": true,
+      "fontDisplay": [
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap"
+      ],
+      "pendingFonts": 20,
+      "heldFonts": 2
+    },
+    {
+      "id": "3.6.9",
+      "width": 1440,
+      "rows": 4,
+      "rendered": 4,
+      "visible": true,
+      "fontDisplay": [
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap"
+      ],
+      "pendingFonts": 20,
+      "heldFonts": 2
+    },
+    {
+      "id": "1.1.2",
+      "width": 390,
+      "rows": 3,
+      "rendered": 3,
+      "visible": true,
+      "fontDisplay": [
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap"
+      ],
+      "pendingFonts": 20,
+      "heldFonts": 2
+    },
+    {
+      "id": "1.2.4",
+      "width": 390,
+      "rows": 4,
+      "rendered": 4,
+      "visible": true,
+      "fontDisplay": [
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap"
+      ],
+      "pendingFonts": 20,
+      "heldFonts": 2
+    },
+    {
+      "id": "3.6.9",
+      "width": 390,
+      "rows": 4,
+      "rendered": 4,
+      "visible": true,
+      "fontDisplay": [
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap",
+        "swap"
+      ],
+      "pendingFonts": 20,
+      "heldFonts": 2
+    }
+  ],
+  "visualReview": {
+    "boardsReviewed": 22,
+    "pngs": 128,
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "observations": [
+      "Reviewed default and edited states of the 15 named figures plus the evanescent-depth figure.",
+      "Reviewed sample numbering and 2.1 / 3.1.4 worksheet captions.",
+      "Reviewed all nine cases, including extra plots: readable prefixes, inset desktop legends, mobile legends below axes, nearby right-axis labels.",
+      "No additional visual defect found in these captures."
+    ],
+    "boards": [
+      "outputs\\bug-audit-1\\review-boards\\1440-00.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-01.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-02.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-03.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-04.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-05.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-06.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-07.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-08.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-09.png",
+      "outputs\\bug-audit-1\\review-boards\\1440-10.png",
+      "outputs\\bug-audit-1\\review-boards\\390-00.png",
+      "outputs\\bug-audit-1\\review-boards\\390-01.png",
+      "outputs\\bug-audit-1\\review-boards\\390-02.png",
+      "outputs\\bug-audit-1\\review-boards\\390-03.png",
+      "outputs\\bug-audit-1\\review-boards\\390-04.png",
+      "outputs\\bug-audit-1\\review-boards\\390-05.png",
+      "outputs\\bug-audit-1\\review-boards\\390-06.png",
+      "outputs\\bug-audit-1\\review-boards\\390-07.png",
+      "outputs\\bug-audit-1\\review-boards\\390-08.png",
+      "outputs\\bug-audit-1\\review-boards\\390-09.png",
+      "outputs\\bug-audit-1\\review-boards\\390-10.png"
+    ],
+    "manifest": "outputs/bug-audit-1/review-boards/manifest.json",
+    "firstMathScreenshots": 6,
+    "matlabFreshPngs": 0
+  },
+  "matlab": {
+    "command": "C:\\Program Files\\MATLAB\\R2024b\\bin\\matlab.exe -batch",
+    "oneProcessPerScript": true,
+    "timeoutSeconds": 300,
+    "prepared": 208,
+    "passed": 0,
+    "startupTimeouts": 2,
+    "unattempted": 206,
+    "attempts": [
+      {
+        "file": "outputs\\bug-audit-1\\round2-matlab\\exports\\1.1.2-2-set1.m",
+        "hash": "980a07c8ba4708eac125681f3c621dc987a6c4ac0cffe91a6eb73b9dfff01f90",
+        "code": 1,
+        "timedOut": true,
+        "started": false,
+        "seconds": 300.126,
+        "pngBytes": 0,
+        "warnings": [],
+        "passed": false,
+        "harness": 2
+      },
+      {
+        "file": "outputs\\bug-audit-1\\round2-matlab\\exports\\1.1.2-2-set2.m",
+        "hash": "f9999d2999271670c0ba4615f979d244de08b1f8d7799f681c83104963f96df9",
+        "code": 1,
+        "timedOut": true,
+        "started": false,
+        "seconds": 300.124,
+        "pngBytes": 0,
+        "warnings": [],
+        "passed": false,
+        "harness": 2
+      }
+    ],
+    "files": [
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_ocean-worksheet-0-set1.m",
+        "sha256": "cc8990d3425d7f81275352521440078f913b02d3370df7044bea6c45f0bc69c7",
+        "route": "#/cases?project=ocean",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1025,
+          "c": 1500,
+          "f": 50000,
+          "a": 0.05,
+          "low": 30000,
+          "high": 50000,
+          "r": 1000,
+          "beamLimit": 22,
+          "lossLimit": 80
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_ocean-worksheet-0-set2.m",
+        "sha256": "92391e665f4560839d0209169eba8db84a68f8d799ca141fc8248911633d7fba",
+        "route": "#/cases?project=ocean",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1025,
+          "c": 1550,
+          "f": 50000,
+          "a": 0.056,
+          "low": 33900,
+          "high": 56500,
+          "r": 1130,
+          "beamLimit": 25,
+          "lossLimit": 90
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_building-worksheet-0-set1.m",
+        "sha256": "d50e91dfe86b55c2167fc807cd1efacdd68a759e2677ff9f68846fc41be51292",
+        "route": "#/cases?project=building",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "d": 0.05,
+          "sigma": 10000,
+          "minimum": 0.6,
+          "maximum": 0.15
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_building-worksheet-0-set2.m",
+        "sha256": "9dd11b2a652f445355e898f67c8347c68a483ef074b6bfe3e80b6f8e67a84006",
+        "route": "#/cases?project=building",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.3,
+          "c": 350,
+          "f": 1000,
+          "d": 0.05600000000000001,
+          "sigma": 11300,
+          "minimum": 0.68,
+          "maximum": 0.131
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_industry-worksheet-0-set1.m",
+        "sha256": "010e3625fdd7b84c62906a920f53f4d38345ed8da53c20c5097da3ffdd34b312",
+        "route": "#/cases?project=industry",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 31.666666666666668,
+          "M": 10,
+          "D": 395000,
+          "Rm": 80,
+          "F0": 50,
+          "n": 1900,
+          "limit": 0.001,
+          "newD": 40000,
+          "tLimit": 0.3
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_industry-worksheet-0-set2.m",
+        "sha256": "ced4967d6cc79586bc384757788aa635093a916c587ec162c6b7e24598f05558",
+        "route": "#/cases?project=industry",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 31.666666666666668,
+          "M": 11.3,
+          "D": 446000,
+          "Rm": 90,
+          "F0": 56,
+          "n": 2147,
+          "limit": 0.0011,
+          "newD": 45000,
+          "tLimit": 0.33999999999999997
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_ultrasound-worksheet-0-set1.m",
+        "sha256": "4d3189eeb39b398e9cdc2265139f21085b5062fbd50a399e078abf5c3acb9232",
+        "route": "#/cases?project=ultrasound",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1480,
+          "f": 5000000,
+          "a": 0.003,
+          "low": 2000000,
+          "high": 5000000,
+          "Zwater": 1480000,
+          "Zsteel": 46000000,
+          "cs": 5900,
+          "cycles": 2,
+          "z": 0.8,
+          "depth": 0.03,
+          "resolutionLimit": 0.002
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_ultrasound-worksheet-0-set2.m",
+        "sha256": "f0135991d0c786be0d14dd9d5eeba83ad85c7ca7a3e2d2bb78743c0a146b0ac6",
+        "route": "#/cases?project=ultrasound",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1550,
+          "f": 5000000,
+          "a": 0.0034000000000000002,
+          "low": 2300000,
+          "high": 5600000,
+          "Zwater": 1600000,
+          "Zsteel": 50000000,
+          "cs": 6100,
+          "cycles": 2,
+          "z": 0.9,
+          "depth": 0.034,
+          "resolutionLimit": 0.0023
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_music-worksheet-0-set1.m",
+        "sha256": "c925c0bd568a159ebe391174b1bdcc2e084b24e3343b79f71fd596de5a9f7d0e",
+        "route": "#/cases?project=music",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "f": 330,
+          "L": 0.65,
+          "mu": 0.0004,
+          "T": 70,
+          "Q": 1200,
+          "target": 330,
+          "designQ": 300,
+          "tailLimit": 3,
+          "tensionLimit": 100
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_music-worksheet-0-set2.m",
+        "sha256": "6aaad4fc0430a2b69fa50eab71ec8e21f53ef0cd55ed20d42e86e22b28ad98f5",
+        "route": "#/cases?project=music",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "f": 330,
+          "L": 0.73,
+          "mu": 0.00045,
+          "T": 79,
+          "Q": 1360,
+          "target": 373,
+          "designQ": 340,
+          "tailLimit": 3.4000000000000004,
+          "tensionLimit": 113
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_measurement-worksheet-0-set1.m",
+        "sha256": "e794128a356b57fb35ef72940504b82b75c9cf8ba4939c251e2b68d8bc9fc035",
+        "route": "#/cases?project=measurement",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1025,
+          "c": 1500,
+          "f": 10000,
+          "a": 0.015,
+          "maximumF": 10000,
+          "lossLimit": 0.5,
+          "level": 100,
+          "sensitivity": -180
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_measurement-worksheet-0-set2.m",
+        "sha256": "27687115f76e8b80c6fc91fc51774d5fb6874f0c8e04b1d506aa833d59f156fc",
+        "route": "#/cases?project=measurement",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1025,
+          "c": 1550,
+          "f": 10000,
+          "a": 0.017,
+          "maximumF": 11300,
+          "lossLimit": 0.6000000000000001,
+          "level": 113,
+          "sensitivity": -200
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_transport-worksheet-0-set1.m",
+        "sha256": "98ae38a8a84049654548445f6210f4dd8b84306699a2e46743d422e3ebc11b91",
+        "route": "#/cases?project=transport",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 800,
+          "v": 20,
+          "d": 30,
+          "xobs": 50,
+          "r0": 10,
+          "L0": 90,
+          "background": 60,
+          "limit": 75,
+          "proposed": 80
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_transport-worksheet-0-set2.m",
+        "sha256": "ab2add625da0883a5229ce1727758e37dcea6fdcda2ff3f2a5e46ca4e8afb2f8",
+        "route": "#/cases?project=transport",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 350,
+          "f": 900,
+          "v": 23,
+          "d": 34,
+          "xobs": 56,
+          "r0": 10,
+          "L0": 100,
+          "background": 65,
+          "limit": 85,
+          "proposed": 90
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_duct-worksheet-0-set1.m",
+        "sha256": "68c0fa99e409eac39eaef8cedf717794810380255425d62dfa8645d6134a0e45",
+        "route": "#/cases?project=duct",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 500,
+          "h": 0.25,
+          "testF": 1500,
+          "res": 1.5,
+          "react": 0.7,
+          "safety": 0.8
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_duct-worksheet-0-set2.m",
+        "sha256": "aa07d8a7bd26c235ee1d1e9acb969254773b13513e76060493c7f293ab769476",
+        "route": "#/cases?project=duct",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 350,
+          "f": 570,
+          "h": 0.28,
+          "testF": 1690,
+          "res": 1.7000000000000002,
+          "react": 0.8,
+          "safety": 0.8999999999999999
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_grin_lens-worksheet-0-set1.m",
+        "sha256": "8f389f1d2c9eecbab254d96b2c0ce1895296292dff914da355e2f561e769a36d",
+        "route": "#/cases?project=grin-lens",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 80000,
+          "cl": 1000,
+          "a": 0.03,
+          "focus": 0.2,
+          "low": 50000,
+          "high": 80000,
+          "beamLimit": 20,
+          "errorLimit": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__cases_project_grin_lens-worksheet-0-set2.m",
+        "sha256": "db33f9744684353439aa9137f9db740168ced00ec48017f9b722705680103d2a",
+        "route": "#/cases?project=grin-lens",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1520,
+          "f": 80000,
+          "cl": 1050,
+          "a": 0.034,
+          "focus": 0.22599999999999998,
+          "low": 56000,
+          "high": 90000,
+          "beamLimit": 23,
+          "errorLimit": 0.11
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_1-worksheet-0-set1.m",
+        "sha256": "3f42fc83cd47d57c8a4a0e631d63e8113218e392bd9f92e41fcc9c09e86b8e68",
+        "route": "#/lab?topic=1.1.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 2,
+          "D": 800,
+          "Rm": 0,
+          "x0": 0.005,
+          "v0": 0.08
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_1-worksheet-0-set2.m",
+        "sha256": "e356a991880721a0584a10e4e92fcba299c1fbe23a826d70b33d8207dff57f95",
+        "route": "#/lab?topic=1.1.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 2.3000000000000003,
+          "D": 900,
+          "Rm": 0,
+          "x0": 0.006000000000000002,
+          "v0": 0.09000000000000008
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_2-worksheet-0-set1.m",
+        "sha256": "faff1b213f83ff6d76b882b4aebe403a7bbacd8a618148f65fdbb60aff095d93",
+        "route": "#/lab?topic=1.1.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 1.5,
+          "D": 1350,
+          "A": 0.004
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_2-worksheet-0-set2.m",
+        "sha256": "93d7e0d89e398412578f29edc10e99544abc8b3eadff49c94880ab198b853ec1",
+        "route": "#/lab?topic=1.1.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 1.7000000000000002,
+          "D": 1500,
+          "A": 0.005
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_3-worksheet-0-set1.m",
+        "sha256": "0cd41adfbfe446c05f295284ce21b48ff9454de313fb29b17f4c74f1af1daf23",
+        "route": "#/lab?topic=1.1.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 5,
+          "D": 2000,
+          "zeta": 1.5,
+          "x0": 0.005,
+          "v0": -0.3
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_3-worksheet-0-set2.m",
+        "sha256": "5c0a79a7f5cbc456a8a23e4dd649ca87e3d06b01d2d800b600dba278b3920bba",
+        "route": "#/lab?topic=1.1.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 5.6,
+          "D": 2300,
+          "zeta": 1.05,
+          "x0": 0.005,
+          "v0": -0.3
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_4-worksheet-0-set1.m",
+        "sha256": "296afb944ca6ef715b9db98ef66c8efc8c0a57e277c66fa4881ce693d92c0cac",
+        "route": "#/lab?topic=1.1.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 2,
+          "D": 3200,
+          "Qm": 8,
+          "x0": 0.006,
+          "v0": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_4-worksheet-0-set2.m",
+        "sha256": "a60719991197d45a43fd133cd74bb25ceb001f7122dd938ffd33f80bb740d17d",
+        "route": "#/lab?topic=1.1.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 2.3000000000000003,
+          "D": 3600,
+          "Qm": 9,
+          "x0": 0.006,
+          "v0": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_5-worksheet-0-set1.m",
+        "sha256": "7196d27998aadf10515b0100192fa7f285c4f67bfefb343c239b961f9c40a273",
+        "route": "#/lab?topic=1.1.5",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 10,
+          "D": 395000,
+          "input": 2,
+          "value": 5,
+          "Qm": 5
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_1_5-worksheet-0-set2.m",
+        "sha256": "d222f9f39a7d84deb838e7d4dc2dfa240236def97856d5c3b7b5064cc99a0008",
+        "route": "#/lab?topic=1.1.5",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 11.3,
+          "D": 446300,
+          "input": 2,
+          "value": 5,
+          "Qm": 5.65
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_1-worksheet-0-set1.m",
+        "sha256": "3f13d44b3e44be81b5ca7e8dd9286775459e2c4f83b5a258acf4e99946609848",
+        "route": "#/lab?topic=1.2.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 5,
+          "D": 2000,
+          "F0": 2,
+          "Rm": 0,
+          "x0": 0,
+          "v0": 0,
+          "ratio": 0.92,
+          "tObs": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_1-worksheet-0-set2.m",
+        "sha256": "7940e233af1586ef64694ffedabcf917ca1b413d561dc51181c0dd006cf3d280",
+        "route": "#/lab?topic=1.2.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 5.6,
+          "D": 2300,
+          "F0": 2,
+          "Rm": 0,
+          "x0": 0,
+          "v0": 0,
+          "ratio": 0.99,
+          "tObs": 1.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_2-worksheet-0-set1.m",
+        "sha256": "a2e02369d013e23572477dc5b3837b14c50760a6ae13292a102837d9aa175a55",
+        "route": "#/lab?topic=1.2.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 4,
+          "D": 10000,
+          "Qm": 5,
+          "F0": 10,
+          "ratio": 0.8,
+          "x0": 0,
+          "v0": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_2-worksheet-0-set2.m",
+        "sha256": "e71ef3cbb15b0ef3d82df3663b3dc6541afdd7c91c73edad6c261f8d57f56893",
+        "route": "#/lab?topic=1.2.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 4.5,
+          "D": 11300,
+          "Qm": 5.6000000000000005,
+          "F0": 11,
+          "ratio": 0.9,
+          "x0": 0,
+          "v0": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_3-worksheet-0-set1.m",
+        "sha256": "73c56784242a4bde4cc5a2de572b868ea27555fb1012c73082595b48e86ac3e4",
+        "route": "#/lab?topic=1.2.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 10,
+          "D": 395000,
+          "Qm": 10,
+          "F0": 50,
+          "ratio": 0.96,
+          "x0": 0,
+          "v0": 0,
+          "pulseCycles": 8,
+          "gapCycles": 12
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_3-worksheet-0-set2.m",
+        "sha256": "f929684db814ac1c0fb02fa2698fcef279995f39bb36ac32bc2e868272d028ec",
+        "route": "#/lab?topic=1.2.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 11.3,
+          "D": 446300,
+          "Qm": 11.5,
+          "F0": 50,
+          "ratio": 0.96,
+          "x0": 0,
+          "v0": 0,
+          "pulseCycles": 9,
+          "gapCycles": 12
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_1-worksheet-0-set1.m",
+        "sha256": "23fdb40cb044f3465a61cb6f1b667da770d31eff60ea2df8df8bbba2a4e4d875",
+        "route": "#/lab?topic=2.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "T": 70,
+          "mu": 0.0004,
+          "L": 0.65,
+          "height": 0.015,
+          "F0": 0.05,
+          "boundary": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_1-worksheet-0-set2.m",
+        "sha256": "8e46624722af27818d3f79c8790c549d0a4b12977646f9e0afdbea437f6587c8",
+        "route": "#/lab?topic=2.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "T": 79,
+          "mu": 0.0005,
+          "L": 0.73,
+          "height": 0.015,
+          "F0": 0.05,
+          "boundary": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_2-worksheet-0-set1.m",
+        "sha256": "3c54cbb6ff82b5d5e451990d509f921139741762d25b8ccbc39e0ac42ebbcd38",
+        "route": "#/lab?topic=2.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "T": 70,
+          "mu": 0.0004,
+          "L": 0.65,
+          "height": 0.004,
+          "pluck": 0.3,
+          "F0": 0.05,
+          "target": 440
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_2-worksheet-0-set2.m",
+        "sha256": "84953b531affb7a396e45b531bd3ab9ee630799517acae013cfcca16b75fa7dc",
+        "route": "#/lab?topic=2.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "T": 79,
+          "mu": 0.0005,
+          "L": 0.73,
+          "height": 0.004,
+          "pluck": 0.3,
+          "F0": 0.05,
+          "target": 497
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_3-worksheet-0-set1.m",
+        "sha256": "28fea73ca6d4775a6cf5f05c39606be6f9efb4c9624dd6deda7bd3f09b80666c",
+        "route": "#/lab?topic=2.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "E": 200,
+          "rho": 7850,
+          "L": 1,
+          "S": 0.0001,
+          "tipMass": 0.785,
+          "sigma": 1,
+          "gradient": 0.4,
+          "boundary": 2,
+          "material": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_3-worksheet-0-set2.m",
+        "sha256": "3d4f83b471d6307f13376416cfe9c69aad44adfce1b949058d2a2d98ae46ea71",
+        "route": "#/lab?topic=2.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "E": 226,
+          "rho": 8870,
+          "L": 1.1300000000000001,
+          "S": 0.00011,
+          "tipMass": 0.89,
+          "sigma": 1,
+          "gradient": 0.4,
+          "boundary": 2,
+          "material": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_4-worksheet-0-set1.m",
+        "sha256": "26f33acbbe68e66d9bf09acfe0ee1755232ecb1b96972059ba67282b1a8cb40f",
+        "route": "#/lab?topic=2.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "E": 200,
+          "rho": 7850,
+          "L": 1,
+          "S": 0.0001,
+          "F0": 10,
+          "measured": 2500
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_2_4-worksheet-0-set2.m",
+        "sha256": "efc6b75ab4795706319a3b10e6faf4fce67567f056e8b92a895c025b39866851",
+        "route": "#/lab?topic=2.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "E": 200,
+          "rho": 8870,
+          "L": 1.1300000000000001,
+          "S": 0.0001,
+          "F0": 10,
+          "measured": 2820
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_1-worksheet-0-set1.m",
+        "sha256": "cffb088f8cc28d4bb23d4a0cb5a8ff66d21ed2cc4d1ea8396608a6da823e8ea5",
+        "route": "#/lab?topic=3.1.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 1500,
+          "f": 10000,
+          "pa": 1,
+          "mode": 0,
+          "L": 10,
+          "xi": 0.0004
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_1-worksheet-0-set2.m",
+        "sha256": "2853b0fe7974237e36b4b1e02c2ac81cda67eda933d97e05204679479d440681",
+        "route": "#/lab?topic=3.1.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 1695,
+          "f": 11300,
+          "pa": 1,
+          "mode": 0,
+          "L": 11,
+          "xi": 0.0004
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_2-worksheet-0-set1.m",
+        "sha256": "60364d51e6d177ec07a852f578cfc09639cb64349ef61f748beda947b2db97b9",
+        "route": "#/lab?topic=3.1.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "medium": 0,
+          "level": 93.9794000867
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_2-worksheet-0-set2.m",
+        "sha256": "aab041a7c3960088ff49fb920ea31185f3f622d99a9679d69bb93a4f7065a2ab",
+        "route": "#/lab?topic=3.1.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1130,
+          "pa": 1.1300000000000001,
+          "medium": 0,
+          "level": 93.9794000867
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_3-worksheet-0-set1.m",
+        "sha256": "74571a84bea339ad63166cd0fb2408cb3fe4a4fec4f7420cd974cb5e70a5fa34",
+        "route": "#/lab?topic=3.1.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 20,
+          "ideal": 1,
+          "continuous": 1,
+          "compressible": 1,
+          "uniform": 1,
+          "small": 1,
+          "distortion": 0.35
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_3-worksheet-0-set2.m",
+        "sha256": "3ee12baf8c101b4f99beab6952c33367b5579018665e8f9d8f03809386191636",
+        "route": "#/lab?topic=3.1.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1000,
+          "pa": 22.6,
+          "ideal": 1,
+          "continuous": 1,
+          "compressible": 1,
+          "uniform": 1,
+          "small": 1,
+          "distortion": 0.35
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_4-worksheet-0-set1.m",
+        "sha256": "ce665a8e9d75cdb65394718fab14fee05b2c310b5772f228b6c7af9680b7348b",
+        "route": "#/lab?topic=3.1.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "left": 0.012,
+          "right": 0.008,
+          "L": 0.1,
+          "S": 0.01
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_4-worksheet-0-set2.m",
+        "sha256": "224d73584191f36cd50ba53174d0245f4abc8f8dd50778fd33cfbe7b4dc2a14b",
+        "route": "#/lab?topic=3.1.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "left": 0.013999999999999999,
+          "right": 0.009000000000000001,
+          "L": 0.11,
+          "S": 0.011
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_5-worksheet-0-set1.m",
+        "sha256": "5934b3cf45af93f819d3cb063b91a8d054567742cee74d264ff732052b483642",
+        "route": "#/lab?topic=3.1.5",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 2000,
+          "pa": 100
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_5-worksheet-0-set2.m",
+        "sha256": "064ede8a260ec5f26fcfeab7a83b1d2cded5bb21712bdf10843faea0d8e527e6",
+        "route": "#/lab?topic=3.1.5",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1130,
+          "c": 1695,
+          "f": 2260,
+          "pa": 113.00000000000001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_6-worksheet-0-set1.m",
+        "sha256": "fc826e0abd60ed2dd6bbc07938082a2e5316c5fb0e9079558284cc3a23bf3b78",
+        "route": "#/lab?topic=3.1.6",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "P0": 101325,
+          "gamma": 1.4,
+          "span": 0.5,
+          "s": 0.001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_6-worksheet-0-set2.m",
+        "sha256": "74abd63c0e6ba593b611f95f603f6006870ea2928d18f1833d526901f9c808df",
+        "route": "#/lab?topic=3.1.6",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "P0": 114500,
+          "gamma": 1.58,
+          "span": 0.5,
+          "s": 0.0011300000000000001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_7-worksheet-0-set1.m",
+        "sha256": "e1cb41267df4af07c32e83bcc3a366e7f4a86dedcaf4056bb8f751a48f6ebfdb",
+        "route": "#/lab?topic=3.1.7",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "T": 20,
+          "gamma": 1.4,
+          "P0": 101325,
+          "bulk": 2.25,
+          "waterRho": 1000
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_7-worksheet-0-set2.m",
+        "sha256": "242a1363b64cc76417aaa5b5bbbfd15355b658270866bd69f4fa0ef7dda486df",
+        "route": "#/lab?topic=3.1.7",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "T": 23,
+          "gamma": 1.58,
+          "P0": 101325,
+          "bulk": 2.54,
+          "waterRho": 1050
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_8-worksheet-0-set1.m",
+        "sha256": "b0b0cb43c1f1f0a90653824b987b51db0137ced87ec189e8bd5c3167500eb2c5",
+        "route": "#/lab?topic=3.1.8",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_1_8-worksheet-0-set2.m",
+        "sha256": "d431675192519c0e23a99ad540d1028f6c36a8eeabbd670c01a64a8c3736ce9e",
+        "route": "#/lab?topic=3.1.8",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1130,
+          "pa": 2.26
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_1-worksheet-0-set1.m",
+        "sha256": "65e744b1804751254eec7ea6d896f748c99a93cbf2fa09c9bbd6f5e8218b3b02",
+        "route": "#/lab?topic=3.10.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.5,
+          "mode": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_1-worksheet-0-set2.m",
+        "sha256": "0b11e975dd57a5c2b845790a8c55b161336a3ad53504e252d7b41c1a8bb4a081",
+        "route": "#/lab?topic=3.10.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.56,
+          "mode": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_2-worksheet-0-set1.m",
+        "sha256": "db3e701c667313e54045b2ed0eedf5949091e999ff68519efb52937b21ff6664",
+        "route": "#/lab?topic=3.10.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1200,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.5,
+          "mode": 0,
+          "v0": 0.01,
+          "sourceType": 0,
+          "offset": 0.3,
+          "width": 0.18,
+          "a1": 0.4,
+          "a2": -0.2,
+          "a3": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_2-worksheet-0-set2.m",
+        "sha256": "bf7cb8d7e84ff1b020bf6db02a6ff62388071cf641bef67584df6f3ce0055b1e",
+        "route": "#/lab?topic=3.10.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "c2": 343,
+          "f": 1200,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.56,
+          "mode": 0,
+          "v0": 0.011,
+          "sourceType": 0,
+          "offset": 0.3,
+          "width": 0.18,
+          "a1": 0.4,
+          "a2": -0.2,
+          "a3": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_3-worksheet-0-set1.m",
+        "sha256": "ed66d43649363301b974739f2d9ebe89427482ae193b3d2837291442612b9092",
+        "route": "#/lab?topic=3.10.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 343,
+          "f": 500,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.5,
+          "mode": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_3-worksheet-0-set2.m",
+        "sha256": "c0ba9c7e497ce1b5274ea668c3c9f787e759a48e8d4b5a6f76e85c38bbfbb8eb",
+        "route": "#/lab?topic=3.10.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 388,
+          "c2": 343,
+          "f": 570,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.56,
+          "mode": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_4-worksheet-0-set1.m",
+        "sha256": "6657188e27901ec405467e74670eb41ab82d1b180efc28f0fc43b4850c50740d",
+        "route": "#/lab?topic=3.10.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 343,
+          "f": 1200,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.5,
+          "mode": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_4-worksheet-0-set2.m",
+        "sha256": "547aca549e034cc455659efeae41f40840e4edef741ab1171e8db0325a89b6fb",
+        "route": "#/lab?topic=3.10.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 343,
+          "f": 1360,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.5,
+          "mode": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_5-worksheet-0-set1.m",
+        "sha256": "18044a0a4ca551da543b07c79d1ff1934a8df25ef1f38f921686322dad689d58",
+        "route": "#/lab?topic=3.10.5",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 343,
+          "f": 1500,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.5,
+          "mode": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_10_5-worksheet-0-set2.m",
+        "sha256": "d1abf1f25caae7912efc3006ed10ad362726aeed92b926ab7a0fdd508b6354e9",
+        "route": "#/lab?topic=3.10.5",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 380,
+          "c2": 343,
+          "f": 1690,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "h": 0.56,
+          "mode": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_2_1-worksheet-0-set1.m",
+        "sha256": "2bc3cd248840c77fdfbc25b64f1b0e6368a07643487584d3403d5bab458fd0cb",
+        "route": "#/lab?topic=3.2.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "step": 0,
+          "boundary": 0,
+          "L": 0.05
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_2_1-worksheet-0-set2.m",
+        "sha256": "16df36379a3f5c8ac015e0f7f42977366f138a328ce8efe6dbe4b1b01fcf8fe8",
+        "route": "#/lab?topic=3.2.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 388,
+          "f": 1130,
+          "pa": 1,
+          "step": 0,
+          "boundary": 0,
+          "L": 0.056
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_2_2-worksheet-0-set1.m",
+        "sha256": "95c171fbcabc398c5bd9efe4834e573f1689b74eb915f67056011d0d40fea563",
+        "route": "#/lab?topic=3.2.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 2000,
+          "pa": 100,
+          "spherical": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_2_2-worksheet-0-set2.m",
+        "sha256": "173366d27fbb8d5f60f30ca7bd1b128ed3e57bd9709436e7b6b48581c8072526",
+        "route": "#/lab?topic=3.2.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1130,
+          "c": 1695,
+          "f": 2260,
+          "pa": 113.00000000000001,
+          "spherical": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_3_1-worksheet-0-set1.m",
+        "sha256": "be0bdb68d9a98d31eba3a495ec5b62e526347af1a1c2b9ec2e863bfaef335929",
+        "route": "#/lab?topic=3.3.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 2,
+          "standing": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_3_1-worksheet-0-set2.m",
+        "sha256": "2d4f0ac31718683f6f80d44431d1734c29248d884c887ccdf68d2d6033a1daf5",
+        "route": "#/lab?topic=3.3.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1000,
+          "pa": 2.26,
+          "standing": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_3_2-worksheet-0-set1.m",
+        "sha256": "18d2454a7d9172feb15cda6fcace52304ab267a8075a26591477e9877f7e633c",
+        "route": "#/lab?topic=3.3.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "wLeft": 0.004,
+          "wRight": 0.003,
+          "L": 0.1,
+          "S": 0.01,
+          "left": 0.012,
+          "right": 0.008
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_3_2-worksheet-0-set2.m",
+        "sha256": "a8fdb4377ffd38d866046059d8e4ea0480b4ebc721ba600485f611b02fb63e89",
+        "route": "#/lab?topic=3.3.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "wLeft": 0.005000000000000001,
+          "wRight": 0.002999999999999999,
+          "L": 0.11,
+          "S": 0.011,
+          "left": 0.012,
+          "right": 0.008
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_3_3-worksheet-0-set1.m",
+        "sha256": "c93c4e0ab9fe213858a975cce204b25eedad4c42cf68428b932dc78b91ef3f5a",
+        "route": "#/lab?topic=3.3.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "phase": 30,
+          "ua": 0.002
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_3_3-worksheet-0-set2.m",
+        "sha256": "1258ab4d5528e93f57f44d4aa340e383ae331b0b091ccb725d25836e3d4a8738",
+        "route": "#/lab?topic=3.3.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1.1300000000000001,
+          "phase": 34,
+          "ua": 0.0022600000000000003
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_1-worksheet-0-set1.m",
+        "sha256": "35f71a03763c50521e4c78773b21fd812ffdb2292f2e6d01fac4dab7e304a41f",
+        "route": "#/lab?topic=3.4.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "B": 0.4
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_1-worksheet-0-set2.m",
+        "sha256": "ca13d495d161973f8dee0b856b2b82e95915996cc22db6877d2b9651365ee4d3",
+        "route": "#/lab?topic=3.4.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1000,
+          "pa": 1.1300000000000001,
+          "B": 0.45
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_2-worksheet-0-set1.m",
+        "sha256": "5c6c04a1dfd13ec98ef107a69fe07b7ab0f907178f7d38c8b9bd836be5e4a0fa",
+        "route": "#/lab?topic=3.4.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "obs": 0.25,
+          "bulk": 0.000142
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_2-worksheet-0-set2.m",
+        "sha256": "0c84a058c4aca82a5abf0914e7665ec33f900dfa536e6a5d1f9f197193d48806",
+        "route": "#/lab?topic=3.4.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 388,
+          "f": 1130,
+          "pa": 1,
+          "obs": 0.25,
+          "bulk": 0.000142
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_3-worksheet-0-set1.m",
+        "sha256": "613d5793396844a41e516915c48305a88557d4e06368ef41014b631814026ec0",
+        "route": "#/lab?topic=3.4.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 2000,
+          "pa": 100
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_3-worksheet-0-set2.m",
+        "sha256": "f33a6ff5dd3013f227f41765fb9b6f5b3da8d5fc9724cd31cc3fe905b8757e8f",
+        "route": "#/lab?topic=3.4.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1130,
+          "c": 1695,
+          "f": 2260,
+          "pa": 113.00000000000001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_4-worksheet-0-set1.m",
+        "sha256": "366afabc54dcd3824c3ee2d44d04c48bbf7f10d15dac4c9abb44be191fb5ebfc",
+        "route": "#/lab?topic=3.4.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "pa": 100
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_4-worksheet-0-set2.m",
+        "sha256": "8d760611f5c49fc0aeab13cdd3d16a7929c6a9f63c461f3e8407080f650acdbb",
+        "route": "#/lab?topic=3.4.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1130,
+          "c": 1695,
+          "f": 1000,
+          "pa": 113.00000000000001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_5-worksheet-0-set1.m",
+        "sha256": "4ff1bbe0db525470ef9ccbd4cd05580eb3ef13470154e27c81dad6967581ace5",
+        "route": "#/lab?topic=3.4.5",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 1500,
+          "f": 1000,
+          "pa": 1,
+          "shape": 0,
+          "B": 0.3,
+          "L": 10,
+          "duration": 0.5,
+          "h0": 0,
+          "h1": 0.3,
+          "h2": 1,
+          "h3": 0.2,
+          "h4": -0.5,
+          "h5": 0,
+          "h6": 0,
+          "h7": 0,
+          "h8": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_5-worksheet-0-set2.m",
+        "sha256": "3d7e040dc07b80bb7262d73b8c1565b1a581f3aaafbe675c52127d7a5ba9e804",
+        "route": "#/lab?topic=3.4.5",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 1695,
+          "f": 1000,
+          "pa": 1,
+          "shape": 0,
+          "B": 0.3,
+          "L": 11,
+          "duration": 0.56,
+          "h0": 0,
+          "h1": 0.3,
+          "h2": 1,
+          "h3": 0.2,
+          "h4": -0.5,
+          "h5": 0,
+          "h6": 0,
+          "h7": 0,
+          "h8": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_6-worksheet-0-set1.m",
+        "sha256": "a72e102bb78ccbb624c848b9f0e3594b1e32291643fe1aeabba208cb088c1503",
+        "route": "#/lab?topic=3.4.6",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "medium": 0,
+          "pRms": 1,
+          "intensity": 0.01,
+          "power": 0.1,
+          "n": 2,
+          "sourceLevel": 80
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_4_6-worksheet-0-set2.m",
+        "sha256": "0318c567edf1a9548bd6e5f603aa7f327ef5a082b18ae4af4a5c7bd9978dc740",
+        "route": "#/lab?topic=3.4.6",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "medium": 0,
+          "pRms": 1,
+          "intensity": 0.01,
+          "power": 0.1,
+          "n": 2,
+          "sourceLevel": 90
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_5_1-worksheet-0-set1.m",
+        "sha256": "1db1b41744af47261fd3d6a93db2c292867f8308d420ee86402bf0e0b20971d7",
+        "route": "#/lab?topic=3.5.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "ratio": 1.25,
+          "depth": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_5_1-worksheet-0-set2.m",
+        "sha256": "a4eee302328a495bd069df253a7a2a26764b6e1fe743e933fd2088f965fcf167",
+        "route": "#/lab?topic=3.5.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 388,
+          "f": 1130,
+          "pa": 1,
+          "ratio": 1.4100000000000001,
+          "depth": 0.113
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_5_2-worksheet-0-set1.m",
+        "sha256": "004ba2749b7b8c419acb79e8499c9c128327cf944488ecf014e1603fb748a21f",
+        "route": "#/lab?topic=3.5.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 1500,
+          "f": 2000,
+          "pa": 1,
+          "azimuth": 30,
+          "elevation": 25,
+          "wavecount": 3,
+          "a1": 0,
+          "a2": 60,
+          "a3": 120,
+          "a4": -45
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_5_2-worksheet-0-set2.m",
+        "sha256": "6ae846ff579fed508f7b274a242e4a127ed6fc5d7ee062da7b1828a5edaef857",
+        "route": "#/lab?topic=3.5.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 1695,
+          "f": 2260,
+          "pa": 1,
+          "azimuth": 34,
+          "elevation": 28,
+          "wavecount": 3,
+          "a1": 0,
+          "a2": 60,
+          "a3": 120,
+          "a4": -45
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_1-worksheet-0-set1.m",
+        "sha256": "537811a9466b02c91937fee0f16881ec7634037a153d73779ec38d3d847d0652",
+        "route": "#/lab?topic=3.6.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 3000000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_1-worksheet-0-set2.m",
+        "sha256": "3df196e04d4a804db559483159c09836a9ea3455fb59d00c4904437398844a36",
+        "route": "#/lab?topic=3.6.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 3390000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_10-worksheet-0-set1.m",
+        "sha256": "63c4507e19c621adf29af78b64716a04d17e3499dd2c3495cb5c24afadbc9948",
+        "route": "#/lab?topic=3.6.10",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 1500,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 415,
+          "Z2": 1500000,
+          "theta": 60
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_10-worksheet-0-set2.m",
+        "sha256": "93cb9f1162b2f2102f8aae7b4eb244b95294fff3bf05fa66d511f26b826604e1",
+        "route": "#/lab?topic=3.6.10",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 1500,
+          "f": 1130,
+          "pa": 1,
+          "Z1": 415,
+          "Z2": 1500000,
+          "theta": 60
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_11-worksheet-0-set1.m",
+        "sha256": "c4637d9a6fad311ca4b8c798460c7238e3463e46c79f1d8cad36f261573d831d",
+        "route": "#/lab?topic=3.6.11",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "radius": 32.5,
+          "source": 0.95,
+          "launch": 80
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_11-worksheet-0-set2.m",
+        "sha256": "57a78db6d6906a516a908f427ef7f98e08989e75c16e9a90032141cd1c1d3fa1",
+        "route": "#/lab?topic=3.6.11",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "radius": 36.7,
+          "source": 0.99,
+          "launch": 90
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_12-worksheet-0-set1.m",
+        "sha256": "2ca282dfd962cdf91715f1cea188a840f295be345195541372e7a9302a1f23b9",
+        "route": "#/lab?topic=3.6.12",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 1000,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 1000000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_12-worksheet-0-set2.m",
+        "sha256": "4d4365c6dda8ac2a3c06ce6fbc5d2274f481f2057753fd843db513767695d32e",
+        "route": "#/lab?topic=3.6.12",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1695,
+          "c2": 1130,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 1130000,
+          "theta": 33.9
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_2-worksheet-0-set1.m",
+        "sha256": "20fad7f174495b18e5999bc24e902c8cd4b10a77d3a62075b5c80e04fdf5bdf7",
+        "route": "#/lab?topic=3.6.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 3000000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_2-worksheet-0-set2.m",
+        "sha256": "c2fd9754d0dece7f597e371bbe958d7ee5eefafb78f0b9b3b5e59d6d1c1f5925",
+        "route": "#/lab?topic=3.6.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 3390000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_3-worksheet-0-set1.m",
+        "sha256": "64bc4fadee2647846a8798b2fbdb181ec72b623f44d15d720806f12db6dcbdf3",
+        "route": "#/lab?topic=3.6.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_3-worksheet-0-set2.m",
+        "sha256": "6695b873e30ca4d5a14bf852fe6dfc7d8e63349f8f1a3fb41a6f54ec9100961d",
+        "route": "#/lab?topic=3.6.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 470,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_4-worksheet-0-set1.m",
+        "sha256": "fe664d0c1805e8d6222d74beb29103c848370820ef2be63b5ba2f0d42a79ebdf",
+        "route": "#/lab?topic=3.6.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 46000000,
+          "theta": 30,
+          "boundary": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_4-worksheet-0-set2.m",
+        "sha256": "e8e2c74f27b7f4e615c3372ed1f80149c6be3a619cf848ed899ad4ec8f086d2f",
+        "route": "#/lab?topic=3.6.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 50000000,
+          "theta": 30,
+          "boundary": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_5-worksheet-0-set1.m",
+        "sha256": "f7545c5ce3be19e13a405cf3133fef4e3c85d27182d565cf87c7d7629348b243",
+        "route": "#/lab?topic=3.6.5",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_5-worksheet-0-set2.m",
+        "sha256": "b316e1aec700ff7015bc69d0faff704263e04d49feeab33bccc2f377c1eaad19",
+        "route": "#/lab?topic=3.6.5",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 1695000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_6-worksheet-0-set1.m",
+        "sha256": "e3482fe99ad89a8c80f556db36f270ee9004f33d66cc493459a031bfac26284f",
+        "route": "#/lab?topic=3.6.6",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_6-worksheet-0-set2.m",
+        "sha256": "4281725ee91bb3a910d0d048ae77e246b34f815207c004c1b8ea8472bab270d9",
+        "route": "#/lab?topic=3.6.6",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1695,
+          "c2": 343,
+          "f": 1130,
+          "pa": 1.1300000000000001,
+          "Z1": 1695000,
+          "Z2": 415,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_7-worksheet-0-set1.m",
+        "sha256": "bf165e0f8a51d48bf505f18a6dbfc69b5b63f80bc8b7a5861af067c639a149e9",
+        "route": "#/lab?topic=3.6.7",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 1000,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 1000000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_7-worksheet-0-set2.m",
+        "sha256": "7d6e94af7c10d1deb37ad3508836dcadfa36f070e6ec39c10c7aa878e8966790",
+        "route": "#/lab?topic=3.6.7",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 1000,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 1130000,
+          "theta": 33.9
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_8-worksheet-0-set1.m",
+        "sha256": "3e4ae5d36d6d673cac3fcca1118ae2ed1f639002e742c52d7e6afbb1c7dbd058",
+        "route": "#/lab?topic=3.6.8",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 1000,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 1000000,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_8-worksheet-0-set2.m",
+        "sha256": "d8b3f433c5ff578a6498b179824e496d5fb95255330247706f0b77707c45ce7e",
+        "route": "#/lab?topic=3.6.8",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 1000,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1695000,
+          "Z2": 1130000,
+          "theta": 33.9
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_9-worksheet-0-set1.m",
+        "sha256": "9eb80c1410d43d58133206fb7639a3622005853c535e3db197056c2fc4e9d152",
+        "route": "#/lab?topic=3.6.9",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1000,
+          "c2": 1500,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1000000,
+          "Z2": 500000,
+          "theta": 30,
+          "scenario": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_6_9-worksheet-0-set2.m",
+        "sha256": "e4b3936e878cb12472d97ca2391059687e1ccdc6a5c1c15cc4f755c9d61916e6",
+        "route": "#/lab?topic=3.6.9",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1000,
+          "c2": 1500,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1130000,
+          "Z2": 500000,
+          "theta": 30,
+          "scenario": 0
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_7_1-worksheet-0-set1.m",
+        "sha256": "00d869f8cf1a0e19731373df4776fea0876b9abc1145c600f704979c8eaae9c2",
+        "route": "#/lab?topic=3.7.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "res": 2,
+          "react": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_7_1-worksheet-0-set2.m",
+        "sha256": "7560cf7dd7028c583ab3cf5c4e759b57b355648ee3baa9b7683be60bdfdc4627",
+        "route": "#/lab?topic=3.7.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "res": 2.26,
+          "react": 1.13
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_7_2-worksheet-0-set1.m",
+        "sha256": "78095a2b8522a0c8ace073afa7d63857c6f10fcab5a622ff4296afc2cc8fc0a0",
+        "route": "#/lab?topic=3.7.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "res": 2,
+          "react": 1,
+          "probe": 0.18
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_7_2-worksheet-0-set2.m",
+        "sha256": "19d3bc22c54a772b8e9ec0a2d63ceda8a00cdaf0ce0660c558ecabdde739c260",
+        "route": "#/lab?topic=3.7.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "res": 2.26,
+          "react": 1.13,
+          "probe": 0.18
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_1-worksheet-0-set1.m",
+        "sha256": "628dde76d3b68d06a3b5a7d945f596bfdc70710d179420885dff25232522ca5e",
+        "route": "#/lab?topic=3.8.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_1-worksheet-0-set2.m",
+        "sha256": "c9062a593dc831e973e52da95e4edfeb256a179a857e49dff106380bfb3a369f",
+        "route": "#/lab?topic=3.8.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "c2": 343,
+          "f": 1130,
+          "pa": 1.1300000000000001,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.11
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_2-worksheet-0-set1.m",
+        "sha256": "ce406af2aaec761c005e0c00a3061d2a06562e959196223f76f47a8dd4aada4a",
+        "route": "#/lab?topic=3.8.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_2-worksheet-0-set2.m",
+        "sha256": "f71abf4f1b9e499cefbe072a6918be9676f6afce2810bc851485d0ec47269ae2",
+        "route": "#/lab?topic=3.8.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "c2": 343,
+          "f": 1130,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.11
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_3-worksheet-0-set1.m",
+        "sha256": "edf6fb03dfdbc7e3705c3bef9ed51f58489326deb14a7eb93c821a746da79f6e",
+        "route": "#/lab?topic=3.8.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.05
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_3-worksheet-0-set2.m",
+        "sha256": "74afb71972a123b2dfe9f620f6b5d39377d4f957bd2578cebf08f027d0f69030",
+        "route": "#/lab?topic=3.8.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 388,
+          "c2": 343,
+          "f": 1130,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.060000000000000005
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_4-worksheet-0-set1.m",
+        "sha256": "7581c2173cd148fe5f4e873e429c45c9be26beaf2a9bd0213bf72657491a283a",
+        "route": "#/lab?topic=3.8.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_4-worksheet-0-set2.m",
+        "sha256": "998174e680134b09fe69cc4040f8eda9bd0067cc0193463f1ddfe2144e0f7efd",
+        "route": "#/lab?topic=3.8.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1.1300000000000001,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 1.1300000000000001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_5-worksheet-0-set1.m",
+        "sha256": "c985eec73cf0062c5b7462a29b20bed7186350f7a54a5cd3fcb9c9139f30685e",
+        "route": "#/lab?topic=3.8.5",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "depth": 1,
+          "distance": 3,
+          "boundary": 0,
+          "receiverDepth": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_8_5-worksheet-0-set2.m",
+        "sha256": "dc6cc91a6e4a9f306afa6bb6a484348049a0502066bea2140586c9e3b107f7d5",
+        "route": "#/lab?topic=3.8.5",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1695,
+          "c2": 343,
+          "f": 1130,
+          "pa": 1.1300000000000001,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "depth": 1.1300000000000001,
+          "distance": 3.39,
+          "boundary": 0,
+          "receiverDepth": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_9_1-worksheet-0-set1.m",
+        "sha256": "6d024dfc714bf02568cc308ec0d1c0d6193c36eae3cc57d9768dda81a76098ba",
+        "route": "#/lab?topic=3.9.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "argument": 10
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_9_1-worksheet-0-set2.m",
+        "sha256": "c4561859c28ea41b2bee13fa9cf72b32fddd34e8991acf8ba024deffbb0bc6b7",
+        "route": "#/lab?topic=3.9.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "argument": 11.3
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_9_2-worksheet-0-set1.m",
+        "sha256": "4e55ab2fabd58d82a6e87d4873a765539a2893c76104fd5dca60b08b78c7524d",
+        "route": "#/lab?topic=3.9.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_9_2-worksheet-0-set2.m",
+        "sha256": "2da17545d15c2e77127931e2d838af00f72109338e2b7c430b9172c868074a4b",
+        "route": "#/lab?topic=3.9.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "c2": 343,
+          "f": 1130,
+          "pa": 1.1300000000000001,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.11
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_9_3-worksheet-0-set1.m",
+        "sha256": "244794030fcc8993d3bda339918d924b3156f8454344e57a31026e130f95d531",
+        "route": "#/lab?topic=3.9.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.1,
+          "level": 100,
+          "reference": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_3_9_3-worksheet-0-set2.m",
+        "sha256": "c97a776277c321e9767b735639e3022948cdf5e9ec0b954b005387169f725f85",
+        "route": "#/lab?topic=3.9.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "c2": 343,
+          "f": 1130,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "obs": 0.11,
+          "level": 100,
+          "reference": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_1-worksheet-0-set1.m",
+        "sha256": "69c5c76e66160cffc0022721276fc76824aaf51f26a33ca2d9a0cca81d01616c",
+        "route": "#/lab?topic=4.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.05,
+          "v": 0.01,
+          "Rm": 200,
+          "M": 0.1,
+          "D": 100000
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_1-worksheet-0-set2.m",
+        "sha256": "88fadef83b7458b6dd9e7099e0f7d35e06679b4c054b296424f6fd7410e43420",
+        "route": "#/lab?topic=4.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.056,
+          "v": 0.011,
+          "Rm": 230,
+          "M": 0.1,
+          "D": 100000
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_2_1-worksheet-0-set1.m",
+        "sha256": "dd866bff5976d1270a254e089f7ce112c3c5566092f21e772a351c02b2f4a5da",
+        "route": "#/lab?topic=4.2.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.05,
+          "v": 0.01,
+          "r": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_2_1-worksheet-0-set2.m",
+        "sha256": "009e2b899c430a93d27ab15f22307329c3097afefb331cebc724bba599734e28",
+        "route": "#/lab?topic=4.2.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.056,
+          "v": 0.011,
+          "r": 2.3000000000000003
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_2_2-worksheet-0-set1.m",
+        "sha256": "2b48d8a6fc216e2c2f9e732c038f0da9aa501dae534c2b9f31a67fbdd412481d",
+        "route": "#/lab?topic=4.2.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.05,
+          "v": 0.01
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_2_2-worksheet-0-set2.m",
+        "sha256": "c5a41cc598c762e471c0c83bcd24f5aafa3a1610a33e8e43d7ef6ddd68a11e80",
+        "route": "#/lab?topic=4.2.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.056,
+          "v": 0.011
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_2_3-worksheet-0-set1.m",
+        "sha256": "bbdd8033732c17cfef56b9b71243dd81ee5a9d17ad3a7f5996f8c9facf4c710f",
+        "route": "#/lab?topic=4.2.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5000,
+          "a": 0.05,
+          "v": 0.01,
+          "N": 4,
+          "d": 0.15,
+          "Q": 0.00001,
+          "r": 5
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_2_3-worksheet-0-set2.m",
+        "sha256": "913ddd493d323524f19ba91c31bb0134a10d617a62e5f2990561a21dff57127e",
+        "route": "#/lab?topic=4.2.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5600,
+          "a": 0.05,
+          "v": 0.01,
+          "N": 5,
+          "d": 0.16999999999999998,
+          "Q": 0.000011,
+          "r": 5
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_3-worksheet-0-set1.m",
+        "sha256": "a8d5274935aa0ff5edf4f94e31af789a9338ac42121a9dec02462fe9f46f7ce5",
+        "route": "#/lab?topic=4.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.05,
+          "v": 0.01,
+          "d": 0.02,
+          "Q": 0.00001,
+          "r": 10,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_3-worksheet-0-set2.m",
+        "sha256": "2e42dc40cce59d6d34ba90f7afd49d01de8704c1eabe1511a03570741fea63af",
+        "route": "#/lab?topic=4.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.05,
+          "v": 0.01,
+          "d": 0.023,
+          "Q": 0.000011,
+          "r": 10,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_1-worksheet-0-set1.m",
+        "sha256": "8afdf0cd7271d973f49dc4f4d38e042de15d057bb5daffb6a4c932b9bd443aec",
+        "route": "#/lab?topic=4.4.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.5,
+          "v": 0.01,
+          "N": 16,
+          "xobs": 0.25,
+          "yobs": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_1-worksheet-0-set2.m",
+        "sha256": "0a02eb90dfbde294e37b9a77c8eae647febff7fc9f40cacbb3ea078eb4496f3c",
+        "route": "#/lab?topic=4.4.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.55,
+          "v": 0.01,
+          "N": 16,
+          "xobs": 0.25,
+          "yobs": 0.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_2-worksheet-0-set1.m",
+        "sha256": "dbd617a9831e3b6c22379e7abeab87df881ac8a99b78f2dd9978cad7a1d1a7ca",
+        "route": "#/lab?topic=4.4.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.5,
+          "v": 0.01,
+          "N": 32,
+          "r": 1.5
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_2-worksheet-0-set2.m",
+        "sha256": "b34b0c40ef9f002ea47925a78bd167631c6dd20b0ea62f1176a97ee827d4fcde",
+        "route": "#/lab?topic=4.4.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.55,
+          "v": 0.01,
+          "N": 40,
+          "r": 1.5
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_3-worksheet-0-set1.m",
+        "sha256": "36a5bb14109eb99b2d4ca1e50f2733362c9c3b14304bc2a4cae1ea64f7083cd8",
+        "route": "#/lab?topic=4.4.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 50000,
+          "a": 0.05,
+          "v": 0.01
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_3-worksheet-0-set2.m",
+        "sha256": "b128020f07812086a69dbea793494a500107e6a54e650464f467259e73e6d6d9",
+        "route": "#/lab?topic=4.4.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 56000,
+          "a": 0.056,
+          "v": 0.01
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_4-worksheet-0-set1.m",
+        "sha256": "0ccc0a4c3a5d9ee1da4d28342431fcd431ce4863bbd51707f30ad55d552e6129",
+        "route": "#/lab?topic=4.4.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 50000,
+          "a": 0.05,
+          "v": 0.01,
+          "zobs": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_4_4_4-worksheet-0-set2.m",
+        "sha256": "c360fcce21c68b6d583aeb7479fa92f2da69e53c2b56e414a160be09a60e759f",
+        "route": "#/lab?topic=4.4.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 56000,
+          "a": 0.056,
+          "v": 0.011,
+          "zobs": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_5_1-worksheet-0-set1.m",
+        "sha256": "4317797a0a8f8150a9d358067cf88cfca013c1500dac45aa4c41495ad6dcab01",
+        "route": "#/lab?topic=5.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 3000,
+          "a": 0.05,
+          "v": 0.01,
+          "pa": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_5_1-worksheet-0-set2.m",
+        "sha256": "cd1f927b2a8f8c320c9e3c6f41a603e3dff1373fb3fdd6ba5202aa19b08b269f",
+        "route": "#/lab?topic=5.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 3400,
+          "a": 0.05600000000000001,
+          "v": 0.01,
+          "pa": 1.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_5_2-worksheet-0-set1.m",
+        "sha256": "97df52d5f1c4eaadb400549a80367122e9a9ebeddb1b946cae6938adaffcde4b",
+        "route": "#/lab?topic=5.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5000,
+          "a": 0.05,
+          "v": 0.01,
+          "pa": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_5_2-worksheet-0-set2.m",
+        "sha256": "963d000476bfa8d96a3f75865c061761def13effa730a0a5de5a965fe19f25b0",
+        "route": "#/lab?topic=5.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5600,
+          "a": 0.056,
+          "v": 0.01,
+          "pa": 1.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_5_3-worksheet-0-set1.m",
+        "sha256": "44cc71e9e44604715f16779d4317d09f355412e3f1de845a481f9eeb17754bc3",
+        "route": "#/lab?topic=5.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5000,
+          "a": 0.05,
+          "v": 0.01,
+          "pa": 1,
+          "r": 5,
+          "theta": 180
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_5_3-worksheet-0-set2.m",
+        "sha256": "4c21c0ffcf831bade1052785e75a9b3248a3c7ae8a341d6fdd2e781060e95315",
+        "route": "#/lab?topic=5.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5600,
+          "a": 0.05600000000000001,
+          "v": 0.01,
+          "pa": 1.1,
+          "r": 5,
+          "theta": 180
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_6_1-worksheet-0-set1.m",
+        "sha256": "3433c8ed0667a2c25ee07253450d15b9476af7ad727426cae6b6cfc656c9e133",
+        "route": "#/lab?topic=6.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 20000,
+          "a": 0.005,
+          "v": 0.01,
+          "criterion": 0.99
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_6_1-worksheet-0-set2.m",
+        "sha256": "a06a6b00b8e8e285048033c320199e81aa998713aa939e08b27857411459b4c0",
+        "route": "#/lab?topic=6.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 23000,
+          "a": 0.0055,
+          "v": 0.01,
+          "criterion": 0.99
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_6_2-worksheet-0-set1.m",
+        "sha256": "32d93df5e027d217a3789aa84802ba059e1cb7b45902590760511f704701e736",
+        "route": "#/lab?topic=6.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.05,
+          "v": 0.01,
+          "xB": 3,
+          "yB": 2,
+          "Q": 0.00001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_6_2-worksheet-0-set2.m",
+        "sha256": "a6e5f09f2d71a52ce2c961f9d692152496c70db75c837afd7cc464e28dc63f60",
+        "route": "#/lab?topic=6.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.05,
+          "v": 0.01,
+          "xB": 3.4000000000000004,
+          "yB": 2.3,
+          "Q": 0.000011
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_7_1-worksheet-0-set1.m",
+        "sha256": "f03278e009f9ee92f997093169b725b174756197b392bd8e3f03f6fd9b54340e",
+        "route": "#/lab?topic=7.1",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 500,
+          "pa": 1,
+          "alpha": 0.0001,
+          "r": 1000
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_7_1-worksheet-0-set2.m",
+        "sha256": "183fbfe77328706b2b078167af9cad983d35dfc3daf0ddf4dfc25cd1c13ea0b2",
+        "route": "#/lab?topic=7.1",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 500,
+          "pa": 1.1,
+          "alpha": 0.00011,
+          "r": 1000
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_7_2-worksheet-0-set1.m",
+        "sha256": "53658ea731a377dcc8483ac1782f9cd2cd540bd28acd31bd2bb14f2f161c9a6b",
+        "route": "#/lab?topic=7.2",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 50000,
+          "a": 0.05,
+          "v": 0.01,
+          "relaxTime": 0.00002,
+          "A": 1e-8,
+          "B": 5e-15,
+          "r": 1000,
+          "SL": 180
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_7_2-worksheet-0-set2.m",
+        "sha256": "072095bbb0ff40241b2f00440a0b92322f14b23bf6a66d7a621ed3959495951a",
+        "route": "#/lab?topic=7.2",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 56000,
+          "a": 0.05,
+          "v": 0.01,
+          "relaxTime": 0.00002,
+          "A": 1e-8,
+          "B": 5e-15,
+          "r": 1100,
+          "SL": 180
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_7_3-worksheet-0-set1.m",
+        "sha256": "fdbf0fe40ee8803961b409fd7594352aaf60df83dff61d528e59f85e6a119296",
+        "route": "#/lab?topic=7.3",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "res": 1,
+          "react": 0,
+          "d": 0.05,
+          "sigma": 10000
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_7_3-worksheet-0-set2.m",
+        "sha256": "caa0b52e24fe89d145fd0b384f5d065929660e1cf6b81b22899f026e6a748d52",
+        "route": "#/lab?topic=7.3",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1100,
+          "res": 1,
+          "react": 0,
+          "d": 0.05500000000000001,
+          "sigma": 11500
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_4-worksheet-0-set1.m",
+        "sha256": "b91d415c9cb3b01a1fd3a48c63a18c602e8ff577879615bab8d83c96b5bf914c",
+        "route": "#/lab?topic=1.2.4",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 10,
+          "D": 395000,
+          "Rm": 80,
+          "F0": 50,
+          "n": 1900,
+          "limit": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_4-worksheet-0-set2.m",
+        "sha256": "220055838ae2446db189a3209bcab9a9448a37efe50def2282bf7a95432f4096",
+        "route": "#/lab?topic=1.2.4",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 11,
+          "D": 446000,
+          "Rm": 90,
+          "F0": 56,
+          "n": 2147,
+          "limit": 1.1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_5-worksheet-0-set1.m",
+        "sha256": "f1df94fc6c4baa048e4acda5f77cbc7b03be48d92cf4a2499a69bdb8d7a1585d",
+        "route": "#/lab?topic=1.2.5",
+        "worksheet": 0,
+        "set": 1,
+        "parameters": {
+          "M": 10,
+          "D": 395000,
+          "f1": 30,
+          "f2": 33.33,
+          "velocity": 0.2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/__lab_topic_1_2_5-worksheet-0-set2.m",
+        "sha256": "c063f88c16a493c5c54dbfbc7536575043ad4801ff481a8038f5b421e04a585c",
+        "route": "#/lab?topic=1.2.5",
+        "worksheet": 0,
+        "set": 2,
+        "parameters": {
+          "M": 11,
+          "D": 446000,
+          "f1": 33.9,
+          "f2": 37.660000000000004,
+          "velocity": 0.226
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/1.1.2-2-set1.m",
+        "sha256": "980a07c8ba4708eac125681f3c621dc987a6c4ac0cffe91a6eb73b9dfff01f90",
+        "route": "#/lab?topic=1.1.2",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "M": 1.5,
+          "D": 1350,
+          "A": 0.004
+        },
+        "status": "startup-timeout",
+        "code": 1,
+        "seconds": 300.126,
+        "started": false,
+        "pngBytes": 0
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/1.1.2-2-set2.m",
+        "sha256": "f9999d2999271670c0ba4615f979d244de08b1f8d7799f681c83104963f96df9",
+        "route": "#/lab?topic=1.1.2",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "M": 1.7000000000000002,
+          "D": 1500,
+          "A": 0.005
+        },
+        "status": "startup-timeout",
+        "code": 1,
+        "seconds": 300.124,
+        "started": false,
+        "pngBytes": 0
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.1.3-1-set1.m",
+        "sha256": "b560ff76515d718f463397e510d488ce9e6754054604bf1d44afd3369fa87bae",
+        "route": "#/lab?topic=3.1.3",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "ideal": 1,
+          "continuous": 1,
+          "compressible": 1,
+          "uniform": 1,
+          "small": 1,
+          "distortion": 0.35
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.1.3-1-set2.m",
+        "sha256": "ce590844ee02176c1473332137162f0b783c06aea9cde34f982f12807c5ad7c6",
+        "route": "#/lab?topic=3.1.3",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1000,
+          "pa": 1.1300000000000001,
+          "ideal": 1,
+          "continuous": 1,
+          "compressible": 1,
+          "uniform": 1,
+          "small": 1,
+          "distortion": 0.4
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.1.3-2-set1.m",
+        "sha256": "2ea1f790cd3c82482415eaa927c394ba3e353e3abd985fee3c595b209d6c4497",
+        "route": "#/lab?topic=3.1.3",
+        "figure": 2,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "ideal": 1,
+          "continuous": 1,
+          "compressible": 1,
+          "uniform": 1,
+          "small": 1,
+          "distortion": 0.35
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.1.3-2-set2.m",
+        "sha256": "03e1fd178dfb8d3fd95f5c04f5785d0697305963eba6ce2bfa0baafefb4cb06b",
+        "route": "#/lab?topic=3.1.3",
+        "figure": 2,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1000,
+          "pa": 1.1300000000000001,
+          "ideal": 1,
+          "continuous": 1,
+          "compressible": 1,
+          "uniform": 1,
+          "small": 1,
+          "distortion": 0.4
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.2.1-2-set1.m",
+        "sha256": "ce9dd7dd4b43d71a079c569eaeea89f39545e9674490fc7daa1bd31c65e7f1b6",
+        "route": "#/lab?topic=3.2.1",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "step": 0,
+          "boundary": 0,
+          "L": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.2.1-2-set2.m",
+        "sha256": "38d55eed720c8bc4a3b3132468ce84e0ccb65ef0bd65df45fbcdb8b0faeda12b",
+        "route": "#/lab?topic=3.2.1",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 388,
+          "f": 1130,
+          "pa": 1.1300000000000001,
+          "step": 0,
+          "boundary": 0,
+          "L": 2
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.4.4-1-set1.m",
+        "sha256": "be71ec2f3a3f52622c0cd13b1324ee94264a7d7eeeba315970cf8554089b50c0",
+        "route": "#/lab?topic=3.4.4",
+        "figure": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.4.4-1-set2.m",
+        "sha256": "cb0f523f30f38c3ac401c4ea15fb4c75052ee63da5368c28683b14cb006cca7a",
+        "route": "#/lab?topic=3.4.4",
+        "figure": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1130,
+          "pa": 1.1300000000000001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.4.6-1-set1.m",
+        "sha256": "1e6be42b51e2f1fca1f9c2b21e95892d8b26752f338df25a17cec055ec9a3895",
+        "route": "#/lab?topic=3.4.6",
+        "figure": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "medium": 0,
+          "pRms": 1,
+          "intensity": 0.01,
+          "power": 0.1,
+          "n": 2,
+          "sourceLevel": 80
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.4.6-1-set2.m",
+        "sha256": "d2bfee7dab9cfeac4aa9f68cf89a3e865da5a1fa1d307bb64c85f9d7c7d70e7c",
+        "route": "#/lab?topic=3.4.6",
+        "figure": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.37,
+          "c": 388,
+          "f": 1000,
+          "pa": 1,
+          "medium": 0,
+          "pRms": 1,
+          "intensity": 0.01,
+          "power": 0.1,
+          "n": 2,
+          "sourceLevel": 90
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.5.2-2-set1.m",
+        "sha256": "9faf6211670ddfefed1730a99931c8a1f4ff99fe6bf9e4ff6888bdbf633a73d6",
+        "route": "#/lab?topic=3.5.2",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "pa": 1,
+          "azimuth": 60,
+          "elevation": 25,
+          "wavecount": 3,
+          "a1": 0,
+          "a2": 60,
+          "a3": 120,
+          "a4": -45
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.5.2-2-set2.m",
+        "sha256": "023361539a7671f0de5fc1279bcc436a84b4ad07b2bb07f28daddc9168e2d866",
+        "route": "#/lab?topic=3.5.2",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 388,
+          "f": 1130,
+          "pa": 1,
+          "azimuth": 68,
+          "elevation": 28,
+          "wavecount": 3,
+          "a1": 0,
+          "a2": 68,
+          "a3": 136,
+          "a4": -51
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.6.10-2-set1.m",
+        "sha256": "b2d580f657ea3a4373582496776a156c474962cf0ff95d601216282296390277",
+        "route": "#/lab?topic=3.6.10",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 343,
+          "c2": 1500,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 415,
+          "Z2": 1500000,
+          "theta": 60
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.6.10-2-set2.m",
+        "sha256": "8cad226a738f0b7a68fc28a27a6e5e304a11f53a9797307e4e267aa3eb29fe8e",
+        "route": "#/lab?topic=3.6.10",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 6000,
+          "c2": 1500,
+          "f": 1130,
+          "pa": 1.1300000000000001,
+          "Z1": 470,
+          "Z2": 1695000,
+          "theta": 67.8
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.6.11-2-set1.m",
+        "sha256": "c7b1378606208def3b5c70e379bd34a4070aa695acef67cc2af257d7fe2929a0",
+        "route": "#/lab?topic=3.6.11",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "radius": 32.5,
+          "source": 0.95,
+          "launch": 80
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.6.11-2-set2.m",
+        "sha256": "cc51c2eaf03d216c83fa715d65ad498554089eda746bc3deb60c654f518cc05f",
+        "route": "#/lab?topic=3.6.11",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "radius": 36.7,
+          "source": 0.99,
+          "launch": 90
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.9.1-1-set1.m",
+        "sha256": "fa5afa11d3225bc60b59e2a583795459c838d58e0c15c51ef7d19d2711cadc23",
+        "route": "#/lab?topic=3.9.1",
+        "figure": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "argument": 10
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/3.9.1-1-set2.m",
+        "sha256": "0c0d5042dd1140f539da4f9bcc6a77ed89a76c0a56cbbd54f1aab6e7da25ba1b",
+        "route": "#/lab?topic=3.9.1",
+        "figure": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "c2": 343,
+          "f": 1000,
+          "pa": 1,
+          "Z1": 1500000,
+          "Z2": 415,
+          "theta": 30,
+          "argument": 11.3
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/4.3-2-set1.m",
+        "sha256": "6233e7e3dc08c6f194c2a8d9e8d87869c8dab0939d6abe0c2ee3f5ab1d8a76c0",
+        "route": "#/lab?topic=4.3",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.05,
+          "v": 0.01,
+          "d": 0.02,
+          "Q": 0.00001,
+          "r": 10,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/4.3-2-set2.m",
+        "sha256": "23f795c5bc8b1632b52b8665ac92f36a78def4675d219545aad7e0bb2bf575ff",
+        "route": "#/lab?topic=4.3",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.05,
+          "v": 0.01,
+          "d": 0.023,
+          "Q": 0.000011,
+          "r": 10,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/4.3-3-set1.m",
+        "sha256": "f952658666a915b431137658ff4b65f842043de01d6ab54ddc866255858da0a1",
+        "route": "#/lab?topic=4.3",
+        "figure": 2,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1000,
+          "a": 0.05,
+          "v": 0.01,
+          "d": 0.02,
+          "Q": 0.00001,
+          "r": 10,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/4.3-3-set2.m",
+        "sha256": "b1fbbbc77afd4c6838fa49bbb04cff68131c27d25a6883d0f2fb1d9aa4f5fc10",
+        "route": "#/lab?topic=4.3",
+        "figure": 2,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 1100,
+          "a": 0.05,
+          "v": 0.01,
+          "d": 0.023,
+          "Q": 0.000011,
+          "r": 10,
+          "theta": 30
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/4.4.3-2-set1.m",
+        "sha256": "afa3f810bc05fac431c23ed21d95c3d319ebbbd6de9267661eddf2bd46b7cb01",
+        "route": "#/lab?topic=4.4.3",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 50000,
+          "a": 0.05,
+          "v": 0.01
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/4.4.3-2-set2.m",
+        "sha256": "479f64e3f939c5baf9dc6caabc0f3f96d451833b40722c64a5d54a15cc5b06b7",
+        "route": "#/lab?topic=4.4.3",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 56000,
+          "a": 0.056,
+          "v": 0.01
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/5.2-1-set1.m",
+        "sha256": "ed5cbf693d7f1d02d6dd1860e5542781b627ef682e89fcefb957c1bbc0c1275b",
+        "route": "#/lab?topic=5.2",
+        "figure": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5000,
+          "a": 0.05,
+          "v": 0.01,
+          "pa": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/5.2-1-set2.m",
+        "sha256": "a5f894f7e70f34bcc173ea40c3947d74f334302d517ba24f4605f1aba8d08da2",
+        "route": "#/lab?topic=5.2",
+        "figure": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 5600,
+          "a": 0.056,
+          "v": 0.01,
+          "pa": 1
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/6.2-2-set1.m",
+        "sha256": "66eb124268005f65a60280d0bb33be977474087a5c9a1ea5bf8cac330dbb4be4",
+        "route": "#/lab?topic=6.2",
+        "figure": 1,
+        "set": 1,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 10000,
+          "a": 0.05,
+          "v": 0.01,
+          "xB": 3,
+          "yB": 2,
+          "Q": 0.00001
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/6.2-2-set2.m",
+        "sha256": "6165969b4346e6f6462b683276512575924f20956becc0a7f7994285b0b05702",
+        "route": "#/lab?topic=6.2",
+        "figure": 1,
+        "set": 2,
+        "parameters": {
+          "rho": 1000,
+          "c": 1500,
+          "f": 8700,
+          "a": 0.05,
+          "v": 0.01,
+          "xB": 3.4000000000000004,
+          "yB": 2.3,
+          "Q": 0.000011
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/7.3-1-set1.m",
+        "sha256": "8a1725443d458e0f6120ac94b9d480424532f9da18a646dd10530f13ff67d2d6",
+        "route": "#/lab?topic=7.3",
+        "figure": 0,
+        "set": 1,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1000,
+          "res": 1,
+          "react": 0,
+          "d": 0.05,
+          "sigma": 10000
+        },
+        "status": "unattempted"
+      },
+      {
+        "file": "outputs/bug-audit-1/round2-matlab/exports/7.3-1-set2.m",
+        "sha256": "e07df5273fb742e791fcda12cfbc48c82f9ef7b4938c06e66f27bae7ec2dfa97",
+        "route": "#/lab?topic=7.3",
+        "figure": 0,
+        "set": 2,
+        "parameters": {
+          "rho": 1.21,
+          "c": 343,
+          "f": 1100,
+          "res": 1.1,
+          "react": 0,
+          "d": 0.05500000000000001,
+          "sigma": 11500
+        },
+        "status": "unattempted"
+      }
+    ],
+    "diagnosticProbes": [
+      {
+        "directory": "outputs/bug-audit-1/probe-1792627713631",
+        "mode": "normal isolated startup",
+        "status": "startup timeout before first batch command",
+        "timeLimitSeconds": 300,
+        "commandLogBytes": 0
+      },
+      {
+        "directory": "outputs/bug-audit-1/probe-1792627972547",
+        "mode": "no JVM",
+        "status": "startup timeout before first batch command",
+        "timeLimitSeconds": 300,
+        "commandLogBytes": 0
+      },
+      {
+        "directory": "outputs/bug-audit-1/probe-local-data-1792628736894",
+        "mode": "process-local AppData redirection",
+        "status": "startup timeout before first batch command",
+        "timeLimitSeconds": 300,
+        "commandLogBytes": 0
+      }
+    ]
+  },
+  "unchangedByRequest": [
+    {
+      "round1": "A13",
+      "round2": "R2-06",
+      "status": "77 duplicated engineering/background paragraphs inventoried; prose intentionally unchanged."
+    }
+  ]
+}
