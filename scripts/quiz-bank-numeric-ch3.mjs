@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 export const chapter3Units = {
   'Pa/s^2': ['pressure-time-curvature',1],
   'm^2/s': ['velocity-potential',1],
+  'J/m^2': ['fluence',1],
   'kg/(m^2*s)': ['mass-flux', 1],
   'kg/(m^3*s)': ['mass-flux-gradient', 1],
   'Pa/m': ['pressure-gradient', 1],
@@ -17,6 +18,18 @@ export const chapter3Units = {
   rad: ['angle', 1],
 };
 export const chapter3Methods = {
+  'stored-acoustic-energy': {
+    inputs:{rho0:'density',c:'velocity',pe:'pressure',ue:'velocity',volume:'volume'},unit:'energy',formula:String.raw`$\overline E=\frac V2\left(\rho_0u_e^2+\frac{p_e^2}{\rho_0c_0^2}\right)$`,
+    compute:({rho0,c,pe,ue,volume})=>{assert.ok(rho0>0&&c>0&&volume>0&&pe>=0&&ue>=0);return volume*(rho0*ue*ue+pe*pe/(rho0*c*c))/2;},
+  },
+  'energy-fill-time': {
+    inputs:{volume:'volume',dw:'energy-density',pin:'power',pout:'power'},unit:'time',formula:String.raw`$\Delta t=\frac{V\Delta\overline w}{\overline P_{\mathrm{in}}-\overline P_{\mathrm{out}}}$`,
+    compute:({volume,dw,pin,pout})=>{assert.ok(volume>0&&dw>0&&pin>pout&&pout>=0);return volume*dw/(pin-pout);},
+  },
+  'level-fluence': {
+    inputs:{level:'level',Iref:'intensity',dt:'time'},unit:'fluence',formula:String.raw`$F=I_{\mathrm{ref}}10^{L_I/10}\Delta t$`,
+    compute:({level,Iref,dt})=>{assert.ok(Iref>0&&dt>0);return Iref*Math.pow(10,level/10)*dt;},
+  },
   'radial-pressure-curvature': {
     inputs:{c:'velocity',g:'pressure-gradient',r:'length'},unit:'pressure-time-curvature',formula:String.raw`$\partial_t^2p=\frac{2c_0^2}{r}\partial_r p\quad(\partial_r^2p=0)$`,
     compute:({c,g,r})=>{assert.ok(c>0&&g>0&&r>0);return 2*c*c*g/r;},
