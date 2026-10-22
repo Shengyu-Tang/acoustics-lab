@@ -58,8 +58,16 @@ function changed(a, b) {
   );
 }
 const failures = [],
-  exemptions = [];
+  exemptions = [],
+  figures = [];
 for (const l of lectures) {
+  const figureChecks = l.figures.map((f) => ({
+    lecture: l.id,
+    number: f.number,
+    sensitiveTo: [],
+    independentOf: f.independentOf ?? [],
+    reason: f.dimensionlessComparison ?? "",
+  }));
   const times = [0, (l.animationPeriod?.(l.defaults) ?? 1) / 7];
   for (const d of l.parameters) {
     const amplitude = /^(A|pa|B|F0|x0|v0|height|xi|velocity|pRms|power|intensity|a\d+)$/.test(
@@ -97,6 +105,7 @@ for (const l of lectures) {
             if (changed(baseline, plotted({ ...context, [d.key]: v }))) sensitive = true;
         }
       lectureSensitive ||= sensitive;
+      if (sensitive) figureChecks.find((q) => q.number === f.number).sensitiveTo.push(d.key);
       if (!sensitive)
         failures.push(`${l.id} -- ${d.key} -- ${f.number}: invariant figure without independentOf`);
     }
@@ -149,10 +158,17 @@ for (const l of lectures) {
       }
     }
   }
+  for (const figure of figureChecks) {
+    if (!figure.sensitiveTo.length && !(figure.independentOf.length && figure.reason))
+      failures.push(
+        `${figure.number}: every non-example figure needs sensitivity or explained independentOf`,
+      );
+    figures.push(figure);
+  }
 }
 fs.writeFileSync(
   "outputs/parameter-sensitivity.json",
-  JSON.stringify({ failures, exemptions }, null, 2),
+  JSON.stringify({ failures, exemptions, figures }, null, 2),
 );
 console.log(
   exemptions.length
