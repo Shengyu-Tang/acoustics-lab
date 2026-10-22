@@ -14,9 +14,12 @@ export const roles = {
   depth: "深度判断",
 };
 const cell = (s) => String(s).replaceAll("|", "\\|").replaceAll("\n", " ");
+// "1" is the internal dimensional-analysis marker, never a displayed unit.
+export const quantityText = (value, unit, precision) =>
+  `${precision ? value.toPrecision(precision) : value}${unit === "1" ? "" : ` ${unit}`}`;
 const answerText = (q) =>
   q.type === "numeric"
-    ? `${q.answer.value.toPrecision(4)} ${q.answer.unit}（相对容差 ±2%，判分保留完整值）`
+    ? `${quantityText(q.answer.value, q.answer.unit, 4)}（相对容差 ±2%，判分保留完整值）`
     : q.type === "short"
       ? "简答，按评分要点自查"
       : q.type === "judge"
@@ -37,16 +40,17 @@ export function loadBanks() {
 }
 
 export function renderReview(manifest, banks) {
+  const optionalCount = banks.flatMap((b) => b.questions).filter((q) => q.optional).length;
   const lines = [
     "# 声学基础题库审阅稿",
     "",
-    `当前已完成第${manifest.chapters.map((c) => c.chapter).join("、")}章的内容草案，覆盖${banks.length}讲、课前${banks.length * 3}题和课后${banks.length * 5}题，尚待教师审定。每讲课前依次检查前置知识、物理直觉和概念辨析；课后依次为概念、公式、计算、推理、深度判断。题库未接入网站界面。`,
+    `当前已完成第${manifest.chapters.map((c) => c.chapter).join("、")}章的内容草案，覆盖${banks.length}讲、课前${banks.length * 3}题、课后必答${banks.length * 5}题及可选${optionalCount}题，尚待教师审定。每讲课前依次检查前置知识、物理直觉和概念辨析；课后post-01至post-05依次为概念、公式、计算、推理、深度简答，post-06为可选深度选择题。题库未接入网站界面。`,
     "",
     "## 结构与复核方法",
     "",
     "共享结构见 [quiz-bank.schema.json](quiz-bank.schema.json)。每讲一个 JSON，concept 为本讲要点原文数组，一道题可覆盖多个要点；coverage 仅统计课后题。manifest.json 只登记已完成的整章草案；后续章节完成时增列整章，不把未起草章节误报为缺题。",
     "",
-    "数值答案记录计算式、带单位的输入、完整精度结果及相对容差0.02，审阅稿显示4位有效数字。校验器只使用自身的公式与单位换算，既不执行题库表达式，也不调用网站 physics 代码；完整值误差按更严格的0.001%校验，学生作答仍按±2%判分。第二章起每讲深度题为简答，列2—3条评分要点及参考答案；第一章题目保留原草案待单独修订。全章单选正确答案任一字母占比不得超过40%。",
+    "数值答案记录计算式、带单位的输入、完整精度结果及相对容差0.02，审阅稿显示4位有效数字；无量纲答案和输入不显示单位，内部单位标识1仅用于量纲校验。校验器只使用自身的公式与单位换算，既不执行题库表达式，也不调用网站 physics 代码；完整值误差按更严格的0.001%校验，学生作答仍按±2%判分。每讲post-05为简答，列2—3条评分要点及参考答案；可选post-06保留原深度选择情境并重写干扰项。全章选择题正确字母（含可选题，多选按各正确字母计数）任一字母占比不得超过40%。",
     "",
     "来源中的页码一律指原始单讲 PDF 从1起的物理页序，不是教学设计中的合并授课课件页码。PDF 依原文件名在只读目录 ../04-声学基础课件资料/ 下定位；教学设计位于只读目录 ../02-教学安排/20261018督导版教学设计/。每讲均已阅读原始 PDF、对应教学设计及思考题；每题注明课件页和教学设计目标条目。教学设计是目标对齐依据，题目为重新起草。schema中sources和source均标记为teacherOnly，来源只用于教师核对；本审阅稿供教师使用。",
     "",
@@ -69,24 +73,25 @@ export function renderReview(manifest, banks) {
   }
   lines.push(
     "",
-    "## 单选答案分布",
+    "## 选择题正确字母分布（含可选题）",
     "",
     "| 章 | A | B | C | D |",
     "| --- | --- | --- | --- | --- |",
   );
   for (const c of manifest.chapters) {
-    const choices = banks
+    const letters = banks
       .filter((b) => b.chapter === c.chapter)
-      .flatMap((b) => b.questions.filter((q) => q.type === "single"));
+      .flatMap((b) => b.questions)
+      .flatMap((q) => (q.type === "single" ? [q.answer] : q.type === "multi" ? q.answer : []));
     const counts = ["A", "B", "C", "D"].map((letter) => {
-      const count = choices.filter((q) => q.answer === letter).length;
-      return `${count}（${(choices.length ? (100 * count) / choices.length : 0).toFixed(1)}%）`;
+      const count = letters.filter((answer) => answer === letter).length;
+      return `${count}（${(letters.length ? (100 * count) / letters.length : 0).toFixed(1)}%）`;
     });
     lines.push(`| ${c.chapter} | ${counts.join(" | ")} |`);
   }
   lines.push("", "## 深度题清单", "", "| 讲次 | 题号 | 判断依据 |", "| --- | --- | --- |");
   for (const b of banks)
-    for (const q of b.questions.filter((q) => q.role === "depth")) {
+    for (const q of b.questions.filter((q) => q.role === "depth" && !q.optional)) {
       const reason =
         q.type === "short"
           ? q.answer.rubric.map((s) => s.replace(/[。；]$/u, "")).join("；")
@@ -121,11 +126,16 @@ export function renderReview(manifest, banks) {
     );
     for (const q of b.questions)
       lines.push(
-        `| ${q.id} | ${q.kind === "pre" ? "课前" : "课后"} · ${roles[q.role]} | ${q.type} | ${cell(answerText(q))} | ${q.concept.map((p) => b.keyPoints.indexOf(p) + 1).join("、")} |`,
+        `| ${q.id} | ${q.kind === "pre" ? "课前" : "课后"} · ${roles[q.role]}${q.optional ? "（可选）" : ""} | ${q.type} | ${cell(answerText(q))} | ${q.concept.map((p) => b.keyPoints.indexOf(p) + 1).join("、")} |`,
       );
     lines.push("", "### 逐题题干、答案与解析", "");
     for (const q of b.questions) {
-      lines.push(`#### ${q.id} ${roles[q.role]}（${q.level}）`, "", q.stem, "");
+      lines.push(
+        `#### ${q.id} ${roles[q.role]}（${q.level}${q.optional ? "，可选" : ""}）`,
+        "",
+        q.stem,
+        "",
+      );
       for (const o of q.options ?? []) lines.push(`- ${o.id}．${o.text}`);
       if (q.options) lines.push("");
       lines.push(`答案：${answerText(q)}`, "");
@@ -139,7 +149,7 @@ export function renderReview(manifest, banks) {
           `计算式：${q.answer.calculation.formula}`,
           "",
           `复算输入：${Object.entries(q.answer.calculation.inputs)
-            .map(([k, v]) => `${k} = ${v.value} ${v.unit}`)
+            .map(([k, v]) => `${k} = ${quantityText(v.value, v.unit)}`)
             .join("；")}。`,
           "",
         );

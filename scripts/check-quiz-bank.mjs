@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import ts from "typescript";
 import katex from "katex";
-import { loadBanks, renderReview, root } from "./quiz-bank-review.mjs";
+import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
 
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 export const schema = readJson("specs/redesign/quiz-bank.schema.json");
@@ -367,6 +367,23 @@ export function checkMath(text, context) {
 export const normalizeStem = (s) => s.normalize("NFKC").replace(/[\s$，。；、：？！,.!?;:]/gu, "");
 export const numberNeutralStem = (s) => normalizeStem(s).replace(/\d+(?:\.\d+)?/g, "#");
 
+export function checkNumericDisplay(answer) {
+  // Check the actual shared display formatter independently of grading precision.
+  const suffix = (unit) => (unit === "1" ? "" : ` ${unit}`);
+  const display = quantityText(answer.value, answer.unit, 4);
+  assert.equal(
+    display,
+    `${answer.value.toPrecision(4)}${suffix(answer.unit)}`,
+    "Numeric display must use 4 significant figures and no dimensionless unit 1",
+  );
+  for (const input of Object.values(answer.calculation.inputs))
+    assert.equal(
+      quantityText(input.value, input.unit),
+      `${input.value}${suffix(input.unit)}`,
+      "Input display must not show dimensionless unit 1",
+    );
+}
+
 export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   requireSchema(bank, schema, `Lecture ${bank.lecture}`);
   const id = bank.lecture;
@@ -387,7 +404,7 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   const postRoles = ["concept", "formula", "calculation", "reasoning", "depth"];
   assert.deepEqual(
     bank.questions.map((q) => q.role),
-    [...preRoles, ...postRoles],
+    [...preRoles, ...postRoles, ...(bank.questions.length === 9 ? ["depth"] : [])],
     `${id}: pedagogical sequence`,
   );
   assert.equal(
@@ -428,8 +445,13 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
         /为什么|为何|怎样|应|能否|是否|判断/.test(q.stem),
         `${q.id}: depth must require a judgment`,
       );
-    if (bank.chapter >= 2 && q.role === "depth")
-      assert.equal(q.type, "short", `${q.id}: depth must use short answer from chapter 2`);
+    if (n === 5 && !pre) assert.equal(q.type, "short", `${q.id}: depth must use short answer`);
+    if (n === 6 && !pre) {
+      assert.equal(q.type, "single", `${q.id}: optional depth must retain the choice question`);
+      assert.equal(q.optional, true, `${q.id}: post-06 must be optional`);
+    } else {
+      assert.ok(!own(q, "optional"), `${q.id}: only post-06 may be optional`);
+    }
     if (q.type === "short") {
       assert.equal(q.role, "depth", `${q.id}: short answer is the depth task`);
       for (const text of [...q.answer.rubric, q.answer.reference]) checkMath(text, q.id);
@@ -466,6 +488,7 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
     if (q.type === "numeric") {
       checkMath(q.answer.calculation.formula, q.id);
       recomputeNumeric(q.answer);
+      checkNumericDisplay(q.answer);
     }
     const cited = new Set();
     for (const ref of q.source) {
@@ -556,15 +579,22 @@ export function validateInventory(manifest, banks, topics, filenames) {
       assert.ok(!patterns.has(pattern), `${q.id}: repeats a stem with changed numbers`);
       patterns.add(pattern);
     }
-  for (const chapter of manifest.chapters) {
-    const choices = banks
-      .filter((b) => b.chapter === chapter.chapter)
-      .flatMap((b) => b.questions.filter((q) => q.type === "single"));
+  checkAnswerDistribution(banks);
+}
+
+// Count every correct A–D selection, including optional questions and multi-select
+// answers. Judge/short/numeric answers do not have a letter and are excluded.
+export function checkAnswerDistribution(banks) {
+  for (const chapter of new Set(banks.map((b) => b.chapter))) {
+    const letters = banks
+      .filter((b) => b.chapter === chapter)
+      .flatMap((b) => b.questions)
+      .flatMap((q) => (q.type === "single" ? [q.answer] : q.type === "multi" ? q.answer : []));
     for (const letter of ["A", "B", "C", "D"]) {
-      const count = choices.filter((q) => q.answer === letter).length;
+      const count = letters.filter((answer) => answer === letter).length;
       assert.ok(
-        count <= choices.length * 0.4,
-        `chapter ${chapter.chapter}: answer distribution ${letter} exceeds 40%`,
+        count * 5 <= letters.length * 2,
+        `chapter ${chapter}: answer distribution ${letter} exceeds 40% (${count}/${letters.length})`,
       );
     }
   }
@@ -624,7 +654,7 @@ export function runChecks() {
     "Review is stale; run node scripts/quiz-bank-review.mjs --write",
   );
   console.log(
-    `PASS check-quiz-bank: ${banks.length} lectures, ${banks.length * 3} pre + ${banks.length * 5} post questions, ${numericCount} independent numeric checks; schema, sources, coverage, depth, KaTeX and review synchronized.`,
+    `PASS check-quiz-bank: ${banks.length} lectures, ${banks.length * 3} pre + ${banks.length * 5} required post + ${banks.flatMap((b) => b.questions).filter((q) => q.optional).length} optional post questions, ${numericCount} independent numeric checks; schema, teacher-only sources, coverage, short depth, answer distribution, KaTeX and review synchronized.`,
   );
 }
 

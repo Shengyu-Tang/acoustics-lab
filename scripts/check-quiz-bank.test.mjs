@@ -9,8 +9,10 @@ import {
   validateInventory,
   recomputeNumeric,
   checkMath,
+  checkAnswerDistribution,
+  checkNumericDisplay,
 } from "./check-quiz-bank.mjs";
-import { loadBanks, renderReview, root } from "./quiz-bank-review.mjs";
+import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
 
 const { manifest, banks } = loadBanks();
 const topics = JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8"));
@@ -101,10 +103,10 @@ test("key points must match live source text and depth cannot be demoted", () =>
   b.keyPoints[0] += "改写";
   assert.throws(() => validateBank(b), /verbatim/);
   const c = copy(example);
-  c.questions[7].level = "应用";
+  for (const q of c.questions.filter((q) => q.role === "depth")) q.level = "应用";
   assert.throws(() => validateBank(c), /missing depth/);
   const d = copy(example);
-  d.questions.pop();
+  d.questions = d.questions.slice(0, 7);
   assert.throws(() => validateBank(d), /too few items/);
 });
 
@@ -228,46 +230,92 @@ test("review is generated from answers, explanations and post-only coverage", ()
     }
 });
 
-test("chapter 2 depth uses short answers with bounded scoring criteria and no choices", () => {
-  const b = copy(banks.find((b) => b.lecture === "2.1"));
-  const depth = b.questions[7];
-  assert.equal(depth.type, "short");
-  assert.equal(depth.answer.rubric.length, 3);
-  assert.deepEqual(validateSchema(b), []);
-  for (const mutate of [
-    (q) => {
-      q.answer.rubric = [q.answer.rubric[0]];
-    },
-    (q) => {
-      q.answer.rubric.push("额外评分项");
-    },
-    (q) => {
-      q.answer.reference = "";
-    },
-    (q) => {
-      q.options = copy(example.questions[0].options);
-    },
-  ]) {
-    const q = copy(depth);
-    mutate(q);
-    assert.ok(validateSchema(q, schema.$defs.question).length);
-  }
-  const choice = copy(example.questions[7]);
-  b.questions[7] = {
-    ...choice,
-    id: depth.id,
-    lecture: b.lecture,
-    concept: depth.concept,
-    source: depth.source,
-  };
-  assert.throws(() => validateBank(b), /depth must use short answer/);
-});
+for (const id of ["1.1.1", "2.1"])
+  test(`lecture ${id} depth uses short answers with bounded scoring criteria and no choices`, () => {
+    const b = copy(banks.find((b) => b.lecture === id));
+    const depth = b.questions[7];
+    assert.equal(depth.type, "short");
+    assert.equal(depth.answer.rubric.length, 3);
+    assert.deepEqual(validateSchema(b), []);
+    for (const mutate of [
+      (q) => {
+        q.answer.rubric = [q.answer.rubric[0]];
+      },
+      (q) => {
+        q.answer.rubric.push("额外评分项");
+      },
+      (q) => {
+        q.answer.reference = "";
+      },
+      (q) => {
+        q.options = copy(example.questions[0].options);
+      },
+    ]) {
+      const q = copy(depth);
+      mutate(q);
+      assert.ok(validateSchema(q, schema.$defs.question).length);
+    }
+    const choice = copy(example.questions[8]);
+    delete choice.optional;
+    b.questions[7] = {
+      ...choice,
+      id: depth.id,
+      lecture: b.lecture,
+      concept: depth.concept,
+      source: depth.source,
+    };
+    assert.throws(() => validateBank(b), /depth must use short answer/);
+  });
 
 test("chapter-wide answer distribution rejects a letter exceeding forty percent", () => {
   const edited = copy(banks);
   for (const b of edited.filter((b) => b.chapter === 2))
     for (const q of b.questions.filter((q) => q.type === "single")) q.answer = "A";
   assert.throws(() => validateInventory(manifest, edited, topics, filenames), /exceeds 40%/);
+});
+
+test("distribution includes optional and multi answers, accepts exactly 40%, and checks each chapter", () => {
+  const choices = (answers) => answers.map((answer) => ({ type: "single", answer }));
+  const fixture = [{ chapter: 1, questions: choices(["A", "A", "B", "C", "D"]) }];
+  assert.doesNotThrow(() => checkAnswerDistribution(fixture));
+  fixture[0].questions[4] = { type: "single", answer: "A", optional: true };
+  assert.throws(() => checkAnswerDistribution(fixture), /chapter 1.*A exceeds 40%/);
+  fixture.push({ chapter: 2, questions: choices(["B", "B", "C", "C", "D", "D"]) });
+  assert.throws(() => checkAnswerDistribution(fixture), /chapter 1.*A exceeds 40%/);
+  fixture[0].questions = choices(["A", "A", "B", "C", "D"]);
+  fixture[0].questions.push({ type: "multi", answer: ["A", "B"] });
+  assert.throws(() => checkAnswerDistribution(fixture), /A exceeds 40% \(3\/7\)/);
+  fixture[0].questions = choices(["A", "A", "B", "C", "D"]);
+  fixture[0].questions.push({ type: "short", answer: {} }, { type: "judge", answer: true });
+  assert.doesNotThrow(() => checkAnswerDistribution(fixture));
+});
+
+test("post-06 preserves an optional choice and required questions cannot be skipped", () => {
+  for (const b of banks.filter((b) => b.questions.length === 9)) {
+    const optional = b.questions[8];
+    assert.equal(optional.id, `${b.lecture}-post-06`);
+    assert.equal(optional.optional, true);
+    assert.equal(optional.type, "single");
+    assert.deepEqual(optional.source, b.questions[7].source);
+    assert.deepEqual(optional.concept, b.questions[7].concept);
+    for (const mutate of [
+      (bank) => {
+        delete bank.questions[8].optional;
+      },
+      (bank) => {
+        bank.questions[7].optional = true;
+      },
+      (bank) => {
+        bank.questions[8].type = "judge";
+        delete bank.questions[8].options;
+        bank.questions[8].answer = true;
+      },
+    ]) {
+      const edited = copy(b);
+      mutate(edited);
+      assert.throws(() => validateBank(edited), /optional/);
+    }
+  }
 });
 
 test("chapter 2 numerical methods check physical values, SI conversions and invalid domains", () => {
@@ -336,12 +384,28 @@ test("teacher-only sources and rounded review preserve full answers and short-an
   const review = renderReview(manifest, banks);
   assert.ok(review.includes("32.27 kHz"));
   assert.ok(!review.includes("32.274861218395145 kHz"));
-  for (const b of banks.filter((b) => b.chapter === 2)) {
+  for (const b of banks) {
     const q = b.questions[7];
     assert.ok(review.includes(q.answer.reference));
     for (const point of q.answer.rubric) assert.ok(review.includes(point));
+    const n = numeric(b);
+    assert.ok(review.includes(quantityText(n.answer.value, n.answer.unit, 4)));
+    assert.ok(Math.abs(n.answer.value - recomputeNumeric(n.answer)) < 1e-12);
   }
   const b = copy(banks.find((b) => b.lecture === "2.1"));
   b.questions[7].answer.reference = "未闭合的公式 $x";
   assert.throws(() => validateBank(b), /unpaired/);
+});
+
+test("dimensionless answers and calculation inputs never display unit 1", () => {
+  assert.equal(quantityText(1 / 9, "1", 4), "0.1111");
+  assert.equal(quantityText(0.25, "1"), "0.25");
+  assert.equal(quantityText(0.4, "g/m", 4), "0.4000 g/m");
+  const review = renderReview(manifest, banks);
+  assert.ok(review.includes("alpha = 0.25。"));
+  assert.ok(review.includes("0.1111（相对容差"));
+  assert.ok(!review.includes("0.1111 1"));
+  assert.ok(!review.includes("alpha = 0.25 1"));
+  assert.ok(!review.includes("eta = 0.05 1"));
+  for (const b of banks) checkNumericDisplay(numeric(b).answer);
 });
