@@ -404,7 +404,7 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   const postRoles = ["concept", "formula", "calculation", "reasoning", "depth"];
   assert.deepEqual(
     bank.questions.map((q) => q.role),
-    [...preRoles, ...postRoles, ...(bank.questions.length === 9 ? ["depth"] : [])],
+    [...preRoles, ...postRoles, "depth"],
     `${id}: pedagogical sequence`,
   );
   assert.equal(

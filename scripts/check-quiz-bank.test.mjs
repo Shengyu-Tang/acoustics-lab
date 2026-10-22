@@ -291,13 +291,17 @@ test("distribution includes optional and multi answers, accepts exactly 40%, and
 });
 
 test("post-06 preserves an optional choice and required questions cannot be skipped", () => {
-  for (const b of banks.filter((b) => b.questions.length === 9)) {
+  for (const b of banks) {
+    assert.equal(b.questions.length, 9);
     const optional = b.questions[8];
     assert.equal(optional.id, `${b.lecture}-post-06`);
     assert.equal(optional.optional, true);
     assert.equal(optional.type, "single");
     assert.deepEqual(optional.source, b.questions[7].source);
     assert.deepEqual(optional.concept, b.questions[7].concept);
+    const missing = copy(b);
+    missing.questions.pop();
+    assert.throws(() => validateBank(missing), /too few items/);
     for (const mutate of [
       (bank) => {
         delete bank.questions[8].optional;
