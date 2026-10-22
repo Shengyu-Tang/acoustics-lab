@@ -5,7 +5,9 @@ import crypto from "node:crypto";
 import { spawn } from "node:child_process";
 import { auditData } from "./bug-audit-data.mjs";
 const data = await auditData();
-const root = path.resolve("outputs/bug-audit-1");
+const root = path.resolve(process.env.MATLAB_AUDIT_ROOT ?? "outputs/bug-audit-1");
+if (!root.startsWith(path.resolve(".") + path.sep))
+  throw new Error("MATLAB audit output must stay inside the repository");
 const work = path.join(root, "matlab");
 fs.mkdirSync(work, { recursive: true });
 const exe = process.env.MATLAB_EXE ?? "C:\\Program Files\\MATLAB\\R2024b\\bin\\matlab.exe";
@@ -38,7 +40,7 @@ async function run(file, hash) {
   const command = `set(groot,'defaultFigureVisible','off');run(${quote(script)});drawnow;assert(~isempty(findall(groot,'Type','axes'))||~isempty(findall(groot,'Type','polaraxes')),'Audit:BlankFigure','No axes');qa_axes=findall(groot,'Type','axes');for qa_i=1:numel(qa_axes),assert(all(isfinite([qa_axes(qa_i).XLim qa_axes(qa_i).YLim])),'Audit:Axis','Nonfinite axes');end;qa_values=struct();if exist('worksheet_answers','var'),assert(all(isfinite(worksheet_answers)),'Audit:Answers','Nonfinite answers');qa_values.answers=worksheet_answers;end;qa_fid=fopen(${quote(values)},'w');fprintf(qa_fid,'%s',jsonencode(qa_values));fclose(qa_fid);exportgraphics(gcf,${quote(image)},'Resolution',100);close all;`;
   const start = Date.now();
   const result = await new Promise((resolve) => {
-    const child = spawn(exe, ["-sd", dir, "-batch", command], {
+    const child = spawn(exe, ["-sd", dir, "-batch", `disp('AUDIT_STARTED');${command}`], {
       cwd: dir,
       windowsHide: true,
       env: {
@@ -80,6 +82,7 @@ async function run(file, hash) {
         hash,
         code,
         timedOut,
+        started: log.includes("AUDIT_STARTED"),
         seconds: (Date.now() - start) / 1000,
         pngBytes: fs.existsSync(image) ? fs.statSync(image).size : 0,
         warnings: log.split(/\r?\n/).filter((l) => /warning|警告|error|错误/i.test(l)),
@@ -116,6 +119,18 @@ async function run(file, hash) {
 }
 const watch = process.argv.includes("--watch");
 while (true) {
+  if (
+    process.argv.includes("--stop-on-startup-timeout") &&
+    results.slice(previous.length).some((r) => r.timedOut && !r.started)
+  ) {
+    // An unavailable MATLAB runtime cannot validate more scripts. Drain only
+    // processes already started by this runner; leave pending scripts unpassed.
+    await Promise.all(running.values());
+    console.error(
+      "MATLAB startup timed out before the first batch command; remaining scripts are unvalidated.",
+    );
+    break;
+  }
   const manifest = readManifest();
   const files = fs.existsSync(path.join(root, "exports"))
     ? fs
