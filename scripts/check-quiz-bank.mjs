@@ -7,6 +7,7 @@ import katex from "katex";
 import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
 import { chapter3Units, chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 import { chapter4Units, chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
+import { chapter5Methods } from "./quiz-bank-numeric-ch5.mjs";
 
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 export const schema = readJson("specs/redesign/quiz-bank.schema.json");
@@ -197,6 +198,7 @@ const units = {
 const methods = {
   ...chapter3Methods,
   ...chapter4Methods,
+  ...chapter5Methods,
   "line-density-from-local-motion": {
     inputs: { T: "force", curvature: "curvature", acceleration: "acceleration" },
     unit: "line-density",

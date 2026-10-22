@@ -17,6 +17,7 @@ import {
 import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
 import { chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 import { chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
+import { chapter5Methods } from "./quiz-bank-numeric-ch5.mjs";
 
 const { manifest, banks } = loadBanks();
 const topics = JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8"));
@@ -24,6 +25,84 @@ const filenames = banks.map((b) => `${b.lecture}.json`);
 const copy = (v) => structuredClone(v);
 const example = banks.find((b) => b.lecture === "1.1.1");
 const numeric = (b) => b.questions.find((q) => q.type === "numeric");
+
+test("chapter 5 includes all three lectures and documents every reuse decision", () => {
+  const selected = banks.filter((b) => b.chapter === 5);
+  assert.deepEqual(
+    selected.map((b) => b.lecture),
+    ["5.1", "5.2", "5.3"],
+  );
+  assert.equal(selected.flatMap((b) => b.questions).length, 27);
+  for (const original of selected) {
+    validateBank(original);
+    const missing = copy(original);
+    missing.reviewNotes = missing.reviewNotes.filter(
+      (note) => !note.startsWith(`${original.lecture}-post-03：`),
+    );
+    assert.throws(() => validateBank(missing), /missing classroom reuse review/);
+  }
+  const missing = copy(manifest);
+  missing.chapters.find((c) => c.chapter === 5).lectures.pop();
+  assert.throws(
+    () => validateInventory(missing, banks, topics, filenames),
+    /all website lectures required/,
+  );
+});
+
+test("chapter 5 oracles preserve complex forcing and angular integration measures", () => {
+  const near = (a, b, tolerance = 1e-9) =>
+    assert.ok(Math.abs(a - b) < tolerance, `${a} differs from ${b}`);
+  const forcing = chapter5Methods["impedance-boundary-forcing"].compute;
+  near(forcing({ Pr: -1, Pi: 4, Z: 2, v: 1 }), 5);
+  const fraction = chapter5Methods["rayleigh-sphere-backward-cone"].compute;
+  near(fraction({ theta0: 0 }), 1);
+  near(fraction({ theta0: Math.PI }), 0);
+  near(fraction({ theta0: Math.PI / 2 }), 13 / 14);
+  near(fraction({ theta0: (2 * Math.PI) / 3 }), 73 / 112);
+  const width = chapter5Methods["cylinder-two-mode-scattering-width"].compute;
+  near(width({ k: 4, c0r: 0, c0i: 1, c1r: 0, c1i: 0 }), 1);
+  near(width({ k: 4, c0r: 0, c0i: 0, c1r: 1, c1i: 0 }), 0.5);
+  // Opposite real cross terms integrate to zero; an amplitude sum would fail this check.
+  near(width({ k: 4, c0r: 1, c0i: 0, c1r: 2, c1i: 0 }), 3);
+  near(width({ k: 4, c0r: 1, c0i: 0, c1r: -2, c1i: 0 }), 3);
+});
+
+test("chapter 5 grading rejects altered answers, dimensions and invalid domains", () => {
+  for (const original of banks.filter((b) => b.chapter === 5)) {
+    const answer = copy(numeric(original).answer);
+    recomputeNumeric(answer);
+    answer.value *= 1.1;
+    assert.throws(() => recomputeNumeric(answer), /independently expected/);
+    const wrongUnit = copy(numeric(original).answer);
+    wrongUnit.unit = "s";
+    assert.throws(() => recomputeNumeric(wrongUnit), /incompatible output unit/);
+  }
+  assert.throws(() =>
+    chapter5Methods["impedance-boundary-forcing"].compute({
+      Pr: 1,
+      Pi: 1,
+      Z: -2,
+      v: 1,
+    }),
+  );
+  assert.throws(() =>
+    chapter5Methods["rayleigh-sphere-backward-cone"].compute({
+      theta0: Math.PI + 0.01,
+    }),
+  );
+  assert.throws(() =>
+    chapter5Methods["cylinder-two-mode-scattering-width"].compute({
+      k: 0,
+      c0r: 1,
+      c0i: 0,
+      c1r: 0,
+      c1i: 0,
+    }),
+  );
+  const badK = copy(numeric(banks.find((b) => b.lecture === "5.3")).answer);
+  badK.calculation.inputs.k.unit = "Hz";
+  assert.throws(() => recomputeNumeric(badK), /incompatible unit/);
+});
 
 test("chapter 4 includes every formal lecture with distinct, documented depth tasks", () => {
   const selected = banks.filter((b) => b.chapter === 4);
