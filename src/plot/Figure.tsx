@@ -548,7 +548,7 @@ export function Axes({
             </g>
           ))}
           {p.annotations
-            ?.filter((a) => a.axis === "y")
+            ?.filter((a) => a.axis === "y" && !p.annotationLabelsInCaption)
             .map((a, i) => (
               <text
                 key={`y${i}`}

@@ -52,10 +52,9 @@ export default function ExampleWorksheet({
     [submitted, setSubmitted] = useState(false),
     [hint, setHint] = useState(0);
   const guideCaption = (q: Panel) =>
-    [
-      ...(q.annotations ?? []).filter((a) => a.axis === "x").map((a) => a.label),
-      ...(q.bands ?? []).map((b) => b.label),
-    ].join("；");
+    [...(q.annotations ?? []).map((a) => a.label), ...(q.bands ?? []).map((b) => b.label)].join(
+      "；",
+    );
   return (
     <article className="calculation-example">
       <h3>

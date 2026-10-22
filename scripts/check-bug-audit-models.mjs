@@ -13,7 +13,33 @@ const {
   axisTicks,
   geometryY,
   Figure,
+  ExampleWorksheet,
 } = await auditData();
+const flowExample = lectures.find((l) => l.id === "3.1.4").examples[0];
+const flowHtml = renderToStaticMarkup(
+  createElement(ExampleWorksheet, {
+    example: { ...flowExample, id: "3.1.4-E1" },
+    p: flowExample.defaults,
+    setParameter() {},
+    solution: {},
+    steps: [],
+    judgment: "",
+    note: "",
+    panel: flowExample.plot(flowExample.defaults),
+    caption: "图 3.1.4-E1　质量流入与流出",
+    exportScript() {},
+  }),
+);
+assert.match(
+  flowHtml.match(/<figcaption>[\s\S]*?<\/figcaption>/)?.[0] ?? "",
+  /净流入/,
+  "off-axis horizontal guide explanations belong in the worksheet caption",
+);
+assert.doesNotMatch(
+  flowHtml,
+  /data-annotation-label=/,
+  "worksheet guide labels must not float beyond the plotted domain",
+);
 const matchedExample = lectures.find((l) => l.id === "3.6.5").examples[0];
 const matchedPanel = matchedExample.plot({
   ...matchedExample.defaults,

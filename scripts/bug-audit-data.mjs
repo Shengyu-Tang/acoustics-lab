@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { build } from "esbuild";
+import { build, stop } from "esbuild";
 
 export async function auditData() {
   const out = path.resolve("outputs/bug-audit-1");
@@ -21,6 +21,9 @@ export async function auditData() {
         "\nexport {matlab} from './src/plot/export';" +
         "\nexport {axisTicks} from './src/plot/ticks';" +
         "\nexport {geometryY} from './src/plot/fixedAxes';" +
+        "\nexport {instrumentPanel} from './src/plot/chapter1Figures';" +
+        "\nexport {bandwidthPanel} from './src/plot/bandwidthPanel';" +
+        "\nexport {default as ExampleWorksheet} from './src/ExampleWorksheet';" +
         "\nexport {default as Figure} from './src/plot/Figure';",
       resolveDir: process.cwd(),
     },
@@ -28,8 +31,10 @@ export async function auditData() {
     platform: "node",
     format: "esm",
     external: ["react", "react-dom"],
+    loader: { ".css": "empty" },
     outfile: bundle,
   });
+  stop();
   const data = await import(pathToFileURL(bundle).href + `?t=${Date.now()}`);
   return { ...data, lectures: files.map((_, i) => data[`l${i}`]) };
 }
