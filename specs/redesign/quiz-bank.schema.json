@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acoustics-lab.invalid/schemas/quiz-bank-v1.json",
+  "title": "声学基础共享题库结构 v1",
+  "description": "每个文件一讲；concept 数组逐字引用本讲要点，允许一道题覆盖多个要点。数值计算的 inputs 独立记录有单位的数据，formula 为 KaTeX，method 交由独立校验器实现，禁止执行任意表达式。",
+  "$ref": "#/$defs/lectureBank",
+  "$defs": {
+    "lectureId": { "type": "string", "pattern": "^[1-7]\\.[0-9]+(?:\\.[0-9]+)?$" },
+    "nonempty": { "type": "string", "minLength": 1 },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "chapters"],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "chapters": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["chapter", "status", "lectures"],
+            "properties": {
+              "chapter": { "type": "integer", "minimum": 1, "maximum": 7 },
+              "status": { "const": "draft" },
+              "lectures": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": { "$ref": "#/$defs/lectureId" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "document": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "file", "pageCount"],
+          "properties": {
+            "id": { "$ref": "#/$defs/nonempty" },
+            "kind": { "const": "pdf" },
+            "file": { "type": "string", "pattern": "^[^/\\\\]+\\.pdf$" },
+            "pageCount": { "type": "integer", "minimum": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "file", "classNumber"],
+          "properties": {
+            "id": { "$ref": "#/$defs/nonempty" },
+            "kind": { "const": "design" },
+            "file": { "type": "string", "pattern": "^第[0-9]{2}次课_[^/\\\\]+\\.docx$" },
+            "classNumber": { "type": "integer", "minimum": 1, "maximum": 24 }
+          }
+        }
+      ]
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["document", "pages"],
+          "properties": {
+            "document": { "$ref": "#/$defs/nonempty" },
+            "pages": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "integer", "minimum": 1 }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["document", "section"],
+          "properties": {
+            "document": { "$ref": "#/$defs/nonempty" },
+            "section": { "$ref": "#/$defs/nonempty" }
+          }
+        }
+      ]
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": { "value": { "type": "number" }, "unit": { "$ref": "#/$defs/nonempty" } }
+    },
+    "numericAnswer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "tolerance", "calculation"],
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "$ref": "#/$defs/nonempty" },
+        "tolerance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["relative"],
+          "properties": { "relative": { "const": 0.02 } }
+        },
+        "calculation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "inputs", "formula"],
+          "properties": {
+            "method": { "$ref": "#/$defs/nonempty" },
+            "inputs": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": { "$ref": "#/$defs/input" }
+            },
+            "formula": { "type": "string", "pattern": "^\\$[^$]+\\$$" }
+          }
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "lecture",
+        "kind",
+        "role",
+        "level",
+        "concept",
+        "type",
+        "stem",
+        "answer",
+        "explanation",
+        "source"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[1-7]\\.[0-9]+(?:\\.[0-9]+)?-(?:pre|post)-0[1-5]$" },
+        "lecture": { "$ref": "#/$defs/lectureId" },
+        "kind": { "enum": ["pre", "post"] },
+        "role": {
+          "enum": [
+            "prerequisite",
+            "intuition",
+            "distinction",
+            "concept",
+            "formula",
+            "calculation",
+            "reasoning",
+            "depth"
+          ]
+        },
+        "level": { "enum": ["基础", "理解", "应用", "深度"] },
+        "concept": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonempty" }
+        },
+        "type": { "enum": ["single", "multi", "judge", "numeric"] },
+        "stem": { "type": "string", "minLength": 10 },
+        "options": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "text"],
+            "properties": {
+              "id": { "enum": ["A", "B", "C", "D"] },
+              "text": { "$ref": "#/$defs/nonempty" }
+            }
+          }
+        },
+        "answer": {},
+        "explanation": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": { "$ref": "#/$defs/nonempty" }
+        },
+        "source": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/source" }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "single" } } },
+          "then": {
+            "required": ["options"],
+            "properties": { "answer": { "enum": ["A", "B", "C", "D"] } }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "multi" } } },
+          "then": {
+            "required": ["options"],
+            "properties": {
+              "answer": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "uniqueItems": true,
+                "items": { "enum": ["A", "B", "C", "D"] }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "judge" } } },
+          "then": {
+            "not": { "required": ["options"] },
+            "properties": { "answer": { "type": "boolean" } }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "numeric" } } },
+          "then": {
+            "not": { "required": ["options"] },
+            "properties": { "answer": { "$ref": "#/$defs/numericAnswer" } }
+          }
+        }
+      ]
+    },
+    "lectureBank": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "chapter",
+        "lecture",
+        "title",
+        "keyPoints",
+        "sources",
+        "reviewNotes",
+        "questions"
+      ],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "chapter": { "type": "integer", "minimum": 1, "maximum": 7 },
+        "lecture": { "$ref": "#/$defs/lectureId" },
+        "title": { "$ref": "#/$defs/nonempty" },
+        "keyPoints": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonempty" }
+        },
+        "sources": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/document" } },
+        "reviewNotes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonempty" } },
+        "questions": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/question" }
+        }
+      }
+    }
+  }
+}

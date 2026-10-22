@@ -1,0 +1,417 @@
+{
+  "schemaVersion": 1,
+  "chapter": 1,
+  "lecture": "1.1.5",
+  "title": "阻尼振动系统中阻尼量的描述",
+  "keyPoints": [
+    "阻力系数（力阻）Rₘ、阻尼系数 δ、机械品质因数 Qₘ 可相互换算。",
+    "δ 是振幅指数衰减率，$\\tau = 1/\\delta$ 是振幅时间常数。",
+    "Qₘ 大表示阻尼弱、余振长；每周期相对能量损失约为 $2\\pi/Q_m$（弱阻尼）。",
+    "用阻尼周期计数时需保留频率修正，不能把小阻尼近似当作恒等式。"
+  ],
+  "sources": [
+    {
+      "id": "slides",
+      "kind": "pdf",
+      "file": "1.1.5 阻尼振动系统中阻尼量的描述PPT.pdf",
+      "pageCount": 11
+    },
+    {
+      "id": "design-03",
+      "kind": "design",
+      "file": "第03次课_0928_教学设计.docx",
+      "classNumber": 3
+    }
+  ],
+  "reviewNotes": [
+    "振幅降至初值的 exp(−π) 的周期计数，明确区分无阻尼周期 T₀ 与阻尼周期 Td。",
+    "每周期相对能量损失约 2π/Qₘ 只用于弱阻尼；题目用小 Q 反例检查近似失效。"
+  ],
+  "questions": [
+    {
+      "id": "1.1.5-pre-01",
+      "lecture": "1.1.5",
+      "kind": "pre",
+      "role": "prerequisite",
+      "level": "基础",
+      "concept": ["δ 是振幅指数衰减率，$\\tau = 1/\\delta$ 是振幅时间常数。"],
+      "stem": "某振动包络从 $A_1$ 衰减到 $A_2<A_1$，历时 $\\Delta t$。哪种对数运算能消去未知初始包络常数并求衰减率？",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [4, 5]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "single",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\delta=\\ln(A_1+A_2)/\\Delta t$"
+        },
+        {
+          "id": "B",
+          "text": "$\\delta=\\ln(A_1/A_2)/\\Delta t$"
+        },
+        {
+          "id": "C",
+          "text": "$\\delta=(A_1-A_2)/\\Delta t$"
+        },
+        {
+          "id": "D",
+          "text": "$\\delta=\\ln(A_2/A_1)/\\Delta t$"
+        }
+      ],
+      "answer": "B",
+      "explanation": [
+        "A：对有量纲的幅值之和直接取对数不成立，也不能消去初值。",
+        "B：包络比值是无量纲量，取对数后与经过时间成正比。",
+        "C：这是绝对幅值变化率，量纲不是指数衰减率。",
+        "D：倒置比值会得到负值，不符合正衰减率。"
+      ]
+    },
+    {
+      "id": "1.1.5-pre-02",
+      "lecture": "1.1.5",
+      "kind": "pre",
+      "role": "intuition",
+      "level": "理解",
+      "concept": ["Qₘ 大表示阻尼弱、余振长；每周期相对能量损失约为 $2\\pi/Q_m$（弱阻尼）。"],
+      "stem": "两只同固有频率的传感器，第二只的机械品质因数更大。给入相同归一化初始包络后，哪项更符合自由衰减现象？",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [6, 9, 10]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "single",
+      "options": [
+        {
+          "id": "A",
+          "text": "第二只相对衰减更快"
+        },
+        {
+          "id": "B",
+          "text": "两只都在一个周期后完全停止"
+        },
+        {
+          "id": "C",
+          "text": "第二只必定处于更强的过阻尼区"
+        },
+        {
+          "id": "D",
+          "text": "第二只余振维持更久"
+        }
+      ],
+      "answer": "D",
+      "explanation": [
+        "A：同固有频率下，品质因数大对应更小衰减率。",
+        "B：指数衰减在有限周期内一般不会严格归零。",
+        "C：大品质因数表示弱阻尼，与更强过阻尼相反。",
+        "D：更小的衰减率意味着更长的振幅时间常数。"
+      ]
+    },
+    {
+      "id": "1.1.5-pre-03",
+      "lecture": "1.1.5",
+      "kind": "pre",
+      "role": "distinction",
+      "level": "理解",
+      "concept": [
+        "阻力系数（力阻）Rₘ、阻尼系数 δ、机械品质因数 Qₘ 可相互换算。",
+        "δ 是振幅指数衰减率，$\\tau = 1/\\delta$ 是振幅时间常数。"
+      ],
+      "stem": "在同一振动模型中，设计人员分别用 $R_m$、$\\delta$、$Q_m$ 标注阻尼。哪组量纲标注正确？",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [3, 4, 5, 6]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "single",
+      "options": [
+        {
+          "id": "A",
+          "text": "$R_m$：kg/s；$\\delta$：s$^{-1}$；$Q_m$：无量纲"
+        },
+        {
+          "id": "B",
+          "text": "$R_m$：N/m；$\\delta$：kg/s；$Q_m$：s"
+        },
+        {
+          "id": "C",
+          "text": "$R_m$：kg；$\\delta$：Hz；$Q_m$：kg/s"
+        },
+        {
+          "id": "D",
+          "text": "$R_m$：kg/s；$\\delta$：s；$Q_m$：Hz"
+        }
+      ],
+      "answer": "A",
+      "explanation": [
+        "A：力除以速度、指数率、频率与衰减率之比分别给出这三种量纲。",
+        "B：把弹性系数、力阻和品质因数的单位混在了一起。",
+        "C：力阻不是质量，品质因数也不是力阻。",
+        "D：时间常数是衰减率的倒数，品质因数不带频率单位。"
+      ]
+    },
+    {
+      "id": "1.1.5-post-01",
+      "lecture": "1.1.5",
+      "kind": "post",
+      "role": "concept",
+      "level": "理解",
+      "concept": [
+        "阻力系数（力阻）Rₘ、阻尼系数 δ、机械品质因数 Qₘ 可相互换算。",
+        "δ 是振幅指数衰减率，$\\tau = 1/\\delta$ 是振幅时间常数。"
+      ],
+      "stem": "同一机构的 $M,D$ 不变，换装阻尼器后力阻减半。其余量如何变化？",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [4, 5, 6, 9]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "single",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\delta$ 加倍，$Q_m$ 减半"
+        },
+        {
+          "id": "B",
+          "text": "$\\delta,Q_m$ 都减半"
+        },
+        {
+          "id": "C",
+          "text": "$\\delta$ 减半，$Q_m$ 加倍，$\\tau$ 加倍"
+        },
+        {
+          "id": "D",
+          "text": "$\\omega_0$ 加倍，$\\tau$ 不变"
+        }
+      ],
+      "answer": "C",
+      "explanation": [
+        "A：力阻与衰减率成正比，与品质因数成反比，此项全反。",
+        "B：品质因数随力阻减小而增加。",
+        "C：质量和刚度不变使固有频率不变，按换算关系得到三项变化。",
+        "D：无阻尼固有频率不依赖力阻，时间常数却会改变。"
+      ]
+    },
+    {
+      "id": "1.1.5-post-02",
+      "lecture": "1.1.5",
+      "kind": "post",
+      "role": "formula",
+      "level": "理解",
+      "concept": [
+        "阻力系数（力阻）Rₘ、阻尼系数 δ、机械品质因数 Qₘ 可相互换算。",
+        "δ 是振幅指数衰减率，$\\tau = 1/\\delta$ 是振幅时间常数。",
+        "Qₘ 大表示阻尼弱、余振长；每周期相对能量损失约为 $2\\pi/Q_m$（弱阻尼）。"
+      ],
+      "stem": "要比较同一固有角频率的两个弱阻尼方案，哪项关系可同时用于换算阻尼量和振幅时间常数？",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [4, 5, 6, 8]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "single",
+      "options": [
+        {
+          "id": "A",
+          "text": "$Q_m=2\\delta/\\omega_0,\\quad\\tau=1/\\delta$"
+        },
+        {
+          "id": "B",
+          "text": "$Q_m=\\omega_0/\\delta,\\quad\\tau=\\delta$"
+        },
+        {
+          "id": "C",
+          "text": "$Q_m=\\omega_0/(2\\delta),\\quad\\tau=1/(2\\delta)$"
+        },
+        {
+          "id": "D",
+          "text": "$Q_m=\\omega_0M/R_m=\\omega_0/(2\\delta),\\quad\\tau=1/\\delta$"
+        }
+      ],
+      "answer": "D",
+      "explanation": [
+        "A：把品质因数写成其倒数，会误判阻尼强弱。",
+        "B：品质因数漏了因子二，时间常数的量纲也不符。",
+        "C：所给时间是能量指数率的倒数，不是振幅时间常数。",
+        "D：这组关系同时符合力阻定义、衰减包络和品质因数定义。"
+      ]
+    },
+    {
+      "id": "1.1.5-post-03",
+      "lecture": "1.1.5",
+      "kind": "post",
+      "role": "calculation",
+      "level": "应用",
+      "concept": [
+        "阻力系数（力阻）Rₘ、阻尼系数 δ、机械品质因数 Qₘ 可相互换算。",
+        "δ 是振幅指数衰减率，$\\tau = 1/\\delta$ 是振幅时间常数。"
+      ],
+      "stem": "一只质量 $M=0.25\\,\\mathrm{kg}$ 的弱阻尼传感器，包络在 $0.12\\,\\mathrm{s}$ 内从 $6\\,\\mathrm{mm}$ 下降到 $3\\,\\mathrm{mm}$。由这段衰减记录估计力阻，填 kg/s。",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [3, 4, 5]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "numeric",
+      "answer": {
+        "value": 2.88811,
+        "unit": "kg/s",
+        "tolerance": {
+          "relative": 0.02
+        },
+        "calculation": {
+          "method": "resistance-from-decay",
+          "inputs": {
+            "M": {
+              "value": 0.25,
+              "unit": "kg"
+            },
+            "dt": {
+              "value": 0.12,
+              "unit": "s"
+            },
+            "Astart": {
+              "value": 6,
+              "unit": "mm"
+            },
+            "Aend": {
+              "value": 3,
+              "unit": "mm"
+            }
+          },
+          "formula": "$R_m=\\frac{2M}{\\Delta t}\\ln\\frac{A_{\\mathrm{start}}}{A_{\\mathrm{end}}}$"
+        }
+      },
+      "explanation": [
+        "包络衰减率为 $\\delta=\\ln2/0.12\\simeq5.77623\\,\\mathrm{s^{-1}}$。",
+        "由 $R_m=2M\\delta$ 得 $2.88811\\,\\mathrm{kg/s}$；测量的是包络而非两个任意瞬时位移。"
+      ]
+    },
+    {
+      "id": "1.1.5-post-04",
+      "lecture": "1.1.5",
+      "kind": "post",
+      "role": "reasoning",
+      "level": "理解",
+      "concept": [
+        "阻力系数（力阻）Rₘ、阻尼系数 δ、机械品质因数 Qₘ 可相互换算。",
+        "δ 是振幅指数衰减率，$\\tau = 1/\\delta$ 是振幅时间常数。",
+        "用阻尼周期计数时需保留频率修正，不能把小阻尼近似当作恒等式。"
+      ],
+      "stem": "对欠阻尼系统，振幅降到初值的 $e^{-\\pi}$ 所需时间为 $\\pi/\\delta$。若用实际阻尼周期 $T_d=2\\pi/\\omega_0^\\prime$ 计数，应得到哪项？",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [4, 6, 10]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "single",
+      "options": [
+        {
+          "id": "A",
+          "text": "$N_d=Q_m\\sqrt{1-1/(4Q_m^2)}$"
+        },
+        {
+          "id": "B",
+          "text": "$N_d=Q_m$，任意欠阻尼下都精确"
+        },
+        {
+          "id": "C",
+          "text": "$N_d=2\\pi Q_m$"
+        },
+        {
+          "id": "D",
+          "text": "$N_d=Q_m/\\sqrt{1-1/(4Q_m^2)}$"
+        }
+      ],
+      "answer": "A",
+      "explanation": [
+        "A：时间除以阻尼周期得到 $\\omega_0^\\prime/(2\\delta)$，再代入品质因数即可。",
+        "B：精确等于品质因数的是按无阻尼周期计数，实际周期更长。",
+        "C：混淆角频率与每秒周期数引入了额外圆周因子。",
+        "D：实际周期更长，同一时间内的周期数应更少，而不是更多。"
+      ]
+    },
+    {
+      "id": "1.1.5-post-05",
+      "lecture": "1.1.5",
+      "kind": "post",
+      "role": "depth",
+      "level": "深度",
+      "concept": ["Qₘ 大表示阻尼弱、余振长；每周期相对能量损失约为 $2\\pi/Q_m$（弱阻尼）。"],
+      "stem": "对 $Q_m=2$ 的自由振子，有人用“每周期相对能量损失约为 $2\\pi/Q_m$”算出损失超过初始能量，并断言模型产生负机械能。应怎样解释？",
+      "source": [
+        {
+          "document": "slides",
+          "pages": [7, 8, 9]
+        },
+        {
+          "document": "design-03",
+          "section": "二、教学目标1、4；五、7—22分钟“Rₘ、δ与Qₘ”（目标迁移，非原题复用）"
+        }
+      ],
+      "type": "single",
+      "options": [
+        {
+          "id": "A",
+          "text": "结论正确；品质因数小就会产生负机械能"
+        },
+        {
+          "id": "B",
+          "text": "结论错误；失效的是弱阻尼小损失近似，应使用有限衰减的指数比值"
+        },
+        {
+          "id": "C",
+          "text": "结论正确；损失可大于原能量而不需外力"
+        },
+        {
+          "id": "D",
+          "text": "结论错误；只需把公式中的正号改为负号"
+        }
+      ],
+      "answer": "B",
+      "explanation": [
+        "A：被动系统的动能与势能均非负，不能由此推出负机械能。",
+        "B：展开 $1-e^{-2\\delta T}$ 需要每周期衰减很小；此处近似量已不小，有限指数损失率始终小于一。",
+        "C：无外部供能时，损失不能超过可用的初始机械能。",
+        "D：符号修补不能恢复已失效的一阶近似，需要保留指数或使用精确响应能量。"
+      ]
+    }
+  ]
+}

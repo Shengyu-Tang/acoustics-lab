@@ -1,0 +1,229 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import test from "node:test";
+import {
+  schema,
+  validateSchema,
+  validateBank,
+  validateInventory,
+  recomputeNumeric,
+  checkMath,
+} from "./check-quiz-bank.mjs";
+import { loadBanks, renderReview, root } from "./quiz-bank-review.mjs";
+
+const { manifest, banks } = loadBanks();
+const topics = JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8"));
+const filenames = banks.map((b) => `${b.lecture}.json`);
+const copy = (v) => structuredClone(v);
+const example = banks.find((b) => b.lecture === "1.1.1");
+const numeric = (b) => b.questions.find((q) => q.type === "numeric");
+
+test("schema rejects unknown properties, malformed answer types and missing choices", () => {
+  for (const mutate of [
+    (b) => {
+      b.unknown = true;
+    },
+    (b) => {
+      b.questions[0].answer = true;
+    },
+    (b) => {
+      delete b.questions[0].options;
+    },
+    (b) => {
+      b.questions[0].options.push({ id: "E", text: "第五项" });
+    },
+    (b) => {
+      numeric(b).answer.calculation.inputs.M.unit = "";
+    },
+  ]) {
+    const b = copy(example);
+    mutate(b);
+    assert.ok(validateSchema(b).length > 0);
+  }
+});
+
+test("judge and multi branches validate boolean and unique option sets", () => {
+  const q = copy(banks.find((b) => b.lecture === "1.2.1").questions[3]);
+  assert.deepEqual(validateSchema(q, schema.$defs.question), []);
+  q.answer = "错误";
+  assert.ok(validateSchema(q, schema.$defs.question).length);
+  const multi = copy(example.questions[0]);
+  multi.type = "multi";
+  multi.answer = ["A", "C"];
+  assert.deepEqual(validateSchema(multi, schema.$defs.question), []);
+  multi.answer = ["A", "A"];
+  assert.ok(validateSchema(multi, schema.$defs.question).length);
+});
+
+test("schema changes using unsupported constraints fail closed", () => {
+  assert.throws(() => validateSchema({}, { dependentRequired: {} }), /Unsupported schema keyword/);
+});
+
+test("inventory cannot hide a missing lecture by editing the manifest", () => {
+  const m = copy(manifest);
+  m.chapters[0].lectures.pop();
+  assert.throws(
+    () => validateInventory(m, banks, topics, filenames),
+    /all website lectures required/,
+  );
+  assert.throws(
+    () => validateInventory(manifest, banks.slice(1), topics, filenames),
+    /inventory differs/,
+  );
+  assert.throws(
+    () => validateInventory(manifest, banks, topics, [...filenames, "2.1.json"]),
+    /unregistered/,
+  );
+  assert.throws(() => validateInventory({ schemaVersion: 1, chapters: [] }, [], topics, []));
+});
+
+test("inventory rejects duplicate stems even if only numerical values change", () => {
+  const b = copy(banks);
+  b[1].questions[0].stem = b[0].questions[0].stem;
+  assert.throws(() => validateInventory(manifest, b, topics, filenames), /duplicate stem/);
+  b[0].questions[0].stem = "质量为 $2$ 时应怎样判断？";
+  b[1].questions[0].stem = "质量为 $3$ 时应怎样判断？";
+  assert.throws(() => validateInventory(manifest, b, topics, filenames), /changed numbers/);
+});
+
+test("each core point must be covered by a post question, not just a pre question", () => {
+  const b = copy(banks.find((b) => b.lecture === "1.2.4"));
+  const point = b.keyPoints[5];
+  b.questions[0].concept.push(point);
+  for (const q of b.questions.filter((q) => q.kind === "post"))
+    q.concept = q.concept.filter((c) => c !== point);
+  assert.throws(() => validateBank(b), /uncovered point/);
+});
+
+test("key points must match live source text and depth cannot be demoted", () => {
+  const b = copy(example);
+  b.keyPoints[0] += "改写";
+  assert.throws(() => validateBank(b), /verbatim/);
+  const c = copy(example);
+  c.questions[7].level = "应用";
+  assert.throws(() => validateBank(c), /missing depth/);
+  const d = copy(example);
+  d.questions.pop();
+  assert.throws(() => validateBank(d), /too few items/);
+});
+
+test("source checks reject missing design, unknown document and out-of-range page", () => {
+  for (const [mutate, message] of [
+    [
+      (q) => {
+        q.source = [q.source[0]];
+      },
+      /too few items/,
+    ],
+    [
+      (q) => {
+        q.source[0].document = "invented";
+      },
+      /unknown source/,
+    ],
+    [
+      (q) => {
+        q.source[0].pages = [999];
+      },
+      /out of range/,
+    ],
+  ]) {
+    const b = copy(example);
+    mutate(b.questions[0]);
+    assert.throws(() => validateBank(b), message);
+  }
+});
+
+test("every distractor needs feedback and answer positions must be dispersed", () => {
+  const b = copy(example);
+  b.questions[0].explanation.pop();
+  assert.throws(() => validateBank(b), /explain every option/);
+  const c = copy(example);
+  for (const q of c.questions.filter((q) => q.type === "single")) q.answer = "A";
+  assert.throws(() => validateBank(c), /distribute correct choices/);
+});
+
+test("independent recomputation rejects wrong answers, formulas and tolerance", () => {
+  for (const [mutate, message] of [
+    [
+      (a) => {
+        a.value *= 1.01;
+      },
+      /independently expected/,
+    ],
+    [
+      (a) => {
+        a.tolerance.relative = 0.05;
+      },
+      /relative tolerance/,
+    ],
+    [
+      (a) => {
+        a.calculation.formula = "$t=1$";
+      },
+      /formula mismatch/,
+    ],
+    [
+      (a) => {
+        a.calculation.method = "arbitrary-expression";
+      },
+      /Unknown independent formula/,
+    ],
+  ]) {
+    const a = copy(numeric(example).answer);
+    mutate(a);
+    assert.throws(() => recomputeNumeric(a), message);
+  }
+});
+
+test("unit dimensions, output scaling and domain constraints are checked", () => {
+  const a = copy(numeric(example).answer);
+  a.calculation.inputs.M.unit = "N/m";
+  assert.throws(() => recomputeNumeric(a), /incompatible unit/);
+  const b = copy(numeric(example).answer);
+  b.unit = "Hz";
+  assert.throws(() => recomputeNumeric(b), /incompatible output/);
+  const c = copy(numeric(example).answer);
+  c.calculation.inputs.M.value = -1;
+  assert.throws(() => recomputeNumeric(c), /must be positive/);
+  const d = copy(numeric(example).answer);
+  d.unit = "s";
+  d.value /= 1000;
+  assert.ok(Math.abs(recomputeNumeric(d) - Math.PI / 80) < 1e-12);
+  const e = copy(numeric(banks.find((b) => b.lecture === "1.2.3")).answer);
+  e.calculation.inputs.rise.value = 1;
+  assert.throws(() => recomputeNumeric(e));
+});
+
+test("known physical results provide independent numerical oracles", () => {
+  const result = (id) => recomputeNumeric(numeric(banks.find((b) => b.lecture === id)).answer);
+  assert.ok(Math.abs(result("1.1.1") - (1000 * Math.PI) / 80) < 1e-9);
+  assert.ok(Math.abs(result("1.1.2") - 9) < 1e-12);
+  assert.ok(Math.abs(result("1.1.3") - (1000 * Math.log(4)) / 15) < 1e-9);
+  assert.ok(Math.abs(result("1.2.3") - Math.log(100) / 2) < 1e-12);
+  assert.equal(result("1.2.4"), 960);
+  assert.equal(result("1.2.5"), 240);
+});
+
+test("KaTeX and formula delimiters are checked", () => {
+  assert.throws(() => checkMath("位移 $x=1", "fixture"), /unpaired/);
+  assert.throws(() => checkMath("位移 x=1", "fixture"), /outside/);
+  assert.throws(() => checkMath("位移 $\\notARealCommand{x}$", "fixture"));
+  assert.throws(() => checkMath("使用 Math.sqrt(4)", "fixture"), /programming/);
+  checkMath("取 $e^{j\\omega t}$ 的实部。", "fixture");
+});
+
+test("review is generated from answers, explanations and post-only coverage", () => {
+  const before = renderReview(manifest, banks),
+    edited = copy(banks);
+  numeric(edited[0]).answer.value = 1;
+  const after = renderReview(manifest, edited);
+  assert.notEqual(before, after);
+  assert.ok(after.includes("1 ms（相对容差 ±2%）"));
+  for (const b of banks)
+    for (const q of b.questions) {
+      assert.ok(before.includes(`#### ${q.id}`));
+      for (const explanation of q.explanation) assert.ok(before.includes(explanation));
+    }
+});
