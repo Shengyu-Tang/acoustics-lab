@@ -2,6 +2,11 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { models } from "./p5-models.mjs";
 const { engineeringCases: cases } = await models();
+assert.equal(
+  cases.find((e) => e.id === "ocean").asks[4].unit,
+  "kHz",
+  "case 1 question (5) uses kHz",
+);
 const figures = (e, p) => [e.plot(p), ...(e.additionalPlots?.(p) ?? [])];
 const data = (q) => [
   ...q.series.flatMap((s) => s.points.flat()),
@@ -20,6 +25,15 @@ for (const e of cases) {
       failures.push(`${e.id} ${d.key}: invariant plotted data`);
     for (const qs of variant)
       qs.forEach((q, i) => {
+        assert.ok(q.insetLegend, `${e.id}: case legends use the inset layout`);
+        if (/频率/.test(q.xlabel)) {
+          assert.ok(
+            !/\(Hz\)/.test(q.xlabel) || q.xlim[1] < 1000,
+            `${e.id}: large frequency axes need an engineering prefix`,
+          );
+          if (/\(kHz\)/.test(q.xlabel))
+            assert.ok(q.xlim[1] < 1000, `${e.id}: prefer MHz over thousands of kHz`);
+        }
         assert.deepEqual(q.xlim, base[i].xlim, `${e.id} ${d.key} fixed physical x axis`);
         if (q.coordinateY)
           assert.deepEqual(q.ylim, base[i].ylim, `${e.id} ${d.key} fixed geometry y axis`);
