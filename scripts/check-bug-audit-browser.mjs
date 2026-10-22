@@ -294,6 +294,50 @@ async function navigation(page, width) {
 async function worksheets(page, route, examples, width) {
   const sheets = page.locator(".calculation-example");
   assert.equal(await sheets.count(), examples.length, `${route}: worksheet inventory`);
+  const floatingLabels = await sheets.evaluateAll((nodes) =>
+    nodes.flatMap((sheet) =>
+      [...sheet.querySelectorAll("[data-annotation-label], [data-free-label]")]
+        .filter((label) => {
+          const area = label.parentElement.querySelector("[data-plot-area]");
+          if (!area) return false;
+          const a = area.getBoundingClientRect(),
+            b = label.getBoundingClientRect();
+          return b.top < a.top - 1 || b.bottom > a.bottom + 1;
+        })
+        .map((label) => label.textContent),
+    ),
+  );
+  assert.deepEqual(
+    floatingLabels,
+    [],
+    `${route}: worksheet explanations stay inside axes or captions`,
+  );
+  if (route.startsWith("#/cases?")) {
+    const misplaced = await sheets.evaluateAll((nodes) =>
+      nodes.flatMap((sheet) =>
+        [...sheet.querySelectorAll(".matlab-figure")].flatMap((figure) => {
+          const problems = [];
+          const area = figure.querySelector("[data-plot-area]")?.getBoundingClientRect();
+          const legend = figure.querySelector("[data-plot-legend]")?.getBoundingClientRect();
+          if (!area || !legend) return ["missing case axes or legend"];
+          if (figure.clientWidth >= 480) {
+            if (
+              legend.left < area.left - 1 ||
+              legend.right > area.right + 1 ||
+              legend.top < area.top - 1 ||
+              legend.bottom > area.bottom + 1
+            )
+              problems.push("desktop legend outside axes");
+          } else if (legend.top < area.bottom) problems.push("mobile legend overlaps axes");
+          const right = figure.querySelector('[data-axis-label="right"]')?.getBoundingClientRect();
+          if (right && (right.left < area.right || right.left - area.right > 65))
+            problems.push("right axis label too far from axis");
+          return problems;
+        }),
+      ),
+    );
+    assert.deepEqual(misplaced, [], `${route}: inset case legends and nearby right-axis labels`);
+  }
   for (let index = 0; index < examples.length; index++) {
     const e = examples[index],
       sheet = sheets.nth(index),
@@ -449,6 +493,16 @@ try {
     await new Promise((r) => setTimeout(r, 250));
   }
   assert.ok(ready);
+  const firstMathExit = await new Promise((resolve, reject) => {
+    const check = spawn(process.execPath, ["scripts/check-first-math-browser.mjs"], {
+      windowsHide: true,
+      stdio: "inherit",
+      env: { ...process.env, FIRST_MATH_BASE: base },
+    });
+    check.on("error", reject);
+    check.on("close", resolve);
+  });
+  assert.equal(firstMathExit, 0, "cold first-commit formulas with delayed fonts");
   context = await chromium.launchPersistentContext(path.join(out, `profile-${Date.now()}`), {
     channel: "msedge",
     headless: true,
@@ -576,6 +630,30 @@ try {
         if (route.startsWith("#/lab")) {
           const id = new URLSearchParams(route.split("?")[1]).get("topic");
           const l = data.lectures.find((l) => l.id === id);
+          if (l) {
+            const figures = page.locator("#simulation .matlab-figure");
+            assert.equal(await figures.count(), l.figures.length);
+            for (let i = 0; i < l.figures.length; i++) {
+              const f = l.figures[i];
+              assert.ok(
+                (await figures.nth(i).locator("figcaption").innerText()).startsWith(
+                  `图 ${f.number}　`,
+                ),
+              );
+              if (f.independentOf?.length) {
+                const note = figures.nth(i).locator("..").locator(".figure-independence");
+                assert.ok(await note.count(), `${f.number}: visible independence explanation`);
+                assert.ok((await note.allTextContents()).join("").trim().length > 10);
+              }
+            }
+          }
+          if (id.startsWith("3."))
+            assert.ok(
+              (await page.locator("#principle p").allTextContents()).filter((s) =>
+                s.includes("时间因子统一采用"),
+              ).length <= 1,
+              `${id}: time convention appears at most once`,
+            );
           const sliders = page.locator('#simulation input[type="range"]');
           for (let i = 0; i < (await sliders.count()); i++) {
             const slider = sliders.nth(i),
