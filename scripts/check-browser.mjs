@@ -1062,4 +1062,14 @@ try {
   server.kill();
   await Promise.race([context?.close(), new Promise((resolve) => setTimeout(resolve, 5000))]);
 }
-process.exit(process.exitCode ?? 0);
+// Keep the whole-site boundary, invalid-input, resource and timer audit in the
+// normal browser acceptance command, not as an undocumented optional check.
+const auditExit = await new Promise((resolve, reject) => {
+  const audit = spawn(process.execPath, ["scripts/check-bug-audit-browser.mjs"], {
+    windowsHide: true,
+    stdio: "inherit",
+  });
+  audit.on("error", reject);
+  audit.on("close", resolve);
+});
+process.exit(auditExit ?? 1);
