@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 export const chapter3Units = {
   'Pa/s^2': ['pressure-time-curvature',1],
   'm^2/s': ['velocity-potential',1],
+  'mm/s': ['velocity',.001],
   'J/m^2': ['fluence',1],
   'Pa/m-imag': ['imaginary-pressure-gradient',1],
   'kg/(m^2*s)': ['mass-flux', 1],
@@ -21,6 +22,18 @@ export const chapter3Units = {
   'kg/m^2': ['surface-mass',1],
 };
 export const chapter3Methods = {
+  'cylindrical-outgoing-potential-amplitude': {
+    inputs:{a:'velocity-potential',q:'velocity-potential'},unit:'velocity-potential',formula:String.raw`$C_{\mathrm{out}}=(a+q)/2\quad(\widehat\phi=aJ_0-jqY_0)$`,
+    compute:({a,q})=>{assert.ok(a>q&&q>0);return a/2+q/2;},
+  },
+  'cylindrical-velocity-table': {
+    inputs:{k:'curvature',A:'velocity-potential',J1:'dimensionless',Y1:'dimensionless'},unit:'velocity',formula:String.raw`$u_a=kA\sqrt{J_1^2(kr)+Y_1^2(kr)}$`,
+    compute:({k,A,J1,Y1})=>{assert.ok(k>0&&A>0);return k*A*Math.hypot(J1,Y1);},
+  },
+  'geometric-intensity-exponent': {
+    inputs:{r1:'length',r2:'length',I1:'intensity',I2:'intensity'},unit:'dimensionless',formula:String.raw`$n=\frac{\ln(I_1/I_2)}{\ln(r_2/r_1)}\quad(I\propto r^{-n})$`,
+    compute:({r1,r2,I1,I2})=>{assert.ok(r2>r1&&r1>0&&I1>I2&&I2>0);return (Math.log(I1)-Math.log(I2))/(Math.log(r2)-Math.log(r1));},
+  },
   'spherical-pulse-nearfield-ratio': {
     inputs:{ell:'length',r:'length'},unit:'dimensionless',formula:String.raw`$\eta=\frac{|F|}{r|F^{\prime}|}=\frac{\ell}{r}$`,
     compute:({ell,r})=>{assert.ok(ell>0&&r>0);return ell/r;},
