@@ -18,6 +18,7 @@ import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.
 import { chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 import { chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
 import { chapter5Methods } from "./quiz-bank-numeric-ch5.mjs";
+import { chapter6Methods } from "./quiz-bank-numeric-ch6.mjs";
 
 const { manifest, banks } = loadBanks();
 const topics = JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8"));
@@ -25,6 +26,42 @@ const filenames = banks.map((b) => `${b.lecture}.json`);
 const copy = (v) => structuredClone(v);
 const example = banks.find((b) => b.lecture === "1.1.1");
 const numeric = (b) => b.questions.find((q) => q.type === "numeric");
+
+test("chapter 6 checks complex loading and actual source normalization", () => {
+  const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-12);
+  const response = chapter6Methods["receiver-two-frequency-ratio"].compute;
+  const inputs = { x1: 0, x2: 0, Rm1: 2, Xm1: 4, R21: 1, X21: 0, Rm2: 2, Xm2: 4, R22: 1, X22: 0 };
+  near(response(inputs), 1);
+  // Equal resistance: removing a reactance cancellation changes the result
+  // from |3+j0| / |3+j4| = 3/5, not (|Zm|+|Z2s|) at each frequency.
+  near(response({ ...inputs, X21: -4 }), 0.6);
+  near(response({ ...inputs, x2: Math.sqrt(3) }), 0.5);
+  assert.throws(() => response({ ...inputs, Rm2: -1 }));
+  const residual = chapter6Methods["reciprocity-complex-residual"].compute;
+  const measurement = { PBr: 2, PBi: -1, PAr: 4, PAi: -2, QA: 1, QB: 2 };
+  near(residual(measurement), 0); // Unequal raw pressures can be exactly reciprocal.
+  near(residual({ ...measurement, PAi: 2 }), 2 / Math.sqrt(5)); // Equal magnitudes are insufficient.
+  near(residual({ ...measurement, PBr: 6, PBi: -3, QA: 3 }), 0);
+  assert.throws(() => residual({ ...measurement, QA: 0 }));
+  assert.throws(() => residual({ ...measurement, PBr: 0, PBi: 0 }));
+  const selected = banks.filter((b) => b.chapter === 6);
+  assert.deepEqual(
+    selected.map((b) => b.lecture),
+    ["6.1", "6.2"],
+  );
+  assert.equal(selected.flatMap((b) => b.questions).length, 18);
+  for (const bank of selected) {
+    validateBank(bank);
+    const answer = copy(numeric(bank).answer);
+    recomputeNumeric(answer);
+    answer.value *= 1.1;
+    assert.throws(() => recomputeNumeric(answer), /independently expected/);
+  }
+  const percentage = copy(numeric(selected[1]).answer);
+  percentage.value /= 100;
+  percentage.unit = "1";
+  near(recomputeNumeric(percentage), 0.17541160386140575);
+});
 
 test("chapter 5 includes all three lectures and documents every reuse decision", () => {
   const selected = banks.filter((b) => b.chapter === 5);

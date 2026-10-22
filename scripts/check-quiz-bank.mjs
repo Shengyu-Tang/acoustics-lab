@@ -8,6 +8,7 @@ import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.
 import { chapter3Units, chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 import { chapter4Units, chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
 import { chapter5Methods } from "./quiz-bank-numeric-ch5.mjs";
+import { chapter6Methods, chapter6Units } from "./quiz-bank-numeric-ch6.mjs";
 
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 export const schema = readJson("specs/redesign/quiz-bank.schema.json");
@@ -169,6 +170,7 @@ export function lectureLiterals(id) {
 const units = {
   ...chapter3Units,
   ...chapter4Units,
+  ...chapter6Units,
   kg: ["mass", 1],
   "N/m": ["stiffness", 1],
   "kg/s": ["resistance", 1],
@@ -199,6 +201,7 @@ const methods = {
   ...chapter3Methods,
   ...chapter4Methods,
   ...chapter5Methods,
+  ...chapter6Methods,
   "line-density-from-local-motion": {
     inputs: { T: "force", curvature: "curvature", acceleration: "acceleration" },
     unit: "line-density",
