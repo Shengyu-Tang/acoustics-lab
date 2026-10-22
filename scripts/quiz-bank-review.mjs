@@ -16,14 +16,16 @@ export const roles = {
 const cell = (s) => String(s).replaceAll("|", "\\|").replaceAll("\n", " ");
 const answerText = (q) =>
   q.type === "numeric"
-    ? `${q.answer.value} ${q.answer.unit}（相对容差 ±2%）`
-    : q.type === "judge"
-      ? q.answer
-        ? "正确"
-        : "错误"
-      : Array.isArray(q.answer)
-        ? q.answer.join("、")
-        : q.answer;
+    ? `${q.answer.value.toPrecision(4)} ${q.answer.unit}（相对容差 ±2%，判分保留完整值）`
+    : q.type === "short"
+      ? "简答，按评分要点自查"
+      : q.type === "judge"
+        ? q.answer
+          ? "正确"
+          : "错误"
+        : Array.isArray(q.answer)
+          ? q.answer.join("、")
+          : q.answer;
 
 export function loadBanks() {
   const dir = path.join(root, "src/content/quiz");
@@ -38,19 +40,19 @@ export function renderReview(manifest, banks) {
   const lines = [
     "# 声学基础题库审阅稿",
     "",
-    "当前仅完成第1章的内容草案，覆盖10讲、课前30题和课后50题，尚待教师审定。每讲课前依次检查前置知识、物理直觉和概念辨析；课后依次为概念、公式、计算、推理、深度判断。题库未接入网站界面。",
+    `当前已完成第${manifest.chapters.map((c) => c.chapter).join("、")}章的内容草案，覆盖${banks.length}讲、课前${banks.length * 3}题和课后${banks.length * 5}题，尚待教师审定。每讲课前依次检查前置知识、物理直觉和概念辨析；课后依次为概念、公式、计算、推理、深度判断。题库未接入网站界面。`,
     "",
     "## 结构与复核方法",
     "",
     "共享结构见 [quiz-bank.schema.json](quiz-bank.schema.json)。每讲一个 JSON，concept 为本讲要点原文数组，一道题可覆盖多个要点；coverage 仅统计课后题。manifest.json 只登记已完成的整章草案；后续章节完成时增列整章，不把未起草章节误报为缺题。",
     "",
-    "数值答案记录计算式、带单位的输入、结果及相对容差0.02。校验器只使用自身的公式与单位换算，既不执行题库表达式，也不调用网站 physics 代码；答案舍入误差按更严格的0.001%校验，学生作答仍按±2%判分。",
+    "数值答案记录计算式、带单位的输入、完整精度结果及相对容差0.02，审阅稿显示4位有效数字。校验器只使用自身的公式与单位换算，既不执行题库表达式，也不调用网站 physics 代码；完整值误差按更严格的0.001%校验，学生作答仍按±2%判分。第二章起每讲深度题为简答，列2—3条评分要点及参考答案；第一章题目保留原草案待单独修订。全章单选正确答案任一字母占比不得超过40%。",
     "",
-    "来源中的页码一律指原始单讲 PDF 从1起的物理页序，不是教学设计中的合并授课课件页码。PDF 依原文件名在只读目录 ../04-声学基础课件资料/ 下定位；教学设计位于只读目录 ../02-教学安排/20261018督导版教学设计/。每讲均已阅读原始 PDF、对应教学设计及思考题；每题注明课件页和教学设计目标条目。教学设计是目标对齐依据，题目为重新起草。",
+    "来源中的页码一律指原始单讲 PDF 从1起的物理页序，不是教学设计中的合并授课课件页码。PDF 依原文件名在只读目录 ../04-声学基础课件资料/ 下定位；教学设计位于只读目录 ../02-教学安排/20261018督导版教学设计/。每讲均已阅读原始 PDF、对应教学设计及思考题；每题注明课件页和教学设计目标条目。教学设计是目标对齐依据，题目为重新起草。schema中sources和source均标记为teacherOnly，来源只用于教师核对；本审阅稿供教师使用。",
     "",
-    "记号以网站为准：时间因子 $e^{j\\omega t}$，质量 $M$、弹性系数 $D$、力阻 $R_m$、衰减率 $\\delta$、品质因数 $Q_m$、阻尼固有角频率 $\\omega_0^\\prime$。选择题的解析按 A—D 分别解释正确依据或错误来源；判断题、数值题给出2—5句解析。",
+    "记号以网站为准：时间因子 $e^{j\\omega t}$，质量 $M$、弹性系数 $D$、力阻 $R_m$、衰减率 $\\delta$、品质因数 $Q_m$、阻尼固有角频率 $\\omega_0^\\prime$；弦张力 $T$、线密度 $\\rho_l$、横位移 $y$，棒体密度 $\\rho$、杨氏模量 $E$、截面积 $S$、纵位移 $\\zeta$、轴向应力 $\\sigma$。第二章课件中的线密度ρ、应力T_zz按网站分别记为 $\\rho_l$、$\\sigma$。选择题的解析按 A—D 分别解释正确依据或错误来源；判断题、数值题给出2—5句解析。",
     "",
-    "已人工对照本章网站例题和第2—4次课教学设计，改变提问目标、数据使用方式或推理任务，避免照抄原题。第7—24次课课堂题的已知禁复用例子不属于本章题目；后续章节仍须逐题对照课堂题库。脚本可发现规范化重复题干及仅改数字的相同句式，不能代替教师对语义重复、难度和教学效果的审定。",
+    "已人工对照第一、二章网站例题及第2—5次课教学设计，改变提问目标、数据使用方式或推理任务。第二章逐题对照了第5次课第八部分：不复用固定端斜率判断、固定弦前三阶频率计算、自由端位移判断、力激励棒前两阶共振计算，也不照搬课后作业及网站计算器；具体差异见各讲审阅要点。第7—24次课课堂题的已知禁复用例子不属于本轮第二章内容；后续章节仍须逐题对照课堂题库。脚本可发现规范化重复题干及仅改数字的相同句式，不能代替教师对语义重复、难度和教学效果的审定。",
     "",
     "运行 `node scripts/quiz-bank-review.mjs --write` 可从题库重建本稿；`npm test` 比较全文，防止 JSON 改动后答案、解析和覆盖表失配。手工审阅意见写入各讲 reviewNotes 后再生成。",
     "",
@@ -65,13 +67,32 @@ export function renderReview(manifest, banks) {
       `| ${c.chapter} | 待教师审定的草案 | ${c.lectures.join("、")} | ${selected.reduce((n, b) => n + b.questions.length, 0)} |`,
     );
   }
+  lines.push(
+    "",
+    "## 单选答案分布",
+    "",
+    "| 章 | A | B | C | D |",
+    "| --- | --- | --- | --- | --- |",
+  );
+  for (const c of manifest.chapters) {
+    const choices = banks
+      .filter((b) => b.chapter === c.chapter)
+      .flatMap((b) => b.questions.filter((q) => q.type === "single"));
+    const counts = ["A", "B", "C", "D"].map((letter) => {
+      const count = choices.filter((q) => q.answer === letter).length;
+      return `${count}（${(choices.length ? (100 * count) / choices.length : 0).toFixed(1)}%）`;
+    });
+    lines.push(`| ${c.chapter} | ${counts.join(" | ")} |`);
+  }
   lines.push("", "## 深度题清单", "", "| 讲次 | 题号 | 判断依据 |", "| --- | --- | --- |");
   for (const b of banks)
     for (const q of b.questions.filter((q) => q.role === "depth")) {
       const reason =
-        q.type === "single"
-          ? q.explanation.find((s) => s.startsWith(`${q.answer}：`))
-          : q.explanation[0];
+        q.type === "short"
+          ? q.answer.rubric.map((s) => s.replace(/[。；]$/u, "")).join("；")
+          : q.type === "single"
+            ? q.explanation.find((s) => s.startsWith(`${q.answer}：`))
+            : q.explanation[0];
       lines.push(`| ${b.lecture} | ${q.id} | ${cell(reason)} |`);
     }
   for (const b of banks) {
@@ -108,6 +129,11 @@ export function renderReview(manifest, banks) {
       for (const o of q.options ?? []) lines.push(`- ${o.id}．${o.text}`);
       if (q.options) lines.push("");
       lines.push(`答案：${answerText(q)}`, "");
+      if (q.type === "short") {
+        lines.push("评分要点（每条1分，学生作答后自行对照）：", "");
+        for (const point of q.answer.rubric) lines.push(`- ${point}`);
+        lines.push("", `参考答案：${q.answer.reference}`, "");
+      }
       if (q.type === "numeric") {
         lines.push(
           `计算式：${q.answer.calculation.formula}`,

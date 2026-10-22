@@ -21,6 +21,7 @@ const keywords = new Set([
   "$ref",
   "title",
   "description",
+  "teacherOnly",
   "type",
   "const",
   "enum",
@@ -167,6 +168,14 @@ const units = {
   "s^-1": ["rate", 1],
   m: ["length", 1],
   mm: ["length", 0.001],
+  N: ["force", 1],
+  "kg/m": ["line-density", 1],
+  "g/m": ["line-density", 0.001],
+  "m^-1": ["curvature", 1],
+  "m/s^2": ["acceleration", 1],
+  Pa: ["pressure", 1],
+  GPa: ["pressure", 1e9],
+  "kg/m^3": ["density", 1],
   J: ["energy", 1],
   mJ: ["energy", 0.001],
   1: ["dimensionless", 1],
@@ -174,6 +183,44 @@ const units = {
 // Each method names input dimensions, its canonical algebraic formula, and an
 // independently implemented calculation returning SI. No eval/Function or physics imports.
 const methods = {
+  "line-density-from-local-motion": {
+    inputs: { T: "force", curvature: "curvature", acceleration: "acceleration" },
+    unit: "line-density",
+    formula: String.raw`$\rho_l=\frac{T\kappa}{a_y}$`,
+    compute: ({ T, curvature, acceleration }) => {
+      assert.ok(T > 0 && acceleration !== 0 && curvature * acceleration > 0);
+      return (T * curvature) / acceleration;
+    },
+  },
+  "pluck-third-ratio": {
+    inputs: { alpha: "dimensionless" },
+    unit: "dimensionless",
+    formula: String.raw`$\left|\frac{b_3}{b_1}\right|=\left|\frac{\sin(3\pi\alpha)}{9\sin(\pi\alpha)}\right|$`,
+    compute: ({ alpha }) => {
+      assert.ok(alpha > 0 && alpha < 1);
+      // sin(3x)/sin(x) = 3 - 4 sin²(x): independent of the displayed quotient.
+      return Math.abs(3 - 4 * Math.sin(Math.PI * alpha) ** 2) / 9;
+    },
+  },
+  "slender-rod-frequency-limit": {
+    inputs: { eta: "dimensionless", d: "length", E: "pressure", rho: "density" },
+    unit: "frequency",
+    formula: String.raw`$f_{\max}=\frac{\eta}{d}\sqrt{\frac{E}{\rho}}$`,
+    compute: ({ eta, d, E, rho }) => {
+      assert.ok(eta > 0 && eta < 1 && d > 0 && E > 0 && rho > 0);
+      return Math.sqrt(E / rho) / (d / eta);
+    },
+  },
+  "young-from-free-mode-spacing": {
+    inputs: { L: "length", rho: "density", fa: "frequency", fb: "frequency" },
+    unit: "pressure",
+    formula: String.raw`$E=4\rho L^2(f_b-f_a)^2$`,
+    compute: ({ L, rho, fa, fb }) => {
+      assert.ok(L > 0 && rho > 0 && fa > 0 && fb > fa);
+      const speed = 2 * L * (fb - fa);
+      return rho * speed * speed;
+    },
+  },
   "first-maximum": {
     inputs: { M: "mass", D: "stiffness", v0: "velocity" },
     unit: "time",
@@ -381,6 +428,12 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
         /为什么|为何|怎样|应|能否|是否|判断/.test(q.stem),
         `${q.id}: depth must require a judgment`,
       );
+    if (bank.chapter >= 2 && q.role === "depth")
+      assert.equal(q.type, "short", `${q.id}: depth must use short answer from chapter 2`);
+    if (q.type === "short") {
+      assert.equal(q.role, "depth", `${q.id}: short answer is the depth task`);
+      for (const text of [...q.answer.rubric, q.answer.reference]) checkMath(text, q.id);
+    }
     for (const text of [
       q.stem,
       ...q.concept,
@@ -503,6 +556,18 @@ export function validateInventory(manifest, banks, topics, filenames) {
       assert.ok(!patterns.has(pattern), `${q.id}: repeats a stem with changed numbers`);
       patterns.add(pattern);
     }
+  for (const chapter of manifest.chapters) {
+    const choices = banks
+      .filter((b) => b.chapter === chapter.chapter)
+      .flatMap((b) => b.questions.filter((q) => q.type === "single"));
+    for (const letter of ["A", "B", "C", "D"]) {
+      const count = choices.filter((q) => q.answer === letter).length;
+      assert.ok(
+        count <= choices.length * 0.4,
+        `chapter ${chapter.chapter}: answer distribution ${letter} exceeds 40%`,
+      );
+    }
+  }
 }
 
 export function runChecks() {

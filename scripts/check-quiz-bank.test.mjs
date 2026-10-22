@@ -220,10 +220,128 @@ test("review is generated from answers, explanations and post-only coverage", ()
   numeric(edited[0]).answer.value = 1;
   const after = renderReview(manifest, edited);
   assert.notEqual(before, after);
-  assert.ok(after.includes("1 ms（相对容差 ±2%）"));
+  assert.ok(after.includes("1.000 ms（相对容差 ±2%，判分保留完整值）"));
   for (const b of banks)
     for (const q of b.questions) {
       assert.ok(before.includes(`#### ${q.id}`));
       for (const explanation of q.explanation) assert.ok(before.includes(explanation));
     }
+});
+
+test("chapter 2 depth uses short answers with bounded scoring criteria and no choices", () => {
+  const b = copy(banks.find((b) => b.lecture === "2.1"));
+  const depth = b.questions[7];
+  assert.equal(depth.type, "short");
+  assert.equal(depth.answer.rubric.length, 3);
+  assert.deepEqual(validateSchema(b), []);
+  for (const mutate of [
+    (q) => {
+      q.answer.rubric = [q.answer.rubric[0]];
+    },
+    (q) => {
+      q.answer.rubric.push("额外评分项");
+    },
+    (q) => {
+      q.answer.reference = "";
+    },
+    (q) => {
+      q.options = copy(example.questions[0].options);
+    },
+  ]) {
+    const q = copy(depth);
+    mutate(q);
+    assert.ok(validateSchema(q, schema.$defs.question).length);
+  }
+  const choice = copy(example.questions[7]);
+  b.questions[7] = {
+    ...choice,
+    id: depth.id,
+    lecture: b.lecture,
+    concept: depth.concept,
+    source: depth.source,
+  };
+  assert.throws(() => validateBank(b), /depth must use short answer/);
+});
+
+test("chapter-wide answer distribution rejects a letter exceeding forty percent", () => {
+  const edited = copy(banks);
+  for (const b of edited.filter((b) => b.chapter === 2))
+    for (const q of b.questions.filter((q) => q.type === "single")) q.answer = "A";
+  assert.throws(() => validateInventory(manifest, edited, topics, filenames), /exceeds 40%/);
+});
+
+test("chapter 2 numerical methods check physical values, SI conversions and invalid domains", () => {
+  const answer = (id) => copy(numeric(banks.find((b) => b.lecture === id)).answer);
+  assert.ok(Math.abs(recomputeNumeric(answer("2.1")) - 0.4) < 1e-12);
+  assert.ok(Math.abs(recomputeNumeric(answer("2.2")) - 1 / 9) < 1e-12);
+  assert.ok(Math.abs(recomputeNumeric(answer("2.3")) - 32.27486121839514) < 1e-10);
+  assert.ok(Math.abs(recomputeNumeric(answer("2.4")) - 67.5) < 1e-10);
+  const density = answer("2.1");
+  density.unit = "kg/m";
+  density.value = 0.0004;
+  assert.ok(Math.abs(recomputeNumeric(density) - 0.0004) < 1e-12);
+  const modulus = answer("2.4");
+  modulus.calculation.inputs.fa = { value: 6250, unit: "Hz" };
+  modulus.calculation.inputs.fb = { value: 9375, unit: "Hz" };
+  modulus.unit = "Pa";
+  modulus.value = 67.5e9;
+  assert.equal(recomputeNumeric(modulus), 67.5e9);
+  for (const [id, mutate] of [
+    [
+      "2.1",
+      (a) => {
+        a.calculation.inputs.acceleration.value = 0;
+      },
+    ],
+    [
+      "2.1",
+      (a) => {
+        a.calculation.inputs.curvature.value *= -1;
+      },
+    ],
+    [
+      "2.2",
+      (a) => {
+        a.calculation.inputs.alpha.value = 0;
+      },
+    ],
+    [
+      "2.3",
+      (a) => {
+        a.calculation.inputs.d.value = 0;
+      },
+    ],
+    [
+      "2.3",
+      (a) => {
+        a.calculation.inputs.E.unit = "N";
+      },
+    ],
+    [
+      "2.4",
+      (a) => {
+        a.calculation.inputs.fb.value = 6;
+      },
+    ],
+  ]) {
+    const a = answer(id);
+    mutate(a);
+    assert.throws(() => recomputeNumeric(a));
+  }
+});
+
+test("teacher-only sources and rounded review preserve full answers and short-answer guidance", () => {
+  assert.equal(schema.$defs.question.properties.source.teacherOnly, true);
+  assert.equal(schema.$defs.lectureBank.properties.sources.teacherOnly, true);
+  const review = renderReview(manifest, banks);
+  assert.ok(review.includes("32.27 kHz"));
+  assert.ok(!review.includes("32.274861218395145 kHz"));
+  for (const b of banks.filter((b) => b.chapter === 2)) {
+    const q = b.questions[7];
+    assert.ok(review.includes(q.answer.reference));
+    for (const point of q.answer.rubric) assert.ok(review.includes(point));
+  }
+  const b = copy(banks.find((b) => b.lecture === "2.1"));
+  b.questions[7].answer.reference = "未闭合的公式 $x";
+  assert.throws(() => validateBank(b), /unpaired/);
 });

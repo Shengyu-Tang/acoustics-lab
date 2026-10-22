@@ -161,7 +161,7 @@
           "uniqueItems": true,
           "items": { "$ref": "#/$defs/nonempty" }
         },
-        "type": { "enum": ["single", "multi", "judge", "numeric"] },
+        "type": { "enum": ["single", "multi", "judge", "numeric", "short"] },
         "stem": { "type": "string", "minLength": 10 },
         "options": {
           "type": "array",
@@ -185,6 +185,8 @@
           "items": { "$ref": "#/$defs/nonempty" }
         },
         "source": {
+          "teacherOnly": true,
+          "description": "仅供教师核对来源，不向学生界面展示。",
           "type": "array",
           "minItems": 2,
           "uniqueItems": true,
@@ -192,6 +194,29 @@
         }
       },
       "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "short" } } },
+          "then": {
+            "not": { "required": ["options"] },
+            "properties": {
+              "answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["rubric", "reference"],
+                "properties": {
+                  "rubric": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/$defs/nonempty" }
+                  },
+                  "reference": { "$ref": "#/$defs/nonempty" }
+                }
+              }
+            }
+          }
+        },
         {
           "if": { "properties": { "type": { "const": "single" } } },
           "then": {
@@ -254,7 +279,12 @@
           "uniqueItems": true,
           "items": { "$ref": "#/$defs/nonempty" }
         },
-        "sources": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/document" } },
+        "sources": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/document" },
+          "teacherOnly": true
+        },
         "reviewNotes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonempty" } },
         "questions": {
           "type": "array",
