@@ -79,12 +79,26 @@ async function scan(page, state) {
     const clippedText = [...(main?.querySelectorAll("h1,h2,h3,h4,figcaption,button") ?? [])]
       .filter((e) => e.clientWidth && e.scrollWidth > e.clientWidth + 2)
       .map((e) => ({ text: e.textContent, width: e.clientWidth, scrollWidth: e.scrollWidth }));
+    const floatingWorksheetLabels = [
+      ...document.querySelectorAll(
+        ".calculation-example [data-annotation-label], .calculation-example [data-free-label]",
+      ),
+    ]
+      .filter((label) => {
+        const area = label.parentElement.querySelector("[data-plot-area]");
+        if (!area) return false;
+        const a = area.getBoundingClientRect(),
+          b = label.getBoundingClientRect();
+        return b.top < a.top - 1 || b.bottom > a.bottom + 1;
+      })
+      .map((label) => label.textContent);
     return {
       invalid,
       blank,
       broken,
       invalidSvg,
       clippedText,
+      floatingWorksheetLabels,
       width: innerWidth,
       scrollWidth: document.documentElement.scrollWidth,
       figures: figures.length,
@@ -92,7 +106,14 @@ async function scan(page, state) {
     };
   });
   assert.ok(result.textLength > 30, `${state}: blank page`);
-  for (const k of ["invalid", "blank", "broken", "invalidSvg", "clippedText"])
+  for (const k of [
+    "invalid",
+    "blank",
+    "broken",
+    "invalidSvg",
+    "clippedText",
+    "floatingWorksheetLabels",
+  ])
     assert.deepEqual(result[k], [], `${state}: ${k}`);
   assert.ok(
     result.scrollWidth <= result.width + 1,

@@ -17,7 +17,7 @@ try {
   for (const width of [1440, 390]) {
     for (const id of ["1.1.2", "1.2.4", "3.6.9"]) {
       const page = await context.newPage();
-      await page.setViewportSize({ width, height: 900 });
+      await page.setViewportSize({ width, height: width === 1440 ? 900 : 844 });
       let releaseFonts;
       const fontGate = new Promise((resolve) => {
         releaseFonts = resolve;
