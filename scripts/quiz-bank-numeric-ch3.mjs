@@ -21,6 +21,26 @@ export const chapter3Units = {
   'kg/m^2': ['surface-mass',1],
 };
 export const chapter3Methods = {
+  'spherical-pulse-nearfield-ratio': {
+    inputs:{ell:'length',r:'length'},unit:'dimensionless',formula:String.raw`$\eta=\frac{|F|}{r|F^{\prime}|}=\frac{\ell}{r}$`,
+    compute:({ell,r})=>{assert.ok(ell>0&&r>0);return ell/r;},
+  },
+  'radius-from-spherical-impedance': {
+    inputs:{R:'specific-impedance',X:'specific-impedance',c:'velocity',f:'frequency'},unit:'length',formula:String.raw`$r=\frac{c_0}{2\pi f}\frac{R_a}{X_a}$`,
+    compute:({R,X,c,f})=>{assert.ok(R>0&&X>0&&c>0&&f>0);const kr=R/X;return kr/(2*Math.PI*f/c);},
+  },
+  'velocity-phase-speed-distance': {
+    inputs:{c:'velocity',f:'frequency',epsilon:'dimensionless'},unit:'length',formula:String.raw`$r_{\min}=\frac{c_0}{2\pi f\sqrt\varepsilon}$`,
+    compute:({c,f,epsilon})=>{assert.ok(c>0&&f>0&&epsilon>0);return c/f/(2*Math.PI)/Math.sqrt(epsilon);},
+  },
+  'spherical-reverse-flow-fraction': {
+    inputs:{kr:'dimensionless'},unit:'dimensionless',formula:String.raw`$\eta_-=\frac{\arctan[1/(kr)]}{\pi}$`,
+    compute:({kr})=>{assert.ok(kr>0);return Math.atan2(1,kr)/Math.PI;},
+  },
+  'hard-image-notch-residual': {
+    inputs:{rd:'length',ri:'length'},unit:'dimensionless',formula:String.raw`$\frac{|P_{\mathrm{tot}}|}{|P_d|}=\left|1-\frac{r_d}{r_i}\right|\quad(k(r_i-r_d)=\pi)$`,
+    compute:({rd,ri})=>{assert.ok(ri>rd&&rd>0);return (ri-rd)/ri;},
+  },
   'surface-reactance-from-reflection': {
     inputs:{Z0:'specific-impedance',r:'dimensionless',phi:'angle'},unit:'specific-impedance',formula:String.raw`$X_s=\frac{2Z_0|R_p|\sin\phi}{1-2|R_p|\cos\phi+|R_p|^2}$`,
     compute:({Z0,r,phi})=>{assert.ok(Z0>0&&r>0&&r<1);const den=(1-r*Math.cos(phi))**2+(r*Math.sin(phi))**2;return 2*Z0*r*Math.sin(phi)/den;},
