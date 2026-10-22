@@ -17,8 +17,58 @@ export const chapter3Units = {
   'm^3': ['volume', 1],
   dB: ['level', 1],
   rad: ['angle', 1],
+  deg: ['angle', Math.PI/180],
+  'kg/m^2': ['surface-mass',1],
 };
 export const chapter3Methods = {
+  'oblique-footprint': {
+    inputs:{area:'area',theta:'angle'},unit:'area',formula:String.raw`$S_{\mathrm{foot}}=S_i/\cos\theta_i$`,
+    compute:({area,theta})=>{assert.ok(area>0&&theta>=0&&theta<Math.PI/2);return area/Math.cos(theta);},
+  },
+  'oblique-impedance-inversion': {
+    inputs:{Z1:'specific-impedance',R:'dimensionless',ci:'dimensionless',ct:'dimensionless'},unit:'specific-impedance',formula:String.raw`$Z_2=Z_1\frac{\cos\theta_t}{\cos\theta_i}\frac{1+R_p}{1-R_p}$`,
+    compute:({Z1,R,ci,ct})=>{assert.ok(Z1>0&&Math.abs(R)<1&&ci>0&&ci<=1&&ct>0&&ct<=1);return Z1*ct*(1+R)/(ci*(1-R));},
+  },
+  'critical-angle-aperture-margin': {
+    inputs:{c1:'velocity',c2:'velocity',center:'angle'},unit:'angle',formula:String.raw`$\Delta\theta_{\max}=\arcsin(c_1/c_2)-\theta_{\mathrm{center}}$`,
+    compute:({c1,c2,center})=>{assert.ok(c2>c1&&c1>0&&center>=0&&center<Math.asin(c1/c2));return Math.asin(c1/c2)-center;},
+  },
+  'evanescent-kinetic-ratio': {
+    inputs:{kt:'curvature',k:'curvature'},unit:'dimensionless',formula:String.raw`$\frac{\overline w_{k,n}}{\overline w_{k,t}}=\frac{k_t^2-k^2}{k_t^2}$`,
+    compute:({kt,k})=>{assert.ok(kt>k&&k>0);return 1-(k/kt)**2;},
+  },
+  'multiple-reflection-loss': {
+    inputs:{R:'dimensionless',N:'dimensionless'},unit:'level',formula:String.raw`$\Delta L=-20N\log_{10}|R_p|$`,
+    compute:({R,N})=>{assert.ok(R>0&&R<1&&Number.isInteger(N)&&N>0);return -10*Math.log10((R*R)**N);},
+  },
+  'reflection-from-beam-intensities': {
+    inputs:{tI:'dimensionless',ci:'dimensionless',ct:'dimensionless'},unit:'dimensionless',formula:String.raw`$|R_p|=\sqrt{1-t_I\frac{\cos\theta_t}{\cos\theta_i}}$`,
+    compute:({tI,ci,ct})=>{assert.ok(tI>0&&ci>0&&ci<=1&&ct>0&&ct<=1&&tI*ct/ci<1);return Math.sqrt((ci-tI*ct)/ci);},
+  },
+  'sheet-pressure-jump': {
+    inputs:{mu:'surface-mass',f:'frequency',u:'velocity'},unit:'pressure',formula:String.raw`$|\Delta p|=\mu(2\pi f)u_a$`,
+    compute:({mu,f,u})=>{assert.ok(mu>0&&f>0&&u>0);return mu*u*f*(2*Math.PI);},
+  },
+  'interface-reflection-phase': {
+    inputs:{phase:'angle',k:'curvature',d:'length'},unit:'angle',formula:String.raw`$\phi_0=\phi_{-d}+2kd$`,
+    compute:({phase,k,d})=>{assert.ok(k>0&&d>=0);return phase+2*k*d;},
+  },
+  'contrast-from-velocity-transmission': {
+    inputs:{Du:'dimensionless'},unit:'dimensionless',formula:String.raw`$\frac{Z_2}{Z_1}=\frac2{D_u}-1$`,
+    compute:({Du})=>{assert.ok(Du>0&&Du<1);return (2-Du)/Du;},
+  },
+  'rigid-contrast-bound': {
+    inputs:{epsilon:'dimensionless'},unit:'dimensionless',formula:String.raw`$\left(\frac{Z_2}{Z_1}\right)_{\min}=\frac2\varepsilon-1$`,
+    compute:({epsilon})=>{assert.ok(epsilon>0&&epsilon<1);return (2-epsilon)/epsilon;},
+  },
+  'two-interface-first-pass-gain': {
+    inputs:{Z1:'specific-impedance',Zm:'specific-impedance',Z3:'specific-impedance'},unit:'dimensionless',formula:String.raw`$G=\frac{[4Z_1Z_m/(Z_1+Z_m)^2][4Z_mZ_3/(Z_m+Z_3)^2]}{4Z_1Z_3/(Z_1+Z_3)^2}$`,
+    compute:({Z1,Zm,Z3})=>{assert.ok(Z1>0&&Zm>Z1&&Z3>Zm);const t=(a,b)=>1-((b-a)/(b+a))**2;return t(Z1,Zm)*t(Zm,Z3)/t(Z1,Z3);},
+  },
+  'soft-standing-potential-fraction': {
+    inputs:{f:'frequency',c:'velocity',d:'length'},unit:'dimensionless',formula:String.raw`$\frac{\overline w_p}{\overline w}=\sin^2\left(\frac{2\pi f d}{c_0}\right)$`,
+    compute:({f,c,d})=>{assert.ok(f>0&&c>0&&d>0);return Math.sin(2*Math.PI*f*d/c)**2;},
+  },
   'evanescent-distance': {
     inputs:{kt:'curvature',k:'curvature',ratio:'dimensionless'},unit:'length',formula:String.raw`$z=\frac{-\ln\eta}{\sqrt{k_t^2-k^2}}$`,
     compute:({kt,k,ratio})=>{assert.ok(kt>k&&k>0&&ratio>0&&ratio<1);return Math.log(1/ratio)/Math.sqrt((kt-k)*(kt+k));},
