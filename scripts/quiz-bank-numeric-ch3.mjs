@@ -1,7 +1,8 @@
 // Independent classroom calculations: no website physics imports or expression eval.
 import assert from 'node:assert/strict';
 export const chapter3Units = {
-  '': ['dimensionless', 1],
+  'Pa/s^2': ['pressure-time-curvature',1],
+  'm^2/s': ['velocity-potential',1],
   'kg/(m^2*s)': ['mass-flux', 1],
   'kg/(m^3*s)': ['mass-flux-gradient', 1],
   'Pa/m': ['pressure-gradient', 1],
@@ -16,6 +17,14 @@ export const chapter3Units = {
   rad: ['angle', 1],
 };
 export const chapter3Methods = {
+  'radial-pressure-curvature': {
+    inputs:{c:'velocity',g:'pressure-gradient',r:'length'},unit:'pressure-time-curvature',formula:String.raw`$\partial_t^2p=\frac{2c_0^2}{r}\partial_r p\quad(\partial_r^2p=0)$`,
+    compute:({c,g,r})=>{assert.ok(c>0&&g>0&&r>0);return 2*c*c*g/r;},
+  },
+  'potential-displacement': {
+    inputs:{phi:'velocity-potential',c:'velocity'},unit:'length',formula:String.raw`$\xi_a=\frac{\Phi_a}{c_0}$`,
+    compute:({phi,c})=>{assert.ok(phi>0&&c>0);return phi/c;},
+  },
   'particle-cycle-path': {
     inputs: {xi:'length'}, unit:'length', formula:String.raw`$s_{\mathrm{cycle}}=4\xi_a$`,
     compute:({xi})=>{assert.ok(xi>0);return 4*xi;},
