@@ -6,6 +6,7 @@ import ts from "typescript";
 import katex from "katex";
 import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
 import { chapter3Units, chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
+import { chapter4Units, chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
 
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 export const schema = readJson("specs/redesign/quiz-bank.schema.json");
@@ -166,6 +167,7 @@ export function lectureLiterals(id) {
 
 const units = {
   ...chapter3Units,
+  ...chapter4Units,
   kg: ["mass", 1],
   "N/m": ["stiffness", 1],
   "kg/s": ["resistance", 1],
@@ -194,6 +196,7 @@ const units = {
 // independently implemented calculation returning SI. No eval/Function or physics imports.
 const methods = {
   ...chapter3Methods,
+  ...chapter4Methods,
   "line-density-from-local-motion": {
     inputs: { T: "force", curvature: "curvature", acceleration: "acceleration" },
     unit: "line-density",
@@ -430,9 +433,9 @@ export function checkNumericDisplay(answer) {
 export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   requireSchema(bank, schema, `Lecture ${bank.lecture}`);
   const id = bank.lecture;
-  // The user scoped this round to chapter 3. Earlier chapters retain their
-  // existing content pending a separately authorized editorial pass.
-  if (bank.chapter === 3) checkOptionalScenario(bank.questions[7], bank.questions[8]);
+  // Apply the newer editorial rules to chapter 3 onward. Earlier content is
+  // retained pending a separately scoped editorial pass.
+  if (bank.chapter >= 3) checkOptionalScenario(bank.questions[7], bank.questions[8]);
   assert.equal(bank.chapter, Number(id.split(".")[0]), `${id}: chapter mismatch`);
   assert.deepEqual(
     bank.keyPoints,
@@ -459,7 +462,7 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
     `${id}: missing depth`,
   );
   for (const [index, q] of bank.questions.entries()) {
-    if (bank.chapter === 3)
+    if (bank.chapter >= 3)
       assert.ok(
         bank.reviewNotes.some((note) => note.startsWith(`${q.id}：禁复用核查`)),
         `${q.id}: missing classroom reuse review`,

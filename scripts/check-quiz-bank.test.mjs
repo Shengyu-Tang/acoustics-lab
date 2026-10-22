@@ -16,6 +16,7 @@ import {
 } from "./check-quiz-bank.mjs";
 import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
 import { chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
+import { chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
 
 const { manifest, banks } = loadBanks();
 const topics = JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8"));
@@ -23,6 +24,102 @@ const filenames = banks.map((b) => `${b.lecture}.json`);
 const copy = (v) => structuredClone(v);
 const example = banks.find((b) => b.lecture === "1.1.1");
 const numeric = (b) => b.questions.find((q) => q.type === "numeric");
+
+test("chapter 4 includes every formal lecture with distinct, documented depth tasks", () => {
+  const selected = banks.filter((b) => b.chapter === 4);
+  assert.equal(selected.length, 9);
+  assert.equal(selected.flatMap((b) => b.questions).length, 81);
+  assert.equal(Object.keys(chapter4Methods).length, 9);
+  for (const original of selected) {
+    checkOptionalScenario(original.questions[7], original.questions[8]);
+    const missing = copy(original);
+    missing.reviewNotes = missing.reviewNotes.filter(
+      (note) => !note.startsWith(`${original.lecture}-post-03：`),
+    );
+    assert.throws(() => validateBank(missing), /missing classroom reuse review/);
+  }
+  const missing = copy(manifest);
+  missing.chapters.find((c) => c.chapter === 4).lectures.pop();
+  assert.throws(
+    () => validateInventory(missing, banks, topics, filenames),
+    /all website lectures required/,
+  );
+});
+
+test("chapter 4 oracles resolve coherent cancellation, solid angle and aperture geometry", () => {
+  const near = (a, b, tolerance = 1e-9) =>
+    assert.ok(Math.abs(a - b) < tolerance, `${a} differs from ${b}`);
+  // Same-path source pair adds in amplitude; a half-wavelength path with
+  // unequal spreading leaves the amplitude difference, not an RMS sum.
+  const two = chapter4Methods["coherent-two-point-pressure"].compute;
+  near(two({ rho: 1000, f: 1500, c: 1500, Q: 1e-5, r1: 3, r2: 3 }), 5);
+  near(two({ rho: 1000, f: 1500, c: 1500, Q: 1e-5, r1: 3, r2: 3.5 }), 5 / 14);
+  near(chapter4Methods["dipole-cone-power-fraction"].compute({ alpha: Math.PI / 3 }), 0.875, 1e-7);
+  const patches = chapter4Methods["baffled-patch-axis-pressure"].compute;
+  near(patches({ rho: 1000, f: 1000, r: 10, S1: 0.002, S2: 0.002, v1: 0.01, v2: -0.01 }), 0);
+  near(chapter4Methods["piston-first-axial-node"].compute({ a: 0.05, lambda: 0.01 }), 0.12);
+  // Equal mechanical and added masses lower this resonance by sqrt(2).
+  near(chapter4Methods["loaded-resonance"].compute({ M: 1, Ms: 1, D: 8 * Math.PI ** 2 }), 1);
+  near(
+    chapter4Methods["sphere-pressure-fraction-frequency"].compute({
+      a: 1,
+      c: 2 * Math.PI,
+      s: Math.SQRT1_2,
+    }),
+    1,
+  );
+  near(
+    chapter4Methods["sphere-radius-from-added-mass"].compute({ Ms: 4 * Math.PI, rho: 1000 }),
+    0.1,
+  );
+  near(
+    chapter4Methods["boundary-phase-sampling-limit"].compute({
+      N: 32,
+      R: 1,
+      c: 2 * Math.PI,
+      phi: Math.PI / 4,
+    }),
+    4,
+  );
+  near(
+    chapter4Methods["incoming-from-radiation-residual"].compute({
+      E: 0.4,
+      f: 1,
+      c: 2 * Math.PI,
+      R: 2,
+    }),
+    0.1,
+  );
+});
+
+test("chapter 4 numeric grading rejects wrong units, lost phase and invalid geometric roots", () => {
+  for (const original of banks.filter((b) => b.chapter === 4)) {
+    const answer = copy(numeric(original).answer);
+    recomputeNumeric(answer);
+    answer.value *= 1.1;
+    assert.throws(() => recomputeNumeric(answer), /independently expected/);
+  }
+  const pressure = copy(numeric(banks.find((b) => b.lecture === "4.4.2")).answer);
+  pressure.unit = "Pa"; // Do not silently accept the mPa value as Pa.
+  assert.throws(() => recomputeNumeric(pressure), /independently expected/);
+  const pair = copy(numeric(banks.find((b) => b.lecture === "4.2.3")).answer);
+  pair.value = 2.5 + 7.5 / 3.25;
+  assert.throws(() => recomputeNumeric(pair), /independently expected/);
+  assert.throws(() =>
+    chapter4Methods["piston-first-axial-node"].compute({ a: 0.01, lambda: 0.02 }),
+  );
+  assert.throws(() =>
+    chapter4Methods["sphere-pressure-fraction-frequency"].compute({ a: 1, c: 340, s: 1 }),
+  );
+  assert.throws(() =>
+    chapter4Methods["boundary-phase-sampling-limit"].compute({
+      N: 3.5,
+      R: 0.4,
+      c: 340,
+      phi: Math.PI / 4,
+    }),
+  );
+});
 
 test("chapter 3 inventory includes all 48 formal lectures and excludes supplementary topics", () => {
   const c3 = banks.filter((b) => b.chapter === 3);
@@ -414,8 +511,14 @@ test("post-06 preserves an optional choice and required questions cannot be skip
     assert.equal(optional.id, `${b.lecture}-post-06`);
     assert.equal(optional.optional, true);
     assert.equal(optional.type, "single");
-    assert.deepEqual(optional.source, b.questions[7].source);
-    assert.deepEqual(optional.concept, b.questions[7].concept);
+    // Separate scenarios can cite different pages and cover overlapping rather
+    // than identical subsets of the lecture's points. Each precise reference
+    // and verbatim point is checked by validateBank.
+    assert.deepEqual(
+      optional.source.map((s) => s.document),
+      b.questions[7].source.map((s) => s.document),
+    );
+    assert.ok(optional.concept.some((point) => b.questions[7].concept.includes(point)));
     const missing = copy(b);
     missing.questions.pop();
     assert.throws(() => validateBank(missing), /too few items/);
