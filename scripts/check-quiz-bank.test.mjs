@@ -19,6 +19,7 @@ import { chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 import { chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
 import { chapter5Methods } from "./quiz-bank-numeric-ch5.mjs";
 import { chapter6Methods } from "./quiz-bank-numeric-ch6.mjs";
+import { chapter7Methods } from "./quiz-bank-numeric-ch7.mjs";
 
 const { manifest, banks } = loadBanks();
 const topics = JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8"));
@@ -26,6 +27,61 @@ const filenames = banks.map((b) => `${b.lecture}.json`);
 const copy = (v) => structuredClone(v);
 const example = banks.find((b) => b.lecture === "1.1.1");
 const numeric = (b) => b.questions.find((q) => q.type === "numeric");
+
+test("chapter 7 includes all lectures and independently grades the three inverse problems", () => {
+  const selected = banks.filter((b) => b.chapter === 7);
+  assert.deepEqual(selected.map((b) => b.lecture), ["7.1", "7.2", "7.3"]);
+  assert.equal(selected.flatMap((b) => b.questions).length, 27);
+  for (const bank of selected) {
+    validateBank(bank);
+    checkOptionalScenario(bank.questions[7], bank.questions[8]);
+    const answer = copy(numeric(bank).answer);
+    recomputeNumeric(answer);
+    answer.value *= 1.1;
+    assert.throws(() => recomputeNumeric(answer), /independently expected/);
+    const wrongDimension = copy(numeric(bank).answer);
+    wrongDimension.calculation.inputs[Object.keys(wrongDimension.calculation.inputs)[0]].unit = "kg";
+    assert.throws(() => recomputeNumeric(wrongDimension), /incompatible unit/);
+  }
+  const missing = copy(manifest);
+  missing.chapters.find((c) => c.chapter === 7).lectures.pop();
+  assert.throws(() => validateInventory(missing, banks, topics, filenames), /all website lectures required/);
+  const time = copy(numeric(selected[1]).answer);
+  time.value *= 1e-6;
+  time.unit = "s";
+  assert.ok(Math.abs(recomputeNumeric(time) - 1 / (20000 * Math.PI)) < 1e-15);
+  const bandwidth = copy(numeric(selected[2]).answer);
+  bandwidth.value *= 1000;
+  bandwidth.unit = "Hz";
+  assert.ok(Math.abs(recomputeNumeric(bandwidth) - 200 * Math.sqrt(5)) < 1e-10);
+});
+
+test("chapter 7 calibration, relaxation limits and threshold crossings reject misleading shortcuts", () => {
+  const near = (a, b, tol = 1e-12) => assert.ok(Math.abs(a - b) < tol, `${a} differs from ${b}`);
+  const absorption = chapter7Methods["calibrated-plane-absorption"].compute;
+  const measurement = { U1: 2, U2: 1, H1: 1, H2: 2, L: 2 };
+  near(absorption(measurement), Math.LN2);
+  // Multiplying both voltage and calibration gain of one channel leaves alpha unchanged.
+  near(absorption({ ...measurement, U2: 10, H2: 20 }), Math.LN2);
+  assert.throws(() => absorption({ ...measurement, H1: 0 }));
+  assert.throws(() => absorption({ ...measurement, U2: 10 }));
+  const relaxation = chapter7Methods["two-frequency-relaxation-time"].compute;
+  near(relaxation({ f: 1 / (2 * Math.PI), B: 0, alpha1: 0.5, alpha2: 0.8 }), 1);
+  // The same residuals on a substantial known quadratic baseline must recover the same time.
+  near(relaxation({ f: 1 / (2 * Math.PI), B: 4 * Math.PI ** 2, alpha1: 1.5, alpha2: 4.8 }), 1);
+  near(relaxation({ f: 1 / (2 * Math.PI), B: 0, alpha1: 0.4, alpha2: 1 }), 0.5);
+  for (const ratio of [0.9, 1, 4, 4.1])
+    assert.throws(() => relaxation({ f: 1, B: 0, alpha1: 1, alpha2: ratio }), /1 < R < 4/);
+  assert.throws(() => relaxation({ f: 1, B: 2, alpha1: 1, alpha2: 3 }));
+  const bandwidth = chapter7Methods["impedance-threshold-bandwidth"].compute;
+  const resonator = { r: 1, b: 2, f0: 1000, threshold: 0.8 };
+  near(bandwidth(resonator), 500, 1e-9);
+  near(bandwidth({ ...resonator, b: 4 }), 250, 1e-9);
+  near(bandwidth({ ...resonator, f0: 2000 }), 1000, 1e-9);
+  assert.throws(() => bandwidth({ ...resonator, r: 4 }), /below the realizable peak/);
+  assert.throws(() => bandwidth({ ...resonator, threshold: 1 }), /below the realizable peak/);
+  assert.throws(() => bandwidth({ ...resonator, b: 0 }));
+});
 
 test("chapter 6 checks complex loading and actual source normalization", () => {
   const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-12);
