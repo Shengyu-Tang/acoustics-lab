@@ -4,6 +4,7 @@ export const chapter3Units = {
   'Pa/s^2': ['pressure-time-curvature',1],
   'm^2/s': ['velocity-potential',1],
   'J/m^2': ['fluence',1],
+  'Pa/m-imag': ['imaginary-pressure-gradient',1],
   'kg/(m^2*s)': ['mass-flux', 1],
   'kg/(m^3*s)': ['mass-flux-gradient', 1],
   'Pa/m': ['pressure-gradient', 1],
@@ -18,6 +19,30 @@ export const chapter3Units = {
   rad: ['angle', 1],
 };
 export const chapter3Methods = {
+  'forward-amplitude-from-cauchy-data': {
+    inputs:{p:'pressure',d:'imaginary-pressure-gradient',k:'curvature'},unit:'pressure',formula:String.raw`$A=\frac12\left(P+\frac Dk\right)\quad(\widehat p^{\prime}(0)=-jD)$`,
+    compute:({p,d,k})=>{assert.ok(k>0&&p>0&&d>0);return .5*(p+d/k);},
+  },
+  'phase-sampling-spacing': {
+    inputs:{c:'velocity',fmax:'frequency'},unit:'length',formula:String.raw`$d_{\max}=\frac{c_0}{2f_{\max}}$`,
+    compute:({c,fmax})=>{assert.ok(c>0&&fmax>0);return c/fmax/2;},
+  },
+  'mean-absolute-particle-speed': {
+    inputs:{pa:'pressure',Z0:'specific-impedance'},unit:'velocity',formula:String.raw`$\langle|u|\rangle=\frac{2p_a}{\pi Z_0}$`,
+    compute:({pa,Z0})=>{assert.ok(pa>0&&Z0>0);return (2/Math.PI)*(pa/Z0);},
+  },
+  'reflection-from-local-impedance': {
+    inputs:{Z:'specific-impedance',Z0:'specific-impedance'},unit:'dimensionless',formula:String.raw`$R=\frac{Z-Z_0}{Z+Z_0}$`,
+    compute:({Z,Z0})=>{assert.ok(Z>Z0&&Z0>0);return 1-2*Z0/(Z+Z0);},
+  },
+  'rectangular-pulse-fluence': {
+    inputs:{pa:'pressure',Z0:'specific-impedance',dt:'time'},unit:'fluence',formula:String.raw`$F=\frac{p_a^2\tau}{Z_0}$`,
+    compute:({pa,Z0,dt})=>{assert.ok(pa>0&&Z0>0&&dt>0);return pa/Z0*pa*dt;},
+  },
+  'source-level-subtraction': {
+    inputs:{total:'level',background:'level'},unit:'level',formula:String.raw`$L_{p,s}=10\log_{10}\left(10^{L_{p,\mathrm{tot}}/10}-10^{L_{p,b}/10}\right)$`,
+    compute:({total,background})=>{assert.ok(total>background);return total+10*Math.log10(1-10**((background-total)/10));},
+  },
   'stored-acoustic-energy': {
     inputs:{rho0:'density',c:'velocity',pe:'pressure',ue:'velocity',volume:'volume'},unit:'energy',formula:String.raw`$\overline E=\frac V2\left(\rho_0u_e^2+\frac{p_e^2}{\rho_0c_0^2}\right)$`,
     compute:({rho0,c,pe,ue,volume})=>{assert.ok(rho0>0&&c>0&&volume>0&&pe>=0&&ue>=0);return volume*(rho0*ue*ue+pe*pe/(rho0*c*c))/2;},
