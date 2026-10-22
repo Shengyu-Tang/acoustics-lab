@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import ts from "typescript";
 import katex from "katex";
 import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
+import { chapter3Units, chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 export const schema = readJson("specs/redesign/quiz-bank.schema.json");
@@ -156,6 +157,7 @@ export function lectureLiterals(id) {
 }
 
 const units = {
+  ...chapter3Units,
   kg: ["mass", 1],
   "N/m": ["stiffness", 1],
   "kg/s": ["resistance", 1],
@@ -183,6 +185,7 @@ const units = {
 // Each method names input dimensions, its canonical algebraic formula, and an
 // independently implemented calculation returning SI. No eval/Function or physics imports.
 const methods = {
+  ...chapter3Methods,
   "line-density-from-local-motion": {
     inputs: { T: "force", curvature: "curvature", acceleration: "acceleration" },
     unit: "line-density",
@@ -545,8 +548,13 @@ export function validateInventory(manifest, banks, topics, filenames) {
     "chapter 1 is required",
   );
   for (const c of manifest.chapters) {
+    if (c.sectionGroups) {
+      assert.equal(c.chapter, 3, 'section groups are only used for the chapter-3 rollout');
+      assert.ok(c.sectionGroups.every((g) => topics.some((t) => t.id.startsWith(`${g}.`))), 'unknown section group');
+    }
     const expected = topics
       .filter((t) => t.id.startsWith(`${c.chapter}.`))
+      .filter((t) => !c.sectionGroups || c.sectionGroups.some((g) => t.id.startsWith(`${g}.`)))
       .map((t) => t.id)
       .sort();
     assert.deepEqual(
