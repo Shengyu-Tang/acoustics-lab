@@ -21,6 +21,14 @@ export const chapter3Units = {
   'kg/m^2': ['surface-mass',1],
 };
 export const chapter3Methods = {
+  'surface-reactance-from-reflection': {
+    inputs:{Z0:'specific-impedance',r:'dimensionless',phi:'angle'},unit:'specific-impedance',formula:String.raw`$X_s=\frac{2Z_0|R_p|\sin\phi}{1-2|R_p|\cos\phi+|R_p|^2}$`,
+    compute:({Z0,r,phi})=>{assert.ok(Z0>0&&r>0&&r<1);const den=(1-r*Math.cos(phi))**2+(r*Math.sin(phi))**2;return 2*Z0*r*Math.sin(phi)/den;},
+  },
+  'reflection-phase-from-minimum-shift': {
+    inputs:{shift:'length',lambda:'length'},unit:'angle',formula:String.raw`$\Delta\phi=\frac{4\pi\Delta d}{\lambda}$`,
+    compute:({shift,lambda})=>{assert.ok(lambda>0&&shift>0&&shift<lambda/2);return 2*(2*Math.PI/lambda)*shift;},
+  },
   'oblique-footprint': {
     inputs:{area:'area',theta:'angle'},unit:'area',formula:String.raw`$S_{\mathrm{foot}}=S_i/\cos\theta_i$`,
     compute:({area,theta})=>{assert.ok(area>0&&theta>=0&&theta<Math.PI/2);return area/Math.cos(theta);},
