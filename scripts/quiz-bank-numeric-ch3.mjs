@@ -19,6 +19,14 @@ export const chapter3Units = {
   rad: ['angle', 1],
 };
 export const chapter3Methods = {
+  'evanescent-distance': {
+    inputs:{kt:'curvature',k:'curvature',ratio:'dimensionless'},unit:'length',formula:String.raw`$z=\frac{-\ln\eta}{\sqrt{k_t^2-k^2}}$`,
+    compute:({kt,k,ratio})=>{assert.ok(kt>k&&k>0&&ratio>0&&ratio<1);return Math.log(1/ratio)/Math.sqrt((kt-k)*(kt+k));},
+  },
+  'vector-phase-lag': {
+    inputs:{kx:'curvature',ky:'curvature',kz:'curvature',dx:'length',dy:'length',dz:'length'},unit:'angle',formula:String.raw`$\Delta\phi=k_x\Delta x+k_y\Delta y+k_z\Delta z$`,
+    compute:({kx,ky,kz,dx,dy,dz})=>kx*dx+ky*dy+kz*dz,
+  },
   'forward-amplitude-from-cauchy-data': {
     inputs:{p:'pressure',d:'imaginary-pressure-gradient',k:'curvature'},unit:'pressure',formula:String.raw`$A=\frac12\left(P+\frac Dk\right)\quad(\widehat p^{\prime}(0)=-jD)$`,
     compute:({p,d,k})=>{assert.ok(k>0&&p>0&&d>0);return .5*(p+d/k);},
