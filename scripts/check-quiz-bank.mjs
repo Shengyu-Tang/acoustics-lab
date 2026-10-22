@@ -139,6 +139,14 @@ export function lectureLiterals(id) {
     exampleTexts = [];
   const name = (n) => (n && (ts.isIdentifier(n) || ts.isStringLiteral(n)) ? n.text : undefined);
   const visit = (n) => {
+    if (
+      ts.isCallExpression(n) &&
+      ts.isIdentifier(n.expression) &&
+      n.expression.text === "example"
+    ) {
+      const background = n.arguments[1];
+      if (background && ts.isStringLiteral(background)) exampleTexts.push(background.text);
+    }
     if (ts.isPropertyAssignment(n)) {
       if (name(n.name) === "keyPoints" && ts.isArrayLiteralExpression(n.initializer)) {
         for (const item of n.initializer.elements) {
@@ -370,6 +378,38 @@ export function checkMath(text, context) {
 export const normalizeStem = (s) => s.normalize("NFKC").replace(/[\s$，。；、：？！,.!?;:]/gu, "");
 export const numberNeutralStem = (s) => normalizeStem(s).replace(/\d+(?:\.\d+)?/g, "#");
 
+// Repeated context with different numbers still has substantial character-trigram
+// overlap. This guards mechanical reuse; semantic/context review remains human work.
+export function depthStemSimilarity(a, b) {
+  const grams = (s) => {
+    const normalized = numberNeutralStem(s).replace(/[^\p{L}#]/gu, "");
+    return new Set(
+      Array.from({ length: Math.max(0, normalized.length - 2) }, (_, i) =>
+        normalized.slice(i, i + 3),
+      ),
+    );
+  };
+  const x = grams(a),
+    y = grams(b);
+  const overlap = [...x].filter((g) => y.has(g)).length;
+  return (2 * overlap) / Math.max(1, x.size + y.size);
+}
+export function checkOptionalScenario(short, choice) {
+  assert.equal(
+    (choice.stem.match(/[？?]/g) ?? []).length,
+    1,
+    `${choice.id}: optional task must have one question mark`,
+  );
+  assert.ok(
+    choice.stem.endsWith("以下哪一项判断及其理由成立？"),
+    `${choice.id}: optional assessment wording`,
+  );
+  assert.ok(
+    depthStemSimilarity(short.stem, choice.stem) < 0.65,
+    `${choice.id}: optional scenario too similar to short depth task`,
+  );
+}
+
 export function checkNumericDisplay(answer) {
   // Check the actual shared display formatter independently of grading precision.
   const suffix = (unit) => (unit === "1" ? "" : ` ${unit}`);
@@ -390,6 +430,9 @@ export function checkNumericDisplay(answer) {
 export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   requireSchema(bank, schema, `Lecture ${bank.lecture}`);
   const id = bank.lecture;
+  // The user scoped this round to chapter 3. Earlier chapters retain their
+  // existing content pending a separately authorized editorial pass.
+  if (bank.chapter === 3) checkOptionalScenario(bank.questions[7], bank.questions[8]);
   assert.equal(bank.chapter, Number(id.split(".")[0]), `${id}: chapter mismatch`);
   assert.deepEqual(
     bank.keyPoints,
@@ -416,6 +459,11 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
     `${id}: missing depth`,
   );
   for (const [index, q] of bank.questions.entries()) {
+    if (bank.chapter === 3)
+      assert.ok(
+        bank.reviewNotes.some((note) => note.startsWith(`${q.id}：禁复用核查`)),
+        `${q.id}: missing classroom reuse review`,
+      );
     const pre = index < 3,
       n = pre ? index + 1 : index - 2;
     assert.equal(q.lecture, id, `${q.id}: lecture mismatch`);
@@ -525,7 +573,7 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   }
   for (const point of bank.keyPoints)
     assert.ok(
-      bank.questions.some((q) => q.kind === "post" && q.concept.includes(point)),
+      bank.questions.some((q) => q.kind === "post" && !q.optional && q.concept.includes(point)),
       `${id}: uncovered point ${point}`,
     );
   const positions = new Set(bank.questions.filter((q) => q.type === "single").map((q) => q.answer));
@@ -548,13 +596,9 @@ export function validateInventory(manifest, banks, topics, filenames) {
     "chapter 1 is required",
   );
   for (const c of manifest.chapters) {
-    if (c.sectionGroups) {
-      assert.equal(c.chapter, 3, 'section groups are only used for the chapter-3 rollout');
-      assert.ok(c.sectionGroups.every((g) => topics.some((t) => t.id.startsWith(`${g}.`))), 'unknown section group');
-    }
     const expected = topics
       .filter((t) => t.id.startsWith(`${c.chapter}.`))
-      .filter((t) => !c.sectionGroups || c.sectionGroups.some((g) => t.id.startsWith(`${g}.`)))
+      .filter((t) => /^\d+\.\d+(?:\.\d+)?$/.test(t.id))
       .map((t) => t.id)
       .sort();
     assert.deepEqual(

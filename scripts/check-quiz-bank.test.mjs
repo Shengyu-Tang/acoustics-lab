@@ -11,8 +11,11 @@ import {
   checkMath,
   checkAnswerDistribution,
   checkNumericDisplay,
+  checkOptionalScenario,
+  depthStemSimilarity,
 } from "./check-quiz-bank.mjs";
 import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
+import { chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 
 const { manifest, banks } = loadBanks();
 const topics = JSON.parse(fs.readFileSync(path.join(root, "src/topics.json"), "utf8"));
@@ -20,6 +23,120 @@ const filenames = banks.map((b) => `${b.lecture}.json`);
 const copy = (v) => structuredClone(v);
 const example = banks.find((b) => b.lecture === "1.1.1");
 const numeric = (b) => b.questions.find((q) => q.type === "numeric");
+
+test("chapter 3 inventory includes all 48 formal lectures and excludes supplementary topics", () => {
+  const c3 = banks.filter((b) => b.chapter === 3);
+  assert.equal(c3.length, 48);
+  assert.equal(
+    c3.reduce((n, b) => n + b.questions.length, 0),
+    432,
+  );
+  assert.ok(!c3.some((b) => /S/.test(b.lecture)));
+  assert.equal(Object.keys(chapter3Methods).length, 48);
+  const missing = copy(manifest);
+  missing.chapters.find((c) => c.chapter === 3).lectures.pop();
+  assert.throws(
+    () => validateInventory(missing, banks, topics, filenames),
+    /all website lectures required/,
+  );
+  const hidden = copy(manifest);
+  hidden.chapters.find((c) => c.chapter === 3).sectionGroups = ["3.1"];
+  assert.ok(validateSchema(hidden, schema.$defs.manifest).length);
+});
+
+test("optional depth rejects concatenated questions and number-only scenario reuse", () => {
+  const b = banks.find((b) => b.lecture === "3.1.1");
+  checkOptionalScenario(b.questions[7], b.questions[8]);
+  const choice = copy(b.questions[8]);
+  choice.stem = "还有一个问题？" + choice.stem;
+  assert.throws(() => checkOptionalScenario(b.questions[7], choice), /one question mark/);
+  const short = { stem: "长管内设置两个压力传感器相距20米，信号峰值按固定相位沿空间平移。" };
+  const repeated = {
+    id: "fixture",
+    stem: "长管内设置两个压力传感器相距40米，信号峰值按固定相位沿空间平移。以下哪一项判断及其理由成立？",
+  };
+  assert.ok(depthStemSimilarity(short.stem, repeated.stem) > 0.65);
+  assert.throws(() => checkOptionalScenario(short, repeated), /too similar/);
+});
+
+test("chapter 3 requires question-specific classroom reuse records and required coverage", () => {
+  const original = banks.find((b) => b.lecture === "3.1.1");
+  const b = copy(original);
+  b.reviewNotes = b.reviewNotes.filter((note) => !note.startsWith("3.1.1-post-03："));
+  assert.throws(() => validateBank(b), /missing classroom reuse review/);
+  const c = copy(original),
+    point = c.keyPoints[0];
+  for (const q of c.questions.filter((q) => q.kind === "post" && !q.optional))
+    q.concept = q.concept.filter((p) => p !== point);
+  assert.ok(c.questions[8].concept.includes(point));
+  assert.throws(() => validateBank(c), /uncovered point/);
+});
+
+test("chapter 3 independent numerical oracles cover phase, projections, geometry and modal delays", () => {
+  const near = (a, b, tol = 1e-9) => assert.ok(Math.abs(a - b) < tol, `${a} differs from ${b}`);
+  near(chapter3Methods["evanescent-distance"].compute({ kt: 5, k: 3, ratio: Math.exp(-1) }), 0.25);
+  near(
+    chapter3Methods["surface-reactance-from-reflection"].compute({
+      Z0: 400,
+      r: 0.5,
+      phi: Math.PI / 2,
+    }),
+    320,
+  );
+  near(chapter3Methods["spherical-reverse-flow-fraction"].compute({ kr: 1 / Math.sqrt(3) }), 1 / 3);
+  near(chapter3Methods["two-interface-first-pass-gain"].compute({ Z1: 1, Zm: 4, Z3: 16 }), 1.8496);
+  near(
+    chapter3Methods["partial-aperture-first-velocity-mode"].compute({ U: 0.01, a: 0.3, h: 0.6 }),
+    0.006366197723675814,
+  );
+  near(
+    chapter3Methods["modal-ray-axial-period"].compute({ n: 2, h: 0.6, c: 300, f: 1000 }),
+    2.078460969082653,
+  );
+  near(
+    chapter3Methods["intermodal-group-delay"].compute({
+      L: 30,
+      c: 300,
+      h: 0.5,
+      f: 1000,
+      n1: 1,
+      n2: 2,
+    }),
+    0.020171516327808177,
+  );
+  const micro = numeric(banks.find((b) => b.lecture === "3.3.1")).answer;
+  assert.equal(micro.unit, "μJ");
+  near(recomputeNumeric(micro), 4.533333333333333);
+});
+
+test("chapter 3 numeric domains reject nonphysical branches and wrong unit scaling", () => {
+  assert.throws(() => chapter3Methods["evanescent-distance"].compute({ kt: 3, k: 5, ratio: 0.2 }));
+  assert.throws(() =>
+    chapter3Methods["waveguide-evanescent-clearance"].compute({
+      n: 1,
+      h: 0.5,
+      c: 300,
+      f: 300,
+      ratio: 0.1,
+    }),
+  );
+  assert.throws(() =>
+    chapter3Methods["intermodal-group-delay"].compute({
+      L: 30,
+      c: 300,
+      h: 0.5,
+      f: 600,
+      n1: 1,
+      n2: 2,
+    }),
+  );
+  const a = copy(numeric(banks.find((b) => b.lecture === "3.10.5")).answer);
+  a.unit = "s";
+  assert.throws(() => recomputeNumeric(a), /independently expected/);
+  const b = copy(numeric(banks.find((b) => b.lecture === "3.6.9")).answer);
+  b.calculation.inputs.center.unit = "m";
+  assert.throws(() => recomputeNumeric(b), /incompatible unit/);
+});
 
 test("schema rejects unknown properties, malformed answer types and missing choices", () => {
   for (const mutate of [
