@@ -195,7 +195,7 @@ test("chapter 5 grading rejects altered answers, dimensions and invalid domains"
     chapter5Methods["impedance-boundary-forcing"].compute({
       Pr: 1,
       Pi: 1,
-      Z: -2,
+      Z: Infinity,
       v: 1,
     }),
   );
@@ -216,6 +216,28 @@ test("chapter 5 grading rejects altered answers, dimensions and invalid domains"
   const badK = copy(numeric(banks.find((b) => b.lecture === "5.3")).answer);
   badK.calculation.inputs.k.unit = "Hz";
   assert.throws(() => recomputeNumeric(badK), /incompatible unit/);
+});
+
+test("5.1 outward impedance gives passive inward power and convention-invariant forcing", () => {
+  const b = banks.find((bank) => bank.lecture === "5.1");
+  const q = numeric(b),
+    a = q.answer;
+  const forcing = chapter5Methods["impedance-boundary-forcing"].compute;
+  const Zout = a.calculation.inputs.Z.value,
+    vout = 0.0008;
+  assert.equal(Zout, -2000);
+  // Reversing the velocity direction reverses impedance, leaving Zn*vn fixed.
+  assert.ok(-0.5 * Zout * vout ** 2 > 0);
+  const exterior = forcing({ Pr: 1, Pi: 1, Z: Zout, v: vout });
+  const inward = forcing({ Pr: 1, Pi: 1, Z: -Zout, v: -vout });
+  assert.ok(Math.abs(exterior - Math.sqrt(7.76)) < 1e-12);
+  assert.equal(exterior, inward);
+  assert.ok(Math.abs(recomputeNumeric(a) - exterior) < 1e-12);
+  assert.throws(() => recomputeNumeric({ ...a, value: Math.sqrt(1.36) }), /independently expected/);
+  for (const id of ["5.1-post-02", "5.1-post-03", "5.1-post-05"]) {
+    const item = b.questions.find((question) => question.id === id);
+    assert.ok(item.explanation.some((text) => text.includes("\\Re Z_n\\le0")));
+  }
 });
 
 test("chapter 4 includes every formal lecture with distinct, documented depth tasks", () => {

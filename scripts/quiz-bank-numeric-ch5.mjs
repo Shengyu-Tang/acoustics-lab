@@ -7,7 +7,9 @@ export const chapter5Methods = {
     unit: "pressure",
     formula: String.raw`$|g|=\sqrt{(Z_nv_{in}-\Re P_i)^2+(\Im P_i)^2}$`,
     compute: ({ Pr, Pi, Z, v }) => {
-      assert.ok(Z > 0 && Number.isFinite(v));
+      // Zn uses the stated outward velocity, so a passive real Zn is negative.
+      // Both signs are valid mathematical inputs; reject only nonfinite data.
+      assert.ok([Pr, Pi, Z, v].every(Number.isFinite));
       // Construct the real and imaginary parts of Zn*vin - Pi separately.
       return Math.hypot(Z * v - Pr, -Pi);
     },
