@@ -374,13 +374,17 @@ export function legacyPanels(kind: string, v: Values, time: number): Panel[] {
         xlim: [-12, 12],
         ylim: [-12, 12],
         legend: false,
-        series: d.fronts.map((f) => ({
-          name: "波前",
-          points: sample((t) => t, 0, 2 * pi, 81).map(([a]) => [
-            f.center + f.radius * Math.cos(a),
-            f.radius * Math.sin(a),
-          ]),
-        })),
+        responseNote: d.t === 0 ? "初始时刻波前半径为零；圆点表示移动声源。" : undefined,
+        series: [
+          ...d.fronts.map((f) => ({
+            name: "波前",
+            points: sample((t) => t, 0, 2 * pi, 81).map(
+              ([a]) =>
+                [f.center + f.radius * Math.cos(a), f.radius * Math.sin(a)] as [number, number],
+            ),
+          })),
+          { name: "移动声源", points: [[d.source, 0]], marker: "o", style: "none" },
+        ],
       },
     ];
   }

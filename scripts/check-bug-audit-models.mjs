@@ -3,6 +3,37 @@ import fs from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { auditData } from "./bug-audit-data.mjs";
+import { compareMatlab, scriptParameters } from "./matlab-audit-compare.mjs";
+assert.deepEqual(scriptParameters("mass = 2e-3; % kg\ntView = 0;\n% 以下为计算模型\nx=4;"), {
+  mass: 0.002,
+  tView: 0,
+});
+const sampleExpectation = {
+  panels: [
+    {
+      series: [
+        {
+          points: [
+            [1, 2],
+            [3, NaN],
+          ],
+        },
+      ],
+    },
+  ],
+  answers: [7],
+};
+const sampleActual = { panels: [{ x: [[1, 3]], y: [[2, null]] }], answers: [7] };
+assert.equal(compareMatlab(sampleActual, sampleExpectation).samplesCompared, 5);
+assert.throws(
+  () => compareMatlab({ ...sampleActual, answers: [8] }, sampleExpectation),
+  /answer 0/,
+);
+assert.throws(
+  () =>
+    compareMatlab({ panels: [{ x: [[1, 3]], y: [[9, null]] }], answers: [7] }, sampleExpectation),
+  /series 0 y/,
+);
 const {
   lectures,
   engineeringCases,
@@ -14,7 +45,28 @@ const {
   geometryY,
   Figure,
   ExampleWorksheet,
+  legacyPanels,
+  legacyModels,
+  legacyDefaults,
+  matlab,
 } = await auditData();
+const dopplerInitial = legacyPanels("doppler", legacyDefaults(legacyModels.doppler), 0)[0];
+assert.ok(
+  dopplerInitial.series.some((s) => s.marker === "o" && s.points.length === 1),
+  "zero-radius Doppler wavefront retains a visible source marker",
+);
+assert.match(dopplerInitial.responseNote, /初始时刻/);
+assert.match(matlab([dopplerInitial], 1, 1, "Doppler"), /初始时刻波前半径为零/);
+const phaseLesson = lectures.find((l) => l.id === "1.1.2");
+const phaseCode = matlab(phaseLesson.figures[0].plot(phaseLesson.defaults, 0), 3, 1, "Phase");
+assert.match(phaseCode, /text\('Units','normalized','Position',\[/);
+assert.match(phaseCode, /drawnow;qa_header.Units='data'/);
+for (const subplot of phaseCode.split(/subplot\(3,1,\d\);/).slice(1)) {
+  assert.ok(
+    subplot.indexOf("text(") > subplot.indexOf("ylim(qaAmplitudeLimits("),
+    "normalized phase annotation follows the final amplitude limits",
+  );
+}
 const flowExample = lectures.find((l) => l.id === "3.1.4").examples[0];
 const flowHtml = renderToStaticMarkup(
   createElement(ExampleWorksheet, {

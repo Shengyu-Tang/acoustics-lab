@@ -23,6 +23,9 @@ export async function auditData() {
         "\nexport {geometryY} from './src/plot/fixedAxes';" +
         "\nexport {instrumentPanel} from './src/plot/chapter1Figures';" +
         "\nexport {bandwidthPanel} from './src/plot/bandwidthPanel';" +
+        "\nexport {legacyPanels} from './src/plot/legacyPanels';" +
+        "\nexport {models as legacyModels,defaults as legacyDefaults} from './src/physics';" +
+        "\nexport {default as topics} from './src/topics.json';" +
         "\nexport {default as ExampleWorksheet} from './src/ExampleWorksheet';" +
         "\nexport {default as Figure} from './src/plot/Figure';",
       resolveDir: process.cwd(),

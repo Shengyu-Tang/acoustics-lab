@@ -74,6 +74,25 @@ export function toTex(text: string): string {
 }
 const quote = (s: string) => "'" + s.replaceAll("'", "''").replace(/[\r\n]/g, " ") + "'";
 const tex = (s: string) => quote(toTex(s));
+// MATLAB does not wrap title cells. Count CJK glyphs at twice Latin width so
+// explanatory prose fits a standard 640px panel instead of leaving the PNG.
+const titleLines = (text: string) => {
+  const lines: string[] = [];
+  let line = "",
+    width = 0;
+  for (const glyph of text) {
+    const size = glyph.codePointAt(0)! > 255 ? 2 : 1;
+    if (width + size > 58) {
+      lines.push(line);
+      line = "";
+      width = 0;
+    }
+    line += glyph;
+    width += size;
+  }
+  if (line) lines.push(line);
+  return lines.map(tex).join(",");
+};
 const dynamicText = (label: string, value: string | number) =>
   `sprintf(${tex(
     label
@@ -90,6 +109,20 @@ const axisLabel = (s: string) =>
 const vector = (ns: number[]) =>
   "[" + ns.map((n) => (Number.isFinite(n) ? String(n) : "NaN")).join(" ") + "]";
 export function matlab(panels: Panel[], rows: number, cols: number, title: string) {
+  let wrapTitles = false;
+  const panelTitle = (text: string, expression?: string) => {
+    const format = expression?.match(/^sprintf\('((?:[^']|'')*)'/)?.[1] ?? text;
+    if ([...format].reduce((n, c) => n + (c.codePointAt(0)! > 255 ? 2 : 1), 0) <= 58)
+      return expression ?? tex(text);
+    wrapTitles = true;
+    return `qaWrapTitle(${expression ?? tex(text)})`;
+  };
+  const titledNote = (text: string, expression: string | undefined, note: string) => {
+    const heading = panelTitle(text, expression);
+    return heading.startsWith("qaWrapTitle(")
+      ? `[${heading},{${titleLines(note)}}]`
+      : `{${heading},${titleLines(note)}}`;
+  };
   const model = panels.find((p) => p.matlabModel)?.matlabModel;
   const complexPlaneLegend =
     panels.length === 1 &&
@@ -111,6 +144,7 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     `figure('Color','w','Position',[80 80 ${640 * cols} ${Math.max(520, ...panels.map((p) => p.matlabModel?.figureHeight ?? 520)) * rows}]);`,
   ];
   panels.forEach((original, k) => {
+    const deferredHeaders: string[] = [];
     const m = original.matlabModel ? { ...original.matlabModel } : undefined;
     if (m) out.push(m.setup);
     const xt = axisTicks(original.xlim, original.xscale === "log"),
@@ -299,8 +333,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
               : m?.bands && label.text.startsWith("Δf")
                 ? "sprintf('\\\\Delta{}f = %.4g Hz',f2-f1)"
                 : tex(label.text));
-          out.push(
-            `text(${label.x / 440},${0.97 - label.lane * 0.12},${text},'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');`,
+          // R2024b exportgraphics can misplace normalized text in tall figures.
+          // After final limits/layout, convert the header to equivalent data units.
+          (m?.amplitudeAxes ? deferredHeaders : out).push(
+            m?.amplitudeAxes
+              ? `qa_header=text('Units','normalized','Position',[${label.x / 440} ${0.97 - label.lane * 0.12} 0],'String',${text},'HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');drawnow;qa_header.Units='data';`
+              : `text(${label.x / 440},${0.97 - label.lane * 0.12},${text},'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor','w','Margin',2,'Interpreter','tex','Clipping','on');`,
           );
         });
       } else
@@ -326,10 +364,10 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
     );
     out.push(
       p.unboundedY
-        ? `title({${m?.title ?? tex(p.title)},${tex(p.responseNote ?? "解析极点处发散，超出纵轴部分省略")}},'Interpreter','tex','FontSize',12);`
-        : p.responseNote && m
-          ? `title({${m.title ?? tex(p.title)},${tex(p.responseNote)}},'Interpreter','tex','FontSize',12);`
-          : `title(${m?.title ?? tex(p.title)},'Interpreter','tex','FontSize',12);`,
+        ? `title(${titledNote(p.title, m?.title, p.responseNote ?? "解析极点处发散，超出纵轴部分省略")},'Interpreter','tex','FontSize',12);`
+        : p.responseNote
+          ? `title(${titledNote(p.title, m?.title, p.responseNote)},'Interpreter','tex','FontSize',12);`
+          : `title(${panelTitle(p.title, m?.title)},'Interpreter','tex','FontSize',12);`,
       p.kind === "polar"
         ? "grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11);"
         : "box on; grid on; set(gca,'FontName','Microsoft YaHei','FontSize',11,'TickDir','in');",
@@ -404,6 +442,12 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       (p.field?.categories?.length || plotSeries.some((s) => s.legend !== false))
     )
       out.push(p.insetLegend ? "lgd.Location='best';" : "lgd.Location='northoutside';");
+    if (p.insetLegend && p.annotations?.some((a) => a.axis === "x"))
+      out.push(
+        // Location='best' considers curves, but can cover cutoff/readout labels.
+        // Apply the reserved annotation strip after MATLAB chooses its corner.
+        "drawnow; lgd.Units='normalized'; axpos=get(gca,'Position'); lp=lgd.Position; lp(2)=min(lp(2),axpos(2)+.78*axpos(4)-lp(4)); lgd.Position=lp;",
+      );
     if (p.blackAxes)
       out.push(
         "set(gca,'XColor','k'); ax=gca; for qa_axis=1:numel(ax.YAxis), ax.YAxis(qa_axis).Color='k'; end",
@@ -416,11 +460,23 @@ export function matlab(panels: Panel[], rows: number, cols: number, title: strin
       out.push(
         `${p.kind === "polar" ? "rticks" : "yticks"}(${vector(p.ytickLabels.map((t) => t.value))});${p.kind === "polar" ? "rticklabels" : "yticklabels"}({${p.ytickLabels.map((t) => tex(t.label)).join(",")}});`,
       );
+    out.push(...deferredHeaders);
     if (m)
       out.push(
         `model_limits{${k + 1}}=struct('x',${p.kind === "polar" ? "thetalim" : "xlim"},'y',${p.kind === "polar" ? "rlim" : "ylim"});`,
       );
   });
+  if (wrapTitles)
+    out.push(String.raw`function lines=qaWrapTitle(label)
+tokens=regexp(label,'\\[a-zA-Z]+(?:\{[^}]*\})?|[_^]\{[^}]*\}|.','match');
+lines={};part='';width=0;
+for ii=1:numel(tokens)
+ token=tokens{ii};if numel(token)>1,weight=1;else,weight=1+(double(token)>255);end
+ if width+weight>58,lines{end+1}=part;part='';width=0;end
+ part=[part token];width=width+weight;
+end
+if ~isempty(part),lines{end+1}=part;end
+end`);
   if (model) out.push(MATLAB_FUNCTIONS);
   if (
     panels.some(
