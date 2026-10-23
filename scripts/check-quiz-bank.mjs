@@ -196,7 +196,6 @@ const units = {
   J: ["energy", 1],
   mJ: ["energy", 0.001],
   "": ["dimensionless", 1],
-  1: ["dimensionless", 1], // Compatibility until the chapter migrations are complete.
 };
 // Each method names input dimensions, its canonical algebraic formula, and an
 // independently implemented calculation returning SI. No eval/Function or physics imports.
@@ -427,7 +426,13 @@ export function checkOptionalScenario(short, choice) {
 
 export function checkNumericDisplay(answer) {
   // Check the actual shared display formatter independently of grading precision.
-  const suffix = (unit) => (!unit || unit === "1" ? "" : ` ${unit}`);
+  const suffix = (unit) => (unit === "" ? "" : ` ${unit}`);
+  for (const item of [answer, ...Object.values(answer.calculation.inputs)])
+    assert.notEqual(
+      item.unit.trim(),
+      "1",
+      "Displayed unit 1 is forbidden; use an empty unit for dimensionless quantities",
+    );
   const display = quantityText(answer.value, answer.unit, 4);
   assert.equal(
     display,

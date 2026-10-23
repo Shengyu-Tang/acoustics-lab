@@ -96,6 +96,7 @@
         "value": { "type": "number" },
         "unit": {
           "type": "string",
+          "not": { "const": "1" },
           "description": "无量纲量使用空字符串，不显示单位。"
         }
       }
@@ -111,6 +112,7 @@
         },
         "unit": {
           "type": "string",
+          "not": { "const": "1" },
           "description": "无量纲量使用空字符串，不显示单位。"
         },
         "tolerance": {

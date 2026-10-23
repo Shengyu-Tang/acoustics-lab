@@ -30,7 +30,10 @@ const numeric = (b) => b.questions.find((q) => q.type === "numeric");
 
 test("chapter 7 includes all lectures and independently grades the three inverse problems", () => {
   const selected = banks.filter((b) => b.chapter === 7);
-  assert.deepEqual(selected.map((b) => b.lecture), ["7.1", "7.2", "7.3"]);
+  assert.deepEqual(
+    selected.map((b) => b.lecture),
+    ["7.1", "7.2", "7.3"],
+  );
   assert.equal(selected.flatMap((b) => b.questions).length, 27);
   for (const bank of selected) {
     validateBank(bank);
@@ -40,12 +43,16 @@ test("chapter 7 includes all lectures and independently grades the three inverse
     answer.value *= 1.1;
     assert.throws(() => recomputeNumeric(answer), /independently expected/);
     const wrongDimension = copy(numeric(bank).answer);
-    wrongDimension.calculation.inputs[Object.keys(wrongDimension.calculation.inputs)[0]].unit = "kg";
+    wrongDimension.calculation.inputs[Object.keys(wrongDimension.calculation.inputs)[0]].unit =
+      "kg";
     assert.throws(() => recomputeNumeric(wrongDimension), /incompatible unit/);
   }
   const missing = copy(manifest);
   missing.chapters.find((c) => c.chapter === 7).lectures.pop();
-  assert.throws(() => validateInventory(missing, banks, topics, filenames), /all website lectures required/);
+  assert.throws(
+    () => validateInventory(missing, banks, topics, filenames),
+    /all website lectures required/,
+  );
   const time = copy(numeric(selected[1]).answer);
   time.value *= 1e-6;
   time.unit = "s";
@@ -115,7 +122,7 @@ test("chapter 6 checks complex loading and actual source normalization", () => {
   }
   const percentage = copy(numeric(selected[1]).answer);
   percentage.value /= 100;
-  percentage.unit = "1";
+  percentage.unit = "";
   near(recomputeNumeric(percentage), 0.17541160386140575);
 });
 
@@ -422,7 +429,7 @@ test("schema rejects unknown properties, malformed answer types and missing choi
       b.questions[0].options.push({ id: "E", text: "第五项" });
     },
     (b) => {
-      numeric(b).answer.calculation.inputs.M.unit = 1;
+      numeric(b).answer.calculation.inputs.M.unit = "1";
     },
   ]) {
     const b = copy(example);
@@ -805,4 +812,33 @@ test("dimensionless answers and calculation inputs never display unit 1", () => 
   assert.ok(!review.includes("alpha = 0.25 1"));
   assert.ok(!review.includes("eta = 0.05 1"));
   for (const b of banks) checkNumericDisplay(numeric(b).answer);
+});
+
+test("requirements 6–8 cover all 79 lectures and reject regressions in every chapter", () => {
+  assert.equal(banks.length, 79);
+  for (const original of banks) {
+    checkOptionalScenario(original.questions[7], original.questions[8]);
+    const extra = copy(original);
+    extra.questions[8].stem = "是否成立？" + extra.questions[8].stem;
+    assert.throws(() => validateBank(extra), /one question mark/);
+    const reused = copy(original);
+    reused.questions[8].stem =
+      reused.questions[7].stem.replace(/[？?]/gu, "。") + "以下哪一项判断及其理由成立？";
+    assert.throws(() => validateBank(reused), /too similar/);
+    const unit = copy(numeric(original).answer);
+    unit.unit = "1";
+    assert.throws(() => checkNumericDisplay(unit), /unit 1 is forbidden/);
+    const input = copy(numeric(original).answer);
+    Object.values(input.calculation.inputs)[0].unit = "1";
+    assert.throws(() => checkNumericDisplay(input), /unit 1 is forbidden/);
+  }
+  const b = banks[0],
+    badEnding = copy(b.questions[8]);
+  badEnding.stem = badEnding.stem.replace(/以下哪一项判断及其理由成立？$/u, "应如何判断？");
+  assert.throws(() => checkOptionalScenario(b.questions[7], badEnding), /assessment wording/);
+  const ascii = copy(b.questions[8]);
+  ascii.stem = "Another question?" + ascii.stem;
+  assert.throws(() => checkOptionalScenario(b.questions[7], ascii), /one question mark/);
+  assert.equal(quantityText(0.25, ""), "0.25");
+  assert.equal(quantityText(1 / 9, "", 4), "0.1111");
 });
