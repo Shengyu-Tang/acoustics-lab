@@ -419,10 +419,27 @@ export function checkEditorialText(question) {
     );
   if (question.id.endsWith("-post-06") && question.type === "single") {
     const correct = question.options.find((o) => o.id === question.answer).text;
-    assert.ok(
-      !/[；;]|因为|由于|因此|所以|故而|原因在于/u.test(correct),
-      `${question.id}: correct option must state the judgement only; put the reason in the explanation`,
-    );
+    // Batch 2 explicitly requests judgement; reason in all four chapter-3
+    // options. Keep batch 1's ban on simply repeating that reason as feedback.
+    const parts = correct.split(/[；;]/u);
+    if (parts.length > 1) {
+      const normalize = (text) => text.replace(/[\s\p{P}\p{S}]/gu, "");
+      assert.ok(
+        parts.slice(1).every((part) => {
+          const reason = normalize(part);
+          return (
+            reason.length > 0 &&
+            !question.explanation.some((text) => normalize(text).includes(reason))
+          );
+        }),
+        `${question.id}: repeated option reason in explanation; use a fresh explanation`,
+      );
+    } else {
+      assert.ok(
+        !/因为|由于|因此|所以|故而|原因在于/u.test(correct),
+        `${question.id}: correct option must state the judgement only or use judgement; reason with fresh feedback`,
+      );
+    }
   }
 }
 

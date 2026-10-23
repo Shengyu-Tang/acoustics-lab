@@ -868,7 +868,7 @@ test("review batch 1 editorial rules reject regressions in all 79 lectures", () 
     q.options.find((o) => o.id === q.answer).text += "；这是因为模型满足该条件";
     q.explanation[q.options.findIndex((o) => o.id === q.answer)] =
       `${q.answer}：这是因为模型满足该条件。`;
-    assert.throws(() => validateBank(reason), /judgement only/);
+    assert.throws(() => validateBank(reason), /repeated option reason/);
 
     for (const location of ["stem", "reference", "rubric", "option"]) {
       const appended = copy(original),
@@ -883,7 +883,8 @@ test("review batch 1 editorial rules reject regressions in all 79 lectures", () 
   }
   const q = copy(example.questions[8]);
   q.options.find((o) => o.id === q.answer).text += "; the reason is repeated";
-  assert.throws(() => checkEditorialText(q), /judgement only/);
+  q.explanation = ["the reason is repeated"];
+  assert.throws(() => checkEditorialText(q), /repeated option reason/);
   q.options.find((o) => o.id === q.answer).text = "该判断成立，因为模型满足条件";
   assert.throws(() => checkEditorialText(q), /judgement only/);
   q.stem += "。\n补充一句。";
