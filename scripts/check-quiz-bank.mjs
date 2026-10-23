@@ -446,7 +446,7 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   requireSchema(bank, schema, `Lecture ${bank.lecture}`);
   const id = bank.lecture;
   // Editorial requirements 6–8 apply to every lecture, including chapters 1–2.
-  if (bank.chapter !== 2) checkOptionalScenario(bank.questions[7], bank.questions[8]);
+  checkOptionalScenario(bank.questions[7], bank.questions[8]);
   assert.equal(bank.chapter, Number(id.split(".")[0]), `${id}: chapter mismatch`);
   assert.deepEqual(
     bank.keyPoints,
