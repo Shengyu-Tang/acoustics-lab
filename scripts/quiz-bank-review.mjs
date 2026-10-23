@@ -14,9 +14,9 @@ export const roles = {
   depth: "深度判断",
 };
 const cell = (s) => String(s).replaceAll("|", "\\|").replaceAll("\n", " ");
-// "1" is the internal dimensional-analysis marker, never a displayed unit.
+// Empty units represent dimensionless quantities. Suppress legacy "1" defensively.
 export const quantityText = (value, unit, precision) =>
-  `${precision ? value.toPrecision(precision) : value}${unit === "1" ? "" : ` ${unit}`}`;
+  `${precision ? value.toPrecision(precision) : value}${!unit || unit === "1" ? "" : ` ${unit}`}`;
 const answerText = (q) =>
   q.type === "numeric"
     ? `${quantityText(q.answer.value, q.answer.unit, 4)}（相对容差 ±2%，判分保留完整值）`
@@ -41,6 +41,25 @@ export function loadBanks() {
 
 export function renderReview(manifest, banks) {
   const optionalCount = banks.flatMap((b) => b.questions).filter((q) => q.optional).length;
+  const pairReviews = banks.flatMap((b) =>
+    b.reviewNotes.filter((note) =>
+      note.startsWith(`${b.lecture}-post-06：第1章审查第6—8项逐对复核`),
+    ),
+  );
+  const revisionCounts = manifest.chapters
+    .map((c) => {
+      const count = banks.filter(
+        (b) =>
+          b.chapter === c.chapter &&
+          b.reviewNotes.some(
+            (note) =>
+              note.startsWith(`${b.lecture}-post-06：第1章审查第6—8项逐对复核`) &&
+              note.includes("已改写题干"),
+          ),
+      ).length;
+      return `第${c.chapter}章改写${count}题`;
+    })
+    .join("、");
   const lines = [
     "# 声学基础题库审阅稿",
     "",
@@ -50,7 +69,7 @@ export function renderReview(manifest, banks) {
     "",
     "共享结构见 [quiz-bank.schema.json](quiz-bank.schema.json)。每讲一个 JSON，concept 为本讲要点原文数组，一道题可覆盖多个要点；coverage 只以课后必答题作为完整性依据。manifest.json 登记已完成的整章草案；第三章3.1.1—3.10.5共48讲已齐，按3.1—3.10分成十个提交。完整性检查排除3.S1、3.S2等补充专题，它们不属于本轮正式讲次。",
     "",
-    "数值答案记录计算式、带单位的输入、完整精度结果及相对容差0.02，审阅稿显示4位有效数字；无量纲答案和输入不显示单位，内部单位标识1仅用于量纲校验。校验器只使用自身的公式与单位换算，既不执行题库表达式，也不调用网站 physics 代码；完整值误差按更严格的0.001%校验，学生作答仍按±2%判分。每讲post-05为简答，列2—3条评分要点及参考答案；post-06为关联知识点的可选选择题，第三至七章另设具体情境并保留两个有部分正确前提的干扰项。全章选择题正确字母（含可选题，多选按各正确字母计数）任一字母占比不得超过40%。",
+    "数值答案记录计算式、带单位的输入、完整精度结果及相对容差0.02，审阅稿显示4位有效数字；无量纲答案和输入不显示单位，数据中的空单位表示无量纲，校验器拒绝单位字符串1。校验器只使用自身的公式与单位换算，既不执行题库表达式，也不调用网站 physics 代码；完整值误差按更严格的0.001%校验，学生作答仍按±2%判分。每讲post-05为简答，列2—3条评分要点及参考答案；post-06为关联知识点的可选选择题，全部七章另设具体情境并保留两个有部分正确前提的干扰项。全章选择题正确字母（含可选题，多选按各正确字母计数）任一字母占比不得超过40%。",
     "",
     "来源中的页码一律指原始单讲 PDF 从1起的物理页序，不是教学设计中的合并授课课件页码。PDF 依原文件名在只读目录 ../04-声学基础课件资料/ 下定位；教学设计位于只读目录 ../02-教学安排/20261018督导版教学设计/。每讲均已阅读原始 PDF、对应教学设计及思考题；每题注明课件页和教学设计目标条目。教学设计是目标对齐依据，题目为重新起草。schema中sources和source均标记为teacherOnly，来源只用于教师核对；本审阅稿供教师使用。",
     "",
@@ -58,7 +77,7 @@ export function renderReview(manifest, banks) {
     "",
     "第三章采用负梯度速度势与正时间导数压力约定；3.2.2随页面写 $\\Psi$，其他讲的 $\\Phi$、$\\phi$ 在题干中分别说明。压力反射/透射系数为 $R_p,D_p$，声强与功率系数分开。柱函数第二实解按网站记 $Y_n$（原课件也记N），正时间因子下外向柱面支为 $H_n^{(2)}$。全内反射的法向坐标在题干中明确，均取远离界面衰减支。原课件或教学设计中的热过程频段、零储能、群速和声线表述均保留适用条件，具体见各讲审阅要点。",
     "",
-    "可选题单问句、与简答题分设情境两项要求已应用于第三章48讲、第四章9讲、第五章3讲、第六章2讲和第七章3讲；其post-06均为独立情境，脚本检查一个问号及与post-05的去数字三元字串相似度。该检查不能替代语义审阅。本轮仅起草第七章，第一至六章题目保持原有版本；第一、二章的跨章改写另待处理。无量纲显示检查继续覆盖所有已起草章节。",
+    `第1章审查第6—8项已逐对复核${pairReviews.length}讲，核查post-05与post-06的应用对象、参数和求解任务，具体结论记录在各讲reviewNotes中；${revisionCounts}，其余保留已经独立的情境。post-06仅含一个问号并以“以下哪一项判断及其理由成立？”结尾；去除该固定问句后，题干去数字三元字串Dice相似度必须小于0.65。相似度只能拦截文本复用，不能替代情境语义审阅。无量纲答案与复算输入均使用空单位，禁止单位字符串1。`,
     "",
     "第一、二章保留原有审阅结论。第三章按讲核对第6—17次课教学设计第八部分、只读的雨课堂前测后测题库（第7—24次课，含复习课）及网站例题；逐题差异记录在各讲reviewNotes中。相同知识点可以再测，课堂题的情境、求解任务或仅换数字的同类题不复用。脚本可发现规范化重复题干及仅改数字的相同句式，不能代替教师对语义重复、难度和教学效果的审定。",
     "",

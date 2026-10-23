@@ -195,7 +195,8 @@ const units = {
   "kg/m^3": ["density", 1],
   J: ["energy", 1],
   mJ: ["energy", 0.001],
-  1: ["dimensionless", 1],
+  "": ["dimensionless", 1],
+  1: ["dimensionless", 1], // Compatibility until the chapter migrations are complete.
 };
 // Each method names input dimensions, its canonical algebraic formula, and an
 // independently implemented calculation returning SI. No eval/Function or physics imports.
@@ -393,7 +394,10 @@ export const numberNeutralStem = (s) => normalizeStem(s).replace(/\d+(?:\.\d+)?/
 // overlap. This guards mechanical reuse; semantic/context review remains human work.
 export function depthStemSimilarity(a, b) {
   const grams = (s) => {
-    const normalized = numberNeutralStem(s).replace(/[^\p{L}#]/gu, "");
+    const normalized = numberNeutralStem(s.replace(/以下哪一项判断及其理由成立？$/u, "")).replace(
+      /[^\p{L}#]/gu,
+      "",
+    );
     return new Set(
       Array.from({ length: Math.max(0, normalized.length - 2) }, (_, i) =>
         normalized.slice(i, i + 3),
@@ -423,7 +427,7 @@ export function checkOptionalScenario(short, choice) {
 
 export function checkNumericDisplay(answer) {
   // Check the actual shared display formatter independently of grading precision.
-  const suffix = (unit) => (unit === "1" ? "" : ` ${unit}`);
+  const suffix = (unit) => (!unit || unit === "1" ? "" : ` ${unit}`);
   const display = quantityText(answer.value, answer.unit, 4);
   assert.equal(
     display,
@@ -441,9 +445,8 @@ export function checkNumericDisplay(answer) {
 export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   requireSchema(bank, schema, `Lecture ${bank.lecture}`);
   const id = bank.lecture;
-  // Apply the newer editorial rules to chapter 3 onward. Earlier content is
-  // retained pending a separately scoped editorial pass.
-  if (bank.chapter >= 3) checkOptionalScenario(bank.questions[7], bank.questions[8]);
+  // Editorial requirements 6–8 apply to every lecture, including chapters 1–2.
+  if (bank.chapter !== 2) checkOptionalScenario(bank.questions[7], bank.questions[8]);
   assert.equal(bank.chapter, Number(id.split(".")[0]), `${id}: chapter mismatch`);
   assert.deepEqual(
     bank.keyPoints,

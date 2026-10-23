@@ -92,7 +92,13 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["value", "unit"],
-      "properties": { "value": { "type": "number" }, "unit": { "$ref": "#/$defs/nonempty" } }
+      "properties": {
+        "value": { "type": "number" },
+        "unit": {
+          "type": "string",
+          "description": "无量纲量使用空字符串，不显示单位。"
+        }
+      }
     },
     "numericAnswer": {
       "type": "object",
@@ -103,7 +109,10 @@
           "type": "number",
           "description": "完整计算值用于±2%判分；向学生或审阅者展示时保留3—4位有效数字。"
         },
-        "unit": { "$ref": "#/$defs/nonempty" },
+        "unit": {
+          "type": "string",
+          "description": "无量纲量使用空字符串，不显示单位。"
+        },
         "tolerance": {
           "type": "object",
           "additionalProperties": false,

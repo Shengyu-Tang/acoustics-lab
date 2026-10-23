@@ -422,7 +422,7 @@ test("schema rejects unknown properties, malformed answer types and missing choi
       b.questions[0].options.push({ id: "E", text: "第五项" });
     },
     (b) => {
-      numeric(b).answer.calculation.inputs.M.unit = "";
+      numeric(b).answer.calculation.inputs.M.unit = 1;
     },
   ]) {
     const b = copy(example);
@@ -647,6 +647,7 @@ for (const id of ["1.1.1", "2.1"])
       ...choice,
       id: depth.id,
       lecture: b.lecture,
+      stem: depth.stem,
       concept: depth.concept,
       source: depth.source,
     };
