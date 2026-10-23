@@ -15,6 +15,7 @@ import {
   depthStemSimilarity,
   checkEditorialText,
   checkPost06Lengths,
+  checkPost06ProceduralVerbs,
   checkNumericTolerance,
 } from "./check-quiz-bank.mjs";
 import {
@@ -23,6 +24,7 @@ import {
   quantityText,
   toleranceText,
   post06LengthStats,
+  post06ProceduralStats,
   root,
 } from "./quiz-bank-review.mjs";
 import { chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
@@ -926,6 +928,62 @@ test("post-06 length rule is chapter-local, counts ties and enforces the 30% bou
   questions[3].options[0].text = "甲";
   fixture.push({ chapter: 2, questions: questions.slice(0, 3) });
   assert.throws(() => checkPost06Lengths(fixture), /chapter 2/);
+});
+
+test("procedural openings are counted per chapter, including prefixed verbs and the exact 30% boundary", () => {
+  checkPost06ProceduralVerbs(banks);
+  assert.equal(post06ProceduralStats(banks).find((s) => s.chapter === 3).procedural, 0);
+  const verbs = [
+    "先",
+    "比较",
+    "检查",
+    "核查",
+    "测",
+    "统一",
+    "保留",
+    "按",
+    "应先",
+    "需保留",
+    "需要检查",
+    "可以测量",
+  ];
+  for (const verb of verbs) {
+    const questions = Array.from({ length: 10 }, (_, i) => ({
+      id: `${i}-post-06`,
+      answer: "A",
+      options: [
+        { id: "A", text: i < 3 ? `  ${verb}物理量` : "两束波同相" },
+        { id: "B", text: `${verb}错误选项` },
+      ],
+    }));
+    // Neither other question roles nor distractors enter the numerator.
+    questions.push({ ...questions[0], id: "x-post-05" });
+    const fixture = [{ chapter: 3, questions }];
+    assert.deepEqual(post06ProceduralStats(fixture), [{ chapter: 3, total: 10, procedural: 3 }]);
+    assert.doesNotThrow(() => checkPost06ProceduralVerbs(fixture));
+    questions[3].options[0].text = `${verb}物理量`;
+    assert.throws(() => checkPost06ProceduralVerbs(fixture), /chapter 3.*4\/10/);
+    questions[3].options[0].text = "两束波同相";
+    fixture.push({ chapter: 5, questions: questions.slice(0, 3) });
+    assert.throws(() => checkPost06ProceduralVerbs(fixture), /chapter 5.*3\/3/);
+  }
+});
+
+test("all 48 chapter-3 choices use parallel judgement; reason and fresh explanations", () => {
+  const selected = banks.filter((b) => b.chapter === 3);
+  assert.equal(selected.length, 48);
+  for (const original of selected) {
+    const q = original.questions[8];
+    assert.ok(q.options.every((o) => /^[^；;]+；[^；;]+$/u.test(o.text)));
+    const missing = copy(original);
+    missing.questions[8].options[0].text = "压力减半";
+    assert.throws(() => validateBank(missing), /all four options must use judgement; reason/);
+    const repeated = copy(original);
+    const question = repeated.questions[8];
+    const reason = question.options.find((o) => o.id === question.answer).text.split("；")[1];
+    question.explanation = [`${question.answer}：${reason}。`];
+    assert.throws(() => checkEditorialText(question), /repeated option reason/);
+  }
 });
 
 test("absolute tolerances are unit-specific and exclude relative tolerances in schema and checker", () => {

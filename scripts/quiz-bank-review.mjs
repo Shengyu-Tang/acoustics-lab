@@ -38,6 +38,22 @@ export function post06LengthStats(banks) {
     return { chapter, total: questions.length, longest };
   });
 }
+
+// Include polite/obligation prefixes so “应先检查” cannot evade the rule.
+export const proceduralOpening =
+  /^(?:(?:应当|应该|应|需要|需|可以|可)\s*)?(?:先|比较|检查|核查|测|统一|保留|按)/u;
+export function post06ProceduralStats(banks) {
+  return [...new Set(banks.map((b) => b.chapter))].map((chapter) => {
+    const questions = banks
+      .filter((b) => b.chapter === chapter)
+      .flatMap((b) => b.questions)
+      .filter((q) => q.id.endsWith("-post-06"));
+    const procedural = questions.filter((q) =>
+      proceduralOpening.test(q.options.find((o) => o.id === q.answer).text.trimStart()),
+    ).length;
+    return { chapter, total: questions.length, procedural };
+  });
+}
 const answerText = (q) =>
   q.type === "numeric"
     ? `${quantityText(q.answer.value, q.answer.unit, 4)}（${toleranceText(q.answer)}，判分保留完整值）`
@@ -160,6 +176,19 @@ export function renderReview(manifest, banks) {
   );
   for (const { chapter, total, longest } of post06LengthStats(banks))
     lines.push(`| ${chapter} | ${total} | ${longest} | ${((100 * longest) / total).toFixed(1)}% |`);
+  lines.push(
+    "",
+    "## post-06程序性动词检查",
+    "",
+    "逐章统计正确项以先、比较、检查、核查、测、统一、保留、按开头的比例，上限30%；同时识别应、需要、可以等前缀，去除开头空白。分母为本章全部post-06，干扰项不计入分子。第三章48题按4.2.1、4.3、5.3、6.2、7.2、7.3的示范改为具体判断或短计算，四项均为“判断；理由”，解析不复述正确项理由，post-05与post-06的情境区分见各讲审阅记录。",
+    "",
+    "| 章 | post-06题数 | 程序性动词开头的正确项 | 比例 |",
+    "| --- | --- | --- | --- |",
+  );
+  for (const { chapter, total, procedural } of post06ProceduralStats(banks))
+    lines.push(
+      `| ${chapter} | ${total} | ${procedural} | ${((100 * procedural) / total).toFixed(1)}% |`,
+    );
   lines.push("", "## 深度题清单", "", "| 讲次 | 题号 | 判断依据 |", "| --- | --- | --- |");
   for (const b of banks)
     for (const q of b.questions.filter((q) => q.role === "depth" && !q.optional)) {

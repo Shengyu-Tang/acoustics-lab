@@ -9,6 +9,7 @@ import {
   renderReview,
   quantityText,
   post06LengthStats,
+  post06ProceduralStats,
   root,
 } from "./quiz-bank-review.mjs";
 import { chapter3Units, chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
@@ -451,6 +452,14 @@ export function checkPost06Lengths(banks) {
     );
 }
 
+export function checkPost06ProceduralVerbs(banks) {
+  for (const { chapter, total, procedural } of post06ProceduralStats(banks))
+    assert.ok(
+      procedural * 10 <= total * 3,
+      `chapter ${chapter}: post-06 procedural opening exceeds 30% (${procedural}/${total})`,
+    );
+}
+
 export function checkMath(text, context) {
   assert.equal((text.match(/\$/g) ?? []).length % 2, 0, `${context}: unpaired $`);
   assert.ok(!text.includes("$$"), `${context}: use inline $…$ delimiters`);
@@ -561,6 +570,11 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   );
   for (const [index, q] of bank.questions.entries()) {
     checkEditorialText(q);
+    if (bank.chapter === 3 && q.id.endsWith("-post-06") && q.type === "single")
+      assert.ok(
+        q.options.every((o) => /^[^；;]+[；;][^；;]+$/u.test(o.text)),
+        `${q.id}: all four options must use judgement; reason`,
+      );
     if (bank.chapter >= 3)
       assert.ok(
         bank.reviewNotes.some((note) => note.startsWith(`${q.id}：禁复用核查`)),
@@ -735,6 +749,7 @@ export function validateInventory(manifest, banks, topics, filenames) {
     }
   checkAnswerDistribution(banks);
   checkPost06Lengths(banks);
+  checkPost06ProceduralVerbs(banks);
 }
 
 // Count every correct A–D selection, including optional questions and multi-select
