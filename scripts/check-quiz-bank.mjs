@@ -4,7 +4,13 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import ts from "typescript";
 import katex from "katex";
-import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
+import {
+  loadBanks,
+  renderReview,
+  quantityText,
+  post06LengthStats,
+  root,
+} from "./quiz-bank-review.mjs";
 import { chapter3Units, chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 import { chapter4Units, chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
 import { chapter5Methods } from "./quiz-bank-numeric-ch5.mjs";
@@ -178,6 +184,7 @@ const units = {
   "kg/s": ["resistance", 1],
   "m/s": ["velocity", 1],
   "rad/s": ["frequency-angular", 1],
+  "°": ["angle", Math.PI / 180],
   Hz: ["frequency", 1],
   kHz: ["frequency", 1000],
   s: ["time", 1],
@@ -362,12 +369,69 @@ export function recomputeNumeric(answer) {
       Math.abs(answer.value - expected) <= Math.max(1e-9, Math.abs(expected) * 1e-5),
     `${c.method}: answer ${answer.value} ${answer.unit}, independently expected ${expected}`,
   );
-  assert.deepEqual(
-    answer.tolerance,
-    { relative: 0.02 },
-    "Numeric grading must use ±2% relative tolerance",
-  );
+  checkNumericTolerance(answer);
   return expected;
+}
+
+// These tolerances are in the displayed answer unit; % means percentage points.
+export const absoluteTolerances = { dB: 0.1, "%": 0.2, deg: 0.2, "°": 0.2, rad: 0.01 };
+export function checkNumericTolerance(answer) {
+  const absolute = absoluteTolerances[answer.unit];
+  if (absolute !== undefined) {
+    assert.equal(
+      answer.absoluteTolerance,
+      absolute,
+      `${answer.unit}: absoluteTolerance must be ${absolute}`,
+    );
+    assert.ok(
+      !own(answer, "tolerance"),
+      "Absolute tolerance must not coexist with relative tolerance",
+    );
+  } else {
+    assert.ok(!own(answer, "absoluteTolerance"), "Unexpected absoluteTolerance for this unit");
+    assert.deepEqual(
+      answer.tolerance,
+      { relative: 0.02 },
+      "Numeric grading must use ±2% relative tolerance",
+    );
+  }
+}
+
+export function checkEditorialText(question) {
+  const strings = (value) =>
+    typeof value === "string"
+      ? [value]
+      : value && typeof value === "object"
+        ? Object.values(value).flatMap(strings)
+        : [];
+  for (const text of strings(question))
+    assert.ok(!text.includes("。。"), `${question.id}: repeated full stop`);
+  // Spaces within units/TeX are legitimate. Only sentence-ending punctuation
+  // followed by whitespace and another sentence signals a pasted supplement.
+  for (const text of [
+    question.stem,
+    ...strings(question.answer),
+    ...(question.options ?? []).map((o) => o.text),
+  ])
+    assert.ok(
+      !/(?:[。！？!?]|\.(?!\d))[”’」』）)\]]*\s+\S/u.test(text.replace(/\$[^$]+\$/g, "FORMULA")),
+      `${question.id}: appended sentence after a space`,
+    );
+  if (question.id.endsWith("-post-06") && question.type === "single") {
+    const correct = question.options.find((o) => o.id === question.answer).text;
+    assert.ok(
+      !/[；;]|因为|由于|因此|所以|故而|原因在于/u.test(correct),
+      `${question.id}: correct option must state the judgement only; put the reason in the explanation`,
+    );
+  }
+}
+
+export function checkPost06Lengths(banks) {
+  for (const { chapter, total, longest } of post06LengthStats(banks))
+    assert.ok(
+      longest * 10 <= total * 3,
+      `chapter ${chapter}: post-06 correct option longest exceeds 30% (${longest}/${total}, ties included)`,
+    );
 }
 
 export function checkMath(text, context) {
@@ -393,7 +457,7 @@ export const numberNeutralStem = (s) => normalizeStem(s).replace(/\d+(?:\.\d+)?/
 // overlap. This guards mechanical reuse; semantic/context review remains human work.
 export function depthStemSimilarity(a, b) {
   const grams = (s) => {
-    const normalized = numberNeutralStem(s.replace(/以下哪一项判断及其理由成立？$/u, "")).replace(
+    const normalized = numberNeutralStem(s.replace(/以下哪一项判断成立？$/u, "")).replace(
       /[^\p{L}#]/gu,
       "",
     );
@@ -415,7 +479,7 @@ export function checkOptionalScenario(short, choice) {
     `${choice.id}: optional task must have one question mark`,
   );
   assert.ok(
-    choice.stem.endsWith("以下哪一项判断及其理由成立？"),
+    choice.stem.endsWith("以下哪一项判断成立？"),
     `${choice.id}: optional assessment wording`,
   );
   assert.ok(
@@ -449,6 +513,7 @@ export function checkNumericDisplay(answer) {
 
 export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
   requireSchema(bank, schema, `Lecture ${bank.lecture}`);
+  assert.ok(!JSON.stringify(bank).includes("。。"), `${bank.lecture}: repeated full stop`);
   const id = bank.lecture;
   // Editorial requirements 6–8 apply to every lecture, including chapters 1–2.
   checkOptionalScenario(bank.questions[7], bank.questions[8]);
@@ -478,6 +543,7 @@ export function validateBank(bank, expected = lectureLiterals(bank.lecture)) {
     `${id}: missing depth`,
   );
   for (const [index, q] of bank.questions.entries()) {
+    checkEditorialText(q);
     if (bank.chapter >= 3)
       assert.ok(
         bank.reviewNotes.some((note) => note.startsWith(`${q.id}：禁复用核查`)),
@@ -651,6 +717,7 @@ export function validateInventory(manifest, banks, topics, filenames) {
       patterns.add(pattern);
     }
   checkAnswerDistribution(banks);
+  checkPost06Lengths(banks);
 }
 
 // Count every correct A–D selection, including optional questions and multi-select

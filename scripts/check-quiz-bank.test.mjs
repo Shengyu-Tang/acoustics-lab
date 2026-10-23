@@ -13,8 +13,18 @@ import {
   checkNumericDisplay,
   checkOptionalScenario,
   depthStemSimilarity,
+  checkEditorialText,
+  checkPost06Lengths,
+  checkNumericTolerance,
 } from "./check-quiz-bank.mjs";
-import { loadBanks, renderReview, quantityText, root } from "./quiz-bank-review.mjs";
+import {
+  loadBanks,
+  renderReview,
+  quantityText,
+  toleranceText,
+  post06LengthStats,
+  root,
+} from "./quiz-bank-review.mjs";
 import { chapter3Methods } from "./quiz-bank-numeric-ch3.mjs";
 import { chapter4Methods } from "./quiz-bank-numeric-ch4.mjs";
 import { chapter5Methods } from "./quiz-bank-numeric-ch5.mjs";
@@ -123,6 +133,8 @@ test("chapter 6 checks complex loading and actual source normalization", () => {
   const percentage = copy(numeric(selected[1]).answer);
   percentage.value /= 100;
   percentage.unit = "";
+  delete percentage.absoluteTolerance;
+  percentage.tolerance = { relative: 0.02 };
   near(recomputeNumeric(percentage), 0.17541160386140575);
 });
 
@@ -329,7 +341,7 @@ test("optional depth rejects concatenated questions and number-only scenario reu
   const short = { stem: "长管内设置两个压力传感器相距20米，信号峰值按固定相位沿空间平移。" };
   const repeated = {
     id: "fixture",
-    stem: "长管内设置两个压力传感器相距40米，信号峰值按固定相位沿空间平移。以下哪一项判断及其理由成立？",
+    stem: "长管内设置两个压力传感器相距40米，信号峰值按固定相位沿空间平移。以下哪一项判断成立？",
   };
   assert.ok(depthStemSimilarity(short.stem, repeated.stem) > 0.65);
   assert.throws(() => checkOptionalScenario(short, repeated), /too similar/);
@@ -823,7 +835,7 @@ test("requirements 6–8 cover all 79 lectures and reject regressions in every c
     assert.throws(() => validateBank(extra), /one question mark/);
     const reused = copy(original);
     reused.questions[8].stem =
-      reused.questions[7].stem.replace(/[？?]/gu, "。") + "以下哪一项判断及其理由成立？";
+      reused.questions[7].stem.replace(/[？?]/gu, "。") + "以下哪一项判断成立？";
     assert.throws(() => validateBank(reused), /too similar/);
     const unit = copy(numeric(original).answer);
     unit.unit = "1";
@@ -834,11 +846,146 @@ test("requirements 6–8 cover all 79 lectures and reject regressions in every c
   }
   const b = banks[0],
     badEnding = copy(b.questions[8]);
-  badEnding.stem = badEnding.stem.replace(/以下哪一项判断及其理由成立？$/u, "应如何判断？");
+  badEnding.stem = badEnding.stem.replace(/以下哪一项判断成立？$/u, "应如何判断？");
   assert.throws(() => checkOptionalScenario(b.questions[7], badEnding), /assessment wording/);
   const ascii = copy(b.questions[8]);
   ascii.stem = "Another question?" + ascii.stem;
   assert.throws(() => checkOptionalScenario(b.questions[7], ascii), /one question mark/);
   assert.equal(quantityText(0.25, ""), "0.25");
   assert.equal(quantityText(1 / 9, "", 4), "0.1111");
+});
+
+test("review batch 1 editorial rules reject regressions in all 79 lectures", () => {
+  assert.equal(banks.length, 79);
+  for (const original of banks) {
+    for (const question of original.questions) checkEditorialText(question);
+    const doubled = copy(original);
+    doubled.questions[8].explanation[0] += "。";
+    assert.throws(() => validateBank(doubled), /repeated full stop/);
+
+    const reason = copy(original);
+    const q = reason.questions[8];
+    q.options.find((o) => o.id === q.answer).text += "；这是因为模型满足该条件";
+    q.explanation[q.options.findIndex((o) => o.id === q.answer)] =
+      `${q.answer}：这是因为模型满足该条件。`;
+    assert.throws(() => validateBank(reason), /judgement only/);
+
+    for (const location of ["stem", "reference", "rubric", "option"]) {
+      const appended = copy(original),
+        short = appended.questions[7];
+      const splice = (text) => text.replace(/[。！？!?]$/u, "") + "。 另外还需检查背景。";
+      if (location === "stem") short.stem = splice(short.stem);
+      else if (location === "reference") short.answer.reference = splice(short.answer.reference);
+      else if (location === "rubric") short.answer.rubric[0] = splice(short.answer.rubric[0]);
+      else appended.questions[8].options[0].text = splice(appended.questions[8].options[0].text);
+      assert.throws(() => validateBank(appended), /appended sentence/);
+    }
+  }
+  const q = copy(example.questions[8]);
+  q.options.find((o) => o.id === q.answer).text += "; the reason is repeated";
+  assert.throws(() => checkEditorialText(q), /judgement only/);
+  q.options.find((o) => o.id === q.answer).text = "该判断成立，因为模型满足条件";
+  assert.throws(() => checkEditorialText(q), /judgement only/);
+  q.stem += "。\n补充一句。";
+  assert.throws(() => checkEditorialText(q), /appended sentence/);
+  const math = copy(example.questions[7]);
+  math.stem = "请判断记录。$M,D$ 不变时，测量结果是否一致？";
+  checkEditorialText(math); // A space after TeX is not a sentence splice.
+  math.answer.reference = "First judgement. Another appended sentence.";
+  assert.throws(() => checkEditorialText(math), /appended sentence/);
+});
+
+test("post-06 length rule is chapter-local, counts ties and enforces the 30% boundary", () => {
+  checkPost06Lengths(banks);
+  assert.deepEqual(
+    post06LengthStats(banks).map((s) => s.total),
+    [10, 4, 48, 9, 3, 2, 3],
+  );
+  for (const chapter of manifest.chapters.map((c) => c.chapter)) {
+    const edited = copy(banks);
+    for (const bank of edited.filter((b) => b.chapter === chapter)) {
+      const q = bank.questions[8];
+      // A tie must be rejected too, including chapters with only 2 or 3 lectures.
+      q.options.forEach((o) => (o.text = "同样长度"));
+    }
+    assert.throws(() => checkPost06Lengths(edited), new RegExp(`chapter ${chapter}:.*exceeds 30%`));
+  }
+  const questions = Array.from({ length: 10 }, (_, i) => ({
+    id: `${i}-post-06`,
+    answer: "A",
+    options: [
+      { id: "A", text: i < 3 ? "甲乙" : "甲" },
+      { id: "B", text: "丙丁" },
+    ],
+  }));
+  const fixture = [{ chapter: 1, questions }];
+  assert.doesNotThrow(() => checkPost06Lengths(fixture)); // 3/10, tied maxima.
+  questions[3].options[0].text = "甲乙丙";
+  assert.throws(() => checkPost06Lengths(fixture), /4\/10/);
+  questions[3].options[0].text = "甲";
+  fixture.push({ chapter: 2, questions: questions.slice(0, 3) });
+  assert.throws(() => checkPost06Lengths(fixture), /chapter 2/);
+});
+
+test("absolute tolerances are unit-specific and exclude relative tolerances in schema and checker", () => {
+  const affected = banks
+    .flatMap((b) => b.questions)
+    .filter((q) => q.type === "numeric" && ["dB", "%", "deg", "°", "rad"].includes(q.answer.unit));
+  assert.equal(affected.length, 7);
+  for (const q of affected) {
+    const answer = q.answer;
+    checkNumericTolerance(answer);
+    assert.deepEqual(validateSchema(answer, schema.$defs.numericAnswer), []);
+    const missing = copy(answer);
+    delete missing.absoluteTolerance;
+    missing.tolerance = { relative: 0.02 };
+    assert.throws(() => checkNumericTolerance(missing), /absoluteTolerance/);
+    assert.ok(validateSchema(missing, schema.$defs.numericAnswer).length);
+    for (const changed of [
+      { ...answer, tolerance: { relative: 0.02 } },
+      { ...answer, absoluteTolerance: answer.absoluteTolerance * 2 },
+    ]) {
+      assert.throws(() => checkNumericTolerance(changed), /tolerance|Tolerance/);
+      assert.ok(validateSchema(changed, schema.$defs.numericAnswer).length);
+    }
+    assert.ok(renderReview(manifest, banks).includes(toleranceText(answer)));
+  }
+  for (const [unit, absoluteTolerance] of [
+    ["dB", 0.1],
+    ["%", 0.2],
+    ["deg", 0.2],
+    ["°", 0.2],
+    ["rad", 0.01],
+  ]) {
+    const a = { ...copy(numeric(example).answer), unit, absoluteTolerance };
+    delete a.tolerance;
+    checkNumericTolerance(a);
+    assert.deepEqual(validateSchema(a, schema.$defs.numericAnswer), []);
+  }
+  const relative = { ...numeric(example).answer, absoluteTolerance: 0.1 };
+  assert.throws(() => checkNumericTolerance(relative), /Unexpected absoluteTolerance/);
+  assert.ok(validateSchema(relative, schema.$defs.numericAnswer).length);
+  assert.equal(toleranceText({ unit: "%", absoluteTolerance: 0.2 }), "绝对容差 ±0.2 个百分点");
+  const angle = copy(numeric(banks.find((b) => b.lecture === "3.6.9")).answer);
+  angle.unit = "°";
+  assert.ok(Math.abs(recomputeNumeric(angle) - 10) < 1e-10);
+  angle.unit = "rad";
+  angle.value *= Math.PI / 180;
+  angle.absoluteTolerance = 0.01;
+  assert.ok(Math.abs(recomputeNumeric(angle) - Math.PI / 18) < 1e-10);
+});
+
+test("3.4.6 background subtraction distinguishes source, total and background levels", () => {
+  const q = numeric(banks.find((b) => b.lecture === "3.4.6"));
+  assert.equal(q.answer.calculation.inputs.total.value, 76);
+  assert.equal(q.answer.calculation.inputs.background.value, 70);
+  assert.ok(q.stem.includes("76.0"));
+  const expected = 70 + 10 * Math.log10(10 ** 0.6 - 1);
+  assert.ok(Math.abs(recomputeNumeric(q.answer) - expected) < 1e-10);
+  assert.ok(q.explanation.some((s) => s.includes("74.74")));
+  assert.ok(renderReview(manifest, banks).includes("74.74 dB（绝对容差 ±0.1 dB"));
+  for (const wrong of [70, 76, 6]) {
+    assert.ok(Math.abs(wrong - q.answer.value) > q.answer.absoluteTolerance);
+    assert.throws(() => recomputeNumeric({ ...q.answer, value: wrong }), /independently expected/);
+  }
 });

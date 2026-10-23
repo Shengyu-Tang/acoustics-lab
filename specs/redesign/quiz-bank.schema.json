@@ -104,11 +104,30 @@
     "numericAnswer": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["value", "unit", "tolerance", "calculation"],
+      "required": ["value", "unit", "calculation"],
+      "allOf": [
+        {
+          "if": { "properties": { "unit": { "enum": ["dB", "%", "deg", "°", "rad"] } } },
+          "then": { "required": ["absoluteTolerance"], "not": { "required": ["tolerance"] } },
+          "else": { "required": ["tolerance"], "not": { "required": ["absoluteTolerance"] } }
+        },
+        {
+          "if": { "properties": { "unit": { "const": "dB" } } },
+          "then": { "properties": { "absoluteTolerance": { "const": 0.1 } } }
+        },
+        {
+          "if": { "properties": { "unit": { "enum": ["%", "deg", "°"] } } },
+          "then": { "properties": { "absoluteTolerance": { "const": 0.2 } } }
+        },
+        {
+          "if": { "properties": { "unit": { "const": "rad" } } },
+          "then": { "properties": { "absoluteTolerance": { "const": 0.01 } } }
+        }
+      ],
       "properties": {
         "value": {
           "type": "number",
-          "description": "完整计算值用于±2%判分；向学生或审阅者展示时保留3—4位有效数字。"
+          "description": "完整计算值用于判分；dB、%、角度和相位使用绝对容差，其余使用±2%；展示时保留3—4位有效数字。"
         },
         "unit": {
           "type": "string",
@@ -120,6 +139,11 @@
           "additionalProperties": false,
           "required": ["relative"],
           "properties": { "relative": { "const": 0.02 } }
+        },
+        "absoluteTolerance": {
+          "type": "number",
+          "minimum": 0,
+          "description": "以答案单位计：dB为0.1，%为0.2个百分点，deg或°为0.2，rad为0.01；与tolerance互斥。"
         },
         "calculation": {
           "type": "object",
