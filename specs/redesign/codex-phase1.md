@@ -20,3 +20,8 @@ bug-audit-1.md 的 A13 列出 77 讲“工程应用”段落与例题背景逐�
 
 ## 验收
 `npm ci && npm test && node scripts/check-animations.mjs && npm run build` 通过；check-browser 全部路由 1440×900 与 390×844 通过；手机端抽屉与子图切换在 390×844 截图逐张查看；改动的图 MATLAB 两组参数复跑（'C:\Program Files\MATLAB\R2024b\bin\matlab.exe' -batch，每个脚本单独进程）。A 部分与 B 部分各项单独提交。
+
+## 暂停记录（2026-10-24）
+教师要求暂停本任务，优先保障 PPT 与雨课堂。停止时状态：
+- A 部分（工程应用改写）进行中，尚无完成的提交；Codex 已改写的未提交内容（主要是第 1—2 章各讲、calculationSteps.ts 去拼接逻辑、新增 scripts/engineering-checks.mjs）保存在 `git stash`：“phase1-A13-partial (ch1-2 engineering paragraphs, uncommitted, stopped 2026-10-24)”，未经测试。恢复时可先 `git stash show -p` 参考，再按本文件 A 部分从头完成并逐章提交。
+- B 部分（B1–B5）未开始。
